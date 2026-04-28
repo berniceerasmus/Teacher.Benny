@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocabulary Practice: Turkish Meanings</title>
+  <style>
+    :root {
+      --bg: #f5fbff;
+      --card: #ffffff;
+      --accent: #66c7dc;
+      --dark: #10243d;
+      --muted: #5d6d7e;
+      --good: #1b9c67;
+      --bad: #d94f4f;
+      --soft: #d9eef8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #ffffff);
+      color: var(--dark);
+      padding: 24px;
+    }
+
+    header {
+      max-width: 1000px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    h1 { margin-bottom: 8px; font-size: 2rem; }
+    p { color: var(--muted); line-height: 1.5; }
+
+    .section {
+      max-width: 1000px;
+      margin: 24px auto;
+      background: var(--card);
+      border: 3px solid var(--accent);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(16, 36, 61, 0.08);
+    }
+
+    h2 { margin-top: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .flip-card {
+      height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 2px solid var(--soft);
+    }
+
+    .front {
+      background: var(--soft);
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .back {
+      background: #fff;
+      transform: rotateY(180deg);
+      gap: 8px;
+    }
+
+    .turkish {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #0d6d87;
+    }
+
+    .explanation { font-size: 0.95rem; color: var(--muted); }
+
+    .matching-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .word-list, .meaning-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    button, .choice {
+      border: 2px solid var(--accent);
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: var(--dark);
+    }
+
+    button:hover, .choice:hover { background: var(--soft); }
+
+    .selected { background: var(--soft); border-color: #0d6d87; }
+    .correct { background: #dcf8ed; border-color: var(--good); }
+    .wrong { background: #ffe1e1; border-color: var(--bad); }
+
+    .status {
+      margin-top: 14px;
+      font-weight: bold;
+    }
+
+    .quiz-card {
+      border: 2px solid var(--soft);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .matching-area { grid-template-columns: 1fr; }
+      body { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vocabulary Practice</h1>
+    <p>Flip the cards, match the Turkish meanings, and find the correct English explanation.</p>
+  </header>
+
+  <section class="section">
+    <h2>1. Flip the Card</h2>
+    <p>Click a card to see the Turkish meaning and a simple explanation.</p>
+    <div class="grid" id="flashcards"></div>
+  </section>
+
+  <section class="section">
+    <h2>2. Match the Meaning</h2>
+    <p>Click an English word, then click its Turkish meaning.</p>
+    <div class="matching-area">
+      <div class="word-list" id="wordList"></div>
+      <div class="meaning-list" id="meaningList"></div>
+    </div>
+    <div class="status" id="matchStatus">Matches: 0 / 8</div>
+    <div class="controls">
+      <button onclick="resetMatching()">Reset Matching</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>3. Find the Explanation</h2>
+    <p>Choose the correct simple English explanation for each word.</p>
+    <div id="quiz"></div>
+    <div class="status" id="quizStatus">Score: 0 / 8</div>
+    <div class="controls">
+      <button onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+  </section>
+
+  <script>
+    const vocab = [
+      {
+        word: "delegate",
+        turkish: "yetki vermek, görev devretmek",
+        explanation: "To give a task or responsibility to someone else.",
+        example: "A manager can delegate tasks to team members."
+      },
+      {
+        word: "accomplish",
+        turkish: "başarmak, tamamlamak",
+        explanation: "To successfully finish something.",
+        example: "She accomplished her goal of learning English."
+      },
+      {
+        word: "distraction",
+        turkish: "dikkat dağıtıcı şey",
+        explanation: "Something that takes your attention away.",
+        example: "A phone can be a distraction while studying."
+      },
+      {
+        word: "collaborate",
+        turkish: "iş birliği yapmak",
+        explanation: "To work together with other people.",
+        example: "Students collaborate on a group project."
+      },
+      {
+        word: "priority",
+        turkish: "öncelik",
+        explanation: "Something more important than other things.",
+        example: "Finishing homework is my priority today."
+      },
+      {
+        word: "gratitude",
+        turkish: "minnettarlık, şükran",
+        explanation: "A feeling of being thankful.",
+        example: "He showed gratitude for his friend's help."
+      },
+      {
+        word: "accumulate",
+        turkish: "biriktirmek, artmak",
+        explanation: "To collect or increase over time.",
+        example: "Dust accumulates on the desk."
+      },
+      {
+        word: "procrastinate",
+        turkish: "ertelemek",
+        explanation: "To delay doing something you should do.",
+        example: "I procrastinate when I do not want to start studying."
+      }
+    ];
+
+    const wrongExplanations = [
+      "To speak very loudly in public.",
+      "To travel to another country.",
+      "To buy something expensive.",
+      "To forget a person's name.",
+      "To cook food very quickly.",
+      "To sleep for a long time.",
+      "To make something smaller.",
+      "To change the color of an object."
+    ];
+
+    function shuffle(array) {
+      return [...array].sort(() => Math.random() - 0.5);
+    }
+
+    function renderFlashcards() {
+      const container = document.getElementById("flashcards");
+      container.innerHTML = "";
+      vocab.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "flip-card";
+        card.innerHTML = `
+          <div class="flip-inner">
+            <div class="front">${item.word}</div>
+            <div class="back">
+              <div class="turkish">${item.turkish}</div>
+              <div class="explanation">${item.explanation}</div>
+              <small><strong>Example:</strong> ${item.example}</small>
+            </div>
+          </div>
+        `;
+        card.addEventListener("click", () => card.classList.toggle("flipped"));
+        container.appendChild(card);
+      });
+    }
+
+    let selectedWord = null;
+    let matchedCount = 0;
+
+    function renderMatching() {
+      const wordList = document.getElementById("wordList");
+      const meaningList = document.getElementById("meaningList");
+      wordList.innerHTML = "";
+      meaningList.innerHTML = "";
+      selectedWord = null;
+      matchedCount = 0;
+      document.getElementById("matchStatus").textContent = "Matches: 0 / 8";
+
+      shuffle(vocab).forEach(item => {
+        const btn = document.createElement("button");
+        btn.textContent = item.word;
+        btn.dataset.word = item.word;
+        btn.onclick = () => selectWord(btn, item.word);
+        wordList.appendChild(btn);
+      });
+
+      shuffle(vocab).forEach(item => {
+        const btn = document.createElement("button");
+        btn.textContent = item.turkish;
+        btn.dataset.word = item.word;
+        btn.onclick = () => checkMatch(btn);
+        meaningList.appendChild(btn);
+      });
+    }
+
+    function selectWord(button, word) {
+      if (button.classList.contains("correct")) return;
+      document.querySelectorAll(".word-list button").forEach(b => b.classList.remove("selected"));
+      button.classList.add("selected");
+      selectedWord = { word, button };
+    }
+
+    function checkMatch(button) {
+      if (!selectedWord || button.classList.contains("correct")) return;
+
+      if (button.dataset.word === selectedWord.word) {
+        button.classList.add("correct");
+        selectedWord.button.classList.add("correct");
+        selectedWord.button.classList.remove("selected");
+        selectedWord.button.disabled = true;
+        button.disabled = true;
+        matchedCount++;
+        document.getElementById("matchStatus").textContent = `Matches: ${matchedCount} / 8`;
+        selectedWord = null;
+      } else {
+        button.classList.add("wrong");
+        setTimeout(() => button.classList.remove("wrong"), 600);
+      }
+    }
+
+    function resetMatching() {
+      renderMatching();
+    }
+
+    function renderQuiz() {
+      const quiz = document.getElementById("quiz");
+      quiz.innerHTML = "";
+      let score = 0;
+      document.getElementById("quizStatus").textContent = "Score: 0 / 8";
+
+      vocab.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "quiz-card";
+        const options = shuffle([
+          item.explanation,
+          ...shuffle(wrongExplanations).slice(0, 3)
+        ]);
+
+        card.innerHTML = `
+          <strong>${index + 1}. ${item.word}</strong>
+          <div class="options"></div>
+        `;
+
+        const optionBox = card.querySelector(".options");
+        options.forEach(option => {
+          const btn = document.createElement("button");
+          btn.textContent = option;
+          btn.onclick = () => {
+            if (card.dataset.answered === "true") return;
+            card.dataset.answered = "true";
+            if (option === item.explanation) {
+              btn.classList.add("correct");
+              score++;
+            } else {
+              btn.classList.add("wrong");
+              [...optionBox.children].forEach(child => {
+                if (child.textContent === item.explanation) child.classList.add("correct");
+              });
+            }
+            document.getElementById("quizStatus").textContent = `Score: ${score} / 8`;
+          };
+          optionBox.appendChild(btn);
+        });
+
+        quiz.appendChild(card);
+      });
+    }
+
+    function resetQuiz() {
+      renderQuiz();
+    }
+
+    renderFlashcards();
+    renderMatching();
+    renderQuiz();
+  </script>
+</body>
+</html>
