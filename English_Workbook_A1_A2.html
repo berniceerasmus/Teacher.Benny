@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete English A1–A2 Workbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --gold: #c9973a;
+    --gold-light: #e8b95a;
+    --cream: #f7f3eb;
+    --cream-dark: #ede7d9;
+    --text: #1a1208;
+    --text-muted: #5a4e3a;
+    --green: #2d6a4f;
+    --green-light: #d8f3dc;
+    --red: #9b2335;
+    --red-light: #fce8ea;
+    --blue-light: #e8f0ff;
+    --shadow: 0 4px 24px rgba(15,31,61,0.10);
+    --shadow-lg: 0 8px 40px rgba(15,31,61,0.16);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #2a4a8a 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 60px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    color: rgba(255,255,255,0.65);
+    font-size: 16px;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .header-chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    background: #fff;
+    border-bottom: 2px solid var(--cream-dark);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .toolbar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .btn {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--navy-mid); }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy-mid);
+  }
+  .btn-outline:hover { background: var(--blue-light); }
+  .btn-danger {
+    background: transparent;
+    color: var(--red);
+    border-color: var(--red);
+  }
+  .btn-danger:hover { background: var(--red-light); }
+  .save-status {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .save-status.show { opacity: 1; }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* ── LEVEL SECTION ── */
+  .level-section { margin-bottom: 16px; }
+  .level-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 18px 28px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .level-header:hover { background: var(--navy-mid); }
+  .level-header-left { display: flex; align-items: center; gap: 16px; }
+  .level-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .level-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .level-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .chevron {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    color: var(--gold);
+  }
+  .level-header.open .chevron { transform: rotate(180deg); }
+  .level-body {
+    background: #fff;
+    border: 2px solid var(--navy);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .level-body.open { max-height: 99999px; }
+  .level-body-inner { padding: 12px 16px 20px; }
+
+  /* ── UNIT ACCORDION ── */
+  .unit-card {
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .unit-header {
+    background: var(--cream);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.18s;
+    gap: 12px;
+  }
+  .unit-header:hover { background: var(--cream-dark); }
+  .unit-header-left { display: flex; align-items: center; gap: 14px; }
+  .unit-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--navy);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .unit-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .unit-grammar {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .unit-chevron {
+    font-size: 16px;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .unit-header.open .unit-chevron { transform: rotate(180deg); }
+  .unit-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #fff;
+  }
+  .unit-body.open { max-height: 99999px; }
+  .unit-body-inner { padding: 24px; }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 14px;
+  }
+  .section-label:first-child { margin-top: 0; }
+  .section-icon {
+    width: 32px; height: 32px;
+    background: var(--navy);
+    color: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .section-divider {
+    flex: 1;
+    height: 1px;
+    background: var(--cream-dark);
+  }
+
+  /* ── WARM UP ── */
+  .warmup-box {
+    background: linear-gradient(135deg, #fff8e7, #fff3d0);
+    border: 1.5px solid var(--gold-light);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    margin-bottom: 8px;
+  }
+  .warmup-box p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  /* ── EXERCISE BOX ── */
+  .exercise-box {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .exercise-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .exercise-title::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* ── MATCHING TABLE ── */
+  .match-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .match-col { display: flex; flex-direction: column; gap: 6px; }
+  .match-item {
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .match-answer-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .match-answer-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── FORM CONTROLS ── */
+  input[type="text"], textarea, select {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--cream);
+    border: 1.5px solid #d4c9b0;
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    width: 100%;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(15,31,61,0.08);
+    background: #fff;
+  }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+  .inline-input {
+    display: inline-block;
+    width: auto;
+    min-width: 120px;
+    vertical-align: middle;
+  }
+
+  /* ── RADIO / CHECKBOX ── */
+  .options-list { display: flex; flex-direction: column; gap: 8px; }
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--cream);
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 14px;
+  }
+  .option-item:hover { border-color: var(--gold); background: #fffaf0; }
+  .option-item input[type="radio"] {
+    width: 16px; height: 16px;
+    margin-top: 2px;
+    accent-color: var(--navy);
+    flex-shrink: 0;
+  }
+  .option-item.selected {
+    border-color: var(--navy);
+    background: var(--blue-light);
+  }
+
+  /* ── TRUE/FALSE/NG ── */
+  .tfng-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .tfng-text { flex: 1; font-size: 14px; min-width: 180px; }
+  .tfng-btns { display: flex; gap: 6px; }
+  .tfng-btn {
+    padding: 5px 12px;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text-muted);
+  }
+  .tfng-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .tfng-btn.active-T { background: var(--green); border-color: var(--green); color: #fff; }
+  .tfng-btn.active-F { background: var(--red); border-color: var(--red); color: #fff; }
+  .tfng-btn.active-NG { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+  /* ── FILL-IN-BLANK ── */
+  .fill-sentence {
+    font-size: 14px;
+    line-height: 2.2;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+  .fill-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--navy);
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-right: 4px;
+  }
+  .blank-input {
+    display: inline-block;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 4px 10px;
+    border: 1.5px solid #d4c9b0;
+    border-radius: 4px;
+    background: var(--cream);
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    transition: border-color 0.15s;
+  }
+  .blank-input:focus {
+    outline: none;
+    border-color: var(--navy);
+    background: #fff;
+  }
+
+  /* ── WRITING ── */
+  .writing-prompt {
+    background: var(--blue-light);
+    border-left: 4px solid var(--navy);
+    padding: 14px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .writing-prompt strong { color: var(--navy); }
+  .useful-lang {
+    background: var(--green-light);
+    border: 1px solid #74c69d;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--green);
+    font-style: italic;
+  }
+  .word-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  /* ── SPEAKING ── */
+  .speaking-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    align-items: flex-start;
+  }
+  .speaking-num {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .roleplay-tag {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+
+  /* ── TIP BOX ── */
+  .tip-box {
+    background: #fff8e7;
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #7a5c00;
+    margin-bottom: 14px;
+  }
+  .tip-box::before { content: '💡 TIP: '; font-weight: 700; }
+
+  /* ── GRAMMAR REMINDER ── */
+  .grammar-reminder {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .grammar-reminder strong { color: var(--gold); }
+
+  /* ── VERB TABLE ── */
+  .verb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .verb-table th {
+    background: var(--navy);
+    color: var(--gold);
+    padding: 8px 12px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .verb-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .verb-table tr:last-child td { border-bottom: none; }
+  .verb-table input { width: 120px; }
+  .verb-table select { width: 110px; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap { margin-top: 20px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  @media (max-width: 600px) {
+    .match-table { grid-template-columns: 1fr; }
+    .toolbar { gap: 8px; }
+    .btn { font-size: 13px; padding: 7px 14px; }
+    .unit-body-inner { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">Teacher Benny</div>
+  <h1>Complete <span>English</span><br>A1–A2 Workbook</h1>
+  <p>Learning Units · Real-Life Dialogues · Grammar Practice</p>
+  <div class="header-meta">
+    <span class="header-chip">8 Units</span>
+    <span class="header-chip">400+ Words</span>
+    <span class="header-chip">16 Vocab Categories</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <span class="toolbar-label">Progress</span>
+  <button class="btn btn-primary" onclick="saveProgress()">💾 Save</button>
+  <button class="btn btn-outline" onclick="expandAll()">↕ Expand All</button>
+  <button class="btn btn-outline" onclick="collapseAll()">↕ Collapse All</button>
+  <button class="btn btn-danger" onclick="confirmReset()">✕ Reset All</button>
+  <span class="save-status" id="saveStatus">✓ Saved!</span>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════ A1 LEVEL ═══════════════════════════════════════ -->
+<div class="level-section">
+  <div class="level-header open" onclick="toggleLevel(this)">
+    <div class="level-header-left">
+      <div class="level-badge">A1</div>
+      <div>
+        <div class="level-title">Beginner Level</div>
+        <div class="level-subtitle">Units 1–5 · Foundational English</div>
+      </div>
+    </div>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="level-body open">
+    <div class="level-body-inner">
+
+      <!-- ─── UNIT 1 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 1</span>
+            <div>
+              <div class="unit-name">Hello, Nice to Meet You!</div>
+              <div class="unit-grammar">Grammar: The Verb TO BE (am / is / are)</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <!-- Warm Up -->
+            <div class="section-label">
+              <div class="section-icon">☀</div>
+              <div class="section-title">Warm Up</div>
+              <div class="section-divider"></div>
+            </div>
+            <div class="warmup-box">
+              <p>How do you greet someone in the morning? What do you say when you meet someone for the first time? Write two greetings you already know in English below.</p>
+              <textarea id="u1_warmup" placeholder="Write your greetings here..." rows="3"></textarea>
+            </div>
+
+            <!-- Vocabulary -->
+            <div class="section-label">
+              <div class="section-icon">📖</div>
+              <div class="section-title">Vocabulary Activation</div>
+              <div class="section-divider"></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match the words to their meanings</div>
+              <div class="match-table">
+                <div class="match-col">
+                  <div class="match-item">1. hello</div>
+                  <div class="match-item">2. goodbye</div>
+                  <div class="match-item">3. nice</div>
+                  <div class="match-item">4. student</div>
+                  <div class="match-item">5. teacher</div>
+                </div>
+                <div class="match-col">
+                  <div class="match-item">A. a word we use to say goodbye</div>
+                  <div class="match-item">B. we use this to say hi</div>
+                  <div class="match-item">C. a person who teaches you</div>
+                  <div class="match-item">D. pleasant, kind</div>
+                  <div class="match-item">E. a person who studies at school</div>
+                </div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u1_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u1_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u1_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u1_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u1_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct word</div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">1. My ___ is Sara. I am a student.</div>
+                <div class="options-list" id="u1_e2_1">
+                  <label class="option-item"><input type="radio" name="u1_e2_1" value="A"> A) name</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_1" value="B"> B) friend</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_1" value="C"> C) teacher</label>
+                </div>
+              </div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">2. She ___ my teacher. She is very kind.</div>
+                <div class="options-list" id="u1_e2_2">
+                  <label class="option-item"><input type="radio" name="u1_e2_2" value="A"> A) am</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_2" value="B"> B) is</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_2" value="C"> C) are</label>
+                </div>
+              </div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">3. We ___ students at the same school.</div>
+                <div class="options-list" id="u1_e2_3">
+                  <label class="option-item"><input type="radio" name="u1_e2_3" value="A"> A) am</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_3" value="B"> B) is</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_3" value="C"> C) are</label>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:14px;margin-bottom:8px">4. ___ you happy today?</div>
+                <div class="options-list" id="u1_e2_4">
+                  <label class="option-item"><input type="radio" name="u1_e2_4" value="A"> A) Am</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_4" value="B"> B) Is</label>
+                  <label class="option-item"><input type="radio" name="u1_e2_4" value="C"> C) Are</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reading -->
+            <div class="section-label">
+              <div class="section-icon">📄</div>
+              <div class="section-title">Reading — A New Friend</div>
+              <div class="section-divider"></div>
+            </div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">My name is Mia. I am 24 years old and I am a student at the language school in Istanbul. Today is my first day. I am a little nervous, but I am also very excited.<br><br>In the classroom, there is a boy next to me. His name is Can. He is also a new student. He is from Ankara. We say hello and shake hands. 'Nice to meet you!' I say. 'Nice to meet you too!' he says with a big smile.<br><br>Our teacher is Ms Green. She is from England, but she lives in Istanbul now. She is very friendly and her English is clear and easy to understand. I think this class is going to be great!</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — True or False?</div>
+              <div class="tfng-row"><span class="tfng-text">1. Mia is a teacher at the language school.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u1_tf1" value=""></div>
+              <div class="tfng-row"><span class="tfng-text">2. Can is from Istanbul.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u1_tf2" value=""></div>
+              <div class="tfng-row"><span class="tfng-text">3. Ms Green is from England.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u1_tf3" value=""></div>
+              <div class="tfng-row"><span class="tfng-text">4. Mia feels excited on her first day.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u1_tf4" value=""></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Answer in full sentences</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. Where is Mia a student?</p><textarea id="u1_e4_1" placeholder="Write your answer here..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. How does Mia feel on her first day?</p><textarea id="u1_e4_2" placeholder="Write your answer here..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. Where is Can from?</p><textarea id="u1_e4_3" placeholder="Write your answer here..." rows="2"></textarea></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. What does Mia say about Ms Green?</p><textarea id="u1_e4_4" placeholder="Write your answer here..." rows="2"></textarea></div>
+            </div>
+
+            <!-- Grammar -->
+            <div class="section-label">
+              <div class="section-icon">⚙</div>
+              <div class="section-title">Grammar Practice</div>
+              <div class="section-divider"></div>
+            </div>
+            <div class="grammar-reminder">
+              <strong>Remember:</strong> I AM &nbsp;|&nbsp; he / she / it IS &nbsp;|&nbsp; you / we / they ARE<br>
+              <strong>Negative:</strong> I am not &nbsp;|&nbsp; she is not (isn't) &nbsp;|&nbsp; they are not (aren't)<br>
+              <strong>Question:</strong> Am I ...? &nbsp;|&nbsp; Is he ...? &nbsp;|&nbsp; Are you ...?
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Fill in with am, is, or are</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> I <input class="blank-input" id="u1_g5_1" placeholder="___"> a student from Turkey.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> She <input class="blank-input" id="u1_g5_2" placeholder="___"> not at school today.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> They <input class="blank-input" id="u1_g5_3" placeholder="___"> in the same classroom.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> It <input class="blank-input" id="u1_g5_4" placeholder="___"> a nice day today.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> We <input class="blank-input" id="u1_g5_5" placeholder="___"> not tired. We <input class="blank-input" id="u1_g5_5b" placeholder="___"> happy!</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> <input class="blank-input" id="u1_g5_6" placeholder="___"> you a new student here?</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 6 — Find and correct the mistake</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. <em>"She are my best friend."</em></p><input type="text" id="u1_g6_1" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. <em>"I is not happy today."</em></p><input type="text" id="u1_g6_2" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. <em>"Are he a teacher?"</em></p><input type="text" id="u1_g6_3" placeholder="Write the corrected sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. <em>"We is from Istanbul."</em></p><input type="text" id="u1_g6_4" placeholder="Write the corrected sentence..."></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 7 — Reorder the words</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. student / I / a / am</p><input type="text" id="u1_g7_1" placeholder="Write the correct sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. teacher / Is / she / my / ?</p><input type="text" id="u1_g7_2" placeholder="Write the correct sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">3. not / are / friends / They</p><input type="text" id="u1_g7_3" placeholder="Write the correct sentence..."></div>
+            </div>
+
+            <!-- Speaking -->
+            <div class="section-label">
+              <div class="section-icon">🗣</div>
+              <div class="section-title">Speaking & Discussion</div>
+              <div class="section-divider"></div>
+            </div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Introduce yourself to a partner. Say your name, where you are from, and one thing about yourself.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span>Look at the reading text again. Tell your partner three facts about Mia without looking at the text.</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span><span class="roleplay-tag">ROLE PLAY</span> You are meeting a classmate for the first time. Greet them, introduce yourself, and ask them two questions.</span></div>
+            </div>
+
+            <!-- Writing -->
+            <div class="section-label">
+              <div class="section-icon">✍</div>
+              <div class="section-title">Writing Task</div>
+              <div class="section-divider"></div>
+            </div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a short paragraph (40–60 words) to introduce yourself. Include: your name, where you are from, how you feel about learning English, and one thing about a friend or classmate.</div>
+            <div class="useful-lang">Useful language: My name is ... | I am from ... | I am (not) ... | My friend is ... | Nice to meet you!</div>
+            <textarea id="u1_writing" placeholder="Write your paragraph here..." rows="6" oninput="countWords(this,'u1_wc')"></textarea>
+            <div class="word-count" id="u1_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 2 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 2</span>
+            <div>
+              <div class="unit-name">My Daily Routine</div>
+              <div class="unit-grammar">Grammar: Present Simple Tense</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>What do you do every morning before school or work? Write three activities below.</p>
+              <textarea id="u2_warmup" placeholder="Write three morning activities..." rows="3"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match each verb to the correct description</div>
+              <div class="match-table">
+                <div class="match-col">
+                  <div class="match-item">1. wake up</div>
+                  <div class="match-item">2. eat</div>
+                  <div class="match-item">3. study</div>
+                  <div class="match-item">4. cook</div>
+                  <div class="match-item">5. watch</div>
+                </div>
+                <div class="match-col">
+                  <div class="match-item">A. prepare food on a stove</div>
+                  <div class="match-item">B. get out of bed in the morning</div>
+                  <div class="match-item">C. look at a screen to enjoy a film</div>
+                  <div class="match-item">D. have a meal</div>
+                  <div class="match-item">E. read books and take notes</div>
+                </div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u2_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u2_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u2_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u2_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u2_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct option</div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">1. She ___ coffee every morning before work.</div>
+                <div class="options-list"><label class="option-item"><input type="radio" name="u2_e2_1" value="A"> A) drink</label><label class="option-item"><input type="radio" name="u2_e2_1" value="B"> B) drinks</label><label class="option-item"><input type="radio" name="u2_e2_1" value="C"> C) drinking</label></div>
+              </div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">2. I ___ to the gym three times a week.</div>
+                <div class="options-list"><label class="option-item"><input type="radio" name="u2_e2_2" value="A"> A) go</label><label class="option-item"><input type="radio" name="u2_e2_2" value="B"> B) goes</label><label class="option-item"><input type="radio" name="u2_e2_2" value="C"> C) going</label></div>
+              </div>
+              <div style="margin-bottom:14px">
+                <div style="font-size:14px;margin-bottom:8px">3. He ___ not eat meat. He is vegetarian.</div>
+                <div class="options-list"><label class="option-item"><input type="radio" name="u2_e2_3" value="A"> A) do</label><label class="option-item"><input type="radio" name="u2_e2_3" value="B"> B) does</label><label class="option-item"><input type="radio" name="u2_e2_3" value="C"> C) is</label></div>
+              </div>
+              <div>
+                <div style="font-size:14px;margin-bottom:8px">4. ___ you walk to school every day?</div>
+                <div class="options-list"><label class="option-item"><input type="radio" name="u2_e2_4" value="A"> A) Do</label><label class="option-item"><input type="radio" name="u2_e2_4" value="B"> B) Does</label><label class="option-item"><input type="radio" name="u2_e2_4" value="C"> C) Are</label></div>
+              </div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — A Typical Day for Ayse</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">Ayse lives in Ankara with her family. She is a university student and she has a very busy daily routine.<br><br>She wakes up at 6:30 every morning. First, she has a shower and then she eats breakfast. She usually has bread, cheese, and a cup of tea. She never drinks coffee in the morning because it makes her feel nervous.<br><br>After breakfast, Ayse walks to the bus stop. She takes the bus to university and her first class starts at 9:00. She studies English and Business.<br><br>In the evenings, Ayse sometimes cooks dinner with her mother. After dinner, she reads or watches a short video online to practise her English. She goes to bed at about 11:00 every night.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — True or False? Correct the false ones.</div>
+              <div class="tfng-row"><span class="tfng-text">1. Ayse wakes up at 7:00 every morning.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u2_tf1"></div>
+              <div style="margin-bottom:8px"><textarea id="u2_tf1c" placeholder="If false, write the correction..." rows="1" style="font-size:13px"></textarea></div>
+              <div class="tfng-row"><span class="tfng-text">2. She drinks coffee at breakfast.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u2_tf2"></div>
+              <div style="margin-bottom:8px"><textarea id="u2_tf2c" placeholder="If false, write the correction..." rows="1" style="font-size:13px"></textarea></div>
+              <div class="tfng-row"><span class="tfng-text">3. She walks to university every day.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u2_tf3"></div>
+              <div style="margin-bottom:8px"><textarea id="u2_tf3c" placeholder="If false, write the correction..." rows="1" style="font-size:13px"></textarea></div>
+              <div class="tfng-row"><span class="tfng-text">4. She sometimes cooks with her mother.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u2_tf4"></div>
+              <div class="tfng-row"><span class="tfng-text">5. She goes to bed at 10:00.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button></div><input type="hidden" id="u2_tf5"></div>
+              <div><textarea id="u2_tf5c" placeholder="If false, write the correction..." rows="1" style="font-size:13px"></textarea></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Answer these questions</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. What does Ayse eat for breakfast?</p><textarea id="u2_e4_1" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. Why does she not drink coffee?</p><textarea id="u2_e4_2" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. What does she study at university?</p><textarea id="u2_e4_3" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. What does she do to practise English in the evenings?</p><textarea id="u2_e4_4" placeholder="Write your answer..." rows="2"></textarea></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>Remember:</strong> I / you / we / they + base verb (go, eat, study)<br>
+              he / she / it + verb + s/es (goes, eats, studies, watches)<br>
+              <strong>Negative:</strong> I don't go | she doesn't eat<br>
+              <strong>Question:</strong> Do you ...? | Does she ...?<br>
+              <strong>Frequency:</strong> always / usually / often / sometimes / rarely / never
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Fill in with the correct verb form</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> My brother <input class="blank-input" id="u2_g5_1" placeholder="(work)"> in a hospital.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> We <input class="blank-input" id="u2_g5_2" placeholder="(not/eat)"> fast food very often.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> She <input class="blank-input" id="u2_g5_3" placeholder="(study)"> English every evening.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> <input class="blank-input" id="u2_g5_4a" placeholder="Do/Does"> your parents <input class="blank-input" id="u2_g5_4b" placeholder="(live)"> in Istanbul?</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> He always <input class="blank-input" id="u2_g5_5" placeholder="(drink)"> water before bed.</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> I <input class="blank-input" id="u2_g5_6" placeholder="(not/like)"> waking up early.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 6 — Rewrite using the frequency adverb</div>
+              <div class="tip-box" style="margin-bottom:10px">Put the frequency adverb BEFORE the main verb, but AFTER the verb 'to be'.</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. He eats breakfast at home. <strong>(always)</strong></p><input type="text" id="u2_g6_1" placeholder="→ Rewrite here..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. She is late for class. <strong>(never)</strong></p><input type="text" id="u2_g6_2" placeholder="→ Rewrite here..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. I go to the market on Saturdays. <strong>(usually)</strong></p><input type="text" id="u2_g6_3" placeholder="→ Rewrite here..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. They watch TV in the evening. <strong>(sometimes)</strong></p><input type="text" id="u2_g6_4" placeholder="→ Rewrite here..."></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 7 — Write questions for these answers</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">→ <em>Yes, she goes to work by bus.</em></p><input type="text" id="u2_g7_1" placeholder="Write the question..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">→ <em>I usually wake up at 7.</em></p><input type="text" id="u2_g7_2" placeholder="Write the question..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">→ <em>No, he doesn't drink coffee.</em></p><input type="text" id="u2_g7_3" placeholder="Write the question..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Tell your partner about your daily routine. Use at least five different verbs and three frequency adverbs.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span>Ask your partner three questions about their routine: Do you ...? / What time do you ...? / How often do you ...?</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span><span class="roleplay-tag">ROLE PLAY</span> You are a journalist. Interview your partner about their daily life for a magazine article.</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a paragraph (50–70 words) about your daily routine. Use at least four different verbs and include two frequency adverbs.<br><br><strong>Structure:</strong> Start with when you wake up → morning activities → afternoon or work/school → evening activities → bedtime.</div>
+            <div class="useful-lang">Useful language: First, ... | Then, ... | After that, ... | In the evening, ... | I always / usually / never ...</div>
+            <textarea id="u2_writing" placeholder="Write your paragraph here..." rows="7" oninput="countWords(this,'u2_wc')"></textarea>
+            <div class="word-count" id="u2_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 3 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 3</span>
+            <div>
+              <div class="unit-name">At the Market</div>
+              <div class="unit-grammar">Grammar: How much / How many + There is / There are</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>Imagine you are going to the market. Write five things you want to buy and guess the price of each one.</p>
+              <textarea id="u3_warmup" placeholder="Item 1: ... Price: ..." rows="5"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match the word to its definition</div>
+              <div class="match-table">
+                <div class="match-col">
+                  <div class="match-item">1. cheap</div><div class="match-item">2. receipt</div><div class="match-item">3. change</div><div class="match-item">4. discount</div><div class="match-item">5. expensive</div>
+                </div>
+                <div class="match-col">
+                  <div class="match-item">A. the money you get back after paying</div><div class="match-item">B. a reduction in price</div><div class="match-item">C. low in price, not expensive</div><div class="match-item">D. a paper showing what you bought</div><div class="match-item">E. costing a lot of money</div>
+                </div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u3_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u3_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u3_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u3_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u3_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct option</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. ___ milk do you need?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e2_1" value="A"> A) How many</label><label class="option-item"><input type="radio" name="u3_e2_1" value="B"> B) How much</label><label class="option-item"><input type="radio" name="u3_e2_1" value="C"> C) How often</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. ___ oranges are in the bag?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e2_2" value="A"> A) How much</label><label class="option-item"><input type="radio" name="u3_e2_2" value="B"> B) How often</label><label class="option-item"><input type="radio" name="u3_e2_2" value="C"> C) How many</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. There ___ a market near the hotel.</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e2_3" value="A"> A) are</label><label class="option-item"><input type="radio" name="u3_e2_3" value="B"> B) is</label><label class="option-item"><input type="radio" name="u3_e2_3" value="C"> C) am</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. There ___ any bananas left.</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e2_4" value="A"> A) isn't</label><label class="option-item"><input type="radio" name="u3_e2_4" value="B"> B) aren't</label><label class="option-item"><input type="radio" name="u3_e2_4" value="C"> C) is</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — Shopping at the Grand Bazaar</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">Last Saturday, Tom visited the Grand Bazaar in Istanbul for the first time. It is one of the largest and oldest covered markets in the world, with more than 4,000 shops inside.<br><br>Tom wanted to buy some souvenirs for his family. He found a small shop selling scarves, lamps, and ceramics. 'How much is this scarf?' he asked. 'It is 150 lira,' said the shopkeeper. Tom thought it was a little expensive. 'Is there a discount?' he asked. The shopkeeper smiled. 'For you, 120 lira - and I will give you a receipt.'<br><br>Tom also bought a small ceramic plate for his mother. There were many beautiful designs. He paid with cash and got some change back. He left the bazaar with four bags and a very big smile!</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — Choose the best answer</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. Where did Tom go last Saturday?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e3_1" value="A"> A) A supermarket</label><label class="option-item"><input type="radio" name="u3_e3_1" value="B"> B) The Grand Bazaar</label><label class="option-item"><input type="radio" name="u3_e3_1" value="C"> C) A shopping mall</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. What did Tom want to buy?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e3_2" value="A"> A) Food and drinks</label><label class="option-item"><input type="radio" name="u3_e3_2" value="B"> B) Books and maps</label><label class="option-item"><input type="radio" name="u3_e3_2" value="C"> C) Souvenirs for his family</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. How much did Tom pay for the scarf after the discount?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e3_3" value="A"> A) 150 lira</label><label class="option-item"><input type="radio" name="u3_e3_3" value="B"> B) 120 lira</label><label class="option-item"><input type="radio" name="u3_e3_3" value="C"> C) 100 lira</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. How did Tom pay for his shopping?</div><div class="options-list"><label class="option-item"><input type="radio" name="u3_e3_4" value="A"> A) By card</label><label class="option-item"><input type="radio" name="u3_e3_4" value="B"> B) By cheque</label><label class="option-item"><input type="radio" name="u3_e3_4" value="C"> C) With cash</label></div></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Answer in full sentences</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. How many shops are there in the Grand Bazaar?</p><textarea id="u3_e4_1" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. What three things did the shop sell?</p><textarea id="u3_e4_2" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div><p style="font-size:14px;margin-bottom:6px">3. Why did Tom ask for a discount?</p><textarea id="u3_e4_3" placeholder="Write your answer..." rows="2"></textarea></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>How much</strong> = uncountable nouns or price (How much milk? / How much is it?)<br>
+              <strong>How many</strong> = countable nouns (How many apples?)<br>
+              <strong>There is</strong> + singular | <strong>There are</strong> + plural<br>
+              <strong>Negative:</strong> There isn't any ... | There aren't any ...
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Write 'How much' or 'How many'</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> <input class="blank-input" id="u3_g5_1" placeholder="___"> people are in the shop?</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> <input class="blank-input" id="u3_g5_2" placeholder="___"> does the ceramic plate cost?</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> <input class="blank-input" id="u3_g5_3" placeholder="___"> bread do you need?</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> <input class="blank-input" id="u3_g5_4" placeholder="___"> bags did Tom buy?</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> <input class="blank-input" id="u3_g5_5" placeholder="___"> water is in the bottle?</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 6 — Fill in with is, are, isn't, or aren't</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> There <input class="blank-input" id="u3_g6_1" placeholder="___"> a good market near my house.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> There <input class="blank-input" id="u3_g6_2" placeholder="___"> many tourists in the bazaar today.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> There <input class="blank-input" id="u3_g6_3" placeholder="___"> any change in my wallet. It is empty!</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> There <input class="blank-input" id="u3_g6_4" placeholder="___"> three shops selling scarves on this street.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> There <input class="blank-input" id="u3_g6_5" placeholder="___"> any discount today, I am sorry.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 7 — Reorder the words</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. is / How / jacket / much / this / ?</p><input type="text" id="u3_g7_1" placeholder="→ Write the sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. market / near / here / a / Is / there / ?</p><input type="text" id="u3_g7_2" placeholder="→ Write the sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">3. are / left / oranges / many / How / ?</p><input type="text" id="u3_g7_3" placeholder="→ Write the sentence..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>You are at a market stall. Ask the seller: the price of three different items, if there is a discount, and if you can pay by card.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span><span class="roleplay-tag">ROLE PLAY</span> Student A is a customer. Student B is a shopkeeper. Act out a full shopping conversation. Then swap roles.</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span>Describe your favourite market or shop to your partner. Where is it? What do they sell? Is it cheap or expensive?</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a short dialogue (8–10 lines) between a customer and a shopkeeper at a market. Include: a greeting, asking about prices, asking for a discount, and paying.</div>
+            <div class="useful-lang">Useful language: How much is / are ...? | Is there a discount? | I'd like ... | Here you are. | Keep the change.</div>
+            <textarea id="u3_writing" placeholder="Write your dialogue here..." rows="10" oninput="countWords(this,'u3_wc')"></textarea>
+            <div class="word-count" id="u3_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 4 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 4</span>
+            <div>
+              <div class="unit-name">Where Is It?</div>
+              <div class="unit-grammar">Grammar: Prepositions of Place + Imperative</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>Look at these prepositions: next to / opposite / behind / in front of / between. Can you use each one in a sentence about your classroom right now?</p>
+              <textarea id="u4_warmup" placeholder="Write five sentences..." rows="5"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match direction words to their meanings</div>
+              <div class="match-table">
+                <div class="match-col"><div class="match-item">1. turn left</div><div class="match-item">2. opposite</div><div class="match-item">3. go straight</div><div class="match-item">4. turn right</div><div class="match-item">5. far</div></div>
+                <div class="match-col"><div class="match-item">A. go in a straight line</div><div class="match-item">B. turn to the right side</div><div class="match-item">C. rotate to the left side</div><div class="match-item">D. on the other side of the road</div><div class="match-item">E. a long distance away</div></div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u4_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u4_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u4_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u4_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u4_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct preposition or direction word</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. The pharmacy is ___ the bank and the cafe.</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e2_1" value="A"> A) next to</label><label class="option-item"><input type="radio" name="u4_e2_1" value="B"> B) between</label><label class="option-item"><input type="radio" name="u4_e2_1" value="C"> C) behind</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. Go ___ for 200 metres, then turn right.</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e2_2" value="A"> A) straight</label><label class="option-item"><input type="radio" name="u4_e2_2" value="B"> B) left</label><label class="option-item"><input type="radio" name="u4_e2_2" value="C"> C) opposite</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. The hotel is ___ the train station.</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e2_3" value="A"> A) behind</label><label class="option-item"><input type="radio" name="u4_e2_3" value="B"> B) in front</label><label class="option-item"><input type="radio" name="u4_e2_3" value="C"> C) opposite</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. The car park is ___ the supermarket.</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e2_4" value="A"> A) in front of</label><label class="option-item"><input type="radio" name="u4_e2_4" value="B"> B) between</label><label class="option-item"><input type="radio" name="u4_e2_4" value="C"> C) behind</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — Getting Lost in Edinburgh</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">James is a tourist from Australia visiting Edinburgh, Scotland, for the first time. He is standing outside his hotel and he needs to find the castle.<br><br>He stops a local woman and asks for help. 'Excuse me, could you tell me how to get to Edinburgh Castle, please?' he asks.<br><br>'Of course!' she replies. 'Go straight along this road for about five minutes. At the traffic lights, turn left. Walk past the coffee shop - the castle is on the right, opposite the big park. You can't miss it - it is on top of a hill!'<br><br>'Is it far from here?' James asks. 'No, it is only about ten minutes on foot,' she says. James thanks her and follows the directions. When he arrives, he is amazed by how beautiful the castle is.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — Choose the best answer</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. Where is James from?</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e3_1" value="A"> A) England</label><label class="option-item"><input type="radio" name="u4_e3_1" value="B"> B) Scotland</label><label class="option-item"><input type="radio" name="u4_e3_1" value="C"> C) Australia</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. What does James want to find?</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e3_2" value="A"> A) A coffee shop</label><label class="option-item"><input type="radio" name="u4_e3_2" value="B"> B) The castle</label><label class="option-item"><input type="radio" name="u4_e3_2" value="C"> C) His hotel</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. Which direction does James turn at the traffic lights?</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e3_3" value="A"> A) Right</label><label class="option-item"><input type="radio" name="u4_e3_3" value="B"> B) Straight</label><label class="option-item"><input type="radio" name="u4_e3_3" value="C"> C) Left</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. How long does it take James to walk to the castle?</div><div class="options-list"><label class="option-item"><input type="radio" name="u4_e3_4" value="A"> A) Five minutes</label><label class="option-item"><input type="radio" name="u4_e3_4" value="B"> B) Ten minutes</label><label class="option-item"><input type="radio" name="u4_e3_4" value="C"> C) Twenty minutes</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>Prepositions of place:</strong> next to / opposite / between / behind / in front of<br>
+              <strong>Giving directions (imperative):</strong> Turn left / Go straight / Take the first turning<br>
+              <strong>Asking for directions:</strong> Could you tell me where ...? | How do I get to ...?<br>
+              <strong>Distance:</strong> It is near / far. It is about five minutes on foot.
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Fill in with a preposition [ next to | opposite | behind | between | in front of ]</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> The bus stop is <input class="blank-input" id="u4_g4_1" placeholder="___"> the park and the school.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> My car is parked <input class="blank-input" id="u4_g4_2" placeholder="___"> the building.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> There is a fountain <input class="blank-input" id="u4_g4_3" placeholder="___"> the main entrance.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> The chemist is <input class="blank-input" id="u4_g4_4" placeholder="___"> the supermarket, on the left.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> The post office is <input class="blank-input" id="u4_g4_5" placeholder="___"> the library, on the other side of the road.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Find and correct the mistake</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. <em>"Turn on left at the corner."</em></p><input type="text" id="u4_g5_1" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. <em>"Go straightly for 100 metres."</em></p><input type="text" id="u4_g5_2" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. <em>"The bank is between the cafe and on the pharmacy."</em></p><input type="text" id="u4_g5_3" placeholder="Write the corrected sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. <em>"Is it far from of here?"</em></p><input type="text" id="u4_g5_4" placeholder="Write the corrected sentence..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Look at a map of your town or city. Give your partner directions from your school to a famous landmark. Your partner must follow and guess the place.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span><span class="roleplay-tag">ROLE PLAY</span> Student A is a tourist who is lost. Student B is a local person. Act out asking for and giving directions to a well-known place.</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span>Describe where you live. Use at least four prepositions of place to describe what is near your home.</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write directions from your school or home to a well-known place nearby (50–70 words). Use at least three direction words and two prepositions of place.</div>
+            <div class="useful-lang">Useful language: Go straight along ... | Turn left / right at ... | It is on the left / right. | It is next to / opposite ...</div>
+            <textarea id="u4_writing" placeholder="Write your directions here..." rows="6" oninput="countWords(this,'u4_wc')"></textarea>
+            <div class="word-count" id="u4_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 5 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 5</span>
+            <div>
+              <div class="unit-name">Past Times</div>
+              <div class="unit-grammar">Grammar: Past Simple Tense</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>Think about your last holiday or a great day out. Where did you go? What did you do? Write three sentences below.</p>
+              <textarea id="u5_warmup" placeholder="Write three sentences about your experience..." rows="3"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Write the Past Simple form of these verbs</div>
+              <table class="verb-table">
+                <thead><tr><th>Base form</th><th>Past Simple</th><th>Regular / Irregular</th></tr></thead>
+                <tbody>
+                  <tr><td>visit</td><td><input type="text" id="u5_v1a" placeholder="Past Simple..."></td><td><select id="u5_v1b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>go</td><td><input type="text" id="u5_v2a" placeholder="Past Simple..."></td><td><select id="u5_v2b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>buy</td><td><input type="text" id="u5_v3a" placeholder="Past Simple..."></td><td><select id="u5_v3b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>stay</td><td><input type="text" id="u5_v4a" placeholder="Past Simple..."></td><td><select id="u5_v4b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>see</td><td><input type="text" id="u5_v5a" placeholder="Past Simple..."></td><td><select id="u5_v5b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>travel</td><td><input type="text" id="u5_v6a" placeholder="Past Simple..."></td><td><select id="u5_v6b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>enjoy</td><td><input type="text" id="u5_v7a" placeholder="Past Simple..."></td><td><select id="u5_v7b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                  <tr><td>take</td><td><input type="text" id="u5_v8a" placeholder="Past Simple..."></td><td><select id="u5_v8b"><option value="">Select...</option><option>Regular</option><option>Irregular</option></select></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct option</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. We ___ to Cappadocia last summer.</div><div class="options-list"><label class="option-item"><input type="radio" name="u5_e2_1" value="A"> A) go</label><label class="option-item"><input type="radio" name="u5_e2_1" value="B"> B) went</label><label class="option-item"><input type="radio" name="u5_e2_1" value="C"> C) gone</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. Did she ___ the concert?</div><div class="options-list"><label class="option-item"><input type="radio" name="u5_e2_2" value="A"> A) enjoyed</label><label class="option-item"><input type="radio" name="u5_e2_2" value="B"> B) enjoy</label><label class="option-item"><input type="radio" name="u5_e2_2" value="C"> C) enjoying</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. He ___ see the museum. It was closed.</div><div class="options-list"><label class="option-item"><input type="radio" name="u5_e2_3" value="A"> A) didn't</label><label class="option-item"><input type="radio" name="u5_e2_3" value="B"> B) don't</label><label class="option-item"><input type="radio" name="u5_e2_3" value="C"> C) wasn't</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. ___ you take any photos?</div><div class="options-list"><label class="option-item"><input type="radio" name="u5_e2_4" value="A"> A) Do</label><label class="option-item"><input type="radio" name="u5_e2_4" value="B"> B) Were</label><label class="option-item"><input type="radio" name="u5_e2_4" value="C"> C) Did</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — A Weekend in Antalya</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">Last weekend, Zeynep and her husband travelled to Antalya for a short holiday. They left Istanbul on Friday evening by plane and arrived at the hotel at around 9 o'clock at night.<br><br>On Saturday, they woke up early and went to the old city. They walked through the narrow streets, visited a beautiful mosque, and took lots of photos. In the afternoon, they went to the beach. The water was warm and clear. Zeynep swam for a long time but her husband preferred to sit in the sun and read his book.<br><br>In the evening, they found a small restaurant near the harbour. They ate fresh fish and salad and drank local lemonade. It was delicious! They got back to the hotel late and went straight to bed.<br><br>On Sunday, they visited the ancient ruins at Perge before flying home. Zeynep said it was one of the best weekends of her life.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — True, False, or Not Given (NG)?</div>
+              <div class="tfng-row"><span class="tfng-text">1. Zeynep and her husband travelled to Antalya by train.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf1"></div>
+              <div class="tfng-row"><span class="tfng-text">2. They arrived at the hotel on Saturday morning.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf2"></div>
+              <div class="tfng-row"><span class="tfng-text">3. The old city has narrow streets.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf3"></div>
+              <div class="tfng-row"><span class="tfng-text">4. Zeynep's husband is a good swimmer.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf4"></div>
+              <div class="tfng-row"><span class="tfng-text">5. They ate at a restaurant near the harbour on Saturday evening.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf5"></div>
+              <div class="tfng-row"><span class="tfng-text">6. The ruins at Perge were closed on Sunday.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u5_tf6"></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>Regular:</strong> walk → walked | stay → stayed | travel → travelled<br>
+              <strong>Irregular:</strong> go → went | see → saw | buy → bought | eat → ate | take → took<br>
+              <strong>Negative:</strong> I did not (didn't) go ... | She didn't see ...<br>
+              <strong>Question:</strong> Did you enjoy it? | Where did you go?<br>
+              <strong>Time words:</strong> yesterday | last week | last year | two days ago | in 2022
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Fill in with the Past Simple</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> We <input class="blank-input" id="u5_g4_1" placeholder="(visit)"> the castle last Sunday.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> She <input class="blank-input" id="u5_g4_2" placeholder="(buy)"> three souvenirs at the market.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> I <input class="blank-input" id="u5_g4_3" placeholder="(not/enjoy)"> the food at that restaurant.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> <input class="blank-input" id="u5_g4_4a" placeholder="___"> they <input class="blank-input" id="u5_g4_4b" placeholder="(stay)"> in a hotel or an apartment?</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> He <input class="blank-input" id="u5_g4_5" placeholder="(take)"> hundreds of photos on his phone.</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> We <input class="blank-input" id="u5_g4_6" placeholder="(not/see)"> the sunset because it was cloudy.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Find and correct the mistake</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. <em>"Did you went to the beach yesterday?"</em></p><input type="text" id="u5_g5_1" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. <em>"She didn't enjoyed the film."</em></p><input type="text" id="u5_g5_2" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. <em>"They buyed some gifts for their family."</em></p><input type="text" id="u5_g5_3" placeholder="Write the corrected sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. <em>"We not see the ruins because we didn't have time."</em></p><input type="text" id="u5_g5_4" placeholder="Write the corrected sentence..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Tell your partner about the last time you went on a trip or had a day out. Use at least six verbs in the Past Simple.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span>Ask your partner five questions about their last holiday using: Did you ...? / Where did you ...? / What did you ...?</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span><span class="roleplay-tag">ROLE PLAY</span> You have just returned from an amazing holiday. A friend asks you all about it. Tell them everything!</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a short travel blog post (70–90 words) about a real or imaginary trip. Use the Past Simple and include: where you went, how you travelled, what you did, what you ate, and how you felt.</div>
+            <div class="useful-lang">Useful language: Last ... I went to ... | We arrived at ... | First, we ... | In the evening, ... | It was (amazing / delicious / beautiful)!</div>
+            <textarea id="u5_writing" placeholder="Write your travel blog post here..." rows="8" oninput="countWords(this,'u5_wc')"></textarea>
+            <div class="word-count" id="u5_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- level-body-inner -->
+  </div><!-- level-body -->
+</div><!-- level-section A1 -->
+
+<!-- ═══════════════════════════════════════ A2 LEVEL ═══════════════════════════════════════ -->
+<div class="level-section">
+  <div class="level-header open" onclick="toggleLevel(this)">
+    <div class="level-header-left">
+      <div class="level-badge" style="background:#c9973a">A2</div>
+      <div>
+        <div class="level-title">Elementary Level</div>
+        <div class="level-subtitle">Units 6–8 · Expanding English</div>
+      </div>
+    </div>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="level-body open">
+    <div class="level-body-inner">
+
+      <!-- ─── UNIT 6 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 6</span>
+            <div>
+              <div class="unit-name">Future Plans</div>
+              <div class="unit-grammar">Grammar: Going To vs Will</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>What are your plans for this weekend? And what are your big plans for the next year? Write three sentences using 'going to' or 'will'.</p>
+              <textarea id="u6_warmup" placeholder="Write three sentences about your future plans..." rows="3"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match the word to its use</div>
+              <div class="match-table">
+                <div class="match-col"><div class="match-item">1. probably</div><div class="match-item">2. maybe</div><div class="match-item">3. definitely</div><div class="match-item">4. soon</div><div class="match-item">5. intend</div></div>
+                <div class="match-col"><div class="match-item">A. you are 100% sure something will happen</div><div class="match-item">B. you are not sure - perhaps it will happen</div><div class="match-item">C. you think something will happen but are not sure</div><div class="match-item">D. you plan to do something in the future</div><div class="match-item">E. in a short time from now</div></div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u6_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u6_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u6_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u6_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u6_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct option</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. I think it ___ rain this afternoon. Look at those clouds.</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e2_1" value="A"> A) is going to</label><label class="option-item"><input type="radio" name="u6_e2_1" value="B"> B) will</label><label class="option-item"><input type="radio" name="u6_e2_1" value="C"> C) goes to</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. She ___ study medicine next year. She has already applied.</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e2_2" value="A"> A) will</label><label class="option-item"><input type="radio" name="u6_e2_2" value="B"> B) is go to</label><label class="option-item"><input type="radio" name="u6_e2_2" value="C"> C) is going to</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. ___ you help me carry this bag, please?</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e2_3" value="A"> A) Are</label><label class="option-item"><input type="radio" name="u6_e2_3" value="B"> B) Will</label><label class="option-item"><input type="radio" name="u6_e2_3" value="C"> C) Do</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. We ___ go on holiday this summer. We can't afford it.</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e2_4" value="A"> A) aren't going to</label><label class="option-item"><input type="radio" name="u6_e2_4" value="B"> B) won't going</label><label class="option-item"><input type="radio" name="u6_e2_4" value="C"> C) don't will</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — Plans for a New Life</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">Maria is 28 years old and she has just finished her degree in computer science. She has big plans for the future.<br><br>Next month, Maria is going to start a new job at a tech company in Berlin. She has already found a flat to rent and she has booked her flight. She is very excited but also a little nervous.<br><br>'I will probably miss my family a lot,' she says, 'but I definitely think this is the right decision. I am going to work hard and save money. Maybe I will travel around Europe on my days off.'<br><br>Her friends are planning a goodbye dinner for her next Saturday. They will cook her favourite food and they are going to give her a special gift. Maria says she will never forget them, no matter where life takes her.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — Choose the best answer</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. What has Maria just finished?</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e3_1" value="A"> A) A job in Berlin</label><label class="option-item"><input type="radio" name="u6_e3_1" value="B"> B) Her degree</label><label class="option-item"><input type="radio" name="u6_e3_1" value="C"> C) A trip to Europe</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. Where is Maria going to work?</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e3_2" value="A"> A) Paris</label><label class="option-item"><input type="radio" name="u6_e3_2" value="B"> B) London</label><label class="option-item"><input type="radio" name="u6_e3_2" value="C"> C) Berlin</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. How does Maria feel about her decision?</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e3_3" value="A"> A) Scared and unsure</label><label class="option-item"><input type="radio" name="u6_e3_3" value="B"> B) Excited but nervous</label><label class="option-item"><input type="radio" name="u6_e3_3" value="C"> C) Bored and unhappy</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. What are her friends going to do next Saturday?</div><div class="options-list"><label class="option-item"><input type="radio" name="u6_e3_4" value="A"> A) Help her move</label><label class="option-item"><input type="radio" name="u6_e3_4" value="B"> B) Cook a goodbye dinner</label><label class="option-item"><input type="radio" name="u6_e3_4" value="C"> C) Drive her to the airport</label></div></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Answer in full sentences</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. What has Maria already done to prepare for her move?</p><textarea id="u6_e4_1" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. What does Maria plan to do with her days off in Berlin?</p><textarea id="u6_e4_2" placeholder="Write your answer..." rows="2"></textarea></div>
+              <div><p style="font-size:14px;margin-bottom:6px">3. What will Maria's friends give her?</p><textarea id="u6_e4_3" placeholder="Write your answer..." rows="2"></textarea></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>'Going to'</strong> = plans already decided: I am going to study medicine.<br>
+              <strong>'Will'</strong> = decision made NOW, or a prediction: I think it will rain.<br>
+              <strong>Negative:</strong> She won't come. / He isn't going to buy a car.<br>
+              <strong>Question:</strong> Will you help? / What are you going to do?
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Fill in with 'will' or the correct form of 'going to'</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> Look at those clouds! It <input class="blank-input" id="u6_g5_1" placeholder="___"> rain. <em style="font-size:12px;color:var(--text-muted)">(prediction with evidence)</em></div>
+              <div class="fill-sentence"><span class="fill-num">2</span> I think the film <input class="blank-input" id="u6_g5_2" placeholder="___"> be very popular. <em style="font-size:12px;color:var(--text-muted)">(general prediction)</em></div>
+              <div class="fill-sentence"><span class="fill-num">3</span> We <input class="blank-input" id="u6_g5_3" placeholder="___"> visit our grandparents next week. <em style="font-size:12px;color:var(--text-muted)">(already decided)</em></div>
+              <div class="fill-sentence"><span class="fill-num">4</span> A: I don't have a pen. B: Don't worry, I <input class="blank-input" id="u6_g5_4" placeholder="___"> lend you one. <em style="font-size:12px;color:var(--text-muted)">(decision now)</em></div>
+              <div class="fill-sentence"><span class="fill-num">5</span> She <input class="blank-input" id="u6_g5_5" placeholder="(not)"> come to the party. She has other plans.</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> <input class="blank-input" id="u6_g5_6a" placeholder="___"> you <input class="blank-input" id="u6_g5_6b" placeholder="(study)"> abroad next year?</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 6 — Find and correct the mistake</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. <em>"She will going to start a new job soon."</em></p><input type="text" id="u6_g6_1" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. <em>"I think it wont rain today."</em></p><input type="text" id="u6_g6_2" placeholder="Write the corrected sentence..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. <em>"Are you going study medicine?"</em></p><input type="text" id="u6_g6_3" placeholder="Write the corrected sentence..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. <em>"Maybe she will to travel around Europe."</em></p><input type="text" id="u6_g6_4" placeholder="Write the corrected sentence..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Tell your partner three things you are going to do this week (already planned) and two things you think will happen in the future.</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span><span class="roleplay-tag">ROLE PLAY</span> You have just got a new job in another country. A friend asks about your plans. Tell them everything you are going to do.</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span>Discuss with a partner: What do you think the world will be like in 20 years? Use 'I think ... will ...' and 'probably / definitely / maybe'.</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a paragraph (70–90 words) about your plans for the next 12 months. Include two 'going to' sentences (definite plans) and two 'will' sentences (predictions or hopes).</div>
+            <div class="useful-lang">Useful language: I am going to ... | I will probably ... | I definitely / maybe ... | I hope to ... | I intend to ...</div>
+            <textarea id="u6_writing" placeholder="Write your paragraph here..." rows="8" oninput="countWords(this,'u6_wc')"></textarea>
+            <div class="word-count" id="u6_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 7 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 7</span>
+            <div>
+              <div class="unit-name">Health and Body</div>
+              <div class="unit-grammar">Grammar: Present Perfect (have/has + past participle)</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>What do you usually do when you feel unwell? Have you ever been to a doctor in another country or in English? Write three symptoms you know how to say in English.</p>
+              <textarea id="u7_warmup" placeholder="Write three symptoms in English..." rows="3"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match the symptom or word to its description</div>
+              <div class="match-table">
+                <div class="match-col"><div class="match-item">1. fever</div><div class="match-item">2. cough</div><div class="match-item">3. prescription</div><div class="match-item">4. allergic</div><div class="match-item">5. appointment</div></div>
+                <div class="match-col"><div class="match-item">A. you need this to get medicine from a pharmacy</div><div class="match-item">B. a high body temperature</div><div class="match-item">C. a sound you make when air is pushed out of the lungs</div><div class="match-item">D. a paper from a doctor allowing you to buy medicine</div><div class="match-item">E. your body reacts badly to something</div></div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u7_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u7_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u7_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u7_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u7_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct option</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. I have had this headache ___ this morning.</div><div class="options-list"><label class="option-item"><input type="radio" name="u7_e2_1" value="A"> A) for</label><label class="option-item"><input type="radio" name="u7_e2_1" value="B"> B) since</label><label class="option-item"><input type="radio" name="u7_e2_1" value="C"> C) ago</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. She has ___ taken her medicine, so she feels better now.</div><div class="options-list"><label class="option-item"><input type="radio" name="u7_e2_2" value="A"> A) yet</label><label class="option-item"><input type="radio" name="u7_e2_2" value="B"> B) already</label><label class="option-item"><input type="radio" name="u7_e2_2" value="C"> C) never</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. Have you ___ been to hospital overnight?</div><div class="options-list"><label class="option-item"><input type="radio" name="u7_e2_3" value="A"> A) ever</label><label class="option-item"><input type="radio" name="u7_e2_3" value="B"> B) for</label><label class="option-item"><input type="radio" name="u7_e2_3" value="C"> C) since</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. He has not eaten anything ___ two days.</div><div class="options-list"><label class="option-item"><input type="radio" name="u7_e2_4" value="A"> A) since</label><label class="option-item"><input type="radio" name="u7_e2_4" value="B"> B) ago</label><label class="option-item"><input type="radio" name="u7_e2_4" value="C"> C) for</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — At the Doctor's: A Difficult Day</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">David is 35 years old and works as a chef. This week, he has not been feeling well at all. He has had a terrible cough for five days and he has also had a high fever since Monday. He hasn't slept well and he hasn't been able to go to work.<br><br>This morning, David went to see his doctor. The doctor asked him several questions. 'Have you taken any medicine?' she asked. 'Yes, I have taken some cold medicine, but it hasn't helped much,' David replied. 'Have you ever had asthma or any breathing problems?' the doctor asked. 'No, never,' said David.<br><br>After the examination, the doctor told David that he had a chest infection. She gave him a prescription for antibiotics and told him to rest at home for at least three days. 'Drink plenty of water and avoid cold air,' she advised. David thanked her and went straight to the pharmacy to collect his medicine.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — True, False, or Not Given (NG)?</div>
+              <div class="tfng-row"><span class="tfng-text">1. David is a nurse.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf1"></div>
+              <div class="tfng-row"><span class="tfng-text">2. He has had a cough for five days.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf2"></div>
+              <div class="tfng-row"><span class="tfng-text">3. David has not been to work this week.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf3"></div>
+              <div class="tfng-row"><span class="tfng-text">4. The cold medicine helped David a lot.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf4"></div>
+              <div class="tfng-row"><span class="tfng-text">5. David has had asthma before.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf5"></div>
+              <div class="tfng-row"><span class="tfng-text">6. The doctor told David to avoid cold air.</span><div class="tfng-btns"><button class="tfng-btn" onclick="setTF(this,'T')">TRUE</button><button class="tfng-btn" onclick="setTF(this,'F')">FALSE</button><button class="tfng-btn" onclick="setTF(this,'NG')">NG</button></div><input type="hidden" id="u7_tf6"></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>Have / has + past participle</strong> (been, eaten, taken, seen ...)<br>
+              <strong>Since</strong> = a point in time: I have had this headache since Monday.<br>
+              <strong>For</strong> = a duration: I have had this cough for three days.<br>
+              <strong>Key words:</strong> Already / Just / Yet / Ever / Never<br>
+              <strong>Question:</strong> Have you ever ...? | <strong>Negative:</strong> I have never ...
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Fill in with the Present Perfect</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> She <input class="blank-input" id="u7_g4_1" placeholder="(not/eat)"> anything since yesterday.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> I <input class="blank-input" id="u7_g4_2" placeholder="(have)"> this pain in my knee for a week.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> <input class="blank-input" id="u7_g4_3a" placeholder="___"> you <input class="blank-input" id="u7_g4_3b" placeholder="(take)"> your antibiotics today?</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> He <input class="blank-input" id="u7_g4_4" placeholder="(see)"> a specialist, but the problem is still there.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> We never <input class="blank-input" id="u7_g4_5" placeholder="(be)"> to this hospital before.</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> The doctor just <input class="blank-input" id="u7_g4_6" placeholder="(write)"> me a prescription.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Choose 'since' or 'for'</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> She has had a headache <input class="blank-input" id="u7_g5_1" placeholder="since/for"> Tuesday.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> I have been in this waiting room <input class="blank-input" id="u7_g5_2" placeholder="since/for"> two hours.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> He hasn't eaten <input class="blank-input" id="u7_g5_3" placeholder="since/for"> this morning.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> They have known each other <input class="blank-input" id="u7_g5_4" placeholder="since/for"> many years.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> She has felt unwell <input class="blank-input" id="u7_g5_5" placeholder="since/for"> last weekend.</div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Tell your partner about a time you were unwell. What were your symptoms? How long did you have them? What did the doctor say?</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span><span class="roleplay-tag">ROLE PLAY</span> Student A is a patient with a cold and a sore throat. Student B is a doctor. Act out a full medical consultation.</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span>Discuss: What do you do to stay healthy? Use: I have always ... / I have never ... / I have recently started ...</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write an email (70–90 words) to your manager explaining that you are unwell and cannot come to work. Use the Present Perfect to describe your symptoms. Include: how long you have felt unwell, what you have done (e.g. seen a doctor), and when you plan to return.</div>
+            <div class="useful-lang">Useful language: I have had ... since ... | I have been feeling ... | I have already seen ... | The doctor has advised me to ... | I hope to return by ...</div>
+            <textarea id="u7_writing" placeholder="Write your email here..." rows="8" oninput="countWords(this,'u7_wc')"></textarea>
+            <div class="word-count" id="u7_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── UNIT 8 ─── -->
+      <div class="unit-card">
+        <div class="unit-header" onclick="toggleUnit(this)">
+          <div class="unit-header-left">
+            <span class="unit-num">UNIT 8</span>
+            <div>
+              <div class="unit-name">Work and Career</div>
+              <div class="unit-grammar">Grammar: Modal Verbs (can / could / should / must / have to)</div>
+            </div>
+          </div>
+          <span class="unit-chevron">▾</span>
+        </div>
+        <div class="unit-body">
+          <div class="unit-body-inner">
+
+            <div class="section-label"><div class="section-icon">☀</div><div class="section-title">Warm Up</div><div class="section-divider"></div></div>
+            <div class="warmup-box">
+              <p>What is your dream job? What skills do you need for it? Have you ever had a job interview? Write three sentences below.</p>
+              <textarea id="u8_warmup" placeholder="Write three sentences about work and your dream job..." rows="3"></textarea>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📖</div><div class="section-title">Vocabulary Activation</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 1 — Match the word to its meaning</div>
+              <div class="match-table">
+                <div class="match-col"><div class="match-item">1. deadline</div><div class="match-item">2. interview</div><div class="match-item">3. salary</div><div class="match-item">4. skill</div><div class="match-item">5. colleague</div></div>
+                <div class="match-col"><div class="match-item">A. the ability to do something well</div><div class="match-item">B. a fixed date by which work must be finished</div><div class="match-item">C. a formal meeting to get a job</div><div class="match-item">D. money paid regularly for doing a job</div><div class="match-item">E. a person you work with</div></div>
+              </div>
+              <div class="match-answer-row">
+                <span class="match-answer-label">Answers:</span>
+                <span>1:</span><input type="text" class="blank-input" id="u8_m1" style="width:50px" placeholder="_">
+                <span>2:</span><input type="text" class="blank-input" id="u8_m2" style="width:50px" placeholder="_">
+                <span>3:</span><input type="text" class="blank-input" id="u8_m3" style="width:50px" placeholder="_">
+                <span>4:</span><input type="text" class="blank-input" id="u8_m4" style="width:50px" placeholder="_">
+                <span>5:</span><input type="text" class="blank-input" id="u8_m5" style="width:50px" placeholder="_">
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 2 — Choose the correct modal verb</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. You ___ smoke in the office. It is strictly forbidden.</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e2_1" value="A"> A) don't have to</label><label class="option-item"><input type="radio" name="u8_e2_1" value="B"> B) must not</label><label class="option-item"><input type="radio" name="u8_e2_1" value="C"> C) couldn't</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. Employees ___ wear a uniform - it is optional here.</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e2_2" value="A"> A) must not</label><label class="option-item"><input type="radio" name="u8_e2_2" value="B"> B) should</label><label class="option-item"><input type="radio" name="u8_e2_2" value="C"> C) don't have to</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. You ___ arrive on time for your interview. It is very important.</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e2_3" value="A"> A) should</label><label class="option-item"><input type="radio" name="u8_e2_3" value="B"> B) don't have to</label><label class="option-item"><input type="radio" name="u8_e2_3" value="C"> C) might</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. ___ you speak any languages other than English?</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e2_4" value="A"> A) Should</label><label class="option-item"><input type="radio" name="u8_e2_4" value="B"> B) Can</label><label class="option-item"><input type="radio" name="u8_e2_4" value="C"> C) Must</label></div></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">📄</div><div class="section-title">Reading — The Perfect Interview</div><div class="section-divider"></div></div>
+            <div class="exercise-box" style="background:var(--cream)">
+              <p style="font-size:14px;line-height:1.85">Getting a job interview is exciting, but it can also be very stressful. Here are some tips that can help you to perform well and make a great impression on your employer.<br><br>Before the interview, you should research the company carefully. You must know what they do and why you want to work for them. You should also prepare answers to common questions such as 'Tell me about yourself' and 'What are your strengths?'<br><br>On the day of the interview, you must arrive on time - or better, a few minutes early. You should dress professionally and switch off your mobile phone. You don't have to wear a suit at every company, but you should always look neat and clean.<br><br>During the interview, you should speak clearly and confidently. You can ask the interviewer questions too - this shows that you are interested. After the interview, you could send a short thank-you email. This is not required, but it can make a very positive impression.</p>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 3 — Choose the best answer</div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">1. What should you do before the interview?</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e3_1" value="A"> A) Buy a new suit</label><label class="option-item"><input type="radio" name="u8_e3_1" value="B"> B) Research the company</label><label class="option-item"><input type="radio" name="u8_e3_1" value="C"> C) Call the manager</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">2. According to the text, when should you arrive?</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e3_2" value="A"> A) Exactly on time</label><label class="option-item"><input type="radio" name="u8_e3_2" value="B"> B) A few minutes early</label><label class="option-item"><input type="radio" name="u8_e3_2" value="C"> C) 30 minutes early</label></div></div>
+              <div style="margin-bottom:14px"><div style="font-size:14px;margin-bottom:8px">3. What is NOT required according to the text?</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e3_3" value="A"> A) Arriving on time</label><label class="option-item"><input type="radio" name="u8_e3_3" value="B"> B) Sending a thank-you email</label><label class="option-item"><input type="radio" name="u8_e3_3" value="C"> C) Speaking clearly</label></div></div>
+              <div><div style="font-size:14px;margin-bottom:8px">4. Why should you ask the interviewer questions?</div><div class="options-list"><label class="option-item"><input type="radio" name="u8_e3_4" value="A"> A) To confuse them</label><label class="option-item"><input type="radio" name="u8_e3_4" value="B"> B) To show you are interested</label><label class="option-item"><input type="radio" name="u8_e3_4" value="C"> C) To fill time</label></div></div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 4 — Find FIVE pieces of advice in the text. Write them below.</div>
+              <div style="margin-bottom:10px"><input type="text" id="u8_e4_1" placeholder="1. You should..."></div>
+              <div style="margin-bottom:10px"><input type="text" id="u8_e4_2" placeholder="2. You must..."></div>
+              <div style="margin-bottom:10px"><input type="text" id="u8_e4_3" placeholder="3. You should..."></div>
+              <div style="margin-bottom:10px"><input type="text" id="u8_e4_4" placeholder="4. You don't have to..."></div>
+              <div><input type="text" id="u8_e4_5" placeholder="5. You could..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">⚙</div><div class="section-title">Grammar Practice</div><div class="section-divider"></div></div>
+            <div class="grammar-reminder">
+              <strong>Can</strong> = ability &nbsp;|&nbsp; <strong>Could</strong> = polite request or past ability<br>
+              <strong>Should</strong> = advice &nbsp;|&nbsp; <strong>Must</strong> = strong obligation (your decision)<br>
+              <strong>Have to</strong> = external rule &nbsp;|&nbsp; <strong>Must not</strong> = forbidden<br>
+              <strong>Don't have to</strong> = not necessary (but you can if you want)
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 5 — Fill in with a modal verb [ can | could | should | must | don't have to | must not ]</div>
+              <div class="fill-sentence"><span class="fill-num">1</span> You <input class="blank-input" id="u8_g5_1" placeholder="___"> be late for work. It gives a bad impression.</div>
+              <div class="fill-sentence"><span class="fill-num">2</span> I <input class="blank-input" id="u8_g5_2" placeholder="___"> speak three languages: English, Turkish, and German.</div>
+              <div class="fill-sentence"><span class="fill-num">3</span> You <input class="blank-input" id="u8_g5_3" placeholder="___"> wear a tie today - it is a casual Friday.</div>
+              <div class="fill-sentence"><span class="fill-num">4</span> You <input class="blank-input" id="u8_g5_4" placeholder="___"> bring your passport to the interview. It is required.</div>
+              <div class="fill-sentence"><span class="fill-num">5</span> <input class="blank-input" id="u8_g5_5" placeholder="___"> you send me the report by 5 pm, please?</div>
+              <div class="fill-sentence"><span class="fill-num">6</span> You <input class="blank-input" id="u8_g5_6" placeholder="___"> read this contract carefully before signing.</div>
+            </div>
+
+            <div class="exercise-box">
+              <div class="exercise-title">Exercise 6 — Rewrite using a modal verb</div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">1. It is not allowed to eat at your desk. → You ___</p><input type="text" id="u8_g6_1" placeholder="You must not..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">2. It is a good idea to practise before the interview. → You ___</p><input type="text" id="u8_g6_2" placeholder="You should..."></div>
+              <div style="margin-bottom:12px"><p style="font-size:14px;margin-bottom:6px">3. It is not necessary to bring a photo. → You ___</p><input type="text" id="u8_g6_3" placeholder="You don't have to..."></div>
+              <div><p style="font-size:14px;margin-bottom:6px">4. It is obligatory to show your ID card. → You ___</p><input type="text" id="u8_g6_4" placeholder="You must / have to..."></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">🗣</div><div class="section-title">Speaking & Discussion</div><div class="section-divider"></div></div>
+            <div class="exercise-box">
+              <div class="speaking-item"><div class="speaking-num">1</div><span>Tell your partner about a job you would like in the future. What skills do you need? What can you already do?</span></div>
+              <div class="speaking-item"><div class="speaking-num">2</div><span><span class="roleplay-tag">ROLE PLAY</span> Student A is interviewing for a job at an international company. Student B is the interviewer. Use: Can you ...? / Could you tell me ...? / You should ... / You must ...</span></div>
+              <div class="speaking-item"><div class="speaking-num">3</div><span>Discuss with your partner: What are the rules in a good workplace? Make a list of five 'must', 'should', and 'don't have to' rules.</span></div>
+            </div>
+
+            <div class="section-label"><div class="section-icon">✍</div><div class="section-title">Writing Task</div><div class="section-divider"></div></div>
+            <div class="writing-prompt"><strong>Task:</strong> Write a cover letter (80–100 words) for a job you would like. Include: why you are writing, what you can do (skills and experience), why you should be chosen, and a polite closing.</div>
+            <div class="useful-lang">Useful language: I am writing to apply for ... | I can ... / I have experience in ... | I believe I should be considered because ... | I would be grateful for the opportunity to ... | I look forward to hearing from you.</div>
+            <textarea id="u8_writing" placeholder="Write your cover letter here..." rows="9" oninput="countWords(this,'u8_wc')"></textarea>
+            <div class="word-count" id="u8_wc">0 words</div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>Complete English A1–A2 Workbook · Created by Teacher Benny · All rights reserved</footer>
+
+<script>
+// ── ACCORDION ──
+function toggleLevel(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+function toggleUnit(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// ── TRUE/FALSE/NG ──
+function setTF(btn, val) {
+  const row = btn.closest('.tfng-row');
+  const hiddenInput = row.querySelector('input[type="hidden"]');
+  row.querySelectorAll('.tfng-btn').forEach(b => b.className = 'tfng-btn');
+  btn.classList.add('active-' + val);
+  if (hiddenInput) hiddenInput.value = val;
+}
+
+// ── WORD COUNT ──
+function countWords(textarea, counterId) {
+  const text = textarea.value.trim();
+  const words = text === '' ? 0 : text.split(/\s+/).length;
+  document.getElementById(counterId).textContent = words + ' word' + (words !== 1 ? 's' : '');
+}
+
+// ── SAVE PROGRESS ──
+function saveProgress() {
+  const data = {};
+  // text inputs & textareas
+  document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+    if (el.id) data[el.id] = el.value;
+  });
+  // radio buttons
+  document.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+    data[el.name] = el.value;
+  });
+  // selects
+  document.querySelectorAll('select').forEach(el => {
+    if (el.id) data[el.id] = el.value;
+  });
+  // tfng hidden inputs
+  document.querySelectorAll('input[type="hidden"]').forEach(el => {
+    if (el.id) data[el.id] = el.value;
+  });
+
+  try {
+    localStorage.setItem('englishWorkbook_v1', JSON.stringify(data));
+    const status = document.getElementById('saveStatus');
+    status.classList.add('show');
+    setTimeout(() => status.classList.remove('show'), 2500);
+  } catch(e) {
+    alert('Could not save progress. Your browser storage may be full or disabled.');
+  }
+}
+
+// ── LOAD PROGRESS ──
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem('englishWorkbook_v1');
+    if (!saved) return;
+    const data = JSON.parse(saved);
+
+    Object.entries(data).forEach(([key, value]) => {
+      // text inputs
+      const textEl = document.getElementById(key);
+      if (textEl && (textEl.tagName === 'INPUT' || textEl.tagName === 'TEXTAREA')) {
+        textEl.value = value;
+        if (textEl.tagName === 'TEXTAREA') {
+          const wc = key.replace('writing', 'wc').replace('warmup', '');
+          // trigger word count for writing textareas
+          const wcId = key.replace('u', 'u').replace('_writing', '_wc').replace('_warmup', '');
+          // simple re-count
+          const wcEl = document.getElementById(key.replace('writing', 'wc'));
+          if (wcEl) { const t = value.trim(); wcEl.textContent = (t ? t.split(/\s+/).length : 0) + ' words'; }
+        }
+      }
+      // select
+      if (textEl && textEl.tagName === 'SELECT') {
+        textEl.value = value;
+      }
+      // radio
+      const radioEl = document.querySelector(`input[type="radio"][name="${key}"][value="${value}"]`);
+      if (radioEl) {
+        radioEl.checked = true;
+        radioEl.closest('.option-item').classList.add('selected');
+      }
+      // hidden (tfng)
+      const hiddenEl = document.getElementById(key);
+      if (hiddenEl && hiddenEl.type === 'hidden' && value) {
+        hiddenEl.value = value;
+        // restore button style
+        const row = hiddenEl.closest('.tfng-row');
+        if (row) {
+          const btn = [...row.querySelectorAll('.tfng-btn')].find(b => {
+            if (value === 'T') return b.textContent === 'TRUE';
+            if (value === 'F') return b.textContent === 'FALSE';
+            if (value === 'NG') return b.textContent === 'NG';
+          });
+          if (btn) btn.classList.add('active-' + value);
+        }
+      }
+    });
+  } catch(e) { console.log('Could not load saved data'); }
+}
+
+// ── RESET ──
+function confirmReset() {
+  if (confirm('Are you sure you want to reset ALL answers? This cannot be undone.')) {
+    localStorage.removeItem('englishWorkbook_v1');
+    // clear all inputs
+    document.querySelectorAll('input[type="text"], textarea').forEach(el => el.value = '');
+    document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+    document.querySelectorAll('select').forEach(el => el.value = '');
+    document.querySelectorAll('input[type="hidden"]').forEach(el => el.value = '');
+    document.querySelectorAll('.tfng-btn').forEach(b => b.className = 'tfng-btn');
+    document.querySelectorAll('.word-count').forEach(el => el.textContent = '0 words');
+    document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+  }
+}
+
+// ── EXPAND / COLLAPSE ALL ──
+function expandAll() {
+  document.querySelectorAll('.level-header').forEach(h => {
+    h.classList.add('open');
+    h.nextElementSibling.classList.add('open');
+  });
+  document.querySelectorAll('.unit-header').forEach(h => {
+    h.classList.add('open');
+    h.nextElementSibling.classList.add('open');
+  });
+}
+function collapseAll() {
+  document.querySelectorAll('.level-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+  document.querySelectorAll('.unit-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+}
+
+// ── RADIO VISUAL FEEDBACK ──
+document.addEventListener('change', e => {
+  if (e.target.type === 'radio') {
+    const name = e.target.name;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      r.closest('.option-item').classList.remove('selected');
+    });
+    e.target.closest('.option-item').classList.add('selected');
+  }
+});
+
+// ── AUTO SAVE every 30s ──
+setInterval(saveProgress, 30000);
+
+// ── INIT ──
+window.addEventListener('load', loadProgress);
+</script>
+</body>
+</html>
