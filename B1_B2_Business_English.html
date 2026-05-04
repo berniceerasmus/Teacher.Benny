@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business English | B1 → B2 Professional Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2240;
+    --navy-mid: #1a3a5c;
+    --navy-light: #2a5080;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #fdf6e3;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text-dark: #0d2240;
+    --text-mid: #2a4060;
+    --text-muted: #6b7f99;
+    --border: #d6dfe8;
+    --success-bg: #eaf4ee;
+    --success: #2d7a4f;
+    --b1-color: #1a6b3c;
+    --b1-bg: #eaf4ee;
+    --b1-border: #2d7a4f;
+    --b2-color: #7a3a00;
+    --b2-bg: #fff3e6;
+    --b2-border: #c9a84c;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 16px; }
+
+  /* HEADER */
+  .site-header { background: var(--navy); color: var(--white); padding: 3rem 2rem 2.5rem; text-align: center; border-bottom: 4px solid var(--gold); }
+  .site-header .label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 600; }
+  .site-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.2; }
+  .site-header h1 span { color: var(--gold-light); }
+  .site-header .subtitle { font-size: 1rem; color: #9ab4cc; max-width: 580px; margin: 0 auto; }
+  .level-badges { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .badge { background: var(--navy-mid); border: 1.5px solid var(--gold); color: var(--gold-light); font-size: 13px; font-weight: 600; padding: 5px 18px; border-radius: 20px; }
+
+  /* NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: var(--navy); border-bottom: 2px solid var(--gold); overflow-x: auto; white-space: nowrap; }
+  .sticky-nav a { display: inline-block; color: #9ab4cc; text-decoration: none; padding: 10px 18px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; transition: color 0.15s, background 0.15s; }
+  .sticky-nav a:hover { color: var(--gold-light); background: rgba(255,255,255,0.05); }
+
+  /* CONTAINER */
+  .container { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  /* INTRO */
+  .intro-box { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 1.6rem 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--gold); }
+  .intro-box .intro-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-light); font-weight: 600; margin-bottom: 0.5rem; }
+  .intro-box p { font-size: 1rem; color: #c8d8e8; margin-bottom: 0.6rem; }
+  .intro-box p:last-child { margin-bottom: 0; }
+
+  /* LEVEL PILLS */
+  .level-pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 10px; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: middle; margin-left: 4px; }
+  .b1-pill { background: var(--b1-bg); color: var(--b1-color); border: 1px solid var(--b1-border); }
+  .b2-pill { background: var(--b2-bg); color: var(--b2-color); border: 1px solid var(--b2-border); }
+
+  /* SECTION HEADING */
+  .section-heading { display: flex; align-items: center; gap: 0.8rem; margin: 2.8rem 0 1rem; padding-top: 1rem; }
+  .section-heading .num { background: var(--navy); color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-heading h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); }
+  .section-heading .cat-icon { font-size: 1.2rem; }
+
+  /* LEVEL BAND */
+  .level-band { display: flex; align-items: center; gap: 0.6rem; margin: 1.2rem 0 0.6rem; }
+  .level-band-pill { font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .level-band-pill.b1 { background: var(--b1-bg); color: var(--b1-color); border: 1.5px solid var(--b1-border); }
+  .level-band-pill.b2 { background: var(--b2-bg); color: var(--b2-color); border: 1.5px solid var(--b2-border); }
+  .level-band hr { flex: 1; border: none; border-top: 1px dashed var(--border); }
+
+  /* ACCORDION */
+  .accordion { border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow 0.2s; }
+  .accordion:hover { box-shadow: 0 2px 12px rgba(13,34,64,0.09); }
+  .accordion-btn { width: 100%; background: none; border: none; cursor: pointer; text-align: left; padding: 1rem 1.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: background 0.15s; }
+  .accordion-btn:hover { background: #f5f8fc; }
+  .accordion-btn.open { background: var(--navy); }
+  .accordion-btn .btn-left { display: flex; align-items: center; gap: 0.8rem; }
+  .acc-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--gold-pale); border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; color: var(--navy); font-weight: 700; transition: background 0.15s; }
+  .accordion-btn.open .acc-icon { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .acc-title { font-weight: 600; font-size: 1rem; color: var(--text-dark); transition: color 0.15s; }
+  .accordion-btn.open .acc-title { color: var(--white); }
+  .acc-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; transition: color 0.15s; }
+  .accordion-btn.open .acc-desc { color: #9ab4cc; }
+  .acc-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--text-muted); transition: transform 0.25s, color 0.15s; }
+  .accordion-btn.open .acc-chevron { transform: rotate(180deg); color: var(--gold-light); }
+  .accordion-body { display: none; padding: 1.4rem 1.6rem 1.6rem; border-top: 1px solid var(--border); animation: fadeIn 0.2s ease; }
+  .accordion-body.open { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+
+  /* EXPLAIN BOX */
+  .explain-box { background: #edf3fa; border-left: 4px solid var(--navy-light); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 0.9rem 1.1rem; margin-bottom: 1.2rem; font-size: 0.93rem; color: var(--text-mid); }
+  .explain-box strong { color: var(--navy); }
+
+  /* VOCAB TABLE */
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin: 0.6rem 0 1.2rem; }
+  .vocab-table thead tr { background: var(--navy); color: var(--gold-light); }
+  .vocab-table thead th { padding: 8px 11px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; text-align: left; }
+  .vocab-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .vocab-table thead th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .vocab-table tbody tr:nth-child(odd) { background: var(--cream); }
+  .vocab-table tbody tr:nth-child(even) { background: var(--white); }
+  .vocab-table td { padding: 7px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .vocab-table .phrase { color: var(--navy); font-weight: 600; }
+  .vocab-table .meaning { color: var(--text-mid); font-size: 0.84rem; }
+  .vocab-table .example { color: var(--text-muted); font-style: italic; font-size: 0.82rem; }
+  .vocab-table .b1-row td:first-child::before { content: 'B1 '; font-size: 9px; font-weight: 700; color: var(--b1-color); vertical-align: super; }
+  .vocab-table .b2-row td:first-child::before { content: 'B2 '; font-size: 9px; font-weight: 700; color: var(--b2-color); vertical-align: super; }
+
+  /* WHEN GRID */
+  .when-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.8rem 0 1.2rem; }
+  @media (max-width: 560px) { .when-grid { grid-template-columns: 1fr; } }
+  .when-card { border-radius: var(--radius-sm); padding: 0.8rem 1rem; font-size: 0.88rem; }
+  .when-card.use { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
+  .when-card.note { background: var(--gold-pale); border-left: 3px solid var(--gold); color: #7a5a00; }
+  .when-card .wc-label { font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* EXERCISE BOX */
+  .exercise-box { background: var(--gold-pale); border: 1.5px solid var(--gold); border-radius: var(--radius); padding: 1.2rem 1.4rem; margin: 1rem 0; }
+  .exercise-box .ex-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; color: #8a6200; margin-bottom: 0.6rem; }
+  .exercise-box ol, .exercise-box ul { padding-left: 1.4rem; font-size: 0.92rem; color: var(--text-mid); }
+  .exercise-box li { margin-bottom: 0.4rem; }
+  .ex-hint { color: #a07800; font-size: 0.8rem; font-weight: 600; margin-left: 6px; }
+
+  /* COLLOCATION BOX */
+  .colloc-box { background: var(--navy-mid); border-radius: var(--radius-sm); padding: 0.8rem 1.2rem; margin: 0.8rem 0; }
+  .colloc-box .colloc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-light); font-weight: 700; margin-bottom: 6px; }
+  .colloc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .colloc-tag { background: rgba(201,168,76,0.18); border: 1px solid var(--gold); border-radius: 14px; padding: 3px 12px; font-size: 0.82rem; color: var(--gold-light); }
+
+  /* PHRASE CARDS */
+  .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 9px; margin: 0.8rem 0; }
+  .phrase-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px; }
+  .phrase-card .pc-phrase { color: var(--navy); font-weight: 600; font-size: 0.88rem; }
+  .phrase-card .pc-meaning { color: var(--text-muted); font-size: 0.8rem; margin-top: 2px; }
+  .phrase-card.b1 { border-left: 3px solid var(--b1-border); }
+  .phrase-card.b2 { border-left: 3px solid var(--b2-border); }
+
+  /* QUIZ */
+  .quiz-container { margin: 1rem 0; }
+  .quiz-question { margin-bottom: 1.2rem; }
+  .quiz-question p { font-size: 0.93rem; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-mid); }
+  .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .quiz-opt { background: var(--cream); border: 1.5px solid var(--border); border-radius: 20px; padding: 5px 16px; font-size: 0.88rem; cursor: pointer; transition: all 0.15s; color: var(--text-mid); font-family: inherit; }
+  .quiz-opt:hover { border-color: var(--navy-light); color: var(--navy); }
+  .quiz-opt.correct { background: var(--success-bg); border-color: var(--success); color: var(--success); font-weight: 600; }
+  .quiz-opt.wrong { background: #fdf0f0; border-color: #c0392b; color: #8b1a1a; }
+  .quiz-opt.disabled { cursor: default; pointer-events: none; }
+
+  /* DIVIDER */
+  .section-divider { border: none; border-top: 2px dashed var(--border); margin: 2rem 0 1rem; }
+
+  /* HOMEWORK */
+  .homework-box { background: var(--navy); border-radius: var(--radius); padding: 1.6rem 2rem; margin-top: 2.5rem; color: var(--white); }
+  .homework-box .hw-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-light); font-weight: 700; margin-bottom: 0.8rem; }
+  .homework-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 0.5rem; }
+  .homework-box p { font-size: 0.93rem; color: #b8ccdf; margin-bottom: 0.4rem; }
+  .homework-box .rule { background: rgba(201,168,76,0.15); border: 1px solid var(--gold); border-radius: var(--radius-sm); padding: 0.6rem 1rem; margin-top: 0.8rem; font-size: 0.9rem; color: var(--gold-light); }
+
+  /* FOOTER */
+  .site-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 2rem; }
+  .site-footer span { color: var(--navy); font-weight: 600; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .container { padding: 1.5rem 1rem 3rem; }
+    .vocab-table thead { display: none; }
+    .vocab-table tr { display: block; border-bottom: 2px solid var(--border); margin-bottom: 8px; }
+    .vocab-table td { display: block; padding: 4px 10px; }
+    .phrase-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <p class="label">Professional Language Resource</p>
+  <h1><span>Business English</span> — Complete Guide</h1>
+  <p class="subtitle">From competent to confident — the vocabulary, phrases and language you need for every professional situation.</p>
+  <div class="level-badges">
+    <span class="badge" style="border-color:var(--b1-border);color:#7ecfa0;">B1 — Competent</span>
+    <span class="badge" style="background:var(--gold);color:var(--navy);border-color:var(--gold);">→</span>
+    <span class="badge" style="border-color:var(--b2-border);color:var(--gold-light);">B2 — Proficient</span>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <a href="#meetings">📋 Meetings</a>
+  <a href="#emails">✉️ Emails</a>
+  <a href="#presentations">📊 Presentations</a>
+  <a href="#negotiations">🤝 Negotiations</a>
+  <a href="#interviews">💼 Job Interviews</a>
+  <a href="#reports">📝 Reports</a>
+  <a href="#smalltalk">☕ Small Talk</a>
+  <a href="#phone">📞 Phone &amp; Video</a>
+  <a href="#practice">✏️ Practice</a>
+</nav>
+
+<div class="container">
+
+  <div class="intro-box">
+    <p class="intro-label">How to use this resource</p>
+    <p>Each section is divided into <strong>B1</strong> (competent, clear, functional) and <strong>B2</strong> (natural, nuanced, professional). Start with B1 to build confidence, then upgrade to B2.</p>
+    <p>Every phrase includes its meaning and a real example sentence. Use the Practice section at the end to test yourself.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 1 — MEETINGS
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="meetings">
+    <div class="num">1</div>
+    <span class="cat-icon">📋</span>
+    <h2>Meetings</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Opening &amp; Managing a Meeting</div><div class="acc-desc">How to start, guide and control a meeting professionally</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Let's get started.</td><td class="meaning">Begin the meeting.</td><td class="example">Right, let's get started — we have a lot to cover today.</td></tr>
+          <tr><td class="phrase">The aim of today's meeting is…</td><td class="meaning">State the purpose clearly.</td><td class="example">The aim of today's meeting is to review last quarter's results.</td></tr>
+          <tr><td class="phrase">Can everyone hear me?</td><td class="meaning">Check audio/connection.</td><td class="example">Before we begin — can everyone hear me clearly?</td></tr>
+          <tr><td class="phrase">Let's move on to the next point.</td><td class="meaning">Progress to the next topic.</td><td class="example">Good — let's move on to the next point on the agenda.</td></tr>
+          <tr><td class="phrase">Can we stick to the agenda?</td><td class="meaning">Ask people to stay on topic.</td><td class="example">That's interesting, but can we stick to the agenda for now?</td></tr>
+          <tr><td class="phrase">I'd like to hear from everyone.</td><td class="meaning">Invite all participants to speak.</td><td class="example">Before we decide, I'd like to hear from everyone.</td></tr>
+          <tr><td class="phrase">We're running out of time.</td><td class="meaning">The meeting is almost finished.</td><td class="example">We're running out of time — can we agree on action points?</td></tr>
+          <tr><td class="phrase">To summarise what we've discussed…</td><td class="meaning">Review the main points.</td><td class="example">To summarise what we've discussed — we'll proceed with option B.</td></tr>
+          <tr><td class="phrase">Who is responsible for this?</td><td class="meaning">Assign ownership of a task.</td><td class="example">Who is responsible for following up with the client?</td></tr>
+          <tr><td class="phrase">Let's schedule a follow-up.</td><td class="meaning">Plan the next meeting.</td><td class="example">Let's schedule a follow-up for next Thursday.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Let's kick things off.</td><td class="meaning">Informal but professional way to begin.</td><td class="example">Right, let's kick things off — I'll hand over to Sarah.</td></tr>
+          <tr><td class="phrase">I'd like to set the context before we dive in.</td><td class="meaning">Provide background before discussing.</td><td class="example">I'd like to set the context before we dive into the numbers.</td></tr>
+          <tr><td class="phrase">Let's table that for now.</td><td class="meaning">Postpone a topic for a later time.</td><td class="example">That's worth discussing — let's table it for now and revisit it.</td></tr>
+          <tr><td class="phrase">Can we park that and come back to it?</td><td class="meaning">Politely delay a topic.</td><td class="example">Good point — can we park that and come back to it at the end?</td></tr>
+          <tr><td class="phrase">I'd like to open the floor to questions.</td><td class="meaning">Invite the group to ask questions.</td><td class="example">I'd like to open the floor to questions before we wrap up.</td></tr>
+          <tr><td class="phrase">Let's align on the key takeaways.</td><td class="meaning">Agree on what was decided or learned.</td><td class="example">Before we close, let's align on the key takeaways from today.</td></tr>
+          <tr><td class="phrase">Going forward, the expectation is…</td><td class="meaning">State what will happen from now on.</td><td class="example">Going forward, the expectation is weekly status updates.</td></tr>
+          <tr><td class="phrase">I'll circulate the minutes after this.</td><td class="meaning">Share the written record of the meeting.</td><td class="example">I'll circulate the minutes after this so everyone has a clear record.</td></tr>
+          <tr><td class="phrase">Let's make sure we have clear ownership.</td><td class="meaning">Each task must have one person responsible.</td><td class="example">Let's make sure we have clear ownership for each action point.</td></tr>
+          <tr><td class="phrase">I'd like to flag something before we close.</td><td class="meaning">Raise an important point at the end.</td><td class="example">I'd like to flag something before we close — the deadline has moved.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Agreeing, Disagreeing &amp; Giving Opinions</div><div class="acc-desc">How to express your view professionally without causing conflict</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Key tip:</strong> In professional English, disagreement is almost always softened. You rarely say "I disagree" directly. Instead, you acknowledge the other person's point first, then present your alternative view.</div>
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I agree with that.</td><td class="meaning">Simple agreement.</td><td class="example">I agree with that — it's the most practical solution.</td></tr>
+          <tr><td class="phrase">I think we should…</td><td class="meaning">Give a suggestion.</td><td class="example">I think we should wait until we have the full data.</td></tr>
+          <tr><td class="phrase">I'm not sure about that.</td><td class="meaning">Gentle disagreement.</td><td class="example">I'm not sure about that — can we look at the numbers again?</td></tr>
+          <tr><td class="phrase">That's a good point, but…</td><td class="meaning">Acknowledge then redirect.</td><td class="example">That's a good point, but we also need to consider the cost.</td></tr>
+          <tr><td class="phrase">I'd like to add something.</td><td class="meaning">Add a point to what someone said.</td><td class="example">I'd like to add something — the timeline may be too tight.</td></tr>
+          <tr><td class="phrase">In my opinion…</td><td class="meaning">Share your personal view.</td><td class="example">In my opinion, the second option carries less risk.</td></tr>
+          <tr><td class="phrase">Can I ask a question?</td><td class="meaning">Request permission to speak.</td><td class="example">Can I ask a question before we move on?</td></tr>
+          <tr><td class="phrase">I see your point.</td><td class="meaning">Acknowledge someone's argument.</td><td class="example">I see your point — but I think we need to test it first.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I take your point, however…</td><td class="meaning">Polite disagreement with respect.</td><td class="example">I take your point, however the data suggests otherwise.</td></tr>
+          <tr><td class="phrase">With respect, I'd push back on that.</td><td class="meaning">Professional, firm disagreement.</td><td class="example">With respect, I'd push back on that — the assumptions aren't solid.</td></tr>
+          <tr><td class="phrase">I'd like to offer a different perspective.</td><td class="meaning">Introduce an alternative view.</td><td class="example">I'd like to offer a different perspective on the timeline.</td></tr>
+          <tr><td class="phrase">Building on what you said…</td><td class="meaning">Add to someone's point positively.</td><td class="example">Building on what you said — we could also integrate the API.</td></tr>
+          <tr><td class="phrase">That's worth exploring further.</td><td class="meaning">Show interest without full commitment.</td><td class="example">That's worth exploring further before we commit to it.</td></tr>
+          <tr><td class="phrase">I'm fully aligned with that approach.</td><td class="meaning">Strong agreement.</td><td class="example">I'm fully aligned with that approach — let's proceed.</td></tr>
+          <tr><td class="phrase">I have reservations about…</td><td class="meaning">Express concern or doubt professionally.</td><td class="example">I have reservations about the proposed timeline — it feels rushed.</td></tr>
+          <tr><td class="phrase">Let me play devil's advocate here.</td><td class="meaning">Argue the opposite to test an idea.</td><td class="example">Let me play devil's advocate — what if the launch fails?</td></tr>
+          <tr><td class="phrase">I think we need to stress-test this idea.</td><td class="meaning">Check if the idea holds up under pressure.</td><td class="example">Before we commit, I think we need to stress-test this idea.</td></tr>
+          <tr><td class="phrase">Can we revisit our assumptions?</td><td class="meaning">Question the basis of a plan.</td><td class="example">Before we finalise, can we revisit our assumptions on cost?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Interrupting, Clarifying &amp; Checking Understanding</div><div class="acc-desc">How to interject and check comprehension politely</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Sorry, can you repeat that?</td><td class="meaning">Ask someone to say something again.</td><td class="example">Sorry, can you repeat that? The connection dropped briefly.</td></tr>
+          <tr><td class="phrase">What do you mean by…?</td><td class="meaning">Ask for clarification on a specific word.</td><td class="example">What do you mean by "phased rollout"?</td></tr>
+          <tr><td class="phrase">Can I jump in?</td><td class="meaning">Ask permission to interrupt.</td><td class="example">Can I jump in? I think there is an important point to add.</td></tr>
+          <tr><td class="phrase">Let me make sure I understand.</td><td class="meaning">Check your understanding.</td><td class="example">Let me make sure I understand — you want the report by Friday?</td></tr>
+          <tr><td class="phrase">So you're saying that…?</td><td class="meaning">Paraphrase to confirm understanding.</td><td class="example">So you're saying that we need to reduce the budget by 20%?</td></tr>
+          <tr><td class="phrase">Could you clarify what you mean?</td><td class="meaning">Ask for a clearer explanation.</td><td class="example">Could you clarify what you mean by "non-negotiable"?</td></tr>
+          <tr><td class="phrase">Sorry to interrupt, but…</td><td class="meaning">Polite interruption.</td><td class="example">Sorry to interrupt, but I think the deadline has changed.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">If I could just come in here…</td><td class="meaning">Smooth, confident interruption.</td><td class="example">If I could just come in here — there's a constraint we haven't addressed.</td></tr>
+          <tr><td class="phrase">Can I pick up on something you said?</td><td class="meaning">Refer back to a specific point.</td><td class="example">Can I pick up on something you said about the rollout schedule?</td></tr>
+          <tr><td class="phrase">Just to make sure we're on the same page…</td><td class="meaning">Confirm shared understanding.</td><td class="example">Just to make sure we're on the same page — the scope hasn't changed?</td></tr>
+          <tr><td class="phrase">Could you walk us through that?</td><td class="meaning">Ask someone to explain step by step.</td><td class="example">Could you walk us through your reasoning on the pricing model?</td></tr>
+          <tr><td class="phrase">What's the rationale behind that?</td><td class="meaning">Ask for the reason or logic.</td><td class="example">What's the rationale behind moving the deadline forward?</td></tr>
+          <tr><td class="phrase">I want to make sure I've captured that correctly.</td><td class="meaning">Confirm notes or decisions.</td><td class="example">I want to make sure I've captured that correctly — we're delaying the launch?</td></tr>
+          <tr><td class="phrase">Can you elaborate on that point?</td><td class="meaning">Ask for more detail.</td><td class="example">That's interesting — can you elaborate on that point a little?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 2 — EMAILS
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="emails">
+    <div class="num">2</div>
+    <span class="cat-icon">✉️</span>
+    <h2>Emails</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Opening Lines &amp; Greetings</div><div class="acc-desc">How to start an email professionally at every level</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I am writing to…</td><td class="meaning">State the reason for the email.</td><td class="example">I am writing to ask about the status of my application.</td></tr>
+          <tr><td class="phrase">Thank you for your email.</td><td class="meaning">Acknowledge a received message.</td><td class="example">Thank you for your email — I have reviewed the document.</td></tr>
+          <tr><td class="phrase">I hope you are well.</td><td class="meaning">Polite opening filler.</td><td class="example">I hope you are well. I am writing to follow up on our last meeting.</td></tr>
+          <tr><td class="phrase">Please find attached…</td><td class="meaning">Refer to a document attached.</td><td class="example">Please find attached the updated report for your review.</td></tr>
+          <tr><td class="phrase">I am getting in touch regarding…</td><td class="meaning">Introduce the topic of the email.</td><td class="example">I am getting in touch regarding the contract we discussed.</td></tr>
+          <tr><td class="phrase">Further to our conversation…</td><td class="meaning">Refer back to a previous discussion.</td><td class="example">Further to our conversation on Monday, I have prepared the proposal.</td></tr>
+          <tr><td class="phrase">Could you please send me…?</td><td class="meaning">Polite request for information.</td><td class="example">Could you please send me the final version of the invoice?</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I hope this finds you well.</td><td class="meaning">Warmer, more natural version of "I hope you are well."</td><td class="example">I hope this finds you well — it has been a busy few weeks on our end.</td></tr>
+          <tr><td class="phrase">I wanted to reach out regarding…</td><td class="meaning">Natural, less formal opening.</td><td class="example">I wanted to reach out regarding the proposal you sent last week.</td></tr>
+          <tr><td class="phrase">Following up on our exchange…</td><td class="meaning">Refer to a previous email thread.</td><td class="example">Following up on our exchange from last Thursday — any update on your end?</td></tr>
+          <tr><td class="phrase">As discussed, I am sending over…</td><td class="meaning">Refer to a previous conversation.</td><td class="example">As discussed, I am sending over the revised version for your sign-off.</td></tr>
+          <tr><td class="phrase">I wanted to loop you in on…</td><td class="meaning">Include someone in a conversation.</td><td class="example">I wanted to loop you in on the conversation we had with the client.</td></tr>
+          <tr><td class="phrase">Just a quick note to let you know…</td><td class="meaning">Informal but professional update.</td><td class="example">Just a quick note to let you know the meeting has been rescheduled.</td></tr>
+          <tr><td class="phrase">I am writing on behalf of…</td><td class="meaning">Write for someone else or a company.</td><td class="example">I am writing on behalf of our Head of Operations, Mr. Yilmaz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Making Requests, Following Up &amp; Chasing</div><div class="acc-desc">How to ask for things and follow up without being rude</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Key tip:</strong> In English emails, requests are almost always indirect and softened. The more polite and professional the email, the more indirect the language. "Send me the report" → "Would you be able to send me the report at your earliest convenience?"</div>
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Could you please…?</td><td class="meaning">Polite request.</td><td class="example">Could you please confirm your availability for Thursday?</td></tr>
+          <tr><td class="phrase">I would be grateful if you could…</td><td class="meaning">Formal polite request.</td><td class="example">I would be grateful if you could review the attached document.</td></tr>
+          <tr><td class="phrase">I am writing to follow up on…</td><td class="meaning">Chase a previous email or action.</td><td class="example">I am writing to follow up on my email from last week.</td></tr>
+          <tr><td class="phrase">Could you let me know by…?</td><td class="meaning">Ask for a response by a specific time.</td><td class="example">Could you let me know by end of day Friday?</td></tr>
+          <tr><td class="phrase">Please let me know if you have any questions.</td><td class="meaning">Invite the reader to ask for more information.</td><td class="example">Please let me know if you have any questions about the proposal.</td></tr>
+          <tr><td class="phrase">I look forward to hearing from you.</td><td class="meaning">Standard closing for a request.</td><td class="example">I look forward to hearing from you at your earliest convenience.</td></tr>
+          <tr><td class="phrase">I would appreciate it if…</td><td class="meaning">Polite, slightly formal request.</td><td class="example">I would appreciate it if you could send the invoice by Wednesday.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I wanted to circle back on…</td><td class="meaning">Follow up in a natural, professional tone.</td><td class="example">I wanted to circle back on the proposal — have you had a chance to review it?</td></tr>
+          <tr><td class="phrase">Just checking in to see if…</td><td class="meaning">Gentle, informal follow-up.</td><td class="example">Just checking in to see if you've had a chance to look at this.</td></tr>
+          <tr><td class="phrase">I appreciate you taking the time to…</td><td class="meaning">Thank someone before making a request.</td><td class="example">I appreciate you taking the time to review this on short notice.</td></tr>
+          <tr><td class="phrase">Would you be able to…?</td><td class="meaning">Soft, professional request.</td><td class="example">Would you be able to join a brief call tomorrow afternoon?</td></tr>
+          <tr><td class="phrase">I understand you have a busy schedule, however…</td><td class="meaning">Acknowledge their time before asking.</td><td class="example">I understand you have a busy schedule, however this is time-sensitive.</td></tr>
+          <tr><td class="phrase">Could we set up a quick call to discuss?</td><td class="meaning">Suggest a phone or video call.</td><td class="example">Could we set up a quick call to discuss the next steps?</td></tr>
+          <tr><td class="phrase">Please do not hesitate to contact me if…</td><td class="meaning">Invite questions or contact formally.</td><td class="example">Please do not hesitate to contact me if you require further information.</td></tr>
+          <tr><td class="phrase">I trust this clarifies the matter.</td><td class="meaning">Conclude after giving an explanation.</td><td class="example">I trust this clarifies the matter — please confirm receipt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Closing Lines, Sign-offs &amp; Apologies</div><div class="acc-desc">How to end emails professionally and handle mistakes</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Best regards,</td><td class="meaning">Standard professional sign-off.</td><td class="example">Best regards, / [Your name]</td></tr>
+          <tr><td class="phrase">Kind regards,</td><td class="meaning">Slightly warmer sign-off.</td><td class="example">Kind regards, / [Your name]</td></tr>
+          <tr><td class="phrase">I apologise for the delay.</td><td class="meaning">Apologise for responding late.</td><td class="example">I apologise for the delay in getting back to you.</td></tr>
+          <tr><td class="phrase">I am sorry for any inconvenience caused.</td><td class="meaning">Apologise for a problem or mistake.</td><td class="example">I am sorry for any inconvenience this may have caused.</td></tr>
+          <tr><td class="phrase">Please confirm you have received this.</td><td class="meaning">Ask for acknowledgement.</td><td class="example">Please confirm you have received this and let me know if you have questions.</td></tr>
+          <tr><td class="phrase">Thank you for your time and consideration.</td><td class="meaning">Polite closing after a request.</td><td class="example">Thank you for your time and consideration — I look forward to your response.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I appreciate your patience on this matter.</td><td class="meaning">Thank someone for waiting.</td><td class="example">I appreciate your patience on this matter — I will have an update by Friday.</td></tr>
+          <tr><td class="phrase">I take full responsibility for the oversight.</td><td class="meaning">Professional way to take the blame.</td><td class="example">I take full responsibility for the oversight — it will not happen again.</td></tr>
+          <tr><td class="phrase">Please accept my sincere apologies for…</td><td class="meaning">Formal, strong apology.</td><td class="example">Please accept my sincere apologies for the confusion this caused.</td></tr>
+          <tr><td class="phrase">I will ensure this is prioritised.</td><td class="meaning">Promise to make something urgent.</td><td class="example">I will ensure this is prioritised and resolved before end of week.</td></tr>
+          <tr><td class="phrase">Warm regards,</td><td class="meaning">Friendly but professional sign-off.</td><td class="example">Warm regards, / [Your name]</td></tr>
+          <tr><td class="phrase">Should you require anything further, please don't hesitate to reach out.</td><td class="meaning">Open invitation to follow up.</td><td class="example">Should you require anything further, please do not hesitate to reach out.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 3 — PRESENTATIONS
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="presentations">
+    <div class="num">3</div>
+    <span class="cat-icon">📊</span>
+    <h2>Presentations</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Opening, Structuring &amp; Signposting</div><div class="acc-desc">How to introduce, guide and navigate a presentation</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Today I'm going to talk about…</td><td class="meaning">Introduce the topic.</td><td class="example">Today I'm going to talk about our Q3 performance.</td></tr>
+          <tr><td class="phrase">My presentation has three main parts.</td><td class="meaning">Outline the structure.</td><td class="example">My presentation has three main parts — context, findings and next steps.</td></tr>
+          <tr><td class="phrase">First… then… finally…</td><td class="meaning">Signal the order of content.</td><td class="example">First I'll cover the data, then the implications, and finally our recommendations.</td></tr>
+          <tr><td class="phrase">Moving on to the next slide…</td><td class="meaning">Transition between slides.</td><td class="example">Moving on to the next slide — here we can see the trend over time.</td></tr>
+          <tr><td class="phrase">As you can see from this graph…</td><td class="meaning">Draw attention to a visual.</td><td class="example">As you can see from this graph, sales peaked in October.</td></tr>
+          <tr><td class="phrase">To summarise the main points…</td><td class="meaning">Review before closing.</td><td class="example">To summarise the main points — we are on track, but costs have risen.</td></tr>
+          <tr><td class="phrase">Are there any questions?</td><td class="meaning">Invite questions at the end.</td><td class="example">That covers everything — are there any questions?</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I'd like to start by framing the context.</td><td class="meaning">Set the scene before presenting.</td><td class="example">I'd like to start by framing the context so we're all aligned.</td></tr>
+          <tr><td class="phrase">By the end of this, you'll have a clear picture of…</td><td class="meaning">State the outcome for the audience.</td><td class="example">By the end of this, you'll have a clear picture of where we stand.</td></tr>
+          <tr><td class="phrase">This slide illustrates a key trend.</td><td class="meaning">Introduce a visual with more precision.</td><td class="example">This slide illustrates a key trend we've been tracking over six months.</td></tr>
+          <tr><td class="phrase">What this tells us is…</td><td class="meaning">Interpret data for the audience.</td><td class="example">What this tells us is that demand is outpacing our current capacity.</td></tr>
+          <tr><td class="phrase">I'd like to draw your attention to…</td><td class="meaning">Highlight a specific point.</td><td class="example">I'd like to draw your attention to the bottom right of this chart.</td></tr>
+          <tr><td class="phrase">To put this into perspective…</td><td class="meaning">Give context to a number or fact.</td><td class="example">To put this into perspective — that's a 40% increase year on year.</td></tr>
+          <tr><td class="phrase">The key takeaway here is…</td><td class="meaning">State the most important point.</td><td class="example">The key takeaway here is that we need to act before Q1.</td></tr>
+          <tr><td class="phrase">I'll be happy to take questions as we go.</td><td class="meaning">Allow questions during, not just at the end.</td><td class="example">I'll be happy to take questions as we go — please feel free to interrupt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Describing Data, Trends &amp; Numbers</div><div class="acc-desc">Language for charts, graphs, figures and statistics</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <div class="phrase-grid">
+        <div class="phrase-card b1"><div class="pc-phrase">go up / increase</div><div class="pc-meaning">Rise in value</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">go down / decrease</div><div class="pc-meaning">Fall in value</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">stay the same</div><div class="pc-meaning">No change</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">a big increase</div><div class="pc-meaning">Large rise</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">a small drop</div><div class="pc-meaning">Slight fall</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">reach the highest point</div><div class="pc-meaning">Peak</div></div>
+      </div>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Word / Phrase</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">surge</td><td class="meaning">Increase sharply and quickly.</td><td class="example">Revenue surged by 35% in Q3.</td></tr>
+          <tr><td class="phrase">decline</td><td class="meaning">Decrease gradually.</td><td class="example">User engagement declined steadily over the quarter.</td></tr>
+          <tr><td class="phrase">plateau</td><td class="meaning">Stop growing and stay flat.</td><td class="example">Growth has plateaued — we need a new strategy.</td></tr>
+          <tr><td class="phrase">fluctuate</td><td class="meaning">Move up and down unpredictably.</td><td class="example">Prices fluctuated significantly throughout the year.</td></tr>
+          <tr><td class="phrase">peak at</td><td class="meaning">Reach the highest point.</td><td class="example">Sales peaked at 4.2 million in November.</td></tr>
+          <tr><td class="phrase">drop sharply</td><td class="meaning">Fall suddenly and steeply.</td><td class="example">Conversion rates dropped sharply after the redesign.</td></tr>
+          <tr><td class="phrase">recover / rebound</td><td class="meaning">Return to previous levels after a fall.</td><td class="example">The market rebounded strongly in Q4.</td></tr>
+          <tr><td class="phrase">account for</td><td class="meaning">Represent a proportion of something.</td><td class="example">Mobile users account for 68% of all traffic.</td></tr>
+          <tr><td class="phrase">outperform</td><td class="meaning">Do better than expected or than another.</td><td class="example">This product outperformed every other in the range.</td></tr>
+          <tr><td class="phrase">fall short of</td><td class="meaning">Not reach a target or expectation.</td><td class="example">We fell short of the target by approximately 12%.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 4 — NEGOTIATIONS
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="negotiations">
+    <div class="num">4</div>
+    <span class="cat-icon">🤝</span>
+    <h2>Negotiations</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Making Offers, Proposals &amp; Conditions</div><div class="acc-desc">Language for putting forward and responding to proposals</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">We can offer you…</td><td class="meaning">Present an offer.</td><td class="example">We can offer you a 10% discount on orders over 500 units.</td></tr>
+          <tr><td class="phrase">If you can do X, we will do Y.</td><td class="meaning">Conditional offer.</td><td class="example">If you can deliver by the 15th, we will sign the contract this week.</td></tr>
+          <tr><td class="phrase">What is your best price?</td><td class="meaning">Ask for the lowest possible price.</td><td class="example">We are interested — what is your best price for bulk orders?</td></tr>
+          <tr><td class="phrase">That is outside our budget.</td><td class="meaning">Decline because of cost.</td><td class="example">I appreciate the offer, but that is outside our budget for this project.</td></tr>
+          <tr><td class="phrase">Can we meet in the middle?</td><td class="meaning">Suggest a compromise.</td><td class="example">We are both close — can we meet in the middle on the price?</td></tr>
+          <tr><td class="phrase">We need some time to consider.</td><td class="meaning">Ask for time to think.</td><td class="example">Thank you — we need some time to consider before we respond.</td></tr>
+          <tr><td class="phrase">Is there any flexibility on the price?</td><td class="meaning">Ask if the price can be reduced.</td><td class="example">Is there any flexibility on the price if we commit to a longer contract?</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">We would be prepared to… on the condition that…</td><td class="meaning">Conditional offer in formal English.</td><td class="example">We would be prepared to extend the deadline on the condition that the scope is reduced.</td></tr>
+          <tr><td class="phrase">That's not something we're in a position to agree to.</td><td class="meaning">Firm but polite refusal.</td><td class="example">I understand the request, but that's not something we're in a position to agree to.</td></tr>
+          <tr><td class="phrase">We'd be willing to consider… if you could…</td><td class="meaning">Conditional concession.</td><td class="example">We'd be willing to consider a reduced rate if you could commit to 12 months.</td></tr>
+          <tr><td class="phrase">This is our best and final offer.</td><td class="meaning">Signal that there is no more room to negotiate.</td><td class="example">I want to be transparent — this is our best and final offer.</td></tr>
+          <tr><td class="phrase">Let's find a solution that works for both sides.</td><td class="meaning">Collaborative negotiation language.</td><td class="example">I know we're not aligned yet — let's find a solution that works for both sides.</td></tr>
+          <tr><td class="phrase">I'd like to put forward a counter-proposal.</td><td class="meaning">Introduce an alternative offer formally.</td><td class="example">We appreciate the offer — I'd like to put forward a counter-proposal.</td></tr>
+          <tr><td class="phrase">What would it take to close this deal today?</td><td class="meaning">Direct, confident closing question.</td><td class="example">We're very close — what would it take to close this deal today?</td></tr>
+          <tr><td class="phrase">We're committed to making this work.</td><td class="meaning">Show genuine interest in agreeing.</td><td class="example">We're committed to making this work — we just need to agree on the terms.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Stalling, Refusing &amp; Closing</div><div class="acc-desc">How to buy time, say no professionally, and close a deal</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <div class="phrase-grid">
+        <div class="phrase-card b1"><div class="pc-phrase">I need to check with my team.</div><div class="pc-meaning">Buying time politely.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">That doesn't work for us.</div><div class="pc-meaning">Decline an offer.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">Let me get back to you.</div><div class="pc-meaning">Delay a decision.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">We have a deal.</div><div class="pc-meaning">Agree and close.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">Can you send that in writing?</div><div class="pc-meaning">Request formal confirmation.</div></div>
+      </div>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <div class="phrase-grid">
+        <div class="phrase-card b2"><div class="pc-phrase">I'll need to take this back to the team.</div><div class="pc-meaning">Formal way to buy time.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">We're not in a position to proceed on those terms.</div><div class="pc-meaning">Professional decline.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">Subject to contract, we're aligned.</div><div class="pc-meaning">Agree in principle, pending paperwork.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">I'll have legal review this and revert shortly.</div><div class="pc-meaning">Send to legal for review.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">We're happy to proceed on that basis.</div><div class="pc-meaning">Formal agreement to close.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 5 — JOB INTERVIEWS
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="interviews">
+    <div class="num">5</div>
+    <span class="cat-icon">💼</span>
+    <h2>Job Interviews</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Talking About Yourself &amp; Your Experience</div><div class="acc-desc">Language for answering "Tell me about yourself" and experience questions</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1 — Functional</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">I have X years of experience in…</td><td class="meaning">State your background.</td><td class="example">I have five years of experience in software development.</td></tr>
+          <tr><td class="phrase">I am responsible for…</td><td class="meaning">Describe your current duties.</td><td class="example">I am responsible for managing the backend infrastructure.</td></tr>
+          <tr><td class="phrase">In my previous role, I…</td><td class="meaning">Talk about past work.</td><td class="example">In my previous role, I led a team of six developers.</td></tr>
+          <tr><td class="phrase">One of my key strengths is…</td><td class="meaning">Highlight a positive quality.</td><td class="example">One of my key strengths is problem-solving under pressure.</td></tr>
+          <tr><td class="phrase">I am very motivated to…</td><td class="meaning">Show enthusiasm for the role.</td><td class="example">I am very motivated to grow in a company like yours.</td></tr>
+          <tr><td class="phrase">I am a quick learner.</td><td class="meaning">Say you can adapt fast.</td><td class="example">I am a quick learner and I pick up new tools quickly.</td></tr>
+          <tr><td class="phrase">I work well under pressure.</td><td class="meaning">Handle stressful situations.</td><td class="example">I work well under pressure — deadlines motivate me.</td></tr>
+          <tr><td class="phrase">I enjoy working in a team.</td><td class="meaning">Show collaborative nature.</td><td class="example">I genuinely enjoy working in a team — I find it energising.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — Proficient</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Throughout my career, I have developed expertise in…</td><td class="meaning">Show depth of experience over time.</td><td class="example">Throughout my career, I have developed expertise in cloud architecture.</td></tr>
+          <tr><td class="phrase">I bring a strong background in…</td><td class="meaning">Present your experience as an asset.</td><td class="example">I bring a strong background in agile project management.</td></tr>
+          <tr><td class="phrase">I thrive in fast-paced environments.</td><td class="meaning">Perform well under pressure.</td><td class="example">I genuinely thrive in fast-paced environments — I find them energising.</td></tr>
+          <tr><td class="phrase">I have a proven track record of…</td><td class="meaning">Show results with evidence.</td><td class="example">I have a proven track record of delivering projects on time and within budget.</td></tr>
+          <tr><td class="phrase">I am particularly drawn to this role because…</td><td class="meaning">Show specific interest in the position.</td><td class="example">I am particularly drawn to this role because of the focus on innovation.</td></tr>
+          <tr><td class="phrase">One achievement I'm especially proud of is…</td><td class="meaning">Highlight a specific success.</td><td class="example">One achievement I'm especially proud of is reducing load time by 60%.</td></tr>
+          <tr><td class="phrase">I see myself as someone who…</td><td class="meaning">Describe your character naturally.</td><td class="example">I see myself as someone who is both analytical and people-oriented.</td></tr>
+          <tr><td class="phrase">In terms of professional development, I am currently…</td><td class="meaning">Show you are still growing.</td><td class="example">In terms of professional development, I am currently studying for my AWS certification.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Strengths, Weaknesses &amp; STAR Method</div><div class="acc-desc">How to answer the most common interview questions</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box">
+        <strong>The STAR method:</strong> When answering behavioural questions ("Tell me about a time you…"), use this structure:<br><br>
+        <strong>S</strong> — Situation: Set the context.<br>
+        <strong>T</strong> — Task: What was your responsibility?<br>
+        <strong>A</strong> — Action: What did you actually do?<br>
+        <strong>R</strong> — Result: What was the outcome?
+      </div>
+      <div class="level-band"><span class="level-band-pill b1">B1 — Strengths &amp; Weaknesses</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">My biggest strength is…</td><td class="meaning">Introduce a key skill.</td><td class="example">My biggest strength is my ability to stay calm under pressure.</td></tr>
+          <tr><td class="phrase">Something I am working on is…</td><td class="meaning">Honest, professional weakness.</td><td class="example">Something I am working on is public speaking — I have been taking a course.</td></tr>
+          <tr><td class="phrase">I tend to be…</td><td class="meaning">Describe a natural trait.</td><td class="example">I tend to be very detail-oriented, which sometimes slows me down.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2 — STAR Phrases</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Part</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">The situation was…</td><td class="meaning">S — Set the context.</td><td class="example">The situation was that our main system went down 2 hours before launch.</td></tr>
+          <tr><td class="phrase">My responsibility was to…</td><td class="meaning">T — Define your role.</td><td class="example">My responsibility was to coordinate the technical response across three teams.</td></tr>
+          <tr><td class="phrase">What I did was…</td><td class="meaning">A — Explain the action.</td><td class="example">What I did was isolate the fault and implement a temporary workaround within 20 minutes.</td></tr>
+          <tr><td class="phrase">As a result…</td><td class="meaning">R — State the outcome.</td><td class="example">As a result, the launch proceeded on schedule with no impact on the client.</td></tr>
+          <tr><td class="phrase">Looking back, what I learned was…</td><td class="meaning">Show reflection and growth.</td><td class="example">Looking back, what I learned was the value of having a crisis protocol in place.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 6 — REPORTS & WRITING
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="reports">
+    <div class="num">6</div>
+    <span class="cat-icon">📝</span>
+    <h2>Reports &amp; Professional Writing</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Structuring &amp; Linking Ideas</div><div class="acc-desc">Connectors, discourse markers and signposting language for reports</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Word / Phrase</th><th>Function</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Firstly / Secondly / Finally</td><td class="meaning">Order points.</td><td class="example">Firstly, we reviewed the data. Secondly, we identified the key issues.</td></tr>
+          <tr><td class="phrase">In addition</td><td class="meaning">Add another point.</td><td class="example">In addition, the team completed the testing phase ahead of schedule.</td></tr>
+          <tr><td class="phrase">However</td><td class="meaning">Introduce a contrast.</td><td class="example">The project was delivered on time. However, costs exceeded the budget.</td></tr>
+          <tr><td class="phrase">As a result</td><td class="meaning">Show a consequence.</td><td class="example">As a result, we were able to reduce processing time by 30%.</td></tr>
+          <tr><td class="phrase">For example</td><td class="meaning">Illustrate a point.</td><td class="example">Several areas need improvement — for example, communication and handover processes.</td></tr>
+          <tr><td class="phrase">In conclusion</td><td class="meaning">Begin the closing section.</td><td class="example">In conclusion, the project met its primary objectives despite the challenges faced.</td></tr>
+          <tr><td class="phrase">Overall</td><td class="meaning">Summarise generally.</td><td class="example">Overall, performance this quarter has been strong.</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Word / Phrase</th><th>Function</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Furthermore / Moreover</td><td class="meaning">Add a stronger, additional point.</td><td class="example">Furthermore, the data suggests this trend is likely to continue.</td></tr>
+          <tr><td class="phrase">Nevertheless / Nonetheless</td><td class="meaning">Contrast despite a previous point.</td><td class="example">The budget was reduced. Nevertheless, the team delivered exceptional results.</td></tr>
+          <tr><td class="phrase">Consequently</td><td class="meaning">Show a result formally.</td><td class="example">The system failed unexpectedly. Consequently, the launch was delayed by two weeks.</td></tr>
+          <tr><td class="phrase">It should be noted that…</td><td class="meaning">Highlight an important point formally.</td><td class="example">It should be noted that these figures are preliminary and subject to revision.</td></tr>
+          <tr><td class="phrase">This is attributable to…</td><td class="meaning">Give a formal reason or cause.</td><td class="example">The increase is attributable to higher demand in the EMEA region.</td></tr>
+          <tr><td class="phrase">In light of these findings…</td><td class="meaning">Draw conclusions from evidence.</td><td class="example">In light of these findings, we recommend a phased approach to implementation.</td></tr>
+          <tr><td class="phrase">It is recommended that…</td><td class="meaning">Give a formal recommendation.</td><td class="example">It is recommended that all departments review their processes by end of Q1.</td></tr>
+          <tr><td class="phrase">This can be attributed to…</td><td class="meaning">Explain a cause formally.</td><td class="example">The decline can be attributed to increased competition in the market.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Formal Report Vocabulary</div><div class="acc-desc">Precise words for professional documents</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Word</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">assess</td><td class="meaning">Evaluate carefully.</td><td class="example">This report seeks to assess the impact of the changes introduced in Q2.</td></tr>
+          <tr><td class="phrase">identify</td><td class="meaning">Find and name clearly.</td><td class="example">We identified three core areas that require immediate attention.</td></tr>
+          <tr><td class="phrase">outline</td><td class="meaning">Describe the main points briefly.</td><td class="example">This section outlines the key recommendations.</td></tr>
+          <tr><td class="phrase">propose</td><td class="meaning">Formally suggest something.</td><td class="example">We propose a restructuring of the reporting framework.</td></tr>
+          <tr><td class="phrase">demonstrate</td><td class="meaning">Show clearly with evidence.</td><td class="example">The data demonstrates a clear upward trend.</td></tr>
+          <tr><td class="phrase">indicate</td><td class="meaning">Show or suggest something.</td><td class="example">The results indicate that the current approach is unsustainable.</td></tr>
+          <tr><td class="phrase">conclude</td><td class="meaning">End with a final point.</td><td class="example">We conclude that further investment is necessary.</td></tr>
+          <tr><td class="phrase">highlight</td><td class="meaning">Bring attention to something important.</td><td class="example">This report highlights several critical gaps in the current process.</td></tr>
+          <tr><td class="phrase">evaluate</td><td class="meaning">Judge the value or quality of something.</td><td class="example">The team evaluated three possible solutions before making a recommendation.</td></tr>
+          <tr><td class="phrase">substantiate</td><td class="meaning">Prove with evidence.</td><td class="example">These claims are substantiated by the attached data.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 7 — SMALL TALK
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="smalltalk">
+    <div class="num">7</div>
+    <span class="cat-icon">☕</span>
+    <h2>Small Talk &amp; Networking</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Starting Conversations &amp; Breaking the Ice</div><div class="acc-desc">How to begin informal professional conversations</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Why small talk matters:</strong> In English-speaking workplaces, small talk builds trust. People who skip it can seem cold or unfriendly. A few natural sentences before a meeting or at an event make a big difference.</div>
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">How are you? / How are things?</td><td class="meaning">General opener.</td><td class="example">Hi Mark — how are things going with you?</td></tr>
+          <tr><td class="phrase">Did you have a good weekend?</td><td class="meaning">Monday morning conversation starter.</td><td class="example">Morning! Did you have a good weekend?</td></tr>
+          <tr><td class="phrase">Have you been busy lately?</td><td class="meaning">Check in on workload.</td><td class="example">Have you been busy lately? I've hardly seen you!</td></tr>
+          <tr><td class="phrase">The weather has been crazy recently.</td><td class="meaning">Classic small talk topic.</td><td class="example">The weather has been crazy recently — I can't believe how cold it is.</td></tr>
+          <tr><td class="phrase">Did you watch the game / the show?</td><td class="meaning">Shared entertainment topic.</td><td class="example">Did you watch the Champions League final last night?</td></tr>
+          <tr><td class="phrase">What do you do at the company?</td><td class="meaning">Ask about someone's role.</td><td class="example">I don't think we've met before — what do you do at the company?</td></tr>
+          <tr><td class="phrase">How long have you been here?</td><td class="meaning">Ask about tenure.</td><td class="example">I've just joined — how long have you been here?</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">How's everything going on your end?</td><td class="meaning">Natural professional check-in.</td><td class="example">Good to see you again — how's everything going on your end?</td></tr>
+          <tr><td class="phrase">What a week it's been!</td><td class="meaning">Express a busy or eventful period.</td><td class="example">What a week it's been — I'm really looking forward to the weekend.</td></tr>
+          <tr><td class="phrase">I've been meaning to catch up with you.</td><td class="meaning">Warm way to reconnect.</td><td class="example">I've been meaning to catch up with you since the conference.</td></tr>
+          <tr><td class="phrase">How did the launch go?</td><td class="meaning">Show interest in a colleague's project.</td><td class="example">I heard about the new product — how did the launch go?</td></tr>
+          <tr><td class="phrase">How are you finding the new role?</td><td class="meaning">Ask about a recent change.</td><td class="example">I heard you moved to the strategy team — how are you finding it?</td></tr>
+          <tr><td class="phrase">It's good to finally put a face to the name.</td><td class="meaning">Meeting someone you've emailed but not met.</td><td class="example">We've emailed a lot — it's good to finally put a face to the name!</td></tr>
+          <tr><td class="phrase">I've heard a lot of great things about your work.</td><td class="meaning">Networking compliment.</td><td class="example">I've heard a lot of great things about your work on the API migration.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Networking — Introducing Yourself &amp; Following Up</div><div class="acc-desc">Professional event and conference language</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <div class="phrase-grid">
+        <div class="phrase-card b1"><div class="pc-phrase">Nice to meet you.</div><div class="pc-meaning">Standard greeting.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">I work in / at…</div><div class="pc-meaning">Introduce your role.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">Can I give you my card?</div><div class="pc-meaning">Exchange contact details.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">Let's stay in touch.</div><div class="pc-meaning">Suggest ongoing contact.</div></div>
+        <div class="phrase-card b1"><div class="pc-phrase">I'll send you a LinkedIn request.</div><div class="pc-meaning">Connect digitally.</div></div>
+      </div>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <div class="phrase-grid">
+        <div class="phrase-card b2"><div class="pc-phrase">It's a pleasure to meet you.</div><div class="pc-meaning">More formal greeting.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">I specialise in…</div><div class="pc-meaning">Precise intro of expertise.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">I'd love to explore potential synergies.</div><div class="pc-meaning">Business opportunity.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">Would you be open to a follow-up call?</div><div class="pc-meaning">Professional next step.</div></div>
+        <div class="phrase-card b2"><div class="pc-phrase">I'll reach out via LinkedIn this week.</div><div class="pc-meaning">Confirm digital connection.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 8 — PHONE & VIDEO
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="phone">
+    <div class="num">8</div>
+    <span class="cat-icon">📞</span>
+    <h2>Phone &amp; Video Calls</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Starting, Managing &amp; Ending Calls</div><div class="acc-desc">Language for professional phone and video interactions</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="level-band"><span class="level-band-pill b1">B1</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">Good morning / afternoon, this is [name].</td><td class="meaning">Introduce yourself on a call.</td><td class="example">Good morning — this is Alex from the development team.</td></tr>
+          <tr><td class="phrase">Is this a good time to talk?</td><td class="meaning">Check before starting.</td><td class="example">Hi Sarah — is this a good time to talk? It will only take a few minutes.</td></tr>
+          <tr><td class="phrase">I'm calling about…</td><td class="meaning">State the reason for the call.</td><td class="example">I'm calling about the invoice you sent last week.</td></tr>
+          <tr><td class="phrase">Could you speak more slowly?</td><td class="meaning">Ask someone to slow down.</td><td class="example">Sorry — could you speak a little more slowly? The connection isn't great.</td></tr>
+          <tr><td class="phrase">Sorry, I didn't catch that.</td><td class="meaning">Ask someone to repeat.</td><td class="example">Sorry — I didn't catch that last part. Could you repeat it?</td></tr>
+          <tr><td class="phrase">Let me put you on hold for a moment.</td><td class="meaning">Ask someone to wait.</td><td class="example">Let me put you on hold for a moment while I check that for you.</td></tr>
+          <tr><td class="phrase">I'll transfer you to the right department.</td><td class="meaning">Redirect a caller.</td><td class="example">I'll transfer you to the right department — just a moment.</td></tr>
+          <tr><td class="phrase">Can I take a message?</td><td class="meaning">Offer to note a message.</td><td class="example">She's not available right now — can I take a message?</td></tr>
+          <tr><td class="phrase">Thank you for calling — goodbye.</td><td class="meaning">End the call politely.</td><td class="example">Thank you for calling — have a great day. Goodbye!</td></tr>
+        </tbody>
+      </table>
+      <div class="level-band"><span class="level-band-pill b2">B2</span><hr></div>
+      <table class="vocab-table">
+        <thead><tr><th>Phrase</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="phrase">You're breaking up — I'm losing you.</td><td class="meaning">Signal poor audio quality.</td><td class="example">Sorry — you're breaking up. Can you repeat that?</td></tr>
+          <tr><td class="phrase">Can everyone mute when they're not speaking?</td><td class="meaning">Manage background noise on video calls.</td><td class="example">Could I ask everyone to mute when they're not speaking? There's a lot of background noise.</td></tr>
+          <tr><td class="phrase">Let me share my screen.</td><td class="meaning">Share visuals on a video call.</td><td class="example">Let me share my screen so we can look at the data together.</td></tr>
+          <tr><td class="phrase">Can everyone see my screen clearly?</td><td class="meaning">Confirm screen share is visible.</td><td class="example">Can everyone see my screen clearly? Just give me a thumbs up in the chat.</td></tr>
+          <tr><td class="phrase">Let's wrap up — I'll send a summary by end of day.</td><td class="meaning">Close a call and confirm next steps.</td><td class="example">Let's wrap up here — I'll send a summary of what we agreed by end of day.</td></tr>
+          <tr><td class="phrase">I think we got cut off — where were we?</td><td class="meaning">Recover from a dropped call.</td><td class="example">Sorry — I think we got cut off. Where were we exactly?</td></tr>
+          <tr><td class="phrase">Could you confirm your availability for a follow-up?</td><td class="meaning">Schedule the next call before closing.</td><td class="example">Before we finish — could you confirm your availability for a follow-up early next week?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 9 — PRACTICE
+  ═══════════════════════════════════ -->
+  <div class="section-heading" id="practice">
+    <div class="num">9</div>
+    <span class="cat-icon">✏️</span>
+    <h2>Practice Activities</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Interactive Quiz — Choose the Most Professional Option</div><div class="acc-desc">Click the option that sounds most natural and professional</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="quiz-container" id="quiz"></div>
+      <div style="margin-top:1rem;">
+        <button onclick="resetQuiz()" style="background:var(--navy);color:var(--white);border:none;border-radius:20px;padding:6px 18px;font-size:0.85rem;font-family:inherit;cursor:pointer;font-weight:600;">Reset quiz</button>
+        <span id="quiz-score" style="margin-left:12px;font-size:0.85rem;color:var(--text-muted);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Email Rewrite Exercise</div><div class="acc-desc">Upgrade these basic email phrases to B1/B2 level</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Task:</strong> Rewrite each informal or basic phrase to sound professional. Aim for B1 level — then try to make it even more natural at B2 level.</div>
+      <div class="exercise-box">
+        <p class="ex-label">Rewrite these phrases for a professional email</p>
+        <ol>
+          <li>"I'm writing because I want to ask about the job." <span class="ex-hint">→ More formal opening?</span></li>
+          <li>"Send me the report when you can." <span class="ex-hint">→ Polite request?</span></li>
+          <li>"Sorry for the late reply." <span class="ex-hint">→ Professional apology?</span></li>
+          <li>"Call me if you have questions." <span class="ex-hint">→ Formal closing offer?</span></li>
+          <li>"I talked to the team about it." <span class="ex-hint">→ Business verb?</span></li>
+          <li>"I will do the project by Friday." <span class="ex-hint">→ Stronger verb?</span></li>
+          <li>"Bye / Talk soon" <span class="ex-hint">→ Professional sign-off?</span></li>
+          <li>"Thanks for your help." <span class="ex-hint">→ More formal expression?</span></li>
+        </ol>
+      </div>
+      <div class="explain-box" style="margin-top:0.8rem;">
+        <strong>Model answer — example 1:</strong><br>
+        Basic: "I'm writing because I want to ask about the job."<br>
+        B1: "I am writing to enquire about the position advertised on your website."<br>
+        B2: "I am writing to express my interest in the role and to request further information about the selection process."
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Meeting Roleplay Scenarios</div><div class="acc-desc">Speaking practice — respond using phrases from this resource</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>How it works:</strong> Your teacher reads the prompt. You respond using appropriate B1 or B2 language from this resource. Try to use full sentences — not just single words.</div>
+      <div class="exercise-box">
+        <p class="ex-label">Respond to each situation</p>
+        <ol>
+          <li>You want to disagree with a colleague's suggestion in a meeting — do it politely.</li>
+          <li>Someone says something you didn't understand — ask them to clarify.</li>
+          <li>You want to add a point to what your colleague just said.</li>
+          <li>The meeting is going too long — suggest moving on.</li>
+          <li>You want to raise a concern about a deadline at the end of a meeting.</li>
+          <li>A client asks if you can lower your price significantly — respond professionally.</li>
+          <li>Your manager asks you to describe your biggest achievement.</li>
+          <li>You need to follow up on a task someone has not completed — do it professionally.</li>
+          <li>You are on a video call and someone's audio is breaking up — manage it.</li>
+          <li>You meet a new colleague at a company event — start a conversation.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">D</div><div><div class="acc-title">Full Written Worksheet</div><div class="acc-desc">Complete written practice covering all 8 categories</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="exercise-box">
+        <p class="ex-label">Part 1 — Choose the correct word (Meetings)</p>
+        <ol>
+          <li>Let's ______ the agenda before we start. (a) look (b) review (c) see</li>
+          <li>Can we ______ that point for the end? (a) put (b) park (c) stop)</li>
+          <li>I'd like to ______ something before we close. (a) say (b) flag (c) tell)</li>
+          <li>We need to ______ on the key takeaways. (a) decide (b) align (c) agree)</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 2 — Complete the email phrase</p>
+        <ol>
+          <li>I hope this ______ you well.</li>
+          <li>I am writing ______ behalf of our CEO.</li>
+          <li>Please ______ my sincere apologies for the delay.</li>
+          <li>I wanted to ______ back on the proposal from last week.</li>
+          <li>Would you be ______ to join a call on Thursday?</li>
+          <li>Please do not ______ to contact me with any questions.</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 3 — Upgrade the basic word (Reports)</p>
+        <ol>
+          <li>Sales <strong>went up</strong> by 20% in Q3. (more precise verb?)</li>
+          <li>The report <strong>shows</strong> a clear trend. (formal verb?)</li>
+          <li>We <strong>found</strong> three key issues. (formal verb?)</li>
+          <li>Prices <strong>went up and down</strong> throughout the year. (one word?)</li>
+          <li>The results <strong>did not reach</strong> our target. (formal phrase?)</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 4 — Speaking production (2–3 sentences each)</p>
+        <ol>
+          <li>You're in an interview. The interviewer says: "Tell me about yourself." — Respond.</li>
+          <li>Describe a time you solved a difficult problem at work. Use the STAR method.</li>
+          <li>You receive a low offer in a negotiation — respond professionally.</li>
+          <li>Write an opening line and closing line for a professional email to a client you have never met.</li>
+          <li>Describe your biggest professional achievement using B2 language.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOMEWORK -->
+  <div class="homework-box">
+    <p class="hw-label">Homework</p>
+    <h3>This Week's Business English Challenge</h3>
+    <p>Choose ONE of the following tasks and complete it in full. Bring it to your next lesson.</p>
+    <p><strong>Option A:</strong> Write a professional email to a client you have never met, introducing yourself and your company. Use phrases from the Emails section. Minimum 8 sentences.</p>
+    <p><strong>Option B:</strong> Prepare a 2-minute self-introduction as if you are at a job interview. Cover: your background, your strengths, one achievement, and why you want the role. Use the STAR method for the achievement.</p>
+    <div class="rule">Rule: Do not use "I think," "very," or "good" more than once in the entire text. Upgrade every instance.</div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <span>Business English</span> &nbsp;·&nbsp; B1 → B2 Professional Language &nbsp;·&nbsp; General Classroom Resource
+</footer>
+
+<script>
+  function toggle(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    body.classList.toggle('open', !isOpen);
+  }
+
+  const quizData = [
+    { q: "You want to politely disagree in a meeting. Which is most professional?", opts: ["I don't agree.", "I take your point, however the data suggests otherwise.", "You're wrong about that."], ans: 1 },
+    { q: "You want to follow up on an email professionally. Which phrase is best?", opts: ["I wanted to circle back on the proposal.", "Why haven't you replied?", "I am writing again because you didn't answer."], ans: 0 },
+    { q: "A client asks for a lower price. You cannot agree. Which is most professional?", opts: ["No, that's too low.", "That's not something we're in a position to agree to.", "We can't do that price."], ans: 1 },
+    { q: "In a presentation, you want to highlight a number. Which phrase is B2 level?", opts: ["Look at this number.", "I'd like to draw your attention to this figure.", "Here is an important thing."], ans: 1 },
+    { q: "You want to open a professional email to someone you haven't met before.", opts: ["Hello, I am writing to you today.", "I wanted to reach out regarding a potential opportunity.", "Hi, how are you?"], ans: 1 },
+    { q: "The video call audio is bad. Which phrase is most appropriate?", opts: ["I can't hear you — speak louder.", "You're breaking up — could you repeat that?", "The call is bad."], ans: 1 },
+    { q: "At a networking event, you meet someone new. Which is the best opener?", opts: ["What do you do?", "It's good to finally put a face to the name — I've heard great things.", "Are you here for work?"], ans: 1 },
+    { q: "In a job interview, you want to describe a problem you solved. Which structure is best?", opts: ["I solved a problem once at my old job.", "Using the STAR method: I described the situation, my task, my action, and the result.", "I had a problem and I fixed it successfully."], ans: 1 },
+    { q: "You want to end an email professionally after making a request.", opts: ["Bye!", "I look forward to hearing from you at your earliest convenience.", "Please answer me soon."], ans: 1 },
+    { q: "In a negotiation, you want to suggest a compromise. Which phrase is best?", opts: ["Let's split it.", "We'd be prepared to consider a reduced rate on the condition that you commit to 12 months.", "Can't you just lower it?"], ans: 1 },
+    { q: "In a report, which word best replaces 'went up'?", opts: ["surged", "went higher", "become more"], ans: 0 },
+    { q: "You want to postpone a topic in a meeting. Which phrase is best?", opts: ["Stop. We'll talk about that later.", "Can we park that and come back to it at the end?", "That's not for now."], ans: 1 },
+  ];
+
+  let answered = 0, correct = 0;
+
+  function buildQuiz() {
+    const container = document.getElementById('quiz');
+    container.innerHTML = '';
+    answered = 0; correct = 0;
+    document.getElementById('quiz-score').textContent = '';
+    quizData.forEach((item, qi) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.innerHTML = `<p>${qi + 1}. ${item.q}</p><div class="quiz-options" id="q${qi}"></div>`;
+      container.appendChild(div);
+      const opts = div.querySelector(`#q${qi}`);
+      item.opts.forEach((opt, oi) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-opt';
+        btn.textContent = opt;
+        btn.onclick = () => checkAnswer(qi, oi, item.ans);
+        opts.appendChild(btn);
+      });
+    });
+  }
+
+  function checkAnswer(qi, chosen, correct_idx) {
+    const optBtns = document.querySelectorAll(`#q${qi} .quiz-opt`);
+    optBtns.forEach((b, i) => {
+      b.classList.add('disabled');
+      if (i === correct_idx) b.classList.add('correct');
+      else if (i === chosen && chosen !== correct_idx) b.classList.add('wrong');
+    });
+    answered++;
+    if (chosen === correct_idx) correct++;
+    if (answered === quizData.length) {
+      document.getElementById('quiz-score').textContent = `Score: ${correct} / ${quizData.length}`;
+    }
+  }
+
+  function resetQuiz() { buildQuiz(); }
+  buildQuiz();
+</script>
+</body>
+</html>
