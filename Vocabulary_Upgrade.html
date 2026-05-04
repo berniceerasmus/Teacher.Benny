@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upgrading Your Vocabulary | A1/A2 → B1/B2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2240;
+    --navy-mid: #1a3a5c;
+    --navy-light: #2a5080;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #fdf6e3;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text-dark: #0d2240;
+    --text-mid: #2a4060;
+    --text-muted: #6b7f99;
+    --border: #d6dfe8;
+    --success-bg: #eaf4ee;
+    --success: #2d7a4f;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 16px; }
+
+  /* HEADER */
+  .site-header { background: var(--navy); color: var(--white); padding: 3rem 2rem 2.5rem; text-align: center; border-bottom: 4px solid var(--gold); }
+  .site-header .label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 600; }
+  .site-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.2; }
+  .site-header h1 span { color: var(--gold-light); }
+  .site-header .subtitle { font-size: 1rem; color: #9ab4cc; max-width: 520px; margin: 0 auto; }
+  .level-badges { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .badge { background: var(--navy-mid); border: 1.5px solid var(--gold); color: var(--gold-light); font-size: 13px; font-weight: 600; padding: 5px 18px; border-radius: 20px; letter-spacing: 0.05em; }
+
+  /* CONTAINER */
+  .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  /* INTRO */
+  .intro-box { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 1.6rem 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--gold); }
+  .intro-box .intro-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-light); font-weight: 600; margin-bottom: 0.5rem; }
+  .intro-box p { font-size: 1rem; color: #c8d8e8; margin-bottom: 0.8rem; }
+  .example-bad { background: rgba(255,255,255,0.07); border-radius: var(--radius-sm); padding: 0.8rem 1.2rem; font-style: italic; color: #f0d090; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .example-arrow { color: var(--gold-light); font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem; }
+
+  /* SECTION HEADING */
+  .section-heading { display: flex; align-items: center; gap: 0.8rem; margin: 2.5rem 0 1rem; }
+  .section-heading .num { background: var(--navy); color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-heading h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); }
+
+  /* ACCORDION */
+  .accordion { border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow 0.2s; }
+  .accordion:hover { box-shadow: 0 2px 12px rgba(13,34,64,0.09); }
+  .accordion-btn { width: 100%; background: none; border: none; cursor: pointer; text-align: left; padding: 1rem 1.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: background 0.15s; }
+  .accordion-btn:hover { background: #f5f8fc; }
+  .accordion-btn.open { background: var(--navy); }
+  .accordion-btn .btn-left { display: flex; align-items: center; gap: 0.8rem; }
+  .acc-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--gold-pale); border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; color: var(--navy); font-weight: 600; transition: background 0.15s, border-color 0.15s; }
+  .accordion-btn.open .acc-icon { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .acc-title { font-weight: 600; font-size: 1rem; color: var(--text-dark); transition: color 0.15s; }
+  .accordion-btn.open .acc-title { color: var(--white); }
+  .acc-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; transition: color 0.15s; }
+  .accordion-btn.open .acc-desc { color: #9ab4cc; }
+  .acc-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--text-muted); transition: transform 0.25s, color 0.15s; }
+  .accordion-btn.open .acc-chevron { transform: rotate(180deg); color: var(--gold-light); }
+  .accordion-body { display: none; padding: 1.4rem 1.6rem 1.6rem; border-top: 1px solid var(--border); animation: fadeIn 0.2s ease; }
+  .accordion-body.open { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+  /* EXPLAIN BOX */
+  .explain-box { background: #edf3fa; border-left: 4px solid var(--navy-light); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 0.9rem 1.1rem; margin-bottom: 1.2rem; font-size: 0.93rem; color: var(--text-mid); }
+  .explain-box strong { color: var(--navy); font-weight: 600; }
+
+  /* VOCAB TABLE */
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.8rem 0 1.2rem; }
+  .vocab-table thead tr { background: var(--navy); color: var(--gold-light); }
+  .vocab-table thead th { padding: 8px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; text-align: left; }
+  .vocab-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .vocab-table thead th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .vocab-table tbody tr:nth-child(odd) { background: var(--cream); }
+  .vocab-table tbody tr:nth-child(even) { background: var(--white); }
+  .vocab-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .vocab-table .basic { color: var(--text-muted); }
+  .vocab-table .upgrade { color: var(--navy); font-weight: 600; }
+  .vocab-table .example { color: var(--text-mid); font-style: italic; font-size: 0.83rem; }
+
+  /* WHEN GRID */
+  .when-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.8rem 0 1.2rem; }
+  @media (max-width: 560px) { .when-grid { grid-template-columns: 1fr; } }
+  .when-card { border-radius: var(--radius-sm); padding: 0.8rem 1rem; font-size: 0.88rem; }
+  .when-card.use { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
+  .when-card.avoid { background: #fdf0f0; border-left: 3px solid #c0392b; color: #8b1a1a; }
+  .when-card .wc-label { font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* EXERCISE BOX */
+  .exercise-box { background: var(--gold-pale); border: 1.5px solid var(--gold); border-radius: var(--radius); padding: 1.2rem 1.4rem; margin: 1rem 0; }
+  .exercise-box .ex-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; color: #8a6200; margin-bottom: 0.6rem; }
+  .exercise-box ol, .exercise-box ul { padding-left: 1.4rem; font-size: 0.93rem; color: var(--text-mid); }
+  .exercise-box li { margin-bottom: 0.35rem; }
+  .ex-sentence { font-style: italic; }
+  .ex-hint { color: #a07800; font-size: 0.8rem; font-weight: 600; margin-left: 6px; }
+
+  /* CHALLENGE GRID */
+  .challenge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 0.8rem 0; }
+  .challenge-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 0.85rem; }
+  .challenge-card .basic-word { color: var(--text-muted); font-size: 0.8rem; }
+  .challenge-card .upgrade-word { color: var(--navy); font-weight: 600; margin-top: 2px; }
+
+  /* QUIZ */
+  .quiz-container { margin: 1rem 0; }
+  .quiz-question { margin-bottom: 1.2rem; }
+  .quiz-question p { font-size: 0.93rem; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-mid); }
+  .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .quiz-opt { background: var(--cream); border: 1.5px solid var(--border); border-radius: 20px; padding: 5px 16px; font-size: 0.88rem; cursor: pointer; transition: all 0.15s; color: var(--text-mid); font-family: inherit; }
+  .quiz-opt:hover { border-color: var(--navy-light); color: var(--navy); }
+  .quiz-opt.correct { background: var(--success-bg); border-color: var(--success); color: var(--success); font-weight: 600; }
+  .quiz-opt.wrong { background: #fdf0f0; border-color: #c0392b; color: #8b1a1a; }
+  .quiz-opt.disabled { cursor: default; pointer-events: none; }
+
+  /* VERB GROUP */
+  .verb-group { margin-bottom: 1.5rem; }
+  .verb-group h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; border-bottom: 2px solid var(--gold); padding-bottom: 4px; display: inline-block; }
+
+  /* TECH TOGGLE */
+  .tech-toggle-wrap { text-align: center; margin: 3rem 0 1.5rem; }
+  .tech-toggle-btn { background: var(--navy); color: var(--white); border: 2px solid var(--gold); border-radius: 30px; padding: 0.7rem 2rem; font-size: 0.95rem; font-family: inherit; font-weight: 600; cursor: pointer; letter-spacing: 0.04em; transition: all 0.2s; }
+  .tech-toggle-btn:hover { background: var(--gold); color: var(--navy); }
+  .tech-toggle-btn .arrow { display: inline-block; margin-left: 6px; transition: transform 0.25s; }
+  .tech-toggle-btn.open .arrow { transform: rotate(180deg); }
+  .tech-section { display: none; border: 2px solid var(--gold); border-radius: var(--radius); background: var(--white); margin-top: 1rem; overflow: hidden; }
+  .tech-section.open { display: block; animation: fadeIn 0.25s ease; }
+  .tech-section-header { background: var(--navy); padding: 1.4rem 1.8rem; border-bottom: 3px solid var(--gold); }
+  .tech-section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); }
+  .tech-section-header p { font-size: 0.88rem; color: #9ab4cc; margin-top: 4px; }
+  .tech-section-body { padding: 1.6rem; }
+  .tech-acc-icon { background: var(--navy); border-color: var(--gold); color: var(--gold-light); }
+
+  /* HOMEWORK */
+  .homework-box { background: var(--navy); border-radius: var(--radius); padding: 1.6rem 2rem; margin-top: 2.5rem; color: var(--white); }
+  .homework-box .hw-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-light); font-weight: 700; margin-bottom: 0.8rem; }
+  .homework-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 0.5rem; }
+  .homework-box p { font-size: 0.93rem; color: #b8ccdf; }
+  .homework-box .rule { background: rgba(201,168,76,0.15); border: 1px solid var(--gold); border-radius: var(--radius-sm); padding: 0.6rem 1rem; margin-top: 0.8rem; font-size: 0.9rem; color: var(--gold-light); }
+
+  /* COLLOCATION BOX */
+  .colloc-box { background: var(--navy-mid); border-radius: var(--radius-sm); padding: 0.8rem 1.2rem; margin: 0.8rem 0; }
+  .colloc-box .colloc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-light); font-weight: 700; margin-bottom: 6px; }
+  .colloc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .colloc-tag { background: rgba(201,168,76,0.18); border: 1px solid var(--gold); border-radius: 14px; padding: 3px 12px; font-size: 0.82rem; color: var(--gold-light); }
+
+  /* FOOTER */
+  .site-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 2rem; }
+  .site-footer span { color: var(--navy); font-weight: 600; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .container { padding: 1.5rem 1rem 3rem; }
+    .vocab-table thead { display: none; }
+    .vocab-table tr { display: block; border-bottom: 2px solid var(--border); margin-bottom: 8px; }
+    .vocab-table td { display: block; padding: 4px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <p class="label">English Language Resource</p>
+  <h1>Upgrading Your <span>Vocabulary</span></h1>
+  <p class="subtitle">Move from basic to natural, expressive English — one upgrade at a time.</p>
+  <div class="level-badges">
+    <span class="badge">A1 / A2 Basic</span>
+    <span class="badge" style="background:var(--gold);color:var(--navy);border-color:var(--gold);">→</span>
+    <span class="badge">B1 / B2 Natural</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="intro-box">
+    <p class="intro-label">Why This Matters</p>
+    <p>Using the same basic words makes your English sound flat and repetitive. Small upgrades make a big difference to how natural and confident you sound.</p>
+    <div class="example-bad">"I was very tired because I had a very busy day. The meeting was very long and very boring."</div>
+    <p class="example-arrow">▸ Every "very" in this sentence can be replaced with one strong, natural word.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — INTENSIFIERS / SIZE & DEGREE
+  ═══════════════════════════════════════════ -->
+  <div class="section-heading">
+    <div class="num">1</div>
+    <h2>Intensifiers — Stop Using "Very"</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">What is this? &amp; When to use it</div><div class="acc-desc">Understand the rule before practising</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box">
+        <strong>What is an intensifier?</strong> It is a word that makes an adjective stronger. In basic English, people use "very" for everything. In natural English, we choose one powerful adjective instead.<br><br>
+        <strong>The rule:</strong> Instead of <em>very + adjective</em>, use one stronger word.<br><br>
+        <strong>Tip:</strong> You can also say "absolutely" or "completely" before the upgraded word for extra emphasis. Example: "absolutely exhausted" or "completely swamped."
+      </div>
+      <div class="when-grid">
+        <div class="when-card use"><div class="wc-label">✓ Use this when</div>Telling stories, describing experiences, speaking in meetings, or writing emails. These upgrades work in both formal and informal English.</div>
+        <div class="when-card avoid"><div class="wc-label">✗ One rule</div>Only use an upgrade if you are sure of the meaning. A wrong strong word sounds worse than "very." Learn the word in context first.</div>
+      </div>
+      <div class="colloc-box">
+        <div class="colloc-label">Natural collocations — use these often</div>
+        <div class="colloc-tags">
+          <span class="colloc-tag">absolutely exhausted</span><span class="colloc-tag">completely swamped</span><span class="colloc-tag">incredibly frustrating</span><span class="colloc-tag">deeply disappointed</span><span class="colloc-tag">totally overwhelmed</span><span class="colloc-tag">absolutely freezing</span><span class="colloc-tag">utterly dull</span><span class="colloc-tag">genuinely fascinating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Size, Degree &amp; Physical Description</div><div class="acc-desc">big, small, hot, cold, fast, slow, loud, dark and more (~35 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">very big</td><td class="upgrade">huge / enormous / massive</td><td class="example">The stadium was absolutely enormous.</td></tr>
+          <tr><td class="basic">very small</td><td class="upgrade">tiny / compact / minuscule</td><td class="example">The apartment was tiny but well designed.</td></tr>
+          <tr><td class="basic">very tall</td><td class="upgrade">towering / imposing</td><td class="example">The building is towering over the whole street.</td></tr>
+          <tr><td class="basic">very short</td><td class="upgrade">brief / compact</td><td class="example">The meeting was refreshingly brief.</td></tr>
+          <tr><td class="basic">very long</td><td class="upgrade">lengthy / extensive / prolonged</td><td class="example">It was a lengthy process but worth it.</td></tr>
+          <tr><td class="basic">very fast</td><td class="upgrade">rapid / swift / lightning-fast</td><td class="example">The system showed rapid improvement.</td></tr>
+          <tr><td class="basic">very slow</td><td class="upgrade">sluggish / gradual / painfully slow</td><td class="example">The connection was sluggish all morning.</td></tr>
+          <tr><td class="basic">very hot</td><td class="upgrade">scorching / boiling / sweltering</td><td class="example">It was absolutely scorching outside yesterday.</td></tr>
+          <tr><td class="basic">very cold</td><td class="upgrade">freezing / bitter / icy</td><td class="example">It was bitterly cold on the way in.</td></tr>
+          <tr><td class="basic">very warm</td><td class="upgrade">mild / pleasant / balmy</td><td class="example">The weather was pleasantly mild for October.</td></tr>
+          <tr><td class="basic">very cool</td><td class="upgrade">chilly / crisp / brisk</td><td class="example">There was a crisp breeze in the morning.</td></tr>
+          <tr><td class="basic">very loud</td><td class="upgrade">deafening / thunderous / ear-splitting</td><td class="example">The noise in the office was deafening.</td></tr>
+          <tr><td class="basic">very quiet</td><td class="upgrade">silent / hushed / peaceful</td><td class="example">The room fell completely silent.</td></tr>
+          <tr><td class="basic">very bright</td><td class="upgrade">dazzling / brilliant / blinding</td><td class="example">The screen was blinding in the dark.</td></tr>
+          <tr><td class="basic">very dark</td><td class="upgrade">pitch-black / dim / gloomy</td><td class="example">The corridor was pitch-black.</td></tr>
+          <tr><td class="basic">very heavy</td><td class="upgrade">weighty / cumbersome / burdensome</td><td class="example">The workload felt cumbersome this month.</td></tr>
+          <tr><td class="basic">very light</td><td class="upgrade">featherlight / minimal / negligible</td><td class="example">The laptop is featherlight — perfect for travel.</td></tr>
+          <tr><td class="basic">very wide</td><td class="upgrade">vast / sprawling / expansive</td><td class="example">The topic is vast — we focused on one area.</td></tr>
+          <tr><td class="basic">very narrow</td><td class="upgrade">tight / limited / restricted</td><td class="example">The deadline is tight — we need to move fast.</td></tr>
+          <tr><td class="basic">very deep</td><td class="upgrade">profound / extensive / thorough</td><td class="example">She has a profound understanding of the system.</td></tr>
+          <tr><td class="basic">very sharp</td><td class="upgrade">acute / precise / razor-sharp</td><td class="example">He has a razor-sharp eye for detail.</td></tr>
+          <tr><td class="basic">very soft</td><td class="upgrade">gentle / subtle / delicate</td><td class="example">The design is subtle and professional.</td></tr>
+          <tr><td class="basic">very hard</td><td class="upgrade">rigid / firm / unyielding</td><td class="example">The deadline is firm — no extensions.</td></tr>
+          <tr><td class="basic">very full</td><td class="upgrade">packed / overflowing / crammed</td><td class="example">The room was packed with people.</td></tr>
+          <tr><td class="basic">very empty</td><td class="upgrade">deserted / bare / vacant</td><td class="example">The office was completely deserted by 7pm.</td></tr>
+          <tr><td class="basic">very crowded</td><td class="upgrade">packed / jam-packed / heaving</td><td class="example">The platform was absolutely heaving.</td></tr>
+          <tr><td class="basic">very clean</td><td class="upgrade">spotless / immaculate / pristine</td><td class="example">The new office is absolutely pristine.</td></tr>
+          <tr><td class="basic">very dirty</td><td class="upgrade">filthy / grimy / contaminated</td><td class="example">The keyboard was absolutely filthy.</td></tr>
+          <tr><td class="basic">very wet</td><td class="upgrade">soaking / drenched / saturated</td><td class="example">I got absolutely drenched on the way here.</td></tr>
+          <tr><td class="basic">very dry</td><td class="upgrade">parched / arid / bone-dry</td><td class="example">The air conditioning left my throat bone-dry.</td></tr>
+          <tr><td class="basic">very smooth</td><td class="upgrade">seamless / effortless / polished</td><td class="example">The handover was completely seamless.</td></tr>
+          <tr><td class="basic">very rough</td><td class="upgrade">turbulent / chaotic / uneven</td><td class="example">It was a turbulent few weeks for the team.</td></tr>
+          <tr><td class="basic">very near</td><td class="upgrade">close / adjacent / within reach</td><td class="example">The deadline is well within reach now.</td></tr>
+          <tr><td class="basic">very far</td><td class="upgrade">distant / remote / out of reach</td><td class="example">That goal seems distant right now.</td></tr>
+          <tr><td class="basic">very old</td><td class="upgrade">ancient / outdated / obsolete</td><td class="example">The software is completely obsolete.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Quality, Value &amp; Evaluation</div><div class="acc-desc">good, bad, interesting, boring, important, easy, difficult (~35 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">very good</td><td class="upgrade">excellent / outstanding / superb</td><td class="example">The results were absolutely outstanding.</td></tr>
+          <tr><td class="basic">very bad</td><td class="upgrade">awful / terrible / dreadful</td><td class="example">The traffic was absolutely dreadful this morning.</td></tr>
+          <tr><td class="basic">very interesting</td><td class="upgrade">fascinating / compelling / captivating</td><td class="example">The documentary was genuinely captivating.</td></tr>
+          <tr><td class="basic">very boring</td><td class="upgrade">dull / tedious / mind-numbing</td><td class="example">The report was utterly tedious to read.</td></tr>
+          <tr><td class="basic">very difficult</td><td class="upgrade">challenging / demanding / gruelling</td><td class="example">It was a gruelling week but we got through it.</td></tr>
+          <tr><td class="basic">very easy</td><td class="upgrade">effortless / straightforward / simple</td><td class="example">Once I understood it, the process was effortless.</td></tr>
+          <tr><td class="basic">very important</td><td class="upgrade">crucial / vital / critical / essential</td><td class="example">Clear communication is absolutely crucial here.</td></tr>
+          <tr><td class="basic">very useful</td><td class="upgrade">practical / invaluable / indispensable</td><td class="example">This tool has been absolutely invaluable.</td></tr>
+          <tr><td class="basic">very helpful</td><td class="upgrade">supportive / constructive / insightful</td><td class="example">Her feedback was incredibly constructive.</td></tr>
+          <tr><td class="basic">very expensive</td><td class="upgrade">pricey / costly / steep / extravagant</td><td class="example">The upgrade is quite steep but worth considering.</td></tr>
+          <tr><td class="basic">very cheap</td><td class="upgrade">affordable / budget-friendly / economical</td><td class="example">The solution is surprisingly economical.</td></tr>
+          <tr><td class="basic">very nice</td><td class="upgrade">pleasant / delightful / charming</td><td class="example">The new office is genuinely delightful.</td></tr>
+          <tr><td class="basic">very great</td><td class="upgrade">fantastic / remarkable / extraordinary</td><td class="example">The team did a truly remarkable job.</td></tr>
+          <tr><td class="basic">very amazing</td><td class="upgrade">incredible / breathtaking / staggering</td><td class="example">The growth this quarter has been staggering.</td></tr>
+          <tr><td class="basic">very strange</td><td class="upgrade">bizarre / peculiar / unusual</td><td class="example">His reaction was genuinely bizarre.</td></tr>
+          <tr><td class="basic">very normal</td><td class="upgrade">standard / typical / conventional</td><td class="example">This is a completely standard procedure.</td></tr>
+          <tr><td class="basic">very different</td><td class="upgrade">distinct / unique / contrasting</td><td class="example">The two approaches are entirely distinct.</td></tr>
+          <tr><td class="basic">very same</td><td class="upgrade">identical / consistent / uniform</td><td class="example">The results were almost identical both times.</td></tr>
+          <tr><td class="basic">very new</td><td class="upgrade">brand-new / cutting-edge / state-of-the-art</td><td class="example">We are using a cutting-edge platform.</td></tr>
+          <tr><td class="basic">very old-fashioned</td><td class="upgrade">outdated / obsolete / antiquated</td><td class="example">The system is completely outdated — we need to upgrade.</td></tr>
+          <tr><td class="basic">very popular</td><td class="upgrade">widely used / dominant / mainstream</td><td class="example">This framework is now completely mainstream.</td></tr>
+          <tr><td class="basic">very rare</td><td class="upgrade">uncommon / exceptional / scarce</td><td class="example">This kind of feedback is genuinely exceptional.</td></tr>
+          <tr><td class="basic">very common</td><td class="upgrade">widespread / prevalent / routine</td><td class="example">This is a fairly widespread issue.</td></tr>
+          <tr><td class="basic">very clear</td><td class="upgrade">obvious / transparent / evident</td><td class="example">The problem is quite evident from the data.</td></tr>
+          <tr><td class="basic">very unclear</td><td class="upgrade">ambiguous / vague / confusing</td><td class="example">The instructions were frustratingly ambiguous.</td></tr>
+          <tr><td class="basic">very complex</td><td class="upgrade">intricate / elaborate / sophisticated</td><td class="example">The architecture is extremely intricate.</td></tr>
+          <tr><td class="basic">very simple</td><td class="upgrade">straightforward / concise / streamlined</td><td class="example">The fix was surprisingly straightforward.</td></tr>
+          <tr><td class="basic">very successful</td><td class="upgrade">accomplished / thriving / prosperous</td><td class="example">The launch was genuinely accomplished.</td></tr>
+          <tr><td class="basic">very unsuccessful</td><td class="upgrade">ineffective / fruitless / failed</td><td class="example">The first attempt was completely fruitless.</td></tr>
+          <tr><td class="basic">very creative</td><td class="upgrade">innovative / inventive / original</td><td class="example">The solution was genuinely innovative.</td></tr>
+          <tr><td class="basic">very correct</td><td class="upgrade">accurate / precise / spot-on</td><td class="example">Your analysis is completely spot-on.</td></tr>
+          <tr><td class="basic">very wrong</td><td class="upgrade">incorrect / flawed / mistaken</td><td class="example">The assumption was fundamentally flawed.</td></tr>
+          <tr><td class="basic">very organized</td><td class="upgrade">structured / methodical / systematic</td><td class="example">Her approach is extremely methodical.</td></tr>
+          <tr><td class="basic">very messy</td><td class="upgrade">chaotic / disorganized / cluttered</td><td class="example">The codebase was completely chaotic.</td></tr>
+          <tr><td class="basic">very productive</td><td class="upgrade">efficient / high-performing / prolific</td><td class="example">It was an incredibly efficient session.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">D</div><div><div class="acc-title">Speed Challenge — Upgrade Instantly</div><div class="acc-desc">Basic word shown — say the upgrade without pausing</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>How it works:</strong> Your teacher shows a basic phrase. You say the upgrade instantly — no pausing. If you pause more than 3 seconds, move on.</div>
+      <div class="challenge-grid">
+        <div class="challenge-card"><div class="basic-word">very cold</div><div class="upgrade-word">freezing</div></div>
+        <div class="challenge-card"><div class="basic-word">very expensive</div><div class="upgrade-word">pricey</div></div>
+        <div class="challenge-card"><div class="basic-word">very funny</div><div class="upgrade-word">hilarious</div></div>
+        <div class="challenge-card"><div class="basic-word">very crowded</div><div class="upgrade-word">packed</div></div>
+        <div class="challenge-card"><div class="basic-word">very clean</div><div class="upgrade-word">spotless</div></div>
+        <div class="challenge-card"><div class="basic-word">very smart</div><div class="upgrade-word">brilliant</div></div>
+        <div class="challenge-card"><div class="basic-word">very fast</div><div class="upgrade-word">rapid</div></div>
+        <div class="challenge-card"><div class="basic-word">very big</div><div class="upgrade-word">enormous</div></div>
+        <div class="challenge-card"><div class="basic-word">very small</div><div class="upgrade-word">tiny</div></div>
+        <div class="challenge-card"><div class="basic-word">very busy</div><div class="upgrade-word">swamped</div></div>
+        <div class="challenge-card"><div class="basic-word">very tired</div><div class="upgrade-word">exhausted</div></div>
+        <div class="challenge-card"><div class="basic-word">very boring</div><div class="upgrade-word">tedious</div></div>
+        <div class="challenge-card"><div class="basic-word">very important</div><div class="upgrade-word">crucial</div></div>
+        <div class="challenge-card"><div class="basic-word">very difficult</div><div class="upgrade-word">challenging</div></div>
+        <div class="challenge-card"><div class="basic-word">very good</div><div class="upgrade-word">outstanding</div></div>
+        <div class="challenge-card"><div class="basic-word">very bad</div><div class="upgrade-word">dreadful</div></div>
+        <div class="challenge-card"><div class="basic-word">very interesting</div><div class="upgrade-word">fascinating</div></div>
+        <div class="challenge-card"><div class="basic-word">very loud</div><div class="upgrade-word">deafening</div></div>
+        <div class="challenge-card"><div class="basic-word">very quiet</div><div class="upgrade-word">silent</div></div>
+        <div class="challenge-card"><div class="basic-word">very hot</div><div class="upgrade-word">scorching</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — EMOTIONS
+  ═══════════════════════════════════════════ -->
+  <div class="section-heading">
+    <div class="num">2</div>
+    <h2>Emotions — Express Feelings Naturally</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">What is this? &amp; When to use it</div><div class="acc-desc">Why emotional vocabulary matters</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box">
+        <strong>Why upgrade emotion words?</strong> Words like "happy," "sad," and "angry" are correct but say very little. A precise emotion word tells people exactly how you felt and shows a much higher level of English.<br><br>
+        <strong>Adjective vs verb form:</strong> Many emotion words have two forms. "I was terrified" = how I felt. "It was terrifying" = what the situation was like. Both are correct — they describe different things.<br><br>
+        <strong>Nervous vs anxious:</strong> Nervous = short term, in the moment (before a presentation). Anxious = a longer-term feeling, sometimes a medical condition. Use carefully.
+      </div>
+      <div class="when-grid">
+        <div class="when-card use"><div class="wc-label">✓ Use this when</div>Telling stories about your past, describing how a situation made you feel, giving feedback, or talking about people.</div>
+        <div class="when-card avoid"><div class="wc-label">Note on strength</div>Some emotion words are very strong. "Devastated" is much stronger than "sad." Only use strong words when the feeling is genuinely strong.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Positive Emotions</div><div class="acc-desc">happy, excited, proud, relieved, grateful and more (~30 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">very happy</td><td class="upgrade">thrilled / delighted / overjoyed</td><td class="example">I was absolutely thrilled when I got the news.</td></tr>
+          <tr><td class="basic">very excited</td><td class="upgrade">ecstatic / buzzing / elated</td><td class="example">The whole team was buzzing after the launch.</td></tr>
+          <tr><td class="basic">very proud</td><td class="upgrade">honoured / immensely proud</td><td class="example">I felt deeply honoured to receive the award.</td></tr>
+          <tr><td class="basic">very glad</td><td class="upgrade">relieved / grateful / thankful</td><td class="example">I was so relieved when everything went smoothly.</td></tr>
+          <tr><td class="basic">very calm</td><td class="upgrade">composed / at ease / serene</td><td class="example">She stayed completely composed under pressure.</td></tr>
+          <tr><td class="basic">very relaxed</td><td class="upgrade">at ease / unwound / laid-back</td><td class="example">I finally felt completely at ease after the break.</td></tr>
+          <tr><td class="basic">very motivated</td><td class="upgrade">driven / determined / fired up</td><td class="example">I came back from the holiday feeling completely fired up.</td></tr>
+          <tr><td class="basic">very interested</td><td class="upgrade">intrigued / absorbed / captivated</td><td class="example">I was completely captivated by the project from day one.</td></tr>
+          <tr><td class="basic">very curious</td><td class="upgrade">intrigued / inquisitive / eager</td><td class="example">I was genuinely intrigued by his approach.</td></tr>
+          <tr><td class="basic">very hopeful</td><td class="upgrade">optimistic / confident / upbeat</td><td class="example">I feel genuinely optimistic about this quarter.</td></tr>
+          <tr><td class="basic">very satisfied</td><td class="upgrade">content / fulfilled / gratified</td><td class="example">I felt truly fulfilled after finishing the project.</td></tr>
+          <tr><td class="basic">very cheerful</td><td class="upgrade">upbeat / buoyant / radiant</td><td class="example">She came into the room absolutely radiant.</td></tr>
+          <tr><td class="basic">very grateful</td><td class="upgrade">deeply grateful / indebted / appreciative</td><td class="example">I am deeply grateful for your support.</td></tr>
+          <tr><td class="basic">very confident</td><td class="upgrade">self-assured / assured / poised</td><td class="example">She came across as calm and poised throughout.</td></tr>
+          <tr><td class="basic">very surprised (positive)</td><td class="upgrade">astonished / pleasantly surprised / blown away</td><td class="example">I was completely blown away by the results.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Negative &amp; Difficult Emotions</div><div class="acc-desc">sad, angry, scared, stressed, confused and more (~35 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">very sad</td><td class="upgrade">devastated / heartbroken / gutted</td><td class="example">I was completely gutted when I heard the news.</td></tr>
+          <tr><td class="basic">very angry</td><td class="upgrade">furious / livid / outraged</td><td class="example">I was absolutely livid when I saw the mistake.</td></tr>
+          <tr><td class="basic">very scared</td><td class="upgrade">terrified / petrified / horrified</td><td class="example">I am completely petrified of public speaking.</td></tr>
+          <tr><td class="basic">very nervous</td><td class="upgrade">anxious / on edge / apprehensive</td><td class="example">I felt on edge all morning before the interview.</td></tr>
+          <tr><td class="basic">very tired</td><td class="upgrade">exhausted / drained / burnt out</td><td class="example">I was completely drained by Friday evening.</td></tr>
+          <tr><td class="basic">very stressed</td><td class="upgrade">overwhelmed / under pressure / stretched</td><td class="example">I felt completely overwhelmed this week.</td></tr>
+          <tr><td class="basic">very worried</td><td class="upgrade">concerned / troubled / distressed</td><td class="example">I was genuinely concerned about the deadline.</td></tr>
+          <tr><td class="basic">very bored</td><td class="upgrade">fed up / disengaged / restless</td><td class="example">I was completely fed up by the end of the meeting.</td></tr>
+          <tr><td class="basic">very confused</td><td class="upgrade">puzzled / baffled / bewildered</td><td class="example">I was genuinely baffled by his response.</td></tr>
+          <tr><td class="basic">very embarrassed</td><td class="upgrade">mortified / humiliated / red-faced</td><td class="example">I was absolutely mortified when I sent the wrong file.</td></tr>
+          <tr><td class="basic">very disappointed</td><td class="upgrade">let down / disheartened / deflated</td><td class="example">I felt genuinely deflated after the rejection.</td></tr>
+          <tr><td class="basic">very frustrated</td><td class="upgrade">exasperated / aggravated / fed up</td><td class="example">I was completely exasperated by the delays.</td></tr>
+          <tr><td class="basic">very surprised (negative)</td><td class="upgrade">shocked / stunned / taken aback</td><td class="example">I was completely taken aback by his reaction.</td></tr>
+          <tr><td class="basic">very lonely</td><td class="upgrade">isolated / disconnected / cut off</td><td class="example">Working remotely can feel quite isolating.</td></tr>
+          <tr><td class="basic">very uncomfortable</td><td class="upgrade">uneasy / ill at ease / awkward</td><td class="example">I felt genuinely uneasy in that situation.</td></tr>
+          <tr><td class="basic">very unhappy</td><td class="upgrade">miserable / wretched / despondent</td><td class="example">She seemed genuinely miserable at the event.</td></tr>
+          <tr><td class="basic">very upset</td><td class="upgrade">distressed / distraught / shaken</td><td class="example">She was visibly shaken by the news.</td></tr>
+          <tr><td class="basic">very jealous</td><td class="upgrade">envious / resentful</td><td class="example">I won't lie — I was a bit envious of his setup.</td></tr>
+          <tr><td class="basic">very guilty</td><td class="upgrade">remorseful / ashamed / regretful</td><td class="example">I felt genuinely remorseful about the mistake.</td></tr>
+          <tr><td class="basic">very shocked</td><td class="upgrade">appalled / horrified / stunned</td><td class="example">I was absolutely appalled by the error.</td></tr>
+        </tbody>
+      </table>
+      <div class="colloc-box">
+        <div class="colloc-label">Strong emotion collocations</div>
+        <div class="colloc-tags">
+          <span class="colloc-tag">deeply disappointed</span><span class="colloc-tag">absolutely furious</span><span class="colloc-tag">completely devastated</span><span class="colloc-tag">visibly shaken</span><span class="colloc-tag">genuinely concerned</span><span class="colloc-tag">utterly exhausted</span><span class="colloc-tag">totally overwhelmed</span><span class="colloc-tag">genuinely mortified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">D</div><div><div class="acc-title">Speaking Challenge — Emotion Scenarios</div><div class="acc-desc">Describe each situation using upgraded emotion vocabulary</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>The rule:</strong> No "very" allowed. If you say it, your teacher will say "Upgrade?" — and you must reformulate immediately.</div>
+      <div class="exercise-box">
+        <p class="ex-label">Describe these situations using one upgraded emotion word</p>
+        <ol>
+          <li>You missed an important deadline at work.</li>
+          <li>You received unexpected great news.</li>
+          <li>You had to speak in front of 50 people.</li>
+          <li>You finished a very hard project.</li>
+          <li>You found out a colleague took credit for your work.</li>
+          <li>You got your dream job offer.</li>
+          <li>You had to wait 2 hours for a late colleague.</li>
+          <li>You accidentally deleted an important file.</li>
+          <li>You were given a surprise compliment by your manager.</li>
+          <li>You watched a film that changed how you think about something.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — PERSONALITY & CHARACTER
+  ═══════════════════════════════════════════ -->
+  <div class="section-heading">
+    <div class="num">3</div>
+    <h2>Personality &amp; Character — Describing People</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">What is this? &amp; When to use it</div><div class="acc-desc">Why describing people precisely matters</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box">
+        <strong>When do we describe people?</strong> In job interviews, feedback, telling stories, recommending someone, or just talking about your day.<br><br>
+        <strong>Key tip:</strong> Word choice matters — "reserved" sounds neutral and professional, while "shy" sounds more personal. "Unmotivated" is more professional than "lazy." Choose the right register for the context.<br><br>
+        <strong>Positive vs negative:</strong> Be careful — some personality words are clearly negative (cruel, arrogant). Use them carefully when describing real people.
+      </div>
+      <div class="when-grid">
+        <div class="when-card use"><div class="wc-label">✓ Use this when</div>Writing a reference, describing a colleague, talking about a character in a book or film, or answering "Tell me about yourself" in an interview.</div>
+        <div class="when-card avoid"><div class="wc-label">✗ Avoid when</div>You are not sure if the word is positive or negative in context. When in doubt, check a dictionary for an example sentence.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Positive Personality Traits</div><div class="acc-desc">smart, kind, brave, honest, creative and more (~30 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">smart</td><td class="upgrade">brilliant / sharp / astute</td><td class="example">She is incredibly astute — she spotted the issue immediately.</td></tr>
+          <tr><td class="basic">kind</td><td class="upgrade">compassionate / generous / warm-hearted</td><td class="example">He is genuinely warm-hearted with his whole team.</td></tr>
+          <tr><td class="basic">brave</td><td class="upgrade">courageous / bold / daring</td><td class="example">It was a bold decision to speak up in that meeting.</td></tr>
+          <tr><td class="basic">funny</td><td class="upgrade">witty / hilarious / sharp-humoured</td><td class="example">She has a genuinely witty sense of humour.</td></tr>
+          <tr><td class="basic">friendly</td><td class="upgrade">approachable / warm / sociable</td><td class="example">She has an approachable manner that people trust.</td></tr>
+          <tr><td class="basic">honest</td><td class="upgrade">trustworthy / straightforward / candid</td><td class="example">He is refreshingly candid — you always know where you stand.</td></tr>
+          <tr><td class="basic">hardworking</td><td class="upgrade">diligent / dedicated / industrious</td><td class="example">She is incredibly dedicated to her work.</td></tr>
+          <tr><td class="basic">calm</td><td class="upgrade">composed / level-headed / unflappable</td><td class="example">He is completely unflappable under pressure.</td></tr>
+          <tr><td class="basic">confident</td><td class="upgrade">self-assured / poised / assured</td><td class="example">She comes across as calm and self-assured.</td></tr>
+          <tr><td class="basic">polite</td><td class="upgrade">courteous / respectful / well-mannered</td><td class="example">He was extremely courteous throughout the meeting.</td></tr>
+          <tr><td class="basic">creative</td><td class="upgrade">innovative / inventive / imaginative</td><td class="example">She has a genuinely imaginative approach to problems.</td></tr>
+          <tr><td class="basic">careful</td><td class="upgrade">meticulous / thorough / methodical</td><td class="example">He is incredibly meticulous with his code reviews.</td></tr>
+          <tr><td class="basic">open</td><td class="upgrade">receptive / open-minded / flexible</td><td class="example">She is completely open-minded about new approaches.</td></tr>
+          <tr><td class="basic">reliable</td><td class="upgrade">dependable / consistent / trustworthy</td><td class="example">He is one of the most dependable people on the team.</td></tr>
+          <tr><td class="basic">patient</td><td class="upgrade">tolerant / even-tempered / measured</td><td class="example">She is incredibly measured even in stressful situations.</td></tr>
+          <tr><td class="basic">thoughtful</td><td class="upgrade">considerate / reflective / perceptive</td><td class="example">His feedback is always genuinely perceptive.</td></tr>
+          <tr><td class="basic">focused</td><td class="upgrade">driven / goal-oriented / determined</td><td class="example">She is extremely driven and never misses a deadline.</td></tr>
+          <tr><td class="basic">adaptable</td><td class="upgrade">versatile / flexible / resilient</td><td class="example">He is remarkably resilient — nothing phases him.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Negative &amp; Neutral Personality Traits</div><div class="acc-desc">shy, lazy, stubborn, serious, difficult and more (~30 words)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Note:</strong> Some of these words are more professional or neutral than the basic version. For example, "reserved" sounds more respectful than "shy" in a work context.</div>
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">shy</td><td class="upgrade">reserved / introverted / reticent</td><td class="example">He is quite reserved in large group meetings.</td></tr>
+          <tr><td class="basic">lazy</td><td class="upgrade">unmotivated / disengaged / complacent</td><td class="example">He seems completely complacent about the deadline.</td></tr>
+          <tr><td class="basic">stubborn</td><td class="upgrade">inflexible / rigid / single-minded</td><td class="example">She can be quite rigid when it comes to process.</td></tr>
+          <tr><td class="basic">serious</td><td class="upgrade">intense / professional / no-nonsense</td><td class="example">He has a very no-nonsense approach to his work.</td></tr>
+          <tr><td class="basic">mean</td><td class="upgrade">cruel / harsh / dismissive</td><td class="example">His feedback can be quite dismissive at times.</td></tr>
+          <tr><td class="basic">stupid</td><td class="upgrade">naive / misguided / shortsighted</td><td class="example">That was a genuinely shortsighted decision.</td></tr>
+          <tr><td class="basic">rude</td><td class="upgrade">abrasive / blunt / disrespectful</td><td class="example">His tone in the meeting was quite abrasive.</td></tr>
+          <tr><td class="basic">arrogant</td><td class="upgrade">overconfident / dismissive / egotistical</td><td class="example">He comes across as slightly overconfident at times.</td></tr>
+          <tr><td class="basic">difficult</td><td class="upgrade">demanding / challenging / hard to please</td><td class="example">He is a demanding client but very loyal.</td></tr>
+          <tr><td class="basic">over-sensitive</td><td class="upgrade">easily affected / emotional / reactive</td><td class="example">She can be quite reactive when under pressure.</td></tr>
+          <tr><td class="basic">quiet</td><td class="upgrade">reserved / composed / measured</td><td class="example">He is very measured in how he communicates.</td></tr>
+          <tr><td class="basic">talkative</td><td class="upgrade">outgoing / expressive / sociable</td><td class="example">She is very outgoing and loves collaborating.</td></tr>
+          <tr><td class="basic">bossy</td><td class="upgrade">assertive / directive / controlling</td><td class="example">He has a very directive leadership style.</td></tr>
+          <tr><td class="basic">indecisive</td><td class="upgrade">hesitant / cautious / non-committal</td><td class="example">He is very cautious before making major decisions.</td></tr>
+          <tr><td class="basic">distracted</td><td class="upgrade">unfocused / scattered / disengaged</td><td class="example">He seemed quite disengaged during the presentation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">D</div><div><div class="acc-title">Describing People — Speaking Practice</div><div class="acc-desc">Use upgraded vocabulary to describe real people and characters</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="exercise-box">
+        <p class="ex-label">Describe using upgraded vocabulary — 3–5 sentences each</p>
+        <ol>
+          <li>Describe your ideal colleague — what personality traits do they have?</li>
+          <li>Describe a manager or teacher who had a big impact on you.</li>
+          <li>Describe a difficult person you have worked or studied with.</li>
+          <li>Describe yourself — how would a colleague describe you?</li>
+          <li>Describe a famous person you find interesting — what makes them stand out?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4 — EVERYDAY VERBS
+  ═══════════════════════════════════════════ -->
+  <div class="section-heading">
+    <div class="num">4</div>
+    <h2>Everyday Verbs — GET, GO, MAKE, DO, HAVE</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">What is this? &amp; When to use it</div><div class="acc-desc">Why basic verbs hold your English back</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box">
+        <strong>The problem with GET, GO, MAKE, DO:</strong> These verbs are correct but very general. In natural, professional English, we use more specific verbs that carry more precise meaning.<br><br>
+        <strong>Example:</strong> "I got an email" is understandable — but "I received an email" is what a B2 speaker says.<br><br>
+        <strong>Tip:</strong> You do not need to replace every basic verb. Focus on written communication (emails, reports) and formal spoken contexts (presentations, interviews) first.
+      </div>
+      <div class="when-grid">
+        <div class="when-card use"><div class="wc-label">✓ Use this when</div>Writing emails, giving presentations, job interviews, or any professional context where you want to sound natural and precise.</div>
+        <div class="when-card avoid"><div class="wc-label">Note</div>In casual conversation, "get" and "go" are completely normal. You do not need to upgrade every sentence — only when it matters.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">GET → Precise Alternatives</div><div class="acc-desc">receive, arrive, gain, land, catch, obtain, secure (~30 phrases)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">get an email</td><td class="upgrade">receive an email</td><td class="example">I received an email from the client this morning.</td></tr>
+          <tr><td class="basic">get a message</td><td class="upgrade">receive a message</td><td class="example">I received a message from the team at 9am.</td></tr>
+          <tr><td class="basic">get feedback</td><td class="upgrade">receive feedback</td><td class="example">We received very constructive feedback.</td></tr>
+          <tr><td class="basic">get home</td><td class="upgrade">arrive home / head home</td><td class="example">I arrived home late and missed dinner.</td></tr>
+          <tr><td class="basic">get to work</td><td class="upgrade">arrive at work / commute to work</td><td class="example">I commute to work by metro — it takes 40 minutes.</td></tr>
+          <tr><td class="basic">get a job</td><td class="upgrade">land a job / secure a role</td><td class="example">She landed a job at a top tech firm in London.</td></tr>
+          <tr><td class="basic">get better</td><td class="upgrade">improve / recover / progress</td><td class="example">My English improves every week with practice.</td></tr>
+          <tr><td class="basic">get worse</td><td class="upgrade">deteriorate / decline / worsen</td><td class="example">The situation began to deteriorate by Thursday.</td></tr>
+          <tr><td class="basic">get sick</td><td class="upgrade">fall ill / come down with something</td><td class="example">I fell ill the night before the presentation.</td></tr>
+          <tr><td class="basic">get a cold</td><td class="upgrade">catch a cold / come down with a cold</td><td class="example">I came down with a cold at the worst possible time.</td></tr>
+          <tr><td class="basic">get ready</td><td class="upgrade">prepare / get prepared</td><td class="example">I spent the weekend preparing for the interview.</td></tr>
+          <tr><td class="basic">get married</td><td class="upgrade">tie the knot / get engaged first</td><td class="example">They tied the knot in a small ceremony abroad.</td></tr>
+          <tr><td class="basic">get experience</td><td class="upgrade">gain experience / build experience</td><td class="example">I gained valuable experience in that role.</td></tr>
+          <tr><td class="basic">get access</td><td class="upgrade">gain access / obtain access</td><td class="example">The user gained access to the system.</td></tr>
+          <tr><td class="basic">get results</td><td class="upgrade">obtain results / achieve results</td><td class="example">We obtained some very promising results.</td></tr>
+          <tr><td class="basic">get an opportunity</td><td class="upgrade">be offered an opportunity / seize an opportunity</td><td class="example">I was offered an opportunity I couldn't refuse.</td></tr>
+          <tr><td class="basic">get help</td><td class="upgrade">receive support / seek assistance</td><td class="example">I sought assistance from the senior developer.</td></tr>
+          <tr><td class="basic">get dressed</td><td class="upgrade">get ready / prepare for the day</td><td class="example">I get ready quickly — I don't like rushing.</td></tr>
+          <tr><td class="basic">get information</td><td class="upgrade">gather information / obtain information</td><td class="example">We gathered all the information we needed.</td></tr>
+          <tr><td class="basic">get permission</td><td class="upgrade">obtain permission / be granted permission</td><td class="example">I was granted permission to work remotely.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">GO → Natural Alternatives</div><div class="acc-desc">head, commute, proceed, increase, return and more (~25 phrases)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <table class="vocab-table">
+        <thead><tr><th>Basic</th><th>Upgrade</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td class="basic">go home</td><td class="upgrade">head home</td><td class="example">I headed home as soon as the meeting finished.</td></tr>
+          <tr><td class="basic">go to work</td><td class="upgrade">commute to work / head into the office</td><td class="example">I commute to work three times a week.</td></tr>
+          <tr><td class="basic">go to bed</td><td class="upgrade">turn in / head to bed</td><td class="example">I turned in early — I was absolutely exhausted.</td></tr>
+          <tr><td class="basic">go out</td><td class="upgrade">head out / go out for the evening</td><td class="example">We headed out for dinner after work.</td></tr>
+          <tr><td class="basic">go up (prices)</td><td class="upgrade">increase / rise / surge</td><td class="example">Prices surged by 15% this quarter.</td></tr>
+          <tr><td class="basic">go down (prices)</td><td class="upgrade">decrease / drop / fall / decline</td><td class="example">Performance declined after the last update.</td></tr>
+          <tr><td class="basic">go wrong</td><td class="upgrade">malfunction / fail / break down</td><td class="example">The system malfunctioned during the demo.</td></tr>
+          <tr><td class="basic">go fast</td><td class="upgrade">speed up / accelerate / surge ahead</td><td class="example">The project accelerated once we had the right team.</td></tr>
+          <tr><td class="basic">go slow</td><td class="upgrade">slow down / take longer than expected</td><td class="example">Progress slowed down significantly in week 3.</td></tr>
+          <tr><td class="basic">go crazy</td><td class="upgrade">lose control / spiral / go off the rails</td><td class="example">The schedule completely went off the rails.</td></tr>
+          <tr><td class="basic">go ahead</td><td class="upgrade">proceed / move forward</td><td class="example">Let's proceed with the original plan.</td></tr>
+          <tr><td class="basic">go back</td><td class="upgrade">return / revert / go back to</td><td class="example">We reverted to the previous version of the file.</td></tr>
+          <tr><td class="basic">go through a problem</td><td class="upgrade">face a challenge / deal with an issue</td><td class="example">We faced several challenges in the first sprint.</td></tr>
+          <tr><td class="basic">go abroad</td><td class="upgrade">travel abroad / work internationally</td><td class="example">She decided to travel abroad for the summer.</td></tr>
+          <tr><td class="basic">go bankrupt</td><td class="upgrade">file for bankruptcy / go under / collapse</td><td class="example">The company collapsed after three difficult years.</td></tr>
+          <tr><td class="basic">go on holiday</td><td class="upgrade">take a break / travel / go on leave</td><td class="example">I am taking two weeks off in August.</td></tr>
+          <tr><td class="basic">go over something</td><td class="upgrade">review / go through / examine</td><td class="example">Can we review the contract together?</td></tr>
+          <tr><td class="basic">go live</td><td class="upgrade">launch / deploy / go public</td><td class="example">We deployed the new version on Friday morning.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">D</div><div><div class="acc-title">MAKE, DO, HAVE → Stronger Collocations</div><div class="acc-desc">reach, conduct, hold, deliver, implement and more (~30 phrases)</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="verb-group">
+        <h4>MAKE →</h4>
+        <table class="vocab-table">
+          <thead><tr><th>Basic</th><th>Upgrade</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td class="basic">make a decision</td><td class="upgrade">reach a decision / come to a decision</td><td class="example">We reached a decision after a long discussion.</td></tr>
+            <tr><td class="basic">make a mistake</td><td class="upgrade">commit an error / make an error</td><td class="example">I made a critical error in the report.</td></tr>
+            <tr><td class="basic">make money</td><td class="upgrade">earn money / generate revenue</td><td class="example">The product generated significant revenue in Q3.</td></tr>
+            <tr><td class="basic">make a plan</td><td class="upgrade">develop a plan / draw up a plan</td><td class="example">We drew up a clear plan for the rollout.</td></tr>
+            <tr><td class="basic">make progress</td><td class="upgrade">achieve progress / make headway</td><td class="example">We made real headway on the backlog this week.</td></tr>
+            <tr><td class="basic">make an effort</td><td class="upgrade">put in effort / make a concerted effort</td><td class="example">She made a concerted effort to improve her workflow.</td></tr>
+            <tr><td class="basic">make an appointment</td><td class="upgrade">schedule a meeting / book a slot</td><td class="example">Can we schedule a call for Thursday afternoon?</td></tr>
+            <tr><td class="basic">make changes</td><td class="upgrade">implement changes / introduce changes</td><td class="example">We implemented several key changes to the interface.</td></tr>
+            <tr><td class="basic">make a suggestion</td><td class="upgrade">put forward a suggestion / propose</td><td class="example">I would like to propose a slightly different approach.</td></tr>
+            <tr><td class="basic">make sure</td><td class="upgrade">ensure / verify / confirm</td><td class="example">Please ensure all files are backed up before you start.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="verb-group">
+        <h4>DO →</h4>
+        <table class="vocab-table">
+          <thead><tr><th>Basic</th><th>Upgrade</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td class="basic">do work</td><td class="upgrade">carry out work / undertake work</td><td class="example">I carried out the performance review independently.</td></tr>
+            <tr><td class="basic">do research</td><td class="upgrade">conduct research / carry out research</td><td class="example">We conducted thorough research before the launch.</td></tr>
+            <tr><td class="basic">do business</td><td class="upgrade">conduct business / operate</td><td class="example">We conduct business in four countries.</td></tr>
+            <tr><td class="basic">do exercise</td><td class="upgrade">work out / train / exercise regularly</td><td class="example">I work out three times a week to manage stress.</td></tr>
+            <tr><td class="basic">do a presentation</td><td class="upgrade">deliver a presentation / give a talk</td><td class="example">I delivered a presentation to the board last Friday.</td></tr>
+            <tr><td class="basic">do well</td><td class="upgrade">perform well / excel / thrive</td><td class="example">She is really thriving in her new role.</td></tr>
+            <tr><td class="basic">do badly</td><td class="upgrade">underperform / struggle / fall short</td><td class="example">The team fell short of the target this sprint.</td></tr>
+            <tr><td class="basic">do something wrong</td><td class="upgrade">make an error / mess up / get it wrong</td><td class="example">I completely got it wrong on the first attempt.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="verb-group">
+        <h4>HAVE →</h4>
+        <table class="vocab-table">
+          <thead><tr><th>Basic</th><th>Upgrade</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td class="basic">have a meeting</td><td class="upgrade">hold a meeting / attend a meeting</td><td class="example">We held a brief review meeting on Monday morning.</td></tr>
+            <tr><td class="basic">have a discussion</td><td class="upgrade">hold a discussion / engage in a discussion</td><td class="example">We engaged in a productive discussion about strategy.</td></tr>
+            <tr><td class="basic">have an idea</td><td class="upgrade">come up with an idea / develop an idea</td><td class="example">She came up with a brilliant solution overnight.</td></tr>
+            <tr><td class="basic">have a problem</td><td class="upgrade">encounter a problem / face an issue</td><td class="example">We encountered a serious issue during testing.</td></tr>
+            <tr><td class="basic">have lunch</td><td class="upgrade">grab lunch / have a working lunch</td><td class="example">We grabbed lunch and kept talking about the project.</td></tr>
+            <tr><td class="basic">have a break</td><td class="upgrade">take a break / step away / recharge</td><td class="example">I took a short break to clear my head.</td></tr>
+            <tr><td class="basic">have experience</td><td class="upgrade">bring experience / draw on experience</td><td class="example">She brings extensive experience in data security.</td></tr>
+            <tr><td class="basic">have a look</td><td class="upgrade">take a look / review / examine</td><td class="example">Can you take a look at this before I send it?</td></tr>
+            <tr><td class="basic">have fun</td><td class="upgrade">enjoy yourself / have a great time</td><td class="example">We genuinely enjoyed ourselves at the team event.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5 — PRACTICE
+  ═══════════════════════════════════════════ -->
+  <div class="section-heading">
+    <div class="num">5</div>
+    <h2>Practice Activities</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">A</div><div><div class="acc-title">Quick Quiz — Choose the Best Upgrade</div><div class="acc-desc">Click the option you think is most natural and precise</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="quiz-container" id="quiz"></div>
+      <div style="margin-top:1rem;">
+        <button onclick="resetQuiz()" style="background:var(--navy);color:var(--white);border:none;border-radius:20px;padding:6px 18px;font-size:0.85rem;font-family:inherit;cursor:pointer;font-weight:600;">Reset quiz</button>
+        <span id="quiz-score" style="margin-left:12px;font-size:0.85rem;color:var(--text-muted);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">B</div><div><div class="acc-title">Rewrite Exercise — No "Very" Allowed</div><div class="acc-desc">Rewrite each sentence with a stronger, more natural word</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="explain-box"><strong>Challenge:</strong> Rewrite each sentence. You cannot use "very." Replace it with one strong adjective. Try to write a complete, natural sentence — not just swap one word.</div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 1 — Adjective upgrades</p>
+        <ol>
+          <li class="ex-sentence">I was very tired after work. <span class="ex-hint">→ exhausted / drained?</span></li>
+          <li class="ex-sentence">The exam was very difficult. <span class="ex-hint">→ challenging / gruelling?</span></li>
+          <li class="ex-sentence">My schedule is very busy this week. <span class="ex-hint">→ swamped?</span></li>
+          <li class="ex-sentence">I was very happy when I finished the project. <span class="ex-hint">→ thrilled / relieved?</span></li>
+          <li class="ex-sentence">The traffic was very bad yesterday. <span class="ex-hint">→ dreadful / awful?</span></li>
+          <li class="ex-sentence">That restaurant was very good. <span class="ex-hint">→ outstanding / excellent?</span></li>
+          <li class="ex-sentence">The movie was very boring. <span class="ex-hint">→ tedious / dull?</span></li>
+          <li class="ex-sentence">I was very surprised by the result. <span class="ex-hint">→ shocked / stunned?</span></li>
+          <li class="ex-sentence">The city center was very crowded. <span class="ex-hint">→ packed / jam-packed?</span></li>
+          <li class="ex-sentence">The weather was very cold yesterday. <span class="ex-hint">→ freezing / bitter?</span></li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 2 — Verb upgrades</p>
+        <ol>
+          <li class="ex-sentence">I got an email from the manager this morning.</li>
+          <li class="ex-sentence">We made a decision after the meeting.</li>
+          <li class="ex-sentence">She got a job at a tech company last month.</li>
+          <li class="ex-sentence">The prices went up by 20% this year.</li>
+          <li class="ex-sentence">I did a presentation to the whole team.</li>
+          <li class="ex-sentence">We had a meeting every Monday morning.</li>
+          <li class="ex-sentence">Something went wrong with the system last night.</li>
+          <li class="ex-sentence">I got better quickly after taking a break.</li>
+        </ol>
+      </div>
+      <div class="explain-box" style="margin-top:0.8rem;">
+        <strong>Model answer:</strong><br>
+        Basic: "My schedule is very busy this week."<br>
+        Upgraded: "I am completely swamped this week."
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-btn" onclick="toggle(this)">
+      <div class="btn-left"><div class="acc-icon">C</div><div><div class="acc-title">Full Worksheet — Parts 1 to 4</div><div class="acc-desc">Complete written practice covering all sections</div></div></div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div class="exercise-box">
+        <p class="ex-label">Part 1 — Rewrite to sound more natural (no "very")</p>
+        <ol>
+          <li>I was very tired after finishing the project.</li>
+          <li>The traffic this morning was very bad.</li>
+          <li>The movie we watched was very boring.</li>
+          <li>I was very happy when I got the email.</li>
+          <li>The exam was very difficult.</li>
+          <li>My week has been very busy.</li>
+          <li>The restaurant was very good.</li>
+          <li>I was very surprised by her reaction.</li>
+          <li>The weather was very cold yesterday.</li>
+          <li>The meeting was very long.</li>
+          <li>I felt very nervous before the presentation.</li>
+          <li>That mistake was very bad.</li>
+          <li>The city centre was very crowded.</li>
+          <li>The documentary was very interesting.</li>
+          <li>I was very angry about the delay.</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 2 — Choose the best upgrade</p>
+        <ol>
+          <li>After working 12 hours, I was completely ______. (a) tired (b) exhausted (c) sleepy</li>
+          <li>The lecture was absolutely ______. (a) interesting (b) fascinating (c) good</li>
+          <li>I am completely ______ with work this week. (a) busy (b) swamped (c) full</li>
+          <li>I was ______ when I heard the unexpected news. (a) surprised (b) shocked (c) calm</li>
+          <li>The horror film was ______. (a) scary (b) terrifying (c) terrified</li>
+          <li>The restaurant was ______. I would definitely go again. (a) good (b) excellent (c) fine</li>
+          <li>I was ______ when I finally finished the project. (a) happy (b) thrilled (c) okay</li>
+          <li>The meeting was incredibly ______ and unnecessary. (a) boring (b) dull (c) tired</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 3 — Open production (replace the bold word)</p>
+        <ol>
+          <li>I was <strong>very hungry</strong>, so I ordered everything.</li>
+          <li>The project was <strong>very difficult</strong> to finish.</li>
+          <li>She was <strong>very angry</strong> about the decision.</li>
+          <li>I'm <strong>very busy</strong> this week.</li>
+          <li>The presentation was <strong>very good</strong>.</li>
+          <li>I felt <strong>very tired</strong> after commuting.</li>
+          <li>That was a <strong>very interesting</strong> idea.</li>
+          <li>I was <strong>very surprised</strong> by the result.</li>
+        </ol>
+      </div>
+      <div class="exercise-box">
+        <p class="ex-label">Part 4 — Speaking challenge (no "very" rule)</p>
+        <ol>
+          <li>Describe a stressful day you had recently.</li>
+          <li>Describe a restaurant you really liked.</li>
+          <li>Talk about a time you felt extremely tired.</li>
+          <li>Describe heavy traffic in your city.</li>
+          <li>Talk about a difficult task or exam.</li>
+          <li>Describe a fascinating film or series.</li>
+          <li>Talk about a time you were completely shocked.</li>
+          <li>Describe a huge success in your life.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH SECTION TOGGLE -->
+  <div class="tech-toggle-wrap">
+    <button class="tech-toggle-btn" onclick="toggleTech(this)">
+      Professional &amp; Tech English — Optional Section
+      <span class="arrow">▼</span>
+    </button>
+  </div>
+
+  <div class="tech-section" id="techSection">
+    <div class="tech-section-header">
+      <h2>Professional English for Work &amp; Technology</h2>
+      <p>For students who work in tech, business, or any professional environment where precise English matters.</p>
+    </div>
+    <div class="tech-section-body">
+
+      <div class="accordion">
+        <button class="accordion-btn" onclick="toggle(this)">
+          <div class="btn-left"><div class="acc-icon tech-acc-icon">1</div><div><div class="acc-title">DO → Precise Work Verbs</div><div class="acc-desc">manage, conduct, carry out, handle, deliver (~25 phrases)</div></div></div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body">
+          <table class="vocab-table">
+            <thead><tr><th>Basic</th><th>Professional Upgrade</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td class="basic">do a project</td><td class="upgrade">manage / lead / oversee a project</td><td class="example">I managed a full-stack development project.</td></tr>
+              <tr><td class="basic">do research</td><td class="upgrade">conduct research / carry out research</td><td class="example">We conducted in-depth research on user behaviour.</td></tr>
+              <tr><td class="basic">do testing</td><td class="upgrade">conduct / perform testing</td><td class="example">We performed comprehensive system testing.</td></tr>
+              <tr><td class="basic">do work</td><td class="upgrade">carry out work / undertake work</td><td class="example">I carried out performance optimisation independently.</td></tr>
+              <tr><td class="basic">do tasks</td><td class="upgrade">handle / manage / complete tasks</td><td class="example">I handled multiple high-priority tasks simultaneously.</td></tr>
+              <tr><td class="basic">do a presentation</td><td class="upgrade">deliver a presentation / give a briefing</td><td class="example">I delivered a presentation on API security to the board.</td></tr>
+              <tr><td class="basic">do improvements</td><td class="upgrade">implement improvements / drive improvements</td><td class="example">We drove significant improvements to the pipeline.</td></tr>
+              <tr><td class="basic">do an analysis</td><td class="upgrade">conduct an analysis / carry out an analysis</td><td class="example">I conducted a full risk analysis before the launch.</td></tr>
+              <tr><td class="basic">do a review</td><td class="upgrade">conduct a review / carry out a review</td><td class="example">We conducted a thorough code review last week.</td></tr>
+              <tr><td class="basic">do an audit</td><td class="upgrade">conduct an audit / perform an audit</td><td class="example">We performed a full security audit in Q2.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" onclick="toggle(this)">
+          <div class="btn-left"><div class="acc-icon tech-acc-icon">2</div><div><div class="acc-title">MAKE → Impact &amp; Decision Verbs</div><div class="acc-desc">reach, implement, develop, optimize, achieve (~20 phrases)</div></div></div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body">
+          <table class="vocab-table">
+            <thead><tr><th>Basic</th><th>Professional Upgrade</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td class="basic">make a decision</td><td class="upgrade">reach a decision / make an informed decision</td><td class="example">We reached a unanimous decision after the review.</td></tr>
+              <tr><td class="basic">make changes</td><td class="upgrade">implement changes / roll out changes</td><td class="example">We rolled out changes to the production environment.</td></tr>
+              <tr><td class="basic">make progress</td><td class="upgrade">achieve progress / make significant headway</td><td class="example">We achieved significant progress in the second sprint.</td></tr>
+              <tr><td class="basic">make a plan</td><td class="upgrade">develop a plan / draw up a roadmap</td><td class="example">We drew up a product roadmap for Q3 and Q4.</td></tr>
+              <tr><td class="basic">make a system</td><td class="upgrade">develop / architect / build a system</td><td class="example">I architected a scalable authentication system.</td></tr>
+              <tr><td class="basic">make a mistake</td><td class="upgrade">encounter an issue / introduce a bug</td><td class="example">We introduced a bug during the last deployment.</td></tr>
+              <tr><td class="basic">make something better</td><td class="upgrade">optimize / refine / enhance</td><td class="example">We optimised the algorithm and reduced load time by 40%.</td></tr>
+              <tr><td class="basic">make it work</td><td class="upgrade">resolve the issue / get it operational</td><td class="example">We resolved the issue and got the system fully operational.</td></tr>
+              <tr><td class="basic">make a report</td><td class="upgrade">produce a report / compile a report</td><td class="example">I compiled a detailed incident report for the client.</td></tr>
+              <tr><td class="basic">make it easier</td><td class="upgrade">streamline / simplify / automate</td><td class="example">We streamlined the onboarding process significantly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" onclick="toggle(this)">
+          <div class="btn-left"><div class="acc-icon tech-acc-icon">3</div><div><div class="acc-title">Essential Tech Action Verbs</div><div class="acc-desc">The 30 verbs every tech professional needs</div></div></div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="explain-box"><strong>These verbs show technical confidence.</strong> Use them in meetings, emails, and when describing your work. Each one is more precise and professional than a basic verb.</div>
+          <div class="challenge-grid">
+            <div class="challenge-card"><div class="basic-word">Instead of "do"</div><div class="upgrade-word">develop</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "put in"</div><div class="upgrade-word">implement</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "put live"</div><div class="upgrade-word">deploy</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "connect"</div><div class="upgrade-word">integrate</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "set up"</div><div class="upgrade-word">configure</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "keep running"</div><div class="upgrade-word">maintain</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "fix problems"</div><div class="upgrade-word">troubleshoot</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "find the bug"</div><div class="upgrade-word">debug</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "watch"</div><div class="upgrade-word">monitor</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make better"</div><div class="upgrade-word">optimize</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "do automatically"</div><div class="upgrade-word">automate</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "check"</div><div class="upgrade-word">evaluate</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make the design"</div><div class="upgrade-word">design / architect</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "change a little"</div><div class="upgrade-word">modify / adjust</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make better again"</div><div class="upgrade-word">enhance / refine</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make safe"</div><div class="upgrade-word">secure / harden</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "code it"</div><div class="upgrade-word">encrypt</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "look at data"</div><div class="upgrade-word">analyze</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "move to cloud"</div><div class="upgrade-word">migrate</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make bigger"</div><div class="upgrade-word">scale / scale up</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "make newer"</div><div class="upgrade-word">upgrade / update</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "check it works"</div><div class="upgrade-word">validate / verify</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "start it"</div><div class="upgrade-word">initialize / launch</div></div>
+            <div class="challenge-card"><div class="basic-word">Instead of "organize"</div><div class="upgrade-word">structure / architect</div></div>
+          </div>
+          <div class="exercise-box" style="margin-top:1rem;">
+            <p class="ex-label">Upgrade these sentences</p>
+            <ol>
+              <li>I <strong>fixed</strong> the authentication module yesterday.</li>
+              <li>We <strong>connected</strong> third-party APIs to the system.</li>
+              <li>I <strong>made better</strong> the database queries.</li>
+              <li>We <strong>did</strong> the repetitive tasks automatically.</li>
+              <li>The team <strong>put</strong> the update <strong>live</strong> on Friday.</li>
+              <li>I <strong>checked</strong> the data before the report.</li>
+              <li>We <strong>set up</strong> the server last week.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" onclick="toggle(this)">
+          <div class="btn-left"><div class="acc-icon tech-acc-icon">4</div><div><div class="acc-title">Problem-Solving, Collaboration &amp; Communication</div><div class="acc-desc">identify, resolve, escalate, propose, coordinate (~30 phrases)</div></div></div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="verb-group">
+            <h4>Problem-solving verbs</h4>
+            <table class="vocab-table">
+              <thead><tr><th>Basic</th><th>Professional Upgrade</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td class="basic">find the problem</td><td class="upgrade">identify the issue / pinpoint the cause</td><td class="example">We identified the root cause within an hour.</td></tr>
+                <tr><td class="basic">fix the bug</td><td class="upgrade">resolve the bug / patch the issue</td><td class="example">The bug was patched in the next release.</td></tr>
+                <tr><td class="basic">deal with it</td><td class="upgrade">address the issue / tackle the problem</td><td class="example">We addressed the issue before it escalated.</td></tr>
+                <tr><td class="basic">look into it</td><td class="upgrade">investigate / examine / look into</td><td class="example">I will investigate and come back to you by end of day.</td></tr>
+                <tr><td class="basic">pass it up</td><td class="upgrade">escalate the issue</td><td class="example">We escalated the issue to the senior team.</td></tr>
+                <tr><td class="basic">stop it happening again</td><td class="upgrade">prevent / mitigate / put safeguards in place</td><td class="example">We put safeguards in place to prevent recurrence.</td></tr>
+                <tr><td class="basic">check what went wrong</td><td class="upgrade">conduct a root cause analysis</td><td class="example">We conducted a root cause analysis after the incident.</td></tr>
+                <tr><td class="basic">make less risky</td><td class="upgrade">mitigate the risk / reduce exposure</td><td class="example">We reduced our exposure by testing in a staging environment.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="verb-group">
+            <h4>Collaboration &amp; communication verbs</h4>
+            <table class="vocab-table">
+              <thead><tr><th>Basic</th><th>Professional Upgrade</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td class="basic">work with</td><td class="upgrade">collaborate with / partner with</td><td class="example">I collaborated closely with the frontend team.</td></tr>
+                <tr><td class="basic">talk to</td><td class="upgrade">liaise with / coordinate with</td><td class="example">I liaised with the client daily during the sprint.</td></tr>
+                <tr><td class="basic">give ideas</td><td class="upgrade">propose a solution / put forward ideas</td><td class="example">I put forward three possible solutions in the meeting.</td></tr>
+                <tr><td class="basic">give your opinion</td><td class="upgrade">provide feedback / share your perspective</td><td class="example">I shared my perspective on the proposed architecture.</td></tr>
+                <tr><td class="basic">make the requirements clear</td><td class="upgrade">clarify requirements / define the scope</td><td class="example">We defined the scope clearly before development began.</td></tr>
+                <tr><td class="basic">say better ideas</td><td class="upgrade">suggest improvements / recommend changes</td><td class="example">I recommended several changes to the workflow.</td></tr>
+                <tr><td class="basic">tell someone</td><td class="upgrade">inform / notify / brief</td><td class="example">I briefed the manager on the current status.</td></tr>
+                <tr><td class="basic">ask a question</td><td class="upgrade">raise a concern / seek clarification</td><td class="example">I raised a concern about the timeline in the review.</td></tr>
+                <tr><td class="basic">agree with</td><td class="upgrade">align with / be in agreement with</td><td class="example">I am fully aligned with the proposed approach.</td></tr>
+                <tr><td class="basic">disagree with</td><td class="upgrade">push back on / raise a concern about</td><td class="example">I pushed back on the timeline during planning.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-btn" onclick="toggle(this)">
+          <div class="btn-left"><div class="acc-icon tech-acc-icon">5</div><div><div class="acc-title">Tech Speaking Practice</div><div class="acc-desc">Use professional vocabulary to describe your own work</div></div></div>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="exercise-box">
+            <p class="ex-label">Answer in full sentences using professional vocabulary</p>
+            <ol>
+              <li>Describe a project you worked on recently — what did you develop, implement, or deliver?</li>
+              <li>Talk about a problem you encountered and how you resolved it.</li>
+              <li>Describe a time you collaborated with a colleague to solve something difficult.</li>
+              <li>Explain what your typical working week looks like — what do you manage, conduct, or carry out?</li>
+              <li>Describe a technical improvement you made — did you optimise, refactor, or automate something?</li>
+              <li>Talk about a time you had to escalate an issue — what happened and how was it resolved?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOMEWORK -->
+  <div class="homework-box">
+    <p class="hw-label">Homework</p>
+    <h3>This Week's Challenge</h3>
+    <p>Write a short diary entry of 8–10 sentences about your week. Describe how you felt, what was difficult, what went well, and one thing that surprised you.</p>
+    <div class="rule">Rule: You cannot use the word "very" — not even once. Every feeling and description must use an upgraded word.</div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <span>Vocabulary Upgrade</span> &nbsp;·&nbsp; A1/A2 → B1/B2 &nbsp;·&nbsp; General Classroom Resource
+</footer>
+
+<script>
+  function toggle(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    body.classList.toggle('open', !isOpen);
+  }
+
+  function toggleTech(btn) {
+    const section = document.getElementById('techSection');
+    const isOpen = section.classList.contains('open');
+    section.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+
+  const quizData = [
+    { q: "After working 12 hours, I was completely ______.", opts: ["tired","exhausted","sleepy"], ans: 1 },
+    { q: "The documentary was absolutely ______.", opts: ["interesting","fascinating","good"], ans: 1 },
+    { q: "The meeting was incredibly ______ and unnecessary.", opts: ["dull","boring","tired"], ans: 0 },
+    { q: "I was ______ when I heard the unexpected news.", opts: ["surprised","shocked","calm"], ans: 1 },
+    { q: "I am completely ______ with work this week.", opts: ["busy","swamped","full"], ans: 1 },
+    { q: "The horror film was ______.", opts: ["scary","terrified","terrifying"], ans: 2 },
+    { q: "I was ______ when I finally finished the project.", opts: ["happy","thrilled","okay"], ans: 1 },
+    { q: "I was ______ about the presentation — it was my first big one.", opts: ["nervous","anxious","calm"], ans: 0 },
+    { q: "The apartment is ______, but it has everything I need.", opts: ["small","tiny","little"], ans: 1 },
+    { q: "I felt ______ after hearing the disappointing news.", opts: ["sad","devastated","unhappy"], ans: 1 },
+    { q: "She came across as completely ______ during the interview.", opts: ["confident","self-assured","sure"], ans: 1 },
+    { q: "The traffic was absolutely ______ this morning — I was 45 minutes late.", opts: ["bad","dreadful","slow"], ans: 1 },
+  ];
+
+  let answered = 0, correct = 0;
+
+  function buildQuiz() {
+    const container = document.getElementById('quiz');
+    container.innerHTML = '';
+    answered = 0; correct = 0;
+    document.getElementById('quiz-score').textContent = '';
+    quizData.forEach((item, qi) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.innerHTML = `<p>${qi + 1}. ${item.q}</p><div class="quiz-options" id="q${qi}"></div>`;
+      container.appendChild(div);
+      const opts = div.querySelector(`#q${qi}`);
+      item.opts.forEach((opt, oi) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-opt';
+        btn.textContent = opt;
+        btn.onclick = () => checkAnswer(qi, oi, item.ans);
+        opts.appendChild(btn);
+      });
+    });
+  }
+
+  function checkAnswer(qi, chosen, correct_idx) {
+    const optBtns = document.querySelectorAll(`#q${qi} .quiz-opt`);
+    optBtns.forEach((b, i) => {
+      b.classList.add('disabled');
+      if (i === correct_idx) b.classList.add('correct');
+      else if (i === chosen && chosen !== correct_idx) b.classList.add('wrong');
+    });
+    answered++;
+    if (chosen === correct_idx) correct++;
+    if (answered === quizData.length) {
+      document.getElementById('quiz-score').textContent = `Score: ${correct} / ${quizData.length}`;
+    }
+  }
+
+  function resetQuiz() { buildQuiz(); }
+  buildQuiz();
+</script>
+</body>
+</html>
