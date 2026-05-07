@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluency Dictionary: Practical English Vocabulary A1–C1</title>
+<style>
+:root{
+  --navy:#0b1f3a;--navy2:#132f55;--gold:#c8a24a;--gold2:#f3d98b;--cream:#fbf4e6;--cream2:#fffaf0;
+  --a1:#0b1f3a;--a1s:#fbf4e6;
+  --a2:#7a9b76;--a2s:#eef6eb;
+  --b1:#d9bf4f;--b1s:#fff9df;
+  --b2:#9b8cc2;--b2s:#f4f0fb;
+  --c1:#d97a2b;--c1s:#fff0e3;
+  --ink:#0b1f3a;--muted:#6b7280;--line:#eadfca;--bg:#fbf4e6;--white:#fffaf0;
+  --shadow:0 16px 40px rgba(11,31,58,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+.cover{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:64px 24px 56px;border-bottom:5px solid var(--gold);color:var(--cream2)}
+.cover-inner{max-width:1180px;margin:auto;position:relative}.cover-inner:after{content:"Created by Teacher Benny";display:inline-block;margin-top:24px;background:rgba(255,250,240,.1);border:1px solid rgba(243,217,139,.55);color:var(--gold2);padding:10px 16px;border-radius:999px;font-weight:800}
+.kicker{display:inline-block;background:var(--gold);color:var(--navy);padding:8px 14px;border-radius:999px;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+h1{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.95;letter-spacing:-.06em;margin:22px 0 12px;max-width:900px;color:var(--cream2)}
+.subtitle{font-size:1.15rem;color:#f7e9c8;max-width:760px;margin:0}
+main{max-width:1360px;margin:30px auto 80px;padding:0 18px}.dictionary-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;align-items:start}.sidebar{background:var(--navy);border:1px solid var(--gold);border-radius:26px;box-shadow:var(--shadow);padding:18px;position:sticky;top:18px}.sidebar-title{color:var(--gold2);font-weight:900;margin:6px 8px 14px;text-transform:uppercase;font-size:.82rem;letter-spacing:.08em}.level-nav{display:grid;gap:10px}.level-nav button{width:100%;border:1px solid rgba(243,217,139,.35);background:rgba(255,250,240,.06);color:var(--cream2);border-radius:18px;padding:15px 16px;text-align:left;font-weight:900;cursor:pointer}.level-nav button.active{background:var(--gold);color:var(--navy);border-color:var(--gold)}.credit{margin-top:18px;padding:14px;border-radius:18px;background:rgba(255,250,240,.08);color:#f7e9c8;font-size:.92rem}.accordion{display:grid;gap:16px}.level-card{display:none;background:var(--cream2);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}.level-card.open{display:block}.level-button{width:100%;border:0;background:linear-gradient(135deg,#fffaf0,#f7ecd5);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 28px;cursor:pointer;text-align:left;color:var(--ink);border-bottom:1px solid var(--line)}
+.level-left{display:flex;align-items:center;gap:14px}.level-badge{min-width:62px;text-align:center;border-radius:999px;padding:10px 14px;background:var(--navy)!important;color:var(--gold2);font-weight:900;border:1px solid var(--gold)}.level-title{font-size:1.45rem;font-weight:900}.level-subtitle{color:var(--muted);font-size:.95rem;margin-top:3px}.chevron{display:none}
+.level-content{display:block;border-top:0;padding:22px;background:var(--cream2)}
+.controls{display:grid;grid-template-columns:1.4fr 1fr auto;gap:12px;margin-bottom:16px}
+input,select,button{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fffaf0;color:var(--ink);font-size:1rem}.reset{color:var(--navy)!important;background:var(--gold)!important;border-color:var(--gold)!important;font-weight:900;cursor:pointer}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.pill{border-radius:999px;padding:8px 12px;font-weight:900;border:1px solid var(--gold);background:var(--cream)!important;color:var(--navy)!important}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fffaf0}table{width:100%;border-collapse:collapse;min-width:1180px}th,td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--gold2);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;background:var(--navy)!important}.word{font-weight:900;color:var(--navy)!important}.tag{display:inline-block;border-radius:999px;padding:4px 9px;font-weight:900;font-size:.78rem;margin-bottom:5px;background:var(--cream)!important;color:var(--navy)!important;border:1px solid var(--gold)}.usage-note{color:#475569;font-size:.9rem}.example{font-style:italic}.empty{padding:34px;text-align:center;color:var(--muted);background:#fffaf0;border:1px dashed var(--gold);border-radius:18px}.teacher-note{max-width:1360px;margin:30px auto 70px;padding:0 18px}.teacher-note-card{background:linear-gradient(135deg,var(--navy),var(--navy2));color:var(--cream2);border:1px solid var(--gold);border-radius:26px;box-shadow:var(--shadow);padding:28px}.teacher-note-card h2{margin:0 0 10px;color:var(--gold2);font-size:1.4rem}.teacher-note-card p{margin:0;color:#f7e9c8;font-size:1.05rem;max-width:1000px}
+@media(max-width:850px){.dictionary-layout{grid-template-columns:1fr}.sidebar{position:static}.controls{grid-template-columns:1fr}.level-button{align-items:flex-start}.level-left{align-items:flex-start}h1{font-size:2.6rem}}
+@media print{.cover{page-break-after:always}.level-card{box-shadow:none;border:0}.level-button{border-bottom:2px solid #111}.level-content{display:block!important}.controls{display:none}.empty{display:none}table{min-width:100%;font-size:8.5px}th,td{padding:4px}}
+</style>
+</head>
+<body>
+<section class="cover">
+  <div class="cover-inner">
+    <span class="kicker">Practical English Vocabulary Dictionary</span>
+    <h1>Fluency Dictionary: Practical English Vocabulary A1–C1</h1>
+    <p class="subtitle">A speaking-focused vocabulary dictionary for real-life English. Choose a level below to open its dictionary.</p>
+  </div>
+</section>
+
+<main>
+  <div class="dictionary-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">Choose Level</div>
+      <div class="level-nav" id="levelNav"></div>
+      <div class="credit">Created by Teacher Benny.</div>
+    </aside>
+    <div class="accordion" id="accordion"></div>
+  </div>
+</main>
+
+<section class="teacher-note">
+  <div class="teacher-note-card">
+    <h2>Teacher’s Note</h2>
+    <p>Every new word is a small step toward confidence. Learn slowly, speak bravely, make mistakes proudly, and keep going. Fluency is not built in one day — it is built through practice, patience, and belief in yourself.</p>
+  </div>
+</section>
+
+<script>
+const levels = {
+  A1:{label:'A1',title:'Beginner Vocabulary',color:'#0b1f3a',soft:'#fbf4e6',note:'Essential speaking vocabulary with Turkish support.'},
+  A2:{label:'A2',title:'Elementary Vocabulary',color:'#7a9b76',soft:'#eef6eb',note:'Coming next: practical daily English with Turkish support.'},
+  B1:{label:'B1',title:'Intermediate Vocabulary',color:'#d9bf4f',soft:'#fff9df',note:'Coming next: discussion, stories, work, study, and opinions.'},
+  B2:{label:'B2',title:'Upper-Intermediate Vocabulary',color:'#9b8cc2',soft:'#f4f0fb',note:'Coming next: workplace, academic, social, and abstract topics.'},
+  C1:{label:'C1',title:'Advanced Vocabulary',color:'#d97a2b',soft:'#fff0e3',note:'Coming next: nuanced academic and professional vocabulary.'}
+};
+
+const vocabulary = {
+A1:[
+{word:'I am / I\'m',usage:'basic sentence pattern',note:'Use it to talk about yourself.',meaning:'used to say who you are, how you feel, or what you are like',tr:'ben ...im',syn:'—',ant:'—',ex:'I\'m happy.'},
+{word:'I have',usage:'basic sentence pattern',note:'Use it to talk about things that belong to you.',meaning:'used to say that something belongs to you',tr:'sahibim / bende var',syn:'own',ant:'do not have',ex:'I have a bag.'},
+{word:'I can',usage:'basic sentence pattern',note:'Use it to talk about ability.',meaning:'used to say that you are able to do something',tr:'yapabilirim',syn:'am able to',ant:'cannot',ex:'I can swim.'},
+{word:'I want',usage:'basic sentence pattern',note:'Use it to say what you would like.',meaning:'used to say that you would like something',tr:'istiyorum',syn:'would like',ant:'do not want',ex:'I want some water.'},
+{word:'I need',usage:'basic sentence pattern',note:'Use it for things that are necessary.',meaning:'used to say that something is necessary for you',tr:'ihtiyacım var',syn:'must have',ant:'do not need',ex:'I need a pen.'},
+{word:'There is',usage:'basic sentence pattern',note:'Use it to say that one thing exists.',meaning:'used to say that something exists',tr:'var',syn:'exists',ant:'there is not',ex:'There is a book.'},
+{word:'There are',usage:'basic sentence pattern',note:'Use it to say that more than one thing exists.',meaning:'used to say that two or more things exist',tr:'var',syn:'exist',ant:'there are not',ex:'There are two chairs.'},
+{word:'hello',usage:'greeting',note:'Use it when you meet someone.',meaning:'something you say when you meet someone',tr:'merhaba',syn:'hi',ant:'goodbye',ex:'Hello, I\'m Ece.'},
+{word:'goodbye',usage:'greeting',note:'Use it when you leave.',meaning:'something you say when leaving',tr:'hoşça kal / güle güle',syn:'bye',ant:'hello',ex:'Goodbye, see you tomorrow.'},
+{word:'thank you',usage:'polite phrase',note:'Use it when someone helps you or gives you something.',meaning:'something you say to show thanks',tr:'teşekkür ederim',syn:'thanks',ant:'—',ex:'Thank you for your help.'},
+{word:'please',usage:'polite phrase',note:'Use it to make a request polite.',meaning:'a word that makes requests more polite',tr:'lütfen',syn:'kindly',ant:'—',ex:'Please sit down.'},
+{word:'sorry',usage:'polite phrase',note:'Use it after a mistake or problem.',meaning:'something you say when you feel bad about something',tr:'özür dilerim / pardon',syn:'I apologize',ant:'—',ex:'Sorry, I\'m late.'},
+{word:'excuse me',usage:'polite phrase',note:'Use it before asking a question or getting attention.',meaning:'a polite way to get someone’s attention',tr:'affedersiniz / pardon',syn:'pardon me',ant:'—',ex:'Excuse me, where is the bank?'},
+{word:'yes',usage:'answer word',note:'Use it to agree or answer positively.',meaning:'a word for agreement or a positive answer',tr:'evet',syn:'sure',ant:'no',ex:'Yes, I understand.'},
+{word:'no',usage:'answer word',note:'Use it to disagree or answer negatively.',meaning:'a word for disagreement or a negative answer',tr:'hayır',syn:'not really',ant:'yes',ex:'No, thank you.'},
+{word:'go',usage:'basic verb',note:'Use it for movement away from here.',meaning:'to move from one place to another',tr:'gitmek',syn:'move',ant:'stay',ex:'I go to school.'},
+{word:'come',usage:'basic verb',note:'Use it for movement toward here.',meaning:'to move to this place or toward someone',tr:'gelmek',syn:'arrive',ant:'go',ex:'Come here, please.'},
+{word:'eat',usage:'daily action',note:'Use it for food.',meaning:'to put food in your mouth',tr:'yemek yemek',syn:'have',ant:'drink',ex:'We eat lunch at home.'},
+{word:'drink',usage:'daily action',note:'Use it for water, tea, coffee, or juice.',meaning:'to take liquid into your mouth',tr:'içmek',syn:'sip',ant:'eat',ex:'I drink water every day.'},
+{word:'sleep',usage:'daily action',note:'Use it for resting at night.',meaning:'to rest with your eyes closed',tr:'uyumak',syn:'rest',ant:'wake up',ex:'The baby is sleeping.'},
+{word:'wake up',usage:'phrasal verb',note:'Use it when sleep finishes.',meaning:'to stop sleeping',tr:'uyanmak',syn:'get up',ant:'sleep',ex:'I wake up at seven.'},
+{word:'get up',usage:'phrasal verb',note:'Use it when you leave your bed.',meaning:'to leave your bed after sleeping',tr:'kalkmak',syn:'rise',ant:'lie down',ex:'I get up early.'},
+{word:'sit down',usage:'phrasal verb',note:'Use it when someone moves into a chair.',meaning:'to move into a sitting position',tr:'oturmak',syn:'sit',ant:'stand up',ex:'Please sit down.'},
+{word:'stand up',usage:'phrasal verb',note:'Use it when someone rises to their feet.',meaning:'to rise to your feet',tr:'ayağa kalkmak',syn:'rise',ant:'sit down',ex:'Stand up, please.'},
+{word:'turn on',usage:'phrasal verb',note:'Use it for lights, phones, TVs, and machines.',meaning:'to start a machine, light, or device',tr:'açmak',syn:'switch on',ant:'turn off',ex:'Turn on the light.'},
+{word:'turn off',usage:'phrasal verb',note:'Use it for lights, phones, TVs, and machines.',meaning:'to stop a machine, light, or device',tr:'kapatmak',syn:'switch off',ant:'turn on',ex:'Turn off the TV.'},
+{word:'open',usage:'basic verb',note:'Use it for doors, windows, books, and apps.',meaning:'to move something so it is not closed',tr:'açmak',syn:'unlock',ant:'close',ex:'Open your book.'},
+{word:'close',usage:'basic verb',note:'Use it for doors, windows, books, and apps.',meaning:'to shut something',tr:'kapatmak',syn:'shut',ant:'open',ex:'Close the door, please.'},
+{word:'make',usage:'basic verb',note:'Use it for creating or preparing something.',meaning:'to create or prepare something',tr:'yapmak / hazırlamak',syn:'create',ant:'destroy',ex:'I make breakfast.'},
+{word:'take',usage:'basic verb',note:'Use it when you get or carry something.',meaning:'to get, carry, or move something with you',tr:'almak',syn:'get',ant:'give',ex:'Take your bag.'},
+{word:'give',usage:'basic verb',note:'Use it when something goes from you to another person.',meaning:'to pass something to someone',tr:'vermek',syn:'hand',ant:'take',ex:'Give me the book.'},
+{word:'put',usage:'basic verb',note:'Use it for placing something somewhere.',meaning:'to place something somewhere',tr:'koymak',syn:'place',ant:'remove',ex:'Put the pen here.'},
+{word:'find',usage:'basic verb',note:'Use it when you get something after looking.',meaning:'to see or get something after looking for it',tr:'bulmak',syn:'discover',ant:'lose',ex:'I can find my phone.'},
+{word:'know',usage:'basic verb',note:'Use it for information in your mind.',meaning:'to have information about something',tr:'bilmek',syn:'understand',ant:'not know',ex:'I know the answer.'},
+{word:'understand',usage:'basic verb',note:'Use it when something is clear.',meaning:'to know the meaning of something',tr:'anlamak',syn:'get',ant:'misunderstand',ex:'I understand this word.'},
+{word:'speak',usage:'basic verb',note:'Use it for languages and talking.',meaning:'to use words to communicate',tr:'konuşmak',syn:'talk',ant:'be quiet',ex:'I speak English.'},
+{word:'listen',usage:'basic verb',note:'Use it when you pay attention to sound.',meaning:'to hear something carefully',tr:'dinlemek',syn:'hear',ant:'ignore',ex:'Listen to the teacher.'},
+{word:'read',usage:'basic verb',note:'Use it for books, signs, and messages.',meaning:'to look at words and understand them',tr:'okumak',syn:'study',ant:'write',ex:'I read a book.'},
+{word:'write',usage:'basic verb',note:'Use it for words on paper or a screen.',meaning:'to make words with a pen or keyboard',tr:'yazmak',syn:'type',ant:'read',ex:'Write your name.'},
+{word:'help',usage:'basic verb',note:'Use it when someone needs support.',meaning:'to make something easier for someone',tr:'yardım etmek',syn:'assist',ant:'hurt',ex:'Can you help me?'},
+{word:'What is your name?',usage:'question',note:'Use it to ask someone’s name.',meaning:'a question for asking a person’s name',tr:'Adın ne?',syn:'—',ant:'—',ex:'What is your name?'},
+{word:'Where are you?',usage:'question',note:'Use it to ask about location.',meaning:'a question for asking someone’s place',tr:'Neredesin?',syn:'—',ant:'—',ex:'Where are you now?'},
+{word:'What time is it?',usage:'question',note:'Use it to ask the time.',meaning:'a question for asking the current time',tr:'Saat kaç?',syn:'—',ant:'—',ex:'What time is it now?'},
+{word:'How much is it?',usage:'question',note:'Use it in shops and markets.',meaning:'a question for asking the price',tr:'Bu ne kadar?',syn:'What is the price?',ant:'—',ex:'How much is this bag?'},
+{word:'Can you help me?',usage:'question',note:'Use it when you need help.',meaning:'a polite question for asking for help',tr:'Bana yardım edebilir misin?',syn:'Could you help me?',ant:'—',ex:'Can you help me, please?'},
+{word:'I don’t know',usage:'common phrase',note:'Use it when you do not have the answer.',meaning:'used when you do not know something',tr:'Bilmiyorum',syn:'I am not sure',ant:'I know',ex:'I don’t know the answer.'},
+{word:'water',usage:'daily noun',note:'Use it for drinking.',meaning:'a clear liquid people drink',tr:'su',syn:'drink',ant:'—',ex:'I need some water.'},
+{word:'food',usage:'daily noun',note:'Use it for things people eat.',meaning:'things people eat',tr:'yiyecek / yemek',syn:'meal',ant:'drink',ex:'The food is delicious.'},
+{word:'house',usage:'daily noun',note:'Use it for the building where people live.',meaning:'a building where people live',tr:'ev',syn:'home',ant:'—',ex:'My house is small.'},
+{word:'home',usage:'daily noun',note:'Use it for the place where you live.',meaning:'the place where you live',tr:'ev / yuva',syn:'house',ant:'outside',ex:'I go home after school.'},
+{word:'school',usage:'daily noun',note:'Use it for the place where students learn.',meaning:'a place where students learn',tr:'okul',syn:'class',ant:'—',ex:'The school is near.'},
+{word:'teacher',usage:'daily noun',note:'Use it for a person who teaches.',meaning:'a person who teaches students',tr:'öğretmen',syn:'educator',ant:'student',ex:'My teacher is kind.'},
+{word:'student',usage:'daily noun',note:'Use it for a person who learns.',meaning:'a person who learns at school',tr:'öğrenci',syn:'learner',ant:'teacher',ex:'She is a student.'},
+{word:'mother',usage:'family word',note:'Use it for your female parent.',meaning:'your female parent',tr:'anne',syn:'mom',ant:'father',ex:'My mother is at home.'},
+{word:'father',usage:'family word',note:'Use it for your male parent.',meaning:'your male parent',tr:'baba',syn:'dad',ant:'mother',ex:'My father works here.'},
+{word:'brother',usage:'family word',note:'Use it for a male sibling.',meaning:'a boy or man with the same parents as you',tr:'erkek kardeş / abi',syn:'sibling',ant:'sister',ex:'My brother is tall.'},
+{word:'sister',usage:'family word',note:'Use it for a female sibling.',meaning:'a girl or woman with the same parents as you',tr:'kız kardeş / abla',syn:'sibling',ant:'brother',ex:'My sister is funny.'},
+{word:'friend',usage:'social word',note:'Use it for a person you like and know well.',meaning:'a person you like and know well',tr:'arkadaş',syn:'buddy',ant:'enemy',ex:'Ali is my friend.'},
+{word:'happy',usage:'feeling',note:'Use it for a good feeling.',meaning:'feeling good or pleased',tr:'mutlu',syn:'glad',ant:'sad',ex:'She is happy today.'},
+{word:'sad',usage:'feeling',note:'Use it for an unhappy feeling.',meaning:'feeling unhappy',tr:'üzgün',syn:'unhappy',ant:'happy',ex:'He feels sad.'},
+{word:'tired',usage:'feeling',note:'Use it when you need rest.',meaning:'needing rest or sleep',tr:'yorgun',syn:'sleepy',ant:'energetic',ex:'I’m tired after work.'},
+{word:'hungry',usage:'feeling',note:'Use it when you want food.',meaning:'wanting to eat food',tr:'aç',syn:'starving',ant:'full',ex:'We are hungry.'},
+{word:'thirsty',usage:'feeling',note:'Use it when you want a drink.',meaning:'wanting to drink something',tr:'susamış',syn:'dry',ant:'not thirsty',ex:'I’m thirsty.'},
+{word:'big',usage:'adjective',note:'Use it for large size.',meaning:'large in size',tr:'büyük',syn:'large',ant:'small',ex:'They have a big car.'},
+{word:'small',usage:'adjective',note:'Use it for little size.',meaning:'little in size',tr:'küçük',syn:'little',ant:'big',ex:'The room is small.'},
+{word:'good',usage:'adjective',note:'Use it for something positive.',meaning:'pleasant, correct, or high quality',tr:'iyi',syn:'nice',ant:'bad',ex:'This food is good.'},
+{word:'bad',usage:'adjective',note:'Use it for something negative.',meaning:'not good',tr:'kötü',syn:'poor',ant:'good',ex:'The weather is bad.'},
+{word:'red',usage:'color',note:'Use it to describe color.',meaning:'the color of blood',tr:'kırmızı',syn:'—',ant:'—',ex:'Her bag is red.'},
+{word:'blue',usage:'color',note:'Use it to describe color.',meaning:'the color of the sky',tr:'mavi',syn:'—',ant:'—',ex:'I like blue shoes.'},
+{word:'green',usage:'color',note:'Use it to describe color.',meaning:'the color of grass',tr:'yeşil',syn:'—',ant:'—',ex:'The tree is green.'},
+{word:'black',usage:'color',note:'Use it to describe color.',meaning:'the darkest color',tr:'siyah',syn:'dark',ant:'white',ex:'My bag is black.'},
+{word:'white',usage:'color',note:'Use it to describe color.',meaning:'the color of snow or milk',tr:'beyaz',syn:'light',ant:'black',ex:'The wall is white.'},
+{word:'one',usage:'number',note:'Use it for counting.',meaning:'the number 1',tr:'bir',syn:'1',ant:'—',ex:'I have one book.'},
+{word:'two',usage:'number',note:'Use it for counting.',meaning:'the number 2',tr:'iki',syn:'2',ant:'—',ex:'There are two chairs.'},
+{word:'three',usage:'number',note:'Use it for counting.',meaning:'the number 3',tr:'üç',syn:'3',ant:'—',ex:'I have three pens.'},
+{word:'Monday',usage:'day',note:'Use it for the first workday of the week.',meaning:'the day after Sunday',tr:'Pazartesi',syn:'—',ant:'—',ex:'Today is Monday.'},
+{word:'Tuesday',usage:'day',note:'Use it for the day after Monday.',meaning:'the day after Monday',tr:'Salı',syn:'—',ant:'—',ex:'We have English on Tuesday.'},
+{word:'Wednesday',usage:'day',note:'Use it for the middle of the week.',meaning:'the day after Tuesday',tr:'Çarşamba',syn:'—',ant:'—',ex:'Today is Wednesday.'},
+{word:'today',usage:'time word',note:'Use it for this day.',meaning:'this day',tr:'bugün',syn:'this day',ant:'yesterday / tomorrow',ex:'Today is sunny.'},
+{word:'tomorrow',usage:'time word',note:'Use it for the next day.',meaning:'the day after today',tr:'yarın',syn:'next day',ant:'yesterday',ex:'See you tomorrow.'},
+{word:'yesterday',usage:'time word',note:'Use it for the previous day.',meaning:'the day before today',tr:'dün',syn:'previous day',ant:'tomorrow',ex:'I was home yesterday.'}
+],
+A2:[
+{word:'arrive',usage:'travel verb',note:'Use it when someone reaches a place.',meaning:'to get to a place',tr:'varmak',syn:'reach',ant:'leave',ex:'We arrived at the hotel.'},
+{word:'call back',usage:'phrasal verb',note:'Use it when you return a phone call.',meaning:'to telephone someone again later',tr:'geri aramak',syn:'return the call',ant:'ignore',ex:'I will call you back later.'},
+{word:'usually',usage:'frequency word',note:'Use it for habits that happen most of the time.',meaning:'most of the time',tr:'genellikle',syn:'normally',ant:'rarely',ex:'I usually walk to school.'},
+{word:'sometimes',usage:'frequency word',note:'Use it for actions that happen occasionally.',meaning:'on some occasions but not always',tr:'bazen',syn:'occasionally',ant:'always',ex:'Sometimes I cook dinner.'},
+{word:'never',usage:'frequency word',note:'Use it for actions that do not happen.',meaning:'not at any time',tr:'asla',syn:'not ever',ant:'always',ex:'I never drink coffee.'},
+{word:'pick up',usage:'phrasal verb',note:'Use it for lifting or collecting something.',meaning:'to lift or collect something',tr:'almak / toplamak',syn:'collect',ant:'drop',ex:'Pick up your jacket.'},
+{word:'forget',usage:'memory verb',note:'Use it when something leaves your memory.',meaning:'to fail to remember something',tr:'unutmak',syn:'not remember',ant:'remember',ex:'I forgot my keys.'},
+{word:'remember',usage:'memory verb',note:'Use it when something stays in your memory.',meaning:'to keep something in your memory',tr:'hatırlamak',syn:'recall',ant:'forget',ex:'Do you remember my name?'},
+{word:'busy',usage:'daily adjective',note:'Use it when you have many things to do.',meaning:'having a lot of work or activity',tr:'meşgul',syn:'occupied',ant:'free',ex:'She is busy today.'},
+{word:'quiet',usage:'adjective',note:'Use it for little or no noise.',meaning:'making very little noise',tr:'sessiz',syn:'silent',ant:'noisy',ex:'The room is quiet.'}
+],
+B1:[
+{word:'solve',usage:'problem-solving verb',note:'Use it when you find an answer to a problem.',meaning:'to find an answer to a problem',tr:'çözmek',syn:'fix',ant:'confuse',ex:'We solved the problem together.'},
+{word:'in my opinion',usage:'discussion phrase',note:'Use it when sharing your ideas.',meaning:'used before saying what you think',tr:'bence',syn:'I think',ant:'—',ex:'In my opinion, this movie is great.'},
+{word:'confident',usage:'feeling adjective',note:'Use it when you believe in yourself.',meaning:'feeling sure about yourself',tr:'kendine güvenen',syn:'sure',ant:'nervous',ex:'She feels confident now.'},
+{word:'improve',usage:'progress verb',note:'Use it when something becomes better.',meaning:'to become better',tr:'geliştirmek',syn:'develop',ant:'worsen',ex:'My English improved a lot.'},
+{word:'get along',usage:'phrasal verb',note:'Use it for good relationships with people.',meaning:'to have a friendly relationship',tr:'iyi anlaşmak',syn:'be friendly',ant:'argue',ex:'They get along very well.'},
+{word:'decision',usage:'thinking noun',note:'Use it for a choice that you make.',meaning:'a choice that someone makes',tr:'karar',syn:'choice',ant:'indecision',ex:'It was a difficult decision.'},
+{word:'experience',usage:'life noun',note:'Use it for things you have done or lived through.',meaning:'knowledge gained from doing something',tr:'deneyim / tecrübe',syn:'practice',ant:'inexperience',ex:'Travel is a great experience.'},
+{word:'although',usage:'linking word',note:'Use it to connect contrasting ideas.',meaning:'despite the fact that',tr:'-e rağmen',syn:'even though',ant:'because',ex:'Although it rained, we went out.'},
+{word:'expect',usage:'thinking verb',note:'Use it when you think something will happen.',meaning:'to think something will happen',tr:'beklemek',syn:'predict',ant:'doubt',ex:'I expect good results.'},
+{word:'patient',usage:'personality adjective',note:'Use it for calm people who can wait.',meaning:'able to wait calmly',tr:'sabırlı',syn:'calm',ant:'impatient',ex:'Teachers should be patient.'}
+],
+B2:[
+{word:'deal with',usage:'phrasal verb',note:'Use it for handling problems or situations.',meaning:'to manage or handle something',tr:'ilgilenmek / başa çıkmak',syn:'handle',ant:'avoid',ex:'He deals with customers every day.'},
+{word:'effective',usage:'academic adjective',note:'Use it for something that works well.',meaning:'successful in producing a result',tr:'etkili',syn:'successful',ant:'ineffective',ex:'This method is very effective.'},
+{word:'on the other hand',usage:'linking phrase',note:'Use it to show a different idea.',meaning:'used to introduce a contrasting point',tr:'öte yandan',syn:'however',ant:'similarly',ex:'On the other hand, it is expensive.'},
+{word:'maintain',usage:'formal verb',note:'Use it for keeping something in good condition.',meaning:'to keep something at the same level or condition',tr:'sürdürmek / korumak',syn:'preserve',ant:'neglect',ex:'It is hard to maintain motivation.'},
+{word:'take responsibility',usage:'formal phrase',note:'Use it when accepting accountability.',meaning:'to accept accountability for something',tr:'sorumluluk almak',syn:'accept blame',ant:'avoid responsibility',ex:'She took responsibility for the mistake.'},
+{word:'reliable',usage:'personality adjective',note:'Use it for people you can trust.',meaning:'able to be trusted',tr:'güvenilir',syn:'dependable',ant:'unreliable',ex:'He is a reliable employee.'},
+{word:'consequence',usage:'academic noun',note:'Use it for results of actions.',meaning:'a result of a particular action',tr:'sonuç',syn:'result',ant:'cause',ex:'Every decision has consequences.'},
+{word:'persuade',usage:'communication verb',note:'Use it when changing someone’s mind.',meaning:'to make someone agree to something',tr:'ikna etmek',syn:'convince',ant:'discourage',ex:'She persuaded me to join.'},
+{word:'challenge',usage:'discussion noun',note:'Use it for a difficult task or situation.',meaning:'something difficult that requires effort',tr:'zorluk',syn:'difficulty',ant:'ease',ex:'Learning a language is a challenge.'},
+{word:'despite',usage:'formal linker',note:'Use it before contrasting information.',meaning:'without being affected by something',tr:'-e rağmen',syn:'in spite of',ant:'because of',ex:'Despite the rain, we continued.'}
+],
+C1:[
+{word:'significant',usage:'advanced adjective',note:'Use it for something important or noticeable.',meaning:'important or large enough to be noticed',tr:'önemli / kayda değer',syn:'important',ant:'minor',ex:'There was a significant change.'},
+{word:'nevertheless',usage:'formal linker',note:'Use it to introduce contrast in formal English.',meaning:'despite that',tr:'buna rağmen',syn:'however',ant:'therefore',ex:'Nevertheless, we continued the project.'},
+{word:'broaden your horizons',usage:'idiomatic phrase',note:'Use it when talking about gaining new experiences.',meaning:'to increase your knowledge and experience',tr:'ufkunu genişletmek',syn:'expand knowledge',ant:'limit yourself',ex:'Travel can broaden your horizons.'},
+{word:'substantial',usage:'advanced adjective',note:'Use it for something large or important.',meaning:'large in amount or importance',tr:'önemli / büyük',syn:'considerable',ant:'minor',ex:'The company made substantial progress.'},
+{word:'convey',usage:'formal verb',note:'Use it for communicating ideas or feelings.',meaning:'to communicate or express something',tr:'iletmek / aktarmak',syn:'express',ant:'hide',ex:'The article conveys a strong message.'},
+{word:'inevitable',usage:'advanced adjective',note:'Use it for something certain to happen.',meaning:'certain to happen and impossible to avoid',tr:'kaçınılmaz',syn:'unavoidable',ant:'avoidable',ex:'Change is inevitable.'},
+{word:'take into account',usage:'formal phrase',note:'Use it when considering important information.',meaning:'to consider something carefully',tr:'göz önünde bulundurmak',syn:'consider',ant:'ignore',ex:'We must take costs into account.'},
+{word:'compelling',usage:'advanced adjective',note:'Use it for something very interesting or convincing.',meaning:'extremely interesting or persuasive',tr:'etkileyici / ikna edici',syn:'convincing',ant:'boring',ex:'She gave a compelling presentation.'},
+{word:'furthermore',usage:'formal linker',note:'Use it to add another important idea.',meaning:'in addition to what has been said',tr:'ayrıca',syn:'moreover',ant:'however',ex:'Furthermore, the plan will save money.'},
+{word:'adapt to',usage:'advanced verb',note:'Use it for adjusting to new situations.',meaning:'to change your behavior to suit a new situation',tr:'uyum sağlamak',syn:'adjust',ant:'resist',ex:'Students adapt to change quickly.'}
+]
+};
+
+let openLevel = 'A1';
+
+function buildAccordion(){
+  const nav = document.getElementById('levelNav');
+  nav.innerHTML = Object.keys(levels).map(level=>`<button class="${level===openLevel?'active':''}" onclick="toggleLevel('${level}')">${level} · ${levels[level].title}</button>`).join('');
+  const acc = document.getElementById('accordion');
+  acc.innerHTML = Object.keys(levels).map(level=>{
+    const info = levels[level];
+    return `<section class="level-card ${level===openLevel?'open':''}" id="card-${level}">
+      <button class="level-button" onclick="toggleLevel('${level}')">
+        <div class="level-left">
+          <span class="level-badge" style="background:${info.color}">${level}</span>
+          <div><div class="level-title">${info.title}</div><div class="level-subtitle">${info.note}</div></div>
+        </div>
+        <div class="chevron">⌄</div>
+      </button>
+      <div class="level-content" id="content-${level}"></div>
+    </section>`;
+  }).join('');
+  renderLevel(openLevel);
+}
+
+function toggleLevel(level){
+  openLevel = level;
+  document.querySelectorAll('.level-card').forEach(card=>card.classList.remove('open'));
+  document.querySelectorAll('.level-nav button').forEach(btn=>btn.classList.remove('active'));
+  const navButtons = [...document.querySelectorAll('.level-nav button')];
+  const index = Object.keys(levels).indexOf(level);
+  if(navButtons[index]) navButtons[index].classList.add('active');
+  document.getElementById(`card-${openLevel}`).classList.add('open');
+  renderLevel(openLevel);
+}
+
+function renderLevel(level){
+  const info = levels[level];
+  const content = document.getElementById(`content-${level}`);
+  const data = vocabulary[level] || [];
+  if(!data.length){
+    content.innerHTML = `<div class="empty"><strong>${level} ${info.title}</strong><br>This level will be added after A1 is finalized.</div>`;
+    return;
+  }
+  content.innerHTML = `<div class="controls">
+      <input id="search-${level}" type="search" placeholder="Search ${level} vocabulary..." oninput="drawTable('${level}')">
+      <select id="usage-${level}" onchange="drawTable('${level}')"><option value="">All usage types</option></select>
+      <button class="reset" style="background:${info.color};border-color:${info.color}" onclick="resetFilters('${level}')">Reset</button>
+    </div>
+    <div class="stats"><span class="pill" style="background:${info.soft};color:${info.color}">${data.length} entries</span><span class="pill" style="background:${info.soft};color:${info.color}">Level: ${level}</span></div>
+    <div class="table-wrap"><table><thead style="background:${info.color}"><tr><th>Word / Phrase</th><th>#</th><th>Usage / Explanation</th><th>English Meaning</th><th>Turkish</th><th>Synonyms</th><th>Antonyms</th><th>Example</th></tr></thead><tbody id="body-${level}"></tbody></table></div>`;
+  const usageSelect = document.getElementById(`usage-${level}`);
+  [...new Set(data.map(v=>v.usage))].sort().forEach(u=>usageSelect.insertAdjacentHTML('beforeend',`<option value="${u}">${u}</option>`));
+  drawTable(level);
+}
+
+function drawTable(level){
+  const info = levels[level];
+  const q = document.getElementById(`search-${level}`)?.value.toLowerCase() || '';
+  const usage = document.getElementById(`usage-${level}`)?.value || '';
+  const rows = vocabulary[level].filter(v=>(!q || Object.values(v).join(' ').toLowerCase().includes(q)) && (!usage || v.usage===usage));
+  document.getElementById(`body-${level}`).innerHTML = rows.map((v,i)=>`<tr>
+    <td class="word" style="color:${info.color}">${v.word}</td>
+    <td>${i+1}</td>
+    <td><span class="tag" style="background:${info.soft};color:${info.color}">${v.usage}</span><br><span class="usage-note">${v.note}</span></td>
+    <td>${v.meaning}</td>
+    <td>${v.tr}</td>
+    <td>${v.syn || '—'}</td>
+    <td>${v.ant || '—'}</td>
+    <td class="example">${v.ex}</td>
+  </tr>`).join('');
+}
+
+function resetFilters(level){
+  document.getElementById(`search-${level}`).value='';
+  document.getElementById(`usage-${level}`).value='';
+  drawTable(level);
+}
+
+buildAccordion();
+</script>
+</body>
+</html>
