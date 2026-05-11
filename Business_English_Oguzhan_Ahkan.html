@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business English · Barry Callebaut</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a0a00;
+    --navy-mid: #2e1505;
+    --navy-light: #4a2510;
+    --ice: #f5ede6;
+    --ice-deep: #e8d5c4;
+    --gold: #c07830;
+    --gold-light: #e8c49a;
+    --white: #fdf8f4;
+    --text: #1a0a00;
+    --text-muted: #5a3a20;
+    --text-light: #8a6040;
+    --correct: #1a6b3c;
+    --correct-bg: #e6f4ed;
+    --wrong: #8b2020;
+    --wrong-bg: #faeaea;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    border: 1px solid rgba(192,120,48,0.2);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 1px solid rgba(192,120,48,0.12);
+  }
+  .header-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .header-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--white);
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .level-pill {
+    background: rgba(192,120,48,0.18);
+    border: 1px solid rgba(192,120,48,0.4);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+  .company-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+  }
+
+  /* TABS */
+  .tab-bar {
+    background: var(--navy-mid);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-bar-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 1rem;
+  }
+  .tab-btn {
+    padding: 0.85rem 1.25rem;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    color: rgba(255,255,255,0.5);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .tab-btn:hover { color: rgba(255,255,255,0.8); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab-icon { font-size: 15px; }
+
+  /* CONTENT */
+  .content-area {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .tab-section { display: none; }
+  .tab-section.active { display: block; animation: fadeUp 0.25s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: 1.75rem;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  /* PHRASE CARDS */
+  .phrase-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--ice-deep);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .phrase-row {
+    background: var(--white);
+    padding: 1.1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .phrase-row:hover { background: #f7ede3; }
+  .phrase-en {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .phrase-tr {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .phrase-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .tag-meeting { background: #e8f0fc; color: #1a4a9e; }
+  .tag-sales { background: #e6f4ed; color: #1a6b3c; }
+  .tag-negotiation { background: #fef3e2; color: #8b5e0a; }
+  .tag-product { background: #f5e8f4; color: #6b1a8b; }
+  .tag-general { background: var(--ice); color: var(--navy-mid); }
+
+  /* VOCAB GRID */
+  .vocab-category {
+    margin-bottom: 2rem;
+  }
+  .vocab-category-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--ice-deep);
+  }
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .vocab-card {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .vocab-card:hover {
+    border-color: var(--gold-light);
+    box-shadow: 0 2px 12px rgba(26,10,0,0.06);
+  }
+  .vocab-en {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .vocab-tr {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .vocab-example {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    border-left: 2px solid var(--ice-deep);
+    padding-left: 8px;
+  }
+
+  /* GRAMMAR */
+  .grammar-rule {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-left: 3px solid var(--navy);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .grammar-rule h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .grammar-rule p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .example-box {
+    background: var(--ice);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    margin-top: 8px;
+  }
+  .example-box .correct-ex {
+    font-size: 13px;
+    color: var(--correct);
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+  .example-box .wrong-ex {
+    font-size: 13px;
+    color: var(--wrong);
+    text-decoration: line-through;
+  }
+
+  /* QUIZ */
+  .quiz-progress-bar {
+    background: var(--ice-deep);
+    border-radius: 100px;
+    height: 4px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    background: var(--gold);
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+  .quiz-q-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+  }
+  .quiz-question {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-opt {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1.1rem;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .quiz-opt:not(:disabled):hover {
+    border-color: var(--navy-light);
+    background: var(--ice);
+  }
+  .quiz-opt.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+    font-weight: 500;
+  }
+  .quiz-opt.wrong {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+    text-decoration: line-through;
+  }
+  .opt-letter {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--ice);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .quiz-opt.correct .opt-letter { background: var(--correct); color: white; }
+  .quiz-opt.wrong .opt-letter { background: var(--wrong); color: white; }
+  .quiz-feedback {
+    background: var(--ice);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1.1rem;
+    font-size: 14px;
+    color: var(--text-muted);
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .quiz-feedback.show-correct { background: var(--correct-bg); color: var(--correct); }
+  .quiz-feedback.show-wrong { background: var(--wrong-bg); color: var(--wrong); }
+  .quiz-score {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .quiz-score .score-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-score p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1.75rem;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--navy-mid); }
+
+  /* ROLE-PLAY */
+  .roleplay-card {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .roleplay-header {
+    background: var(--ice);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--ice-deep);
+  }
+  .roleplay-icon { font-size: 1.5rem; }
+  .roleplay-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .roleplay-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .roleplay-body { padding: 1.25rem; }
+  .dialogue-line {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .speaker-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .speaker-you { background: var(--navy); color: var(--gold-light); }
+  .speaker-partner { background: var(--ice-deep); color: var(--text-muted); }
+  .dialogue-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-top: 2px;
+  }
+  .dialogue-text strong { color: var(--navy); font-weight: 500; }
+  .tip-box {
+    background: var(--ice);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.75rem 1rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .tip-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  /* IDIOMS */
+  .idiom-card {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s;
+  }
+  .idiom-card:hover { box-shadow: 0 2px 16px rgba(26,10,0,0.07); }
+  .idiom-phrase {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .idiom-meaning {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .idiom-example {
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: italic;
+    background: var(--ice);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.9rem;
+  }
+  .idiom-tr {
+    font-size: 12px;
+    color: var(--gold);
+    font-style: normal;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 12px;
+    color: var(--text-light);
+    border-top: 1px solid var(--ice-deep);
+    letter-spacing: 0.04em;
+  }
+  footer span { color: var(--gold); font-weight: 600; }
+
+
+  /* ACCORDIONS - added without changing the original visual theme */
+  .accordion-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+  .accordion-item {
+    background: var(--white);
+    border: 1px solid var(--ice-deep);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .accordion-item[open] {
+    border-color: var(--gold-light);
+    box-shadow: 0 2px 16px rgba(26,10,0,0.06);
+  }
+  .accordion-title {
+    list-style: none;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    background: var(--ice);
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid transparent;
+  }
+  .accordion-title::-webkit-details-marker { display: none; }
+  .accordion-title::after {
+    content: '+';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-light);
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .accordion-item[open] > .accordion-title {
+    border-bottom-color: var(--ice-deep);
+  }
+  .accordion-item[open] > .accordion-title::after {
+    content: '−';
+    background: rgba(192,120,48,0.12);
+    transform: rotate(180deg);
+  }
+  .accordion-content {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .accordion-content > .phrase-grid,
+  .accordion-content > .vocab-grid,
+  .accordion-content > .idiom-card,
+  .accordion-content > .grammar-rule,
+  .accordion-content > .roleplay-card {
+    margin-bottom: 0 !important;
+  }
+  .accordion-content .vocab-category,
+  .accordion-content .roleplay-card,
+  .accordion-content .idiom-card,
+  .accordion-content .grammar-rule {
+    border: 0;
+    box-shadow: none;
+  }
+  .accordion-content .vocab-category-title { display: none; }
+  .accordion-content .roleplay-card { margin-bottom: 0; }
+  .accordion-content .roleplay-header { margin: -1rem -1.25rem 1rem; }
+  .accordion-content .grammar-rule {
+    padding: 0;
+    background: transparent;
+  }
+  .accordion-content .grammar-rule h3 { display: none; }
+  .accordion-content .idiom-card { padding: 0; background: transparent; }
+  .accordion-content .idiom-phrase { display: none; }
+</style>
+</head>
+<body>
+<header>
+<div class="header-inner">
+<div>
+<p class="header-badge">Oğuzhan Akan · Sales Manager</p>
+<h1>English for <em>Sales</em><br/>Professionals</h1>
+</div>
+<div class="header-meta">
+<span class="level-pill">B1–B2 Level</span>
+<span class="company-label">BARRY CALLEBAUT · ESKİŞEHİR</span>
+</div>
+</div>
+</header>
+<div class="tab-bar">
+<div class="tab-bar-inner">
+<button class="tab-btn active" data-tab="phrases" onclick="showTab('phrases')">
+<span class="tab-icon">💬</span> Phrases
+    </button>
+<button class="tab-btn" data-tab="vocab" onclick="showTab('vocab')">
+<span class="tab-icon">🍫</span> Vocabulary
+    </button>
+<button class="tab-btn" data-tab="idioms" onclick="showTab('idioms')">
+<span class="tab-icon">💡</span> Idioms
+    </button>
+<button class="tab-btn" data-tab="grammar" onclick="showTab('grammar')">
+<span class="tab-icon">📐</span> Grammar
+    </button>
+<button class="tab-btn" data-tab="quiz" onclick="showTab('quiz')">
+<span class="tab-icon">🎯</span> Quiz
+    </button>
+<button class="tab-btn" data-tab="roleplay" onclick="showTab('roleplay')">
+<span class="tab-icon">🗣</span> Role-play
+    </button>
+</div>
+</div>
+<div class="content-area">
+<!-- PHRASES TAB -->
+<div class="tab-section active" id="tab-phrases">
+<div class="section-header">
+<h2>Workplace Phrases</h2>
+<p>Essential sentences for sales calls, client meetings, negotiations, follow-ups and account management.</p>
+</div><div class="accordion-list"><details class="accordion-item" open=""><summary class="accordion-title">Opening &amp; Client Meetings</summary><div class="accordion-content"><div class="phrase-grid" style="margin-bottom:1.75rem;">
+<div class="phrase-row"><div><p class="phrase-en">Thank you for making time to meet with us today.</p><p class="phrase-tr">Bugün bizimle görüşmek için zaman ayırdığınız için teşekkür ederiz.</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Shall I give you a brief overview of our portfolio?</p><p class="phrase-tr">Ürün portföyümüze kısa bir genel bakış sunayım mı?</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Could you tell me more about your current requirements?</p><p class="phrase-tr">Mevcut ihtiyaçlarınız hakkında daha fazla bilgi verebilir misiniz?</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">What volumes are you typically working with?</p><p class="phrase-tr">Genellikle ne kadar hacimle çalışıyorsunuz?</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I'd like to understand your production cycle better.</p><p class="phrase-tr">Üretim sürecinizi daha iyi anlamak istiyorum.</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Let me take you through our latest product range.</p><p class="phrase-tr">Sizi en son ürün yelpazemizle tanıştırayım.</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">To summarise what we've discussed so far…</p><p class="phrase-tr">Şimdiye kadar konuştuklarımızı özetlemek gerekirse…</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Shall we agree on the next steps before we close?</p><p class="phrase-tr">Kapatmadan önce sonraki adımlar üzerinde anlaşalım mı?</p></div><span class="phrase-tag tag-meeting">Meeting</span></div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Sales &amp; Presenting Solutions</summary><div class="accordion-content"><div class="phrase-grid" style="margin-bottom:1.75rem;">
+<div class="phrase-row"><div><p class="phrase-en">Based on your needs, I would recommend our dark couverture range.</p><p class="phrase-tr">İhtiyaçlarınıza göre, bitter kuvertür ürün yelpazemizi tavsiye ederim.</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">This product has a very consistent viscosity, which is ideal for moulding.</p><p class="phrase-tr">Bu ürünün kalıplama için ideal olan çok tutarlı bir viskozitesi var.</p></div><span class="phrase-tag tag-product">Product</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We can offer a customised recipe developed specifically for your application.</p><p class="phrase-tr">Uygulamanıza özel olarak geliştirilmiş özelleştirilmiş bir reçete sunabiliriz.</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Our technical team can support you during the implementation phase.</p><p class="phrase-tr">Teknik ekibimiz uygulama aşamasında size destek olabilir.</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">This is one of our bestselling ingredients in the bakery segment.</p><p class="phrase-tr">Bu, fırıncılık segmentindeki en çok satan bileşenlerimizden biridir.</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We have a strong track record with clients in the confectionery sector.</p><p class="phrase-tr">Şekerleme sektöründeki müşterilerle güçlü bir geçmişimiz var.</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Would you be open to a tasting session at our innovation centre?</p><p class="phrase-tr">İnovasyon merkezimizde bir tadım oturumuna açık olur musunuz?</p></div><span class="phrase-tag tag-sales">Sales</span></div>
+<div class="phrase-row"><div><p class="phrase-en">This chocolate has superior shelf life compared to the standard grade.</p><p class="phrase-tr">Bu çikolata, standart kaliteye kıyasla daha uzun raf ömrüne sahip.</p></div><span class="phrase-tag tag-product">Product</span></div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Negotiations, Pricing &amp; Contracts</summary><div class="accordion-content"><div class="phrase-grid" style="margin-bottom:1.75rem;">
+<div class="phrase-row"><div><p class="phrase-en">Is there any flexibility on the price for a larger annual volume?</p><p class="phrase-tr">Daha büyük yıllık hacim için fiyatta esneklik var mı?</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We can offer a volume discount starting from 10 metric tonnes.</p><p class="phrase-tr">10 metrik tondan itibaren hacim indirimi sunabiliriz.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I'm afraid that price is outside our current budget.</p><p class="phrase-tr">Maalesef bu fiyat mevcut bütçemizin dışında.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We would need to review the terms before we can commit.</p><p class="phrase-tr">Taahhütte bulunmadan önce koşulları gözden geçirmemiz gerekecek.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Could we lock in the cocoa price for the next six months?</p><p class="phrase-tr">Önümüzdeki altı ay için kakao fiyatını sabitleyebilir miyiz?</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We can offer a 60-day payment term for this contract.</p><p class="phrase-tr">Bu sözleşme için 60 günlük ödeme vadesi sunabiliriz.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Let's agree on the delivery schedule before we sign.</p><p class="phrase-tr">İmzalamadan önce teslimat takvimi üzerinde anlaşalım.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We're happy to proceed if the minimum order quantity is acceptable.</p><p class="phrase-tr">Minimum sipariş miktarı kabul edilebilirse devam etmekten memnuniyet duyarız.</p></div><span class="phrase-tag tag-negotiation">Negotiation</span></div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Emails &amp; Follow-ups</summary><div class="accordion-content"><div class="phrase-grid" style="margin-bottom:1.75rem;">
+<div class="phrase-row"><div><p class="phrase-en">I hope this email finds you well.</p><p class="phrase-tr">Umarım bu e-posta sizi iyi bulur.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I am writing to follow up on our meeting last Tuesday.</p><p class="phrase-tr">Geçen Salı günkü toplantımızı takip etmek için yazıyorum.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Please find attached our updated product catalogue and price list.</p><p class="phrase-tr">Güncellenmiş ürün kataloğumuzu ve fiyat listemizi ekte bulabilirsiniz.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Could you please confirm your order by the end of this week?</p><p class="phrase-tr">Siparişinizi bu hafta sonuna kadar onaylayabilir misiniz?</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I will get back to you with a formal quotation by Friday.</p><p class="phrase-tr">Size Cuma gününe kadar resmi bir teklifle geri döneceğim.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Please do not hesitate to contact me if you have any questions.</p><p class="phrase-tr">Herhangi bir sorunuz olursa çekinmeden benimle iletişime geçin.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I look forward to hearing from you.</p><p class="phrase-tr">Yanıtınızı sabırsızlıkla bekliyorum.</p></div><span class="phrase-tag tag-general">Email</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Thank you for your prompt reply — I'll proceed as discussed.</p><p class="phrase-tr">Hızlı yanıtınız için teşekkür ederim — görüşüldüğü gibi devam edeceğim.</p></div><span class="phrase-tag tag-general">Email</span></div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Handling Complaints &amp; Problems</summary><div class="accordion-content"><div class="phrase-grid" style="margin-bottom:1.75rem;">
+<div class="phrase-row"><div><p class="phrase-en">I sincerely apologise for the inconvenience this has caused.</p><p class="phrase-tr">Bu durumun yol açtığı rahatsızlık için içtenlikle özür dilerim.</p></div><span class="phrase-tag tag-general">Complaint</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I completely understand your concern, and I will look into this right away.</p><p class="phrase-tr">Endişenizi tamamen anlıyorum ve bunu hemen araştıracağım.</p></div><span class="phrase-tag tag-general">Complaint</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Could you send us the batch number so we can investigate further?</p><p class="phrase-tr">Daha fazla araştırabilmemiz için parti numarasını gönderebilir misiniz?</p></div><span class="phrase-tag tag-general">Complaint</span></div>
+<div class="phrase-row"><div><p class="phrase-en">We will arrange a replacement shipment as soon as possible.</p><p class="phrase-tr">En kısa sürede yeni bir sevkiyat ayarlayacağız.</p></div><span class="phrase-tag tag-general">Complaint</span></div>
+<div class="phrase-row"><div><p class="phrase-en">This will not happen again — we have reviewed our quality process.</p><p class="phrase-tr">Bu tekrar yaşanmayacak — kalite sürecimizi gözden geçirdik.</p></div><span class="phrase-tag tag-general">Complaint</span></div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Small Talk &amp; Building Relationships</summary><div class="accordion-content"><div class="phrase-grid">
+<div class="phrase-row"><div><p class="phrase-en">How was your trip to the trade fair?</p><p class="phrase-tr">Fuara yolculuğunuz nasıldı?</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+<div class="phrase-row"><div><p class="phrase-en">It was a pleasure meeting you at ISM last month.</p><p class="phrase-tr">Geçen ay ISM'de sizinle tanışmak büyük bir zevkti.</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+<div class="phrase-row"><div><p class="phrase-en">How is the new product launch going?</p><p class="phrase-tr">Yeni ürün lansmanı nasıl gidiyor?</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+<div class="phrase-row"><div><p class="phrase-en">It's been a very busy season for the confectionery market.</p><p class="phrase-tr">Şekerleme pazarı için çok yoğun bir sezon oldu.</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+<div class="phrase-row"><div><p class="phrase-en">I look forward to working with you on this project.</p><p class="phrase-tr">Bu projede sizinle çalışmayı dört gözle bekliyorum.</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+<div class="phrase-row"><div><p class="phrase-en">Please give my regards to your team.</p><p class="phrase-tr">Lütfen ekibinize selam söyleyin.</p></div><span class="phrase-tag tag-general">Small talk</span></div>
+</div></div></details></div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- VOCAB TAB -->
+<div class="tab-section" id="tab-vocab">
+<div class="section-header">
+<h2>Industry Vocabulary</h2>
+<p>Expanded professional vocabulary library for chocolate, cocoa, sales, logistics, quality, meetings and account management. Total: 377+ terms with Turkish meanings and examples.</p>
+</div><div class="accordion-list">
+<details class="accordion-item" open=""><summary class="accordion-title">Chocolate &amp; Cocoa Products <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(30 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Chocolate &amp; Cocoa Products</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Couverture chocolate</p><p class="vocab-tr">Kuvertur cikolata</p><p class="vocab-example">&quot;We supply couverture for artisan and industrial use.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cocoa butter</p><p class="vocab-tr">Kakao yagi</p><p class="vocab-example">&quot;Cocoa butter content affects texture and mouthfeel.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cocoa mass / cocoa liquor</p><p class="vocab-tr">Kakao kutlesi / kakao likoru</p><p class="vocab-example">&quot;The cocoa mass ratio is 72%.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cocoa powder</p><p class="vocab-tr">Kakao tozu</p><p class="vocab-example">&quot;We have alkalized and natural cocoa powder grades.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Natural cocoa powder</p><p class="vocab-tr">Dogal kakao tozu</p><p class="vocab-example">&quot;Natural cocoa powder has a lighter colour and acidic profile.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Alkalized cocoa powder</p><p class="vocab-tr">Alkalize kakao tozu</p><p class="vocab-example">&quot;Alkalized powder gives a darker colour and smoother taste.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Compound chocolate</p><p class="vocab-tr">Bilesik cikolata</p><p class="vocab-example">&quot;Compound is more cost-effective for coating applications.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Dark chocolate</p><p class="vocab-tr">Bitter cikolata</p><p class="vocab-example">&quot;Dark chocolate is popular in premium bakery products.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Milk chocolate</p><p class="vocab-tr">Sutlu cikolata</p><p class="vocab-example">&quot;Milk chocolate gives a sweeter and creamier flavour.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">White chocolate</p><p class="vocab-tr">Beyaz cikolata</p><p class="vocab-example">&quot;White chocolate contains cocoa butter but no cocoa solids.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Ruby chocolate</p><p class="vocab-tr">Ruby cikolata</p><p class="vocab-example">&quot;Ruby chocolate has a fruity and slightly acidic taste.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cocoa solids</p><p class="vocab-tr">Kakao katilari</p><p class="vocab-example">&quot;This bar contains 54% cocoa solids.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cocoa nibs</p><p class="vocab-tr">Kakao kiriklari</p><p class="vocab-example">&quot;Cocoa nibs add crunch and intense cocoa flavour.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Chocolate chips</p><p class="vocab-tr">Cikolata damlalari</p><p class="vocab-example">&quot;Chocolate chips are ideal for cookies and muffins.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Chocolate chunks</p><p class="vocab-tr">Cikolata parcalari</p><p class="vocab-example">&quot;Chocolate chunks create visible pieces in bakery products.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Drops / callets</p><p class="vocab-tr">Damla form / kalet</p><p class="vocab-example">&quot;Callets melt quickly and are easy to dose.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Blocks</p><p class="vocab-tr">Blok cikolata</p><p class="vocab-example">&quot;Blocks are suitable for large-scale production.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pralines</p><p class="vocab-tr">Pralinler</p><p class="vocab-example">&quot;Pralines are filled chocolate confectionery products.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Ganache</p><p class="vocab-tr">Ganaj</p><p class="vocab-example">&quot;Ganache is made with chocolate and cream.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Filling</p><p class="vocab-tr">Dolgu</p><p class="vocab-example">&quot;This filling is stable during baking.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Coating</p><p class="vocab-tr">Kaplama</p><p class="vocab-example">&quot;The coating must stay glossy after cooling.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Glaze</p><p class="vocab-tr">Glazur / parlak kaplama</p><p class="vocab-example">&quot;The glaze gives the cake a premium appearance.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Origin / single origin</p><p class="vocab-tr">Koken / tek kokenli</p><p class="vocab-example">&quot;Single origin beans from Ecuador have a distinctive profile.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Blend</p><p class="vocab-tr">Karisim</p><p class="vocab-example">&quot;This blend balances bitterness and sweetness.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Lecithin</p><p class="vocab-tr">Lesitin</p><p class="vocab-example">&quot;Lecithin helps control viscosity.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Shelf life</p><p class="vocab-tr">Raf omru</p><p class="vocab-example">&quot;The shelf life is 18 months unopened.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Flavour profile</p><p class="vocab-tr">Lezzet profili</p><p class="vocab-example">&quot;This origin has a fruity flavour profile.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Fat bloom</p><p class="vocab-tr">Yag beyazlamasi</p><p class="vocab-example">&quot;Fat bloom is often caused by poor storage or tempering.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sugar bloom</p><p class="vocab-tr">Seker beyazlamasi</p><p class="vocab-example">&quot;Sugar bloom can happen when chocolate meets moisture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Mouthfeel</p><p class="vocab-tr">Agiz hissi</p><p class="vocab-example">&quot;The mouthfeel is smooth and creamy.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Chocolate Tasting &amp; Sensory Language <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(20 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Chocolate Tasting &amp; Sensory Language</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Aroma</p><p class="vocab-tr">Aroma / koku</p><p class="vocab-example">&quot;The aroma is intense but not overpowering.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Aftertaste</p><p class="vocab-tr">Agizda kalan tat</p><p class="vocab-example">&quot;The aftertaste is clean with roasted notes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Bitterness</p><p class="vocab-tr">Acilik</p><p class="vocab-example">&quot;The bitterness is balanced by the sugar level.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sweetness</p><p class="vocab-tr">Tatlilik</p><p class="vocab-example">&quot;The sweetness is suitable for mass-market products.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Acidity</p><p class="vocab-tr">Asidite</p><p class="vocab-example">&quot;This origin has a pleasant acidity.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Roasted notes</p><p class="vocab-tr">Kavrulmus tat notalari</p><p class="vocab-example">&quot;The roasted notes work well in dark chocolate.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Nutty notes</p><p class="vocab-tr">Findiksi tat notalari</p><p class="vocab-example">&quot;The chocolate has mild nutty notes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Fruity notes</p><p class="vocab-tr">Meyvemsi tat notalari</p><p class="vocab-example">&quot;Fruity notes make the flavour more complex.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Caramel notes</p><p class="vocab-tr">Karamel tat notalari</p><p class="vocab-example">&quot;The caramel notes pair well with milk fillings.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Creamy</p><p class="vocab-tr">Kremamsi</p><p class="vocab-example">&quot;The product has a creamy texture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Smooth</p><p class="vocab-tr">Purusuz / yumusak</p><p class="vocab-example">&quot;The texture is smooth after conching.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Grainy</p><p class="vocab-tr">Taneli / puruzlu</p><p class="vocab-example">&quot;The texture became grainy after incorrect storage.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Glossy</p><p class="vocab-tr">Parlak</p><p class="vocab-example">&quot;Correct tempering gives a glossy finish.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Snap</p><p class="vocab-tr">Kirilma sesi / sert kirilma</p><p class="vocab-example">&quot;A good chocolate bar has a clean snap.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Balanced</p><p class="vocab-tr">Dengeli</p><p class="vocab-example">&quot;The flavour is balanced and not too sweet.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Intense</p><p class="vocab-tr">Yogun</p><p class="vocab-example">&quot;The cocoa taste is intense.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Mild</p><p class="vocab-tr">Hafif</p><p class="vocab-example">&quot;This profile is mild and suitable for children’s products.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Premium feel</p><p class="vocab-tr">Premium his</p><p class="vocab-example">&quot;The packaging and taste create a premium feel.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Lingering</p><p class="vocab-tr">Kalici</p><p class="vocab-example">&quot;The cocoa flavour is lingering.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Clean finish</p><p class="vocab-tr">Temiz bitis</p><p class="vocab-example">&quot;The chocolate has a clean finish.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Production &amp; Processing <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(25 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Production &amp; Processing</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Tempering</p><p class="vocab-tr">Temperleme</p><p class="vocab-example">&quot;Correct tempering gives a glossy finish.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Conching</p><p class="vocab-tr">Konclama</p><p class="vocab-example">&quot;Longer conching improves smoothness.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Roasting</p><p class="vocab-tr">Kavurma</p><p class="vocab-example">&quot;Roasting develops the cocoa flavour.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Grinding</p><p class="vocab-tr">Ogutme</p><p class="vocab-example">&quot;Grinding reduces particle size.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Refining</p><p class="vocab-tr">Rafine etme</p><p class="vocab-example">&quot;Refining creates a smoother texture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Moulding</p><p class="vocab-tr">Kaliplama</p><p class="vocab-example">&quot;We have a dedicated moulding line.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Enrobing</p><p class="vocab-tr">Cikolata ile kaplama</p><p class="vocab-example">&quot;Enrobing speed affects coating thickness.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Depositing</p><p class="vocab-tr">Dolum / dozajlama</p><p class="vocab-example">&quot;Depositing must be accurate for portion control.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cooling tunnel</p><p class="vocab-tr">Sogutma tuneli</p><p class="vocab-example">&quot;The product passes through the cooling tunnel.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Batch</p><p class="vocab-tr">Parti / uretim serisi</p><p class="vocab-example">&quot;This batch number is printed on the label.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Batch size</p><p class="vocab-tr">Parti boyutu</p><p class="vocab-example">&quot;The batch size is 500 kilograms.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Recipe</p><p class="vocab-tr">Recete</p><p class="vocab-example">&quot;We can adjust the recipe for your line.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Formulation</p><p class="vocab-tr">Formulasyon</p><p class="vocab-example">&quot;The formulation is designed for bakery use.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Application</p><p class="vocab-tr">Uygulama alani</p><p class="vocab-example">&quot;This product is suitable for moulding applications.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Dosage</p><p class="vocab-tr">Dozaj</p><p class="vocab-example">&quot;The dosage must be controlled carefully.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Throughput</p><p class="vocab-tr">Uretim cikti hizi</p><p class="vocab-example">&quot;The line throughput is higher with this product.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Downtime</p><p class="vocab-tr">Durus suresi</p><p class="vocab-example">&quot;We need to reduce downtime on the line.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Changeover</p><p class="vocab-tr">Urun degisim sureci</p><p class="vocab-example">&quot;The changeover takes around thirty minutes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Yield</p><p class="vocab-tr">Verim</p><p class="vocab-example">&quot;The new process improved yield.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Waste</p><p class="vocab-tr">Fire / atik</p><p class="vocab-example">&quot;Lower waste improves profitability.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Rework</p><p class="vocab-tr">Yeniden isleme</p><p class="vocab-example">&quot;Rework should be kept to a minimum.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Line trial</p><p class="vocab-tr">Hat denemesi</p><p class="vocab-example">&quot;We can arrange a line trial next month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pilot test</p><p class="vocab-tr">Pilot test</p><p class="vocab-example">&quot;A pilot test reduces risk before full production.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Scale-up</p><p class="vocab-tr">Olcegi buyutme</p><p class="vocab-example">&quot;The recipe worked well during scale-up.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Standard operating procedure (SOP)</p><p class="vocab-tr">Standart calisma proseduru</p><p class="vocab-example">&quot;The SOP must be followed exactly.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Quality Control &amp; Food Safety <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(24 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Quality Control &amp; Food Safety</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Quality specification</p><p class="vocab-tr">Kalite sartnamesi</p><p class="vocab-example">&quot;It must meet all quality specifications.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Certificate of Analysis (CoA)</p><p class="vocab-tr">Analiz Sertifikasi</p><p class="vocab-example">&quot;Please send the CoA with the delivery.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Allergen declaration</p><p class="vocab-tr">Alerjen beyani</p><p class="vocab-example">&quot;We need an updated allergen declaration.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Batch number</p><p class="vocab-tr">Parti numarasi</p><p class="vocab-example">&quot;Could you send us the batch number?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Traceability code</p><p class="vocab-tr">Izlenebilirlik kodu</p><p class="vocab-example">&quot;The traceability code helps us investigate quickly.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Non-conformity</p><p class="vocab-tr">Uygunsuzluk</p><p class="vocab-example">&quot;We identified a non-conformity in the batch.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Corrective action</p><p class="vocab-tr">Duzeltici faaliyet</p><p class="vocab-example">&quot;A corrective action has been implemented.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Preventive action</p><p class="vocab-tr">Onleyici faaliyet</p><p class="vocab-example">&quot;Preventive action will reduce future complaints.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Complaint handling</p><p class="vocab-tr">Sikayet yonetimi</p><p class="vocab-example">&quot;Complaint handling must be professional and fast.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Root cause</p><p class="vocab-tr">Kok neden</p><p class="vocab-example">&quot;We are investigating the root cause.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Contamination</p><p class="vocab-tr">Bulasma / kontaminasyon</p><p class="vocab-example">&quot;Contamination risk must be controlled.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Foreign body</p><p class="vocab-tr">Yabanci madde</p><p class="vocab-example">&quot;The foreign body complaint was escalated.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Microbiological test</p><p class="vocab-tr">Mikrobiyolojik test</p><p class="vocab-example">&quot;The microbiological test results are clear.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Moisture content</p><p class="vocab-tr">Nem icerigi</p><p class="vocab-example">&quot;High moisture can cause sugar bloom.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Fat content</p><p class="vocab-tr">Yag icerigi</p><p class="vocab-example">&quot;Fat content affects viscosity.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Particle size</p><p class="vocab-tr">Parcacik boyutu</p><p class="vocab-example">&quot;Particle size influences mouthfeel.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Viscosity test</p><p class="vocab-tr">Viskozite testi</p><p class="vocab-example">&quot;The viscosity test is within specification.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Tolerance</p><p class="vocab-tr">Tolerans</p><p class="vocab-example">&quot;The result is within tolerance.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Shelf-life test</p><p class="vocab-tr">Raf omru testi</p><p class="vocab-example">&quot;The shelf-life test is still ongoing.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">HACCP</p><p class="vocab-tr">HACCP gida guvenligi sistemi</p><p class="vocab-example">&quot;HACCP procedures are followed on site.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">GMP</p><p class="vocab-tr">Iyi uretim uygulamalari</p><p class="vocab-example">&quot;GMP standards apply throughout production.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Recall</p><p class="vocab-tr">Geri cagirma</p><p class="vocab-example">&quot;A recall is only used in serious cases.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Hold / quarantine</p><p class="vocab-tr">Bekletme / karantina</p><p class="vocab-example">&quot;The pallet is on hold until quality releases it.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Release</p><p class="vocab-tr">Serbest birakma / onaylama</p><p class="vocab-example">&quot;Quality released the batch this morning.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Sales &amp; Commercial Terms <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(30 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Sales &amp; Commercial Terms</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Account / key account</p><p class="vocab-tr">Hesap / kilit hesap</p><p class="vocab-example">&quot;This is one of our key accounts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Prospect</p><p class="vocab-tr">Potansiyel musteri</p><p class="vocab-example">&quot;This prospect may become a strategic customer.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Lead</p><p class="vocab-tr">Potansiyel satis firsati</p><p class="vocab-example">&quot;We received a new lead from the trade fair.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Qualified lead</p><p class="vocab-tr">Nitelikli firsat</p><p class="vocab-example">&quot;This is a qualified lead with real demand.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pipeline</p><p class="vocab-tr">Satis hatti</p><p class="vocab-example">&quot;There is a strong pipeline this quarter.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Opportunity</p><p class="vocab-tr">Firsat</p><p class="vocab-example">&quot;This opportunity could close next month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Quotation / quote</p><p class="vocab-tr">Fiyat teklifi</p><p class="vocab-example">&quot;I will send a formal quotation today.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Tender</p><p class="vocab-tr">Ihale / teklif sureci</p><p class="vocab-example">&quot;We are preparing documents for the tender.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Proposal</p><p class="vocab-tr">Teklif dosyasi</p><p class="vocab-example">&quot;The proposal includes pricing and technical support.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Price list</p><p class="vocab-tr">Fiyat listesi</p><p class="vocab-example">&quot;Please find attached the updated price list.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Volume discount</p><p class="vocab-tr">Hacim indirimi</p><p class="vocab-example">&quot;A volume discount applies above 5 MT.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Rebate</p><p class="vocab-tr">Prim / geri odeme indirimi</p><p class="vocab-example">&quot;The annual rebate depends on total volume.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Margin</p><p class="vocab-tr">Kar marji</p><p class="vocab-example">&quot;We need to protect our margin.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Markup</p><p class="vocab-tr">Kar ekleme orani</p><p class="vocab-example">&quot;The markup is lower for strategic accounts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Gross profit</p><p class="vocab-tr">Brut kar</p><p class="vocab-example">&quot;Gross profit improved this quarter.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Net sales</p><p class="vocab-tr">Net satislar</p><p class="vocab-example">&quot;Net sales increased year on year.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sales target / quota</p><p class="vocab-tr">Satis hedefi / kota</p><p class="vocab-example">&quot;We exceeded our Q2 sales target.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Forecast</p><p class="vocab-tr">Tahmin / ongoru</p><p class="vocab-example">&quot;The client updated their annual forecast.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Demand forecast</p><p class="vocab-tr">Talep tahmini</p><p class="vocab-example">&quot;The demand forecast looks positive.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Purchase order (PO)</p><p class="vocab-tr">Satinalma siparisi</p><p class="vocab-example">&quot;We can dispatch after receiving the PO.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Minimum order quantity (MOQ)</p><p class="vocab-tr">Minimum siparis miktari</p><p class="vocab-example">&quot;Our MOQ is 500 kg per SKU.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">SKU</p><p class="vocab-tr">Urun stok kodu</p><p class="vocab-example">&quot;This SKU is available in 10 kg boxes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Contract / supply agreement</p><p class="vocab-tr">Sozlesme / tedarik anlasmasi</p><p class="vocab-example">&quot;The supply agreement runs for one year.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Payment terms</p><p class="vocab-tr">Odeme kosullari</p><p class="vocab-example">&quot;Our standard payment terms are net 30.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Credit limit</p><p class="vocab-tr">Kredi limiti</p><p class="vocab-example">&quot;The order exceeds the current credit limit.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cross-selling</p><p class="vocab-tr">Capraz satis</p><p class="vocab-example">&quot;We can cross-sell cocoa powder with couverture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Upselling</p><p class="vocab-tr">Ust satis</p><p class="vocab-example">&quot;We upsold the premium range during the visit.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Retention</p><p class="vocab-tr">Musteri elde tutma</p><p class="vocab-example">&quot;Customer retention is a key priority.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Churn</p><p class="vocab-tr">Musteri kaybi</p><p class="vocab-example">&quot;We need to reduce churn in small accounts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Win rate</p><p class="vocab-tr">Kazanma orani</p><p class="vocab-example">&quot;Our win rate improved after product training.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Negotiation &amp; Persuasion Language <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(20 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Negotiation &amp; Persuasion Language</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Counteroffer</p><p class="vocab-tr">Karsi teklif</p><p class="vocab-example">&quot;They made a counteroffer yesterday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Target price</p><p class="vocab-tr">Hedef fiyat</p><p class="vocab-example">&quot;Could you share your target price?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Price objection</p><p class="vocab-tr">Fiyat itirazi</p><p class="vocab-example">&quot;The client raised a price objection.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Concession</p><p class="vocab-tr">Taviz</p><p class="vocab-example">&quot;We can make a small concession on payment terms.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Trade-off</p><p class="vocab-tr">Odunlesme / denge</p><p class="vocab-example">&quot;There is a trade-off between price and service level.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Value proposition</p><p class="vocab-tr">Deger onerisi</p><p class="vocab-example">&quot;Our value proposition includes technical support.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Added value</p><p class="vocab-tr">Katma deger</p><p class="vocab-example">&quot;Certification gives the customer added value.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Total cost of ownership</p><p class="vocab-tr">Toplam sahip olma maliyeti</p><p class="vocab-example">&quot;Consider the total cost of ownership, not only price.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Benchmark</p><p class="vocab-tr">Kiyas noktasi</p><p class="vocab-example">&quot;The competitor’s offer is our benchmark.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Threshold</p><p class="vocab-tr">Esik</p><p class="vocab-example">&quot;That volume reaches the discount threshold.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Commitment</p><p class="vocab-tr">Taahhut</p><p class="vocab-example">&quot;We need a volume commitment for this price.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Flexible terms</p><p class="vocab-tr">Esnek kosullar</p><p class="vocab-example">&quot;We can discuss flexible terms.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Non-negotiable</p><p class="vocab-tr">Pazarliga kapali</p><p class="vocab-example">&quot;Food safety requirements are non-negotiable.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Room for manoeuvre</p><p class="vocab-tr">Hareket alani</p><p class="vocab-example">&quot;There may be some room for manoeuvre.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Meet halfway</p><p class="vocab-tr">Ortada bulusmak</p><p class="vocab-example">&quot;Could we meet halfway on the delivery cost?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Close the gap</p><p class="vocab-tr">Farki kapatmak</p><p class="vocab-example">&quot;We need to close the gap between both offers.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Secure the deal</p><p class="vocab-tr">Anlasmayi garantilemek</p><p class="vocab-example">&quot;This discount could help secure the deal.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Long-term partnership</p><p class="vocab-tr">Uzun vadeli ortaklik</p><p class="vocab-example">&quot;We see this as a long-term partnership.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Mutual benefit</p><p class="vocab-tr">Karsilikli fayda</p><p class="vocab-example">&quot;The agreement should create mutual benefit.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Best and final offer</p><p class="vocab-tr">Son ve en iyi teklif</p><p class="vocab-example">&quot;This is our best and final offer.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Client Meetings &amp; Presentations <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(20 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Client Meetings &amp; Presentations</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Agenda</p><p class="vocab-tr">Gundem</p><p class="vocab-example">&quot;Let’s start with the agenda.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Overview</p><p class="vocab-tr">Genel bakis</p><p class="vocab-example">&quot;I will give you a brief overview of our portfolio.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Objective</p><p class="vocab-tr">Amac</p><p class="vocab-example">&quot;The objective of today’s meeting is to agree next steps.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Key point</p><p class="vocab-tr">Onemli nokta</p><p class="vocab-example">&quot;The key point is product consistency.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pain point</p><p class="vocab-tr">Sorun noktasi</p><p class="vocab-example">&quot;What are your main pain points with your current supplier?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Decision-maker</p><p class="vocab-tr">Karar verici</p><p class="vocab-example">&quot;Who is the decision-maker for this project?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Stakeholder</p><p class="vocab-tr">Paydas</p><p class="vocab-example">&quot;We need input from all stakeholders.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Follow-up</p><p class="vocab-tr">Takip</p><p class="vocab-example">&quot;I will send a follow-up email tomorrow.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Action point</p><p class="vocab-tr">Aksiyon maddesi</p><p class="vocab-example">&quot;Let’s list the action points before we finish.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Takeaway</p><p class="vocab-tr">Cikarim / ana mesaj</p><p class="vocab-example">&quot;My main takeaway is that you need faster delivery.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Next steps</p><p class="vocab-tr">Sonraki adimlar</p><p class="vocab-example">&quot;Shall we agree on the next steps?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Timeline</p><p class="vocab-tr">Zaman cizelgesi</p><p class="vocab-example">&quot;The timeline depends on sample approval.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Deadline</p><p class="vocab-tr">Son tarih</p><p class="vocab-example">&quot;The deadline for confirmation is Friday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Minutes</p><p class="vocab-tr">Toplanti notlari</p><p class="vocab-example">&quot;I’ll share the meeting minutes after the call.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Slide deck</p><p class="vocab-tr">Sunum dosyasi</p><p class="vocab-example">&quot;The slide deck includes product benefits.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Case study</p><p class="vocab-tr">Vaka calismasi</p><p class="vocab-example">&quot;This case study shows similar customer results.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Demo</p><p class="vocab-tr">Demo / tanitim</p><p class="vocab-example">&quot;We can organise a product demo.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Q&amp;A</p><p class="vocab-tr">Soru cevap</p><p class="vocab-example">&quot;We will finish with a short Q&amp;A.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Clarification</p><p class="vocab-tr">Aciklama / netlestirme</p><p class="vocab-example">&quot;Could I ask for clarification on that point?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Alignment</p><p class="vocab-tr">Uyum / ayni noktada olmak</p><p class="vocab-example">&quot;We need internal alignment before we proceed.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Email &amp; Phone Communication <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(20 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Email &amp; Phone Communication</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Subject line</p><p class="vocab-tr">Konu satiri</p><p class="vocab-example">&quot;Use a clear subject line for quotations.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Attachment</p><p class="vocab-tr">Ek dosya</p><p class="vocab-example">&quot;Please find the catalogue attached.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Attached file</p><p class="vocab-tr">Ekli dosya</p><p class="vocab-example">&quot;The attached file includes technical details.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">As discussed</p><p class="vocab-tr">Gorustugumuz gibi</p><p class="vocab-example">&quot;As discussed, I am sending the revised quote.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Further to our call</p><p class="vocab-tr">Telefon gorusmemize istinaden</p><p class="vocab-example">&quot;Further to our call, please see the details below.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Please find attached</p><p class="vocab-tr">Ekte bulabilirsiniz</p><p class="vocab-example">&quot;Please find attached our updated product list.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Kind reminder</p><p class="vocab-tr">Nazik hatirlatma</p><p class="vocab-example">&quot;This is a kind reminder about the pending PO.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Prompt reply</p><p class="vocab-tr">Hizli yanit</p><p class="vocab-example">&quot;Thank you for your prompt reply.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Out of office</p><p class="vocab-tr">Ofis disinda</p><p class="vocab-example">&quot;I am out of office until Monday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Forward</p><p class="vocab-tr">Iletmek</p><p class="vocab-example">&quot;Could you forward this to your purchasing team?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Copy someone in</p><p class="vocab-tr">Birini CC’ye eklemek</p><p class="vocab-example">&quot;I’ll copy our logistics manager in.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Loop someone in</p><p class="vocab-tr">Birini surece dahil etmek</p><p class="vocab-example">&quot;Let me loop in our technical specialist.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Get back to someone</p><p class="vocab-tr">Birine geri donmek</p><p class="vocab-example">&quot;I’ll get back to you by Friday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Touch base</p><p class="vocab-tr">Kisaca iletisime gecmek</p><p class="vocab-example">&quot;Let’s touch base after the trial.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Follow up</p><p class="vocab-tr">Takip etmek</p><p class="vocab-example">&quot;I’m following up on our quotation.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Reach out</p><p class="vocab-tr">Iletisime gecmek</p><p class="vocab-example">&quot;Thank you for reaching out.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Call back</p><p class="vocab-tr">Geri aramak</p><p class="vocab-example">&quot;Could I call you back in ten minutes?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Put someone through</p><p class="vocab-tr">Baglamak</p><p class="vocab-example">&quot;Could you put me through to purchasing?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Reception / switchboard</p><p class="vocab-tr">Santral</p><p class="vocab-example">&quot;The switchboard transferred my call.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Voice message</p><p class="vocab-tr">Sesli mesaj</p><p class="vocab-example">&quot;I left a voice message this morning.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Logistics &amp; Supply Chain <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(24 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Logistics &amp; Supply Chain</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Lead time</p><p class="vocab-tr">Teslim suresi</p><p class="vocab-example">&quot;Our lead time is five working days.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Delivery window</p><p class="vocab-tr">Teslimat araligi</p><p class="vocab-example">&quot;The delivery window is between 9 and 12.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Shipment</p><p class="vocab-tr">Sevkiyat</p><p class="vocab-example">&quot;The shipment left the warehouse yesterday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Dispatch / despatch</p><p class="vocab-tr">Sevk etmek</p><p class="vocab-example">&quot;The order will be dispatched on Monday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Warehouse</p><p class="vocab-tr">Depo</p><p class="vocab-example">&quot;The goods are stored in our warehouse.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Stock availability</p><p class="vocab-tr">Stok durumu</p><p class="vocab-example">&quot;I’ll check stock availability.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Backorder</p><p class="vocab-tr">Bekleyen siparis</p><p class="vocab-example">&quot;The item is on backorder.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pallet</p><p class="vocab-tr">Palet</p><p class="vocab-example">&quot;This order requires five pallets.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Full truckload (FTL)</p><p class="vocab-tr">Tam kamyon yuku</p><p class="vocab-example">&quot;This order is a full truckload.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Less than truckload (LTL)</p><p class="vocab-tr">Parsiyel yuk</p><p class="vocab-example">&quot;LTL is cheaper for smaller shipments.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cold chain</p><p class="vocab-tr">Soguk zincir</p><p class="vocab-example">&quot;Cold chain is critical in summer.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Temperature-controlled</p><p class="vocab-tr">Isi kontrollu</p><p class="vocab-example">&quot;We need temperature-controlled transport.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Customs clearance</p><p class="vocab-tr">Gumruk islemleri</p><p class="vocab-example">&quot;Customs clearance delayed the shipment.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Incoterms</p><p class="vocab-tr">Teslimat kosullari</p><p class="vocab-example">&quot;Which Incoterms apply to this order?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">DDP</p><p class="vocab-tr">Gumruk vergileri odenmis teslim</p><p class="vocab-example">&quot;We deliver DDP to your warehouse.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">EXW</p><p class="vocab-tr">Fabrikadan teslim</p><p class="vocab-example">&quot;EXW means the buyer arranges transport.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">CIF</p><p class="vocab-tr">Mal bedeli sigorta navlun dahil</p><p class="vocab-example">&quot;CIF includes cost, insurance and freight.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Proof of delivery (POD)</p><p class="vocab-tr">Teslim kaniti</p><p class="vocab-example">&quot;Please send the POD after delivery.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Tracking number</p><p class="vocab-tr">Takip numarasi</p><p class="vocab-example">&quot;I’ll send you the tracking number.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Delay</p><p class="vocab-tr">Gecikme</p><p class="vocab-example">&quot;We apologise for the delay.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Damaged goods</p><p class="vocab-tr">Hasarli urunler</p><p class="vocab-example">&quot;The client reported damaged goods.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Replacement shipment</p><p class="vocab-tr">Yedek / yeni sevkiyat</p><p class="vocab-example">&quot;We will arrange a replacement shipment.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Shortage</p><p class="vocab-tr">Eksik teslimat</p><p class="vocab-example">&quot;There was a shortage of two boxes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Overstock</p><p class="vocab-tr">Fazla stok</p><p class="vocab-example">&quot;Overstock increases storage cost.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Finance, Pricing &amp; Reporting <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(22 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Finance, Pricing &amp; Reporting</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Revenue</p><p class="vocab-tr">Gelir</p><p class="vocab-example">&quot;Revenue increased by 8% this quarter.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Turnover</p><p class="vocab-tr">Ciro</p><p class="vocab-example">&quot;Annual turnover is above target.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Profit margin</p><p class="vocab-tr">Kar marji</p><p class="vocab-example">&quot;The profit margin is under pressure.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cost price</p><p class="vocab-tr">Maliyet fiyati</p><p class="vocab-example">&quot;The cost price changed after cocoa prices increased.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Selling price</p><p class="vocab-tr">Satis fiyati</p><p class="vocab-example">&quot;The selling price includes logistics.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Net price</p><p class="vocab-tr">Net fiyat</p><p class="vocab-example">&quot;This is the net price after discount.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">List price</p><p class="vocab-tr">Liste fiyati</p><p class="vocab-example">&quot;The list price is updated quarterly.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Discount rate</p><p class="vocab-tr">Indirim orani</p><p class="vocab-example">&quot;The discount rate depends on volume.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Currency fluctuation</p><p class="vocab-tr">Kur dalgalanmasi</p><p class="vocab-example">&quot;Currency fluctuation affects import costs.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Exchange rate</p><p class="vocab-tr">Doviz kuru</p><p class="vocab-example">&quot;The exchange rate changed this morning.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Inflation</p><p class="vocab-tr">Enflasyon</p><p class="vocab-example">&quot;Inflation has affected packaging costs.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Budget</p><p class="vocab-tr">Butce</p><p class="vocab-example">&quot;The client’s budget is limited.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Approval</p><p class="vocab-tr">Onay</p><p class="vocab-example">&quot;We need finance approval.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Invoice</p><p class="vocab-tr">Fatura</p><p class="vocab-example">&quot;The invoice was issued yesterday.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Credit note</p><p class="vocab-tr">Iade faturasi / alacak dekontu</p><p class="vocab-example">&quot;We issued a credit note for the damaged goods.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Overdue payment</p><p class="vocab-tr">Gecikmis odeme</p><p class="vocab-example">&quot;There is an overdue payment on the account.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cash flow</p><p class="vocab-tr">Nakit akisi</p><p class="vocab-example">&quot;Cash flow is important for smaller clients.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Quarterly report</p><p class="vocab-tr">Ceyrek rapor</p><p class="vocab-example">&quot;The quarterly report is ready.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Year-on-year</p><p class="vocab-tr">Yildan yila</p><p class="vocab-example">&quot;Sales grew year-on-year.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Month-on-month</p><p class="vocab-tr">Aydan aya</p><p class="vocab-example">&quot;Demand increased month-on-month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">KPI</p><p class="vocab-tr">Ana performans gostergesi</p><p class="vocab-example">&quot;Customer retention is one of our KPIs.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Break-even point</p><p class="vocab-tr">Basabas noktasi</p><p class="vocab-example">&quot;The break-even point depends on volume.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Procurement &amp; Purchasing <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(18 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Procurement &amp; Purchasing</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Purchasing department</p><p class="vocab-tr">Satinalma departmani</p><p class="vocab-example">&quot;The purchasing department requested a quote.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Buyer</p><p class="vocab-tr">Satinalmaci</p><p class="vocab-example">&quot;The buyer asked for better payment terms.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Supplier</p><p class="vocab-tr">Tedarikci</p><p class="vocab-example">&quot;We are their preferred supplier.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Preferred supplier</p><p class="vocab-tr">Tercih edilen tedarikci</p><p class="vocab-example">&quot;Our goal is to become their preferred supplier.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Approved vendor</p><p class="vocab-tr">Onayli tedarikci</p><p class="vocab-example">&quot;We are already an approved vendor.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Vendor registration</p><p class="vocab-tr">Tedarikci kaydi</p><p class="vocab-example">&quot;Vendor registration takes two weeks.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Request for quotation (RFQ)</p><p class="vocab-tr">Fiyat teklifi talebi</p><p class="vocab-example">&quot;We received an RFQ from the client.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Request for proposal (RFP)</p><p class="vocab-tr">Teklif dosyasi talebi</p><p class="vocab-example">&quot;The RFP includes technical requirements.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Procurement cycle</p><p class="vocab-tr">Satinalma dongusu</p><p class="vocab-example">&quot;Their procurement cycle is quite long.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Order confirmation</p><p class="vocab-tr">Siparis onayi</p><p class="vocab-example">&quot;Please send the order confirmation today.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Supplier evaluation</p><p class="vocab-tr">Tedarikci degerlendirmesi</p><p class="vocab-example">&quot;Supplier evaluation happens every year.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Compliance document</p><p class="vocab-tr">Uygunluk belgesi</p><p class="vocab-example">&quot;They requested additional compliance documents.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Terms and conditions</p><p class="vocab-tr">Sartlar ve kosullar</p><p class="vocab-example">&quot;Please review the terms and conditions.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Framework agreement</p><p class="vocab-tr">Cerceve anlasma</p><p class="vocab-example">&quot;A framework agreement can simplify future orders.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Annual contract</p><p class="vocab-tr">Yillik sozlesme</p><p class="vocab-example">&quot;The annual contract includes fixed volumes.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Spot purchase</p><p class="vocab-tr">Anlik satinalma</p><p class="vocab-example">&quot;This is a spot purchase, not a long-term contract.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Call-off order</p><p class="vocab-tr">Cagri usulu siparis</p><p class="vocab-example">&quot;The client places call-off orders every month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Blanket order</p><p class="vocab-tr">Toplu / acik siparis</p><p class="vocab-example">&quot;A blanket order covers several deliveries.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Sustainability &amp; Certification <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(18 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Sustainability &amp; Certification</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Rainforest Alliance certified</p><p class="vocab-tr">Rainforest Alliance sertifikali</p><p class="vocab-example">&quot;Our beans are Rainforest Alliance certified.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Fairtrade</p><p class="vocab-tr">Adil ticaret</p><p class="vocab-example">&quot;Do you require Fairtrade certification?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Traceability</p><p class="vocab-tr">Izlenebilirlik</p><p class="vocab-example">&quot;Full traceability back to the farm is available.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Responsible sourcing</p><p class="vocab-tr">Sorumlu tedarik</p><p class="vocab-example">&quot;Responsible sourcing is a core value.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sustainable cocoa</p><p class="vocab-tr">Surdurulebilir kakao</p><p class="vocab-example">&quot;Demand for sustainable cocoa is increasing.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Deforestation-free</p><p class="vocab-tr">Ormansizlastirmaya yol acmayan</p><p class="vocab-example">&quot;The client asked for deforestation-free sourcing.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Carbon footprint</p><p class="vocab-tr">Karbon ayak izi</p><p class="vocab-example">&quot;We are reducing our carbon footprint.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">CO2 reduction</p><p class="vocab-tr">CO2 azaltimi</p><p class="vocab-example">&quot;CO2 reduction is part of our sustainability goals.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Ethical sourcing</p><p class="vocab-tr">Etik tedarik</p><p class="vocab-example">&quot;Ethical sourcing supports farmer communities.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Farmer support</p><p class="vocab-tr">Ciftci destegi</p><p class="vocab-example">&quot;Farmer support improves long-term supply.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Living income</p><p class="vocab-tr">Yasama geliri</p><p class="vocab-example">&quot;Living income is important in cocoa farming.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Supply chain transparency</p><p class="vocab-tr">Tedarik zinciri seffafligi</p><p class="vocab-example">&quot;Customers expect supply chain transparency.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Certification audit</p><p class="vocab-tr">Sertifikasyon denetimi</p><p class="vocab-example">&quot;The certification audit is scheduled for June.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Compliance</p><p class="vocab-tr">Uyumluluk</p><p class="vocab-example">&quot;Compliance documents are required by the customer.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Due diligence</p><p class="vocab-tr">Gerekli inceleme</p><p class="vocab-example">&quot;Due diligence is part of responsible sourcing.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sustainability report</p><p class="vocab-tr">Surdurulebilirlik raporu</p><p class="vocab-example">&quot;The sustainability report is shared annually.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Forever Chocolate programme</p><p class="vocab-tr">Forever Chocolate programi</p><p class="vocab-example">&quot;We follow Forever Chocolate targets.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">ESG</p><p class="vocab-tr">Cevresel sosyal yonetisim</p><p class="vocab-example">&quot;ESG requirements are becoming more important.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Leadership &amp; Account Management <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(18 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Leadership &amp; Account Management</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Account plan</p><p class="vocab-tr">Musteri plani</p><p class="vocab-example">&quot;The account plan defines our strategy.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Customer relationship</p><p class="vocab-tr">Musteri iliskisi</p><p class="vocab-example">&quot;A strong customer relationship increases loyalty.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Relationship building</p><p class="vocab-tr">Iliski kurma</p><p class="vocab-example">&quot;Relationship building takes time.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Trust</p><p class="vocab-tr">Guven</p><p class="vocab-example">&quot;Trust is essential in long-term sales.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Reliability</p><p class="vocab-tr">Guvenilirlik</p><p class="vocab-example">&quot;Reliability is part of our value proposition.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Responsiveness</p><p class="vocab-tr">Hizli cevap verebilme</p><p class="vocab-example">&quot;Responsiveness is important for key accounts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Escalation</p><p class="vocab-tr">Ust seviyeye tasima</p><p class="vocab-example">&quot;This complaint requires escalation.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Internal alignment</p><p class="vocab-tr">Ic uyum</p><p class="vocab-example">&quot;We need internal alignment before confirming the price.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cross-functional team</p><p class="vocab-tr">Cok fonksiyonlu ekip</p><p class="vocab-example">&quot;A cross-functional team will support the project.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Technical support</p><p class="vocab-tr">Teknik destek</p><p class="vocab-example">&quot;Technical support is included for trials.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Customer success</p><p class="vocab-tr">Musteri basarisi</p><p class="vocab-example">&quot;Customer success focuses on long-term results.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Retention strategy</p><p class="vocab-tr">Musteri tutma stratejisi</p><p class="vocab-example">&quot;Our retention strategy targets strategic accounts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Growth potential</p><p class="vocab-tr">Buyume potansiyeli</p><p class="vocab-example">&quot;This account has strong growth potential.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Strategic account</p><p class="vocab-tr">Stratejik musteri</p><p class="vocab-example">&quot;This is a strategic account for us.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Decision process</p><p class="vocab-tr">Karar sureci</p><p class="vocab-example">&quot;Can you explain your decision process?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Influencer</p><p class="vocab-tr">Etkileyen kisi</p><p class="vocab-example">&quot;The pastry chef is an important influencer.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Champion</p><p class="vocab-tr">Ic destekci</p><p class="vocab-example">&quot;We need a champion inside the customer’s company.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Risk management</p><p class="vocab-tr">Risk yonetimi</p><p class="vocab-example">&quot;Risk management is key for annual contracts.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Marketing, Branding &amp; Product Positioning <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(16 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Marketing, Branding &amp; Product Positioning</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Brand positioning</p><p class="vocab-tr">Marka konumlandirma</p><p class="vocab-example">&quot;The product positioning is premium but accessible.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Premium segment</p><p class="vocab-tr">Premium segment</p><p class="vocab-example">&quot;This range targets the premium segment.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Mass market</p><p class="vocab-tr">Kitlesel pazar</p><p class="vocab-example">&quot;This product is designed for the mass market.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Value for money</p><p class="vocab-tr">Fiyat performans</p><p class="vocab-example">&quot;The client wants good value for money.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Product launch</p><p class="vocab-tr">Urun lansmani</p><p class="vocab-example">&quot;The product launch is planned for September.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Launch campaign</p><p class="vocab-tr">Lansman kampanyasi</p><p class="vocab-example">&quot;The launch campaign focuses on chefs.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Consumer trend</p><p class="vocab-tr">Tuketici trendi</p><p class="vocab-example">&quot;Healthier snacks are a growing consumer trend.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Market insight</p><p class="vocab-tr">Pazar icgorusu</p><p class="vocab-example">&quot;This market insight helps us position the product.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Competitor analysis</p><p class="vocab-tr">Rakip analizi</p><p class="vocab-example">&quot;Competitor analysis shows a pricing gap.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Differentiation</p><p class="vocab-tr">Farklilasma</p><p class="vocab-example">&quot;Certification creates differentiation.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Unique selling point (USP)</p><p class="vocab-tr">Benzersiz satis noktasi</p><p class="vocab-example">&quot;The USP is its smooth texture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Packaging</p><p class="vocab-tr">Ambalaj</p><p class="vocab-example">&quot;Packaging affects shelf appeal.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Shelf appeal</p><p class="vocab-tr">Raf cekiciligi</p><p class="vocab-example">&quot;The new design has stronger shelf appeal.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Target audience</p><p class="vocab-tr">Hedef kitle</p><p class="vocab-example">&quot;The target audience is premium bakeries.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Product story</p><p class="vocab-tr">Urun hikayesi</p><p class="vocab-example">&quot;The product story focuses on origin and quality.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Brand loyalty</p><p class="vocab-tr">Marka sadakati</p><p class="vocab-example">&quot;Brand loyalty is high among pastry chefs.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Trade Fairs &amp; Networking <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(16 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Trade Fairs &amp; Networking</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Trade fair</p><p class="vocab-tr">Ticaret fuari</p><p class="vocab-example">&quot;We met several prospects at the trade fair.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Exhibition stand</p><p class="vocab-tr">Fuar standi</p><p class="vocab-example">&quot;Our exhibition stand attracted many visitors.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Business card</p><p class="vocab-tr">Kartvizit</p><p class="vocab-example">&quot;I collected his business card at the event.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Networking</p><p class="vocab-tr">Is agi kurma</p><p class="vocab-example">&quot;Networking is important for new leads.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Visitor</p><p class="vocab-tr">Ziyaretci</p><p class="vocab-example">&quot;The stand had many visitors in the morning.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Product showcase</p><p class="vocab-tr">Urun tanitimi</p><p class="vocab-example">&quot;The product showcase included tastings.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Tasting session</p><p class="vocab-tr">Tadim oturumu</p><p class="vocab-example">&quot;We invited clients to a tasting session.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Live demo</p><p class="vocab-tr">Canli demo</p><p class="vocab-example">&quot;The chef gave a live demo.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Brochure</p><p class="vocab-tr">Brosur</p><p class="vocab-example">&quot;The brochure includes our full range.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Catalogue</p><p class="vocab-tr">Katalog</p><p class="vocab-example">&quot;The catalogue is available in English and Turkish.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sample kit</p><p class="vocab-tr">Numune seti</p><p class="vocab-example">&quot;We prepared a sample kit for the client.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Follow-up list</p><p class="vocab-tr">Takip listesi</p><p class="vocab-example">&quot;The follow-up list has twenty new contacts.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Lead generation</p><p class="vocab-tr">Firsat yaratma</p><p class="vocab-example">&quot;Trade fairs are useful for lead generation.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Appointment</p><p class="vocab-tr">Randevu</p><p class="vocab-example">&quot;I booked an appointment for next week.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Networking dinner</p><p class="vocab-tr">Is yemegi / networking yemegi</p><p class="vocab-example">&quot;We discussed cooperation at the networking dinner.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Industry event</p><p class="vocab-tr">Sektor etkinligi</p><p class="vocab-example">&quot;ISM is a major industry event.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Useful Business Phrasal Verbs <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(20 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Useful Business Phrasal Verbs</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Follow up</p><p class="vocab-tr">Takip etmek</p><p class="vocab-example">&quot;I’m following up on last week’s quote.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Look into</p><p class="vocab-tr">Arastirmak</p><p class="vocab-example">&quot;I’ll look into the delivery issue.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Get back to</p><p class="vocab-tr">Geri donmek</p><p class="vocab-example">&quot;I’ll get back to you after checking internally.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Set up</p><p class="vocab-tr">Ayarlamak / kurmak</p><p class="vocab-example">&quot;Let’s set up a meeting with technical support.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Bring up</p><p class="vocab-tr">Gundeme getirmek</p><p class="vocab-example">&quot;The client brought up the price issue.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Point out</p><p class="vocab-tr">Dikkat cekmek</p><p class="vocab-example">&quot;I pointed out the added value of certification.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Work out</p><p class="vocab-tr">Cozmek / hesaplamak</p><p class="vocab-example">&quot;We need to work out the final price.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Figure out</p><p class="vocab-tr">Cozmek / anlamak</p><p class="vocab-example">&quot;Let’s figure out the best delivery plan.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Run out of</p><p class="vocab-tr">Tukenmek</p><p class="vocab-example">&quot;They ran out of stock last week.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cut down on</p><p class="vocab-tr">Azaltmak</p><p class="vocab-example">&quot;They want to cut down on waste.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Come across</p><p class="vocab-tr">Karsilasmak</p><p class="vocab-example">&quot;I came across a similar complaint last month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Take over</p><p class="vocab-tr">Devralmak</p><p class="vocab-example">&quot;I took over this account in January.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Hand over</p><p class="vocab-tr">Devretmek</p><p class="vocab-example">&quot;I’ll hand over the details to logistics.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Put off</p><p class="vocab-tr">Ertelemek</p><p class="vocab-example">&quot;The client put off the decision until June.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Go ahead</p><p class="vocab-tr">Devam etmek / onay vermek</p><p class="vocab-example">&quot;We can go ahead after the PO arrives.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Sort out</p><p class="vocab-tr">Cozmek / halletmek</p><p class="vocab-example">&quot;We sorted out the invoice problem.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Break down</p><p class="vocab-tr">Detaylandirmak</p><p class="vocab-example">&quot;Could you break down the total cost?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Pick up</p><p class="vocab-tr">Artmak / almak</p><p class="vocab-example">&quot;Demand picked up after the campaign.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Drop off</p><p class="vocab-tr">Azalmak</p><p class="vocab-example">&quot;Orders dropped off in March.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Roll out</p><p class="vocab-tr">Yayginlastirmak</p><p class="vocab-example">&quot;The new product will roll out next quarter.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">Native-style Business Expressions <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(18 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">Native-style Business Expressions</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">That sounds workable</p><p class="vocab-tr">Bu uygulanabilir gorunuyor</p><p class="vocab-example">&quot;That sounds workable if the volume is confirmed.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Let me check internally</p><p class="vocab-tr">Ic tarafta kontrol edeyim</p><p class="vocab-example">&quot;Let me check internally and come back to you.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">We can make that work</p><p class="vocab-tr">Bunu ayarlayabiliriz</p><p class="vocab-example">&quot;If the order is 2,000 kg, we can make that work.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">That’s worth checking</p><p class="vocab-tr">Bunu kontrol etmekte fayda var</p><p class="vocab-example">&quot;That’s worth checking before we compare prices.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">I see your point</p><p class="vocab-tr">Ne demek istediginizi anliyorum</p><p class="vocab-example">&quot;I see your point about lead time.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">To be transparent</p><p class="vocab-tr">Acik olmak gerekirse</p><p class="vocab-example">&quot;To be transparent, the price depends on cocoa costs.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">From our side</p><p class="vocab-tr">Bizim tarafimizdan</p><p class="vocab-example">&quot;From our side, the timeline is realistic.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">From your side</p><p class="vocab-tr">Sizin tarafinizdan</p><p class="vocab-example">&quot;What would you need from your side to proceed?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">The main concern is</p><p class="vocab-tr">Ana endise su</p><p class="vocab-example">&quot;The main concern is delivery reliability.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">At this stage</p><p class="vocab-tr">Bu asamada</p><p class="vocab-example">&quot;At this stage, we need technical approval.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Moving forward</p><p class="vocab-tr">Bundan sonra</p><p class="vocab-example">&quot;Moving forward, we will send weekly updates.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">To avoid any misunderstanding</p><p class="vocab-tr">Yanlis anlasilmayi onlemek icin</p><p class="vocab-example">&quot;To avoid any misunderstanding, I’ll confirm the terms in writing.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Just to clarify</p><p class="vocab-tr">Sadece netlestirmek icin</p><p class="vocab-example">&quot;Just to clarify, do you need 500 kg per month?&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Let’s keep the momentum</p><p class="vocab-tr">Hizi / ivmeyi koruyalim</p><p class="vocab-example">&quot;Let’s keep the momentum and schedule the trial.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">That gives us some flexibility</p><p class="vocab-tr">Bu bize esneklik saglar</p><p class="vocab-example">&quot;A larger volume gives us some flexibility.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">We’re aligned</p><p class="vocab-tr">Ayni noktadayiz</p><p class="vocab-example">&quot;I think we’re aligned on the next steps.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">It depends on the volume</p><p class="vocab-tr">Hacme bagli</p><p class="vocab-example">&quot;The final price depends on the volume.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">I’ll take ownership of this</p><p class="vocab-tr">Bu konunun sorumlulugunu alacagim</p><p class="vocab-example">&quot;I’ll take ownership of this complaint until it is resolved.&quot;</p></div>
+</div>
+</div></div></details>
+<details class="accordion-item"><summary class="accordion-title">B1 to C1 Upgrade Vocabulary <span style="font-size:11px;color:var(--text-light);font-weight:400;letter-spacing:0;">(18 terms)</span></summary><div class="accordion-content"><div class="vocab-category">
+<p class="vocab-category-title">B1 to C1 Upgrade Vocabulary</p>
+<div class="vocab-grid">
+<div class="vocab-card"><p class="vocab-en">Good quality → premium-grade</p><p class="vocab-tr">Iyi kalite → premium kalite</p><p class="vocab-example">&quot;This is a premium-grade couverture.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Very good → excellent / outstanding</p><p class="vocab-tr">Cok iyi → mukemmel</p><p class="vocab-example">&quot;The feedback from the trial was excellent.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Cheap → cost-effective</p><p class="vocab-tr">Ucuz → maliyet acisindan etkili</p><p class="vocab-example">&quot;This option is more cost-effective for coating.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Expensive → premium-priced</p><p class="vocab-tr">Pahali → premium fiyatli</p><p class="vocab-example">&quot;It is premium-priced because of certification.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Problem → issue / challenge</p><p class="vocab-tr">Sorun → konu / zorluk</p><p class="vocab-example">&quot;We had a minor issue with delivery.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Help → support / assist</p><p class="vocab-tr">Yardim etmek → desteklemek</p><p class="vocab-example">&quot;Our technical team can support you.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Ask → request</p><p class="vocab-tr">Sormak / istemek → talep etmek</p><p class="vocab-example">&quot;The client requested updated documents.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Need → require</p><p class="vocab-tr">Ihtiyac duymak → gerektirmek</p><p class="vocab-example">&quot;This application requires lower viscosity.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Start → initiate</p><p class="vocab-tr">Baslamak → baslatmak</p><p class="vocab-example">&quot;We can initiate the approval process.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Finish → finalise</p><p class="vocab-tr">Bitirmek → sonlandirmak</p><p class="vocab-example">&quot;Let’s finalise the contract this week.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Check → verify</p><p class="vocab-tr">Kontrol etmek → dogrulamak</p><p class="vocab-example">&quot;We need to verify the batch number.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Fix → resolve</p><p class="vocab-tr">Duzeltmek → cozmek</p><p class="vocab-example">&quot;We resolved the invoice issue.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Talk about → discuss</p><p class="vocab-tr">Konusmak → gorusmek</p><p class="vocab-example">&quot;We discussed payment terms.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Tell → inform</p><p class="vocab-tr">Soylemek → bilgilendirmek</p><p class="vocab-example">&quot;Please inform us about any delays.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Buy → purchase</p><p class="vocab-tr">Satinalmak → satinalmak</p><p class="vocab-example">&quot;The client purchased 2 MT last month.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Use → utilise</p><p class="vocab-tr">Kullanmak → faydalanmak</p><p class="vocab-example">&quot;The client utilises it in bakery fillings.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Make better → improve</p><p class="vocab-tr">Iyilestirmek</p><p class="vocab-example">&quot;The new process improves consistency.&quot;</p></div>
+<div class="vocab-card"><p class="vocab-en">Big customer → key account</p><p class="vocab-tr">Buyuk musteri → kilit musteri</p><p class="vocab-example">&quot;This key account needs weekly attention.&quot;</p></div>
+</div>
+</div></div></details>
+</div>
+</div>
+
+  <!-- IDIOMS TAB -->
+<div class="tab-section" id="tab-idioms">
+<div class="section-header">
+<h2>Business Idioms</h2>
+<p>Common expressions you'll hear in sales meetings, negotiations and client conversations — with Turkish meanings and real examples.</p>
+</div><div class="accordion-list"><details class="accordion-item" open=""><summary class="accordion-title">Get the ball rolling</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Get the ball rolling</p>
+<p class="idiom-meaning">To start a process or activity.</p>
+<p class="idiom-example">"Let's get the ball rolling on the annual contract — I'll send the draft this week."</p>
+<p class="idiom-tr">→ Topu harekete geçirmek / bir şeye başlamak</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">On the same page</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">On the same page</p>
+<p class="idiom-meaning">To have the same understanding or agree on something.</p>
+<p class="idiom-example">"Before we sign, I want to make sure we're on the same page about delivery terms."</p>
+<p class="idiom-tr">→ Aynı fikirde olmak / anlaşmak</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Ballpark figure</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Ballpark figure</p>
+<p class="idiom-meaning">A rough estimate, not an exact number.</p>
+<p class="idiom-example">"Can you give me a ballpark figure for your annual cocoa powder needs?"</p>
+<p class="idiom-tr">→ Kabaca rakam / tahmini sayı</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Touch base</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Touch base</p>
+<p class="idiom-meaning">To briefly contact someone to check in or share an update.</p>
+<p class="idiom-example">"I'll touch base with you after the tasting session to get your feedback."</p>
+<p class="idiom-tr">→ Kısaca temasa geçmek / haber vermek</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">In the pipeline</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">In the pipeline</p>
+<p class="idiom-meaning">Being planned or in progress but not yet completed.</p>
+<p class="idiom-example">"We have a new ruby chocolate line in the pipeline for Q4."</p>
+<p class="idiom-tr">→ Hazırlık aşamasında / gündemde olan</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Bottom line</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Bottom line</p>
+<p class="idiom-meaning">The final profit or the most important point.</p>
+<p class="idiom-example">"The bottom line is that we need a price that works for both sides."</p>
+<p class="idiom-tr">→ Kâr / net sonuç / önemli olan şu ki</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">A win-win (situation)</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">A win-win (situation)</p>
+<p class="idiom-meaning">A situation that is good for everyone involved.</p>
+<p class="idiom-example">"A three-year supply agreement would be a win-win for both our businesses."</p>
+<p class="idiom-tr">→ Her iki taraf için de kazançlı durum</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Move the goalposts</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Move the goalposts</p>
+<p class="idiom-meaning">To change the conditions of an agreement unexpectedly.</p>
+<p class="idiom-example">"We agreed on the price last week — please don't move the goalposts at this stage."</p>
+<p class="idiom-tr">→ Kural/koşulları aniden değiştirmek</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Read between the lines</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Read between the lines</p>
+<p class="idiom-meaning">To understand the hidden meaning behind someone's words.</p>
+<p class="idiom-example">"When they said they were 'reviewing options', I read between the lines — they're negotiating with a competitor."</p>
+<p class="idiom-tr">→ Satırlar arasını okumak / üstü kapalı anlamı anlamak</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Close the deal</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Close the deal</p>
+<p class="idiom-meaning">To successfully finalise a sale or agreement.</p>
+<p class="idiom-example">"We've been in discussions for three months — it's time to close the deal."</p>
+<p class="idiom-tr">→ Anlaşmayı kapatmak / satışı tamamlamak</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Go back to the drawing board</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Go back to the drawing board</p>
+<p class="idiom-meaning">To start over and rethink a plan from the beginning.</p>
+<p class="idiom-example">"The client rejected the proposal, so we had to go back to the drawing board."</p>
+<p class="idiom-tr">→ Sıfırdan başlamak / planı baştan yapmak</p>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Raise the bar</summary><div class="accordion-content"><div class="idiom-card">
+<p class="idiom-phrase">Raise the bar</p>
+<p class="idiom-meaning">To set a higher standard.</p>
+<p class="idiom-example">"Barry Callebaut's new Callebaut® GOLD chocolate really raised the bar in the premium segment."</p>
+<p class="idiom-tr">→ Standartları yükseltmek / çıtayı yükseltmek</p>
+</div></div></details></div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- GRAMMAR TAB -->
+<div class="tab-section" id="tab-grammar">
+<div class="section-header">
+<h2>Grammar for Sales Professionals</h2>
+<p>Practical grammar points with real examples from sales, negotiation and client communication.</p>
+</div><div class="accordion-list"><details class="accordion-item" open=""><summary class="accordion-title">1. Conditional Sentences (If / Would) — Negotiating</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>1. Conditional Sentences (If / Would) — Negotiating</h3>
+<p>Use the second conditional (If + past, would + verb) to make polite proposals and hypothetical offers in sales conversations.</p>
+<div class="example-box">
+<p class="correct-ex">✓ If you increased the volume to 10 MT, we would offer a 5% discount.</p>
+<p class="correct-ex">✓ If the payment terms were net 60, we could confirm the order today.</p>
+<p class="wrong-ex">✗ If you will increase the volume, we would offer a discount.</p>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">2. Modal Verbs for Polite Requests &amp; Offers</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>2. Modal Verbs for Polite Requests &amp; Offers</h3>
+<p>In professional sales English, use modal verbs to sound polite and confident rather than too direct.</p>
+<div class="example-box">
+<p class="correct-ex">✓ Could you share your volume forecast for Q3? (polite request)</p>
+<p class="correct-ex">✓ We would be happy to arrange a sample delivery. (polite offer)</p>
+<p class="correct-ex">✓ Shall I send the technical data sheet? (polite suggestion)</p>
+<p class="wrong-ex">✗ Send me your forecast. / We send you a sample.</p>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">3. Present Perfect — Updates &amp; Progress</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>3. Present Perfect — Updates &amp; Progress</h3>
+<p>Use the Present Perfect (have/has + past participle) to describe recent events that are relevant now — very common in follow-up emails and calls.</p>
+<div class="example-box">
+<p class="correct-ex">✓ I have sent you the revised quotation. Please check your inbox.</p>
+<p class="correct-ex">✓ We have already dispatched the sample to your factory.</p>
+<p class="wrong-ex">✗ I sent you the revised quotation yesterday at 3pm. (use Past Simple only for a specific time)</p>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">4. Passive Voice — Describing Processes &amp; Products</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>4. Passive Voice — Describing Processes &amp; Products</h3>
+<p>The passive voice (is/are/was + past participle) is common when talking about production processes or what has been done, without focusing on who did it.</p>
+<div class="example-box">
+<p class="correct-ex">✓ This couverture is sourced from certified West African farms.</p>
+<p class="correct-ex">✓ The beans are fermented for 5–7 days before drying.</p>
+<p class="correct-ex">✓ The contract has been signed and the order has been confirmed.</p>
+<p class="wrong-ex">✗ We source this couverture from certified farms. (less formal in product descriptions)</p>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">5. Softening Negative News</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>5. Softening Negative News</h3>
+<p>In sales, you often need to say "no" or deliver bad news without damaging the relationship. Use "I'm afraid…", "Unfortunately…", or "I regret to inform you…"</p>
+<div class="example-box">
+<p class="correct-ex">✓ I'm afraid that price is outside our current budget.</p>
+<p class="correct-ex">✓ Unfortunately, we are unable to meet that delivery date.</p>
+<p class="correct-ex">✓ I regret to inform you that the product has been discontinued.</p>
+<p class="wrong-ex">✗ No, we can't do that. / That's impossible.</p>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">6. Talking About Numbers &amp; Quantities</summary><div class="accordion-content"><div class="grammar-rule">
+<h3>6. Talking About Numbers &amp; Quantities</h3>
+<p>Use the correct prepositions and structures when discussing volumes, percentages and targets in sales conversations.</p>
+<div class="example-box">
+<p class="correct-ex">✓ We are looking at approximately 20 metric tonnes per month.</p>
+<p class="correct-ex">✓ Sales increased by 12% compared to the same quarter last year.</p>
+<p class="correct-ex">✓ The discount applies from 5 MT upwards.</p>
+<p class="wrong-ex">✗ We look at 20 metric tonnes. / Sales increased with 12%.</p>
+</div>
+</div></div></details></div>
+
+
+
+
+
+
+</div>
+<!-- QUIZ TAB -->
+<div class="tab-section" id="tab-quiz">
+<div class="section-header">
+<h2>Knowledge Quiz</h2>
+<p>Test your vocabulary, grammar and professional English — tailored for your role at Barry Callebaut.</p>
+</div>
+<div class="quiz-progress-bar">
+<div class="quiz-progress-fill" id="quiz-fill" style="width:0%"></div>
+</div>
+<div id="quiz-content"></div>
+</div>
+<!-- ROLE-PLAY TAB -->
+<div class="tab-section" id="tab-roleplay">
+<div class="section-header">
+<h2>Role-play Scenarios</h2>
+<p>Practise real conversations from your daily work as a Sales Manager. Your lines are in <strong>bold</strong> — read them aloud.</p>
+</div><div class="accordion-list"><details class="accordion-item" open=""><summary class="accordion-title">Scenario 1: Following Up After a Tasting Session</summary><div class="accordion-content"><div class="roleplay-card">
+<div class="roleplay-header">
+<div class="roleplay-icon">📞</div>
+<div>
+<p class="roleplay-title">Scenario 1: Following Up After a Tasting Session</p>
+<p class="roleplay-subtitle">You call a client after sending them chocolate samples last week.</p>
+</div>
+</div>
+<div class="roleplay-body">
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>Good morning, Mehmet Bey. This is Oğuzhan Akan calling from Barry Callebaut. I hope you had a chance to try the samples we sent last week?</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Yes, actually — we did. The team liked the 54% dark couverture very much, but the milk chocolate was a bit too sweet for our recipe.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>Thank you for the feedback — that's very useful. For your milk chocolate application, I would actually recommend our Callebaut 823 instead, which has a lower sugar content and a more balanced flavour profile. I can arrange a new sample immediately.</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">That sounds interesting. What's the lead time if we decide to order?</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>For standard orders, our lead time is five working days from confirmed purchase order. If you'd like to trial a small quantity first, we can arrange 25 kg at no additional cost. Shall I send you a formal quotation?</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Yes, please send it over. We'll review and get back to you this week.</p>
+</div>
+<div class="tip-box">
+<span class="tip-label">Tip</span>
+<span>Notice the structure: acknowledge feedback → offer an alternative → give a clear next step. "Shall I…?" is a very professional way to propose action without being pushy.</span>
+</div>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Scenario 2: Sending a Formal Quotation by Email</summary><div class="accordion-content"><div class="roleplay-card">
+<div class="roleplay-header">
+<div class="roleplay-icon">📧</div>
+<div>
+<p class="roleplay-title">Scenario 2: Sending a Formal Quotation by Email</p>
+<p class="roleplay-subtitle">You follow up with a written quotation after a client visit in Eskişehir.</p>
+</div>
+</div>
+<div class="roleplay-body">
+<div style="background:var(--ice);border-radius:var(--radius-sm);padding:1.1rem 1.25rem;font-size:14px;line-height:1.7;color:var(--text-muted);">
+<p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">Subject: Quotation — Callebaut Dark Couverture 811 &amp; Milk 823 (Annual Supply)</p>
+<p>Dear Ms. / Mr. [Client Name],</p>
+<br/>
+<p>Thank you for meeting with me on Tuesday — it was a pleasure discussing your requirements.</p>
+<br/>
+<p>As promised, please find below our quotation for the products you are interested in:</p>
+<br/>
+<p>· Callebaut 811 Dark Couverture (54% cocoa) — €X.XX / kg (basis: 500 kg per order)<br/>
+          · Callebaut 823 Milk Couverture — €X.XX / kg (same basis)<br/>
+          · Volume discount of 3% applies from 2,000 kg per order</p>
+<br/>
+<p>Delivery is DDP to your warehouse in Eskişehir. Lead time is 5 working days from confirmed purchase order. Payment terms: net 30 days.</p>
+<br/>
+<p>Please do not hesitate to contact me if you have any questions. I look forward to hearing from you.</p>
+<br/>
+<p>Kind regards,<br/>Oğuzhan Akan<br/>Sales Manager · Barry Callebaut, Eskişehir</p>
+</div>
+<div class="tip-box" style="margin-top:0.75rem;">
+<span class="tip-label">Tip</span>
+<span>A good quotation email has five parts: warm opening → reference to the meeting → clear product/price details → terms → closing. Practise rewriting this with different products and volumes.</span>
+</div>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Scenario 3: Handling a Price Objection</summary><div class="accordion-content"><div class="roleplay-card">
+<div class="roleplay-header">
+<div class="roleplay-icon">🤝</div>
+<div>
+<p class="roleplay-title">Scenario 3: Handling a Price Objection</p>
+<p class="roleplay-subtitle">A client says your price is too high compared to a competitor.</p>
+</div>
+</div>
+<div class="roleplay-body">
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Oğuzhan Bey, to be honest, we received a lower offer from another supplier. Their price is 8% cheaper than yours.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>I appreciate you sharing that with me — it's important to compare all options. May I ask if the competing product is also Rainforest Alliance certified and comes with a full Certificate of Analysis? These are often points where quality differs.</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">I'm not sure about the certification, actually.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>That's worth checking. Our couverture is fully certified and comes with Barry Callebaut's technical support, which includes recipe development and on-site troubleshooting. When you factor in these added values, the total cost is often very competitive. That said, if you could share your target price, I'll see what I can do.</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Alright. Our target is around €X. Can you match that?</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>That's close to our volume discount threshold. If you can commit to 2,000 kg per order, I believe we can make that work. Let me confirm internally and come back to you by tomorrow.</strong></p>
+</div>
+<div class="tip-box">
+<span class="tip-label">Tip</span>
+<span>When handling price objections: don't drop the price immediately. Instead, highlight value → ask questions → link the discount to higher commitment. "That's worth checking" and "when you factor in…" are very useful phrases.</span>
+</div>
+</div>
+</div></div></details><details class="accordion-item"><summary class="accordion-title">Scenario 4: Handling a Delivery Complaint</summary><div class="accordion-content"><div class="roleplay-card">
+<div class="roleplay-header">
+<div class="roleplay-icon">🚨</div>
+<div>
+<p class="roleplay-title">Scenario 4: Handling a Delivery Complaint</p>
+<p class="roleplay-subtitle">A client calls to say their order arrived late and one pallet was damaged.</p>
+</div>
+</div>
+<div class="roleplay-body">
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Oğuzhan Bey, I have to say we're quite unhappy. The order arrived two days late and one pallet of couverture was clearly damaged during transit.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>I completely understand your frustration, and I sincerely apologise for both the delay and the damage. This is not the level of service we aim to provide. Could you please send me photos of the damaged pallet along with the batch number? I will raise this with our logistics team immediately.</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Of course. We need a replacement quickly — we have a production run on Friday.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>Understood — Friday is our priority. I will arrange an urgent replacement shipment today and ensure it reaches you by Thursday at the latest. I will send you the tracking details as soon as the order is dispatched.</strong></p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-partner">Client</span>
+<p class="dialogue-text">Thank you, Oğuzhan Bey. Please make sure it doesn't happen again.</p>
+</div>
+<div class="dialogue-line">
+<span class="speaker-tag speaker-you">You</span>
+<p class="dialogue-text"><strong>Absolutely — I'll personally follow up until this is resolved. We will also conduct an internal review to prevent this from happening in the future. I appreciate your patience.</strong></p>
+</div>
+<div class="tip-box">
+<span class="tip-label">Tip</span>
+<span>Use this four-step structure for complaints: apologise sincerely → gather information → give a clear solution with a deadline → reassure. Never argue about who is at fault on the first call.</span>
+</div>
+</div>
+</div></div></details></div>
+
+
+
+
+</div>
+</div>
+<footer>
+  Prepared for Barry Callebaut · Oğuzhan Akan — Sales Manager  ·  <span>B1–B2</span>  ·  Good luck!
+</footer>
+<script>
+const quizData = [
+  {
+    q: "A client says they need 'roughly 15 tonnes per year'. What kind of figure is this?",
+    opts: ["An exact figure", "A ballpark figure", "A bottom-line figure", "A net figure"],
+    ans: 1,
+    exp: "A ballpark figure (kabaca rakam) is an approximate estimate, not an exact number. Very common at the start of negotiations."
+  },
+  {
+    q: "Choose the correct sentence for a sales email:",
+    opts: [
+      "I send you the quotation.",
+      "Please find attached the quotation you requested.",
+      "See the attached quotation.",
+      "I am attach the quotation."
+    ],
+    ans: 1,
+    exp: "'Please find attached…' is the standard professional phrase for sending documents by email. It is formal and clear."
+  },
+  {
+    q: "What does 'MOQ' stand for in a sales context?",
+    opts: ["Maximum order quality", "Minimum order quantity", "Monthly order quota", "Market opportunity quotient"],
+    ans: 1,
+    exp: "MOQ = Minimum Order Quantity (minimum sipariş miktarı). This is the smallest amount a supplier will sell in a single order."
+  },
+  {
+    q: "A client rejects your proposal and you need to rethink it. Which idiom is correct?",
+    opts: ["Go back to the drawing board", "Close the deal", "Touch base", "Read between the lines"],
+    ans: 0,
+    exp: "'Go back to the drawing board' means to start over from the beginning because the first attempt failed."
+  },
+  {
+    q: "Which sentence uses the second conditional correctly for a sales negotiation?",
+    opts: [
+      "If you will order 5 MT, we will give a discount.",
+      "If you order 5 MT, we give you a discount.",
+      "If you ordered 5 MT, we would offer a 4% discount.",
+      "If you order 5 MT, we would offer a 4% discount."
+    ],
+    ans: 2,
+    exp: "Second conditional: If + past simple → would + base verb. Used for polite, hypothetical proposals in negotiations."
+  },
+  {
+    q: "A client asks about your cocoa's origins and environmental credentials. Which term is most relevant?",
+    opts: ["Fat bloom", "Traceability", "Viscosity", "Conching"],
+    ans: 1,
+    exp: "Traceability (izlenebilirlik) means being able to track where the cocoa comes from, back to the farm. It's central to sustainability claims."
+  },
+  {
+    q: "You want to politely say the client's price target is too low. Which is BEST?",
+    opts: [
+      "That's impossible.",
+      "No, we can't match that.",
+      "I'm afraid that price is outside our current range.",
+      "We won't go that low."
+    ],
+    ans: 2,
+    exp: "'I'm afraid…' softens bad news professionally. Always use it before delivering a negative response to a client."
+  },
+  {
+    q: "What does DDP mean in a delivery contract?",
+    opts: [
+      "Daily Delivery Programme",
+      "Delivered Duty Paid — the seller covers all costs to the buyer's location",
+      "Direct Dispatch Protocol",
+      "Discount on Delivery Price"
+    ],
+    ans: 1,
+    exp: "DDP (Delivered Duty Paid) is an Incoterm meaning the seller is responsible for all costs and risks until the goods arrive at the buyer's named destination."
+  }
+];
+
+let qi = 0;
+let score = 0;
+let quizTimer = null;
+
+function renderQuiz() {
+  const fill = document.getElementById('quiz-fill');
+  const content = document.getElementById('quiz-content');
+  if (!fill || !content || !Array.isArray(quizData) || quizData.length === 0) return;
+
+  fill.style.width = (qi / quizData.length * 100) + '%';
+
+  if (qi >= quizData.length) {
+    const msg = score >= 7 ? 'Excellent work! 🎉' : score >= 5 ? 'Good effort! Keep practising.' : 'Keep going — practice makes perfect!';
+    content.innerHTML = `
+      <div class="quiz-score">
+        <p style="font-size:13px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">Final score</p>
+        <p class="score-number">${score}<span style="font-size:1.5rem;color:var(--text-muted)">/${quizData.length}</span></p>
+        <p>${msg}</p>
+        <button class="btn-primary" onclick="resetQuiz()">Try again</button>
+      </div>`;
+    return;
+  }
+
+  const d = quizData[qi];
+  if (!d || !Array.isArray(d.opts)) return;
+  const letters = ['A','B','C','D'];
+  content.innerHTML = `
+    <p class="quiz-q-label">Question ${qi + 1} of ${quizData.length}</p>
+    <p class="quiz-question">${d.q}</p>
+    <div class="quiz-options">
+      ${d.opts.map((o,i) => `
+        <button class="quiz-opt" type="button" onclick="answer(${i})">
+          <span class="opt-letter">${letters[i] || ''}</span>
+          ${o}
+        </button>`).join('')}
+    </div>
+    <div class="quiz-feedback" id="qfb"></div>`;
+}
+
+function resetQuiz() {
+  if (quizTimer) clearTimeout(quizTimer);
+  qi = 0;
+  score = 0;
+  renderQuiz();
+}
+
+function answer(i) {
+  const d = quizData[qi];
+  const btns = document.querySelectorAll('.quiz-opt');
+  const fb = document.getElementById('qfb');
+  if (!d || !btns.length || !fb || typeof d.ans !== 'number') return;
+
+  btns.forEach(b => b.disabled = true);
+  if (btns[d.ans]) btns[d.ans].classList.add('correct');
+
+  if (i === d.ans) {
+    score++;
+    fb.className = 'quiz-feedback show-correct';
+    fb.innerHTML = '✓ Correct! — ' + d.exp;
+  } else {
+    if (btns[i]) btns[i].classList.add('wrong');
+    fb.className = 'quiz-feedback show-wrong';
+    fb.innerHTML = '✗ Not quite. — ' + d.exp;
+  }
+  quizTimer = setTimeout(() => { qi++; renderQuiz(); }, 2800);
+}
+
+function showTab(name) {
+  const selectedSection = document.getElementById('tab-' + name);
+  const selectedButton = document.querySelector(`[data-tab="${name}"]`);
+  if (!selectedSection || !selectedButton) return;
+
+  document.querySelectorAll('.tab-section').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(button => button.classList.remove('active'));
+
+  selectedSection.classList.add('active');
+  selectedButton.classList.add('active');
+
+  if (name === 'quiz') resetQuiz();
+}
+
+function initAccordions() {
+  const accordions = document.querySelectorAll('.accordion-item');
+  if (!accordions.length) return;
+
+  accordions.forEach(item => {
+    const title = item.querySelector('.accordion-title');
+    if (!title) return;
+    title.setAttribute('role', 'button');
+    title.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+    item.addEventListener('toggle', () => {
+      title.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initAccordions();
+  renderQuiz();
+});
+</script>
+</body>
+</html>
