@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Lesson – Aile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  --cream:  #fff8f0;
+  --c1:     #e85d4a;
+  --c1d:    rgba(232,93,74,.10);
+  --c2:     #2a9d8f;
+  --c2d:    rgba(42,157,143,.10);
+  --c3:     #f4a261;
+  --c3d:    rgba(244,162,97,.13);
+  --c4:     #4a90d9;
+  --c4d:    rgba(74,144,217,.10);
+  --c5:     #52b788;
+  --c5d:    rgba(82,183,136,.12);
+  --c6:     #e63946;
+  --c6d:    rgba(230,57,70,.10);
+  --c7:     #7c5cbf;
+  --c7d:    rgba(124,92,191,.10);
+  --text:   #2d3748;
+  --muted:  #718096;
+  --border: #ede0d0;
+  --surf:   #fff;
+  --primary:        #4a90d9;
+  --primary-dark:   #2a6db5;
+  --primary-light:  rgba(74,144,217,.12);
+  --secondary:      #2a9d8f;
+  --secondary-light:rgba(42,157,143,.12);
+  --accent:         #f4a261;
+  --accent-light:   rgba(244,162,97,.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(232,93,74,.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none; z-index: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px 16px 70px;
+  position: relative; z-index: 1;
+}
+
+/* ── Page header ─────────────────────────────────────────────── */
+.page-header {
+  background: linear-gradient(135deg, #e85d4a, #f4a261, #e63946);
+  border-radius: 22px;
+  padding: 26px 28px 22px;
+  margin-bottom: 18px;
+  position: relative; overflow: hidden; color: #fff;
+}
+.page-header::before, .page-header::after {
+  content: ''; position: absolute; border-radius: 50%;
+  opacity: .12; pointer-events: none; background: #fff;
+}
+.page-header::before { width:220px; height:220px; top:-60px; right:-60px; }
+.page-header::after  { width:140px; height:140px; bottom:-50px; left:30px; }
+
+.lesson-badge-pill {
+  display: inline-block;
+  background: rgba(255,255,255,.25);
+  border: 2px solid rgba(255,255,255,.38);
+  border-radius: 50px; padding: 3px 14px;
+  font-size: 11px; font-weight: 900; color: #fff;
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px;
+}
+
+.page-header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(22px, 5vw, 34px);
+  color: #fff; line-height: 1.15; margin-bottom: 7px;
+}
+.page-header .subtitle {
+  font-size: 13px; color: rgba(255,255,255,.88); font-weight: 700;
+}
+
+.header-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.meta-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.22);
+  border: 1.5px solid rgba(255,255,255,.32);
+  border-radius: 50px; padding: 3px 11px;
+  font-size: 11.5px; font-weight: 800; color: #fff; white-space: nowrap;
+}
+
+/* ── Universal card ──────────────────────────────────────────── */
+.sec {
+  background: var(--surf);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.accordion {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 13px 18px;
+  border: none;
+  border-bottom: 2px dashed var(--border);
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  text-align: left;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  transition: background .15s;
+  gap: 10px;
+}
+.accordion:hover { background: var(--c1d); }
+.accordion::after {
+  content: '›';
+  margin-left: auto;
+  font-size: 20px; font-weight: 900; color: var(--muted);
+  transition: transform .25s; line-height: 1;
+}
+.accordion.open::after { transform: rotate(90deg); }
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+  padding: 0 18px;
+}
+.panel.open {
+  max-height: 9000px;
+  padding: 16px 18px 20px;
+}
+
+/* ── Content boxes ───────────────────────────────────────────── */
+.warmup-box {
+  background: var(--c3d);
+  border: 2px solid var(--c3);
+  border-radius: 12px; padding: 14px 16px;
+  font-size: 13px; font-weight: 700; line-height: 1.7;
+}
+.warmup-box h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px; color: #92400e; margin-bottom: 7px;
+}
+
+.grammar-box {
+  background: var(--c2d);
+  border: 2px solid var(--c2);
+  border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+}
+.grammar-box h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px; color: var(--c2); margin-bottom: 8px;
+}
+
+.example-box {
+  background: var(--c5d); border: 2px solid var(--c5);
+  border-radius: 12px; padding: 10px 14px;
+  font-size: 13px; font-weight: 700; line-height: 1.9; margin-bottom: 10px;
+}
+
+.tip-box {
+  background: var(--c3d); border: 2px solid var(--c3);
+  border-radius: 12px; padding: 10px 14px;
+  font-size: 13px; font-weight: 700; line-height: 1.7;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+
+.story-box {
+  background: var(--c4d); border: 2px solid var(--c4);
+  border-radius: 12px; padding: 14px 16px;
+  font-size: 14px; font-weight: 700; line-height: 1.9; margin-bottom: 10px;
+}
+.story-box .hl {
+  background: #FAC775; color: #412402;
+  border-radius: 4px; padding: 0 3px; font-weight: 900;
+}
+
+.instr {
+  background: var(--c3d); border: 2px solid var(--c3);
+  border-radius: 8px; padding: 7px 11px;
+  font-size: 12px; font-weight: 700; color: #78350f;
+  margin-bottom: 10px; line-height: 1.6;
+}
+
+/* ── Exercise rows ───────────────────────────────────────────── */
+.exercise {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
+  background: var(--cream); border: 2px solid var(--border);
+  border-radius: 10px; padding: 8px 12px; margin-bottom: 7px;
+  font-size: 13px; font-weight: 700; line-height: 1.85;
+}
+.exercise label { display: contents; }
+
+/* ── Inputs ──────────────────────────────────────────────────── */
+input[type="text"] {
+  border: none; border-bottom: 2.5px solid var(--border);
+  background: transparent;
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 800;
+  color: var(--text); outline: none; min-width: 90px;
+  text-align: center; padding: 2px 4px;
+  transition: border-color .2s; vertical-align: middle;
+}
+input[type="text"]:focus { border-bottom-color: var(--c1); }
+input[type="text"].correct {
+  border-bottom-color: var(--c5); color: var(--c5);
+  background: rgba(82,183,136,.09); border-radius: 4px;
+}
+input[type="text"].incorrect {
+  border-bottom-color: var(--c6); color: var(--c6);
+  background: var(--c6d); border-radius: 4px;
+}
+
+/* ── Vocab grid ──────────────────────────────────────────────── */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px; margin-bottom: 14px;
+}
+.vocab-card {
+  background: var(--cream); border: 2px solid var(--border);
+  border-radius: 12px; padding: 12px 8px; text-align: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.vocab-card:hover { border-color: var(--c1); background: var(--c1d); }
+.vocab-card.flipped { background: var(--c2d); border-color: var(--c2); }
+.vocab-emoji { font-size: 30px; margin-bottom: 4px; }
+.vocab-en { font-size: 14px; font-weight: 900; color: var(--text); }
+.vocab-tr { font-size: 12px; color: var(--c2); font-weight: 800; margin-top: 2px; }
+.vocab-hint { font-size: 11px; color: var(--muted); margin-top: 2px; font-style: italic; }
+
+/* ── Family Tree ─────────────────────────────────────────────── */
+.tree-wrap {
+  background: var(--cream); border-radius: 12px;
+  padding: 16px; margin-bottom: 12px; text-align: center;
+}
+.tree-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 6px; }
+.tree-node {
+  background: var(--surf); border: 2px solid var(--border);
+  border-radius: 12px; padding: 8px 10px; min-width: 78px; text-align: center;
+}
+.tree-node.highlight { border-color: var(--c1); background: var(--c1d); }
+.tree-node .emo { font-size: 22px; }
+.tree-node .en { font-size: 11px; font-weight: 900; color: var(--text); }
+.tree-node .tr { font-size: 10px; color: var(--c2); font-weight: 800; }
+
+/* ── Multiple choice ────────────────────────────────────────── */
+.mc-container { margin-bottom: 10px; }
+.progress-dots { display: flex; gap: 6px; margin-bottom: 12px; }
+.pd {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border); transition: all 0.3s;
+}
+.pd.done { background: var(--c5); }
+.pd.active { background: var(--c1); }
+
+.q-label {
+  font-size: 11px; font-weight: 900; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px;
+}
+.question { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+.choice-btn {
+  background: var(--cream); border: 2px solid var(--border);
+  border-radius: 10px; padding: 9px 10px;
+  font-size: 13px; font-weight: 800; color: var(--text);
+  cursor: pointer; text-align: center; font-family: 'Nunito', sans-serif;
+  line-height: 1.3; transition: all 0.15s;
+}
+.choice-btn:hover:not(:disabled) { background: var(--c1d); border-color: var(--c1); color: var(--c1); }
+.choice-btn.correct { background: var(--c5d); border-color: var(--c5); color: #1a5c38; }
+.choice-btn.wrong   { background: var(--c6d); border-color: var(--c6); color: #7a1919; }
+
+.fb {
+  padding: 8px 12px; border-radius: 9px;
+  font-size: 13px; font-weight: 800; margin: 6px 0; display: none;
+}
+.fb.show { display: block; }
+.fb.good { background: var(--c5d); color: #1a5c38; border: 2px solid var(--c5); }
+.fb.bad  { background: var(--c6d); color: #7a1919; border: 2px solid var(--c6); }
+
+.next-btn {
+  padding: 8px 18px; border: none; border-radius: 50px;
+  background: var(--c1); color: #fff;
+  font-size: 13px; font-weight: 900; cursor: pointer;
+  font-family: 'Nunito', sans-serif; display: none; margin-top: 6px;
+  transition: background .15s, transform .1s;
+}
+.next-btn.show { display: block; }
+.next-btn:hover { background: var(--c2); transform: translateY(-1px); }
+
+/* ── Word bank + fill ────────────────────────────────────────── */
+.word-bank {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 10px; background: var(--cream);
+  border: 2px solid var(--border); border-radius: 12px; margin-bottom: 12px;
+}
+.word-chip {
+  padding: 5px 14px; background: var(--surf);
+  border: 2px solid var(--border); border-radius: 50px;
+  font-size: 13px; font-weight: 800; cursor: pointer;
+  color: var(--text); transition: all 0.15s;
+}
+.word-chip:hover { background: var(--c1d); border-color: var(--c1); color: var(--c1); }
+.word-chip.used { opacity: 0.35; cursor: default; pointer-events: none; }
+
+.fill-wrap { margin-bottom: 10px; }
+.fill-sent {
+  background: var(--cream); border: 2px solid var(--border);
+  border-radius: 10px; padding: 9px 12px;
+  font-size: 13px; font-weight: 700; line-height: 2;
+}
+.fill-inp {
+  border: none; border-bottom: 2.5px solid var(--c1);
+  background: transparent; font-size: 13px; font-family: 'Nunito', sans-serif;
+  font-weight: 800; color: var(--text); width: 110px;
+  text-align: center; outline: none; padding: 0 4px;
+  transition: border-color .2s; vertical-align: middle;
+}
+.fill-inp.correct-inp { border-bottom-color: var(--c5); color: var(--c5); }
+.fill-inp.wrong-inp   { border-bottom-color: var(--c6); color: var(--c6); }
+
+/* ── Match ───────────────────────────────────────────────────── */
+.match-area { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.match-col  { display: flex; flex-direction: column; gap: 6px; }
+.match-item {
+  padding: 10px 10px; border-radius: 10px;
+  border: 2px solid var(--border); background: var(--cream);
+  font-size: 13px; font-weight: 800; cursor: pointer;
+  text-align: center; transition: all 0.2s; color: var(--text);
+}
+.match-item:hover { border-color: var(--c1); background: var(--c1d); color: var(--c1); }
+.match-item.selected  { border: 2px solid var(--c4); background: var(--c4d); color: var(--primary-dark); }
+.match-item.matched-ok { border: 2px solid var(--c5); background: var(--c5d); color: #1a5c38; cursor: default; }
+.match-item.matched-no { border: 2px solid var(--c6); background: var(--c6d); color: #7a1919; }
+.match-emoji { font-size: 24px; display: block; margin-bottom: 2px; }
+.score-badge {
+  display: inline-block; background: var(--c4d); color: var(--primary-dark);
+  border: 2px solid var(--c4); border-radius: 50px;
+  padding: 4px 14px; font-size: 12px; font-weight: 900; margin-bottom: 8px;
+}
+
+/* ── Complete box ────────────────────────────────────────────── */
+.complete-box { text-align: center; padding: 2rem 1rem; }
+.complete-box .big { font-size: 46px; margin-bottom: 10px; }
+.complete-box h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px; color: var(--text); margin-bottom: 6px;
+}
+.complete-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.check-btn {
+  background: var(--c1); color: #fff; border: none;
+  border-radius: 50px; padding: 4px 10px;
+  font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 900;
+  cursor: pointer; transition: background .15s, transform .1s;
+  vertical-align: middle; margin-left: 3px; flex-shrink: 0;
+}
+.check-btn:hover { background: var(--c2); transform: translateY(-1px); }
+
+.check-all-btn {
+  width: 100%; color: #fff; border: none; border-radius: 11px;
+  padding: 11px; font-family: 'Fredoka One', cursive; font-size: 15px;
+  cursor: pointer; margin-top: 11px;
+  background: linear-gradient(135deg, var(--c1), var(--c4));
+  box-shadow: 0 4px 14px rgba(232,93,74,.2);
+  transition: transform .15s, box-shadow .15s;
+}
+.check-all-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(232,93,74,.3); }
+
+.restart-btn {
+  display: inline-block; padding: 9px 20px; border-radius: 50px;
+  border: 2.5px solid var(--border); background: #fff;
+  font-family: 'Fredoka One', cursive; font-size: 13px;
+  cursor: pointer; transition: all .18s; color: var(--muted);
+}
+.restart-btn:hover { transform: translateY(-2px); border-color: var(--c1); color: var(--c1); }
+
+.feedback-msg { font-size: 11px; font-weight: 900; margin-left: 4px; vertical-align: middle; }
+.feedback-msg.ok  { color: var(--c5); }
+.feedback-msg.bad { color: var(--c6); }
+
+@media (max-width: 600px) {
+  .page-header { padding: 20px 16px 18px; }
+  .page-header h1 { font-size: 22px; }
+  .accordion { padding: 11px 14px; font-size: 13px; }
+  .panel.open { padding: 12px 14px 16px; }
+}
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <div class="lesson-badge-pill">Beginner · Family Topic</div>
+    <h1>Family 👨‍👩‍👧‍👦 Aile</h1>
+    <p class="subtitle">Learn to talk about your family in English with Turkish support.</p>
+    <div class="header-meta">
+      <span class="meta-pill">🌟 Warm-up</span>
+      <span class="meta-pill">📖 Vocabulary</span>
+      <span class="meta-pill">🌳 Family Tree</span>
+      <span class="meta-pill">📚 Story</span>
+      <span class="meta-pill">❓ Questions</span>
+      <span class="meta-pill">✏️ Fill in</span>
+      <span class="meta-pill">🔗 Match</span>
+    </div>
+  </header>
+
+  <!-- WARM-UP -->
+  <div class="sec">
+    <button class="accordion open">🌟 Daily Warm-Up</button>
+    <div class="panel open">
+      <div class="warmup-box">
+        <h3>🔥 Practise every lesson!</h3>
+        <p><strong>1. How are you today?</strong><br>
+        <span style="color:#92400e;">→ I'm good, teacher, thank you. How are you?</span></p>
+        <p style="margin-top:10px;"><strong>2. What is the date today?</strong><br>
+        <span style="color:#92400e;" id="wu-date">…</span></p>
+        <p style="margin-top:10px;"><strong>3. What day is it today?</strong><br>
+        <span style="color:#92400e;" id="wu-day">…</span></p>
+        <p style="margin-top:10px;"><strong>4. What is the weather like today?</strong><br>
+        <span style="color:#92400e;">→ It is ______ today. (sunny / cloudy / rainy / windy)</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="sec">
+    <button class="accordion open">📖 Family Vocabulary</button>
+    <div class="panel open">
+      <div class="instr">🇹🇷 Tap each card to see the Turkish translation — Kartlara tıkla!</div>
+      <div class="vocab-grid" id="vocab-grid"></div>
+    </div>
+  </div>
+
+  <!-- FAMILY TREE -->
+  <div class="sec">
+    <button class="accordion">🌳 Family Tree — Ali'nin Ailesi</button>
+    <div class="panel">
+      <div class="instr">This is Ali's family! — Bu Ali'nin ailesi!</div>
+      <div class="tree-wrap">
+        <div class="tree-row">
+          <div class="tree-node"><div class="emo">👴</div><div class="en">Grandfather</div><div class="tr">Büyükbaba</div></div>
+          <div class="tree-node"><div class="emo">👵</div><div class="en">Grandmother</div><div class="tr">Büyükanne</div></div>
+        </div>
+        <div style="display:flex;justify-content:center;margin-bottom:4px">
+          <svg width="120" height="20"><line x1="30" y1="0" x2="30" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="90" y1="0" x2="90" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="30" y1="10" x2="90" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="60" y1="10" x2="60" y2="20" stroke="#ede0d0" stroke-width="2"/></svg>
+        </div>
+        <div class="tree-row">
+          <div class="tree-node"><div class="emo">👨</div><div class="en">Father</div><div class="tr">Baba</div></div>
+          <div class="tree-node"><div class="emo">👩</div><div class="en">Mother</div><div class="tr">Anne</div></div>
+        </div>
+        <div style="display:flex;justify-content:center;margin-bottom:4px">
+          <svg width="200" height="20"><line x1="40" y1="0" x2="40" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="100" y1="0" x2="100" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="160" y1="0" x2="160" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="40" y1="10" x2="160" y2="10" stroke="#ede0d0" stroke-width="2"/><line x1="40" y1="10" x2="40" y2="20" stroke="#ede0d0" stroke-width="2"/><line x1="100" y1="10" x2="100" y2="20" stroke="#ede0d0" stroke-width="2"/><line x1="160" y1="10" x2="160" y2="20" stroke="#ede0d0" stroke-width="2"/></svg>
+        </div>
+        <div class="tree-row">
+          <div class="tree-node"><div class="emo">👧</div><div class="en">Sister</div><div class="tr">Kız kardeş</div></div>
+          <div class="tree-node highlight"><div class="emo">👦</div><div class="en">Ali ⭐</div><div class="tr">(ben / me)</div></div>
+          <div class="tree-node"><div class="emo">👦</div><div class="en">Brother</div><div class="tr">Erkek kardeş</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <div class="sec">
+    <button class="accordion">📚 Ali's Story — Hikaye</button>
+    <div class="panel">
+      <div class="story-box">
+        My name is <span class="hl">Ali</span>. I am ten years old. I am from Turkey.<br><br>
+        I have a big <span class="hl">family</span>. My <span class="hl">father</span>'s name is Mehmet. My <span class="hl">mother</span>'s name is Fatma. They are kind and funny.<br><br>
+        I have one <span class="hl">sister</span>. Her name is Zeynep. She is eight years old. I have one <span class="hl">brother</span>. His name is Kemal. He is twelve years old.<br><br>
+        My <span class="hl">grandmother</span> lives with us. Her name is Ayşe. My <span class="hl">grandfather</span> lives near our house. His name is Hasan.<br><br>
+        I love my family! ❤️
+      </div>
+      <div class="tip-box">
+        🇹🇷 <div><strong>Turkish help — Türkçe yardım</strong><br>
+        big = büyük &nbsp;|&nbsp; kind = nazik &nbsp;|&nbsp; funny = komik<br>
+        lives = yaşıyor &nbsp;|&nbsp; near = yakın &nbsp;|&nbsp; loves = seviyor</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS (MC) -->
+  <div class="sec">
+    <button class="accordion">❓ Comprehension Questions</button>
+    <div class="panel">
+      <div id="mc-area"></div>
+    </div>
+  </div>
+
+  <!-- FILL IN THE BLANKS -->
+  <div class="sec">
+    <button class="accordion">✏️ Fill in the Blanks</button>
+    <div class="panel">
+      <div class="instr">📝 Use the word bank below! — Kelime listesini kullan!</div>
+      <div class="word-bank" id="word-bank"></div>
+      <div id="fill-area"></div>
+      <button class="check-all-btn" onclick="checkFill()">✓ Check All My Answers</button>
+      <div class="fb" id="fill-fb" style="margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- MATCH -->
+  <div class="sec">
+    <button class="accordion">🔗 Match the Picture!</button>
+    <div class="panel">
+      <div class="instr">Tap a picture, then tap the English word! — Resme tıkla, sonra İngilizce kelimeye tıkla!</div>
+      <div id="match-score-box" style="margin-bottom:8px;"></div>
+      <div class="match-area">
+        <div class="match-col" id="match-left"></div>
+        <div class="match-col" id="match-right"></div>
+      </div>
+      <div class="fb" id="match-fb"></div>
+      <div id="match-complete" style="display:none" class="complete-box">
+        <div class="big">🎉</div>
+        <h3>Amazing! You matched them all!</h3>
+        <p>You finished the whole lesson! Harika iş bugün!</p>
+        <button class="restart-btn" onclick="restartAll()">Start Again 🔄</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ── Date / Day ───────────────────────────────────────────── */
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const t = new Date();
+document.getElementById('wu-date').textContent = 'Today is ' + t.getDate() + ' ' + months[t.getMonth()] + ' ' + t.getFullYear() + '.';
+document.getElementById('wu-day').textContent = 'Today is ' + days[t.getDay()] + '.';
+
+/* ── Accordion ────────────────────────────────────────────── */
+document.querySelectorAll('.accordion').forEach(function(btn) {
+  var panel = btn.nextElementSibling;
+  if (!panel || !panel.classList.contains('panel')) return;
+  btn.addEventListener('click', function() {
+    var isOpen = panel.classList.contains('open');
+    document.querySelectorAll('.panel.open').forEach(function(p) {
+      p.classList.remove('open');
+      var prev = p.previousElementSibling;
+      if (prev && prev.classList.contains('accordion')) prev.classList.remove('open');
+    });
+    if (!isOpen) {
+      panel.classList.add('open');
+      btn.classList.add('open');
+      setTimeout(function() { btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+    }
+  });
+});
+
+/* ── Vocabulary ───────────────────────────────────────────── */
+const vocabData = [
+  {emoji:'👨', en:'father',      tr:'baba',          hint:'Dad'},
+  {emoji:'👩', en:'mother',      tr:'anne',           hint:'Mum'},
+  {emoji:'👧', en:'sister',      tr:'kız kardeş',     hint:'Girl sibling'},
+  {emoji:'👦', en:'brother',     tr:'erkek kardeş',   hint:'Boy sibling'},
+  {emoji:'👴', en:'grandfather', tr:'büyükbaba',      hint:"Dad's/Mum's father"},
+  {emoji:'👵', en:'grandmother', tr:'büyükanne',      hint:"Dad's/Mum's mother"},
+  {emoji:'👨‍👩‍👧‍👦', en:'family',    tr:'aile',           hint:'All together'},
+  {emoji:'👶', en:'baby',        tr:'bebek',          hint:'Very young child'},
+  {emoji:'👨‍👦', en:'son',         tr:'oğul',           hint:'Boy child'},
+  {emoji:'👨‍👧', en:'daughter',    tr:'kız',            hint:'Girl child'},
+  {emoji:'👨‍👩‍👧', en:'parents',    tr:'anne ve baba',   hint:'Mother + father'},
+  {emoji:'🏠', en:'home',        tr:'ev',             hint:'Where family lives'},
+];
+
+const vg = document.getElementById('vocab-grid');
+vocabData.forEach(function(v) {
+  const d = document.createElement('div');
+  d.className = 'vocab-card';
+  d.innerHTML = '<div class="vocab-emoji">' + v.emoji + '</div>' +
+    '<div class="vocab-en">' + v.en + '</div>' +
+    '<div class="vocab-tr" style="display:none">' + v.tr + '</div>' +
+    '<div class="vocab-hint" style="display:none">' + v.hint + '</div>';
+  d.onclick = function() {
+    this.classList.toggle('flipped');
+    const show = this.classList.contains('flipped');
+    this.querySelector('.vocab-tr').style.display = show ? 'block' : 'none';
+    this.querySelector('.vocab-hint').style.display = show ? 'block' : 'none';
+  };
+  vg.appendChild(d);
+});
+
+/* ── Multiple Choice ──────────────────────────────────────── */
+const mcQs = [
+  {q:'How old is Ali?', choices:['Eight years old','Ten years old','Twelve years old','Six years old'], correct:'Ten years old'},
+  {q:"What is Ali's father's name?", choices:['Hasan','Kemal','Mehmet','Ali'], correct:'Mehmet'},
+  {q:'How many brothers does Ali have?', choices:['Two','Zero','Three','One'], correct:'One'},
+  {q:"Where does Ali's grandmother live?", choices:['In another city','Near the house','With Ali\'s family','At school'], correct:"With Ali's family"},
+  {q:"What is Ali's sister's name?", choices:['Fatma','Ayşe','Zeynep','Kemal'], correct:'Zeynep'},
+];
+
+let mcCurrent = 0, mcScore = 0, mcAnswered = false;
+
+function renderMC() {
+  const area = document.getElementById('mc-area');
+  if (mcCurrent >= mcQs.length) {
+    area.innerHTML = '<div class="complete-box"><div class="big">🌟</div><h3>Questions done!</h3><p>Score: ' + mcScore + ' / ' + mcQs.length + '</p><button class="restart-btn" onclick="mcCurrent=0;mcScore=0;renderMC()">Try Again 🔄</button></div>';
+    return;
+  }
+  const q = mcQs[mcCurrent];
+  const dots = mcQs.map(function(_, i) {
+    return '<div class="pd ' + (i < mcCurrent ? 'done' : i === mcCurrent ? 'active' : '') + '"></div>';
+  }).join('');
+  const shuffled = [...q.choices].sort(function() { return Math.random() - 0.5; });
+  mcAnswered = false;
+  area.innerHTML = '<div class="progress-dots">' + dots + '</div>' +
+    '<div class="q-label">Question ' + (mcCurrent+1) + ' of ' + mcQs.length + '</div>' +
+    '<div class="question">' + q.q + '</div>' +
+    '<div class="choices">' + shuffled.map(function(c) {
+      return '<button class="choice-btn" onclick="pickMC(this,\'' + c.replace(/'/g,"\\'") + '\',\'' + q.correct.replace(/'/g,"\\'") + '\')">' + c + '</button>';
+    }).join('') + '</div>' +
+    '<div class="fb" id="mc-fb"></div>' +
+    '<button class="next-btn" id="mc-next" onclick="mcCurrent++;renderMC()">' + (mcCurrent < mcQs.length - 1 ? 'Next →' : 'See result 🎉') + '</button>';
+}
+
+function pickMC(btn, chosen, correct) {
+  if (mcAnswered) return;
+  mcAnswered = true;
+  const ok = chosen === correct;
+  if (ok) mcScore++;
+  document.querySelectorAll('.choice-btn').forEach(function(b) {
+    b.disabled = true;
+    if (b.textContent.trim() === correct) b.classList.add('correct');
+  });
+  if (!ok) btn.classList.add('wrong');
+  const fb = document.getElementById('mc-fb');
+  fb.className = 'fb show ' + (ok ? 'good' : 'bad');
+  fb.textContent = ok ? '✅ Correct! Well done!' : '❌ Not quite! The correct answer is highlighted.';
+  document.getElementById('mc-next').classList.add('show');
+}
+
+/* ── Fill in the Blanks ───────────────────────────────────── */
+const fillData = [
+  {sentence:'My _____ name is Mehmet. He is my dad.',   answer:'father'},
+  {sentence:'My _____ name is Fatma. She is my mum.',   answer:'mother'},
+  {sentence:'Zeynep is my _____. She is eight years old.', answer:'sister'},
+  {sentence:'Kemal is my _____. He is twelve years old.', answer:'brother'},
+  {sentence:'My _____ name is Ayşe. She lives with us.', answer:'grandmother'},
+  {sentence:"My _____ name is Hasan. He lives near our house.", answer:'grandfather'},
+  {sentence:'I love my _____!', answer:'family'},
+  {sentence:'The new child in the house is a little _____.',  answer:'baby'},
+];
+
+const wordBank = ['father','mother','sister','brother','grandmother','grandfather','family','baby'];
+
+function renderFill() {
+  const wb = document.getElementById('word-bank');
+  wb.innerHTML = wordBank.map(function(w) {
+    return '<span class="word-chip" id="chip-' + w + '" onclick="useWord(\'' + w + '\')">' + w + '</span>';
+  }).join('');
+  const area = document.getElementById('fill-area');
+  area.innerHTML = fillData.map(function(f, i) {
+    const parts = f.sentence.split('_____');
+    return '<div class="fill-wrap"><div class="fill-sent">' + parts[0] +
+      '<input class="fill-inp" id="fill-' + i + '" placeholder="..." />' +
+      (parts[1] || '') + '</div></div>';
+  }).join('');
+}
+
+function useWord(w) {
+  const chip = document.getElementById('chip-' + w);
+  if (chip.classList.contains('used')) return;
+  const inputs = document.querySelectorAll('.fill-inp');
+  for (let inp of inputs) {
+    if (!inp.value) {
+      inp.value = w;
+      chip.classList.add('used');
+      break;
+    }
+  }
+}
+
+function checkFill() {
+  let correct = 0;
+  fillData.forEach(function(f, i) {
+    const inp = document.getElementById('fill-' + i);
+    if (inp.value.trim().toLowerCase() === f.answer.toLowerCase()) {
+      inp.classList.add('correct-inp'); inp.classList.remove('wrong-inp'); correct++;
+    } else {
+      inp.classList.add('wrong-inp'); inp.classList.remove('correct-inp');
+    }
+  });
+  const fb = document.getElementById('fill-fb');
+  fb.className = 'fb show ' + (correct === fillData.length ? 'good' : 'bad');
+  fb.textContent = correct === fillData.length
+    ? '✅ Perfect! All correct! Hepsi doğru!'
+    : '❌ ' + correct + ' out of ' + fillData.length + ' correct. Check the red ones!';
+}
+
+/* ── Match ────────────────────────────────────────────────── */
+const matchPairs = [
+  {emoji:'👨', en:'father'},
+  {emoji:'👩', en:'mother'},
+  {emoji:'👧', en:'sister'},
+  {emoji:'👦', en:'brother'},
+  {emoji:'👴', en:'grandfather'},
+  {emoji:'👵', en:'grandmother'},
+];
+
+let matchSelected = null, matchType = null, matchDone = 0;
+
+function renderMatch() {
+  const left  = document.getElementById('match-left');
+  const right = document.getElementById('match-right');
+  const shuffledL = [...matchPairs].sort(function() { return Math.random() - 0.5; });
+  const shuffledR = [...matchPairs].sort(function() { return Math.random() - 0.5; });
+  left.innerHTML  = shuffledL.map(function(p) {
+    return '<div class="match-item" id="ml-' + p.en + '" onclick="selectMatch(\'' + p.en + '\',\'emoji\')"><span class="match-emoji">' + p.emoji + '</span></div>';
+  }).join('');
+  right.innerHTML = shuffledR.map(function(p) {
+    return '<div class="match-item" id="mr-' + p.en + '" onclick="selectMatch(\'' + p.en + '\',\'word\')">' + p.en + '</div>';
+  }).join('');
+  updateMatchScore();
+}
+
+function selectMatch(id, type) {
+  const el = document.getElementById((type === 'emoji' ? 'ml-' : 'mr-') + id);
+  if (el.classList.contains('matched-ok') || el.classList.contains('matched-no')) return;
+  if (matchSelected === null) {
+    matchSelected = id; matchType = type;
+    el.classList.add('selected');
+  } else {
+    if (matchType === type) {
+      document.getElementById((matchType === 'emoji' ? 'ml-' : 'mr-') + matchSelected).classList.remove('selected');
+      matchSelected = id; matchType = type;
+      el.classList.add('selected');
+      return;
+    }
+    const ok = matchSelected === id;
+    const leftEl  = document.getElementById((matchType === 'emoji' ? 'ml-' : 'mr-') + matchSelected);
+    const rightEl = el;
+    leftEl.classList.remove('selected');
+    const fb = document.getElementById('match-fb');
+    if (ok) {
+      leftEl.classList.add('matched-ok'); rightEl.classList.add('matched-ok');
+      matchDone++;
+      fb.className = 'fb show good'; fb.textContent = '✅ Correct match!';
+      if (matchDone >= matchPairs.length) {
+        setTimeout(function() {
+          document.getElementById('match-complete').style.display = 'block';
+          document.getElementById('match-fb').style.display = 'none';
+        }, 600);
+      }
+    } else {
+      leftEl.classList.add('matched-no'); rightEl.classList.add('matched-no');
+      fb.className = 'fb show bad'; fb.textContent = '❌ Not a match! Try again.';
+      setTimeout(function() {
+        leftEl.classList.remove('matched-no'); rightEl.classList.remove('matched-no');
+        fb.className = 'fb';
+      }, 1000);
+    }
+    matchSelected = null; matchType = null;
+    updateMatchScore();
+  }
+}
+
+function updateMatchScore() {
+  document.getElementById('match-score-box').innerHTML = '<span class="score-badge">' + matchDone + ' / ' + matchPairs.length + ' matched</span>';
+}
+
+function restartAll() {
+  mcCurrent = 0; mcScore = 0;
+  matchSelected = null; matchType = null; matchDone = 0;
+  document.getElementById('match-complete').style.display = 'none';
+  renderMC(); renderFill(); renderMatch();
+}
+
+/* ── Init ─────────────────────────────────────────────────── */
+renderMC();
+renderFill();
+renderMatch();
+</script>
+</body>
+</html>
