@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>English Quest | A1/A2 Challenge</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#0f172a;--sun:#f59e0b;--pink:#e11d48;--purple:#7c3aed;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--ink:#e2e8f0;--card:rgba(15,23,42,.85);--glass:rgba(15,23,42,.72);--accent:#38bdf8;--border:rgba(56,189,248,.25)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;height:100vh;overflow:hidden;color:var(--ink);background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0c1a2e 100%)}
+body.night{background:linear-gradient(135deg,#000000 0%,#0f0f1a 50%,#050510 100%);color:white}
+.app{height:100vh;width:100vw;position:relative;overflow:hidden}
+.cloud{display:none}
+.balloon{position:absolute;font-size:1.5rem;animation:float 4s ease-in-out infinite;z-index:0;opacity:.3}@keyframes float{50%{transform:translateY(-22px)}}
+.screen{position:absolute;inset:0;z-index:2;display:none;padding:18px;overflow:auto}.screen.active{display:block;animation:show .3s ease}@keyframes show{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:16px;padding:12px 20px;backdrop-filter:blur(20px);box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.logo{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--accent);letter-spacing:-0.5px}body.night .logo{color:#f59e0b}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.stat{background:rgba(56,189,248,.1);color:var(--accent);border-radius:10px;padding:7px 14px;font-weight:900;border:1px solid var(--border);font-size:.9rem}
+.btn{border:0;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#e11d48,#be185d);color:white;box-shadow:none;transition:.15s;letter-spacing:.3px}.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.btn:active{transform:translateY(1px)}.btn.blue{background:linear-gradient(135deg,#38bdf8,#2563eb)}.btn.green{background:linear-gradient(135deg,#10b981,#059669)}.btn.gold{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}.btn.purple{background:linear-gradient(135deg,#a78bfa,#7c3aed)}
+.hero{max-width:1120px;margin:28px auto 0;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}@media(max-width:850px){.hero{grid-template-columns:1fr}}
+.panel{background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,.4);backdrop-filter:blur(12px)}body.night .panel,body.night .world,body.night .gamebox{background:rgba(0,0,0,.6);border-color:rgba(255,255,255,.1);color:white}
+.title{font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,4.2rem);line-height:.95;color:var(--accent);letter-spacing:-1px}.subtitle{font-size:1rem;line-height:1.55;margin:16px 0;color:#94a3b8;font-weight:600}body.night .subtitle{color:#94a3b8}
+.avatar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.avatar{background:rgba(56,189,248,.05);border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center;cursor:pointer;transition:.16s}.avatar:hover,.avatar.selected{transform:translateY(-4px);border-color:var(--accent);background:rgba(56,189,248,.15)}.avatar span{font-size:2.4rem;display:block}.avatar b{font-family:'Syne';display:block;margin-top:4px;color:var(--accent);font-size:.8rem}
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.tab{padding:10px 18px;border-radius:10px;background:rgba(56,189,248,.08);border:1px solid var(--border);font-family:'Syne';color:var(--accent);font-size:.9rem}.tab.locked{opacity:.45}.tab.active{background:rgba(56,189,248,.2);border-color:var(--accent)}
+.map{max-width:1160px;margin:24px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.world{position:relative;min-height:200px;background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:0 8px 0 rgba(0,0,0,.3);cursor:pointer;overflow:hidden;transition:.18s;backdrop-filter:blur(10px)}.world:hover{transform:translateY(-5px);border-color:var(--accent)}.world.locked{filter:grayscale(.6);opacity:.5;cursor:not-allowed}.world .emoji{font-size:3.5rem;display:block;animation:bob 2.5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-10px)}}.world h2{font-family:'Syne';font-size:1.3rem;color:var(--accent);margin:8px 0}.world p{font-weight:600;color:#64748b;line-height:1.35;font-size:.9rem}body.night .world p{color:#475569}.lock{position:absolute;top:12px;right:12px;background:#1e293b;color:#64748b;border-radius:8px;padding:5px 10px;font-weight:900;font-size:.8rem;border:1px solid #334155}.progress{height:8px;background:#1e293b;border-radius:999px;overflow:hidden;margin-top:14px;border:1px solid #334155}.fill{height:100%;background:linear-gradient(90deg,var(--green),var(--accent));width:0%}
+.gamebox{max-width:940px;margin:22px auto;background:rgba(15,23,42,.88);border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:0 18px 45px rgba(0,0,0,.5);backdrop-filter:blur(14px)}.hud{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}@media(max-width:720px){.hud{grid-template-columns:repeat(2,1fr)}}.hud .stat{text-align:center;border-radius:10px}
+.qcard{background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:20px;padding:26px;text-align:center}.qmode{font-family:'Syne';color:#7c3aed;letter-spacing:3px;text-transform:uppercase;font-size:.75rem}.prompt{font-family:'Syne';font-size:clamp(1.5rem,4vw,2.6rem);margin:12px 0;color:var(--accent);font-weight:800}.context{font-size:1rem;color:#94a3b8;font-weight:600}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}@media(max-width:560px){.options{grid-template-columns:1fr}}.opt{border:1px solid var(--border);border-radius:14px;background:rgba(56,189,248,.05);padding:16px;font-size:1rem;font-weight:700;color:#e2e8f0;cursor:pointer;transition:.14s;font-family:'DM Sans'}.opt:hover:not(:disabled){transform:translateY(-2px);background:rgba(56,189,248,.12);border-color:var(--accent)}.opt.correct{background:rgba(16,185,129,.15);border-color:#10b981;color:#34d399;animation:wiggle .45s ease}.opt.wrong{background:rgba(239,68,68,.12);border-color:#ef4444;color:#f87171}@keyframes wiggle{25%{transform:rotate(2deg)}50%{transform:rotate(-2deg)}75%{transform:rotate(1deg)}}
+.feedback{display:none;margin:16px 0;padding:14px;border-radius:14px;text-align:center;font-weight:700;font-size:1rem}.feedback.good{display:block;background:rgba(16,185,129,.15);color:#34d399;border:1px solid #10b981}.feedback.bad{display:block;background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid #d97706}.hintbox{display:none;margin-top:12px;background:rgba(245,158,11,.08);border:1px dashed #d97706;color:#fbbf24;border-radius:12px;padding:12px;font-weight:600;font-size:.9rem}.timerwrap{display:none;margin:15px 0}.timerbar{height:8px;background:#1e293b;border-radius:999px;overflow:hidden;border:1px solid #334155}.timerfill{height:100%;width:100%;background:linear-gradient(90deg,#10b981,#f59e0b,#ef4444)}
+.reward{position:fixed;left:50%;top:45%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(2rem,8vw,4rem);color:#f59e0b;text-shadow:0 2px 20px rgba(245,158,11,.5);z-index:99;animation:reward .9s ease forwards;pointer-events:none}@keyframes reward{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-85%) scale(1)}}
+.cert{background:rgba(15,23,42,.95);color:var(--ink);border:1px solid var(--border);border-radius:20px;padding:28px;text-align:center;max-width:760px;margin:25px auto;box-shadow:0 20px 45px rgba(0,0,0,.5)}.cert h1{font-family:'Syne';font-size:2.4rem;color:var(--accent)}.cert .big{font-size:5rem}
+@media print{body{background:white;overflow:visible}.screen:not(.active),.topbar,.btn,.map,.tabs{display:none!important}.cert{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="cloud" style="width:150px;height:50px;top:9%;left:0;animation-delay:0s"></div>
+<div class="cloud" style="width:180px;height:58px;top:22%;left:0;animation-delay:8s"></div>
+<div class="balloon" style="right:8%;top:18%">🎈</div><div class="balloon" style="left:7%;bottom:18%;animation-delay:1s">⭐</div>
+
+<section id="home" class="screen active">
+<div class="topbar"><div class="logo">⚡ English Quest</div><div class="stats"><button class="btn blue" onclick="toggleMusic()">🎵 Music</button><button class="btn purple" onclick="toggleNight()">🌙 Theme</button></div></div>
+<div class="hero">
+<div class="panel"><h1 class="title">A1/A2 English Challenge</h1><p class="subtitle">Pick your avatar, rack up stars, unlock new zones, and level up your English. Every mission counts.</p><div class="tabs"><button class="tab active">🌱 A1 Rookie</button><button id="a2Tab" class="tab locked">🚀 A2 Hero 🔒</button></div><div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn green" onclick="showScreen('map')">Launch →</button><button class="btn gold" onclick="showScreen('certificate')">Certificate</button><button class="btn blue" onclick="resetProgress()">Reset</button></div></div>
+<div class="panel"><h2 style="font-family:'Syne';color:var(--accent);margin-bottom:6px">Choose Avatar</h2><p class="subtitle" style="font-size:.9rem;margin:6px 0 0">Saved for next time.</p><div class="avatar-grid" id="avatars"></div></div>
+</div>
+</section>
+
+<section id="map" class="screen"><div class="topbar"><div class="logo">🗺️ Zone Map</div><div class="stats" id="mapStats"></div></div><div class="map" id="worldMap"></div><div style="text-align:center;margin-top:22px"><button class="btn blue" onclick="showScreen('home')">← Home</button></div></section>
+
+<section id="game" class="screen"><div class="topbar"><div class="logo" id="gameTitle">🏫 School City</div><div class="stats"><label class="stat"><input type="checkbox" id="timerToggle"> Timer</label><button class="btn blue" onclick="showScreen('map')">Map</button></div></div><div class="gamebox"><div class="hud" id="hud"></div><div class="timerwrap" id="timerwrap"><div class="timerbar"><div class="timerfill" id="timerfill"></div></div></div><div class="qcard"><div class="qmode" id="qmode"></div><div class="prompt" id="prompt"></div><div class="context" id="context"></div><div style="margin-top:12px"><button class="btn gold" onclick="toggleHint()">💡 Hint</button></div><div class="hintbox" id="hintbox"></div></div><div class="feedback" id="feedback"></div><div class="options" id="options"></div></div></section>
+
+<section id="certificate" class="screen"><div class="topbar"><div class="logo">🏆 Certificate</div><div class="stats"><button class="btn blue" onclick="showScreen('home')">Home</button><button class="btn gold" onclick="window.print()">Print</button></div></div><div class="cert"><div class="big">🌟</div><h1>English Quest</h1><h2 style="color:#94a3b8;font-family:'Syne';margin-top:8px">A1 Rookie</h2><p style="font-size:1.1rem;margin:18px 0;color:#94a3b8">Awarded to</p><h2 id="certName" style="font-family:'Syne';font-size:2rem;color:var(--accent)">Explorer</h2><p style="font-size:1rem;margin:16px 0;color:#94a3b8">For completing missions, building real English skills, and levelling up.</p><p id="certStats" style="font-weight:900;color:var(--accent)"></p><p style="margin-top:22px;font-weight:700;color:#64748b">Created by Teacher Benny</p></div></section>
+</div>
+
+<script>
+const DATA = {"picture": [{"prompt": "What is this? 📚", "context": "Pick the correct word.", "options": ["book", "journal", "textbook", "manual"], "answer": "book", "hint": "It has pages you read, not write in."}, {"prompt": "What is this? ✏️", "context": "Pick the correct word.", "options": ["pencil", "stylus", "marker", "crayon"], "answer": "pencil", "hint": "You can erase what you write with it."}, {"prompt": "What is this? 🎒", "context": "Pick the correct word.", "options": ["rucksack", "suitcase", "bag", "pouch"], "answer": "bag", "hint": "Students carry books and lunch in it."}, {"prompt": "What is this? 🪑", "context": "Pick the correct word.", "options": ["stool", "chair", "bench", "sofa"], "answer": "chair", "hint": "It has a back you lean against."}, {"prompt": "What is this? 🖊️", "context": "Pick the correct word.", "options": ["biro", "pen", "marker", "quill"], "answer": "pen", "hint": "It writes in ink and you can't erase it easily."}, {"prompt": "What is this? 📏", "context": "Pick the correct word.", "options": ["ruler", "scale", "measuring tape", "protractor"], "answer": "ruler", "hint": "It's flat, straight, and measures in centimetres."}], "grammar": [{"prompt": "She ______ studying for her exam right now.", "context": "Choose the correct verb form.", "options": ["is", "are", "was", "has"], "answer": "is", "hint": "Present continuous: she + is + -ing."}, {"prompt": "______ you ever been to Istanbul?", "context": "Choose the correct auxiliary.", "options": ["Have", "Did", "Were", "Are"], "answer": "Have", "hint": "Present perfect uses have/has."}, {"prompt": "He doesn't ______ coffee in the morning.", "context": "Choose the correct verb form.", "options": ["drink", "drinks", "drinking", "drank"], "answer": "drink", "hint": "After doesn't, use the base form."}, {"prompt": "There ______ a lot of homework this week.", "context": "Choose the correct form.", "options": ["is", "are", "have", "has"], "answer": "is", "hint": "'A lot of homework' is uncountable — use is."}, {"prompt": "I ______ finish this by tomorrow.", "context": "Choose the correct modal.", "options": ["must", "musts", "am must", "have must"], "answer": "must", "hint": "Modal verbs don't add -s or change form."}, {"prompt": "They ______ to the cinema last Friday.", "context": "Choose the correct verb form.", "options": ["went", "go", "gone", "have gone"], "answer": "went", "hint": "Last Friday = simple past."}], "sentence": [{"prompt": "Build the sentence:", "context": "already / I / have / my / finished / homework", "options": ["I have already finished my homework.", "I already have finished my homework.", "I have finished already homework my.", "Already I finished have my homework."], "answer": "I have already finished my homework.", "hint": "'Already' goes between have and the past participle."}, {"prompt": "Build the sentence:", "context": "She / to / school / has / been / never / late", "options": ["She has never been late to school.", "She never has been late to school.", "She has been never late to school.", "Never she has been late to school."], "answer": "She has never been late to school.", "hint": "Frequency adverbs go after the auxiliary verb."}, {"prompt": "Build the sentence:", "context": "harder / the / more / you / practise / the / you / get", "options": ["The more you practise, the harder you get.", "The harder you practise, the more you get.", "More you practise harder you get.", "The more you get, the harder you practise."], "answer": "The more you practise, the harder you get.", "hint": "Comparative structure: the more..., the [adjective]er..."}, {"prompt": "Build the sentence:", "context": "by / the / time / arrives / bus / the / we / left / had", "options": ["By the time the bus arrived, we had left.", "By the time we had left, the bus arrived.", "We had left by the time the bus arrive.", "The bus arrived by the time we had left."], "answer": "By the time the bus arrived, we had left.", "hint": "The earlier action uses past perfect (had + past participle)."}, {"prompt": "Build the sentence:", "context": "too / speak / fast / to / you / understand / are / to", "options": ["You are speaking too fast to understand.", "You are too fast to speak to understand.", "You speak are too fast understand.", "Too fast you are speaking to understand."], "answer": "You are speaking too fast to understand.", "hint": "too + adjective/adverb + to + infinitive."}], "vocab": [{"prompt": "Which word means to look at something quickly?", "context": "Choose the best word.", "options": ["glance", "stare", "observe", "examine"], "answer": "glance", "hint": "It's fast — a second or less."}, {"prompt": "Which word does NOT belong?", "context": "anxious • nervous • calm • tense", "options": ["anxious", "nervous", "calm", "tense"], "answer": "calm", "hint": "Three describe worry or stress. One is the opposite."}, {"prompt": "What is the opposite of 'generous'?", "context": "Choose the antonym.", "options": ["stingy", "kind", "brave", "loud"], "answer": "stingy", "hint": "Someone who never shares or gives."}, {"prompt": "Which word means you are very sure about something?", "context": "Choose the best word.", "options": ["certain", "possible", "likely", "doubtful"], "answer": "certain", "hint": "No doubt at all — 100%."}, {"prompt": "Which sentence uses 'make' correctly?", "context": "Choose the correct sentence.", "options": ["She made a mistake.", "She did a mistake.", "She got a mistake.", "She took a mistake."], "answer": "She made a mistake.", "hint": "In English, you 'make' a mistake, not 'do' one."}], "speaking": [{"prompt": "🎙️ Describe a place you'd like to visit.", "context": "Say where it is, why you want to go, and what you'd do there. Aim for 4–5 sentences.", "hint": "Use: I'd like to go to... because... I would..."}, {"prompt": "🎙️ Talk about a skill you have or want to learn.", "context": "Say what the skill is, how you learned/practise it, and why it matters to you.", "hint": "Use: I can / I'm learning to... / It helps me..."}, {"prompt": "🎙️ Describe your ideal weekend.", "context": "Say 4–5 things you'd do and explain why you enjoy them.", "hint": "Use: I'd wake up... / I'd spend... / I really enjoy..."}, {"prompt": "🎙️ Talk about someone you admire.", "context": "Say who they are, what they do, and why you look up to them.", "hint": "Use: I admire... because... They are known for..."}, {"prompt": "🎙️ Describe a challenge you've faced.", "context": "Say what the challenge was, how you handled it, and what you learned.", "hint": "Use: Once I had to... / I felt... / In the end I..."}]};
+const AVATARS=[{name:'Explorer',emoji:'🧭'},{name:'Wizard',emoji:'🧙'},{name:'Robot',emoji:'🤖'},{name:'Pirate',emoji:'🏴‍☠️'},{name:'Hero',emoji:'🦸'},{name:'Astronaut',emoji:'👩‍🚀'}];
+const WORLDS=[{id:'school',name:'School Zone',emoji:'🏫',need:0,desc:'Vocab, be verbs, modals, there is/are. Start here.'},{id:'animals',name:'Wild Zone',emoji:'🐾',need:12,desc:'Animals, adjectives and abilities. Coming soon.'},{id:'food',name:'Food District',emoji:'🍕',need:25,desc:'Food vocab, likes/dislikes, countable nouns. Coming soon.'},{id:'home',name:'Home Base',emoji:'🏡',need:40,desc:'Rooms, furniture and prepositions. Coming soon.'},{id:'travel',name:'Travel Hub',emoji:'🚂',need:60,desc:'Transport, places and travel English. Coming soon.'},{id:'a2',name:'A2 Gate',emoji:'🚀',need:80,desc:'Unlock the next level when you hit 80 stars.'}];
+let state=JSON.parse(localStorage.getItem('kidsAdventureQuest')||'{}');state=Object.assign({xp:0,stars:0,gems:0,avatar:'🧭',avatarName:'Explorer',completed:{},name:'Amazing Explorer'},state);
+let currentGame='picture',qlist=[],qi=0,score=0,streak=0,timer=null,timeLeft=25;
+function save(){localStorage.setItem('kidsAdventureQuest',JSON.stringify(state));}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='map')renderMap();if(id==='home')renderAvatars();if(id==='certificate')renderCert();}
+function renderAvatars(){document.getElementById('avatars').innerHTML=AVATARS.map(a=>`<div class="avatar ${state.avatar===a.emoji?'selected':''}" onclick="chooseAvatar('${a.emoji}','${a.name}')"><span>${a.emoji}</span><b>${a.name}</b></div>`).join('');document.getElementById('a2Tab').className=state.stars>=80?'tab':'tab locked';}
+function chooseAvatar(e,n){state.avatar=e;state.avatarName=n;save();renderAvatars();pop(`${e} Ready!`);}
+function renderStats(){return `<span class="stat">${state.avatar} ${state.avatarName}</span><span class="stat">⭐ ${state.stars}</span><span class="stat">💎 ${state.gems}</span><span class="stat">XP ${state.xp}</span>`;}
+function renderMap(){document.getElementById('mapStats').innerHTML=renderStats();document.getElementById('worldMap').innerHTML=WORLDS.map(w=>{let unlocked=state.stars>=w.need;let pct=w.id==='school'?Math.min(100,((state.completed.school||0)/5)*100):0;return `<div class="world ${unlocked?'':'locked'}" onclick="${unlocked&&w.id==='school'?'openWorld()':''}">${unlocked?'':`<div class="lock">🔒 ${w.need} ⭐</div>`}<span class="emoji">${w.emoji}</span><h2>${w.name}</h2><p>${w.desc}</p><div class="progress"><div class="fill" style="width:${pct}%"></div></div></div>`}).join('');}
+function openWorld(){let modes=['picture','grammar','sentence','vocab','speaking'];let names={picture:'🖼️ Picture Match',grammar:'🧠 Grammar Quest',sentence:'🧩 Sentence Builder',vocab:'⚡ Word Power',speaking:'🎙️ Speaking Zone'};document.getElementById('worldMap').innerHTML=modes.map(m=>`<div class="world" onclick="startGame('${m}')"><span class="emoji">${m==='picture'?'🖼️':m==='grammar'?'🧠':m==='sentence'?'🧩':m==='vocab'?'⚡':'🎙️'}</span><h2>${names[m]}</h2><p>${m==='speaking'?'Speak, practise, and collect courage XP.':'Complete missions and earn stars.'}</p></div>`).join('');}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+function startGame(g){currentGame=g;qlist=shuffle(DATA[g]).slice(0,g==='speaking'?3:6);qi=0;score=0;streak=0;document.getElementById('gameTitle').textContent='🏫 School City • '+(g==='picture'?'Picture Match':g==='grammar'?'Grammar Quest':g==='sentence'?'Sentence Builder':g==='vocab'?'Word Power':'Speaking Zone');showScreen('game');renderQ();}
+function renderQ(){clearInterval(timer);let q=qlist[qi];document.getElementById('hud').innerHTML=`<div class="stat">Q ${qi+1}/${qlist.length}</div><div class="stat">XP +${score}</div><div class="stat">🔥 ${streak}</div><div class="stat">⭐ ${state.stars}</div><div class="stat">${state.avatar}</div>`;document.getElementById('qmode').textContent=currentGame==='speaking'?'SPEAKING MISSION':currentGame.toUpperCase();document.getElementById('prompt').textContent=q.prompt;document.getElementById('context').textContent=q.context||'';document.getElementById('hintbox').style.display='none';document.getElementById('hintbox').textContent=q.hint||'Think carefully.';document.getElementById('feedback').className='feedback';document.getElementById('feedback').textContent='';let opts=document.getElementById('options');if(currentGame==='speaking'){opts.innerHTML=`<button class="opt" onclick="speakingDone()">✅ Done — mark complete</button><button class="opt" onclick="nextQ()">Skip this one ➜</button>`;}else{let shuffledOpts=shuffle(q.options);opts.innerHTML=shuffledOpts.map(o=>`<button class="opt" onclick="answer(this,'${String(o).replace(/'/g,"\'")}')">${o}</button>`).join('');}setupTimer();}
+function setupTimer(){let on=document.getElementById('timerToggle').checked&&currentGame!=='speaking';let wrap=document.getElementById('timerwrap'),fill=document.getElementById('timerfill');if(!on){wrap.style.display='none';return;}wrap.style.display='block';timeLeft=25;fill.style.width='100%';timer=setInterval(()=>{timeLeft--;fill.style.width=(timeLeft/25*100)+'%';if(timeLeft<=0){clearInterval(timer);softWrong('Time is up. Good try — let’s keep going!');setTimeout(nextQ,1200);}},1000);}
+function toggleHint(){let h=document.getElementById('hintbox');h.style.display=h.style.display==='block'?'none':'block';}
+function answer(btn,val){clearInterval(timer);let q=qlist[qi],ok=val===q.answer;document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.textContent===q.answer)b.classList.add('correct');});if(ok){btn.classList.add('correct');score+=10;streak++;state.xp+=10;good(['Nailed it!','Correct — solid.','That\'s the one. +10 XP','Sharp! Keep going.'][Math.floor(Math.random()*4)]+' +10 XP');if(streak===3){state.gems++;pop('💎 Streak!');}}else{btn.classList.add('wrong');streak=0;softWrong('Not quite — it\'s "'+q.answer+'". Lock it in.');}save();setTimeout(nextQ,ok?900:1500);}
+function speakingDone(){score+=12;state.xp+=12;state.gems++;save();good('Amazing speaking courage! +12 XP and +1 gem 💎');pop('🎙️ Brave Speaker!');setTimeout(nextQ,1000);}
+function good(t){let f=document.getElementById('feedback');f.className='feedback good';f.textContent=t;}
+function softWrong(t){let f=document.getElementById('feedback');f.className='feedback bad';f.textContent=t;}
+function nextQ(){qi++;if(qi>=qlist.length)finishGame();else renderQ();}
+function finishGame(){clearInterval(timer);let earnedStars=Math.max(1,Math.round(score/20));state.stars+=earnedStars;state.completed.school=Math.min(5,(state.completed.school||0)+1);save();pop(`⭐ +${earnedStars}`);document.getElementById('prompt').textContent='Mission Complete.';document.getElementById('context').textContent=`${score} XP earned — ${earnedStars} stars added. Not bad.`;document.getElementById('options').innerHTML=`<button class="opt" onclick="showScreen('map')">🗺️ Zone Map</button><button class="opt" onclick="startGame('${currentGame}')">↺ Play Again</button>`;document.getElementById('feedback').className='feedback good';document.getElementById('feedback').textContent='Every mission builds real skills. Keep at it.';document.getElementById('hud').innerHTML=renderStats();}
+function pop(t){let d=document.createElement('div');d.className='reward';d.textContent=t;document.body.appendChild(d);confetti();setTimeout(()=>d.remove(),950);}
+function confetti(){let colors=['#ffd93d','#ff5fa2','#22c55e','#38bdf8','#8b5cf6','#ff9f1c'];for(let i=0;i<35;i++){let p=document.createElement('div');p.style.cssText=`position:fixed;left:${Math.random()*100}%;top:-20px;width:12px;height:16px;background:${colors[Math.floor(Math.random()*colors.length)]};z-index:88;border-radius:3px;animation:fall ${1.2+Math.random()*1.2}s linear forwards`;document.body.appendChild(p);setTimeout(()=>p.remove(),2600);}}
+const st=document.createElement('style');st.textContent='@keyframes fall{to{top:110%;transform:rotate(720deg) translateX(35px)}}';document.head.appendChild(st);
+let audioCtx=null,musicOn=false,musicNodes=[],musicScheduler=null;
+
+function getAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+
+function beep(freq=440,dur=.08){try{let ctx=getAudioCtx();let o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=freq;g.gain.setValueAtTime(.015,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.start();o.stop(ctx.currentTime+dur);}catch(e){}}
+
+function playNote(freq,startTime,duration,type='triangle',vol=0.06,ctx){
+  let o=ctx.createOscillator(),g=ctx.createGain(),rev=ctx.createConvolver();
+  o.type=type;o.frequency.value=freq;
+  g.gain.setValueAtTime(0,startTime);
+  g.gain.linearRampToValueAtTime(vol,startTime+0.02);
+  g.gain.exponentialRampToValueAtTime(0.001,startTime+duration);
+  o.connect(g);g.connect(ctx.destination);
+  o.start(startTime);o.stop(startTime+duration+0.05);
+}
+
+function playPercussion(startTime,ctx){
+  // Snare-like noise burst
+  let buf=ctx.createBuffer(1,ctx.sampleRate*0.1,ctx.sampleRate);
+  let d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);
+  let src=ctx.createBufferSource(),g=ctx.createGain(),f=ctx.createBiquadFilter();
+  f.type='bandpass';f.frequency.value=1800;f.Q.value=0.8;
+  g.gain.setValueAtTime(0.12,startTime);
+  g.gain.exponentialRampToValueAtTime(0.001,startTime+0.1);
+  src.buffer=buf;src.connect(f);f.connect(g);g.connect(ctx.destination);
+  src.start(startTime);src.stop(startTime+0.12);
+}
+
+function playKick(startTime,ctx){
+  let o=ctx.createOscillator(),g=ctx.createGain();
+  o.frequency.setValueAtTime(160,startTime);
+  o.frequency.exponentialRampToValueAtTime(40,startTime+0.15);
+  g.gain.setValueAtTime(0.35,startTime);
+  g.gain.exponentialRampToValueAtTime(0.001,startTime+0.2);
+  o.connect(g);g.connect(ctx.destination);
+  o.start(startTime);o.stop(startTime+0.22);
+}
+
+function startEpicMusic(){
+  let ctx=getAudioCtx();
+  if(ctx.state==='suspended')ctx.resume();
+  
+  // Epic orchestral melody in D minor (heroic, faster ~144bpm)
+  const BPM=144, BEAT=60/BPM, BAR=BEAT*4;
+  
+  // Melody: D minor scale heroic motif
+  // D4=293.66, E4=329.63, F4=349.23, G4=392, A4=440, Bb4=466.16, C5=523.25, D5=587.33
+  const melody=[
+    [587.33,.5],[523.25,.25],[466.16,.25],
+    [440,.5],[392,.25],[440,.25],
+    [349.23,.5],[392,.25],[440,.25],
+    [587.33,1],
+    [523.25,.5],[466.16,.25],[440,.25],
+    [392,.5],[349.23,.25],[392,.25],
+    [329.63,.75],[293.66,.25],
+    [440,1],
+  ];
+  
+  // Bass line (low, powerful)
+  const bass=[
+    [146.83,1],[130.81,1],[174.61,1],[174.61,.5],[195.99,.5],
+    [146.83,1],[130.81,1],[174.61,1],[195.99,1],
+  ];
+  
+  // Harmony (pad chords)
+  const chords=[
+    [[293.66,369.99,440],2],
+    [[261.63,329.63,392],2],
+    [[349.23,440,523.25],2],
+    [[369.99,466.16,554.37],2],
+  ];
+  
+  const now=ctx.currentTime+0.1;
+  const loopLen=BAR*4;
+  
+  function scheduleLoop(startAt){
+    // Melody
+    let mt=startAt;
+    for(let n of melody){
+      playNote(n[0],mt,n[1]*BEAT*0.9,'triangle',0.07,ctx);
+      mt+=n[1]*BEAT;
+    }
+    // Octave-up sparkle
+    let st2=startAt+BEAT*0.5;
+    for(let n of melody.slice(0,8)){
+      playNote(n[0]*2,st2,n[1]*BEAT*0.7,'sine',0.025,ctx);
+      st2+=n[1]*BEAT;
+    }
+    // Bass
+    let bt=startAt;
+    for(let n of bass){
+      playNote(n[0],bt,n[1]*BEAT*0.85,'sawtooth',0.045,ctx);
+      bt+=n[1]*BEAT;
+    }
+    // Chords (pad)
+    let ct=startAt;
+    for(let c of chords){
+      for(let f of c[0])playNote(f*1,ct,c[1]*BEAT*0.88,'sine',0.018,ctx);
+      ct+=c[1]*BEAT;
+    }
+    // Percussion every beat
+    for(let b=0;b<16;b++){
+      let t=startAt+b*BEAT;
+      if(b%4===0)playKick(t,ctx);
+      if(b%4===2)playPercussion(t,ctx);
+    }
+  }
+  
+  scheduleLoop(now);
+  let loopTime=now+loopLen;
+  musicScheduler=setInterval(()=>{
+    if(!musicOn){clearInterval(musicScheduler);return;}
+    let ctx2=getAudioCtx();
+    scheduleLoop(ctx2.currentTime+0.1);
+  },loopLen*1000-200);
+}
+
+function stopMusic(){clearInterval(musicScheduler);musicScheduler=null;}
+
+function toggleMusic(){musicOn=!musicOn;if(musicOn){pop('🎵 Music On');startEpicMusic();}else{stopMusic();pop('🔇 Off');}}
+function toggleNight(){document.body.classList.toggle('night');}
+function resetProgress(){if(confirm('Reset saved stars, XP, avatar and unlocks?')){localStorage.removeItem('kidsAdventureQuest');location.reload();}}
+function renderCert(){document.getElementById('certName').textContent=state.avatar+' '+state.avatarName;document.getElementById('certStats').textContent=`Stars: ${state.stars} • Gems: ${state.gems} • XP: ${state.xp}`;}
+// Star particles background
+(function(){let app=document.querySelector('.app');for(let i=0;i<60;i++){let s=document.createElement('div');let size=Math.random()*2.5+1;s.style.cssText=`position:absolute;width:${size}px;height:${size}px;background:white;border-radius:50%;left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${Math.random()*.6+.1};animation:twinkle ${2+Math.random()*3}s ease-in-out infinite;animation-delay:${Math.random()*4}s;z-index:0;pointer-events:none`;app.appendChild(s);}let st=document.createElement('style');st.textContent='@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.7}}';document.head.appendChild(st);})();
+renderAvatars();
+</script>
+</body>
+</html>
