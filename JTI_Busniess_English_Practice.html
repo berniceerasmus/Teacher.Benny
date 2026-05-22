@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JTI Business English — Sales Manager Vocabulary & Grammar Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #152238;
+    --navy-light: #1e3252;
+    --gold: #c9963a;
+    --gold-light: #e8b55a;
+    --gold-pale: #fdf3e3;
+    --cream: #faf8f4;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+    --border: #e5e0d8;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --blue: #1e40af;
+    --blue-bg: #dbeafe;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .app-header {
+    background: var(--navy);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 14px; color: var(--navy);
+  }
+  .logo-text { color: #fff; font-size: 15px; font-weight: 500; }
+  .logo-sub { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 1px; }
+  .header-stats {
+    display: flex; gap: 20px; align-items: center;
+  }
+  .stat-chip {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 5px 12px;
+  }
+  .stat-chip .val { color: var(--gold-light); font-size: 15px; font-weight: 600; font-family: 'DM Mono', monospace; }
+  .stat-chip .lbl { color: rgba(255,255,255,0.5); font-size: 11px; }
+
+  /* LAYOUT */
+  .app-body { display: flex; min-height: calc(100vh - 64px); }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 220px; flex-shrink: 0;
+    background: var(--navy-mid);
+    padding: 24px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .sidebar-section {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3); text-transform: uppercase;
+    padding: 8px 12px 4px;
+  }
+  .nav-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: var(--radius-sm);
+    cursor: pointer; border: none; background: transparent;
+    color: rgba(255,255,255,0.6); font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left; width: 100%; transition: all 0.15s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.07); color: #fff; }
+  .nav-btn.active { background: rgba(201,150,58,0.15); color: var(--gold-light); }
+  .nav-btn .nav-icon { font-size: 16px; width: 18px; text-align: center; }
+  .nav-badge {
+    margin-left: auto; font-size: 10px;
+    background: var(--gold); color: var(--navy);
+    border-radius: 10px; padding: 1px 6px; font-weight: 600;
+  }
+  .topic-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 8px 12px; }
+
+  /* MAIN */
+  .main { flex: 1; padding: 28px 32px; max-width: 820px; }
+
+  /* MODE HEADER */
+  .mode-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .mode-title { font-size: 22px; font-weight: 600; color: var(--text); }
+  .mode-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .time-badge {
+    background: var(--navy); color: var(--gold-light);
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 12px; font-weight: 500;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap { margin-bottom: 20px; }
+  .progress-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .progress-label { font-size: 12px; color: var(--text-muted); }
+  .progress-track { height: 6px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.4s cubic-bezier(.4,0,.2,1); }
+
+  /* FLASHCARD */
+  .flashcard-wrap { perspective: 1000px; margin-bottom: 16px; cursor: pointer; }
+  .flashcard {
+    background: #fff; border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 40px 32px; text-align: center;
+    min-height: 200px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: box-shadow 0.2s; position: relative;
+  }
+  .flashcard:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .fc-context {
+    position: absolute; top: 16px; left: 16px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gold);
+    background: var(--gold-pale); border-radius: 6px; padding: 3px 8px;
+  }
+  .fc-word { font-size: 32px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .fc-phonetic {
+    font-family: 'DM Mono', monospace; font-size: 14px;
+    color: var(--text-muted); margin-bottom: 16px;
+  }
+  .fc-tap { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+  .fc-divider { width: 40px; height: 2px; background: var(--border); margin: 12px auto; }
+  .fc-meaning { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .fc-example {
+    font-size: 13px; color: var(--text-muted); font-style: italic;
+    line-height: 1.6; max-width: 420px;
+  }
+  .fc-tr { font-size: 12px; color: var(--gold); margin-top: 8px; font-weight: 500; }
+  .fc-back { display: none; width: 100%; }
+  .fc-back.visible { display: block; }
+
+  .card-actions { display: flex; gap: 10px; margin-bottom: 20px; }
+  .btn {
+    padding: 10px 18px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border); background: #fff;
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s; display: flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--cream); }
+  .btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .btn-navy:hover { background: var(--navy-light); }
+  .btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-green { background: var(--green-bg); color: var(--green); border-color: #bbf7d0; }
+  .btn-green:hover { background: #bbf7d0; }
+  .btn-red { background: var(--red-bg); color: var(--red); border-color: #fecaca; }
+  .btn-red:hover { background: #fecaca; }
+  .btn-blue { background: var(--blue-bg); color: var(--blue); border-color: #bfdbfe; }
+  .btn-blue:hover { background: #bfdbfe; }
+  .btn-lg { padding: 12px 24px; font-size: 14px; }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+  .score-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+  .score-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 14px; text-align: center;
+  }
+  .score-card .s-num { font-size: 24px; font-weight: 600; color: var(--navy); font-family: 'DM Mono', monospace; }
+  .score-card .s-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* PRONUNCIATION */
+  .pron-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px; text-align: center;
+    margin-bottom: 16px;
+  }
+  .pron-word { font-size: 36px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .pron-ipa {
+    font-family: 'DM Mono', monospace; font-size: 16px;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .syl-row { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .syl {
+    padding: 6px 14px; border-radius: 20px; font-size: 14px;
+    background: var(--cream); border: 1px solid var(--border); color: var(--text-muted);
+  }
+  .syl.stressed {
+    background: var(--navy); color: var(--gold-light);
+    border-color: var(--navy); font-weight: 600;
+  }
+  .pron-example {
+    font-size: 14px; color: var(--text-muted); font-style: italic;
+    line-height: 1.6; margin-bottom: 12px; max-width: 480px; margin-left: auto; margin-right: auto;
+  }
+  .pron-tr { font-size: 13px; color: var(--gold); font-weight: 500; }
+  .pron-tip {
+    background: var(--blue-bg); border-radius: var(--radius-sm);
+    padding: 10px 14px; font-size: 13px; color: var(--blue);
+    margin-top: 16px; text-align: left; display: flex; align-items: flex-start; gap: 8px;
+  }
+
+  /* WORD ORDER */
+  .wo-context {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--gold);
+    background: var(--gold-pale); border-radius: 6px;
+    padding: 4px 10px; display: inline-block; margin-bottom: 12px;
+  }
+  .wo-instruction {
+    font-size: 15px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;
+  }
+  .answer-zone {
+    min-height: 48px; border: 1.5px dashed var(--border);
+    border-radius: var(--radius-sm); padding: 10px 12px;
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+    background: #fff; transition: border-color 0.2s;
+  }
+  .answer-zone.has-content { border-color: var(--gold); }
+  .answer-zone .empty-hint {
+    font-size: 12px; color: var(--text-light); padding: 4px; align-self: center;
+  }
+  .tiles-zone { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; min-height: 40px; }
+  .tile {
+    padding: 7px 14px; background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); font-size: 13px; cursor: pointer;
+    color: var(--text); transition: all 0.15s; font-family: 'DM Sans', sans-serif;
+  }
+  .tile:hover { border-color: var(--navy); background: var(--cream); }
+  .tile.used { opacity: 0.25; pointer-events: none; }
+  .answer-tile {
+    padding: 7px 14px; background: var(--blue-bg); border: 1px solid #bfdbfe;
+    border-radius: var(--radius-sm); font-size: 13px; cursor: pointer;
+    color: var(--blue); transition: all 0.15s;
+  }
+  .answer-tile:hover { background: #bfdbfe; }
+  .wo-feedback {
+    padding: 12px 16px; border-radius: var(--radius-sm);
+    font-size: 13px; line-height: 1.6; margin-bottom: 12px; display: none;
+  }
+  .wo-feedback.show { display: block; }
+  .wo-feedback.good { background: var(--green-bg); color: var(--green); }
+  .wo-feedback.bad { background: var(--red-bg); color: var(--red); }
+  .wo-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* FINISH STATE */
+  .finish-state {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 40px 32px; text-align: center;
+  }
+  .finish-icon { font-size: 48px; margin-bottom: 12px; }
+  .finish-title { font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .finish-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+
+  /* HIDDEN PANELS */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .panel.active { animation: fadeIn 0.2s ease; }
+  @keyframes correct { 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+  .flash-correct { animation: correct 0.3s ease; }
+
+  /* RESPONSIVE */
+  @media(max-width: 680px) {
+    .sidebar { display: none; }
+    .main { padding: 16px; }
+    .score-row { grid-template-columns: repeat(3,1fr); }
+  }
+
+  /* PAGE TITLE BANNER */
+  .page-title-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 20px 32px 18px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .page-title-banner .pt-main {
+    font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.01em;
+  }
+  .page-title-banner .pt-sub {
+    font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px;
+  }
+  .page-title-banner .pt-benny {
+    font-size: 11px; color: var(--gold-light); font-weight: 500;
+    background: rgba(201,150,58,0.15); border-radius: 20px; padding: 4px 12px;
+    white-space: nowrap;
+  }
+
+  /* TEACHER NOTES */
+  .teacher-notes-toggle {
+    display: flex; align-items: center; gap: 8px;
+    background: none; border: 1px dashed var(--gold);
+    border-radius: var(--radius-sm); padding: 8px 14px;
+    cursor: pointer; font-size: 12px; font-weight: 600;
+    color: var(--gold); font-family: 'DM Sans', sans-serif;
+    margin-top: 16px; transition: all 0.15s; width: 100%;
+    justify-content: space-between;
+  }
+  .teacher-notes-toggle:hover { background: var(--gold-pale); }
+  .teacher-notes-toggle .tn-label { display: flex; align-items: center; gap: 7px; }
+  .teacher-notes-toggle .tn-arrow { font-size: 10px; transition: transform 0.2s; }
+  .teacher-notes-toggle.open .tn-arrow { transform: rotate(180deg); }
+
+  .teacher-notes-box {
+    display: none; background: var(--gold-pale);
+    border: 1px solid #e8d5a8; border-radius: var(--radius-sm);
+    padding: 18px 20px; margin-top: 6px; line-height: 1.7;
+  }
+  .teacher-notes-box.open { display: block; animation: fadeIn 0.2s ease; }
+  .tn-title { font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .tn-rule { margin-bottom: 12px; }
+  .tn-rule-head { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .tn-rule-body { font-size: 12px; color: #5a4a2a; }
+  .tn-rule-body code {
+    background: rgba(201,150,58,0.15); border-radius: 4px; padding: 1px 5px;
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--navy);
+  }
+  .tn-divider { height: 1px; background: #e8d5a8; margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="logo">
+    <div class="logo-mark">JTI</div>
+    <div>
+      <div class="logo-text">Business English</div>
+      <div class="logo-sub">Made by Teacher Benny</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-chip">
+      <span class="val" id="streakVal">0</span>
+      <span class="lbl">streak</span>
+    </div>
+    <div class="stat-chip">
+      <span class="val" id="totalVal">0</span>
+      <span class="lbl">learned</span>
+    </div>
+  </div>
+</header>
+
+<div class="page-title-banner">
+  <div>
+    <div class="pt-main">JTI Sales Manager — Business English Vocabulary &amp; Grammar Trainer</div>
+    <div class="pt-sub">Flashcards · Pronunciation · Word Order · Teacher Grammar Notes</div>
+  </div>
+  <div class="pt-benny">✏️ Made by Teacher Benny</div>
+</div>
+
+<div class="app-body">
+
+  <nav class="sidebar">
+    <div class="sidebar-section">Mode</div>
+    <button class="nav-btn active" onclick="setMode('flash')" id="nav-flash">
+      <span class="nav-icon">🃏</span> Flashcards
+      <span class="nav-badge">2min</span>
+    </button>
+    <button class="nav-btn" onclick="setMode('pron')" id="nav-pron">
+      <span class="nav-icon">🔊</span> Pronunciation
+      <span class="nav-badge">5min</span>
+    </button>
+    <button class="nav-btn" onclick="setMode('order')" id="nav-order">
+      <span class="nav-icon">🧩</span> Word order
+      <span class="nav-badge">10min</span>
+    </button>
+
+    <div class="topic-divider"></div>
+    <div class="sidebar-section">Topic</div>
+    <button class="nav-btn active-topic" onclick="setTopic('meetings')" id="topic-meetings">
+      <span class="nav-icon">📋</span> Meetings
+    </button>
+    <button class="nav-btn" onclick="setTopic('emails')" id="topic-emails">
+      <span class="nav-icon">✉️</span> Emails
+    </button>
+    <button class="nav-btn" onclick="setTopic('managing')" id="topic-managing">
+      <span class="nav-icon">👥</span> Managing people
+    </button>
+    <button class="nav-btn" onclick="setTopic('sales')" id="topic-sales">
+      <span class="nav-icon">📈</span> Sales & customers
+    </button>
+    <button class="nav-btn" onclick="setTopic('tobacco')" id="topic-tobacco">
+      <span class="nav-icon">🏭</span> JTI & tobacco
+    </button>
+    <button class="nav-btn" onclick="setTopic('reporting')" id="topic-reporting">
+      <span class="nav-icon">📊</span> Reporting & data
+    </button>
+    <button class="nav-btn" onclick="setTopic('negotiation')" id="topic-negotiation">
+      <span class="nav-icon">🤝</span> Negotiation
+    </button>
+    <button class="nav-btn" onclick="setTopic('hr')" id="topic-hr">
+      <span class="nav-icon">🧑‍💼</span> HR & appraisals
+    </button>
+  </nav>
+
+  <main class="main">
+
+    <!-- FLASHCARD PANEL -->
+    <div class="panel active" id="panel-flash">
+      <div class="mode-header">
+        <div>
+          <div class="mode-title">Flashcards</div>
+          <div class="mode-subtitle" id="flash-subtitle">Tap the card to reveal the meaning</div>
+        </div>
+        <div class="time-badge">⏱ 2–3 min</div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span class="progress-label" id="flash-prog-label">0 / 0</span>
+          <span class="progress-label" id="flash-topic-label">Meetings</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="flash-prog-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="flashcard-wrap" onclick="revealFlash()">
+        <div class="flashcard" id="flashcard">
+          <div class="fc-context" id="fc-context">JTI</div>
+          <div class="fc-word" id="fc-word">—</div>
+          <div class="fc-phonetic" id="fc-phonetic"></div>
+          <div id="fc-back" class="fc-back">
+            <div class="fc-divider"></div>
+            <div class="fc-meaning" id="fc-meaning"></div>
+            <div class="fc-example" id="fc-example"></div>
+            <div class="fc-tr" id="fc-tr"></div>
+          </div>
+          <div class="fc-tap" id="fc-tap">Tap to reveal meaning</div>
+        </div>
+      </div>
+
+      <div class="card-actions" id="flash-actions" style="display:none">
+        <button class="btn btn-red" onclick="rateFlash(false)">✗ Again</button>
+        <button class="btn btn-blue" onclick="speakFlash()">🔊 Hear it</button>
+        <button class="btn btn-green btn-lg" style="flex:1;justify-content:center" onclick="rateFlash(true)">✓ Got it!</button>
+      </div>
+      <div id="flash-reveal-row" class="card-actions">
+        <button class="btn btn-blue" onclick="speakFlash()">🔊 Hear it</button>
+        <button class="btn btn-navy btn-lg" style="flex:1;justify-content:center" onclick="revealFlash()">Show meaning →</button>
+      </div>
+
+      <div class="score-row">
+        <div class="score-card"><div class="s-num" id="fc-known">0</div><div class="s-label">Known ✓</div></div>
+        <div class="score-card"><div class="s-num" id="fc-again">0</div><div class="s-label">Review ↻</div></div>
+        <div class="score-card"><div class="s-num" id="fc-left">0</div><div class="s-label">Remaining</div></div>
+      </div>
+
+      <button class="teacher-notes-toggle" onclick="toggleNotes('tn-flash')">
+        <span class="tn-label">📚 Teacher's Grammar Notes — Vocabulary in Context</span>
+        <span class="tn-arrow">▼</span>
+      </button>
+      <div class="teacher-notes-box" id="tn-flash">
+        <div class="tn-title">📖 How these words work in English sentences</div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Nouns used as verbs (conversion)</div>
+          <div class="tn-rule-body">Many business words can be both a noun and a verb with no change. <code>delegate</code> (noun: a person) → <code>I will delegate this task</code> (verb: to hand over). Same with <code>escalate</code>, <code>benchmark</code>, <code>cc</code>, and <code>upsell</code>. When you see a new word, ask: "Can I use this as a verb too?"</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Compound nouns — two words, one meaning</div>
+          <div class="tn-rule-body">English loves compound nouns: <code>call cycle</code>, <code>market share</code>, <code>shelf share</code>, <code>action points</code>, <code>price tier</code>. The first word describes the second. Stress usually falls on the FIRST word: <strong>CALL</strong> cycle, <strong>SHELF</strong> share, <strong>ACTION</strong> points. Practice stressing the first word.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Prepositions after verbs</div>
+          <div class="tn-rule-body">These are fixed combinations — you must learn the preposition together with the verb:<br>
+          <code>follow up WITH</code> someone &nbsp;|&nbsp; <code>loop IN</code> someone &nbsp;|&nbsp; <code>delegate TO</code> someone &nbsp;|&nbsp; <code>escalate TO</code> a manager &nbsp;|&nbsp; <code>focus ON</code> a target. There is no grammar rule — memorise these as pairs.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Uncountable nouns (no plural -s)</div>
+          <div class="tn-rule-body">Some words are always singular and never take <code>-s</code>: <code>feedback</code> ✓ &nbsp; <code>feedbacks</code> ✗ &nbsp;|&nbsp; <code>compliance</code> ✓ &nbsp; <code>compliances</code> ✗ &nbsp;|&nbsp; <code>visibility</code> ✓ &nbsp; <code>visibilities</code> ✗ &nbsp;|&nbsp; <code>coaching</code> ✓ &nbsp; <code>coachings</code> ✗. If unsure, don't add -s.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRONUNCIATION PANEL -->
+    <div class="panel" id="panel-pron">
+      <div class="mode-header">
+        <div>
+          <div class="mode-title">Pronunciation</div>
+          <div class="mode-subtitle">Say it aloud — slowly, then at normal speed</div>
+        </div>
+        <div class="time-badge">⏱ 3–5 min</div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span class="progress-label" id="pron-prog-label">1 / 0</span>
+          <span class="progress-label" id="pron-topic-label">Meetings</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="pron-prog-fill" style="width:10%"></div></div>
+      </div>
+      <div class="pron-card" id="pron-card">
+        <div class="pron-word" id="pron-word">—</div>
+        <div class="pron-ipa" id="pron-ipa"></div>
+        <div class="syl-row" id="pron-syls"></div>
+        <div class="pron-example" id="pron-example"></div>
+        <div class="pron-tr" id="pron-tr"></div>
+      </div>
+      <div class="pron-tip" id="pron-tip">
+        <span>💡</span><span id="pron-tip-text">Say it slowly 3 times, then at normal speed.</span>
+      </div>
+      <div class="card-actions" style="margin-top:16px">
+        <button class="btn btn-blue" onclick="speakPron()">🔊 Hear it again</button>
+        <button class="btn btn-navy" style="flex:1;justify-content:center" onclick="nextPron()">Next word →</button>
+      </div>
+
+      <button class="teacher-notes-toggle" onclick="toggleNotes('tn-pron')">
+        <span class="tn-label">📚 Teacher's Grammar Notes — Word Stress &amp; Pronunciation</span>
+        <span class="tn-arrow">▼</span>
+      </button>
+      <div class="teacher-notes-box" id="tn-pron">
+        <div class="tn-title">🔊 Why pronunciation matters in business English</div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Stress changes meaning</div>
+          <div class="tn-rule-body">In English, the stressed syllable carries the meaning. Moving the stress can make a word hard to understand even if every letter is correct. Example: <code>REcord</code> (noun: a record) vs <code>reCORD</code> (verb: to record something). Always check which syllable is stressed.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">The schwa /ə/ — English's most common sound</div>
+          <div class="tn-rule-body">Unstressed vowels in English often become a weak "uh" sound called the schwa. Examples: <code>a·GEN·da</code> — the "a" sounds like "uh". <code>com·PLI·ance</code> — both "o" and second "a" are schwas. Don't over-pronounce every vowel — let the unstressed ones be weak.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">-tion and -sion endings</div>
+          <div class="tn-rule-body">Words ending in <code>-tion</code> are always stressed on the syllable BEFORE it and pronounced "shun": <code>ne·go·ti·A·tion</code>, <code>con·CES·sion</code>, <code>SUC·ces·sion</code>. This is a reliable rule — use it for every new word you learn ending in -tion.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Silent letters in business words</div>
+          <div class="tn-rule-body"><code>debt</code> — the "b" is silent &nbsp;|&nbsp; <code>schedule</code> — British English: "SHED-yool" &nbsp;|&nbsp; <code>colleague</code> — the "ue" is silent. When in doubt, use the 🔊 button and listen carefully.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORD ORDER PANEL -->
+    <div class="panel" id="panel-order">
+      <div class="mode-header">
+        <div>
+          <div class="mode-title">Word order</div>
+          <div class="mode-subtitle">Tap words to build the correct sentence</div>
+        </div>
+        <div class="time-badge">⏱ 5–10 min</div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span class="progress-label" id="wo-prog-label">0 / 0</span>
+          <span class="progress-label">All topics</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="wo-prog-fill" style="width:0%"></div></div>
+      </div>
+      <div id="wo-container">
+        <div class="wo-context" id="wo-context">Context</div>
+        <div class="wo-instruction" id="wo-instruction">Put these words in the correct order:</div>
+        <div class="answer-zone" id="answer-zone">
+          <span class="empty-hint">Your sentence appears here...</span>
+        </div>
+        <div class="tiles-zone" id="tiles-zone"></div>
+        <div class="wo-feedback" id="wo-feedback"></div>
+        <div class="wo-actions">
+          <button class="btn btn-navy" onclick="checkOrder()">✓ Check answer</button>
+          <button class="btn" onclick="clearOrder()">↻ Clear</button>
+          <button class="btn btn-sm" onclick="skipOrder()">Skip →</button>
+          <button class="btn btn-blue btn-sm" onclick="speakOrder()">🔊 Hear answer</button>
+        </div>
+      </div>
+
+      <button class="teacher-notes-toggle" onclick="toggleNotes('tn-order')">
+        <span class="tn-label">📚 Teacher's Grammar Notes — Sentence Structure</span>
+        <span class="tn-arrow">▼</span>
+      </button>
+      <div class="teacher-notes-box" id="tn-order">
+        <div class="tn-title">🧩 How English sentences are built</div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Basic word order: Subject → Verb → Object (SVO)</div>
+          <div class="tn-rule-body">English almost always follows this order. Unlike Turkish, you cannot move the verb to the end. <br><code>We / need / to review the targets</code> (S / V / O). <code>I / will delegate / this task</code>. If you're unsure, always put the subject first, then the verb immediately after.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Modal verbs — must, should, can, will, would</div>
+          <div class="tn-rule-body">Modal verbs come BEFORE the main verb and never take -s or -ed:<br>
+          <code>must follow</code> (obligation) &nbsp;|&nbsp; <code>should focus</code> (advice) &nbsp;|&nbsp; <code>can negotiate</code> (ability/possibility) &nbsp;|&nbsp; <code>will delegate</code> (future plan) &nbsp;|&nbsp; <code>would like to discuss</code> (polite request). Structure: <code>Subject + modal + base verb</code>.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Question word order</div>
+          <div class="tn-rule-body">In English questions, the auxiliary verb comes BEFORE the subject: <code>Can we negotiate...?</code> not <code>We can negotiate...?</code> &nbsp;|&nbsp; <code>Can I follow up...?</code> not <code>I can follow up...?</code>. For yes/no questions use: <code>Can / Could / Would / Do / Did + subject + verb?</code></div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Time expressions go at the start or end — not in the middle</div>
+          <div class="tn-rule-body">✓ <code>This quarter, the team hit their target.</code> &nbsp;|&nbsp; ✓ <code>The team hit their target this quarter.</code><br>✗ <code>The team this quarter hit their target.</code> — Do not put the time expression between subject and verb.</div>
+        </div>
+        <div class="tn-divider"></div>
+        <div class="tn-rule">
+          <div class="tn-rule-head">Polite requests: "I'd like to..." vs "I want to..."</div>
+          <div class="tn-rule-body"><code>I want to discuss...</code> — grammatically correct but sounds direct/demanding in a business context. <code>I'd like to discuss...</code> — polite, professional, preferred. <code>I'd = I would</code>. Always use <code>I'd like to</code> in meetings, emails, and with customers.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const VOCAB = {
+  meetings:[
+    {word:"agenda",phonetic:"/əˈdʒendə/",meaning:"The list of topics for a meeting",example:"Let's stick to the agenda — we have five points to cover.",tr:"gündem",context:"Meetings"},
+    {word:"minutes",phonetic:"/ˈmɪnɪts/",meaning:"Written record of what was said in a meeting",example:"Can you send the minutes to everyone after the meeting?",tr:"toplantı tutanağı",context:"Meetings"},
+    {word:"debrief",phonetic:"/diːˈbriːf/",meaning:"A quick review meeting after an event or visit",example:"We'll have a team debrief after the trade visit on Friday.",tr:"değerlendirme toplantısı",context:"Meetings"},
+    {word:"action points",phonetic:"/ˈækʃən pɔɪnts/",meaning:"Tasks agreed and assigned during a meeting",example:"The action points from today's meeting are on your email.",tr:"eylem maddeleri",context:"Meetings"},
+    {word:"follow up",phonetic:"/ˈfɒləʊ ʌp/",meaning:"To check on progress after an initial contact",example:"I'll follow up with the regional manager next week.",tr:"takip etmek",context:"Meetings"},
+    {word:"conference call",phonetic:"/ˈkɒnfərəns kɔːl/",meaning:"A phone or video meeting with multiple people",example:"We have a conference call with Istanbul at 3 pm.",tr:"konferans görüşmesi",context:"Meetings"},
+    {word:"wrap up",phonetic:"/ræp ʌp/",meaning:"To finish or summarise at the end of a meeting",example:"Let's wrap up — does anyone have final questions?",tr:"toplantıyı bitirmek",context:"Meetings"},
+    {word:"take the floor",phonetic:"/teɪk ðə flɔː/",meaning:"To start speaking in a meeting",example:"I'd like to take the floor to discuss Q3 targets.",tr:"söz almak",context:"Meetings"},
+    {word:"adjourn",phonetic:"/əˈdʒɜːn/",meaning:"To officially end or pause a meeting",example:"Let's adjourn and continue this discussion tomorrow.",tr:"toplantıyı ertelemek / bitirmek",context:"Meetings"},
+    {word:"consensus",phonetic:"/kənˈsensəs/",meaning:"A general agreement reached by the group",example:"We reached a consensus on the new route plan.",tr:"fikir birliği",context:"Meetings"},
+    {word:"chair",phonetic:"/tʃeə/",meaning:"To lead or run a meeting (also: the person who leads it)",example:"I will chair the regional meeting next Monday.",tr:"toplantıya başkanlık etmek",context:"Meetings"},
+  ],
+  emails:[
+    {word:"attach",phonetic:"/əˈtætʃ/",meaning:"To add a file to an email",example:"Please find the sales report attached.",tr:"eklemek",context:"Emails"},
+    {word:"forward",phonetic:"/ˈfɔːwəd/",meaning:"To send a received email to someone else",example:"I'll forward the distributor's email to you now.",tr:"iletmek",context:"Emails"},
+    {word:"cc",phonetic:"/siː siː/",meaning:"To copy someone else into an email",example:"Please cc the area manager on this email.",tr:"kopyaya eklemek",context:"Emails"},
+    {word:"urgent",phonetic:"/ˈɜːdʒənt/",meaning:"Needing immediate attention",example:"This is urgent — please respond by noon today.",tr:"acil",context:"Emails"},
+    {word:"clarify",phonetic:"/ˈklærɪfaɪ/",meaning:"To make something clearer or easier to understand",example:"Could you clarify the discount terms in your last email?",tr:"açıklamak",context:"Emails"},
+    {word:"as per",phonetic:"/æz pɜː/",meaning:"According to, or in line with",example:"As per our conversation, I'm sending the updated contract.",tr:"uyarınca / doğrultusunda",context:"Emails"},
+    {word:"loop in",phonetic:"/luːp ɪn/",meaning:"To include someone in a conversation or email thread",example:"Can you loop in the finance team on this thread?",tr:"dahil etmek",context:"Emails"},
+    {word:"outstanding",phonetic:"/aʊtˈstændɪŋ/",meaning:"Not yet done or paid; still pending",example:"There are three outstanding invoices from last quarter.",tr:"bekleyen / ödenmemiş",context:"Emails"},
+    {word:"acknowledge",phonetic:"/əkˈnɒlɪdʒ/",meaning:"To confirm you have received something",example:"Please acknowledge receipt of this email by end of day.",tr:"alındığını onaylamak",context:"Emails"},
+    {word:"action required",phonetic:"/ˈækʃən rɪˈkwaɪəd/",meaning:"A phrase used to show the reader must do something",example:"Action required: Please approve the budget by Friday.",tr:"aksiyon gerekli",context:"Emails"},
+  ],
+  managing:[
+    {word:"delegate",phonetic:"/ˈdelɪɡeɪt/",meaning:"To assign a task to a team member",example:"I need to delegate the route planning to one of my reps.",tr:"yetki vermek / devretmek",context:"Managing"},
+    {word:"motivate",phonetic:"/ˈməʊtɪveɪt/",meaning:"To encourage someone to perform better",example:"It's important to motivate your team every week.",tr:"motive etmek",context:"Managing"},
+    {word:"performance review",phonetic:"/pəˈfɔːməns rɪˈvjuː/",meaning:"A formal meeting to assess an employee's work",example:"Annual performance reviews are in December.",tr:"performans değerlendirmesi",context:"Managing"},
+    {word:"accountability",phonetic:"/əˌkaʊntəˈbɪlɪti/",meaning:"Taking responsibility for your actions and results",example:"We need a culture of accountability in the sales team.",tr:"hesap verebilirlik",context:"Managing"},
+    {word:"onboard",phonetic:"/ˈɒnbɔːd/",meaning:"To train and integrate a new employee",example:"We need to onboard the two new reps this month.",tr:"işe alıştırmak / oryantasyon",context:"Managing"},
+    {word:"escalate",phonetic:"/ˈeskəleɪt/",meaning:"To raise an issue to a higher level",example:"If the customer complains again, escalate it to me.",tr:"üst yönetime iletmek",context:"Managing"},
+    {word:"KPI",phonetic:"/keɪ piː aɪ/",meaning:"Key Performance Indicator — a measurable target",example:"Our main KPI this quarter is 15% volume growth.",tr:"temel performans göstergesi",context:"Managing"},
+    {word:"headcount",phonetic:"/ˈhedkaʊnt/",meaning:"The number of employees in a team or company",example:"We're adding two to our headcount next quarter.",tr:"çalışan sayısı",context:"Managing"},
+    {word:"micromanage",phonetic:"/ˈmaɪkrəʊˌmænɪdʒ/",meaning:"To control every small detail of someone's work",example:"Good managers empower their team — they don't micromanage.",tr:"aşırı denetlemek / mikro yönetim",context:"Managing"},
+    {word:"empower",phonetic:"/ɪmˈpaʊə/",meaning:"To give someone the confidence and authority to act",example:"I want to empower my reps to make decisions in the field.",tr:"yetkilendirmek / güçlendirmek",context:"Managing"},
+  ],
+  sales:[
+    {word:"prospect",phonetic:"/ˈprɒspekt/",meaning:"A potential new customer",example:"We have 80 new prospects identified in the Eskişehir region.",tr:"potansiyel müşteri",context:"Sales"},
+    {word:"pitch",phonetic:"/pɪtʃ/",meaning:"A persuasive presentation or argument to a customer",example:"I need to prepare my sales pitch for the new product launch.",tr:"satış sunumu",context:"Sales"},
+    {word:"close a deal",phonetic:"/kləʊz ə diːl/",meaning:"To successfully finalise a sale",example:"He closed five deals last week — great result.",tr:"anlaşmayı kapatmak",context:"Sales"},
+    {word:"objection handling",phonetic:"/əbˈdʒekʃən ˈhændlɪŋ/",meaning:"Responding professionally to a customer's concerns",example:"Good objection handling is the key to closing sales.",tr:"itiraz yönetimi",context:"Sales"},
+    {word:"upsell",phonetic:"/ˈʌpsɛl/",meaning:"To encourage a customer to buy more or a better product",example:"Always try to upsell premium SKUs to your key accounts.",tr:"çapraz satış / üst satış",context:"Sales"},
+    {word:"call cycle",phonetic:"/kɔːl ˈsaɪkəl/",meaning:"The regular schedule of visits to customers",example:"My team completes a full call cycle every two weeks.",tr:"müşteri ziyaret döngüsü",context:"Sales"},
+    {word:"market share",phonetic:"/ˈmɑːkɪt ʃeə/",meaning:"The percentage of total sales a brand holds",example:"Our market share grew by 2% in Q2.",tr:"pazar payı",context:"Sales"},
+    {word:"visibility",phonetic:"/ˌvɪzɪˈbɪlɪti/",meaning:"How well a product is displayed and seen in-store",example:"We need to improve our brand visibility at point of sale.",tr:"görünürlük",context:"Sales"},
+    {word:"conversion rate",phonetic:"/kənˈvɜːʃən reɪt/",meaning:"The percentage of prospects who become actual customers",example:"Our conversion rate improved after the new pitch training.",tr:"dönüşüm oranı",context:"Sales"},
+    {word:"pipeline",phonetic:"/ˈpaɪplaɪn/",meaning:"The total value of potential deals being worked on",example:"My pipeline for Q3 is looking very strong.",tr:"satış hattı / potansiyel satışlar",context:"Sales"},
+  ],
+  tobacco:[
+    {word:"SKU",phonetic:"/ɛs keɪ juː/",meaning:"Stock Keeping Unit — a specific product variant",example:"We have 12 active SKUs in the Winston portfolio.",tr:"stok takip birimi / ürün kodu",context:"JTI"},
+    {word:"trade channel",phonetic:"/treɪd ˈtʃænəl/",meaning:"The type of outlet where products are sold",example:"Our main trade channels are supermarkets and kiosks.",tr:"ticaret kanalı",context:"JTI"},
+    {word:"point of sale",phonetic:"/pɔɪnt əv seɪl/",meaning:"The location where a product is purchased by the consumer",example:"Point of sale materials must be placed correctly.",tr:"satış noktası",context:"JTI"},
+    {word:"compliance",phonetic:"/kəmˈplaɪəns/",meaning:"Following rules, laws, and company standards",example:"All promotions must follow JTI's compliance guidelines.",tr:"uyumluluk / mevzuata uygunluk",context:"JTI"},
+    {word:"distributor",phonetic:"/dɪˈstrɪbjʊtər/",meaning:"A company that supplies products to retailers",example:"Our distributor covers the whole Eskişehir region.",tr:"distribütör",context:"JTI"},
+    {word:"shelf share",phonetic:"/ʃelf ʃeə/",meaning:"The percentage of shelf space a brand occupies",example:"We need to increase our shelf share at key accounts.",tr:"raf payı",context:"JTI"},
+    {word:"portfolio",phonetic:"/pɔːtˈfəʊliəʊ/",meaning:"The full range of products offered by a brand",example:"JTI's portfolio includes Winston, Camel, and Mevius.",tr:"ürün portföyü",context:"JTI"},
+    {word:"volume",phonetic:"/ˈvɒljuːm/",meaning:"The total number of units sold",example:"Volume was up 8% versus the same period last year.",tr:"satış hacmi",context:"JTI"},
+    {word:"price tier",phonetic:"/praɪs tɪə/",meaning:"A category of product based on price level",example:"Premium and value are the two main price tiers.",tr:"fiyat segmenti",context:"JTI"},
+    {word:"listing",phonetic:"/ˈlɪstɪŋ/",meaning:"When a retailer agrees to stock a product",example:"We secured a listing in 50 new outlets this month.",tr:"ürün listelemesi",context:"JTI"},
+  ],
+  reporting:[
+    {word:"year-to-date",phonetic:"/jɪər tuː deɪt/",meaning:"From the start of the year until now (often written YTD)",example:"Our YTD revenue is 12% above target.",tr:"yılın başından bugüne kadar",context:"Reporting"},
+    {word:"variance",phonetic:"/ˈveəriəns/",meaning:"The difference between a target and actual result",example:"Can you explain the variance in last month's numbers?",tr:"sapma / fark",context:"Reporting"},
+    {word:"benchmark",phonetic:"/ˈbentʃmɑːk/",meaning:"A standard used as a point of comparison",example:"The national average is our benchmark for growth.",tr:"kıyaslama noktası",context:"Reporting"},
+    {word:"trend",phonetic:"/trend/",meaning:"A general direction in data over time",example:"There is a clear upward trend in premium segment sales.",tr:"eğilim / trend",context:"Reporting"},
+    {word:"quarterly",phonetic:"/ˈkwɔːtəli/",meaning:"Every three months, or relating to a quarter",example:"We submit a quarterly report to the regional office.",tr:"üç aylık / çeyreklik",context:"Reporting"},
+    {word:"breakdown",phonetic:"/ˈbreɪkdaʊn/",meaning:"A detailed analysis divided into categories",example:"Please send me a breakdown of sales by channel.",tr:"ayrıntılı analiz / kırılım",context:"Reporting"},
+    {word:"outperform",phonetic:"/ˌaʊtpəˈfɔːm/",meaning:"To do better than expected or better than others",example:"Our region outperformed the national average in Q3.",tr:"daha iyi performans göstermek",context:"Reporting"},
+    {word:"forecast",phonetic:"/ˈfɔːkɑːst/",meaning:"A prediction of future results based on current data",example:"The sales forecast for next quarter looks strong.",tr:"tahmin / öngörü",context:"Reporting"},
+    {word:"run rate",phonetic:"/rʌn reɪt/",meaning:"The current pace of performance projected over a period",example:"At our current run rate, we'll exceed the annual target.",tr:"mevcut performans hızı",context:"Reporting"},
+  ],
+  negotiation:[
+    {word:"leverage",phonetic:"/ˈliːvərɪdʒ/",meaning:"An advantage used to influence an outcome",example:"Our volume gives us leverage in price negotiations.",tr:"avantaj / koz",context:"Negotiation"},
+    {word:"concession",phonetic:"/kənˈseʃən/",meaning:"Something you agree to give up in a negotiation",example:"We made a concession on payment terms.",tr:"taviz / ödün",context:"Negotiation"},
+    {word:"counteroffer",phonetic:"/ˈkaʊntərˌɒfər/",meaning:"A response to an offer with different terms",example:"They rejected our price so we made a counteroffer.",tr:"karşı teklif",context:"Negotiation"},
+    {word:"terms",phonetic:"/tɜːmz/",meaning:"The conditions agreed in a contract or deal",example:"The payment terms are 30 days from invoice date.",tr:"koşullar / şartlar",context:"Negotiation"},
+    {word:"mutual benefit",phonetic:"/ˈmjuːtʃuəl ˈbenɪfɪt/",meaning:"An outcome that is good for both sides",example:"We need to find a solution that's a mutual benefit.",tr:"karşılıklı fayda",context:"Negotiation"},
+    {word:"walk away",phonetic:"/wɔːk əˈweɪ/",meaning:"To decide to leave a negotiation without a deal",example:"If they won't meet our price, we walk away.",tr:"masadan kalkmak",context:"Negotiation"},
+    {word:"bottom line",phonetic:"/ˈbɒtəm laɪn/",meaning:"The minimum acceptable outcome; the final position",example:"Our bottom line is a 5% margin on all listings.",tr:"son sınır / asıl mesele",context:"Negotiation"},
+    {word:"win-win",phonetic:"/wɪn wɪn/",meaning:"A result that benefits both parties",example:"Let's aim for a win-win solution with the distributor.",tr:"herkesin kazandığı sonuç",context:"Negotiation"},
+  ],
+  hr:[
+    {word:"appraisal",phonetic:"/əˈpreɪzəl/",meaning:"A formal review of an employee's performance",example:"All 20 of my team members have an appraisal in June.",tr:"performans değerlendirmesi",context:"HR"},
+    {word:"probation",phonetic:"/prəˈbeɪʃən/",meaning:"A trial period at the start of a new job",example:"The new rep is still on probation for three months.",tr:"deneme süresi",context:"HR"},
+    {word:"grievance",phonetic:"/ˈɡriːvəns/",meaning:"A formal complaint by an employee",example:"She raised a grievance about her working hours.",tr:"şikayet / resmi başvuru",context:"HR"},
+    {word:"redundancy",phonetic:"/rɪˈdʌndənsi/",meaning:"Losing a job because the role is no longer needed",example:"The restructure led to three redundancies in the team.",tr:"işten çıkarma / kadro fazlalığı",context:"HR"},
+    {word:"constructive feedback",phonetic:"/kənˈstrʌktɪv ˈfiːdbæk/",meaning:"Feedback that helps someone improve",example:"Always give constructive feedback after a field visit.",tr:"yapıcı geri bildirim",context:"HR"},
+    {word:"coaching",phonetic:"/ˈkəʊtʃɪŋ/",meaning:"One-to-one development support for an employee",example:"I spend one day a week on field coaching with my reps.",tr:"koçluk",context:"HR"},
+    {word:"succession planning",phonetic:"/səkˈseʃən ˈplænɪŋ/",meaning:"Preparing employees to take on future senior roles",example:"Succession planning is a priority for our regional team.",tr:"yedekleme planlaması",context:"HR"},
+    {word:"absenteeism",phonetic:"/ˌæbsənˈtiːɪzəm/",meaning:"Frequent or unexplained absence from work",example:"Absenteeism in the team increased after the restructure.",tr:"devamsızlık",context:"HR"},
+  ]
+};
+
+const WORD_ORDER = [
+  {context:"In a team meeting",sentence:"We need to review the monthly targets",tip:"'We need to + verb' — essential in management English."},
+  {context:"Sending an email",sentence:"Please find the report attached",tip:"'Please find ... attached' — the standard professional phrase for sharing files."},
+  {context:"After a customer visit",sentence:"Can I follow up with you tomorrow?",tip:"'Follow up' = check back later. Very common in sales English."},
+  {context:"Talking to a customer",sentence:"I'd like to discuss the new product portfolio",tip:"'I'd like to...' is polite — use it instead of 'I want to'."},
+  {context:"Managing your team",sentence:"I will delegate this task to my senior rep",tip:"'Delegate to + person' — giving responsibility to a team member."},
+  {context:"After a field visit",sentence:"Let's have a quick debrief after the visit",tip:"'Let's have a...' is great for suggesting meetings informally."},
+  {context:"Reporting results",sentence:"The team hit their quarterly volume target",tip:"'Hit a target' = reach a goal. Very common in sales reporting."},
+  {context:"In a negotiation",sentence:"Can we negotiate the payment terms?",tip:"'Can we...?' is a polite way to make a suggestion."},
+  {context:"Writing an email",sentence:"Please respond by end of day",tip:"'By end of day' (EOD) — very common business English phrase."},
+  {context:"JTI brand discussion",sentence:"We need to improve our shelf share at key accounts",tip:"'Shelf share' = the percentage of shelf space your brand holds."},
+  {context:"Performance review",sentence:"Your sales figures are above target this quarter",tip:"'Above target' = better than expected. Use this in appraisals."},
+  {context:"Talking about compliance",sentence:"All promotions must follow the compliance guidelines",tip:"'Must follow' = obligation. Important for JTI policy discussions."},
+  {context:"Reporting a variance",sentence:"Can you explain the variance in last month's data?",tip:"'Variance' = the difference between actual and expected results."},
+  {context:"Motivating your team",sentence:"I want to give you some constructive feedback",tip:"'Constructive feedback' — always positive-sounding, not critical."},
+  {context:"Discussing distributor",sentence:"Our distributor covers the whole Eskişehir region",tip:"'Covers' = is responsible for. Good for territory discussions."},
+  {context:"Sales strategy",sentence:"We should focus on premium SKUs this quarter",tip:"'Focus on' = to direct attention and effort toward something."},
+  {context:"Forecasting",sentence:"The sales forecast for next quarter looks strong",tip:"'Forecast' = a prediction of future performance. Used in every sales report."},
+  {context:"Negotiation",sentence:"We need to find a win-win solution with the distributor",tip:"'Win-win' = an outcome that benefits both parties. Strong negotiation language."},
+  {context:"Coaching a rep",sentence:"Let me give you feedback on your call cycle",tip:"'Call cycle' = the regular schedule of visits to customers."},
+  {context:"Raising an issue",sentence:"I need to escalate this complaint to the regional manager",tip:"'Escalate' = pass a problem upwards. Essential management vocabulary."},
+  {context:"Opening a meeting",sentence:"Let me chair today's meeting and share the agenda",tip:"'Chair a meeting' = to lead it. The agenda is the list of topics to cover."},
+  {context:"Emailing your team",sentence:"Please acknowledge receipt of the updated price list",tip:"'Acknowledge receipt' = confirm you received it. Very common in business email."},
+  {context:"Performance discussion",sentence:"We should empower the team to make their own decisions",tip:"'Empower + person + to + verb' — giving someone authority and confidence to act."},
+  {context:"Sales planning",sentence:"My pipeline for next quarter is looking very strong",tip:"'Pipeline' = the total of all potential deals you are working on."},
+  {context:"Monthly report",sentence:"At our current run rate we will exceed the annual target",tip:"'Run rate' = the speed you are progressing. 'Exceed' = go above a target."},
+  {context:"Distributor meeting",sentence:"Can we improve our conversion rate at independent retailers?",tip:"'Conversion rate' = the % of prospects who become buyers. Question order: Can + subject + verb."},
+  {context:"Team meeting",sentence:"We reached a consensus on the new call cycle",tip:"'Reach a consensus' = agree as a group. Note: 'consensus' is uncountable — no -s."},
+  {context:"Managing your rep",sentence:"I do not want to micromanage — I trust your judgement",tip:"'Micromanage' = control every small detail. Saying you don't do it shows good leadership."},
+  {context:"Writing an email",sentence:"Action required — please send the variance report by Friday",tip:"'Action required' in subject lines signals the reader must DO something, not just read."},
+];
+
+const PRON_TIPS = [
+  "Say it slowly 3 times, then at normal speed. This builds muscle memory.",
+  "Record yourself on your phone and listen back. It's the fastest way to improve.",
+  "Stress the highlighted syllable — English stress changes meaning completely.",
+  "Try to use this word in a real sentence today — with a customer or your team.",
+  "Repeat: slow → normal → fast. That's the Teacher Benny drill!",
+  "Don't translate in your head. Picture the meaning directly when you say the word.",
+];
+
+let currentTopic = 'meetings';
+let currentMode = 'flash';
+let flashDeck = [], flashIdx = 0, flashKnown = 0, flashAgain = 0, flashRevealed = false;
+let pronDeck = [], pronIdx = 0;
+let woDeck = [], woIdx = 0, woAnswer = [], woShuffled = [];
+let totalLearned = 0, streak = 0;
+
+function shuffle(a) {
+  const b = [...a];
+  for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}
+  return b;
+}
+
+function setMode(m) {
+  currentMode = m;
+  ['flash','pron','order'].forEach(x => {
+    document.getElementById('panel-'+x).classList.toggle('active', x===m);
+    document.getElementById('nav-'+x).classList.toggle('active', x===m);
+  });
+  if(m==='flash') initFlash();
+  if(m==='pron') initPron();
+  if(m==='order') initOrder();
+}
+
+function setTopic(t) {
+  currentTopic = t;
+  document.querySelectorAll('[id^="topic-"]').forEach(b => b.classList.remove('active-topic'));
+  document.getElementById('topic-'+t).classList.add('active-topic');
+  if(currentMode==='flash') initFlash();
+  if(currentMode==='pron') initPron();
+}
+
+// ===== FLASHCARDS =====
+function initFlash() {
+  flashDeck = shuffle(VOCAB[currentTopic]);
+  flashIdx = 0; flashKnown = 0; flashAgain = 0; flashRevealed = false;
+  renderFlash();
+}
+
+function renderFlash() {
+  const total = flashDeck.length;
+  const done = flashKnown + flashAgain;
+  document.getElementById('flash-prog-fill').style.width = Math.round(done/total*100)+'%';
+  document.getElementById('flash-prog-label').textContent = done+' / '+total;
+  document.getElementById('flash-topic-label').textContent = currentTopic.charAt(0).toUpperCase()+currentTopic.slice(1);
+  document.getElementById('fc-known').textContent = flashKnown;
+  document.getElementById('fc-again').textContent = flashAgain;
+  document.getElementById('fc-left').textContent = total - done;
+
+  if(flashIdx >= flashDeck.length) {
+    document.getElementById('flashcard').innerHTML = `
+      <div style="text-align:center;padding:20px">
+        <div style="font-size:40px;margin-bottom:12px">🎉</div>
+        <div style="font-size:20px;font-weight:600;color:var(--navy);margin-bottom:6px">Deck complete!</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px">${flashKnown} known · ${flashAgain} to review</div>
+        <button class="btn btn-navy" onclick="initFlash()">↻ Restart deck</button>
+      </div>`;
+    document.getElementById('flash-actions').style.display='none';
+    document.getElementById('flash-reveal-row').style.display='none';
+    return;
+  }
+
+  const card = flashDeck[flashIdx];
+  document.getElementById('fc-context').textContent = card.context;
+  document.getElementById('fc-word').textContent = card.word;
+  document.getElementById('fc-phonetic').textContent = card.phonetic;
+  document.getElementById('fc-meaning').textContent = card.meaning;
+  document.getElementById('fc-example').textContent = '"' + card.example + '"';
+  document.getElementById('fc-tr').textContent = '🇹🇷 ' + card.tr;
+  document.getElementById('fc-back').classList.remove('visible');
+  document.getElementById('fc-tap').style.display = 'block';
+  document.getElementById('flash-actions').style.display='none';
+  document.getElementById('flash-reveal-row').style.display='flex';
+  flashRevealed = false;
+}
+
+function revealFlash() {
+  if(flashIdx >= flashDeck.length) return;
+  if(flashRevealed) return;
+  flashRevealed = true;
+  document.getElementById('fc-back').classList.add('visible');
+  document.getElementById('fc-tap').style.display='none';
+  document.getElementById('flash-actions').style.display='flex';
+  document.getElementById('flash-reveal-row').style.display='none';
+  speakFlash();
+}
+
+function rateFlash(known) {
+  if(known){ flashKnown++; streak++; totalLearned++; }
+  else { flashAgain++; streak=0; }
+  document.getElementById('streakVal').textContent = streak;
+  document.getElementById('totalVal').textContent = totalLearned;
+  flashIdx++;
+  renderFlash();
+}
+
+function speakFlash() {
+  if(flashIdx < flashDeck.length && 'speechSynthesis' in window) {
+    const u = new SpeechSynthesisUtterance(flashDeck[flashIdx].word);
+    u.lang='en-GB'; u.rate=0.82; speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
+}
+
+// ===== PRONUNCIATION =====
+function initPron() {
+  pronDeck = shuffle(VOCAB[currentTopic]);
+  pronIdx = 0;
+  renderPron();
+}
+
+function renderPron() {
+  const card = pronDeck[pronIdx];
+  const total = pronDeck.length;
+  document.getElementById('pron-prog-fill').style.width = Math.round((pronIdx+1)/total*100)+'%';
+  document.getElementById('pron-prog-label').textContent = (pronIdx+1)+' / '+total;
+  document.getElementById('pron-topic-label').textContent = currentTopic.charAt(0).toUpperCase()+currentTopic.slice(1);
+  document.getElementById('pron-word').textContent = card.word;
+  document.getElementById('pron-ipa').textContent = card.phonetic;
+  document.getElementById('pron-example').textContent = '"' + card.example + '"';
+  document.getElementById('pron-tr').textContent = '🇹🇷 ' + card.tr;
+  document.getElementById('pron-tip-text').textContent = PRON_TIPS[pronIdx % PRON_TIPS.length];
+
+  const sylBox = document.getElementById('pron-syls');
+  sylBox.innerHTML = '';
+  const syls = smartSyllabify(card.word);
+  syls.forEach((s,i) => {
+    const sp = document.createElement('span');
+    sp.className = 'syl' + (i===0?' stressed':'');
+    sp.textContent = s;
+    sylBox.appendChild(sp);
+  });
+  speakPron();
+}
+
+function nextPron() {
+  pronIdx = (pronIdx+1) % pronDeck.length;
+  renderPron();
+}
+
+function speakPron() {
+  if('speechSynthesis' in window && pronDeck[pronIdx]) {
+    const u = new SpeechSynthesisUtterance(pronDeck[pronIdx].word);
+    u.lang='en-GB'; u.rate=0.78; speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
+}
+
+function smartSyllabify(word) {
+  const lower = word.toLowerCase();
+  const patterns = {
+    'agenda':['a','gen','da'], 'accountability':['ac','count','a','bil','i','ty'],
+    'compliance':['com','pli','ance'], 'distributor':['dis','trib','u','tor'],
+    'portfolio':['port','fo','li','o'], 'visibility':['vis','i','bil','i','ty'],
+    'negotiation':['ne','go','ti','a','tion'], 'constructive':['con','struc','tive'],
+    'absenteeism':['ab','sen','tee','ism'], 'redundancy':['re','dun','dan','cy'],
+    'benchmark':['bench','mark'], 'quarterly':['quar','ter','ly'],
+    'outperform':['out','per','form'], 'leverage':['lev','er','age'],
+    'concession':['con','ces','sion'], 'succession':['suc','ces','sion'],
+    'acknowledge':['ac','knowl','edge'], 'consensus':['con','sen','sus'],
+    'micromanage':['mi','cro','man','age'], 'empower':['em','pow','er'],
+    'conversion':['con','ver','sion'], 'pipeline':['pipe','line'],
+    'adjourn':['ad','journ'], 'accountability':['ac','count','a','bil','i','ty'],
+  };
+  if(patterns[lower]) return patterns[lower];
+  // simple vowel-based split
+  const v='aeiouy'; const syls=[]; let cur='';
+  for(let i=0;i<word.length;i++){
+    cur+=word[i];
+    if(v.includes(word[i].toLowerCase())&&i<word.length-1&&!v.includes((word[i+1]||'').toLowerCase())){
+      if(cur.length>1){syls.push(cur);cur='';}
+    }
+  }
+  if(cur)syls.push(cur);
+  return syls.length>1?syls:[word];
+}
+
+// ===== WORD ORDER =====
+function initOrder() {
+  woDeck = shuffle(WORD_ORDER);
+  woIdx = 0;
+  renderOrder();
+}
+
+function renderOrder() {
+  if(woIdx >= woDeck.length) {
+    document.getElementById('wo-container').innerHTML = `
+      <div class="finish-state">
+        <div class="finish-icon">🏆</div>
+        <div class="finish-title">All sentences complete!</div>
+        <div class="finish-sub">You completed all ${woDeck.length} word order exercises. Excellent work!</div>
+        <button class="btn btn-navy btn-lg" onclick="initOrder()">↻ Start again</button>
+      </div>`;
+    return;
+  }
+  const q = woDeck[woIdx];
+  const total = woDeck.length;
+  document.getElementById('wo-prog-fill').style.width = Math.round(woIdx/total*100)+'%';
+  document.getElementById('wo-prog-label').textContent = woIdx+' / '+total;
+  document.getElementById('wo-context').textContent = q.context;
+  document.getElementById('wo-instruction').textContent = 'Put these words in the correct order:';
+  document.getElementById('wo-feedback').className = 'wo-feedback';
+  woAnswer = [];
+  woShuffled = shuffle(q.sentence.replace('?','').replace('!','').split(' '));
+  if(q.sentence.endsWith('?')) woShuffled.push('?');
+  renderTiles();
+  renderAnswer();
+}
+
+function renderTiles() {
+  const box = document.getElementById('tiles-zone');
+  box.innerHTML = '';
+  woShuffled.forEach((w,i) => {
+    const t = document.createElement('button');
+    t.className='tile'; t.textContent=w; t.dataset.i=i;
+    t.onclick=()=>selectTile(t,w,i);
+    box.appendChild(t);
+  });
+}
+
+function renderAnswer() {
+  const az = document.getElementById('answer-zone');
+  az.innerHTML='';
+  if(woAnswer.length===0){
+    az.innerHTML='<span class="empty-hint">Your sentence appears here...</span>';
+    az.classList.remove('has-content');
+    return;
+  }
+  az.classList.add('has-content');
+  woAnswer.forEach((_,i)=>{
+    const t=document.createElement('button');
+    t.className='answer-tile'; t.textContent=woAnswer[i].word;
+    t.onclick=()=>removeTile(i);
+    az.appendChild(t);
+  });
+}
+
+function selectTile(el,word,idx) {
+  if(el.classList.contains('used'))return;
+  el.classList.add('used');
+  woAnswer.push({word,idx});
+  renderAnswer();
+}
+
+function removeTile(i) {
+  const {idx}=woAnswer[i];
+  woAnswer.splice(i,1);
+  document.querySelectorAll('#tiles-zone .tile').forEach(t=>{
+    if(parseInt(t.dataset.i)===idx) t.classList.remove('used');
+  });
+  renderAnswer();
+}
+
+function clearOrder() {
+  woAnswer=[];
+  document.querySelectorAll('#tiles-zone .tile').forEach(t=>t.classList.remove('used'));
+  renderAnswer();
+  document.getElementById('wo-feedback').className='wo-feedback';
+}
+
+function checkOrder() {
+  if(woAnswer.length===0)return;
+  const q=woDeck[woIdx];
+  const attempt=woAnswer.map(t=>t.word).join(' ').replace(' ?','?').trim().toLowerCase();
+  const correct=q.sentence.toLowerCase().trim();
+  const fb=document.getElementById('wo-feedback');
+  if(attempt===correct){
+    fb.className='wo-feedback show good';
+    fb.innerHTML='<strong>✓ Correct!</strong> ' + q.tip;
+    streak++; totalLearned++;
+    document.getElementById('streakVal').textContent=streak;
+    document.getElementById('totalVal').textContent=totalLearned;
+    setTimeout(()=>{woIdx++;clearOrder();renderOrder();},2200);
+  } else {
+    fb.className='wo-feedback show bad';
+    fb.innerHTML='<strong>Not quite.</strong> Correct: <em>"'+q.sentence+'"</em> — '+q.tip;
+    streak=0; document.getElementById('streakVal').textContent=streak;
+  }
+  document.getElementById('wo-prog-fill').style.width=Math.round((woIdx+1)/woDeck.length*100)+'%';
+  document.getElementById('wo-prog-label').textContent=(woIdx+1)+' / '+woDeck.length;
+}
+
+function skipOrder(){woIdx++;clearOrder();renderOrder();}
+
+function speakOrder() {
+  if('speechSynthesis' in window && woDeck[woIdx]) {
+    const u=new SpeechSynthesisUtterance(woDeck[woIdx].sentence);
+    u.lang='en-GB'; u.rate=0.82; speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
+}
+
+// INIT
+initFlash();
+
+function toggleNotes(id) {
+  const box = document.getElementById(id);
+  const btn = box.previousElementSibling;
+  const isOpen = box.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+}
+</script>
+</body>
+</html>
