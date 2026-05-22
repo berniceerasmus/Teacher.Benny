@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parts of Speech — Teacher Benny</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #faf7f0;
+    --sky-mid: #f2ede0;
+    --sky-light: #e8e0cc;
+    --horizon: #c8a850;
+    --gold: #e8a020;
+    --gold-light: #f5c05a;
+    --white: #2a2318;
+    --muted: #6b5a38;
+    --card: rgba(255,255,255,0.9);
+    --border: rgba(180,130,30,0.25);
+    --correct: #5ecb7a;
+    --wrong: #e05555;
+
+    /* POS colors */
+    --noun-c:#185FA5;   --noun-cl:#E6F1FB;   --noun-cd:#0C447C;
+    --verb-c:#0F6E56;   --verb-cl:#E1F5EE;   --verb-cd:#085041;
+    --adj-c:#993C1D;    --adj-cl:#FAECE7;    --adj-cd:#712B13;
+    --adv-c:#854F0B;    --adv-cl:#FAEEDA;    --adv-cd:#633806;
+    --pronoun-c:#534AB7; --pronoun-cl:#EEEDFE; --pronoun-cd:#3C3489;
+    --prep-c:#993556;   --prep-cl:#FBEAF0;   --prep-cd:#72243E;
+    --conj-c:#3B6D11;   --conj-cl:#EAF3DE;   --conj-cd:#27500A;
+    --interj-c:#A32D2D; --interj-cl:#FCEBEB; --interj-cd:#791F1F;
+    --article-c:#5F5E5A;--article-cl:#F1EFE8;--article-cd:#444441;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--sky);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(232,160,32,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 100%, rgba(232,160,32,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .lesson-header {
+    text-align: center;
+    padding: 3rem 0 2.5rem;
+  }
+
+  .lesson-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--sky);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  h1 span { color: var(--gold); }
+
+  .lesson-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 1.3rem;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* ── POS Nav Pills ── */
+  .pos-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .pos-pill {
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: all .2s;
+  }
+  .pos-pill:hover { background: var(--sky-mid); color: var(--white); border-color: var(--horizon); }
+  .pos-pill.active { color: #fff; border-color: transparent; }
+
+  /* active pill colors */
+  .pos-pill.active[data-pos="noun"]    { background: var(--noun-c); }
+  .pos-pill.active[data-pos="verb"]    { background: var(--verb-c); }
+  .pos-pill.active[data-pos="adj"]     { background: var(--adj-c); }
+  .pos-pill.active[data-pos="adv"]     { background: var(--adv-c); }
+  .pos-pill.active[data-pos="pronoun"] { background: var(--pronoun-c); }
+  .pos-pill.active[data-pos="prep"]    { background: var(--prep-c); }
+  .pos-pill.active[data-pos="conj"]    { background: var(--conj-c); }
+  .pos-pill.active[data-pos="interj"]  { background: var(--interj-c); }
+  .pos-pill.active[data-pos="article"] { background: var(--article-c); }
+
+  /* ── POS Header Card ── */
+  .pos-header-card {
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid;
+    animation: fadeUp 0.35s ease both;
+  }
+  .pos-header-card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .pos-header-card p { font-size: 0.88rem; opacity: .8; }
+
+  /* ── Level Cards ── */
+  .levels { display: flex; flex-direction: column; gap: 14px; }
+
+  .level-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    animation: fadeUp 0.35s ease both;
+  }
+
+  .level-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    background: var(--sky-mid);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .level-head:hover { background: var(--sky-light); }
+
+  .level-badge {
+    font-size: 11px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 10px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .level-label {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--white);
+    flex: 1;
+  }
+
+  .level-desc-small {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .level-count {
+    font-size: 11px;
+    color: var(--muted);
+    background: rgba(180,130,30,0.1);
+    border: 1px solid rgba(180,130,30,0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  .chevron {
+    font-size: 13px;
+    color: var(--muted);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .chevron.open { transform: rotate(180deg); }
+
+  .level-body { display: none; padding: 14px 16px; }
+  .level-body.open { display: block; }
+
+  /* ── Word Grid ── */
+  .word-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .word-pill {
+    border-radius: 8px;
+    padding: 7px 13px;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: all .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid;
+  }
+  .word-pill:hover { filter: brightness(.94); transform: translateY(-1px); }
+  .word-pill.selected { outline: 2px solid; outline-offset: 1px; }
+
+  .word-en { font-weight: 500; }
+  .word-tr { font-size: 10.5px; opacity: .65; }
+
+  /* ── Detail Panel ── */
+  .detail-panel {
+    display: none;
+    margin-top: 1.8rem;
+    border-radius: 14px;
+    padding: 1.3rem 1.6rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    animation: fadeUp 0.25s ease both;
+  }
+  .detail-panel.open { display: block; }
+
+  .detail-panel h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .detail-panel .meta { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+
+  .detail-example {
+    padding: 9px 13px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    border-left: 3px solid;
+  }
+
+  .detail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    padding: 7px 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--sky-mid);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: all .15s;
+  }
+  .detail-btn:hover { background: var(--sky-light); border-color: var(--horizon); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Footer line ── */
+  .footer-note {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 12px;
+    color: var(--muted);
+    opacity: .7;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="lesson-header">
+    <div class="lesson-badge">Grammar Reference</div>
+    <h1>Parts of <span>Speech</span></h1>
+    <p class="lesson-sub">A1 → C1 vocabulary mind map with Turkish translations</p>
+    <div class="divider">✦</div>
+  </div>
+
+  <!-- POS Navigation -->
+  <div class="pos-nav" id="posNav"></div>
+
+  <!-- Dynamic content area -->
+  <div id="posContent"></div>
+
+  <!-- Detail panel -->
+  <div class="detail-panel" id="detailPanel"></div>
+
+  <p class="footer-note">Teacher Benny · English Language Programme</p>
+</div>
+
+<script>
+const LEVEL_COLORS = { A1:'#185FA5', A2:'#0F6E56', B1:'#854F0B', B2:'#993C1D', C1:'#534AB7' };
+const LEVEL_DESCS  = { A1:'Beginner', A2:'Elementary', B1:'Intermediate', B2:'Upper-Intermediate', C1:'Advanced' };
+
+const EXAMPLES = {
+  noun:    { A1:'The <b>dog</b> is in the <b>house</b>.', A2:'He got a new <b>phone</b> for his <b>job</b>.', B1:'The <b>government</b> made an important <b>decision</b>.', B2:'The <b>analysis</b> revealed an interesting <b>phenomenon</b>.', C1:'The <b>paradox</b> highlights a key <b>nuance</b> in the argument.' },
+  verb:    { A1:'I <b>see</b> a dog. She <b>likes</b> to <b>eat</b>.', A2:'They <b>travel</b> to <b>study</b> abroad.', B1:'He <b>explained</b> how to <b>achieve</b> the goal.', B2:'She <b>analyzed</b> the data to <b>evaluate</b> the outcome.', C1:'They <b>corroborated</b> the theory to <b>substantiate</b> the claim.' },
+  adj:     { A1:'The <b>big</b>, <b>old</b> dog is <b>slow</b>.', A2:'She is <b>healthy</b> and <b>busy</b> today.', B1:'It is an <b>interesting</b> and <b>necessary</b> challenge.', B2:'A <b>sophisticated</b>, <b>controversial</b> analysis.', C1:'The <b>ubiquitous</b> problem requires a <b>pragmatic</b> approach.' },
+  adv:     { A1:'She <b>always</b> runs <b>fast</b>.', A2:'He <b>usually</b> arrives <b>early</b>.', B1:'The results are <b>clearly</b> <b>generally</b> consistent.', B2:'They <b>simultaneously</b> and <b>precisely</b> completed the task.', C1:'<b>Conversely</b>, the data <b>explicitly</b> contradicts the hypothesis.' },
+  pronoun: { A1:'<b>I</b> gave <b>it</b> to <b>her</b>.', A2:'<b>Herself</b> and <b>someone</b> arrived.', B1:'<b>Whoever</b> works hard will succeed. <b>Each</b> has potential.', B2:'<b>The former</b> was effective, <b>the latter</b> less so.', C1:'<b>Whomever</b> you choose, ensure <b>oneself</b> is ready.' },
+  prep:    { A1:'The book is <b>on</b> the table, <b>near</b> the window.', A2:'She ran <b>through</b> the park <b>before</b> noon.', B1:'<b>Despite</b> challenges, he succeeded <b>according to</b> plan.', B2:'The meeting was postponed <b>pursuant to</b> regulations.', C1:'<b>Notwithstanding</b> objections, the project advanced <b>amid</b> uncertainty.' },
+  conj:    { A1:'She sings <b>and</b> dances.', A2:'<b>Although</b> it rained, they came.', B1:'<b>However</b>, <b>consequently</b>, the plan failed.', B2:'<b>Whereas</b> one excels, <b>albeit</b> with effort, another struggles.', C1:'<b>Forasmuch as</b> the evidence is clear, <b>lest</b> we forget.' },
+  interj:  { A1:'<b>Wow!</b> That is great!', A2:'<b>Congratulations!</b> Well done!', B1:'<b>Honestly</b>, that was <b>surprisingly</b> good.', B2:'<b>Touché!</b> A brilliant point. <b>Alas</b>, too late.', C1:'<b>Hark!</b> What is that? <b>Forsooth</b>, a marvel.' },
+  article: { A1:'<b>A</b> dog. <b>The</b> cat. <b>My</b> book.', A2:'<b>Both</b> cities are big. <b>Several</b> people came.', B1:'<b>Certain</b> students showed <b>particular</b> talent.', B2:'<b>Numerous</b> studies revealed <b>considerable</b> evidence.', C1:'<b>A great many</b> challenges call for <b>the very</b> best solutions.' }
+};
+
+const POS = [
+  {
+    id:'noun', label:'Noun', tr:'İsim', icon:'🏷️',
+    desc:'A person, place, thing, or idea. • Bir kişi, yer, nesne veya fikir.',
+    c:'var(--noun-c)', cl:'var(--noun-cl)', cd:'var(--noun-cd)',
+    levels:[
+      { level:'A1', desc:'Basic everyday nouns', words:[
+        {en:'man',tr:'adam'},{en:'woman',tr:'kadın'},{en:'child',tr:'çocuk'},{en:'house',tr:'ev'},
+        {en:'water',tr:'su'},{en:'food',tr:'yiyecek'},{en:'day',tr:'gün'},{en:'time',tr:'zaman'},
+        {en:'school',tr:'okul'},{en:'friend',tr:'arkadaş'},{en:'city',tr:'şehir'},{en:'car',tr:'araba'},
+        {en:'money',tr:'para'},{en:'year',tr:'yıl'},{en:'door',tr:'kapı'},{en:'book',tr:'kitap'},
+        {en:'dog',tr:'köpek'},{en:'cat',tr:'kedi'}
+      ]},
+      { level:'A2', desc:'Family, work, everyday life', words:[
+        {en:'family',tr:'aile'},{en:'job',tr:'iş'},{en:'office',tr:'ofis'},{en:'phone',tr:'telefon'},
+        {en:'country',tr:'ülke'},{en:'language',tr:'dil'},{en:'weather',tr:'hava durumu'},{en:'ticket',tr:'bilet'},
+        {en:'market',tr:'pazar'},{en:'bank',tr:'banka'},{en:'doctor',tr:'doktor'},{en:'hospital',tr:'hastane'},
+        {en:'newspaper',tr:'gazete'},{en:'street',tr:'sokak'},{en:'garden',tr:'bahçe'},{en:'meal',tr:'yemek'},
+        {en:'neighbor',tr:'komşu'},{en:'calendar',tr:'takvim'}
+      ]},
+      { level:'B1', desc:'Society, travel, abstract ideas', words:[
+        {en:'education',tr:'eğitim'},{en:'environment',tr:'çevre'},{en:'culture',tr:'kültür'},{en:'government',tr:'hükümet'},
+        {en:'industry',tr:'endüstri'},{en:'relationship',tr:'ilişki'},{en:'opinion',tr:'görüş'},{en:'behavior',tr:'davranış'},
+        {en:'challenge',tr:'zorluk'},{en:'decision',tr:'karar'},{en:'experience',tr:'deneyim'},{en:'skill',tr:'beceri'},
+        {en:'support',tr:'destek'},{en:'benefit',tr:'fayda'},{en:'opportunity',tr:'fırsat'},{en:'influence',tr:'etki'},
+        {en:'solution',tr:'çözüm'},{en:'statement',tr:'ifade'}
+      ]},
+      { level:'B2', desc:'Academic and professional life', words:[
+        {en:'analysis',tr:'analiz'},{en:'consequence',tr:'sonuç'},{en:'perspective',tr:'bakış açısı'},{en:'authority',tr:'otorite'},
+        {en:'concept',tr:'kavram'},{en:'mechanism',tr:'mekanizma'},{en:'evidence',tr:'kanıt'},{en:'principle',tr:'ilke'},
+        {en:'argument',tr:'argüman'},{en:'hypothesis',tr:'hipotez'},{en:'phenomenon',tr:'fenomen'},{en:'circumstance',tr:'koşul'},
+        {en:'controversy',tr:'tartışma'},{en:'framework',tr:'çerçeve'},{en:'implication',tr:'çıkarım'},{en:'dimension',tr:'boyut'},
+        {en:'transition',tr:'geçiş'},{en:'priority',tr:'öncelik'}
+      ]},
+      { level:'C1', desc:'Advanced nuanced vocabulary', words:[
+        {en:'paradox',tr:'paradoks'},{en:'nuance',tr:'nüans'},{en:'integrity',tr:'dürüstlük'},{en:'skepticism',tr:'şüphecilik'},
+        {en:'sovereignty',tr:'egemenlik'},{en:'ambiguity',tr:'belirsizlik'},{en:'cohesion',tr:'uyum'},{en:'discourse',tr:'söylem'},
+        {en:'trajectory',tr:'yörünge'},{en:'ideology',tr:'ideoloji'},{en:'hegemony',tr:'hegemonya'},{en:'resilience',tr:'esneklik'},
+        {en:'mandate',tr:'yetki'},{en:'rationale',tr:'gerekçe'},{en:'dichotomy',tr:'ikili karşıtlık'},{en:'connotation',tr:'çağrışım'},
+        {en:'liability',tr:'sorumluluk'},{en:'jurisdiction',tr:'yetki alanı'}
+      ]}
+    ]
+  },
+  {
+    id:'verb', label:'Verb', tr:'Fiil', icon:'⚡',
+    desc:'An action, state, or occurrence. • Bir eylem, durum veya oluş bildiren kelime.',
+    c:'var(--verb-c)', cl:'var(--verb-cl)', cd:'var(--verb-cd)',
+    levels:[
+      { level:'A1', desc:'Core action verbs', words:[
+        {en:'be',tr:'olmak'},{en:'have',tr:'sahip olmak'},{en:'do',tr:'yapmak'},{en:'go',tr:'gitmek'},
+        {en:'get',tr:'almak'},{en:'see',tr:'görmek'},{en:'come',tr:'gelmek'},{en:'like',tr:'beğenmek'},
+        {en:'want',tr:'istemek'},{en:'eat',tr:'yemek'},{en:'drink',tr:'içmek'},{en:'know',tr:'bilmek'},
+        {en:'say',tr:'söylemek'},{en:'give',tr:'vermek'},{en:'look',tr:'bakmak'},{en:'make',tr:'yapmak'},
+        {en:'take',tr:'almak'},{en:'live',tr:'yaşamak'}
+      ]},
+      { level:'A2', desc:'Everyday functional verbs', words:[
+        {en:'travel',tr:'seyahat etmek'},{en:'work',tr:'çalışmak'},{en:'play',tr:'oynamak'},{en:'study',tr:'çalışmak'},
+        {en:'help',tr:'yardım etmek'},{en:'buy',tr:'satın almak'},{en:'sell',tr:'satmak'},{en:'use',tr:'kullanmak'},
+        {en:'open',tr:'açmak'},{en:'close',tr:'kapatmak'},{en:'start',tr:'başlamak'},{en:'stop',tr:'durmak'},
+        {en:'try',tr:'denemek'},{en:'ask',tr:'sormak'},{en:'answer',tr:'cevaplamak'},{en:'listen',tr:'dinlemek'},
+        {en:'call',tr:'aramak'},{en:'write',tr:'yazmak'}
+      ]},
+      { level:'B1', desc:'Expressing opinions and experiences', words:[
+        {en:'agree',tr:'katılmak'},{en:'disagree',tr:'katılmamak'},{en:'suggest',tr:'önermek'},{en:'explain',tr:'açıklamak'},
+        {en:'describe',tr:'tanımlamak'},{en:'compare',tr:'karşılaştırmak'},{en:'improve',tr:'geliştirmek'},{en:'achieve',tr:'başarmak'},
+        {en:'prefer',tr:'tercih etmek'},{en:'recommend',tr:'tavsiye etmek'},{en:'include',tr:'dahil etmek'},{en:'involve',tr:'içermek'},
+        {en:'require',tr:'gerektirmek'},{en:'allow',tr:'izin vermek'},{en:'provide',tr:'sağlamak'},{en:'manage',tr:'yönetmek'},
+        {en:'expect',tr:'beklemek'},{en:'consider',tr:'değerlendirmek'}
+      ]},
+      { level:'B2', desc:'Complex and formal actions', words:[
+        {en:'analyze',tr:'analiz etmek'},{en:'evaluate',tr:'değerlendirmek'},{en:'demonstrate',tr:'göstermek'},{en:'establish',tr:'kurmak'},
+        {en:'identify',tr:'belirlemek'},{en:'implement',tr:'uygulamak'},{en:'indicate',tr:'belirtmek'},{en:'obtain',tr:'elde etmek'},
+        {en:'investigate',tr:'araştırmak'},{en:'interpret',tr:'yorumlamak'},{en:'justify',tr:'haklı çıkarmak'},{en:'maintain',tr:'sürdürmek'},
+        {en:'minimize',tr:'en aza indirmek'},{en:'negotiate',tr:'müzakere etmek'},{en:'observe',tr:'gözlemlemek'},{en:'perceive',tr:'algılamak'},
+        {en:'predict',tr:'tahmin etmek'},{en:'generate',tr:'üretmek'}
+      ]},
+      { level:'C1', desc:'Nuanced and academic verbs', words:[
+        {en:'postulate',tr:'öne sürmek'},{en:'substantiate',tr:'kanıtlamak'},{en:'refute',tr:'çürütmek'},{en:'ascertain',tr:'kesin olarak belirlemek'},
+        {en:'deliberate',tr:'müzakere etmek'},{en:'epitomize',tr:'özetlemek'},{en:'fabricate',tr:'uydurmak'},{en:'scrutinize',tr:'incelemek'},
+        {en:'allude',tr:'ima etmek'},{en:'corroborate',tr:'doğrulamak'},{en:'envisage',tr:'öngörmek'},{en:'elucidate',tr:'aydınlatmak'},
+        {en:'rationalize',tr:'mantıksal açıklamak'},{en:'supersede',tr:'geçersiz kılmak'},{en:'articulate',tr:'ifade etmek'},{en:'speculate',tr:'spekülasyon yapmak'},
+        {en:'consolidate',tr:'pekiştirmek'},{en:'disseminate',tr:'yaymak'}
+      ]}
+    ]
+  },
+  {
+    id:'adj', label:'Adjective', tr:'Sıfat', icon:'🎨',
+    desc:'Describes or modifies a noun. • İsmi niteleyen veya belgeleyen kelime.',
+    c:'var(--adj-c)', cl:'var(--adj-cl)', cd:'var(--adj-cd)',
+    levels:[
+      { level:'A1', desc:'Basic descriptions', words:[
+        {en:'big',tr:'büyük'},{en:'small',tr:'küçük'},{en:'good',tr:'iyi'},{en:'bad',tr:'kötü'},
+        {en:'hot',tr:'sıcak'},{en:'cold',tr:'soğuk'},{en:'happy',tr:'mutlu'},{en:'sad',tr:'üzgün'},
+        {en:'old',tr:'eski/yaşlı'},{en:'new',tr:'yeni'},{en:'fast',tr:'hızlı'},{en:'slow',tr:'yavaş'},
+        {en:'long',tr:'uzun'},{en:'short',tr:'kısa'},{en:'easy',tr:'kolay'},{en:'hard',tr:'zor'},
+        {en:'nice',tr:'güzel'},{en:'young',tr:'genç'}
+      ]},
+      { level:'A2', desc:'Personality and appearance', words:[
+        {en:'beautiful',tr:'güzel'},{en:'ugly',tr:'çirkin'},{en:'kind',tr:'nazik'},{en:'rude',tr:'kaba'},
+        {en:'strong',tr:'güçlü'},{en:'weak',tr:'zayıf'},{en:'clean',tr:'temiz'},{en:'dirty',tr:'kirli'},
+        {en:'rich',tr:'zengin'},{en:'poor',tr:'fakir'},{en:'busy',tr:'meşgul'},{en:'free',tr:'özgür/boş'},
+        {en:'healthy',tr:'sağlıklı'},{en:'sick',tr:'hasta'},{en:'hungry',tr:'aç'},{en:'tired',tr:'yorgun'},
+        {en:'funny',tr:'komik'},{en:'serious',tr:'ciddi'}
+      ]},
+      { level:'B1', desc:'Opinions and evaluations', words:[
+        {en:'interesting',tr:'ilginç'},{en:'boring',tr:'sıkıcı'},{en:'important',tr:'önemli'},{en:'necessary',tr:'gerekli'},
+        {en:'possible',tr:'mümkün'},{en:'impossible',tr:'imkânsız'},{en:'successful',tr:'başarılı'},{en:'creative',tr:'yaratıcı'},
+        {en:'confident',tr:'kendinden emin'},{en:'nervous',tr:'gergin'},{en:'surprised',tr:'şaşırmış'},{en:'disappointed',tr:'hayal kırıklığına uğramış'},
+        {en:'modern',tr:'modern'},{en:'traditional',tr:'geleneksel'},{en:'popular',tr:'popüler'},{en:'typical',tr:'tipik'},
+        {en:'similar',tr:'benzer'},{en:'different',tr:'farklı'}
+      ]},
+      { level:'B2', desc:'Complex and abstract qualities', words:[
+        {en:'significant',tr:'önemli'},{en:'relevant',tr:'ilgili'},{en:'consistent',tr:'tutarlı'},{en:'diverse',tr:'çeşitli'},
+        {en:'efficient',tr:'verimli'},{en:'fundamental',tr:'temel'},{en:'inevitable',tr:'kaçınılmaz'},{en:'subtle',tr:'ince/hafif'},
+        {en:'sophisticated',tr:'sofistike'},{en:'controversial',tr:'tartışmalı'},{en:'comprehensive',tr:'kapsamlı'},{en:'adequate',tr:'yeterli'},
+        {en:'challenging',tr:'zorlu'},{en:'flexible',tr:'esnek'},{en:'prominent',tr:'öne çıkan'},{en:'rigid',tr:'katı'},
+        {en:'valid',tr:'geçerli'},{en:'vulnerable',tr:'savunmasız'}
+      ]},
+      { level:'C1', desc:'Precise and nuanced descriptors', words:[
+        {en:'ambivalent',tr:'kararsız'},{en:'candid',tr:'samimi'},{en:'elusive',tr:'ele geçmez'},{en:'formidable',tr:'zorlu/heybetli'},
+        {en:'inherent',tr:'doğal/içkin'},{en:'lucid',tr:'berrak'},{en:'meticulous',tr:'titiz'},{en:'obsolete',tr:'demode/eski'},
+        {en:'paradoxical',tr:'paradoksal'},{en:'pragmatic',tr:'pragmatik'},{en:'profound',tr:'derin'},{en:'relentless',tr:'amansız'},
+        {en:'salient',tr:'belirgin'},{en:'stringent',tr:'katı/sıkı'},{en:'transient',tr:'geçici'},{en:'ubiquitous',tr:'her yerde olan'},
+        {en:'volatile',tr:'değişken'},{en:'tenacious',tr:'inatçı'}
+      ]}
+    ]
+  },
+  {
+    id:'adv', label:'Adverb', tr:'Zarf', icon:'🔀',
+    desc:'Modifies a verb, adjective, or another adverb. • Fiil, sıfat veya zarfı niteleyen kelime.',
+    c:'var(--adv-c)', cl:'var(--adv-cl)', cd:'var(--adv-cd)',
+    levels:[
+      { level:'A1', desc:'Basic frequency and degree', words:[
+        {en:'always',tr:'her zaman'},{en:'never',tr:'hiçbir zaman'},{en:'often',tr:'sık sık'},{en:'sometimes',tr:'bazen'},
+        {en:'here',tr:'burada'},{en:'there',tr:'orada'},{en:'now',tr:'şimdi'},{en:'today',tr:'bugün'},
+        {en:'very',tr:'çok'},{en:'also',tr:'ayrıca'},{en:'too',tr:'de/da'},{en:'not',tr:'değil'},
+        {en:'again',tr:'yeniden'},{en:'fast',tr:'hızlıca'},{en:'well',tr:'iyi'},{en:'late',tr:'geç'},
+        {en:'early',tr:'erken'},{en:'maybe',tr:'belki'}
+      ]},
+      { level:'A2', desc:'Time and manner', words:[
+        {en:'usually',tr:'genellikle'},{en:'already',tr:'zaten'},{en:'still',tr:'hâlâ'},{en:'just',tr:'sadece'},
+        {en:'really',tr:'gerçekten'},{en:'quite',tr:'oldukça'},{en:'almost',tr:'neredeyse'},{en:'finally',tr:'sonunda'},
+        {en:'soon',tr:'yakında'},{en:'probably',tr:'muhtemelen'},{en:'especially',tr:'özellikle'},{en:'together',tr:'birlikte'},
+        {en:'outside',tr:'dışarıda'},{en:'inside',tr:'içeride'},{en:'before',tr:'önce'},{en:'after',tr:'sonra'},
+        {en:'nearly',tr:'yaklaşık'},{en:'quickly',tr:'hızlıca'}
+      ]},
+      { level:'B1', desc:'Linking and emphasizing', words:[
+        {en:'however',tr:'ancak'},{en:'therefore',tr:'bu nedenle'},{en:'although',tr:'rağmen'},{en:'instead',tr:'bunun yerine'},
+        {en:'otherwise',tr:'aksi takdirde'},{en:'actually',tr:'aslında'},{en:'clearly',tr:'açıkça'},{en:'certainly',tr:'kesinlikle'},
+        {en:'obviously',tr:'açıkça'},{en:'generally',tr:'genel olarak'},{en:'recently',tr:'yakın zamanda'},{en:'easily',tr:'kolayca'},
+        {en:'completely',tr:'tamamen'},{en:'mainly',tr:'esas olarak'},{en:'largely',tr:'büyük ölçüde'},{en:'hardly',tr:'neredeyse hiç'},
+        {en:'similarly',tr:'benzer şekilde'},{en:'apparently',tr:'görünüşe göre'}
+      ]},
+      { level:'B2', desc:'Academic and formal adverbs', words:[
+        {en:'consequently',tr:'sonuç olarak'},{en:'furthermore',tr:'bunun yanı sıra'},{en:'nonetheless',tr:'buna rağmen'},{en:'precisely',tr:'tam olarak'},
+        {en:'simultaneously',tr:'eş zamanlı'},{en:'subsequently',tr:'daha sonra'},{en:'particularly',tr:'özellikle'},{en:'predominantly',tr:'ağırlıklı olarak'},
+        {en:'inevitably',tr:'kaçınılmaz olarak'},{en:'accordingly',tr:'bu doğrultuda'},{en:'considerably',tr:'önemli ölçüde'},{en:'extensively',tr:'kapsamlı biçimde'},
+        {en:'relatively',tr:'görece'},{en:'significantly',tr:'önemli ölçüde'},{en:'substantially',tr:'önemli ölçüde'},{en:'systematically',tr:'sistematik olarak'},
+        {en:'thoroughly',tr:'iyice/tamamen'},{en:'broadly',tr:'geniş anlamda'}
+      ]},
+      { level:'C1', desc:'Precise discourse markers', words:[
+        {en:'admittedly',tr:'kabul edilmesi gerekir ki'},{en:'conceivably',tr:'akla yatkın biçimde'},{en:'conversely',tr:'tersine'},
+        {en:'explicitly',tr:'açıkça'},{en:'implicitly',tr:'üstü kapalı biçimde'},{en:'inherently',tr:'doğası gereği'},{en:'notably',tr:'özellikle'},
+        {en:'ostensibly',tr:'görünürde'},{en:'purportedly',tr:'iddia edildiğine göre'},{en:'tentatively',tr:'geçici olarak'},
+        {en:'unequivocally',tr:'kesin biçimde'},{en:'arguably',tr:'tartışmalı olarak'},{en:'presumably',tr:'muhtemelen'},
+        {en:'inarguably',tr:'tartışmasız biçimde'},{en:'hitherto',tr:'şimdiye kadar'},{en:'pervasively',tr:'yaygın biçimde'},
+        {en:'ubiquitously',tr:'her yerde'},{en:'succinctly',tr:'kısaca'}
+      ]}
+    ]
+  },
+  {
+    id:'pronoun', label:'Pronoun', tr:'Zamir', icon:'👤',
+    desc:'Replaces a noun to avoid repetition. • İsmin yerine kullanılan kelime.',
+    c:'var(--pronoun-c)', cl:'var(--pronoun-cl)', cd:'var(--pronoun-cd)',
+    levels:[
+      { level:'A1', desc:'Subject and object pronouns', words:[
+        {en:'I',tr:'ben'},{en:'you',tr:'sen/siz'},{en:'he',tr:'o (erkek)'},{en:'she',tr:'o (kadın)'},
+        {en:'it',tr:'o (nesne)'},{en:'we',tr:'biz'},{en:'they',tr:'onlar'},{en:'me',tr:'beni'},
+        {en:'him',tr:'onu'},{en:'her',tr:'onu'},{en:'us',tr:'bizi'},{en:'them',tr:'onları'},
+        {en:'my',tr:'benim'},{en:'your',tr:'senin'},{en:'his',tr:'onun'},{en:'this',tr:'bu'},
+        {en:'that',tr:'şu/o'},{en:'what',tr:'ne'}
+      ]},
+      { level:'A2', desc:'Reflexive and demonstrative', words:[
+        {en:'myself',tr:'kendim'},{en:'yourself',tr:'kendin'},{en:'himself',tr:'kendisi'},{en:'herself',tr:'kendisi'},
+        {en:'itself',tr:'kendisi'},{en:'ourselves',tr:'kendimiz'},{en:'themselves',tr:'kendileri'},{en:'these',tr:'bunlar'},
+        {en:'those',tr:'şunlar/onlar'},{en:'something',tr:'bir şey'},{en:'nothing',tr:'hiçbir şey'},{en:'everything',tr:'her şey'},
+        {en:'someone',tr:'biri'},{en:'nobody',tr:'hiç kimse'},{en:'who',tr:'kim'},{en:'which',tr:'hangi'},
+        {en:'whose',tr:'kimin'},{en:'whom',tr:'kimi'}
+      ]},
+      { level:'B1', desc:'Relative and indefinite pronouns', words:[
+        {en:'whoever',tr:'kim olursa olsun'},{en:'whatever',tr:'ne olursa olsun'},{en:'whichever',tr:'hangisi olursa olsun'},
+        {en:'wherever',tr:'nerede olursa olsun'},{en:'whenever',tr:'ne zaman olursa olsun'},{en:'another',tr:'bir başkası'},
+        {en:'both',tr:'her ikisi de'},{en:'each',tr:'her biri'},{en:'either',tr:'ikisinden biri'},{en:'neither',tr:'hiçbirisi'},
+        {en:'few',tr:'az sayıda'},{en:'several',tr:'birkaç'},{en:'many',tr:'birçok'},{en:'much',tr:'çok (miktar)'},
+        {en:'all',tr:'hepsi'},{en:'any',tr:'herhangi bir'},{en:'none',tr:'hiçbiri'},{en:'one',tr:'biri'}
+      ]},
+      { level:'B2', desc:'Formal and academic usage', words:[
+        {en:'the former',tr:'ilki/önceki'},{en:'the latter',tr:'sonuncusu/ikincisi'},{en:'such',tr:'böyle'},
+        {en:'whereupon',tr:'bunun üzerine'},{en:'whereby',tr:'sayesinde'},{en:'whereas',tr:'oysa ki'},
+        {en:'therein',tr:'orada/o konuda'},{en:'thereof',tr:'ondan/bunun'},{en:'thereby',tr:'bu suretle'},
+        {en:'wherein',tr:'içinde'},{en:'hereof',tr:'bunun'},{en:'theirs',tr:'onlarınki'},
+        {en:'ours',tr:'bizimki'},{en:'yours',tr:'sizinki'},{en:'mine',tr:'benimki'},
+        {en:'hers',tr:'onunki (kadın)'},{en:'his (poss.)',tr:'onunki (erkek)'},{en:'one (formal)',tr:'insan/kişi'}
+      ]},
+      { level:'C1', desc:'Nuanced and rhetorical usage', words:[
+        {en:'whomever',tr:'kimi olursa olsun'},{en:'whatsoever',tr:'ne olursa olsun/hiçbir'},{en:'whosoever',tr:'kim olursa olsun'},
+        {en:'oneself',tr:'kendisi/kişinin kendisi'},{en:'each other',tr:'birbirini'},{en:'one another',tr:'birbirini (çoğul)'},
+        {en:'the same',tr:'aynısı'},{en:'such a one',tr:'böyle biri'},{en:'any given',tr:'herhangi bir'},
+        {en:'no one',tr:'hiç kimse'},{en:'anyone',tr:'herhangi biri'},{en:'everyone',tr:'herkes'},
+        {en:'nothing',tr:'hiçbir şey'},{en:'anything',tr:'herhangi bir şey'},{en:'everything',tr:'her şey'},
+        {en:'somewhere',tr:'bir yerde'},{en:'nowhere',tr:'hiçbir yerde'},{en:'everywhere',tr:'her yerde'}
+      ]}
+    ]
+  },
+  {
+    id:'prep', label:'Preposition', tr:'Edat', icon:'📍',
+    desc:'Shows relationship between noun/pronoun and other words. • İsim veya zamir ile diğer kelimeler arasındaki ilişkiyi gösterir.',
+    c:'var(--prep-c)', cl:'var(--prep-cl)', cd:'var(--prep-cd)',
+    levels:[
+      { level:'A1', desc:'Basic location and time', words:[
+        {en:'in',tr:'içinde'},{en:'on',tr:'üzerinde'},{en:'at',tr:'(-de/da)'},{en:'to',tr:'(-e/a)'},
+        {en:'from',tr:'(-den/dan)'},{en:'for',tr:'için'},{en:'with',tr:'ile'},{en:'of',tr:'(-nın/nin)'},
+        {en:'by',tr:'tarafından/yanında'},{en:'up',tr:'yukarı'},{en:'down',tr:'aşağı'},{en:'about',tr:'hakkında'},
+        {en:'after',tr:'sonra'},{en:'before',tr:'önce'},{en:'behind',tr:'arkasında'},{en:'under',tr:'altında'},
+        {en:'over',tr:'üstünde'},{en:'near',tr:'yakınında'}
+      ]},
+      { level:'A2', desc:'Direction and manner', words:[
+        {en:'between',tr:'arasında'},{en:'among',tr:'ortasında'},{en:'around',tr:'etrafında'},{en:'through',tr:'içinden'},
+        {en:'across',tr:'karşı tarafa'},{en:'along',tr:'boyunca'},{en:'against',tr:'karşı'},{en:'beside',tr:'yanında'},
+        {en:'below',tr:'aşağısında'},{en:'above',tr:'üstünde'},{en:'inside',tr:'içerisinde'},{en:'outside',tr:'dışında'},
+        {en:'during',tr:'boyunca/sırasında'},{en:'since',tr:'(-den/dan beri)'},{en:'until',tr:'(-e/a kadar)'},{en:'within',tr:'içinde'},
+        {en:'without',tr:'olmadan'},{en:'towards',tr:'(-e/a doğru)'}
+      ]},
+      { level:'B1', desc:'Abstract and formal relations', words:[
+        {en:'despite',tr:'rağmen'},{en:'according to',tr:'göre'},{en:'because of',tr:'yüzünden'},{en:'in spite of',tr:'karşın'},
+        {en:'instead of',tr:'yerine'},{en:'apart from',tr:'dışında'},{en:'as for',tr:'ise/gelince'},{en:'in addition to',tr:'ek olarak'},
+        {en:'in front of',tr:'önünde'},{en:'on behalf of',tr:'adına'},{en:'out of',tr:'dışına/dışında'},{en:'prior to',tr:'önce'},
+        {en:'regardless of',tr:'bakılmaksızın'},{en:'owing to',tr:'dolayı'},{en:'except for',tr:'hariç'},{en:'concerning',tr:'ilgili olarak'},
+        {en:'regarding',tr:'dair'},{en:'throughout',tr:'boyunca'}
+      ]},
+      { level:'B2', desc:'Academic and written style', words:[
+        {en:'pursuant to',tr:'gereğince'},{en:'in terms of',tr:'açısından'},{en:'with respect to',tr:'konusunda'},{en:'as opposed to',tr:'aksine'},
+        {en:'in relation to',tr:'ilişkin'},{en:'by means of',tr:'aracılığıyla'},{en:'in light of',tr:'ışığında'},{en:'with regard to',tr:'bakımından'},
+        {en:'at the expense of',tr:'pahasına'},{en:'in the absence of',tr:'yokluğunda'},{en:'on account of',tr:'nedeniyle'},{en:'in view of',tr:'göz önünde bulundurarak'},
+        {en:'by virtue of',tr:'sayesinde'},{en:'in accordance with',tr:'uygun olarak'},{en:'in contrast to',tr:'zıt olarak'},{en:'in favor of',tr:'lehine'},
+        {en:'in excess of',tr:'üzerinde/fazla'},{en:'subsequent to',tr:'sonrasında'}
+      ]},
+      { level:'C1', desc:'Precise prepositional phrases', words:[
+        {en:'notwithstanding',tr:'buna karşın'},{en:'save for',tr:'hariç'},{en:'bar',tr:'hariç (resmi)'},{en:'via',tr:'aracılığıyla'},
+        {en:'amid',tr:'arasında/ortasında'},{en:'amidst',tr:'arasında'},{en:'barring',tr:'olmadığı takdirde'},{en:'pending',tr:'bekleyen'},
+        {en:'given',tr:'göz önünde bulundurulduğunda'},{en:'excepting',tr:'hariç tutarak'},{en:'failing',tr:'yokluğunda'},{en:'less',tr:'eksi/hariç'},
+        {en:'minus',tr:'eksi/çıkararak'},{en:'plus',tr:'artı/dahil'},{en:'past',tr:'geçe/ötesinde'},{en:'per',tr:'başına/için'},
+        {en:'pro',tr:'lehine'},{en:'versus',tr:'karşı'}
+      ]}
+    ]
+  },
+  {
+    id:'conj', label:'Conjunction', tr:'Bağlaç', icon:'🔗',
+    desc:'Connects words, phrases, or clauses. • Kelimeleri, öbekleri veya cümleleri birbirine bağlayan kelime.',
+    c:'var(--conj-c)', cl:'var(--conj-cl)', cd:'var(--conj-cd)',
+    levels:[
+      { level:'A1', desc:'Basic linking words', words:[
+        {en:'and',tr:'ve'},{en:'or',tr:'veya'},{en:'but',tr:'ama'},{en:'so',tr:'bu yüzden'},
+        {en:'because',tr:'çünkü'},{en:'when',tr:'ne zaman'},{en:'if',tr:'eğer'},{en:'then',tr:'o zaman'},
+        {en:'that',tr:'ki'},{en:'as',tr:'gibi/olarak'},{en:'while',tr:'iken'},{en:'before',tr:'önce'},
+        {en:'after',tr:'sonra'},{en:'until',tr:'kadar'},{en:'since',tr:'çünkü/beri'},{en:'nor',tr:'ne de'},
+        {en:'yet',tr:'ama/henüz'},{en:'both…and',tr:'hem…hem de'}
+      ]},
+      { level:'A2', desc:'Compound and correlative', words:[
+        {en:'although',tr:'her ne kadar…olsa da'},{en:'unless',tr:'olmadıkça'},{en:'whether',tr:'olup olmadığı'},
+        {en:'even if',tr:'olsa bile'},{en:'as well as',tr:'ile birlikte'},{en:'not only…but also',tr:'sadece…değil aynı zamanda'},
+        {en:'either…or',tr:'ya…ya da'},{en:'neither…nor',tr:'ne…ne de'},{en:'as soon as',tr:'olur olmaz'},
+        {en:'as long as',tr:'olduğu sürece'},{en:'in case',tr:'durumunda'},{en:'provided that',tr:'şartıyla'},
+        {en:'so that',tr:'böylece'},{en:'in order that',tr:'amacıyla'},{en:'as if',tr:'sanki'},
+        {en:'even though',tr:'olmasına rağmen'},{en:'once',tr:'bir kez/olunca'},{en:'wherever',tr:'nerede olursa olsun'}
+      ]},
+      { level:'B1', desc:'Contrast and reason', words:[
+        {en:'however',tr:'ancak/bununla birlikte'},{en:'therefore',tr:'bu nedenle'},{en:'moreover',tr:'üstelik'},
+        {en:'furthermore',tr:'bunun yanı sıra'},{en:'nevertheless',tr:'bununla birlikte'},{en:'meanwhile',tr:'bu arada'},
+        {en:'accordingly',tr:'bu doğrultuda'},{en:'consequently',tr:'sonuç olarak'},{en:'otherwise',tr:'aksi takdirde'},
+        {en:'besides',tr:'bunun dışında'},{en:'thus',tr:'bu nedenle'},{en:'hence',tr:'dolayısıyla'},
+        {en:'instead',tr:'bunun yerine'},{en:'on the other hand',tr:'öte yandan'},{en:'in contrast',tr:'aksine'},
+        {en:'in addition',tr:'ek olarak'},{en:'similarly',tr:'benzer şekilde'},{en:'for instance',tr:'örneğin'}
+      ]},
+      { level:'B2', desc:'Formal and academic connectors', words:[
+        {en:'albeit',tr:'her ne kadar…olsa da'},{en:'inasmuch as',tr:'göz önünde bulundurulduğunda'},{en:'insofar as',tr:'olduğu ölçüde'},
+        {en:'whereas',tr:'oysa ki'},{en:'notwithstanding',tr:'buna rağmen'},{en:'provided',tr:'şartıyla'},
+        {en:'supposing',tr:'varsayalım ki'},{en:'lest',tr:'diye korkarak'},{en:'for',tr:'zira (bağlaç)'},
+        {en:'nor',tr:'ne de'},{en:'given that',tr:'göz önünde bulundurulduğunda'},{en:'in the event that',tr:'durumunda'},
+        {en:'on condition that',tr:'koşuluyla'},{en:'by the time',tr:'olduğunda'},{en:'so long as',tr:'olduğu sürece'},
+        {en:'such that',tr:'öyle ki'},{en:'to the extent that',tr:'ölçüde'},{en:'with the result that',tr:'sonucunda'}
+      ]},
+      { level:'C1', desc:'Rare and literary conjunctions', words:[
+        {en:'as though',tr:'sanki'},{en:'howsoever',tr:'nasıl olursa olsun'},{en:'in as much as',tr:'olduğu ölçüde'},
+        {en:'insomuch as',tr:'o kadar ki'},{en:'lest',tr:'diye (olumsuz amaç)'},{en:'forasmuch as',tr:'göz önünde bulundurulduğunda'},
+        {en:'seeing that',tr:'olduğundan'},{en:'though',tr:'her ne kadar'},{en:'till',tr:'kadar'},
+        {en:'until such time as',tr:'olana kadar'},{en:'when as',tr:'iken'},{en:'wherefore',tr:'bu nedenle'},
+        {en:'whichever',tr:'hangisi olursa olsun'},{en:'whilst',tr:'iken/oysa'},{en:'withal',tr:'bunun yanı sıra'},
+        {en:'ere',tr:'önce (arkaik)'},{en:'cum',tr:'ile birlikte (Latince)'},{en:'save',tr:'hariç (bağlaç)'}
+      ]}
+    ]
+  },
+  {
+    id:'interj', label:'Interjection', tr:'Ünlem', icon:'❗',
+    desc:'Expresses sudden emotion or reaction. • Ani duygu veya tepkiyi ifade eden kelime.',
+    c:'var(--interj-c)', cl:'var(--interj-cl)', cd:'var(--interj-cd)',
+    levels:[
+      { level:'A1', desc:'Basic exclamations', words:[
+        {en:'oh',tr:'oh/ah'},{en:'wow',tr:'vay/vay be'},{en:'yes',tr:'evet'},{en:'no',tr:'hayır'},
+        {en:'ok',tr:'tamam'},{en:'hi',tr:'merhaba'},{en:'hey',tr:'hey'},{en:'bye',tr:'hoşça kal'},
+        {en:'help',tr:'imdat'},{en:'oops',tr:'hay aksi'},{en:'yay',tr:'yaşasın'},{en:'ow',tr:'ay/eyvah'},
+        {en:'ah',tr:'ah'},{en:'eh',tr:'hm/ha'},{en:'uh',tr:'mm/şey'},{en:'shh',tr:'şşş'},
+        {en:'ouch',tr:'ay/eyvah'},{en:'yikes',tr:'eyvah/aman'}
+      ]},
+      { level:'A2', desc:'Social and emotional reactions', words:[
+        {en:'great',tr:'harika'},{en:'awesome',tr:'süper'},{en:'really',tr:'gerçekten'},{en:'exactly',tr:'aynen/kesinlikle'},
+        {en:'agreed',tr:'katılıyorum'},{en:'cheers',tr:'şerefe'},{en:'bravo',tr:'bravo'},{en:'congratulations',tr:'tebrikler'},
+        {en:'sorry',tr:'üzgünüm'},{en:'thanks',tr:'teşekkürler'},{en:'please',tr:'lütfen'},{en:'welcome',tr:'hoş geldiniz'},
+        {en:'well done',tr:'aferin'},{en:'good luck',tr:'iyi şanslar'},{en:'come on',tr:'hadi'},{en:'never mind',tr:'önemli değil'},
+        {en:'right',tr:'doğru/tamam'},{en:'fair enough',tr:'mantıklı'}
+      ]},
+      { level:'B1', desc:'Discourse and filler expressions', words:[
+        {en:'well',tr:'şey/yani'},{en:'anyway',tr:'her neyse'},{en:'basically',tr:'temelde'},{en:'honestly',tr:'dürüstçe'},
+        {en:'apparently',tr:'görünüşe göre'},{en:'frankly',tr:'açıkçası'},{en:'unfortunately',tr:'maalesef'},{en:'luckily',tr:'neyse ki'},
+        {en:'surprisingly',tr:'şaşırtıcı şekilde'},{en:'thankfully',tr:'çok şükür'},{en:'obviously',tr:'açıkça'},{en:'indeed',tr:'gerçekten'},
+        {en:'absolutely',tr:'kesinlikle'},{en:'definitely',tr:'kesinlikle'},{en:'seriously',tr:'ciddi misin'},{en:'naturally',tr:'doğal olarak'},
+        {en:'hopefully',tr:'umarım'},{en:'apparently',tr:'anlaşılan'}
+      ]},
+      { level:'B2', desc:'Nuanced reactions', words:[
+        {en:'alas',tr:'maalesef/eyvah'},{en:'eureka',tr:'buldum/işte'},{en:'hallelujah',tr:'elhamdülillah'},{en:'hear hear',tr:'destekliyorum'},
+        {en:'bah',tr:'bah/öf'},{en:'duh',tr:'ne sandın'},{en:'hooray',tr:'yaşasın'},{en:'hurrah',tr:'hura'},
+        {en:'touché',tr:'tutarsın/haklısın'},{en:'voilà',tr:'işte buyurun'},{en:'encore',tr:'bir daha'},{en:'steady on',tr:'sakin ol'},
+        {en:'goodness',tr:'aman Allah\'ım'},{en:'gracious',tr:'ya Rabbi'},{en:'heavens',tr:'aman ya'},{en:'mercy',tr:'merhamet'},
+        {en:'phew',tr:'pyy/nefes aldım'},{en:'ugh',tr:'öf/iğrenç'}
+      ]},
+      { level:'C1', desc:'Literary and archaic interjections', words:[
+        {en:'hark',tr:'dinle/kulak ver'},{en:'lo',tr:'işte/bak'},{en:'fie',tr:'ayıp/yuh'},{en:'prithee',tr:'lütfen (arkaik)'},
+        {en:'forsooth',tr:'hakikaten (arkaik)'},{en:'egad',tr:'hay Allah'},{en:'gadzooks',tr:'allah allah (arkaik)'},{en:'zounds',tr:'lanet olsun (arkaik)'},
+        {en:'marry',tr:'vallahi (arkaik)'},{en:'tush',tr:'saçma/öf'},{en:'tut',tr:'öf/ay ay'},{en:'pshaw',tr:'bah/saçmalık'},
+        {en:'avaunt',tr:'defol (arkaik)'},{en:'presto',tr:'hop/işte'},{en:'huzzah',tr:'yaşasın (tarihi)'},{en:'gee',tr:'hay aksi/Allah Allah'},
+        {en:'blimey',tr:'hay Allah (İngiliz)'},{en:'crikey',tr:'vay be (Avustralya)'}
+      ]}
+    ]
+  },
+  {
+    id:'article', label:'Article / Determiner', tr:'Tanımlık', icon:'📌',
+    desc:'Introduces or specifies a noun. • İsmi tanıtan veya belirten kelimeler.',
+    c:'var(--article-c)', cl:'var(--article-cl)', cd:'var(--article-cd)',
+    levels:[
+      { level:'A1', desc:'Core articles and basic determiners', words:[
+        {en:'a',tr:'bir (belirsiz)'},{en:'an',tr:'bir (ünlü önü)'},{en:'the',tr:'o/bu (belirli)'},{en:'this',tr:'bu'},
+        {en:'that',tr:'şu/o'},{en:'these',tr:'bunlar'},{en:'those',tr:'şunlar/onlar'},{en:'my',tr:'benim'},
+        {en:'your',tr:'senin'},{en:'his',tr:'onun (erkek)'},{en:'her',tr:'onun (kadın)'},{en:'its',tr:'onun (nesne)'},
+        {en:'our',tr:'bizim'},{en:'their',tr:'onların'},{en:'some',tr:'birkaç/biraz'},{en:'any',tr:'herhangi bir'},
+        {en:'no',tr:'hiç'},{en:'every',tr:'her'}
+      ]},
+      { level:'A2', desc:'Quantity and demonstrative', words:[
+        {en:'each',tr:'her biri'},{en:'all',tr:'hepsi'},{en:'both',tr:'her ikisi de'},{en:'either',tr:'ikisinden biri'},
+        {en:'neither',tr:'hiçbirisi'},{en:'few',tr:'az sayıda'},{en:'little',tr:'az miktarda'},{en:'many',tr:'birçok'},
+        {en:'much',tr:'çok (miktar)'},{en:'more',tr:'daha fazla'},{en:'most',tr:'en çok'},{en:'less',tr:'daha az'},
+        {en:'least',tr:'en az'},{en:'several',tr:'birkaç'},{en:'enough',tr:'yeterince'},{en:'another',tr:'bir başka'},
+        {en:'other',tr:'diğer'},{en:'such',tr:'böyle'}
+      ]},
+      { level:'B1', desc:'Formal and specific determiners', words:[
+        {en:'certain',tr:'belirli'},{en:'particular',tr:'belirli/özel'},{en:'whole',tr:'bütün'},{en:'half',tr:'yarım'},
+        {en:'former',tr:'eski/önceki'},{en:'latter',tr:'ikinci/sonraki'},{en:'same',tr:'aynı'},{en:'own',tr:'kendi'},
+        {en:'next',tr:'bir sonraki'},{en:'last',tr:'son/geçen'},{en:'only',tr:'tek'},{en:'very',tr:'tam'},
+        {en:'quite',tr:'oldukça'},{en:'rather',tr:'oldukça/daha çok'},{en:'whatever',tr:'her ne'},{en:'whichever',tr:'hangisi'},
+        {en:'whoever',tr:'kim olursa olsun'},{en:'whatever',tr:'her ne olursa olsun'}
+      ]},
+      { level:'B2', desc:'Precise and quantifying determiners', words:[
+        {en:'numerous',tr:'çok sayıda'},{en:'various',tr:'çeşitli'},{en:'diverse',tr:'farklı'},{en:'sufficient',tr:'yeterli'},
+        {en:'considerable',tr:'önemli miktarda'},{en:'substantial',tr:'önemli'},{en:'abundant',tr:'bol'},{en:'scarce',tr:'kıt'},
+        {en:'ample',tr:'bol/yeterli'},{en:'multiple',tr:'çok sayıda'},{en:'respective',tr:'ilgili/her birinin'},{en:'alternate',tr:'dönüşümlü'},
+        {en:'approximate',tr:'yaklaşık'},{en:'given',tr:'belirli/verilen'},{en:'overall',tr:'genel'},{en:'sole',tr:'tek/yalnız'},
+        {en:'ultimate',tr:'nihai'},{en:'prior',tr:'önceki'}
+      ]},
+      { level:'C1', desc:'Advanced and literary determiners', words:[
+        {en:'each and every',tr:'her bir'},{en:'any given',tr:'herhangi bir'},{en:'a mere',tr:'yalnızca bir'},
+        {en:'a sheer',tr:'tam anlamıyla bir'},{en:'a very',tr:'gerçek bir'},{en:'a good many',tr:'epeyce'},
+        {en:'a great many',tr:'pek çok'},{en:'a good deal of',tr:'çok miktarda'},{en:'a great deal of',tr:'büyük miktarda'},
+        {en:'a large number of',tr:'çok sayıda'},{en:'a wide range of',tr:'geniş bir yelpazede'},{en:'no fewer than',tr:'en az'},
+        {en:'no more than',tr:'en fazla'},{en:'no less than',tr:'az değil'},{en:'the very',tr:'tam/asıl'},
+        {en:'this very',tr:'tam bu'},{en:'that very',tr:'tam o'},{en:'whichsoever',tr:'hangisi olursa olsun'}
+      ]}
+    ]
+  }
+];
+
+/* ── State ── */
+let currentPOS = POS[0];
+let openLevels  = { A1: true };
+let selectedWord = null;
+
+/* ── Helpers ── */
+function cssVar(id, suffix) {
+  return `var(--${id}-${suffix})`;
+}
+
+/* ── Build Nav ── */
+function buildNav() {
+  const nav = document.getElementById('posNav');
+  nav.innerHTML = POS.map(p => `
+    <button class="pos-pill ${p.id === currentPOS.id ? 'active' : ''}" data-pos="${p.id}" onclick="selectPOS('${p.id}')">
+      ${p.icon} ${p.label}
+    </button>
+  `).join('');
+}
+
+/* ── Build Content ── */
+function buildContent() {
+  const id = currentPOS.id;
+  const c  = cssVar(id, 'c');
+  const cl = cssVar(id, 'cl');
+  const cd = cssVar(id, 'cd');
+
+  const html = `
+    <div class="pos-header-card" style="background:${cl};border-color:${c};color:${cd};">
+      <h2>${currentPOS.label} <span style="font-weight:400;font-size:14px;opacity:.65">— ${currentPOS.tr}</span></h2>
+      <p>${currentPOS.desc}</p>
+    </div>
+    <div class="levels">
+      ${currentPOS.levels.map(l => `
+        <div class="level-card">
+          <div class="level-head" onclick="toggleLevel('${l.level}')">
+            <span class="level-badge" style="background:${LEVEL_COLORS[l.level]}">${l.level}</span>
+            <span class="level-label">${LEVEL_DESCS[l.level]}</span>
+            <span class="level-desc-small">${l.desc}</span>
+            <span class="level-count">${l.words.length} words</span>
+            <span class="chevron ${openLevels[l.level] ? 'open' : ''}">▾</span>
+          </div>
+          <div class="level-body ${openLevels[l.level] ? 'open' : ''}">
+            <div class="word-grid">
+              ${l.words.map(w => `
+                <div class="word-pill ${selectedWord && selectedWord.en === w.en && selectedWord.lv === l.level ? 'selected' : ''}"
+                  style="background:${cl};border-color:${c};color:${cd};${selectedWord && selectedWord.en === w.en && selectedWord.lv === l.level ? `outline-color:${c};` : ''}"
+                  onclick="selectWord('${w.en.replace(/'/g,"\\'")}','${l.level}')">
+                  <span class="word-en">${w.en}</span>
+                  <span class="word-tr">${w.tr}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  document.getElementById('posContent').innerHTML = html;
+}
+
+/* ── Build Detail ── */
+function buildDetail() {
+  const panel = document.getElementById('detailPanel');
+  if (!selectedWord) { panel.className = 'detail-panel'; return; }
+
+  const id  = currentPOS.id;
+  const lvl = currentPOS.levels.find(l => l.level === selectedWord.lv);
+  const w   = lvl.words.find(w => w.en === selectedWord.en);
+  const ex  = EXAMPLES[id]?.[selectedWord.lv] || '';
+  const c   = cssVar(id, 'c');
+  const cl  = cssVar(id, 'cl');
+  const cd  = cssVar(id, 'cd');
+
+  panel.className = 'detail-panel open';
+  panel.innerHTML = `
+    <h3 style="color:${c}">${w.en} <span style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:13px;color:var(--muted)">/ ${w.tr}</span></h3>
+    <p class="meta">${currentPOS.label} (${currentPOS.tr}) &nbsp;·&nbsp; ${selectedWord.lv} ${LEVEL_DESCS[selectedWord.lv]}</p>
+    ${ex ? `<div class="detail-example" style="background:${cl};border-color:${c};color:${cd}">${ex}</div>` : ''}
+    <button class="detail-btn" onclick="sendPrompt('Give me 5 example sentences in English and Turkish using the word \\'${w.en}\\' as a ${currentPOS.label.toLowerCase()}')">
+      ✦ See example sentences
+    </button>
+  `;
+}
+
+/* ── Actions ── */
+function selectPOS(id) {
+  currentPOS  = POS.find(p => p.id === id);
+  openLevels  = { A1: true };
+  selectedWord = null;
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleLevel(lv) {
+  openLevels[lv] = !openLevels[lv];
+  buildContent();
+  buildDetail();
+}
+
+function selectWord(en, lv) {
+  if (selectedWord && selectedWord.en === en && selectedWord.lv === lv) {
+    selectedWord = null;
+  } else {
+    selectedWord = { en, lv };
+  }
+  buildContent();
+  buildDetail();
+}
+
+/* ── sendPrompt bridge (works inside Claude artifacts) ── */
+function sendPrompt(text) {
+  if (typeof window.sendPrompt === 'function') {
+    window.sendPrompt(text);
+  } else {
+    alert('Prompt: ' + text);
+  }
+}
+
+/* ── Full render ── */
+function render() {
+  buildNav();
+  buildContent();
+  buildDetail();
+}
+
+render();
+</script>
+</body>
+</html>
