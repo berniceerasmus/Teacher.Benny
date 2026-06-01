@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Word Detective — English Puzzle Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Special+Elite&family=DM+Mono:wght@400;500&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1008;
+  --paper: #f5f0e8;
+  --paper2: #ede8dc;
+  --aged: #c9bfa8;
+  --red: #c0392b;
+  --gold: #b8860b;
+  --blue: #1a3a5c;
+  --stamp-a1: #2d6a2d;
+  --stamp-a2: #1a3a5c;
+  --stamp-b1: #7a3d00;
+  --stamp-b2: #6b0f1a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(26,16,8,.06) 27px, rgba(26,16,8,.06) 28px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* MASTHEAD */
+.masthead {
+  text-align: center;
+  border-bottom: 4px double var(--ink);
+  border-top: 4px double var(--ink);
+  padding: 10px 20px 8px;
+  margin: 18px 20px 0;
+  position: relative;
+}
+.masthead-line {
+  font-size: .7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8b1a1a;
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 4px;
+}
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.masthead-sub {
+  font-family: 'Special Elite', cursive;
+  font-size: clamp(.8rem, 2vw, 1rem);
+  color: #8b1a1a;
+  margin-top: 4px;
+}
+.masthead-date {
+  font-family: 'DM Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: 2px;
+  color: #8b1a1a;
+  margin-top: 6px;
+}
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--ink);
+  margin: 0 20px;
+}
+.level-select {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.lvl-btn {
+  font-family: 'Special Elite', cursive;
+  font-size: .8rem;
+  padding: 5px 14px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: .15s;
+  position: relative;
+}
+.lvl-btn.a1 { color: var(--stamp-a1); border-color: var(--stamp-a1); }
+.lvl-btn.a2 { color: var(--stamp-a2); border-color: var(--stamp-a2); }
+.lvl-btn.b1 { color: var(--stamp-b1); border-color: var(--stamp-b1); }
+.lvl-btn.b2 { color: var(--stamp-b2); border-color: var(--stamp-b2); }
+.lvl-btn.active.a1 { background: var(--stamp-a1); color: var(--paper); }
+.lvl-btn.active.a2 { background: var(--stamp-a2); color: var(--paper); }
+.lvl-btn.active.b1 { background: var(--stamp-b1); color: var(--paper); }
+.lvl-btn.active.b2 { background: var(--stamp-b2); color: var(--paper); }
+.lvl-btn:hover { transform: translateY(-1px); }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mode-toggle {
+  display: flex;
+  border: 2px solid var(--ink);
+  overflow: hidden;
+}
+.mode-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  padding: 5px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mode-btn.active { background: var(--ink); color: var(--paper); }
+
+.timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: .8rem;
+}
+.timer-wrap label { cursor: pointer; letter-spacing: 1px; }
+#timerDisplay {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 38px;
+  text-align: center;
+  color: var(--red);
+}
+
+.scoreboard {
+  display: flex;
+  gap: 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: .8rem;
+}
+.score-item { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.score-label { font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--aged); }
+.score-value { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; }
+
+/* MAIN GAME AREA */
+.game-area {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+@media(max-width: 780px) {
+  .game-area { grid-template-columns: 1fr; }
+  .toolbar { margin: 0 10px; }
+  .masthead { margin: 10px 10px 0; }
+}
+
+/* PUZZLE COLUMN */
+.puzzle-col {}
+.section-head {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-head span { font-size: .7rem; font-family: 'DM Mono'; color: #8b1a1a; letter-spacing: 2px; }
+
+/* WORD REVEAL MODE */
+.word-display {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0 28px;
+}
+.letter-box {
+  width: 44px;
+  height: 52px;
+  border-bottom: 3px solid var(--ink);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding-bottom: 2px;
+  transition: all .3s;
+  position: relative;
+}
+.letter-box.revealed { color: var(--ink); }
+.letter-box.wrong-reveal { color: var(--red); border-color: var(--red); animation: shake .3s ease; }
+.letter-box .box-num {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  font-size: .6rem;
+  font-family: 'DM Mono';
+  color: var(--aged);
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 10px 0;
+}
+.kb-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+.kb-key {
+  width: 38px;
+  height: 42px;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  font-family: 'DM Mono', monospace;
+  font-size: .8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .12s;
+  text-transform: uppercase;
+}
+.kb-key:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.kb-key.used-correct { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.kb-key.used-wrong { background: var(--aged); color: var(--paper); border-color: var(--aged); cursor: not-allowed; }
+.kb-key:disabled { cursor: not-allowed; }
+
+/* Hangman figure */
+.hangman-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.hangman-wrap svg { width: 120px; height: 110px; }
+
+/* CROSSWORD MODE */
+.crossword-grid {
+  display: inline-block;
+  border: 2px solid var(--ink);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.cw-row { display: flex; }
+.cw-cell {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--aged);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: var(--paper);
+  position: relative;
+  text-transform: uppercase;
+}
+.cw-cell.active-word { background: #fffbf0; }
+.cw-cell.blocked { background: var(--ink); border-color: var(--ink); }
+.cw-cell.correct { background: #d4edda; }
+.cw-cell.input-cell input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  caret-color: transparent;
+}
+.cw-cell .cell-num {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: .5rem;
+  font-family: 'DM Mono';
+  color: var(--aged);
+  line-height: 1;
+}
+.cw-active-input { background: #fff8dc !important; }
+
+.cw-clues {
+  margin-top: 16px;
+}
+.cw-clue-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-left: 3px solid transparent;
+  transition: .15s;
+  font-size: .95rem;
+}
+.cw-clue-item:hover { border-left-color: var(--aged); background: rgba(0,0,0,.03); }
+.cw-clue-item.active-clue { border-left-color: var(--ink); font-weight: 600; }
+.cw-clue-item.solved { color: var(--aged); text-decoration: line-through; }
+.cw-clue-num { font-family: 'DM Mono'; font-size: .8rem; font-weight: 500; min-width: 22px; color: var(--gold); }
+
+/* SIDEBAR */
+.sidebar {}
+.hint-panel {
+  border: 2px solid var(--ink);
+  padding: 16px;
+  margin-bottom: 20px;
+  background: var(--paper2);
+  position: relative;
+}
+.hint-panel::before {
+  content: 'CLUE FILE';
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: 3px;
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--paper2);
+  padding: 0 6px;
+  color: var(--aged);
+}
+.hint-list { list-style: none; margin: 4px 0 12px; }
+.hint-list li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--aged);
+  font-size: .95rem;
+  line-height: 1.45;
+  display: flex;
+  gap: 8px;
+}
+.hint-list li:last-child { border-bottom: none; }
+.hint-num {
+  font-family: 'DM Mono';
+  font-size: .72rem;
+  color: var(--red);
+  min-width: 22px;
+  padding-top: 2px;
+  font-weight: 500;
+}
+.hint-locked {
+  color: var(--aged);
+  font-style: italic;
+  font-size: .85rem;
+}
+.hint-cost {
+  font-family: 'DM Mono';
+  font-size: .7rem;
+  color: var(--red);
+}
+.reveal-btn {
+  font-family: 'Special Elite', cursive;
+  font-size: .82rem;
+  padding: 8px 14px;
+  border: 2px solid var(--red);
+  background: transparent;
+  color: var(--red);
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: .15s;
+  width: 100%;
+}
+.reveal-btn:hover { background: var(--red); color: var(--paper); }
+.reveal-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.word-meta {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(139,26,26,.04);
+  border: 1px dashed #8b1a1a;
+  font-size: .82rem;
+  color: #5a1010;
+  font-family: 'DM Mono';
+  letter-spacing: .5px;
+}
+.word-meta b { color: #8b1a1a; }
+
+.next-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 20px;
+  border: 3px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 1px;
+  transition: .15s;
+  margin-top: 12px;
+}
+.next-btn:hover { background: transparent; color: var(--ink); }
+
+.streak-banner {
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  font-size: .85rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  min-height: 20px;
+}
+
+.feedback-box {
+  padding: 10px 14px;
+  border-left: 4px solid var(--ink);
+  margin: 10px 0;
+  font-family: 'Special Elite', cursive;
+  font-size: .9rem;
+  letter-spacing: .5px;
+  display: none;
+}
+.feedback-box.good { border-color: var(--stamp-a1); color: var(--stamp-a1); background: rgba(45,106,45,.06); display: block; }
+.feedback-box.bad { border-color: var(--red); color: var(--red); background: rgba(192,57,43,.06); display: block; }
+.feedback-box.info { border-color: var(--gold); color: var(--gold); background: rgba(184,134,11,.06); display: block; }
+
+/* Progress bar */
+.progress-strip {
+  height: 4px;
+  background: var(--aged);
+  margin: 0 20px;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--ink);
+  transition: width .5s ease;
+}
+
+/* Animations */
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+@keyframes pop { 0%{transform:scale(.8);opacity:0} 60%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+.pop-in { animation: pop .35s ease forwards; }
+
+/* Word complete celebration */
+.complete-stamp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(-12deg);
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--stamp-a1);
+  border: 6px solid var(--stamp-a1);
+  padding: 10px 24px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(245,240,232,.9);
+  animation: stamp .9s ease forwards;
+}
+.complete-stamp.wrong { color: var(--red); border-color: var(--red); }
+@keyframes stamp { 0%{opacity:0;transform:translate(-50%,-50%) rotate(-12deg) scale(2)} 30%{opacity:1;transform:translate(-50%,-50%) rotate(-12deg) scale(.95)} 70%{opacity:1} 100%{opacity:0;transform:translate(-50%,-50%) rotate(-12deg) scale(.9)} }
+
+/* CROSSWORD wrapper centering */
+.cw-center { display: flex; flex-direction: column; align-items: center; }
+/* ── LEVEL COMPLETE MODAL ── */
+.level-complete-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,16,8,.72);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+.level-complete-overlay.show { display: flex; }
+.level-complete-box {
+  background: var(--paper);
+  border: 4px double var(--ink);
+  border-radius: 4px;
+  padding: 40px 48px;
+  text-align: center;
+  max-width: 520px;
+  width: 92vw;
+  position: relative;
+  animation: lcPop .45s cubic-bezier(.22,1,.36,1) forwards;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+@keyframes lcPop {
+  from { transform: scale(.7) rotate(-4deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+.lc-stamp {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 8vw, 3.6rem);
+  font-weight: 900;
+  color: var(--stamp-a1);
+  border: 5px solid var(--stamp-a1);
+  display: inline-block;
+  padding: 6px 22px;
+  letter-spacing: 3px;
+  transform: rotate(-6deg);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  background: rgba(45,106,45,.06);
+}
+.lc-title { font-family: "Playfair Display", serif; font-size: clamp(1.2rem,4vw,1.8rem); font-weight: 700; margin-bottom: 6px; }
+.lc-sub { font-family: "Special Elite", cursive; font-size: .95rem; color: #8b1a1a; letter-spacing: 1px; margin-bottom: 8px; }
+.lc-stats { font-family: "DM Mono", monospace; font-size: .85rem; color: var(--aged); margin-bottom: 24px; border-top: 1px dashed var(--aged); border-bottom: 1px dashed var(--aged); padding: 10px 0; }
+.lc-stats b { color: var(--ink); }
+.lc-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+.lc-btn { font-family: "Special Elite", cursive; font-size: .92rem; padding: 12px 22px; border: 2px solid var(--ink); background: transparent; cursor: pointer; letter-spacing: 1px; transition: .15s; min-width: 160px; }
+.lc-btn:hover { background: var(--ink); color: var(--paper); }
+.lc-btn.primary { background: var(--ink); color: var(--paper); }
+.lc-btn.primary:hover { background: transparent; color: var(--ink); }
+.lc-countdown { font-family: "DM Mono", monospace; font-size: .75rem; color: var(--aged); letter-spacing: 2px; min-height: 18px; }
+.lc-no-next { font-family: "Special Elite", cursive; font-size: .9rem; color: #8b1a1a; margin-top: 8px; letter-spacing: 1px; }
+.confetti-piece { position: fixed; width: 9px; height: 9px; top: -10px; opacity: 1; pointer-events: none; z-index: 300; border-radius: 2px; animation: confettiFall linear forwards; }
+@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity:1; } 100% { transform: translateY(105vh) rotate(720deg); opacity:0; } }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-line">Vol. I &nbsp;|&nbsp; English Edition &nbsp;|&nbsp; All Levels</div>
+  <h1>Word Detective</h1>
+  <div class="masthead-sub">The English Puzzle Chronicle — Read the Clues. Crack the Word.</div>
+  <div class="masthead-date" id="mastheadDate"></div>
+</div>
+
+<div class="toolbar">
+  <div class="level-select">
+    <button class="lvl-btn a1 active" onclick="setLevel('A1')">A1</button>
+    <button class="lvl-btn a2" onclick="setLevel('A2')">A2</button>
+    <button class="lvl-btn b1" onclick="setLevel('B1')">B1</button>
+    <button class="lvl-btn b2" onclick="setLevel('B2')">B2</button>
+  </div>
+  <div class="controls">
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="modeReveal" onclick="setMode('reveal')">Reveal</button>
+      <button class="mode-btn" id="modeCross" onclick="setMode('crossword')">Crossword</button>
+    </div>
+    <div class="timer-wrap">
+      <input type="checkbox" id="timerCheck" onchange="toggleTimer()">
+      <label for="timerCheck">Timer</label>
+      <div id="timerDisplay" style="display:none">—</div>
+    </div>
+    <div class="scoreboard">
+      <div class="score-item">
+        <span class="score-label">Score</span>
+        <span class="score-value" id="scoreVal">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Streak</span>
+        <span class="score-value" id="streakVal">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">Words</span>
+        <span class="score-value" id="wordsVal">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="progress-strip"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+<div class="game-area">
+  <div class="puzzle-col" id="puzzleCol">
+    <!-- filled by JS -->
+  </div>
+  <div class="sidebar">
+    <div class="streak-banner" id="streakBanner"></div>
+    <div class="hint-panel">
+      <ul class="hint-list" id="hintList"></ul>
+      <div class="hint-cost" id="hintCostNote"></div>
+      <button class="reveal-btn" id="revealHintBtn" onclick="revealNextHint()">+ Reveal Next Clue <span id="hintCostSpan"></span></button>
+    </div>
+    <div class="word-meta" id="wordMeta"></div>
+    <div class="feedback-box" id="feedbackBox"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextWord()" style="display:none">Next Word →</button>
+  </div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const WORD_DATA = {
+  A1: [
+    { word:'CAT',  pos:'noun',      hints:['A small, furry animal people keep at home.','It says "meow" and purrs when happy.','It uses its whiskers to sense the world around it.'], extra:'Plural: cats' },
+    { word:'RUN',  pos:'verb',      hints:['Athletes do this in a race.','Your legs move faster than when you walk.','Past tense: ran.'], extra:'Past: ran' },
+    { word:'RED',  pos:'adjective', hints:['Roses and fire trucks are this colour.','Traffic lights use it to mean stop.','It is one of the three primary colours.'], extra:'A primary colour' },
+    { word:'EAT',  pos:'verb',      hints:['You use your mouth and teeth to do this.','Breakfast, lunch, and dinner are all times for this.','Without food, you cannot do this.'], extra:'Past: ate' },
+    { word:'DAY',  pos:'noun',      hints:['There are 24 hours in one.','Monday, Tuesday, and Wednesday are all examples.','Seven of these make one week.'], extra:'Plural: days' },
+    { word:'HOT',  pos:'adjective', hints:['Fire, the sun, and ovens are all described this way.','Soup straight from the stove is this.','Touching something that is too much of this can hurt you.'], extra:'Antonym: cold' },
+    { word:'MAP',  pos:'noun',      hints:['It shows roads, rivers, cities, and countries.','Travellers used paper versions before GPS existed.','You use it to plan a route or find a location.'], extra:'Navigation tool' },
+    { word:'BIRD', pos:'noun',      hints:['It has wings and feathers.','Most of them can fly, but penguins and ostriches cannot.','It lays eggs and often builds a nest.'], extra:'Examples: robin, eagle' },
+    { word:'COLD', pos:'adjective', hints:['Ice and snow are described this way.','You might feel this in winter without a coat.','It is the feeling you get from touching ice.'], extra:'Antonym: hot' },
+    { word:'JUMP', pos:'verb',      hints:['You push off the ground with both legs and go up into the air.','A kangaroo is famous for moving this way.','Past tense: jumped.'], extra:'Related: leap' },
+  ],
+  A2: [
+    { word:'AGE',    pos:'noun',       hints:['How old someone or something is.','You are asked for this on most forms.','A baby\'s is measured in months.'], extra:'Related: aged, ageing' },
+    { word:'AIR',    pos:'noun',       hints:['The invisible gas we breathe.','It surrounds the Earth.','Without it, nothing can live.'], extra:'Related: fresh air' },
+    { word:'WIN',    pos:'verb',       hints:['To come first in a competition.','The opposite of lose.','Past tense: won.'], extra:'Past: won' },
+    { word:'SAVE',   pos:'verb',       hints:['To keep something safe or store it for later.','You do this with money in a bank.','Past tense: saved.'], extra:'Related: savings' },
+    { word:'LOST',   pos:'adjective',  hints:['Not able to find your way.','The opposite of found.','You feel this in an unfamiliar city.'], extra:'Verb: to lose' },
+    { word:'BRAVE',  pos:'adjective',  hints:['Not afraid of danger.','Firefighters are often described this way.','Antonym: cowardly.'], extra:'Adverb: bravely' },
+    { word:'CLIMB',  pos:'verb',       hints:['You go upward doing this.','Monkeys and mountaineers do this.','You do it on a ladder or a tree.'], extra:'Related: climber' },
+    { word:'FRESH',  pos:'adjective',  hints:['Not old or stale.','Bread from the oven is this.','Antonym: stale.'], extra:'Fresh = recently made' },
+    { word:'CROWD',  pos:'noun',       hints:['A large group of people together.','You see this at concerts and stadiums.','Adjective form: crowded.'], extra:'Adjective: crowded' },
+    { word:'DREAM',  pos:'noun/verb',  hints:['It happens while you sleep.','It can also mean a wish or goal.','Past verb form: dreamed or dreamt.'], extra:'Can be noun or verb' },
+    { word:'PRICE',  pos:'noun',       hints:['The amount of money something costs.','You see it on a label or tag.','Synonym: cost.'], extra:'Verb: to price' },
+    { word:'STORM',  pos:'noun',       hints:['A violent weather event.','It brings heavy rain, wind, or snow.','Adjective: stormy.'], extra:'e.g. thunderstorm' },
+    { word:'LAUGH',  pos:'verb',       hints:['You do this when something is funny.','The sound: ha ha ha.','Antonym: cry.'], extra:'Noun: laughter' },
+    { word:'EARLY',  pos:'adverb/adj', hints:['Before the expected time.','If school starts at 8 and you arrive at 7:50, you are this.','Antonym: late.'], extra:'Antonym: late' },
+    { word:'CLEAN',  pos:'adjective',  hints:['Free from dirt or mess.','After a shower, you feel this.','Antonym: dirty.'], extra:'Verb: to clean' },
+    { word:'ANGRY',  pos:'adjective',  hints:['A strong feeling of displeasure.','You feel this when something is unfair.','Synonym: furious (stronger).'], extra:'Noun: anger' },
+    { word:'BORED',  pos:'adjective',  hints:['Feeling uninterested or restless.','You feel this when there is nothing to do.','Antonym: interested.'], extra:'Noun: boredom' },
+    { word:'HOBBY',  pos:'noun',       hints:['An activity you do for fun in free time.','Football, painting, and reading can be this.','Plural: hobbies.'], extra:'Plural: hobbies' },
+    { word:'TIRED',  pos:'adjective',  hints:['Feeling a need to rest or sleep.','You feel this after a long day.','Antonym: energetic.'], extra:'Verb: to tire' },
+    { word:'PROUD',  pos:'adjective',  hints:['Feeling pleased about something you or someone else achieved.','A parent feels this when their child does well.','Antonym: ashamed.'], extra:'Noun: pride' },
+  ],
+  B1: [
+    { word:'AMBITIOUS',  pos:'adjective', hints:['Having a strong desire to succeed.','Synonym: driven or determined.','Antonym: unambitious.'], extra:'Noun: ambition' },
+    { word:'NEGOTIATE',  pos:'verb',      hints:['To discuss in order to reach an agreement.','Diplomats and business people do this.','It often involves compromise.'], extra:'Noun: negotiation' },
+    { word:'CONFLICT',   pos:'noun',      hints:['A serious disagreement or argument.','It can occur between people, countries, or ideas.','Synonym: dispute.'], extra:'Verb: to conflict' },
+    { word:'ABSORB',     pos:'verb',      hints:['To take something in completely.','A sponge does this with water.','Students do this with information.'], extra:'Adjective: absorbent' },
+    { word:'EVIDENCE',   pos:'noun',      hints:['Facts that prove something is true.','Detectives look for this at a crime scene.','Synonym: proof.'], extra:'Adjective: evident' },
+    { word:'GRATEFUL',   pos:'adjective', hints:['Feeling thankful for something received.','Synonym: thankful.','Antonym: ungrateful.'], extra:'Noun: gratitude' },
+    { word:'PRECISE',    pos:'adjective', hints:['Exact and accurate, with no errors.','A surgeon must be this.','Antonym: vague.'], extra:'Adverb: precisely' },
+    { word:'ACHIEVE',    pos:'verb',      hints:['To successfully reach a goal.','Athletes train hard to do this.','Noun: achievement.'], extra:'Noun: achievement' },
+    { word:'FREQUENT',   pos:'adjective', hints:['Happening often or repeatedly.','A bus that runs every 10 minutes is this.','Antonym: rare.'], extra:'Adverb: frequently' },
+    { word:'PERSUADE',   pos:'verb',      hints:['To convince someone to believe or do something.','Advertisers try to do this.','Noun: persuasion.'], extra:'Noun: persuasion' },
+    { word:'TOLERANCE',  pos:'noun',      hints:['The ability to accept things you disagree with.','It is important in multicultural societies.','Adjective: tolerant.'], extra:'Adjective: tolerant' },
+    { word:'CURIOSITY',  pos:'noun',      hints:['A strong desire to know or learn something.','It "killed the cat" according to the proverb.','Adjective: curious.'], extra:'Adjective: curious' },
+    { word:'OBSTACLE',   pos:'noun',      hints:['Something that blocks your way or progress.','A fallen tree on a road is a physical one.','Synonym: barrier.'], extra:'Synonym: barrier' },
+    { word:'RELIABLE',   pos:'adjective', hints:['Consistently good and able to be trusted.','A friend who is always on time is this.','Antonym: unreliable.'], extra:'Noun: reliability' },
+    { word:'SURVIVE',    pos:'verb',      hints:['To continue to live despite difficulty.','Animals adapt to their environment to do this.','Noun: survival.'], extra:'Noun: survivor' },
+    { word:'FLEXIBLE',   pos:'adjective', hints:['Able to change or adapt easily.','The opposite of rigid.','A yoga instructor must be this physically.'], extra:'Noun: flexibility' },
+    { word:'MOTIVE',     pos:'noun',      hints:['A reason for doing something.','Detectives try to find a suspect\'s this.','Synonym: reason or purpose.'], extra:'Verb: to motivate' },
+    { word:'PREDICT',    pos:'verb',      hints:['To say what will happen before it does.','Weather forecasters try to do this.','Noun: prediction.'], extra:'Noun: prediction' },
+    { word:'SOLUTION',   pos:'noun',      hints:['An answer to a problem.','You look for this when something goes wrong.','Verb: to solve.'], extra:'Verb: to solve' },
+    { word:'VOLUNTEER',  pos:'noun/verb', hints:['Someone who offers to help without payment.','Charity workers are often this.','Verb: to willingly offer your help.'], extra:'Related: charity' },
+    { word:'INFLUENCE',  pos:'noun/verb', hints:['The power to affect someone or something.','Famous people often have a lot of this.','Adjective: influential.'], extra:'Adjective: influential' },
+    { word:'DEDICATE',   pos:'verb',      hints:['To give all your time and effort to something.','Athletes this themselves to their sport.','Noun: dedication.'], extra:'Noun: dedication' },
+    { word:'LOGICAL',    pos:'adjective', hints:['Based on clear and sensible reasoning.','A scientist\'s conclusion should be this.','Antonym: illogical.'], extra:'Noun: logic' },
+    { word:'COMPARE',    pos:'verb',      hints:['To look at two or more things and find similarities or differences.','Teachers ask students to do this with two texts.','Noun: comparison.'], extra:'Noun: comparison' },
+    { word:'OPINION',    pos:'noun',      hints:['What you personally think about something.','It is not a fact — it can differ from person to person.','Phrase: "In my _..."'], extra:'Adjective: opinionated' },
+    { word:'COLLAPSE',   pos:'verb/noun', hints:['To fall down suddenly.','A building can do this in an earthquake.','It can also mean a sudden failure, like a business.'], extra:'Related: structural failure' },
+    { word:'PATIENCE',   pos:'noun',      hints:['The ability to wait without getting annoyed.','It is a virtue, according to the proverb.','Adjective: patient.'], extra:'Adjective: patient' },
+    { word:'ESSENTIAL',  pos:'adjective', hints:['Absolutely necessary.','Water and food are this for human life.','Synonym: vital.'], extra:'Synonym: vital' },
+    { word:'REFLECT',    pos:'verb',      hints:['To think carefully about something.','A mirror does this with light.','Noun: reflection.'], extra:'Noun: reflection' },
+    { word:'RECOMMEND',  pos:'verb',      hints:['To suggest something as good or suitable.','A doctor does this when prescribing medicine.','Noun: recommendation.'], extra:'Noun: recommendation' },
+  ],
+  B2: [
+    { word:'AMBIGUITY',     pos:'noun',      hints:['The quality of having more than one possible meaning.','A sentence that can be read two ways has this.','Adjective: ambiguous.'], extra:'Adjective: ambiguous' },
+    { word:'RESILIENT',     pos:'adjective', hints:['Able to recover quickly from difficulties.','Someone who bounces back after failure is this.','Antonym: fragile.'], extra:'Noun: resilience' },
+    { word:'SPECULATE',     pos:'verb',      hints:['To form an opinion without firm evidence.','Investors do this with stocks.','Noun: speculation.'], extra:'Noun: speculation' },
+    { word:'PARADOX',       pos:'noun',      hints:['A statement that contradicts itself yet may be true.','"Less is more" is a classic example.','Adjective: paradoxical.'], extra:'Adjective: paradoxical' },
+    { word:'ELOQUENT',      pos:'adjective', hints:['Expressing ideas fluently and persuasively.','A great orator or writer is this.','Antonym: inarticulate.'], extra:'Noun: eloquence' },
+    { word:'INEVITABLE',    pos:'adjective', hints:['Certain to happen, impossible to avoid.','Death and taxes are said to be this.','Antonym: preventable.'], extra:'Adverb: inevitably' },
+    { word:'SCRUTINY',      pos:'noun',      hints:['Close and critical examination.','Politicians face public this.','Verb: to scrutinise.'], extra:'Verb: to scrutinise' },
+    { word:'EMPATHY',       pos:'noun',      hints:['The ability to understand and share another person\'s feelings.','A good counsellor needs this.','Different from sympathy — you feel it with them, not just for them.'], extra:'Adjective: empathetic' },
+    { word:'CONSTRAINT',    pos:'noun',      hints:['A limitation or restriction.','A budget is a financial one.','Verb: to constrain.'], extra:'Verb: to constrain' },
+    { word:'OBSOLETE',      pos:'adjective', hints:['No longer in use or outdated.','Fax machines are becoming this.','Antonym: current or modern.'], extra:'Noun: obsolescence' },
+    { word:'INFERENCE',     pos:'noun',      hints:['A conclusion reached from evidence, not stated directly.','Sherlock Holmes made these from small details.','Verb: to infer.'], extra:'Verb: to infer' },
+    { word:'CONTEMPLATE',   pos:'verb',      hints:['To think deeply about something for a long time.','Philosophers this existence.','Synonym: ponder.'], extra:'Noun: contemplation' },
+    { word:'DIMINISH',      pos:'verb',      hints:['To make or become smaller or less.','His confidence began to this after the failure.','Antonym: increase.'], extra:'Adjective: diminishing' },
+    { word:'TRANSPARENT',   pos:'adjective', hints:['Easy to see through, or honest and open.','Glass is physically this.','A company with open accounts is metaphorically this.'], extra:'Noun: transparency' },
+    { word:'PRECEDENT',     pos:'noun',      hints:['An earlier event used as a guide for the future.','Courts rely on past cases to set this.','Phrase: "to set a _."'], extra:'Adjective: unprecedented' },
+    { word:'INTEGRITY',     pos:'noun',      hints:['The quality of being honest and having strong moral principles.','A politician with this never accepts bribes.','Synonym: honesty.'], extra:'Adjective: integral' },
+    { word:'BUREAUCRACY',   pos:'noun',      hints:['A system of complex rules and procedures in an organisation.','People complain about red tape in government this.','Adjective: bureaucratic.'], extra:'Adjective: bureaucratic' },
+    { word:'ADVOCATE',      pos:'noun/verb', hints:['To publicly support or recommend something.','A lawyer does this for their client.','Noun: a person who promotes a cause.'], extra:'Noun: advocacy' },
+    { word:'PERPETUAL',     pos:'adjective', hints:['Never ending or constantly repeated.','A clock that runs forever would be this.','Synonym: eternal.'], extra:'Adverb: perpetually' },
+    { word:'DISCREPANCY',   pos:'noun',      hints:['A difference between two things that should match.','An accountant looks for these in financial records.','Synonym: inconsistency.'], extra:'Adjective: discrepant' },
+    { word:'COHERENT',      pos:'adjective', hints:['Logical, clear, and easy to understand.','A well-structured essay should be this.','Antonym: incoherent.'], extra:'Noun: coherence' },
+    { word:'INCENTIVE',     pos:'noun',      hints:['Something that motivates someone to act.','A bonus salary is a financial one.','Synonym: motivation.'], extra:'Related: motivate' },
+    { word:'MITIGATE',      pos:'verb',      hints:['To make something less severe or harmful.','Safety equipment helps to this risk.','Noun: mitigation.'], extra:'Noun: mitigation' },
+    { word:'PROFOUND',      pos:'adjective', hints:['Very deep in meaning or effect.','A _ experience can change your life.','Synonym: deep or significant.'], extra:'Adverb: profoundly' },
+    { word:'HIERARCHY',     pos:'noun',      hints:['A system in which people are ranked by authority.','An army has a strict one.','Adjective: hierarchical.'], extra:'Adjective: hierarchical' },
+    { word:'VOLATILE',      pos:'adjective', hints:['Likely to change quickly and unpredictably.','Petrol is physically this — it evaporates fast.','A _ situation can become dangerous at any moment.'], extra:'Noun: volatility' },
+    { word:'IMPLICATION',   pos:'noun',      hints:['A conclusion that can be drawn from something, though not stated directly.','If you lie once, the _ is you might lie again.','Verb: to imply.'], extra:'Verb: to imply' },
+    { word:'DILEMMA',       pos:'noun',      hints:['A difficult choice between two equally unpleasant options.','A doctor faces an ethical one when resources are limited.','Synonym: quandary.'], extra:'Related: ethical dilemma' },
+    { word:'UNDERMINE',     pos:'verb',      hints:['To weaken or damage something gradually.','Spreading rumours can _ someone\'s reputation.','Synonym: erode or sabotage.'], extra:'Synonym: sabotage' },
+    { word:'ARTICULATE',    pos:'adjective', hints:['Able to express ideas clearly and effectively.','A good public speaker is this.','Antonym: inarticulate.'], extra:'Verb: to articulate an idea' },
+    { word:'METICULOUS',    pos:'adjective', hints:['Showing great attention to detail.','A watchmaker must be this.','Synonym: thorough or careful.'], extra:'Adverb: meticulously' },
+    { word:'NOSTALGIA',     pos:'noun',      hints:['A sentimental longing for the past.','Old songs and photos often trigger this.','Adjective: nostalgic.'], extra:'Adjective: nostalgic' },
+    { word:'RECIPROCAL',    pos:'adjective', hints:['Given or felt by each towards the other equally.','A _ agreement benefits both sides.','Noun: reciprocity.'], extra:'Noun: reciprocity' },
+    { word:'AMBIVALENT',    pos:'adjective', hints:['Having mixed feelings about something.','You feel this when you can\'t decide if you like something.','Noun: ambivalence.'], extra:'Noun: ambivalence' },
+    { word:'PRAGMATIC',     pos:'adjective', hints:['Dealing with things in a sensible, practical way.','A _ person focuses on what works, not theory.','Antonym: idealistic.'], extra:'Noun: pragmatism' },
+    { word:'RATIONALE',     pos:'noun',      hints:['The reasons or logic behind a decision or belief.','A manager should explain the _ of their choices.','Synonym: justification.'], extra:'Synonym: justification' },
+    { word:'UNPRECEDENTED', pos:'adjective', hints:['Never done or experienced before.','The pandemic caused _ disruption to daily life.','Antonym: familiar or common.'], extra:'Noun: precedent' },
+    { word:'JURISDICTION',  pos:'noun',      hints:['The official power to make legal decisions in a place.','Each country has its own _.','A crime committed abroad may fall outside a court\'s _.'], extra:'Related: law, authority' },
+    { word:'SUSCEPTIBLE',  pos:'adjective', hints:['Easily affected or harmed by something.','A person with no warm clothes is this to cold.','Synonym: vulnerable.'], extra:'Noun: susceptibility' },
+    { word:'COMMEMORATE',  pos:'verb',      hints:['To remember and honour an important event or person.','Countries do this with national holidays.','A statue or ceremony can do this.'], extra:'Noun: commemoration' },
+  ]
+};
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let level = 'A1';
+let mode = 'reveal'; // 'reveal' | 'crossword'
+let score = 0, streak = 0, wordsCompleted = 0;
+let hintsRevealed = 0;
+let currentWord = null, currentWordObj = null;
+let timerOn = false, timerInterval = null, timeElapsed = 0;
+let wrongGuesses = 0; // for reveal mode
+let usedLetters = {};
+let cwData = null; // crossword state
+let wordDone = false;
+let usedWordIndices = {};
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+document.getElementById('mastheadDate').textContent =
+  new Date().toLocaleDateString('en-GB', {weekday:'long', year:'numeric', month:'long', day:'numeric'}).toUpperCase();
+
+function setLevel(l) {
+  level = l;
+  document.querySelectorAll('.lvl-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.lvl-btn.' + l.toLowerCase()).classList.add('active');
+  if (!usedWordIndices[level]) usedWordIndices[level] = [];
+  loadWord();
+}
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('modeReveal').classList.toggle('active', m === 'reveal');
+  document.getElementById('modeCross').classList.toggle('active', m === 'crossword');
+  loadWord();
+}
+
+function toggleTimer() {
+  timerOn = document.getElementById('timerCheck').checked;
+  let disp = document.getElementById('timerDisplay');
+  if (timerOn) { disp.style.display = 'block'; startTimer(); }
+  else { disp.style.display = 'none'; clearInterval(timerInterval); timeElapsed = 0; }
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timeElapsed = 0;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeElapsed++;
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  let d = document.getElementById('timerDisplay');
+  if (!d) return;
+  let m = Math.floor(timeElapsed / 60), s = timeElapsed % 60;
+  d.textContent = m + ':' + String(s).padStart(2,'0');
+  d.style.color = '#1a1008';
+}
+
+// ─── WORD LOADING ────────────────────────────────────────────────────────────
+function loadWord() {
+  clearInterval(timerInterval);
+  wordDone = false;
+  hintsRevealed = 1;
+  wrongGuesses = 0;
+  usedLetters = {};
+  hideFeedback();
+  document.getElementById('nextBtn').style.display = 'none';
+
+  if (!usedWordIndices[level]) usedWordIndices[level] = [];
+  let pool = WORD_DATA[level];
+  let available = pool.map((_,i)=>i).filter(i => !usedWordIndices[level].includes(i));
+  if (available.length === 0) {
+    // All words in this level have been seen — show level complete screen
+    showLevelComplete();
+    return;
+  }
+  let idx = available[Math.floor(Math.random() * available.length)];
+  usedWordIndices[level].push(idx);
+
+  currentWordObj = pool[idx];
+  currentWord = currentWordObj.word;
+
+  // Update progress
+  let total = pool.length, used = usedWordIndices[level].length;
+  document.getElementById('progressFill').style.width = (used/total*100) + '%';
+
+  renderHintPanel();
+  renderWordMeta();
+
+  if (mode === 'reveal') renderRevealMode();
+  else renderCrosswordMode();
+
+  if (timerOn) startTimer();
+}
+
+const MAX_HINTS = 3;
+
+function renderHintPanel() {
+  let hints = currentWordObj.hints.slice(0, MAX_HINTS);
+  let list = document.getElementById('hintList');
+  list.innerHTML = '';
+  for (let i = 0; i < hints.length; i++) {
+    let li = document.createElement('li');
+    li.id = 'hint-' + i;
+    if (i < hintsRevealed) {
+      li.innerHTML = `<span class="hint-num">#${i+1}</span><span>${hints[i]}</span>`;
+    } else {
+      li.innerHTML = `<span class="hint-num">#${i+1}</span><span class="hint-locked">— locked —</span>`;
+    }
+    list.appendChild(li);
+  }
+  let cost = getHintCost();
+  let remaining = hints.length - hintsRevealed;
+  let btn = document.getElementById('revealHintBtn');
+  let costSpan = document.getElementById('hintCostSpan');
+  if (remaining > 0 && !wordDone) {
+    btn.disabled = false;
+    costSpan.textContent = cost > 0 ? `(−${cost} pts)` : '(free)';
+  } else {
+    btn.disabled = true;
+    costSpan.textContent = remaining === 0 ? '(all 3 revealed)' : '';
+  }
+}
+
+function getHintCost() {
+  if (hintsRevealed <= 1) return 0;
+  return (hintsRevealed - 1) * 5;
+}
+
+function revealNextHint() {
+  if (wordDone) return;
+  let hints = currentWordObj.hints.slice(0, MAX_HINTS);
+  if (hintsRevealed >= hints.length) return;
+  let cost = getHintCost();
+  score = Math.max(0, score - cost);
+  hintsRevealed++;
+  renderHintPanel();
+  updateStats();
+  let newLi = document.getElementById('hint-' + (hintsRevealed - 1));
+  if (newLi) newLi.classList.add('pop-in');
+}
+
+function revealAllHints() {
+  hintsRevealed = Math.min(MAX_HINTS, currentWordObj.hints.length);
+  renderHintPanel();
+}
+
+function renderWordMeta() {
+  let obj = currentWordObj;
+  document.getElementById('wordMeta').innerHTML =
+    `<b>Letters:</b> ${currentWord.length} &nbsp;|&nbsp; <b>Type:</b> ${obj.pos} &nbsp;|&nbsp; <b>Level:</b> ${level}`;
+}
+
+// ─── REVEAL MODE ─────────────────────────────────────────────────────────────
+function renderRevealMode() {
+  let col = document.getElementById('puzzleCol');
+  col.innerHTML = `
+    <div class="section-head">Word Reveal <span>GUESS THE WORD — ONE LETTER AT A TIME</span></div>
+    <div class="hangman-wrap"><svg id="hangmanSvg" viewBox="0 0 120 110"></svg></div>
+    <div class="word-display" id="wordDisplay"></div>
+    <div class="keyboard" id="keyboard"></div>
+  `;
+  drawHangman(0);
+  renderWordDisplay();
+  renderKeyboard();
+}
+
+function renderWordDisplay() {
+  let disp = document.getElementById('wordDisplay');
+  if (!disp) return;
+  disp.innerHTML = currentWord.split('').map((c,i) =>
+    `<div class="letter-box" id="lb${i}"><span class="box-num">${i+1}</span>${usedLetters[c] === 'correct' ? c : ''}</div>`
+  ).join('');
+}
+
+function renderKeyboard() {
+  let kb = document.getElementById('keyboard');
+  if (!kb) return;
+  let rows = ['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'];
+  kb.innerHTML = rows.map(row =>
+    `<div class="kb-row">${row.split('').map(l => {
+      let cls = usedLetters[l] === 'correct' ? 'used-correct' : usedLetters[l] === 'wrong' ? 'used-wrong' : '';
+      let dis = usedLetters[l] ? 'disabled' : '';
+      return `<button class="kb-key ${cls}" ${dis} onclick="guessLetter('${l}')">${l}</button>`;
+    }).join('')}</div>`
+  ).join('');
+}
+
+function guessLetter(letter) {
+  if (wordDone || usedLetters[letter]) return;
+  if (currentWord.includes(letter)) {
+    usedLetters[letter] = 'correct';
+    // Animate revealed boxes
+    currentWord.split('').forEach((c,i) => {
+      if (c === letter) {
+        let box = document.getElementById('lb' + i);
+        if (box) { box.textContent = c; box.classList.add('revealed', 'pop-in'); }
+      }
+    });
+    // Check win
+    let won = currentWord.split('').every(c => usedLetters[c] === 'correct');
+    if (won) wordSolved(true);
+  } else {
+    usedLetters[letter] = 'wrong';
+    wrongGuesses++;
+    drawHangman(wrongGuesses);
+    if (wrongGuesses >= 6) wordSolved(false);
+  }
+  renderKeyboard();
+}
+
+function drawHangman(n) {
+  let svg = document.getElementById('hangmanSvg');
+  if (!svg) return;
+  // Gallows always shown, body parts added per wrong guess
+  let parts = [
+    // 0: gallows
+    `<line x1="10" y1="105" x2="110" y2="105" stroke="#1a1008" stroke-width="3"/>
+     <line x1="30" y1="105" x2="30" y2="5" stroke="#1a1008" stroke-width="3"/>
+     <line x1="30" y1="5" x2="75" y2="5" stroke="#1a1008" stroke-width="3"/>
+     <line x1="75" y1="5" x2="75" y2="20" stroke="#1a1008" stroke-width="2"/>`,
+    // 1: head
+    `<circle cx="75" cy="30" r="10" stroke="#1a1008" stroke-width="2" fill="none"/>`,
+    // 2: body
+    `<line x1="75" y1="40" x2="75" y2="70" stroke="#1a1008" stroke-width="2"/>`,
+    // 3: left arm
+    `<line x1="75" y1="50" x2="58" y2="62" stroke="#1a1008" stroke-width="2"/>`,
+    // 4: right arm
+    `<line x1="75" y1="50" x2="92" y2="62" stroke="#1a1008" stroke-width="2"/>`,
+    // 5: left leg
+    `<line x1="75" y1="70" x2="60" y2="88" stroke="#1a1008" stroke-width="2"/>`,
+    // 6: right leg
+    `<line x1="75" y1="70" x2="90" y2="88" stroke="#1a1008" stroke-width="2"/>`,
+  ];
+  svg.innerHTML = parts.slice(0, n + 1).join('');
+}
+
+// ─── CROSSWORD MODE ──────────────────────────────────────────────────────────
+function renderCrosswordMode() {
+  // Build a mini crossword with up to 5 words from the same level
+  let pool = WORD_DATA[level];
+  let words = shuffleArr([...pool]).slice(0, 5).map(w => w.word);
+
+  cwData = buildCrossword(words);
+  currentWord = cwData.words[0].word;
+  currentWordObj = WORD_DATA[level].find(w => w.word === currentWord) || WORD_DATA[level][0];
+  hintsRevealed = 1;
+  renderHintPanel();
+  renderWordMeta();
+
+  let col = document.getElementById('puzzleCol');
+  col.innerHTML = `
+    <div class="section-head">Crossword <span>CLICK A CLUE OR A CELL TO START</span></div>
+    <div class="cw-center">
+      <div class="crossword-grid" id="cwGrid"></div>
+    </div>
+    <div class="cw-clues" id="cwClues"></div>
+  `;
+  renderCWGrid();
+  renderCWClues();
+}
+
+function buildCrossword(words) {
+  // Simple crossword placement algorithm
+  words = words.map(w => w.toUpperCase()).sort((a,b) => b.length - a.length);
+  let placed = [];
+  let grid = {};
+
+  function placeWord(word, r, c, dir) {
+    let cells = [];
+    for (let i = 0; i < word.length; i++) {
+      let row = dir === 'across' ? r : r + i;
+      let col = dir === 'across' ? c + i : c;
+      cells.push({row, col, letter: word[i]});
+    }
+    return cells;
+  }
+
+  function canPlace(cells, grid) {
+    for (let {row, col, letter} of cells) {
+      let key = row + ',' + col;
+      if (grid[key] && grid[key] !== letter) return false;
+    }
+    return true;
+  }
+
+  function addToGrid(cells, grid) {
+    for (let {row, col, letter} of cells) {
+      grid[row + ',' + col] = letter;
+    }
+  }
+
+  // Place first word horizontally at 0,0
+  let first = words[0];
+  let firstCells = placeWord(first, 5, 0, 'across');
+  addToGrid(firstCells, grid);
+  placed.push({word: first, row: 5, col: 0, dir: 'across', cells: firstCells, number: 1});
+
+  let num = 2;
+  for (let i = 1; i < words.length; i++) {
+    let word = words[i];
+    let bestOverlap = null;
+    for (let p of placed) {
+      for (let pi = 0; pi < p.word.length; pi++) {
+        for (let wi = 0; wi < word.length; wi++) {
+          if (p.word[pi] !== word[wi]) continue;
+          let r, c, dir;
+          if (p.dir === 'across') {
+            r = p.row - wi;
+            c = p.col + pi;
+            dir = 'down';
+          } else {
+            r = p.row + pi;
+            c = p.col - wi;
+            dir = 'across';
+          }
+          let cells = placeWord(word, r, c, dir);
+          if (canPlace(cells, grid)) {
+            bestOverlap = {word, r, c, dir, cells};
+            break;
+          }
+        }
+        if (bestOverlap) break;
+      }
+      if (bestOverlap) break;
+    }
+    if (bestOverlap) {
+      addToGrid(bestOverlap.cells, grid);
+      placed.push({word: bestOverlap.word, row: bestOverlap.r, col: bestOverlap.c, dir: bestOverlap.dir, cells: bestOverlap.cells, number: num++});
+    }
+  }
+
+  // Normalize grid to start at 0,0
+  let rows = placed.flatMap(p => p.cells.map(c => c.row));
+  let cols = placed.flatMap(p => p.cells.map(c => c.col));
+  let minR = Math.min(...rows), minC = Math.min(...cols);
+  let maxR = Math.max(...rows), maxC = Math.max(...cols);
+
+  let normalGrid = {};
+  for (let key in grid) {
+    let [r,c] = key.split(',').map(Number);
+    normalGrid[(r-minR)+','+(c-minC)] = grid[key];
+  }
+  placed.forEach(p => {
+    p.row -= minR; p.col -= minC;
+    p.cells.forEach(cell => { cell.row -= minR; cell.col -= minC; });
+  });
+
+  return {
+    words: placed,
+    grid: normalGrid,
+    rows: maxR - minR + 1,
+    cols: maxC - minC + 1,
+    userGrid: {},
+    activeWord: placed[0],
+    solved: {}
+  };
+}
+
+function renderCWGrid() {
+  let gridEl = document.getElementById('cwGrid');
+  if (!gridEl || !cwData) return;
+  gridEl.innerHTML = '';
+  for (let r = 0; r < cwData.rows; r++) {
+    let rowEl = document.createElement('div');
+    rowEl.className = 'cw-row';
+    for (let c = 0; c < cwData.cols; c++) {
+      let key = r + ',' + c;
+      let cell = document.createElement('div');
+      cell.className = 'cw-cell';
+      if (cwData.grid[key]) {
+        cell.classList.add('input-cell');
+        // Check if start of word
+        let wordStart = cwData.words.find(w => w.row === r && w.col === c);
+        if (wordStart) {
+          let num = document.createElement('span');
+          num.className = 'cell-num';
+          num.textContent = wordStart.number;
+          cell.appendChild(num);
+        }
+        // Check if in active word
+        if (cwData.activeWord && cwData.activeWord.cells.some(cl => cl.row === r && cl.col === c)) {
+          cell.classList.add('cw-active-input');
+        }
+        if (cwData.solved[cwData.activeWord && cwData.activeWord.word]) cell.classList.add('correct');
+        // Check each word for solved
+        let inSolved = cwData.words.filter(w => cwData.solved[w.word]).some(w => w.cells.some(cl => cl.row === r && cl.col === c));
+        if (inSolved) cell.classList.add('correct');
+
+        let input = document.createElement('input');
+        input.maxLength = 1;
+        input.dataset.row = r;
+        input.dataset.col = c;
+        input.value = (cwData.userGrid[key] || '');
+        input.addEventListener('input', cwInput);
+        input.addEventListener('focus', cwFocus);
+        input.addEventListener('keydown', cwKeydown);
+        cell.appendChild(input);
+      } else {
+        cell.classList.add('blocked');
+      }
+      rowEl.appendChild(cell);
+    }
+    gridEl.appendChild(rowEl);
+  }
+}
+
+function renderCWClues() {
+  let el = document.getElementById('cwClues');
+  if (!el) return;
+  el.innerHTML = '<div class="section-head" style="margin-top:16px">Clues <span>CLICK TO SELECT A WORD</span></div>';
+  cwData.words.forEach(w => {
+    let wordObj = WORD_DATA[level].find(d => d.word === w.word) || {hints:['—'],pos:'?'};
+    let div = document.createElement('div');
+    div.className = 'cw-clue-item' + (cwData.activeWord && cwData.activeWord.word === w.word ? ' active-clue' : '') + (cwData.solved[w.word] ? ' solved' : '');
+    div.innerHTML = `<span class="cw-clue-num">${w.number}${w.dir==='across'?'A':'D'}</span><span>${wordObj.hints[0]} (${w.word.length} letters)</span>`;
+    div.onclick = () => selectCWWord(w);
+    el.appendChild(div);
+  });
+}
+
+function selectCWWord(wordObj) {
+  cwData.activeWord = wordObj;
+  currentWord = wordObj.word;
+  currentWordObj = WORD_DATA[level].find(w => w.word === currentWord) || WORD_DATA[level][0];
+  hintsRevealed = 1;
+  renderHintPanel();
+  renderWordMeta();
+  hideFeedback();
+  renderCWGrid();
+  renderCWClues();
+  // Focus first empty cell
+  let firstEmpty = wordObj.cells.find(cl => !cwData.userGrid[cl.row+','+cl.col]);
+  let target = firstEmpty || wordObj.cells[0];
+  let inp = document.querySelector(`input[data-row="${target.row}"][data-col="${target.col}"]`);
+  if (inp) inp.focus();
+}
+
+function cwFocus(e) {
+  let r = parseInt(e.target.dataset.row), c = parseInt(e.target.dataset.col);
+  // Find which word this cell belongs to; prefer active word
+  let w = cwData.words.find(w => w === cwData.activeWord && w.cells.some(cl => cl.row === r && cl.col === c));
+  if (!w) w = cwData.words.find(w => w.cells.some(cl => cl.row === r && cl.col === c));
+  if (w && w !== cwData.activeWord) selectCWWord(w);
+}
+
+function cwInput(e) {
+  let r = parseInt(e.target.dataset.row), c = parseInt(e.target.dataset.col);
+  let val = e.target.value.toUpperCase().replace(/[^A-Z]/g,'');
+  e.target.value = val;
+  if (!val) { delete cwData.userGrid[r+','+c]; return; }
+  cwData.userGrid[r+','+c] = val;
+  // Move to next cell in active word
+  if (cwData.activeWord) {
+    let cells = cwData.activeWord.cells;
+    let idx = cells.findIndex(cl => cl.row === r && cl.col === c);
+    if (idx < cells.length - 1) {
+      let next = cells[idx+1];
+      let nextInp = document.querySelector(`input[data-row="${next.row}"][data-col="${next.col}"]`);
+      if (nextInp) nextInp.focus();
+    } else {
+      checkCWWord();
+    }
+  }
+}
+
+function cwKeydown(e) {
+  if (e.key === 'Enter') checkCWWord();
+  if (e.key === 'Backspace') {
+    let r = parseInt(e.target.dataset.row), c = parseInt(e.target.dataset.col);
+    let key = r+','+c;
+    if (!cwData.userGrid[key] && cwData.activeWord) {
+      let cells = cwData.activeWord.cells;
+      let idx = cells.findIndex(cl => cl.row === r && cl.col === c);
+      if (idx > 0) {
+        let prev = cells[idx-1];
+        let prevInp = document.querySelector(`input[data-row="${prev.row}"][data-col="${prev.col}"]`);
+        if (prevInp) { prevInp.focus(); prevInp.value = ''; delete cwData.userGrid[prev.row+','+prev.col]; }
+      }
+    }
+  }
+}
+
+function checkCWWord() {
+  if (!cwData.activeWord) return;
+  let w = cwData.activeWord;
+  let correct = w.cells.every(cl => (cwData.userGrid[cl.row+','+cl.col] || '') === cl.letter);
+  if (correct) {
+    cwData.solved[w.word] = true;
+    let pts = Math.max(10, 30 - hintsRevealed * 5);
+    score += pts; streak++;
+    wordsCompleted++;
+    showFeedback('good', `✓ "${w.word}" — +${pts} pts`);
+    showStamp(w.word);
+    renderCWGrid();
+    renderCWClues();
+    updateStats();
+    // Check if all words solved
+    if (cwData.words.every(pw => cwData.solved[pw.word])) {
+      wordDone = true;
+      showFeedback('good', '🏆 Crossword complete! Starting new puzzle…');
+      showNextBtn();
+    }
+  } else {
+    showFeedback('bad', 'Not quite — keep trying.');
+  }
+}
+
+// ─── WORD SOLVED (Reveal mode) ───────────────────────────────────────────────
+function wordSolved(correct) {
+  if (wordDone) return;
+  wordDone = true;
+  revealAllHints();
+  if (correct) {
+    let pts = Math.max(10, 50 - (hintsRevealed - 1) * 8 - wrongGuesses * 5);
+    score += pts; streak++; wordsCompleted++;
+    showFeedback('good', `✓ Correct! "${currentWord}" — +${pts} pts`);
+    showStamp(currentWord);
+  } else {
+    streak = 0;
+    showFeedback('bad', `✗ The word was: "${currentWord}"`);
+    showStamp(currentWord, true);
+    drawHangman(7);
+  }
+  updateStats();
+  showNextBtn();
+}
+
+// ─── UI HELPERS ──────────────────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('streakVal').textContent = streak;
+  document.getElementById('wordsVal').textContent = wordsCompleted;
+  let banner = document.getElementById('streakBanner');
+  if (streak >= 5) banner.textContent = '🔥 ' + streak + '-word streak!';
+  else if (streak >= 3) banner.textContent = '⚡ ' + streak + ' in a row!';
+  else banner.textContent = '';
+}
+
+function showFeedback(type, msg) {
+  let fb = document.getElementById('feedbackBox');
+  fb.className = 'feedback-box ' + type;
+  fb.textContent = msg;
+}
+function hideFeedback() {
+  document.getElementById('feedbackBox').className = 'feedback-box';
+  document.getElementById('feedbackBox').textContent = '';
+}
+
+function showNextBtn() {
+  let btn = document.getElementById('nextBtn');
+  btn.style.display = 'block';
+  btn.textContent = mode === 'crossword' && !cwData.words.every(w => cwData.solved[w.word]) ? 'Skip Puzzle →' : 'Next Word →';
+}
+
+function nextWord() {
+  loadWord();
+}
+
+function showStamp(word, wrong=false) {
+  let el = document.createElement('div');
+  el.className = 'complete-stamp' + (wrong ? ' wrong' : '');
+  el.textContent = wrong ? 'MISSED' : 'SOLVED';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 950);
+}
+
+function shuffleArr(arr) { return [...arr].sort(() => Math.random() - .5); }
+
+// ─── LEVEL COMPLETE ───────────────────────────────────────────────────────────
+const LEVEL_ORDER = ['A1','A2','B1','B2'];
+let lcCountdownTimer = null;
+
+function showLevelComplete() {
+  clearInterval(timerInterval);
+  clearInterval(lcCountdownTimer);
+
+  let levelIdx = LEVEL_ORDER.indexOf(level);
+  let hasNext = levelIdx < LEVEL_ORDER.length - 1;
+  let nextLvl = hasNext ? LEVEL_ORDER[levelIdx + 1] : null;
+
+  // Stamp colour per level
+  let colours = { A1: 'var(--stamp-a1)', A2: 'var(--stamp-a2)', B1: 'var(--stamp-b1)', B2: 'var(--stamp-b2)' };
+  let stamp = document.getElementById('lcStamp');
+  stamp.style.color = colours[level];
+  stamp.style.borderColor = colours[level];
+  stamp.innerHTML = level + '<br>COMPLETE';
+
+  document.getElementById('lcTitle').textContent = 'You cracked every word in ' + level + '!';
+  document.getElementById('lcSub').textContent = 'All ' + WORD_DATA[level].length + ' words found. Outstanding work.';
+  document.getElementById('lcStats').innerHTML =
+    '<b>Score:</b> ' + score + ' &nbsp;|&nbsp; <b>Best Streak:</b> ' + streak + ' &nbsp;|&nbsp; <b>Words Done:</b> ' + wordsCompleted;
+
+  let nextBtn = document.getElementById('nextLevelBtn');
+  let noNext = document.getElementById('lcNoNext');
+  let countdown = document.getElementById('lcCountdown');
+
+  if (hasNext) {
+    nextBtn.style.display = 'block';
+    nextBtn.textContent = 'Continue to ' + nextLvl + ' →';
+    noNext.style.display = 'none';
+
+    // 5-second countdown then auto-advance
+    let secs = 5;
+    countdown.textContent = 'Auto-advancing to ' + nextLvl + ' in ' + secs + 's… (click Restart to cancel)';
+    lcCountdownTimer = setInterval(() => {
+      secs--;
+      if (secs <= 0) {
+        clearInterval(lcCountdownTimer);
+        countdown.textContent = '';
+        goNextLevel();
+      } else {
+        countdown.textContent = 'Auto-advancing to ' + nextLvl + ' in ' + secs + 's… (click Restart to cancel)';
+      }
+    }, 1000);
+  } else {
+    nextBtn.style.display = 'none';
+    noNext.style.display = 'block';
+    countdown.textContent = '';
+  }
+
+  document.getElementById('levelCompleteOverlay').classList.add('show');
+  launchConfetti();
+}
+
+function closeLevelComplete() {
+  clearInterval(lcCountdownTimer);
+  document.getElementById('levelCompleteOverlay').classList.remove('show');
+  document.getElementById('lcCountdown').textContent = '';
+}
+
+function restartLevel() {
+  closeLevelComplete();
+  usedWordIndices[level] = [];
+  score = 0; streak = 0; wordsCompleted = 0;
+  updateStats();
+  loadWord();
+}
+
+function goNextLevel() {
+  closeLevelComplete();
+  let levelIdx = LEVEL_ORDER.indexOf(level);
+  if (levelIdx < LEVEL_ORDER.length - 1) {
+    setLevel(LEVEL_ORDER[levelIdx + 1]);
+  }
+}
+
+function launchConfetti() {
+  let colours = ['#2d6a2d','#1a3a5c','#7a3d00','#6b0f1a','#c9bfa8','#1a1008','#b8860b'];
+  let shapes = ['circle','square','diamond'];
+  for (let i = 0; i < 90; i++) {
+    setTimeout(() => {
+      let el = document.createElement('div');
+      el.className = 'confetti-piece';
+      let shape = shapes[Math.floor(Math.random()*shapes.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.background = colours[Math.floor(Math.random()*colours.length)];
+      el.style.width = (6 + Math.random()*8) + 'px';
+      el.style.height = (6 + Math.random()*8) + 'px';
+      el.style.borderRadius = shape === 'circle' ? '50%' : shape === 'diamond' ? '0' : '2px';
+      el.style.transform = shape === 'diamond' ? 'rotate(45deg)' : '';
+      el.style.animationDuration = (2 + Math.random()*2.5) + 's';
+      el.style.animationDelay = (Math.random()*0.8) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 4000);
+    }, i * 18);
+  }
+}
+
+// ─── KEYBOARD INPUT ──────────────────────────────────────────────────────────
+document.addEventListener('keypress', e => {
+  if (mode !== 'reveal' || wordDone) return;
+  let l = e.key.toUpperCase();
+  if (/^[A-Z]$/.test(l)) guessLetter(l);
+});
+
+// ─── START ───────────────────────────────────────────────────────────────────
+loadWord();
+</script>
+
+<!-- ═══ HOW TO PLAY & SCORING — BOTTOM OF PAGE ═══════════════════════════ -->
+<div style="max-width:1000px;margin:40px auto 0;padding:0 20px 60px;">
+
+  <div style="border-top:4px double var(--ink);padding-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:14px;border-bottom:2px solid var(--ink);padding-bottom:6px;">
+        How to Play
+        <span style="font-size:.65rem;font-family:'DM Mono',monospace;color:var(--aged);letter-spacing:2px;margin-left:10px;">INSTRUCTIONS</span>
+      </h2>
+
+      <div style="margin-bottom:18px;">
+        <h3 style="font-family:'Special Elite',cursive;font-size:.95rem;color:var(--red);letter-spacing:1px;margin-bottom:8px;">▸ WORD REVEAL MODE</h3>
+        <ol style="padding-left:18px;line-height:1.9;font-size:.95rem;">
+          <li>Clue #1 is shown automatically — it's free.</li>
+          <li>Click <b>+ Reveal Next Clue</b> to unlock Clue #2 or #3. Each extra clue costs points.</li>
+          <li>Press letters on the on-screen keyboard (or your physical keyboard) to guess the hidden word one letter at a time.</li>
+          <li>You have <b>6 wrong guesses</b> before the word is lost — watch the figure!</li>
+          <li>Solve it with fewer clues and fewer wrong guesses to earn the most points.</li>
+        </ol>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <h3 style="font-family:'Special Elite',cursive;font-size:.95rem;color:var(--red);letter-spacing:1px;margin-bottom:8px;">▸ CROSSWORD MODE</h3>
+        <ol style="padding-left:18px;line-height:1.9;font-size:.95rem;">
+          <li>A mini crossword of 5 words is generated automatically.</li>
+          <li>Click a clue in the list, or click a cell in the grid, to select a word.</li>
+          <li>Type your answer letter by letter — the cursor moves automatically.</li>
+          <li>Press <b>Enter</b> or fill the last cell to check your answer.</li>
+          <li>Use <b>Backspace</b> to correct mistakes.</li>
+          <li>Unlock extra clues from the Clue File panel on the right — each one costs points.</li>
+        </ol>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Special Elite',cursive;font-size:.95rem;color:var(--red);letter-spacing:1px;margin-bottom:8px;">▸ LEVEL PROGRESSION</h3>
+        <ol style="padding-left:18px;line-height:1.9;font-size:.95rem;">
+          <li>There are <b>4 levels</b>: A1 → A2 → B1 → B2. Select any level freely using the buttons at the top.</li>
+          <li>Each level has a set number of words. When you have found <b>every word in a level</b>, a <b>Level Complete</b> screen appears.</li>
+          <li>From that screen you can choose to <b>Restart</b> the same level (words are reshuffled — your score resets) or <b>Continue to the next level</b>.</li>
+          <li>If you do nothing, the game will <b>automatically advance</b> to the next level after a 5-second countdown. Click Restart to cancel the countdown.</li>
+          <li>Words are <b>never repeated</b> within the same run of a level. You will see every word exactly once before the level ends.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:14px;border-bottom:2px solid var(--ink);padding-bottom:6px;">
+        Scoring
+        <span style="font-size:.65rem;font-family:'DM Mono',monospace;color:var(--aged);letter-spacing:2px;margin-left:10px;">POINTS GUIDE</span>
+      </h2>
+
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem;margin-bottom:18px;">
+        <thead>
+          <tr style="background:var(--ink);color:var(--paper);">
+            <th style="padding:8px 10px;text-align:left;font-family:'Special Elite',cursive;font-weight:normal;letter-spacing:1px;">Action</th>
+            <th style="padding:8px 10px;text-align:right;font-family:'Special Elite',cursive;font-weight:normal;letter-spacing:1px;">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px dashed var(--aged);">
+            <td style="padding:8px 10px;">Solve with Clue #1 only</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;color:var(--stamp-a1);">+50</td>
+          </tr>
+          <tr style="border-bottom:1px dashed var(--aged);">
+            <td style="padding:8px 10px;">Solve with Clue #2 revealed</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;color:var(--stamp-a2);">~+35</td>
+          </tr>
+          <tr style="border-bottom:1px dashed var(--aged);">
+            <td style="padding:8px 10px;">Solve with all 3 clues revealed</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;color:var(--stamp-b1);">~+20</td>
+          </tr>
+          <tr style="border-bottom:1px dashed var(--aged);">
+            <td style="padding:8px 10px;">Each extra clue revealed</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;color:var(--red);">−5 to −10</td>
+          </tr>
+          <tr style="border-bottom:1px dashed var(--aged);">
+            <td style="padding:8px 10px;">Each wrong letter guess</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;color:var(--red);">−5</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;">Minimum score per word</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'DM Mono';font-weight:700;">10</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="background:var(--paper2);border:1px dashed var(--aged);padding:14px;font-size:.88rem;line-height:1.7;">
+        <b style="font-family:'Special Elite',cursive;letter-spacing:1px;">Word Counts per Level:</b><br>
+        🟢 A1 — 10 words &nbsp;|&nbsp; 🔵 A2 — 20 words<br>
+        🟠 B1 — 30 words &nbsp;|&nbsp; 🔴 B2 — 40 words<br><br>
+        <b style="font-family:'Special Elite',cursive;letter-spacing:1px;">Clue Rules:</b><br>
+        Every word has exactly <b>3 clues</b>. Clue #1 is always free. Revealing #2 costs −5 pts, revealing #3 costs −10 pts. Use them wisely!<br><br>
+        <b style="font-family:'Special Elite',cursive;letter-spacing:1px;">Stopwatch Timer:</b><br>
+        Toggle the Timer checkbox at the top to see how long you take per word. It counts <i>up</i> — try to beat your own time!
+      </div>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:3px;color:var(--aged);margin-top:32px;border-top:1px solid var(--aged);padding-top:14px;">
+    WORD DETECTIVE — THE ENGLISH PUZZLE CHRONICLE — ALL RIGHTS RESERVED — TEACHER BENNY
+  </p>
+</div>
+
+
+<!-- ── LEVEL COMPLETE MODAL ── -->
+<div class="level-complete-overlay" id="levelCompleteOverlay">
+  <div class="level-complete-box">
+    <div class="lc-stamp" id="lcStamp">LEVEL<br>COMPLETE</div>
+    <div class="lc-title" id="lcTitle">You cracked every word!</div>
+    <div class="lc-sub" id="lcSub"></div>
+    <div class="lc-stats" id="lcStats"></div>
+    <div class="lc-btns">
+      <button class="lc-btn" onclick="restartLevel()">↺ Restart This Level</button>
+      <button class="lc-btn primary" id="nextLevelBtn" onclick="goNextLevel()"></button>
+    </div>
+    <div class="lc-countdown" id="lcCountdown"></div>
+    <div class="lc-no-next" id="lcNoNext" style="display:none">🏆 You have completed all levels — you are a Word Detective!</div>
+  </div>
+</div>
+</body>
+</html>
