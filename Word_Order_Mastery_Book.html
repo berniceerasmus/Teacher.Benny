@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Benny — English Word Order Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --royal:#1a3a6b;--royal-dark:#112650;--royal-mid:#2756a0;--royal-light:#d6e4f7;--royal-pale:#eef4fc;
+  --gold:#c9970a;--gold-light:#f0d060;--gold-pale:#fdf6dc;--gold-dark:#9a7005;
+  --cream:#faf6ee;--cream-dark:#f0eadc;--cream-border:#e2d9c8;
+  --ink:#1c1c1c;--ink-mid:#444;--ink-light:#777;--white:#ffffff;
+  --green-soft:#e8f5e9;--green-ink:#2e6b35;--red-soft:#fdecea;--red-ink:#8b1a1a;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.75}
+
+/* COVER */
+.cover{background:var(--royal-dark);color:var(--white);position:relative;overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end}
+.cbg{position:absolute;border-radius:50%;border:2px solid rgba(201,151,10,0.15)}
+.cbg.c1{width:500px;height:500px;top:-200px;right:-100px}
+.cbg.c2{width:300px;height:300px;top:30px;right:90px}
+.cbg.c3{width:160px;height:160px;bottom:-40px;left:60px}
+.cover-bar{background:var(--gold);padding:9px 52px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--royal-dark);display:flex;justify-content:space-between}
+.cover-body{padding:48px 52px 52px;position:relative;z-index:2}
+.cover-eye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;font-weight:500}
+.cover h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,58px);font-weight:700;line-height:1.08;margin-bottom:16px}
+.cover h1 span{color:var(--gold-light)}
+.cover-desc{font-size:15px;color:rgba(255,255,255,.7);max-width:540px;line-height:1.65;margin-bottom:36px}
+.cover-badges{display:flex;flex-wrap:wrap;gap:9px}
+.cbadge{border:1px solid rgba(201,151,10,.45);border-radius:100px;padding:5px 16px;font-size:12px;font-weight:500;color:var(--gold-light);letter-spacing:.05em}
+
+/* NAV */
+.toc-bar{background:var(--royal);padding:0 52px;display:flex;gap:0;overflow-x:auto;border-bottom:3px solid var(--gold)}
+.toc-link{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:13px 18px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:color .2s,border-color .2s;cursor:pointer;user-select:none}
+.toc-link:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
+
+/* PAGE */
+.page{max-width:900px;margin:0 auto;padding:60px 40px}
+
+/* DIVIDERS */
+.sdiv{display:flex;align-items:center;gap:16px;margin:60px 0 38px}
+.sdiv-line{flex:1;height:1px;background:var(--cream-border)}
+.sdiv-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-light);white-space:nowrap;font-weight:700}
+
+/* LEVEL HEADERS */
+.lh{border-radius:14px 14px 0 0;padding:30px 34px 26px;position:relative;overflow:hidden;background:var(--royal);color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;user-select:none;transition:background 0.2s}
+.lh:hover{background:#1e4580}
+.lh.closed{border-radius:14px;margin-bottom:12px}
+.lh::after{content:attr(data-level);position:absolute;right:80px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:78px;font-weight:700;opacity:.07;line-height:1;pointer-events:none}
+.lh-chevron{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:2}
+.lh-chevron svg{transition:transform 0.3s}
+.lh.closed .lh-chevron svg{transform:rotate(-90deg)}
+.ltag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:10px;background:var(--gold);color:var(--royal-dark)}
+.lh h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1.15;margin-bottom:5px}
+.lh .lsub{font-size:13px;opacity:.7;font-style:italic}
+.lbody{border:1px solid var(--cream-border);border-top:none;border-radius:0 0 14px 14px;padding:38px 34px;background:var(--white);margin-bottom:46px;overflow:hidden;transition:max-height 0.45s ease,opacity 0.3s ease,padding 0.35s ease,margin 0.35s ease}
+.lbody.collapsed{max-height:0!important;padding-top:0;padding-bottom:0;opacity:0;border:none;margin-bottom:0}
+
+/* EXPLANATION */
+.expl{font-family:'Source Serif 4',serif;font-size:15.5px;color:var(--ink-mid);line-height:1.82;margin-bottom:26px}
+.expl p{margin-bottom:13px}
+.expl p:last-child{margin-bottom:0}
+
+/* FORMULA BLOCK */
+.fblock{background:var(--royal-pale);border:1px solid var(--royal-light);border-left:4px solid var(--royal);border-radius:0 10px 10px 0;padding:18px 22px;margin:22px 0}
+.flabel{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--royal-mid);margin-bottom:7px}
+.ftext{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;color:var(--royal-dark);letter-spacing:.02em;margin-bottom:3px}
+.fnote{font-size:12px;color:var(--ink-light);font-style:italic;margin-top:3px}
+
+/* EXAMPLES */
+.etitle{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.etitle::after{content:'';flex:1;height:1px;background:var(--gold-light)}
+.erow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:7px}
+@media(max-width:600px){.erow{grid-template-columns:1fr}}
+.esent{background:var(--gold-pale);border:1px solid #e8d585;border-radius:8px;padding:9px 15px;font-size:14px}
+.esent .st{color:var(--ink);font-weight:500;margin-bottom:2px}
+.esent .sl{font-size:11px;color:var(--gold-dark);font-style:italic}
+
+/* MISTAKES */
+.mblock{background:var(--red-soft);border:1px solid #f5c6c0;border-left:4px solid var(--red-ink);border-radius:0 10px 10px 0;padding:16px 20px;margin:22px 0}
+.mtitle{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red-ink);margin-bottom:11px}
+.mrow{display:flex;gap:14px;margin-bottom:9px;align-items:flex-start;font-size:14px}
+.mrow:last-child{margin-bottom:0}
+.mwrong{color:var(--red-ink);flex:1}
+.mwrong::before{content:'✗ ';font-weight:700}
+.mright{color:var(--green-ink);flex:1}
+.mright::before{content:'✓ ';font-weight:700}
+
+/* TIP */
+.tip{background:var(--green-soft);border:1px solid #b8ddb8;border-left:4px solid var(--green-ink);border-radius:0 10px 10px 0;padding:14px 20px;margin:18px 0;font-size:14px;color:var(--green-ink)}
+
+/* SUBSECTION */
+.stitle{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--royal-dark);margin:30px 0 13px;padding-bottom:8px;border-bottom:1px solid var(--cream-border)}
+
+/* FORMULA REF TABLE */
+.ftable{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+.ftable th{background:var(--royal);color:var(--white);padding:10px 13px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.ftable th:first-child{border-radius:8px 0 0 0}
+.ftable th:last-child{border-radius:0 8px 0 0}
+.ftable td{padding:9px 13px;border-bottom:1px solid var(--cream-border);vertical-align:top}
+.ftable tr:nth-child(even) td{background:var(--cream)}
+.fcode{font-weight:700;color:var(--royal-mid);white-space:nowrap}
+
+/* ABBREV GRID */
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;margin:18px 0}
+.acard{background:var(--white);border:1px solid var(--cream-border);border-radius:10px;padding:13px 16px;display:flex;gap:12px;align-items:flex-start}
+.aletter{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--royal);min-width:34px;line-height:1.1}
+.aname{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.adesc{font-size:12px;color:var(--ink-light);line-height:1.4}
+
+/* TEST ZONE */
+.tz-header{background:var(--royal-dark);color:var(--white);border-radius:14px 14px 0 0;padding:38px 40px 30px;text-align:center;position:relative;overflow:hidden}
+.tz-header::before{content:'';position:absolute;top:-80px;left:-80px;width:280px;height:280px;border:40px solid rgba(201,151,10,.1);border-radius:50%}
+.tz-header h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;position:relative;z-index:1}
+.tz-header p{font-size:14px;color:rgba(255,255,255,.6);margin-top:9px;position:relative;z-index:1}
+.tz-body{border:1px solid var(--cream-border);border-top:3px solid var(--gold);border-radius:0 0 14px 14px;background:var(--white);padding:38px;margin-bottom:46px}
+.tsect{margin-bottom:50px}
+.tsect:last-child{margin-bottom:0}
+
+.tlh{border-radius:10px 10px 0 0;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;transition:filter 0.15s}
+.tlh:hover{filter:brightness(0.96)}
+.tlh.tclosed{border-radius:10px;border-bottom:1px solid !important}
+.tlh-a1{background:#e8f3e8;border:1px solid #b8ddb8;border-bottom:none}
+.tlh-a2{background:#e8eef8;border:1px solid #b0c8ef;border-bottom:none}
+.tlh-b1{background:#f5edf8;border:1px solid #d4aeed;border-bottom:none}
+.tlh-b2{background:#fdf2e0;border:1px solid #f0c870;border-bottom:none}
+.tlh-c1{background:var(--royal-pale);border:1px solid var(--royal-light);border-bottom:none}
+.tlh-a1 h3{color:#2e6b35}.tlh-a2 h3{color:#1f3f7a}.tlh-b1 h3{color:#5a2080}.tlh-b2 h3{color:#7a4500}.tlh-c1 h3{color:var(--royal-dark)}
+.tlh h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:600}
+.tlh .qc{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.tlh-right{display:flex;align-items:center;gap:14px}
+.t-chevron svg{transition:transform 0.3s;display:block}
+.tlh.tclosed .t-chevron svg{transform:rotate(-90deg)}
+.qwrap{overflow:hidden;transition:max-height 0.45s ease,opacity 0.3s ease}
+.qwrap.twcollapsed{max-height:0!important;opacity:0}
+
+.qwrap{border:1px solid var(--cream-border);border-top:none;border-radius:0 0 10px 10px;overflow:hidden}
+.qb{padding:16px 22px;border-bottom:1px solid var(--cream-border);display:grid;grid-template-columns:32px 1fr auto;gap:9px 13px;align-items:start}
+.qb:last-child{border-bottom:none}
+.qb:nth-child(even){background:var(--cream)}
+.qnum{font-size:11px;font-weight:700;color:var(--ink-light);letter-spacing:.05em;padding-top:2px}
+.qtag{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);margin-bottom:3px}
+.qp{font-size:14.5px;color:var(--ink);line-height:1.5}
+.qp code{background:var(--cream-dark);border:1px solid var(--cream-border);padding:2px 7px;border-radius:5px;font-size:13px;font-family:'Courier New',monospace}
+.choices{margin-top:7px}
+.choice{display:flex;align-items:flex-start;gap:9px;padding:4px 0;font-size:13.5px;color:var(--ink-mid)}
+.cletter{width:21px;height:21px;border:1px solid var(--cream-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--ink-light);flex-shrink:0;margin-top:1px}
+.ar{display:none;margin-top:9px;padding:8px 13px;background:var(--green-soft);border:1px solid #b8ddb8;border-radius:7px;font-size:13px;color:var(--green-ink);font-weight:500}
+.ar.vis{display:block}
+.rbtn{background:none;border:1px solid var(--cream-border);border-radius:6px;padding:5px 11px;font-size:11px;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--ink-mid);cursor:pointer;white-space:nowrap;margin-top:2px;transition:background .15s,border-color .15s}
+.rbtn:hover{background:var(--cream);border-color:var(--royal-light);color:var(--royal)}
+
+/* FOOTER */
+.footer{background:var(--royal-dark);border-top:3px solid var(--gold);padding:28px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbrand{font-family:'Playfair Display',serif;font-size:17px;color:var(--white);font-weight:600}
+.fbrand span{color:var(--gold-light)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cbg c1"></div><div class="cbg c2"></div><div class="cbg c3"></div>
+  <div class="cover-bar"><span>Teacher Benny</span><span>English Word Order Mastery Workbook</span><span>A1 — C1</span></div>
+  <div class="cover-body">
+    <div class="cover-eye">Teacher Benny — Grammar Series</div>
+    <h1>English Word Order<br><span>Mastery Workbook</span></h1>
+    <p class="cover-desc">A complete guide to constructing correct English sentences — from your first words to advanced literary structures. Study every formula, understand the rules deeply, and test yourself when you feel ready.</p>
+    <div class="cover-badges">
+      <span class="cbadge">A1 Beginner</span><span class="cbadge">A2 Elementary</span><span class="cbadge">B1 Intermediate</span><span class="cbadge">B2 Upper-Intermediate</span><span class="cbadge">C1 Advanced</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="toc-bar">
+  <span class="toc-link" onclick="goTo('abbrev')">Abbreviations</span>
+  <span class="toc-link" onclick="goTo('formulas')">Formula List</span>
+  <span class="toc-link" onclick="goTo('a1')">A1</span>
+  <span class="toc-link" onclick="goTo('a2')">A2</span>
+  <span class="toc-link" onclick="goTo('b1')">B1</span>
+  <span class="toc-link" onclick="goTo('b2')">B2</span>
+  <span class="toc-link" onclick="goTo('c1')">C1</span>
+  <span class="toc-link" onclick="goTo('tests')">Test Zone ›</span>
+</div>
+
+<div class="page">
+
+<!-- ABBREVIATIONS -->
+<div id="abbrev"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Abbreviation Guide</span><div class="sdiv-line"></div></div>
+<div class="stitle" style="margin-top:0">What do the letters mean?</div>
+<p style="font-size:15px;color:var(--ink-mid);margin-bottom:20px;font-family:'Source Serif 4',serif;line-height:1.82">Every sentence formula in this workbook uses abbreviations. Learn what each letter stands for before you begin — these are the building blocks of every sentence you will ever construct in English.</p>
+<div class="agrid">
+  <div class="acard"><div class="aletter">S</div><div><div class="aname">Subject</div><div class="adesc">WHO or WHAT performs the action. Usually a noun, pronoun, or noun phrase.</div></div></div>
+  <div class="acard"><div class="aletter">V</div><div><div class="aname">Verb</div><div class="adesc">The action or state. Every sentence must have a verb — one word or a verb phrase.</div></div></div>
+  <div class="acard"><div class="aletter">O</div><div><div class="aname">Object</div><div class="adesc">WHAT receives the action. Comes after the verb in most English sentences.</div></div></div>
+  <div class="acard"><div class="aletter">DO</div><div><div class="aname">Direct Object</div><div class="adesc">The thing directly affected by the verb. "She wrote a letter." → letter = DO.</div></div></div>
+  <div class="acard"><div class="aletter">IO</div><div><div class="aname">Indirect Object</div><div class="adesc">The person who receives the DO. "She gave him a letter." → him = IO.</div></div></div>
+  <div class="acard"><div class="aletter">B</div><div><div class="aname">Be (linking verb)</div><div class="adesc">am / is / are / was / were — used to describe or identify the subject.</div></div></div>
+  <div class="acard"><div class="aletter">Adj</div><div><div class="aname">Adjective</div><div class="adesc">A describing word. Comes before a noun or after a linking verb.</div></div></div>
+  <div class="acard"><div class="aletter">Adv</div><div><div class="aname">Adverb</div><div class="adesc">Modifies a verb, adjective, or adverb. Describes HOW. Often ends in -ly.</div></div></div>
+  <div class="acard"><div class="aletter">P</div><div><div class="aname">Prepositional Phrase</div><div class="adesc">Preposition + noun. Tells WHERE, WHEN, or HOW. e.g. "at school", "on Monday".</div></div></div>
+  <div class="acard"><div class="aletter">C</div><div><div class="aname">Complement</div><div class="adesc">Completes the meaning of the subject or object. Can be a noun, adjective, or phrase.</div></div></div>
+  <div class="acard"><div class="aletter">SC</div><div><div class="aname">Subject Complement</div><div class="adesc">Describes the subject after a linking verb. "She seems tired." → tired = SC.</div></div></div>
+  <div class="acard"><div class="aletter">OC</div><div><div class="aname">Object Complement</div><div class="adesc">Describes the object. "They elected her president." → president = OC.</div></div></div>
+  <div class="acard"><div class="aletter">T</div><div><div class="aname">Time Expression</div><div class="adesc">Tells WHEN. Usually placed at the end of a sentence in English.</div></div></div>
+  <div class="acard"><div class="aletter">Pl</div><div><div class="aname">Place Expression</div><div class="adesc">Tells WHERE. Placed before Time in longer sentences.</div></div></div>
+  <div class="acard"><div class="aletter">Freq</div><div><div class="aname">Frequency Adverb</div><div class="adesc">Tells HOW OFTEN. Before main verb, but after "be". always / usually / often / rarely / never.</div></div></div>
+  <div class="acard"><div class="aletter">Neg</div><div><div class="aname">Negative Particle</div><div class="adesc">"not" or contractions: don't, doesn't, didn't. Always placed after an auxiliary verb.</div></div></div>
+</div>
+
+<!-- FORMULA REFERENCE -->
+<div id="formulas"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Complete Formula Reference</span><div class="sdiv-line"></div></div>
+<div class="stitle" style="margin-top:0">All sentence formulas at a glance</div>
+<p style="font-size:15px;color:var(--ink-mid);margin-bottom:18px;font-family:'Source Serif 4',serif;line-height:1.82">This master table lists every formula taught in this workbook, from simplest to most advanced. Use it as a quick reference at any time during your studies.</p>
+<table class="ftable">
+  <thead><tr><th>Level</th><th>Formula</th><th>Name</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>A1</td><td class="fcode">S + B + Adj</td><td>Subject + Be + Adjective</td><td>She is happy.</td></tr>
+    <tr><td>A1</td><td class="fcode">S + V</td><td>Subject + Verb (intransitive)</td><td>He runs.</td></tr>
+    <tr><td>A1</td><td class="fcode">S + V + O</td><td>Subject + Verb + Object</td><td>She drinks coffee.</td></tr>
+    <tr><td>A1</td><td class="fcode">S + B + P</td><td>Subject + Be + Prepositional Phrase</td><td>The book is on the table.</td></tr>
+    <tr><td>A2</td><td class="fcode">S + Freq + V + O</td><td>Frequency adverb before main verb</td><td>She always drinks coffee.</td></tr>
+    <tr><td>A2</td><td class="fcode">S + B + Freq + Adj</td><td>Frequency adverb after "be"</td><td>He is never late.</td></tr>
+    <tr><td>A2</td><td class="fcode">S + V + O + Pl + T</td><td>Place before Time</td><td>She works in London every day.</td></tr>
+    <tr><td>A2</td><td class="fcode">Aux + S + V + O ?</td><td>Yes/No question</td><td>Does she drink coffee?</td></tr>
+    <tr><td>A2</td><td class="fcode">S + Aux + Neg + V + O</td><td>Negative sentence</td><td>She does not drink coffee.</td></tr>
+    <tr><td>B1</td><td class="fcode">S + V + IO + DO</td><td>Double object (no preposition)</td><td>She gave him a gift.</td></tr>
+    <tr><td>B1</td><td class="fcode">S + V + DO + to/for + IO</td><td>Double object (with preposition)</td><td>She gave a gift to him.</td></tr>
+    <tr><td>B1</td><td class="fcode">S + V + O, + conj + S + V</td><td>Compound sentence</td><td>It rained, so we stayed in.</td></tr>
+    <tr><td>B1</td><td class="fcode">S + V + although/because + S + V</td><td>Complex sentence</td><td>She worked although she was tired.</td></tr>
+    <tr><td>B1</td><td class="fcode">S + said (that) + S + V + O</td><td>Reported speech</td><td>She said she was tired.</td></tr>
+    <tr><td>B2</td><td class="fcode">Neg Adv + Aux + S + V</td><td>Negative inversion</td><td>Never have I seen this.</td></tr>
+    <tr><td>B2</td><td class="fcode">It + B + [focus] + that + S + V</td><td>It-cleft sentence</td><td>It was Tom that broke it.</td></tr>
+    <tr><td>B2</td><td class="fcode">What + S + V + B + [focus]</td><td>Pseudo-cleft (What-cleft)</td><td>What I need is more time.</td></tr>
+    <tr><td>B2</td><td class="fcode">S + B + V-ed (+ by + Agent)</td><td>Passive voice</td><td>The work was done by her.</td></tr>
+    <tr><td>C1</td><td class="fcode">V-ing/V-ed phrase, + S + V</td><td>Fronted participial phrase</td><td>Exhausted by the journey, she slept.</td></tr>
+    <tr><td>C1</td><td class="fcode">Were + S + to + V, + S + would + V</td><td>Formal conditional inversion</td><td>Were she to leave, we would follow.</td></tr>
+    <tr><td>C1</td><td class="fcode">Not only + Aux + S + V, but + S + also + V</td><td>Not only … but also</td><td>Not only did he win, but he also set a record.</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════ A1 ═══════ -->
+<div id="a1"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Level A1 — Beginner</span><div class="sdiv-line"></div></div>
+<div class="lh open" data-level="A1" onclick="toggleLesson(this)">
+  <div class="lh-left">
+    <div class="ltag">A1 — Beginner</div>
+    <h2>Your First Sentences</h2>
+    <div class="lsub">Subject · Verb · Object · Simple descriptions · Location</div>
+  </div>
+  <div class="lh-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="lbody">
+  <div class="expl">
+    <p>Every English sentence has at least two parts: something that <em>does</em> the action (the Subject) and the action itself (the Verb). This is the most important rule in English grammar, and it never changes. Whether you are speaking, writing, or texting — the Subject always comes first, and the Verb always comes second.</p>
+    <p>Think of English word order like a train. The Subject is the engine at the front. The Verb is the second carriage. Everything else comes after. Unlike many other languages, English does not allow you to put the verb before the subject in a normal statement. The <em>position</em> of a word tells you its job in the sentence.</p>
+  </div>
+
+  <div class="stitle">Formula 1 — S + BE + Adjective</div>
+  <div class="expl"><p>The simplest way to describe something in English is to use the verb <em>be</em> (am, is, are) followed by an adjective. The adjective always comes <strong>after</strong> the verb — never before it in a sentence. This structure is used constantly: to describe feelings, physical states, weather, and personality.</p></div>
+  <div class="fblock"><div class="flabel">Formula 1</div><div class="ftext">S + BE + Adjective</div><div class="fnote">Subject + am / is / are / was / were + describing word</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She is happy.</div><div class="sl">S = She · B = is · Adj = happy</div></div>
+    <div class="esent"><div class="st">They are tired.</div><div class="sl">S = They · B = are · Adj = tired</div></div>
+    <div class="esent"><div class="st">The weather is cold.</div><div class="sl">S = The weather · B = is · Adj = cold</div></div>
+    <div class="esent"><div class="st">I am ready.</div><div class="sl">S = I · B = am · Adj = ready</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Happy she is.</div><div class="mright">She is happy. (adjective comes after "be", not before the subject)</div></div>
+    <div class="mrow"><div class="mwrong">She happy is.</div><div class="mright">She is happy. (verb "be" must come second, before the adjective)</div></div>
+    <div class="mrow"><div class="mwrong">She is very happy. ✓ / She very is happy. ✗</div><div class="mright">"Very" goes before the adjective: She is very happy.</div></div>
+  </div>
+
+  <div class="stitle">Formula 2 — S + V (Intransitive)</div>
+  <div class="expl"><p>Some verbs do not need an object — the action is complete on its own. These are called <em>intransitive verbs</em>. Common examples: run, sleep, cry, laugh, arrive, wait, sit, stand. A sentence with an intransitive verb is complete with just a Subject and a Verb. You do not need to add anything else.</p></div>
+  <div class="fblock"><div class="flabel">Formula 2</div><div class="ftext">S + V</div><div class="fnote">Subject + action verb — no object needed or possible</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She sleeps.</div><div class="sl">S = She · V = sleeps</div></div>
+    <div class="esent"><div class="st">The baby cried.</div><div class="sl">S = The baby · V = cried</div></div>
+    <div class="esent"><div class="st">We waited.</div><div class="sl">S = We · V = waited</div></div>
+    <div class="esent"><div class="st">He laughed.</div><div class="sl">S = He · V = laughed</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> Some verbs can be both transitive and intransitive depending on context. "She reads" (S+V) and "She reads books" (S+V+O) are both correct — the verb "read" works both ways.</div>
+
+  <div class="stitle">Formula 3 — S + V + Object</div>
+  <div class="expl"><p>Most English verbs need an object — they describe an action that is done <em>to</em> something or someone. The object always comes <strong>after</strong> the verb. Never before it. This S + V + O pattern is the backbone of English grammar. Master this and you can build thousands of correct sentences. Common transitive verbs: eat, drink, read, write, watch, like, love, have, want, need.</p></div>
+  <div class="fblock"><div class="flabel">Formula 3</div><div class="ftext">S + V + O</div><div class="fnote">Subject + action verb + thing or person receiving the action</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She drinks coffee.</div><div class="sl">S = She · V = drinks · O = coffee</div></div>
+    <div class="esent"><div class="st">He reads books.</div><div class="sl">S = He · V = reads · O = books</div></div>
+    <div class="esent"><div class="st">They love music.</div><div class="sl">S = They · V = love · O = music</div></div>
+    <div class="esent"><div class="st">I have a dog.</div><div class="sl">S = I · V = have · O = a dog</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Coffee she drinks.</div><div class="mright">She drinks coffee. (object never comes before subject in statements)</div></div>
+    <div class="mrow"><div class="mwrong">Drinks she coffee?</div><div class="mright">Does she drink coffee? (questions need "does" — see A2)</div></div>
+    <div class="mrow"><div class="mwrong">She drink coffee.</div><div class="mright">She drinks coffee. (third person singular needs -s)</div></div>
+  </div>
+
+  <div class="stitle">Formula 4 — S + BE + Prepositional Phrase</div>
+  <div class="expl"><p>To say <em>where</em> something is, use the verb <em>be</em> followed by a prepositional phrase. A prepositional phrase begins with a preposition (in, on, at, under, next to, between, behind, in front of) followed by a noun. This structure is used constantly to describe locations. The key rule: the preposition always comes <strong>before</strong> its noun.</p></div>
+  <div class="fblock"><div class="flabel">Formula 4</div><div class="ftext">S + BE + Preposition + Noun</div><div class="fnote">Describes location. Preposition always comes directly before its noun phrase.</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">The book is on the table.</div><div class="sl">P = on the table</div></div>
+    <div class="esent"><div class="st">She is at school.</div><div class="sl">P = at school</div></div>
+    <div class="esent"><div class="st">They are in the garden.</div><div class="sl">P = in the garden</div></div>
+    <div class="esent"><div class="st">The cat is under the chair.</div><div class="sl">P = under the chair</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">The book on the table is.</div><div class="mright">The book is on the table. (verb "be" must come before the phrase)</div></div>
+    <div class="mrow"><div class="mwrong">She is school.</div><div class="mright">She is at school. (preposition "at" is required)</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> "In", "on" and "at" are the three most common prepositions of place. Use "in" for enclosed spaces (in the room, in London), "on" for surfaces (on the table, on the floor), and "at" for specific points (at school, at the bus stop).</div>
+</div>
+
+<!-- ═══════ A2 ═══════ -->
+<div id="a2"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Level A2 — Elementary</span><div class="sdiv-line"></div></div>
+<div class="lh open" data-level="A2" onclick="toggleLesson(this)">
+  <div class="lh-left">
+    <div class="ltag">A2 — Elementary</div>
+    <h2>Expanding Your Sentences</h2>
+    <div class="lsub">Frequency adverbs · Time &amp; Place · Yes/No questions · Negatives</div>
+  </div>
+  <div class="lh-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="lbody">
+  <div class="expl">
+    <p>At A2, you take the basic S + V + O structure and start adding more information. You learn to say <em>how often</em> (frequency adverbs), <em>when</em> (time expressions), and <em>where</em> (place expressions). You also learn two critical new sentence types: <strong>questions</strong> and <strong>negatives</strong>.</p>
+    <p>The most important new rule at this level is the placement of adverbs. English has very strict rules about where adverbs go — and many learners get this wrong for years. Master it now and you will sound much more natural immediately.</p>
+  </div>
+
+  <div class="stitle">Formula 5 — Frequency Adverbs (before main verb)</div>
+  <div class="expl"><p>Frequency adverbs tell us <em>how often</em> something happens: always, usually, often, sometimes, rarely, seldom, never. In English, these adverbs slot in <strong>between the subject and the main verb</strong>. This is a fixed position — they do not go at the beginning or end of the sentence in normal usage. The order from most to least frequent is: always → usually → often → sometimes → rarely → never.</p></div>
+  <div class="fblock"><div class="flabel">Formula 5</div><div class="ftext">S + Freq + V + O</div><div class="fnote">Frequency adverb sits between Subject and main Verb — never at the start or end</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She always drinks coffee.</div><div class="sl">Freq = always · before "drinks"</div></div>
+    <div class="esent"><div class="st">I usually walk to work.</div><div class="sl">Freq = usually · before "walk"</div></div>
+    <div class="esent"><div class="st">They rarely eat meat.</div><div class="sl">Freq = rarely · before "eat"</div></div>
+    <div class="esent"><div class="st">He never watches TV.</div><div class="sl">Freq = never · before "watches"</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Always she drinks coffee.</div><div class="mright">She always drinks coffee. (adverb cannot start the sentence here)</div></div>
+    <div class="mrow"><div class="mwrong">She drinks always coffee.</div><div class="mright">She always drinks coffee. (adverb cannot go between verb and object)</div></div>
+    <div class="mrow"><div class="mwrong">She drinks coffee always.</div><div class="mright">She always drinks coffee. (adverb does not go at the end)</div></div>
+  </div>
+
+  <div class="stitle">Formula 6 — Frequency Adverbs with BE (after the verb)</div>
+  <div class="expl"><p>There is one important exception to Formula 5. When the verb is <em>be</em> (am, is, are, was, were), the frequency adverb comes <strong>after</strong> the verb, not before it. This surprises many learners who have just memorised Formula 5 — but the rule is clear: frequency adverbs follow "be" and precede all other verbs.</p></div>
+  <div class="fblock"><div class="flabel">Formula 6</div><div class="ftext">S + BE + Freq + Adjective / Noun</div><div class="fnote">With the verb "be", the frequency adverb follows the verb</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She is always late.</div><div class="sl">B = is · Freq = always · after "is"</div></div>
+    <div class="esent"><div class="st">He is never rude.</div><div class="sl">B = is · Freq = never · after "is"</div></div>
+    <div class="esent"><div class="st">We are usually ready.</div><div class="sl">B = are · Freq = usually · after "are"</div></div>
+    <div class="esent"><div class="st">They are sometimes late.</div><div class="sl">B = are · Freq = sometimes · after "are"</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> Easy rule to remember — with all normal verbs the adverb goes <em>before</em>; with the verb BE the adverb goes <em>after</em>. Compare: "She always runs" vs "She is always tired."</div>
+
+  <div class="stitle">Formula 7 — Place and Time (S + V + O + Place + Time)</div>
+  <div class="expl"><p>When you add information about <em>where</em> and <em>when</em> something happens, English has a specific order. Place comes <strong>before</strong> Time. Both go at the end of the sentence, after the object. The golden rule to memorise is <strong>MPT: Manner → Place → Time</strong>. You do not need to use all three every time, but whenever you do, this is the order they must appear in.</p></div>
+  <div class="fblock"><div class="flabel">Formula 7</div><div class="ftext">S + V + O + Place + Time</div><div class="fnote">Place expression comes before Time expression — both go at the end of the sentence</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She works in London every day.</div><div class="sl">Pl = in London · T = every day</div></div>
+    <div class="esent"><div class="st">He plays football at the park on Sundays.</div><div class="sl">Pl = at the park · T = on Sundays</div></div>
+    <div class="esent"><div class="st">They met at the café yesterday.</div><div class="sl">Pl = at the café · T = yesterday</div></div>
+    <div class="esent"><div class="st">I study at home every evening.</div><div class="sl">Pl = at home · T = every evening</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">She works every day in London.</div><div class="mright">She works in London every day. (Place before Time)</div></div>
+    <div class="mrow"><div class="mwrong">Every day she works in London. (unusual emphasis)</div><div class="mright">She works in London every day. (standard order)</div></div>
+  </div>
+
+  <div class="stitle">Formula 8 — Yes/No Questions (Aux + S + V + O?)</div>
+  <div class="expl"><p>To form a question in the present simple or past simple, English uses an <em>auxiliary verb</em> (do, does, did) that moves to the <strong>front</strong> of the sentence, before the subject. The main verb returns to its base form — it loses its -s or -ed ending. This is called <strong>subject-auxiliary inversion</strong> and it is one of the most important patterns in English. Remember: "do" is used with I/you/we/they; "does" is used with he/she/it; "did" is used for all subjects in the past.</p></div>
+  <div class="fblock"><div class="flabel">Formula 8</div><div class="ftext">Aux + S + V + O ?</div><div class="fnote">Do / Does / Did moves to the front. Main verb returns to base form (no -s, no -ed).</div></div>
+  <div class="etitle">Examples — statement vs question</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She drinks coffee. → Does she drink coffee?</div><div class="sl">does + she + drink (base form)</div></div>
+    <div class="esent"><div class="st">They live here. → Do they live here?</div><div class="sl">do + they + live (base form)</div></div>
+    <div class="esent"><div class="st">He called you. → Did he call you?</div><div class="sl">did + he + call (base form)</div></div>
+    <div class="esent"><div class="st">She arrived late. → Did she arrive late?</div><div class="sl">did + she + arrive (base form)</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Does she drinks coffee?</div><div class="mright">Does she drink coffee? (no -s after "does")</div></div>
+    <div class="mrow"><div class="mwrong">Did she arrived late?</div><div class="mright">Did she arrive late? (base form after "did")</div></div>
+    <div class="mrow"><div class="mwrong">She does drink coffee? (spoken only)</div><div class="mright">Does she drink coffee? (inversion required in written form)</div></div>
+  </div>
+
+  <div class="stitle">Formula 9 — Negatives (S + Aux + not + V + O)</div>
+  <div class="expl"><p>To make a negative sentence, you add <em>not</em> after the auxiliary verb (do not, does not, did not). In natural speech these are almost always contracted: don't, doesn't, didn't. The main verb stays in its base form. One critical rule in standard English: you only use <strong>one negative</strong> word per clause. Never combine "don't" with "never" or "nothing" — this creates a double negative, which is not used in standard grammar.</p></div>
+  <div class="fblock"><div class="flabel">Formula 9</div><div class="ftext">S + Aux + not + V + O</div><div class="fnote">Do/Does/Did + not goes between Subject and main Verb. Contractions are very common.</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She does not drink coffee.</div><div class="sl">= She doesn't drink coffee.</div></div>
+    <div class="esent"><div class="st">They do not live here.</div><div class="sl">= They don't live here.</div></div>
+    <div class="esent"><div class="st">He did not call.</div><div class="sl">= He didn't call.</div></div>
+    <div class="esent"><div class="st">I do not understand.</div><div class="sl">= I don't understand.</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">She doesn't likes coffee.</div><div class="mright">She doesn't like coffee. (base form after "doesn't")</div></div>
+    <div class="mrow"><div class="mwrong">She not drink coffee.</div><div class="mright">She does not drink coffee. (auxiliary verb required)</div></div>
+    <div class="mrow"><div class="mwrong">She don't never drink coffee.</div><div class="mright">She doesn't ever drink coffee. / She never drinks coffee.</div></div>
+  </div>
+</div>
+
+<!-- ═══════ B1 ═══════ -->
+<div id="b1"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Level B1 — Intermediate</span><div class="sdiv-line"></div></div>
+<div class="lh open" data-level="B1" onclick="toggleLesson(this)">
+  <div class="lh-left">
+    <div class="ltag">B1 — Intermediate</div>
+    <h2>Connecting &amp; Complexifying</h2>
+    <div class="lsub">Double objects · Compound sentences · Complex clauses · Reported speech</div>
+  </div>
+  <div class="lh-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="lbody">
+  <div class="expl">
+    <p>At B1, you move from simple sentences to more sophisticated structures. You learn how to give and send things using the <em>double object</em> construction, and you discover how to join ideas together using coordinating and subordinating conjunctions. These skills allow you to express cause and effect, contrast, and sequence — essential for both speaking and writing.</p>
+    <p>You also begin working with <em>reported speech</em>, which requires a specific change to word order inside the clause. This level is where English grammar starts to feel like a system you can use creatively, rather than rules to memorise one by one.</p>
+  </div>
+
+  <div class="stitle">Formula 10 — Double Object (S + V + IO + DO)</div>
+  <div class="expl"><p>Some verbs can take <em>two</em> objects: a Direct Object (the thing given or sent) and an Indirect Object (the person who receives it). There are two patterns — and they mean exactly the same thing. When the indirect object comes first, no preposition is needed. When the direct object comes first, you need "to" or "for". Common verbs with this pattern: give, send, show, teach, tell, bring, offer, lend, pay, write, make, buy, cook, get.</p></div>
+  <div class="fblock"><div class="flabel">Formula 10a — IO first (no preposition)</div><div class="ftext">S + V + IO + DO</div><div class="fnote">Person (IO) before thing (DO) — no preposition needed</div></div>
+  <div class="fblock"><div class="flabel">Formula 10b — DO first (preposition required)</div><div class="ftext">S + V + DO + to / for + IO</div><div class="fnote">Thing (DO) before person (IO) — preposition "to" or "for" required</div></div>
+  <div class="etitle">Examples — both patterns mean the same thing</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She gave him a book.</div><div class="sl">IO = him · DO = a book</div></div>
+    <div class="esent"><div class="st">She gave a book to him.</div><div class="sl">DO = a book · to + IO</div></div>
+    <div class="esent"><div class="st">He sent her a message.</div><div class="sl">IO = her · DO = a message</div></div>
+    <div class="esent"><div class="st">He sent a message to her.</div><div class="sl">DO = a message · to + IO</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">She gave to him a book.</div><div class="mright">She gave him a book. (no "to" when IO comes first)</div></div>
+    <div class="mrow"><div class="mwrong">She told to me the news.</div><div class="mright">She told me the news. ("tell" never uses "to" + IO first)</div></div>
+    <div class="mrow"><div class="mwrong">She bought to him flowers.</div><div class="mright">She bought flowers for him. ("buy" uses "for", not "to")</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> Verbs like give, send, show, teach, tell, lend, offer use "to" + IO. Verbs like buy, make, cook, get, find use "for" + IO. There is no rule — you need to learn each verb's preposition.</div>
+
+  <div class="stitle">Formula 11 — Compound Sentences (coordinating conjunctions)</div>
+  <div class="expl"><p>A compound sentence joins two independent clauses (two complete sentences) using a coordinating conjunction. The most common ones are: <em>and</em> (addition), <em>but</em> (contrast), <em>so</em> (result), <em>or</em> (alternative), <em>yet</em> (unexpected contrast), <em>for</em> (reason — formal). A comma usually comes before the conjunction when joining two full clauses. Each clause keeps its own S + V structure — you are not removing anything.</p></div>
+  <div class="fblock"><div class="flabel">Formula 11</div><div class="ftext">S + V + O , + and / but / so / or + S + V + O</div><div class="fnote">Comma before the conjunction. Each side is a complete sentence.</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">It rained, so we stayed inside.</div><div class="sl">cause → result</div></div>
+    <div class="esent"><div class="st">She was tired, but she kept working.</div><div class="sl">contrast</div></div>
+    <div class="esent"><div class="st">You can call me or send a message.</div><div class="sl">alternative</div></div>
+    <div class="esent"><div class="st">He studied hard and he passed the exam.</div><div class="sl">addition</div></div>
+  </div>
+
+  <div class="stitle">Formula 12 — Complex Sentences (subordinating conjunctions)</div>
+  <div class="expl"><p>A complex sentence has a main clause and a subordinate (dependent) clause. The subordinate clause begins with a subordinating conjunction such as: <em>because, although, when, if, before, after, while, unless, until, since, as soon as</em>. The subordinate clause can come before or after the main clause. When it comes <strong>first</strong>, you add a comma between the two clauses. When it comes <strong>second</strong>, no comma is needed.</p></div>
+  <div class="fblock"><div class="flabel">Formula 12a — subordinate clause second</div><div class="ftext">S + V + O + because / although / when + S + V</div><div class="fnote">No comma when the subordinate clause comes at the end</div></div>
+  <div class="fblock"><div class="flabel">Formula 12b — subordinate clause first</div><div class="ftext">Because / Although / When + S + V , + S + V + O</div><div class="fnote">Comma required when the subordinate clause comes first</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">She was tired because she worked all day.</div><div class="sl">Sub clause at end — no comma</div></div>
+    <div class="esent"><div class="st">Because she worked all day, she was tired.</div><div class="sl">Sub clause first — comma needed</div></div>
+    <div class="esent"><div class="st">Although it was cold, she wore a t-shirt.</div><div class="sl">Contrast — comma after sub clause</div></div>
+    <div class="esent"><div class="st">If you leave now, you will catch the train.</div><div class="sl">Condition — comma after if-clause</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Although it was cold, but she went out.</div><div class="mright">Although it was cold, she went out. (never use "but" after "although")</div></div>
+    <div class="mrow"><div class="mwrong">Because she was tired. (fragment)</div><div class="mright">She stayed home because she was tired. (subordinate clause needs a main clause)</div></div>
+  </div>
+
+  <div class="stitle">Formula 13 — Reported Speech</div>
+  <div class="expl"><p>When you report what someone said, the word order inside the reported clause changes. For reported <em>questions</em>, the word order reverts to normal statement order — no inversion, no "do/does/did". For reported <em>statements</em>, the tense usually shifts back one step in time (present → past, past → past perfect). This is called "backshift". Reported speech is introduced by verbs like <em>say, tell, ask, explain, claim, mention, wonder</em>.</p></div>
+  <div class="fblock"><div class="flabel">Formula 13a — Reported Statement</div><div class="ftext">S + said (that) + S + V + O</div><div class="fnote">Statement word order in the reported clause. "That" is optional.</div></div>
+  <div class="fblock"><div class="flabel">Formula 13b — Reported Question</div><div class="ftext">S + asked + if/whether/wh-word + S + V + O</div><div class="fnote">Statement word order — NO inversion, no do/does/did in the reported clause</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">"I am tired." → She said she was tired.</div><div class="sl">am → was (backshift)</div></div>
+    <div class="esent"><div class="st">"I live here." → He said he lived there.</div><div class="sl">live → lived</div></div>
+    <div class="esent"><div class="st">"Do you want tea?" → She asked if I wanted tea.</div><div class="sl">question → if + statement order</div></div>
+    <div class="esent"><div class="st">"Where do you work?" → He asked where I worked.</div><div class="sl">NO inversion in reported question</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">He asked where did I live.</div><div class="mright">He asked where I lived. (no inversion in reported questions)</div></div>
+    <div class="mrow"><div class="mwrong">She said that she is tired.</div><div class="mright">She said that she was tired. (backshift: is → was)</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> Reported questions are one of the most common B1 errors. Always ask yourself: is this a question or a statement now? After "asked", it becomes a statement — use statement word order. "He asked where I worked" — not "where did I work".</div>
+</div>
+
+<!-- ═══════ B2 ═══════ -->
+<div id="b2"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Level B2 — Upper-Intermediate</span><div class="sdiv-line"></div></div>
+<div class="lh open" data-level="B2" onclick="toggleLesson(this)">
+  <div class="lh-left">
+    <div class="ltag">B2 — Upper-Intermediate</div>
+    <h2>Emphasis &amp; Inversion</h2>
+    <div class="lsub">Negative fronting · Cleft sentences · Pseudo-cleft · Passive voice</div>
+  </div>
+  <div class="lh-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="lbody">
+  <div class="expl">
+    <p>At B2, you learn how to change the <em>focus</em> of a sentence by moving certain elements to the front. In English, the beginning of a sentence carries the most emphasis — so by placing unusual elements first, you draw the reader's or listener's attention to specific information. This is a mark of sophisticated, natural-sounding English.</p>
+    <p>You also master the <em>passive voice</em> and two powerful emphasis structures: <strong>cleft sentences</strong> and <strong>negative inversion</strong>. These appear regularly in formal writing, academic English, journalism, and strong spoken argument.</p>
+  </div>
+
+  <div class="stitle">Formula 14 — Negative Fronting + Inversion</div>
+  <div class="expl"><p>When a negative or restrictive adverb — never, rarely, hardly, seldom, only then, not only, no sooner, little, scarcely — is placed at the <em>front</em> of a sentence for emphasis, the subject and auxiliary verb <strong>must invert</strong> (swap positions). This is called <strong>negative inversion</strong>. It is mandatory — you cannot front these adverbs without inverting. This structure is common in formal and academic writing and in literary prose.</p></div>
+  <div class="fblock"><div class="flabel">Formula 14</div><div class="ftext">Negative Adverb + Aux + S + V + O</div><div class="fnote">After fronting never / rarely / hardly / seldom, subject and auxiliary must swap</div></div>
+  <div class="etitle">Examples — normal vs emphatic</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Normal: I have never seen this.</div><div class="sl">Standard word order</div></div>
+    <div class="esent"><div class="st">Emphatic: Never have I seen this.</div><div class="sl">Fronted — Aux (have) + S (I) inverted</div></div>
+    <div class="esent"><div class="st">Normal: She rarely complains.</div><div class="sl">Standard word order</div></div>
+    <div class="esent"><div class="st">Emphatic: Rarely does she complain.</div><div class="sl">Fronted — does + she inverted</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Only then she understood.</div><div class="mright">Only then did she understand. (inversion required after "only then")</div></div>
+    <div class="mrow"><div class="mwrong">Rarely she complains.</div><div class="mright">Rarely does she complain. (inversion is mandatory, not optional)</div></div>
+    <div class="mrow"><div class="mwrong">No sooner she arrived than it rained.</div><div class="mright">No sooner had she arrived than it rained.</div></div>
+  </div>
+
+  <div class="stitle">Formula 15 — It-Cleft Sentences</div>
+  <div class="expl"><p>A <em>cleft sentence</em> splits a simple sentence into two clauses to highlight one specific piece of information. The most common type begins with "It was/is…" and ends with "…that/who + rest of sentence." Use "who" when focusing on a person; use "that" for everything else — things, places, times, reasons. Cleft sentences are very common in spoken English (to correct misunderstandings) and in written English (to emphasise key information).</p></div>
+  <div class="fblock"><div class="flabel">Formula 15 — It-cleft</div><div class="ftext">It + BE + [focus element] + that / who + S + V</div><div class="fnote">Focus element (person, thing, time, place) placed between "It is/was" and "that/who"</div></div>
+  <div class="etitle">Examples — normal vs cleft</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Tom broke the window. → It was Tom who broke the window.</div><div class="sl">Focus: the person (Tom)</div></div>
+    <div class="esent"><div class="st">She left at midnight. → It was at midnight that she left.</div><div class="sl">Focus: the time (midnight)</div></div>
+    <div class="esent"><div class="st">They met in Paris. → It was in Paris that they met.</div><div class="sl">Focus: the place (Paris)</div></div>
+    <div class="esent"><div class="st">The noise woke me. → It was the noise that woke me.</div><div class="sl">Focus: the cause (the noise)</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">It was in Paris where they met.</div><div class="mright">It was in Paris that they met. (always "that" — not "where", "when" or "which")</div></div>
+    <div class="mrow"><div class="mwrong">It was Tom that broke the window. ✓ / It was Tom who broke it. ✓</div><div class="mright">Both are correct — "who" is preferred for people, "that" is acceptable too.</div></div>
+  </div>
+
+  <div class="stitle">Formula 16 — Pseudo-Cleft (What-cleft)</div>
+  <div class="expl"><p>The <em>pseudo-cleft</em> puts emphasis on the most important or new information by placing it at the end of the sentence after "is/was." It begins with a "What" clause (which acts as the subject of the sentence) and places the focused element after the linking verb. This structure is very common in natural spoken English — you will hear it constantly in conversations, interviews, and presentations.</p></div>
+  <div class="fblock"><div class="flabel">Formula 16</div><div class="ftext">What + S + V + BE + [focus element]</div><div class="fnote">"What I need is…" — the most important information comes last, after "is/was"</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">What I need is more time.</div><div class="sl">Focus = more time</div></div>
+    <div class="esent"><div class="st">What surprised me was her reaction.</div><div class="sl">Focus = her reaction</div></div>
+    <div class="esent"><div class="st">What he did was ignore my advice.</div><div class="sl">Focus = the action</div></div>
+    <div class="esent"><div class="st">What we want is a clear answer.</div><div class="sl">Focus = a clear answer</div></div>
+  </div>
+
+  <div class="stitle">Formula 17 — Passive Voice</div>
+  <div class="expl"><p>The passive voice changes the focus of the sentence from the person doing the action (the agent) to the person or thing receiving it. It is formed with the verb <em>be</em> + past participle. The agent can be included with "by" or omitted entirely — and often it is omitted when the agent is unknown, unimportant, or obvious. Passive voice is extremely common in academic writing, news reports, and formal documents.</p></div>
+  <div class="fblock"><div class="flabel">Formula 17</div><div class="ftext">S + BE + past participle (+ by + Agent)</div><div class="fnote">The original object becomes the new subject. Agent with "by" is optional.</div></div>
+  <div class="etitle">Examples — active vs passive</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Active: The committee rejected his proposal.</div><div class="sl">Agent = the committee</div></div>
+    <div class="esent"><div class="st">Passive: His proposal was rejected (by the committee).</div><div class="sl">New focus = his proposal</div></div>
+    <div class="esent"><div class="st">Active: Someone has stolen my bag.</div><div class="sl">Vague / unknown agent</div></div>
+    <div class="esent"><div class="st">Passive: My bag has been stolen.</div><div class="sl">Agent omitted — better here</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> Use the passive when the action is more important than the person who did it, when the agent is unknown, or when you want to sound more formal or objective. Never use the passive just to sound clever — use it with purpose.</div>
+</div>
+
+<!-- ═══════ C1 ═══════ -->
+<div id="c1"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Level C1 — Advanced</span><div class="sdiv-line"></div></div>
+<div class="lh open" data-level="C1" onclick="toggleLesson(this)">
+  <div class="lh-left">
+    <div class="ltag">C1 — Advanced</div>
+    <h2>Mastery Structures</h2>
+    <div class="lsub">Participial phrases · Formal conditionals · Not only … but also · Stylistic control</div>
+  </div>
+  <div class="lh-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="lbody">
+  <div class="expl">
+    <p>At C1, the structures you learn are less about new grammar rules and more about achieving precision, elegance, and rhetorical power. The word order choices at this level are often <em>stylistic</em> — they allow you to control rhythm, emphasis, formality, and information flow in a way that marks you as an educated, fluent user of English.</p>
+    <p>These structures appear regularly in high-quality journalism, academic papers, formal speeches, business writing, and literary prose. Mastering them will significantly raise the level and impact of your written English. Use them sparingly — they are powerful precisely because they are unusual.</p>
+  </div>
+
+  <div class="stitle">Formula 18 — Fronted Participial Phrases</div>
+  <div class="expl"><p>A participial phrase is a verb phrase that acts as a modifier — it tells us more about the subject. When placed at the <em>front</em> of a sentence, it must refer to the same subject as the main clause. If it does not, it creates a <strong>dangling participle</strong> — a serious grammatical error. Fronted participial phrases compress information elegantly and are widely used in formal and literary writing. There are two types: past participial (V-ed) and present participial (V-ing).</p></div>
+  <div class="fblock"><div class="flabel">Formula 18a — Past participle (V-ed) — often expresses a passive or completed state</div><div class="ftext">V-ed + phrase , + S + V + O</div><div class="fnote">The subject of the main clause must be the person/thing described by the phrase</div></div>
+  <div class="fblock"><div class="flabel">Formula 18b — Present participle (V-ing) — expresses reason, manner, or simultaneous action</div><div class="ftext">V-ing + phrase , + S + V + O</div><div class="fnote">Use "Having + V-ed" when the participial action was completed before the main action</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Exhausted by the journey, she fell asleep immediately.</div><div class="sl">Past participial — passive meaning</div></div>
+    <div class="esent"><div class="st">Realising her mistake, she apologised at once.</div><div class="sl">Present participial — simultaneous reason</div></div>
+    <div class="esent"><div class="st">Defeated in the election, he retired from politics.</div><div class="sl">Compressed passive meaning</div></div>
+    <div class="esent"><div class="st">Having finished her work, she left the office.</div><div class="sl">Perfect participial — first action completed</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes — Dangling Participles</div>
+    <div class="mrow"><div class="mwrong">Walking down the street, the rain started.</div><div class="mright">Walking down the street, she was caught in the rain. (subject must match)</div></div>
+    <div class="mrow"><div class="mwrong">Having eaten dinner, the dishes were washed.</div><div class="mright">Having eaten dinner, she washed the dishes. (the dishes did not eat dinner)</div></div>
+  </div>
+
+  <div class="stitle">Formula 19 — Formal Conditional Inversion</div>
+  <div class="expl"><p>In formal English, conditional sentences (if-clauses) can be written <em>without "if"</em> by inverting the subject and auxiliary verb. This construction is common in legal, academic, and business writing. There are three main patterns corresponding to the three conditional types. The result is a more formal, authoritative tone — often used in contracts, official correspondence, and academic argument.</p></div>
+  <div class="fblock"><div class="flabel">Formula 19a — 1st Conditional formal (Should)</div><div class="ftext">Should + S + V , + S + will / can + V</div><div class="fnote">"Should you need help" = "If you need help" — real possibility</div></div>
+  <div class="fblock"><div class="flabel">Formula 19b — 2nd Conditional formal (Were … to)</div><div class="ftext">Were + S + to + V , + S + would + V</div><div class="fnote">"Were she to leave" = "If she left" — hypothetical / unlikely</div></div>
+  <div class="fblock"><div class="flabel">Formula 19c — 3rd Conditional formal (Had)</div><div class="ftext">Had + S + V-ed , + S + would have + V-ed</div><div class="fnote">"Had I known" = "If I had known" — impossible / past unreal</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Should you require assistance, please contact us.</div><div class="sl">Formal 1st conditional</div></div>
+    <div class="esent"><div class="st">Were she to resign, the company would struggle.</div><div class="sl">Formal 2nd conditional</div></div>
+    <div class="esent"><div class="st">Had I known earlier, I would have acted differently.</div><div class="sl">Formal 3rd conditional</div></div>
+    <div class="esent"><div class="st">Were it not for her support, we would have failed.</div><div class="sl">"Were it not for" = "If it were not for"</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Should you will need help, call us.</div><div class="mright">Should you need help, call us. ("should" is followed by the base form)</div></div>
+    <div class="mrow"><div class="mwrong">Were she leave, we would follow.</div><div class="mright">Were she to leave, we would follow. ("to" is required in "were … to" conditionals)</div></div>
+  </div>
+
+  <div class="stitle">Formula 20 — Not Only … But Also</div>
+  <div class="expl"><p>This is a powerful correlative conjunction structure used to add information emphatically — it signals that something is more surprising or impressive than expected. When "Not only" appears at the <strong>beginning of a clause</strong> (fronted), it triggers subject-auxiliary inversion in the first clause — exactly like the negative adverbs at B2. When "not only" appears mid-sentence (not fronted), no inversion occurs. This structure is very common in formal speeches, persuasive writing, and academic essays.</p></div>
+  <div class="fblock"><div class="flabel">Formula 20a — Fronted (inversion required in first clause)</div><div class="ftext">Not only + Aux + S + V , but + S + also + V</div><div class="fnote">Inversion in the first clause only. The second clause uses normal word order.</div></div>
+  <div class="fblock"><div class="flabel">Formula 20b — Mid-sentence (no inversion)</div><div class="ftext">S + not only + V + O , but also + V + O</div><div class="fnote">No inversion when "not only" appears after the subject</div></div>
+  <div class="etitle">Examples</div>
+  <div class="erow">
+    <div class="esent"><div class="st">Not only did he win the race, but he also set a new record.</div><div class="sl">Fronted — inversion (did he)</div></div>
+    <div class="esent"><div class="st">Not only is she talented, but she is also hardworking.</div><div class="sl">Fronted — inversion (is she)</div></div>
+    <div class="esent"><div class="st">She not only speaks French but also reads Latin.</div><div class="sl">Mid-sentence — no inversion</div></div>
+    <div class="esent"><div class="st">Not only had they arrived late, but they had also forgotten the documents.</div><div class="sl">Past perfect — had they inverted</div></div>
+  </div>
+  <div class="mblock">
+    <div class="mtitle">Common Mistakes</div>
+    <div class="mrow"><div class="mwrong">Not only she speaks French but also German.</div><div class="mright">Not only does she speak French, but she also speaks German.</div></div>
+    <div class="mrow"><div class="mwrong">Not only did he win, but also set a record.</div><div class="mright">Not only did he win, but he also set a record. (second clause needs its own subject)</div></div>
+  </div>
+  <div class="tip"><strong>Teacher Benny's Tip:</strong> At C1, the key skill is not just knowing the rule but knowing <em>when</em> to use these structures for effect. Use negative inversion, cleft sentences, and participial phrases sparingly. They are powerful precisely because they are unusual. In every ten sentences, perhaps one or two should use these advanced patterns — any more and the effect is lost.</div>
+</div>
+
+<!-- ═══════════════════════ TEST ZONE ═══════════════════════ -->
+<div id="tests"></div>
+<div class="sdiv"><div class="sdiv-line"></div><span class="sdiv-label">Test Zone</span><div class="sdiv-line"></div></div>
+
+<div class="tz-header">
+  <h2>Test Zone</h2>
+  <p>Complete the test for your level when you feel ready. Answers are hidden — tap "Show Answer" to check your work one question at a time.</p>
+</div>
+<div class="tz-body">
+
+  <!-- ── A1 TEST ── -->
+  <div class="tsect">
+    <div class="tlh tlh-a1 open" onclick="toggleTest(this)">
+      <h3>A1 Test — Beginner</h3>
+      <div class="tlh-right"><span class="qc">20 Questions</span><div class="t-chevron"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <div class="qwrap">
+      <div class="qb"><div class="qnum">01</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>she / is / happy</code></div><div class="ar" id="a1q1">She is happy.</div></div><button class="rbtn" onclick="tog('a1q1',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">02</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>I / coffee / drink</code></div><div class="ar" id="a1q2">I drink coffee.</div></div><button class="rbtn" onclick="tog('a1q2',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">03</div><div><div class="qtag">Multiple Choice</div><div class="qp">Choose the correct sentence:<div class="choices"><div class="choice"><div class="cletter">A</div>She eats apples.</div><div class="choice"><div class="cletter">B</div>Eats she apples.</div><div class="choice"><div class="cletter">C</div>Apples she eats.</div></div></div><div class="ar" id="a1q3">A — She eats apples. (S + V + O order)</div></div><button class="rbtn" onclick="tog('a1q3',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">04</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>a / has / dog / he</code></div><div class="ar" id="a1q4">He has a dog.</div></div><button class="rbtn" onclick="tog('a1q4',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">05</div><div><div class="qtag">Identify</div><div class="qp">Label S, V, and O in: <code>The cat chases the bird.</code></div><div class="ar" id="a1q5">S = The cat · V = chases · O = the bird</div></div><button class="rbtn" onclick="tog('a1q5',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">06</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Happy she is.</code></div><div class="ar" id="a1q6">She is happy. (adjective comes after "be")</div></div><button class="rbtn" onclick="tog('a1q6',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">07</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>school / go / they / to</code></div><div class="ar" id="a1q7">They go to school.</div></div><button class="rbtn" onclick="tog('a1q7',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">08</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which sentence is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>Like I pizza.</div><div class="choice"><div class="cletter">B</div>I like pizza.</div><div class="choice"><div class="cletter">C</div>Pizza I like.</div></div></div><div class="ar" id="a1q8">B — I like pizza.</div></div><button class="rbtn" onclick="tog('a1q8',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">09</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>tall / is / very / he</code></div><div class="ar" id="a1q9">He is very tall.</div></div><button class="rbtn" onclick="tog('a1q9',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">10</div><div><div class="qtag">Identify</div><div class="qp">Label S, V, and O in: <code>My sister plays the piano.</code></div><div class="ar" id="a1q10">S = My sister · V = plays · O = the piano</div></div><button class="rbtn" onclick="tog('a1q10',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">11</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Plays he football every day.</code></div><div class="ar" id="a1q11">He plays football every day. (subject comes before the verb)</div></div><button class="rbtn" onclick="tog('a1q11',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">12</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>in / live / I / London</code></div><div class="ar" id="a1q12">I live in London.</div></div><button class="rbtn" onclick="tog('a1q12',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">13</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which sentence is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>Water the drinks boy.</div><div class="choice"><div class="cletter">B</div>The boy drinks water.</div><div class="choice"><div class="cletter">C</div>Drinks the boy water.</div></div></div><div class="ar" id="a1q13">B — The boy drinks water.</div></div><button class="rbtn" onclick="tog('a1q13',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">14</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>book / reads / she / a</code></div><div class="ar" id="a1q14">She reads a book.</div></div><button class="rbtn" onclick="tog('a1q14',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">15</div><div><div class="qtag">Identify</div><div class="qp">Which word is the verb (V) in: <code>The teacher explains the lesson.</code></div><div class="ar" id="a1q15">V = explains</div></div><button class="rbtn" onclick="tog('a1q15',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">16</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>She beautiful is.</code></div><div class="ar" id="a1q16">She is beautiful. (S + BE + Adj)</div></div><button class="rbtn" onclick="tog('a1q16',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">17</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>the / opens / at / shop / nine</code></div><div class="ar" id="a1q17">The shop opens at nine.</div></div><button class="rbtn" onclick="tog('a1q17',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">18</div><div><div class="qtag">Formula</div><div class="qp">Write the formula for: <em>"The cat chases the bird."</em></div><div class="ar" id="a1q18">S + V + O</div></div><button class="rbtn" onclick="tog('a1q18',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">19</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>is / on the table / the book</code></div><div class="ar" id="a1q19">The book is on the table.</div></div><button class="rbtn" onclick="tog('a1q19',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">20</div><div><div class="qtag">Write</div><div class="qp">Write one sentence using S + V + O about something you do every day.</div><div class="ar" id="a1q20">Model: I drink tea every morning. / She watches TV. / He eats rice. (Any correct S+V+O sentence.)</div></div><button class="rbtn" onclick="tog('a1q20',this)">Show Answer</button></div>
+    </div>
+  </div>
+
+  <!-- ── A2 TEST ── -->
+  <div class="tsect">
+    <div class="tlh tlh-a2 open" onclick="toggleTest(this)">
+      <h3>A2 Test — Elementary</h3>
+      <div class="tlh-right"><span class="qc">20 Questions</span><div class="t-chevron"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <div class="qwrap">
+      <div class="qb"><div class="qnum">01</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>always / she / arrives / late</code></div><div class="ar" id="a2q1">She always arrives late.</div></div><button class="rbtn" onclick="tog('a2q1',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">02</div><div><div class="qtag">Transform</div><div class="qp">Make this sentence negative: <code>He likes tea.</code></div><div class="ar" id="a2q2">He does not like tea. / He doesn't like tea.</div></div><button class="rbtn" onclick="tog('a2q2',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">03</div><div><div class="qtag">Transform</div><div class="qp">Make this a question: <code>They are coming.</code></div><div class="ar" id="a2q3">Are they coming?</div></div><button class="rbtn" onclick="tog('a2q3',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">04</div><div><div class="qtag">Placement</div><div class="qp">Add "often" in the correct position: <code>I go to the gym.</code></div><div class="ar" id="a2q4">I often go to the gym.</div></div><button class="rbtn" onclick="tog('a2q4',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">05</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which sentence is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>She never is late.</div><div class="choice"><div class="cletter">B</div>She is never late.</div><div class="choice"><div class="cletter">C</div>Never she is late.</div></div></div><div class="ar" id="a2q5">B — She is never late. (frequency adverb follows "be")</div></div><button class="rbtn" onclick="tog('a2q5',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">06</div><div><div class="qtag">Transform</div><div class="qp">Make this a question: <code>She works here.</code></div><div class="ar" id="a2q6">Does she work here?</div></div><button class="rbtn" onclick="tog('a2q6',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">07</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>She doesn't likes coffee.</code></div><div class="ar" id="a2q7">She doesn't like coffee. (base form after "doesn't")</div></div><button class="rbtn" onclick="tog('a2q7',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">08</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>does / work / where / she</code></div><div class="ar" id="a2q8">Where does she work?</div></div><button class="rbtn" onclick="tog('a2q8',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">09</div><div><div class="qtag">Placement</div><div class="qp">Add "yesterday" in the correct position: <code>She called me.</code></div><div class="ar" id="a2q9">She called me yesterday. (time expression at the end)</div></div><button class="rbtn" onclick="tog('a2q9',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">10</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Always I drink water in the morning.</code></div><div class="ar" id="a2q10">I always drink water in the morning.</div></div><button class="rbtn" onclick="tog('a2q10',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">11</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which question is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>Where she lives?</div><div class="choice"><div class="cletter">B</div>Where does she live?</div><div class="choice"><div class="cletter">C</div>Where she does live?</div></div></div><div class="ar" id="a2q11">B — Where does she live?</div></div><button class="rbtn" onclick="tog('a2q11',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">12</div><div><div class="qtag">Transform</div><div class="qp">Make this sentence negative: <code>I am going to the party.</code></div><div class="ar" id="a2q12">I am not going to the party.</div></div><button class="rbtn" onclick="tog('a2q12',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">13</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>she / rarely / TV / watches</code></div><div class="ar" id="a2q13">She rarely watches TV.</div></div><button class="rbtn" onclick="tog('a2q13',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">14</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Do she like music?</code></div><div class="ar" id="a2q14">Does she like music?</div></div><button class="rbtn" onclick="tog('a2q14',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">15</div><div><div class="qtag">Transform</div><div class="qp">Make this a question: <code>He can swim well.</code></div><div class="ar" id="a2q15">Can he swim well?</div></div><button class="rbtn" onclick="tog('a2q15',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">16</div><div><div class="qtag">Order</div><div class="qp">Arrange correctly: <code>in London / she works / every day</code></div><div class="ar" id="a2q16">She works in London every day. (Place before Time)</div></div><button class="rbtn" onclick="tog('a2q16',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">17</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>They don't never eat meat.</div><div class="choice"><div class="cletter">B</div>They don't eat meat.</div><div class="choice"><div class="cletter">C</div>They eat not meat.</div></div></div><div class="ar" id="a2q17">B — They don't eat meat. (only one negative)</div></div><button class="rbtn" onclick="tog('a2q17',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">18</div><div><div class="qtag">Transform</div><div class="qp">Write both the negative AND the question form: <code>They play chess on Sundays.</code></div><div class="ar" id="a2q18">Negative: They don't play chess on Sundays. — Question: Do they play chess on Sundays?</div></div><button class="rbtn" onclick="tog('a2q18',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">19</div><div><div class="qtag">Formula</div><div class="qp">What is the formula for a yes/no question in the present simple?</div><div class="ar" id="a2q19">Aux (Do / Does) + S + V + O ?</div></div><button class="rbtn" onclick="tog('a2q19',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">20</div><div><div class="qtag">Write</div><div class="qp">Write one sentence using a frequency adverb about your own habits.</div><div class="ar" id="a2q20">Model: I usually drink coffee in the morning. / She often reads before bed. (S + Freq + V + O)</div></div><button class="rbtn" onclick="tog('a2q20',this)">Show Answer</button></div>
+    </div>
+  </div>
+
+  <!-- ── B1 TEST ── -->
+  <div class="tsect">
+    <div class="tlh tlh-b1 open" onclick="toggleTest(this)">
+      <h3>B1 Test — Intermediate</h3>
+      <div class="tlh-right"><span class="qc">20 Questions</span><div class="t-chevron"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <div class="qwrap">
+      <div class="qb"><div class="qnum">01</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>yesterday / finished / she / the project</code></div><div class="ar" id="b1q1">She finished the project yesterday.</div></div><button class="rbtn" onclick="tog('b1q1',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">02</div><div><div class="qtag">Combine</div><div class="qp">Join with "because": <code>She is tired. She worked all day.</code></div><div class="ar" id="b1q2">She is tired because she worked all day.</div></div><button class="rbtn" onclick="tog('b1q2',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">03</div><div><div class="qtag">Identify</div><div class="qp">Label IO and DO in: <code>She gave him a book.</code></div><div class="ar" id="b1q3">IO = him · DO = a book</div></div><button class="rbtn" onclick="tog('b1q3',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">04</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>She told to me the answer.</code></div><div class="ar" id="b1q4">She told me the answer. (no "to" when IO comes first with "tell")</div></div><button class="rbtn" onclick="tog('b1q4',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">05</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Although it was cold, but she went out.</code></div><div class="ar" id="b1q5">Although it was cold, she went out. (never use "but" after "although")</div></div><button class="rbtn" onclick="tog('b1q5',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">06</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which sentence is grammatically correct?<div class="choices"><div class="choice"><div class="cletter">A</div>She asked me where did I live.</div><div class="choice"><div class="cletter">B</div>She asked me where I lived.</div><div class="choice"><div class="cletter">C</div>She asked me where I do live.</div></div></div><div class="ar" id="b1q6">B — reported questions use statement word order (no inversion).</div></div><button class="rbtn" onclick="tog('b1q6',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">07</div><div><div class="qtag">Reported Speech</div><div class="qp">Report this statement: <code>"I am tired," she said.</code></div><div class="ar" id="b1q7">She said (that) she was tired.</div></div><button class="rbtn" onclick="tog('b1q7',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">08</div><div><div class="qtag">Combine</div><div class="qp">Join with "so": <code>It was raining. We stayed inside.</code></div><div class="ar" id="b1q8">It was raining, so we stayed inside.</div></div><button class="rbtn" onclick="tog('b1q8',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">09</div><div><div class="qtag">Transform</div><div class="qp">Rewrite using a preposition (to/for): <code>She bought him flowers.</code></div><div class="ar" id="b1q9">She bought flowers for him. ("buy" uses "for", not "to")</div></div><button class="rbtn" onclick="tog('b1q9',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">10</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Can you tell me what is the time?</code></div><div class="ar" id="b1q10">Can you tell me what the time is? (embedded question = statement word order)</div></div><button class="rbtn" onclick="tog('b1q10',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">11</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>if / early / you / leave / you / will / catch / the bus</code></div><div class="ar" id="b1q11">If you leave early, you will catch the bus.</div></div><button class="rbtn" onclick="tog('b1q11',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">12</div><div><div class="qtag">Combine</div><div class="qp">Join with "before": <code>She checked her email. She left.</code></div><div class="ar" id="b1q12">She checked her email before she left. / Before she left, she checked her email.</div></div><button class="rbtn" onclick="tog('b1q12',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">13</div><div><div class="qtag">Reported Speech</div><div class="qp">Report this question: <code>"Do you want coffee?" he asked her.</code></div><div class="ar" id="b1q13">He asked her if / whether she wanted coffee.</div></div><button class="rbtn" onclick="tog('b1q13',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">14</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which connector is correct here?<div class="choices"><div class="choice"><div class="cletter">A</div>She studied hard, but she passed the exam.</div><div class="choice"><div class="cletter">B</div>She studied hard, so she passed the exam.</div><div class="choice"><div class="cletter">C</div>She studied hard, although she passed the exam.</div></div></div><div class="ar" id="b1q14">B — "so" expresses result (cause → effect).</div></div><button class="rbtn" onclick="tog('b1q14',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">15</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>the / who / man / spoke / was / a / doctor</code></div><div class="ar" id="b1q15">The man who spoke was a doctor.</div></div><button class="rbtn" onclick="tog('b1q15',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">16</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Because she was tired. She stayed home.</code></div><div class="ar" id="b1q16">She stayed home because she was tired. (subordinate clause cannot stand alone)</div></div><button class="rbtn" onclick="tog('b1q16',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">17</div><div><div class="qtag">Formula</div><div class="qp">What is the formula name for: <em>"She gave him a book"?</em></div><div class="ar" id="b1q17">S + V + IO + DO (Double Object — no preposition)</div></div><button class="rbtn" onclick="tog('b1q17',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">18</div><div><div class="qtag">Combine</div><div class="qp">Join with "although": <code>She was nervous. She gave a great speech.</code></div><div class="ar" id="b1q18">Although she was nervous, she gave a great speech.</div></div><button class="rbtn" onclick="tog('b1q18',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">19</div><div><div class="qtag">Reorder</div><div class="qp">Put the words in the correct order: <code>he / said / that / he / was / home</code></div><div class="ar" id="b1q19">He said that he was home.</div></div><button class="rbtn" onclick="tog('b1q19',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">20</div><div><div class="qtag">Write</div><div class="qp">Write a complex sentence using "although" about something true for you.</div><div class="ar" id="b1q20">Model: Although I was tired, I finished my homework. (Any grammatically correct complex sentence.)</div></div><button class="rbtn" onclick="tog('b1q20',this)">Show Answer</button></div>
+    </div>
+  </div>
+
+  <!-- ── B2 TEST ── -->
+  <div class="tsect">
+    <div class="tlh tlh-b2 open" onclick="toggleTest(this)">
+      <h3>B2 Test — Upper-Intermediate</h3>
+      <div class="tlh-right"><span class="qc">20 Questions</span><div class="t-chevron"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <div class="qwrap">
+      <div class="qb"><div class="qnum">01</div><div><div class="qtag">Inversion</div><div class="qp">Rewrite with emphatic fronting: <code>I have never seen this before.</code></div><div class="ar" id="b2q1">Never have I seen this before.</div></div><button class="rbtn" onclick="tog('b2q1',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">02</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the inversion error: <code>Only then she understood the problem.</code></div><div class="ar" id="b2q2">Only then did she understand the problem.</div></div><button class="rbtn" onclick="tog('b2q2',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">03</div><div><div class="qtag">Cleft</div><div class="qp">Emphasise "Tom" using a cleft sentence: <code>Tom broke the window.</code></div><div class="ar" id="b2q3">It was Tom who broke the window.</div></div><button class="rbtn" onclick="tog('b2q3',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">04</div><div><div class="qtag">Pseudo-Cleft</div><div class="qp">Rewrite using a "What" cleft: <code>I need more time.</code></div><div class="ar" id="b2q4">What I need is more time.</div></div><button class="rbtn" onclick="tog('b2q4',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">05</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which sentence uses fronting correctly?<div class="choices"><div class="choice"><div class="cletter">A</div>Rarely he complains about anything.</div><div class="choice"><div class="cletter">B</div>Rarely does he complain about anything.</div><div class="choice"><div class="cletter">C</div>Rarely he does complain about anything.</div></div></div><div class="ar" id="b2q5">B — negative adverbial fronting requires subject-auxiliary inversion.</div></div><button class="rbtn" onclick="tog('b2q5',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">06</div><div><div class="qtag">Passive</div><div class="qp">Rewrite in the passive voice: <code>The committee rejected his proposal.</code></div><div class="ar" id="b2q6">His proposal was rejected (by the committee).</div></div><button class="rbtn" onclick="tog('b2q6',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">07</div><div><div class="qtag">Inversion</div><div class="qp">Rewrite with inversion: <code>She had hardly sat down when the phone rang.</code></div><div class="ar" id="b2q7">Hardly had she sat down when the phone rang.</div></div><button class="rbtn" onclick="tog('b2q7',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">08</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Not only she speaks French but also German.</code></div><div class="ar" id="b2q8">Not only does she speak French, but she also speaks German.</div></div><button class="rbtn" onclick="tog('b2q8',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">09</div><div><div class="qtag">Cleft</div><div class="qp">Emphasise the time using a cleft sentence: <code>She realised the truth at midnight.</code></div><div class="ar" id="b2q9">It was at midnight that she realised the truth.</div></div><button class="rbtn" onclick="tog('b2q9',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">10</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>It was in Paris where they first met.</code></div><div class="ar" id="b2q10">It was in Paris that they first met. (cleft sentences use "that" — not "where")</div></div><button class="rbtn" onclick="tog('b2q10',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">11</div><div><div class="qtag">Inversion</div><div class="qp">Rewrite with fronted inversion: <code>We will not change our decision under any circumstances.</code></div><div class="ar" id="b2q11">Under no circumstances will we change our decision.</div></div><button class="rbtn" onclick="tog('b2q11',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">12</div><div><div class="qtag">Passive</div><div class="qp">Rewrite using an impersonal passive: <code>People say that he is a genius.</code></div><div class="ar" id="b2q12">He is said to be a genius. / It is said that he is a genius.</div></div><button class="rbtn" onclick="tog('b2q12',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">13</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>No sooner she arrived than it started raining.</code></div><div class="ar" id="b2q13">No sooner had she arrived than it started raining.</div></div><button class="rbtn" onclick="tog('b2q13',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">14</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which passive structure is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>It is believed that he is innocent.</div><div class="choice"><div class="cletter">B</div>It believes that he is innocent.</div><div class="choice"><div class="cletter">C</div>It is believing that he is innocent.</div></div></div><div class="ar" id="b2q14">A — impersonal passive: It is believed that…</div></div><button class="rbtn" onclick="tog('b2q14',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">15</div><div><div class="qtag">Inversion</div><div class="qp">Rewrite with inversion: <code>I had barely left the house when it started to snow.</code></div><div class="ar" id="b2q15">Barely had I left the house when it started to snow.</div></div><button class="rbtn" onclick="tog('b2q15',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">16</div><div><div class="qtag">Combine</div><div class="qp">Join with "despite": <code>He trained for months. He didn't win the race.</code></div><div class="ar" id="b2q16">Despite training for months, he didn't win the race.</div></div><button class="rbtn" onclick="tog('b2q16',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">17</div><div><div class="qtag">Formula</div><div class="qp">Write the formula for a negative inversion sentence.</div><div class="ar" id="b2q17">Negative Adverb + Aux + S + V + O (e.g. Never have I seen this.)</div></div><button class="rbtn" onclick="tog('b2q17',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">18</div><div><div class="qtag">Cleft</div><div class="qp">Write a cleft sentence emphasising "the noise": <code>The noise woke me up.</code></div><div class="ar" id="b2q18">It was the noise that woke me up.</div></div><button class="rbtn" onclick="tog('b2q18',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">19</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which is the most emphatic structure?<div class="choices"><div class="choice"><div class="cletter">A</div>What surprised me was her reaction.</div><div class="choice"><div class="cletter">B</div>Her reaction surprised me.</div><div class="choice"><div class="cletter">C</div>I was surprised by her reaction.</div></div></div><div class="ar" id="b2q19">A — the "what" cleft construction is the most emphatic.</div></div><button class="rbtn" onclick="tog('b2q19',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">20</div><div><div class="qtag">Write</div><div class="qp">Write one sentence using negative inversion (never / rarely / hardly).</div><div class="ar" id="b2q20">Model: Never have I eaten such delicious food. / Rarely does she complain about her work.</div></div><button class="rbtn" onclick="tog('b2q20',this)">Show Answer</button></div>
+    </div>
+  </div>
+
+  <!-- ── C1 TEST ── -->
+  <div class="tsect">
+    <div class="tlh tlh-c1 open" onclick="toggleTest(this)">
+      <h3>C1 Test — Advanced</h3>
+      <div class="tlh-right"><span class="qc">20 Questions</span><div class="t-chevron"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <div class="qwrap">
+      <div class="qb"><div class="qnum">01</div><div><div class="qtag">Participial</div><div class="qp">Rewrite using a fronted participial phrase: <code>She was exhausted by the journey, so she fell asleep immediately.</code></div><div class="ar" id="c1q1">Exhausted by the journey, she fell asleep immediately.</div></div><button class="rbtn" onclick="tog('c1q1',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">02</div><div><div class="qtag">Formal Conditional</div><div class="qp">Rewrite formally (remove "if"): <code>If you need help, please contact us.</code></div><div class="ar" id="c1q2">Should you need help, please contact us.</div></div><button class="rbtn" onclick="tog('c1q2',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">03</div><div><div class="qtag">Not Only</div><div class="qp">Rewrite with fronted "Not only … but also": <code>He won the race and set a new record.</code></div><div class="ar" id="c1q3">Not only did he win the race, but he also set a new record.</div></div><button class="rbtn" onclick="tog('c1q3',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">04</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the dangling participle: <code>Walking down the street, the rain started suddenly.</code></div><div class="ar" id="c1q4">Walking down the street, she was caught in sudden rain. (the subject of the main clause must be the person walking)</div></div><button class="rbtn" onclick="tog('c1q4',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">05</div><div><div class="qtag">Formal Conditional</div><div class="qp">Rewrite formally: <code>If she left, the company would struggle.</code></div><div class="ar" id="c1q5">Were she to leave, the company would struggle.</div></div><button class="rbtn" onclick="tog('c1q5',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">06</div><div><div class="qtag">Participial</div><div class="qp">Rewrite using a fronted present participle: <code>She realised her mistake, so she apologised immediately.</code></div><div class="ar" id="c1q6">Realising her mistake, she apologised immediately.</div></div><button class="rbtn" onclick="tog('c1q6',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">07</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Not only does she speaks French, but she also reads Latin.</code></div><div class="ar" id="c1q7">Not only does she speak French, but she also reads Latin. (base form after "does")</div></div><button class="rbtn" onclick="tog('c1q7',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">08</div><div><div class="qtag">Formal Conditional</div><div class="qp">Rewrite formally: <code>If I had known earlier, I would have acted differently.</code></div><div class="ar" id="c1q8">Had I known earlier, I would have acted differently.</div></div><button class="rbtn" onclick="tog('c1q8',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">09</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which participial phrase is correctly attached?<div class="choices"><div class="choice"><div class="cletter">A</div>Having finished dinner, the dishes were washed.</div><div class="choice"><div class="cletter">B</div>Having finished dinner, she washed the dishes.</div><div class="choice"><div class="cletter">C</div>Having finished dinner, the evening continued pleasantly.</div></div></div><div class="ar" id="c1q9">B — the subject "she" matches the person who finished dinner.</div></div><button class="rbtn" onclick="tog('c1q9',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">10</div><div><div class="qtag">Not Only</div><div class="qp">Complete the sentence: <code>Not only did she arrive late, but she also _______________.</code></div><div class="ar" id="c1q10">Any logical completion with correct word order — e.g. "forgot her notes" / "missed the introduction".</div></div><button class="rbtn" onclick="tog('c1q10',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">11</div><div><div class="qtag">Participial</div><div class="qp">Rewrite using "Having + past participle": <code>She finished her work and then left the office.</code></div><div class="ar" id="c1q11">Having finished her work, she left the office.</div></div><button class="rbtn" onclick="tog('c1q11',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">12</div><div><div class="qtag">Formal Conditional</div><div class="qp">What does "Were it not for her help" mean in plain English?</div><div class="ar" id="c1q12">If it were not for her help = Without her help.</div></div><button class="rbtn" onclick="tog('c1q12',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">13</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which "not only … but also" sentence is correct?<div class="choices"><div class="choice"><div class="cletter">A</div>Not only did he win, but also set a record.</div><div class="choice"><div class="cletter">B</div>Not only did he win, but he also set a record.</div><div class="choice"><div class="cletter">C</div>Not only he won, but he also set a record.</div></div></div><div class="ar" id="c1q13">B — the second clause needs its own subject (he).</div></div><button class="rbtn" onclick="tog('c1q13',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">14</div><div><div class="qtag">Error Correction</div><div class="qp">Correct the mistake: <code>Not only does she speaks French but she also reads Latin.</code></div><div class="ar" id="c1q14">Not only does she speak French, but she also reads Latin. (base form after "does")</div></div><button class="rbtn" onclick="tog('c1q14',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">15</div><div><div class="qtag">Participial</div><div class="qp">Rewrite: <code>He was defeated in the election, so he retired from politics.</code></div><div class="ar" id="c1q15">Defeated in the election, he retired from politics.</div></div><button class="rbtn" onclick="tog('c1q15',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">16</div><div><div class="qtag">Formula</div><div class="qp">Write the formal conditional formula for a 2nd conditional.</div><div class="ar" id="c1q16">Were + S + to + V , + S + would + V</div></div><button class="rbtn" onclick="tog('c1q16',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">17</div><div><div class="qtag">Multiple Choice</div><div class="qp">Which is the correct formal 1st conditional?<div class="choices"><div class="choice"><div class="cletter">A</div>Should you need assistance, please call us.</div><div class="choice"><div class="cletter">B</div>Should you will need assistance, please call us.</div><div class="choice"><div class="cletter">C</div>Should you needed assistance, please call us.</div></div></div><div class="ar" id="c1q17">A — "should" is followed by the base form of the verb.</div></div><button class="rbtn" onclick="tog('c1q17',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">18</div><div><div class="qtag">Not Only</div><div class="qp">Rewrite mid-sentence (no inversion): <code>She speaks French. She also reads Latin.</code></div><div class="ar" id="c1q18">She not only speaks French but also reads Latin.</div></div><button class="rbtn" onclick="tog('c1q18',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">19</div><div><div class="qtag">Error Correction</div><div class="qp">Is this correct? <code>Turning the corner, a beautiful view appeared.</code></div><div class="ar" id="c1q19">No — dangling participle. Correct: Turning the corner, we saw a beautiful view. (the person turning must be the sentence subject)</div></div><button class="rbtn" onclick="tog('c1q19',this)">Show Answer</button></div>
+      <div class="qb"><div class="qnum">20</div><div><div class="qtag">Write</div><div class="qp">Write one sentence using a fronted participial phrase about a real or imagined experience.</div><div class="ar" id="c1q20">Model: Having studied for three hours, I finally understood the grammar. / Exhausted from the heat, we decided to rest in the shade.</div></div><button class="rbtn" onclick="tog('c1q20',this)">Show Answer</button></div>
+    </div>
+  </div>
+
+</div><!-- /tz-body -->
+</div><!-- /page -->
+
+<div class="footer">
+  <div class="fbrand">Teacher <span>Benny</span></div>
+  <div class="fcopy">English Word Order Mastery · A1 – C1 · 100 Questions · All rights reserved</div>
+</div>
+
+<script>
+// ── Smooth scroll nav ──
+function goTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Answer reveal ──
+function tog(id, btn) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var vis = el.classList.contains('vis');
+  el.classList.toggle('vis', !vis);
+  btn.textContent = vis ? 'Show Answer' : 'Hide Answer';
+}
+
+// ── Lesson section accordion ──
+function toggleLesson(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  if (isOpen) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    requestAnimationFrame(function() {
+      body.classList.add('collapsed');
+      body.style.maxHeight = '0';
+    });
+    header.classList.remove('open');
+    header.classList.add('closed');
+  } else {
+    body.classList.remove('collapsed');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    header.classList.remove('closed');
+    header.classList.add('open');
+    body.addEventListener('transitionend', function onEnd() {
+      body.style.maxHeight = 'none';
+      body.removeEventListener('transitionend', onEnd);
+    });
+  }
+}
+
+// ── Test section accordion ──
+function toggleTest(header) {
+  var wrap = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  if (isOpen) {
+    wrap.style.maxHeight = wrap.scrollHeight + 'px';
+    requestAnimationFrame(function() {
+      wrap.classList.add('twcollapsed');
+      wrap.style.maxHeight = '0';
+    });
+    header.classList.remove('open');
+    header.classList.add('tclosed');
+    // close bottom border radius on header
+    header.style.borderRadius = '10px';
+    var borderColor = getComputedStyle(header).borderTopColor;
+    header.style.borderBottom = '1px solid ' + borderColor;
+  } else {
+    wrap.classList.remove('twcollapsed');
+    wrap.style.maxHeight = wrap.scrollHeight + 'px';
+    header.classList.remove('tclosed');
+    header.classList.add('open');
+    header.style.borderRadius = '';
+    header.style.borderBottom = '';
+    wrap.addEventListener('transitionend', function onEnd() {
+      wrap.style.maxHeight = 'none';
+      wrap.removeEventListener('transitionend', onEnd);
+    });
+  }
+}
+
+// ── Init: set all bodies to height auto on load ──
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.lbody').forEach(function(b) {
+    b.style.maxHeight = 'none';
+  });
+  document.querySelectorAll('.qwrap').forEach(function(w) {
+    w.style.maxHeight = 'none';
+  });
+});
+</script>
+</body>
+</html>
