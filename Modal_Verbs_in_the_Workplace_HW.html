@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workplace English — Grammar Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra:  #c0603a; --terra-d:#8f3f20; --terra-light: #fdf0ea; --terra-mid: #e8c4b4;
+    --sage:   #5e7a52; --sage-light: #eaf2e4; --sage-mid: #b8cead;
+    --gold:   #c49a3c; --gold-d:#8a6518; --gold-light: #faf5e4; --gold-mid: #e8d49a;
+    --ink:    #25201a; --ink-mid: #5a4f40; --ink-light: #9c8e7e;
+    --paper:  #faf8f4; --paper-mid: #f0ede5; --white: #ffffff; --border: #e0dbd0;
+    --blue:#3a6fa8; --blue-light:#e8f0fb;
+    --radius: 10px; --shadow: 0 2px 12px rgba(37,32,26,0.07);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--paper); color: var(--ink); min-height: 100vh; padding: 0 0 6rem; }
+
+  .hw-header { background: var(--ink); color: var(--paper); padding: 2.8rem 2rem 2.2rem; position: relative; overflow: hidden; }
+  .hw-header::before { content:''; position:absolute;inset:0; background: repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(196,154,60,0.06) 18px,rgba(196,154,60,0.06) 19px); }
+  .header-inner { max-width: 820px; margin: 0 auto; position: relative; }
+  .brand { font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.7rem; }
+  .hw-title { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,4vw,2.4rem); font-weight:700; line-height:1.2; margin-bottom:0.5rem; }
+  .hw-title span { color:var(--gold); }
+  .hw-meta { font-size:13px; color:rgba(250,248,244,0.6); display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:1rem; }
+
+  .progress-wrap { max-width:820px; margin:1.4rem auto 0; padding:0 1.2rem; }
+  .progress-label { font-size:11.5px; color:var(--ink-light); display:flex; justify-content:space-between; margin-bottom:5px; }
+  .progress-bar-outer { height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
+  .progress-bar-inner { height:100%; background:var(--gold); border-radius:99px; transition:width 0.4s ease; }
+
+  .ref-wrap { max-width:820px; margin:1.6rem auto 0; padding:0 1.2rem; }
+  .ref-toggle { width:100%; background:var(--gold-light); border:1.5px solid var(--gold-mid); border-radius:var(--radius); padding:13px 18px; display:flex; align-items:center; gap:10px; cursor:pointer; font-family:inherit; font-size:13.5px; font-weight:600; color:var(--ink); transition:background 0.15s; text-align:left; }
+  .ref-toggle:hover { background:#f4ecce; }
+  .ref-toggle .rt-label { flex:1; }
+  .ref-toggle .rt-badge { font-size:11px; font-weight:500; background:var(--gold-mid); color:#6b4e10; padding:2px 9px; border-radius:20px; }
+  .ref-toggle .chevron { font-size:16px; color:var(--ink-light); transition:transform 0.2s; }
+  .ref-toggle.open .chevron { transform:rotate(180deg); }
+  .ref-body { display:none; background:var(--white); border:1.5px solid var(--gold-mid); border-top:none; border-radius:0 0 var(--radius) var(--radius); padding:18px; }
+  .ref-body.open { display:block; }
+  .ref-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; margin-bottom:14px; }
+  .ref-card { background:var(--paper-mid); border-radius:8px; padding:10px 13px; }
+  .ref-card-title { font-size:12px; font-weight:700; color:var(--terra); margin-bottom:2px; }
+  .ref-card-use { font-size:11px; color:var(--ink-light); margin-bottom:5px; }
+  .ref-card ul { list-style:none; }
+  .ref-card ul li { font-size:12px; font-style:italic; color:var(--ink-mid); padding:1px 0; }
+  .ref-card ul li::before { content:"→ "; color:var(--ink-light); font-style:normal; }
+  .ref-modals { background:var(--terra-light); border-radius:8px; padding:12px 14px; }
+  .ref-modals-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--terra); margin-bottom:8px; }
+  .modal-row { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:7px; }
+  .modal-grp p { font-size:11px; font-weight:600; color:var(--terra); margin-bottom:3px; }
+  .mpill { display:inline-block; font-size:12px; background:var(--white); color:var(--terra); border:0.5px solid var(--terra-mid); padding:2px 9px; border-radius:20px; margin:2px 2px 0 0; }
+  .ref-note { font-size:11.5px; color:var(--ink-mid); font-style:italic; }
+
+  /* INLINE GRAMMAR NOTE */
+  .grammar-note { background:var(--blue-light); border:1.5px solid #c2d8f5; border-left:4px solid var(--blue); border-radius:8px; padding:14px 16px; margin-bottom:16px; }
+  .grammar-note-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:var(--blue); margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+  .grammar-note-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px; }
+  .gn-rule { background:var(--white); border-radius:6px; padding:9px 12px; }
+  .gn-rule-name { font-size:11.5px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .gn-rule-form { font-size:11px; color:var(--blue); font-family:monospace; background:#ddeeff; border-radius:4px; padding:2px 7px; display:inline-block; margin-bottom:5px; }
+  .gn-rule-ex { font-size:11.5px; color:var(--ink-mid); font-style:italic; line-height:1.55; }
+  .gn-single { font-size:12.5px; color:var(--ink-mid); line-height:1.7; }
+  .gn-single strong { color:var(--ink); }
+  .gn-pill-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .gn-pill { font-size:11.5px; background:var(--white); border:1px solid #c2d8f5; color:var(--blue); padding:3px 10px; border-radius:20px; font-style:italic; }
+  .gn-footer { margin-top:10px; font-size:12px; color:var(--ink-mid); font-style:italic; }
+
+  .main { max-width:820px; margin:0 auto; padding:0 1.2rem; }
+  .section-label { display:flex; align-items:center; gap:12px; margin:2.2rem 0 1rem; }
+  .section-num { width:34px; height:34px; border-radius:50%; background:var(--terra); color:var(--white); font-family:'Playfair Display',serif; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--ink); line-height:1.2; }
+  .section-subtitle { font-size:12px; color:var(--ink-light); margin-top:2px; }
+  .section-divider { flex:1; height:1px; background:var(--border); margin-left:8px; }
+  .time-badge { font-size:11px; font-weight:600; background:var(--paper-mid); color:var(--ink-light); border:0.5px solid var(--border); padding:3px 10px; border-radius:20px; white-space:nowrap; }
+
+  .card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; margin-bottom:14px; box-shadow:var(--shadow); }
+  .card-tag { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:3px 10px; border-radius:20px; display:inline-block; margin-bottom:10px; }
+  .tag-terra { background:var(--terra-light); color:var(--terra); }
+  .tag-sage  { background:var(--sage-light);  color:var(--sage); }
+  .tag-gold  { background:var(--gold-light);  color:var(--gold-d); }
+  .card-instruction { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px; line-height:1.5; }
+  .card-note { font-size:12.5px; color:var(--ink-light); font-style:italic; margin-bottom:14px; line-height:1.5; }
+
+  .mc-list { display:flex; flex-direction:column; gap:16px; }
+  .mc-q { font-size:14px; color:var(--ink); margin-bottom:8px; line-height:1.6; }
+  .mc-q strong { font-weight:600; }
+  .mc-options { display:flex; flex-wrap:wrap; gap:8px; }
+  .mc-opt { font-size:13px; font-family:'Source Serif 4',serif; background:var(--paper-mid); border:1px solid var(--border); border-radius:7px; padding:7px 14px; cursor:pointer; transition:all 0.15s; color:var(--ink); user-select:none; }
+  .mc-opt:hover { background:var(--sage-light); border-color:var(--sage-mid); }
+  .mc-opt.selected { background:var(--sage-light); border-color:var(--sage); color:var(--sage); font-weight:600; }
+
+  .fill-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .fill-item { display:flex; align-items:baseline; gap:8px; }
+  .fill-num { font-size:12px; font-weight:700; color:var(--ink-light); min-width:22px; flex-shrink:0; }
+  .fill-text { font-size:14px; line-height:1.9; color:var(--ink); flex:1; }
+  .fill-input { display:inline-block; border:none; border-bottom:1.5px solid var(--terra-mid); background:transparent; font-family:'Source Serif 4',serif; font-size:14px; color:var(--ink); min-width:120px; padding:0 4px; outline:none; transition:border-color 0.15s; }
+  .fill-input:focus { border-color:var(--terra); }
+
+  .error-list { display:flex; flex-direction:column; gap:12px; }
+  .error-item { background:var(--paper-mid); border-radius:8px; padding:12px 14px; border-left:3px solid var(--terra-mid); }
+  .error-sentence { font-size:14px; font-style:italic; color:var(--ink-mid); margin-bottom:8px; line-height:1.6; }
+  .error-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--ink-light); margin-bottom:5px; }
+  .error-input { width:100%; border:none; border-bottom:1.5px solid var(--terra-mid); background:transparent; font-family:'Source Serif 4',serif; font-size:14px; color:var(--ink); padding:3px 4px; outline:none; transition:border-color 0.15s; }
+  .error-input:focus { border-color:var(--terra); }
+
+  .word-bank { background:var(--gold-light); border:1px solid var(--gold-mid); border-radius:8px; padding:12px 14px; margin-bottom:16px; }
+  .wb-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-d); margin-bottom:8px; }
+  .wb-words { display:flex; flex-wrap:wrap; gap:7px; }
+  .wb-word { font-size:13px; background:var(--white); border:1px solid var(--gold-mid); color:#6b4c0a; padding:3px 12px; border-radius:20px; font-style:italic; }
+
+  .match-wrap { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .match-col-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-light); margin-bottom:8px; }
+  .match-item { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+  .match-key { font-size:12px; font-weight:700; color:var(--white); background:var(--sage); border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .match-letter { font-size:12px; font-weight:700; color:var(--white); background:var(--terra); border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .match-text { font-size:13.5px; color:var(--ink); line-height:1.5; flex:1; }
+  .match-input { border:none; border-bottom:1.5px solid var(--sage-mid); background:transparent; font-family:'Source Serif 4',serif; font-size:13px; color:var(--ink); width:36px; padding:1px 4px; outline:none; text-align:center; transition:border-color 0.15s; }
+  .match-input:focus { border-color:var(--sage); }
+
+  .scramble-list { display:flex; flex-direction:column; gap:14px; }
+  .scramble-item { background:var(--paper-mid); border-radius:8px; padding:12px 14px; }
+  .scramble-words { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px; }
+  .sw { font-size:13px; background:var(--white); border:1px solid var(--border); border-radius:6px; padding:4px 11px; color:var(--ink-mid); font-style:italic; }
+  .scramble-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--ink-light); margin-bottom:5px; }
+  .scramble-input { width:100%; border:none; border-bottom:1.5px solid var(--gold-mid); background:transparent; font-family:'Source Serif 4',serif; font-size:14px; color:var(--ink); padding:3px 4px; outline:none; transition:border-color 0.15s; }
+  .scramble-input:focus { border-color:var(--gold); }
+
+  .transform-list { display:flex; flex-direction:column; gap:14px; }
+  .transform-item { background:var(--paper-mid); border-radius:8px; padding:12px 14px; }
+  .tr-given { font-size:13.5px; color:var(--ink-mid); font-style:italic; margin-bottom:4px; }
+  .tr-prompt { font-size:12px; font-weight:600; color:var(--terra); margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+  .transform-input { width:100%; border:none; border-bottom:1.5px solid var(--terra-mid); background:transparent; font-family:'Source Serif 4',serif; font-size:14px; color:var(--ink); padding:3px 4px; outline:none; transition:border-color 0.15s; }
+  .transform-input:focus { border-color:var(--terra); }
+
+  .free-prompts { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+  .free-prompt { background:var(--paper-mid); border-left:3px solid var(--sage-mid); border-radius:0 8px 8px 0; padding:10px 14px; font-size:14px; line-height:1.6; color:var(--ink); }
+  .free-prompt strong { color:var(--sage); }
+  .free-textarea { width:100%; min-height:110px; border:1px solid var(--border); border-radius:8px; background:var(--white); font-family:'Source Serif 4',serif; font-size:14px; color:var(--ink); padding:12px 14px; resize:vertical; outline:none; line-height:1.7; transition:border-color 0.15s; margin-bottom:8px; }
+  .free-textarea:focus { border-color:var(--sage); }
+  .free-hint { font-size:12px; color:var(--ink-light); font-style:italic; }
+
+  .save-bar { position:fixed; bottom:0; left:0; right:0; background:var(--ink); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; z-index:100; box-shadow:0 -4px 20px rgba(37,32,26,0.2); }
+  .save-status { font-size:12.5px; color:var(--gold); font-style:italic; min-width:160px; }
+  .save-actions { display:flex; gap:10px; }
+  .btn-save, .btn-reset { font-family:'Source Serif 4',serif; font-size:13px; font-weight:600; padding:8px 20px; border-radius:7px; cursor:pointer; border:none; transition:all 0.15s; }
+  .btn-save { background:var(--terra); color:var(--white); }
+  .btn-save:hover { background:var(--terra-d); }
+  .btn-reset { background:transparent; color:var(--ink-light); border:1px solid #444; }
+  .btn-reset:hover { color:var(--white); border-color:var(--white); }
+
+  @media (max-width:560px) {
+    .match-wrap { grid-template-columns:1fr; }
+    .mc-options { flex-direction:column; }
+    .grammar-note-grid { grid-template-columns:1fr; }
+  }
+  @media print {
+    .save-bar { display:none; }
+    body { padding:0; background:#fff; }
+    .fill-input,.error-input,.scramble-input,.transform-input,.free-textarea,.match-input { border-bottom:1px solid #999 !important; }
+    .ref-body { display:block !important; }
+    .card { box-shadow:none; border:1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hw-header">
+  <div class="header-inner">
+    <p class="brand">Teacher Benny · Workplace English</p>
+    <h1 class="hw-title">Grammar in the <span>Workplace</span></h1>
+    <div class="hw-meta">
+      <span>📋 Homework</span>
+      <span>⏱ ~45 minutes</span>
+      <span>📐 Tenses · Modals · Passive · Functional language</span>
+    </div>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="prog-text">Progress — 0 of 8 sections started</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner" id="prog-bar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="ref-wrap">
+  <button class="ref-toggle" id="ref-btn" onclick="toggleRef()">
+    <span>📖</span>
+    <span class="rt-label">Grammar Reference — click to open before you start</span>
+    <span class="rt-badge">6 structures + modals</span>
+    <span class="chevron">▾</span>
+  </button>
+  <div class="ref-body" id="ref-body">
+    <div class="ref-grid">
+      <div class="ref-card"><p class="ref-card-title">Present Simple</p><p class="ref-card-use">Routines, facts, job descriptions</p><ul><li>I check the reports every morning.</li><li>The machine runs automatically.</li></ul></div>
+      <div class="ref-card"><p class="ref-card-title">Present Continuous</p><p class="ref-card-use">Actions happening right now</p><ul><li>We are fixing the system.</li><li>I am working on the report.</li></ul></div>
+      <div class="ref-card"><p class="ref-card-title">Past Simple</p><p class="ref-card-use">Completed actions, incidents</p><ul><li>The machine stopped last night.</li><li>We checked the data yesterday.</li></ul></div>
+      <div class="ref-card"><p class="ref-card-title">Present Perfect</p><p class="ref-card-use">Recent results, updates</p><ul><li>We have finished the report.</li><li>I have not received the parts yet.</li></ul></div>
+      <div class="ref-card"><p class="ref-card-title">Passive Voice</p><p class="ref-card-use">Processes, quality control</p><ul><li>The part is inspected before delivery.</li><li>The report was completed on Friday.</li></ul></div>
+      <div class="ref-card"><p class="ref-card-title">Conditionals</p><p class="ref-card-use">Problems, solutions, possibilities</p><ul><li>If the system fails, we stop production.</li><li>If we had more time, we would finish.</li></ul></div>
+    </div>
+    <div class="ref-modals">
+      <p class="ref-modals-title">★ Modals — Quick Guide</p>
+      <div class="modal-row">
+        <div class="modal-grp"><p>Ability</p><span class="mpill">can</span><span class="mpill">can't</span></div>
+        <div class="modal-grp"><p>Advice</p><span class="mpill">should</span><span class="mpill">shouldn't</span><span class="mpill">could</span></div>
+        <div class="modal-grp"><p>Obligation</p><span class="mpill">must</span><span class="mpill">mustn't</span><span class="mpill">have to</span></div>
+        <div class="modal-grp"><p>Probability</p><span class="mpill">might</span><span class="mpill">may</span></div>
+      </div>
+      <p class="ref-note">We should contact the supplier · We must wear PPE · The delivery might be late · I can use the software</p>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- SECTION 1 -->
+<div class="section-label">
+  <div class="section-num">1</div>
+  <div><div class="section-title">Choose the Correct Tense</div><div class="section-subtitle">Multiple choice · 8 questions</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~7 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-terra">Multiple Choice</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Choosing the Right Tense</p>
+    <div class="grammar-note-grid">
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Simple</p>
+        <span class="gn-rule-form">Subject + V / V-s</span>
+        <p class="gn-rule-ex">Routines and facts. Use with <em>every day, always, usually</em>.<br>→ <em>She checks the line every morning.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Continuous</p>
+        <span class="gn-rule-form">am / is / are + V-ing</span>
+        <p class="gn-rule-ex">Actions happening at this moment. Use with <em>right now, currently, at the moment</em>.<br>→ <em>I am having a meeting right now.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Past Simple</p>
+        <span class="gn-rule-form">Subject + V-ed / irregular</span>
+        <p class="gn-rule-ex">Finished actions. Use with <em>yesterday, last week, at 3 a.m., in 2020</em>.<br>→ <em>The system crashed at 3 a.m.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Perfect</p>
+        <span class="gn-rule-form">have / has + past participle</span>
+        <p class="gn-rule-ex">Recent results or news — no specific time. Use with <em>just, already, yet</em>.<br>→ <em>We have finalised the contract.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Passive (Present Simple)</p>
+        <span class="gn-rule-form">is / are + past participle</span>
+        <p class="gn-rule-ex">The action is more important than who does it.<br>→ <em>The software is updated every Monday.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Zero Conditional</p>
+        <span class="gn-rule-form">If + present simple, present simple</span>
+        <p class="gn-rule-ex">Fixed rules — automatic results.<br>→ <em>If the temperature rises, the machine stops.</em></p>
+      </div>
+    </div>
+  </div>
+  <p class="card-instruction">Choose the best option (A, B, or C) to complete each sentence.</p>
+  <p class="card-note">Think about <em>when</em> the action happens and look for time words as clues.</p>
+  <div class="mc-list">
+    <div class="mc-item">
+      <p class="mc-q">1. Every morning, our team <strong>_____</strong> the production line before the shift starts.</p>
+      <div class="mc-options" data-q="mc1">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;is checking</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;checks</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;has checked</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">2. Sorry, I can't talk right now — I <strong>_____</strong> a meeting with the client.</p>
+      <div class="mc-options" data-q="mc2">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;have</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;am having</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;had</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">3. The system <strong>_____</strong> at 3 a.m. and we lost two hours of data.</p>
+      <div class="mc-options" data-q="mc3">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;crashes</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;has crashed</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;crashed</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">4. Good news — we <strong>_____</strong> the new supplier contract. We can sign tomorrow.</p>
+      <div class="mc-options" data-q="mc4">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;have finalised</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;finalised</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;finalise</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">5. We <strong>_____</strong> the delivery yet. The warehouse is still waiting.</p>
+      <div class="mc-options" data-q="mc5">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;don't receive</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;haven't received</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;didn't receive</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">6. If the temperature <strong>_____</strong> above 80°C, the machine shuts down automatically.</p>
+      <div class="mc-options" data-q="mc6">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;goes</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;will go</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;went</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">7. The new software <strong>_____</strong> by the IT department every Monday.</p>
+      <div class="mc-options" data-q="mc7">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;updates</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;is updated</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;was updated</div>
+      </div>
+    </div>
+    <div class="mc-item">
+      <p class="mc-q">8. You look exhausted. You <strong>_____</strong> take a short break — it will help you focus.</p>
+      <div class="mc-options" data-q="mc8">
+        <div class="mc-opt" onclick="selectMC(this)">A &nbsp;must</div>
+        <div class="mc-opt" onclick="selectMC(this)">B &nbsp;should</div>
+        <div class="mc-opt" onclick="selectMC(this)">C &nbsp;might</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section-label">
+  <div class="section-num">2</div>
+  <div><div class="section-title">Fill in the Blanks</div><div class="section-subtitle">Choose from the word bank &amp; use the correct form</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~6 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-terra">Fill-in-the-Blank</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Verb Forms to Use</p>
+    <div class="grammar-note-grid">
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Simple (Passive)</p>
+        <span class="gn-rule-form">is / are + past participle</span>
+        <p class="gn-rule-ex">A repeated process — someone does it regularly, but the action matters more than who.<br>→ <em>It is prepared every Friday.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Perfect (Negative)</p>
+        <span class="gn-rule-form">have / has + not + past participle</span>
+        <p class="gn-rule-ex">Something that has not happened yet — it started but is not finished.<br>→ <em>We haven't finished yet.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Past Continuous</p>
+        <span class="gn-rule-form">was / were + V-ing</span>
+        <p class="gn-rule-ex">An action already in progress at a past moment.<br>→ <em>The technician was fixing the printer.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Zero Conditional</p>
+        <span class="gn-rule-form">If + present simple, present simple</span>
+        <p class="gn-rule-ex">A certain or predictable result.<br>→ <em>If we don't order now, there will be a delay.</em></p>
+      </div>
+    </div>
+    <p class="gn-footer">💡 Each verb from the word bank is used <strong>once</strong>. Think: what is the correct tense <em>and</em> form (active, passive, positive, negative)?</p>
+  </div>
+  <p class="card-instruction">Choose a verb from the word bank and write it in the correct form in each gap.</p>
+  <p class="card-note">Each verb is used once. Think carefully about tense, active or passive, and positive or negative.</p>
+  <div class="word-bank">
+    <p class="wb-label">Word Bank</p>
+    <div class="wb-words">
+      <span class="wb-word">prepare</span>
+      <span class="wb-word">finish</span>
+      <span class="wb-word">fix</span>
+      <span class="wb-word">hold</span>
+      <span class="wb-word">be</span>
+      <span class="wb-word">order</span>
+      <span class="wb-word">call</span>
+      <span class="wb-word">inspect</span>
+      <span class="wb-word">work</span>
+    </div>
+  </div>
+  <ul class="fill-list">
+    <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">The quality report <input class="fill-input" data-key="fi1" style="width:170px"> every Friday by the team leader.</span></li>
+    <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">We <input class="fill-input" data-key="fi2" style="width:175px"> the maintenance check yet — we need two more hours.</span></li>
+    <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text">When I arrived this morning, the technician <input class="fill-input" data-key="fi3" style="width:155px"> the printer.</span></li>
+    <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">Our department <input class="fill-input" data-key="fi4" style="width:150px"> a safety briefing every month. It <input class="fill-input" data-key="fi4b" style="width:95px"> mandatory.</span></li>
+    <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">If we <input class="fill-input" data-key="fi5" style="width:130px"> the parts now, there <input class="fill-input" data-key="fi5b" style="width:110px"> a delay next week.</span></li>
+    <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">The client <input class="fill-input" data-key="fi6" style="width:150px"> three times yesterday, but nobody answered.</span></li>
+    <li class="fill-item"><span class="fill-num">7.</span><span class="fill-text">All components <input class="fill-input" data-key="fi7" style="width:150px"> before they leave the factory.</span></li>
+    <li class="fill-item"><span class="fill-num">8.</span><span class="fill-text">I <input class="fill-input" data-key="fi8" style="width:150px"> on a proposal for the new client. I'll send it this afternoon.</span></li>
+  </ul>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section-label">
+  <div class="section-num">3</div>
+  <div><div class="section-title">Find &amp; Fix the Mistake</div><div class="section-subtitle">One grammar error per sentence</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~6 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-sage">Error Correction</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Common Error Types</p>
+    <div class="gn-single">
+      Each sentence has <strong>exactly one error</strong>. The mistakes come from these areas — look for them carefully:
+      <div class="gn-pill-row">
+        <span class="gn-pill">Wrong tense with a time word (e.g. <em>yesterday</em> + present perfect)</span>
+        <span class="gn-pill">Wrong auxiliary (e.g. <em>don't</em> instead of <em>doesn't</em>)</span>
+        <span class="gn-pill">Missing <em>be</em> in passive voice</span>
+        <span class="gn-pill"><em>will</em> in the if-clause of a conditional</span>
+        <span class="gn-pill">Wrong tense with <em>since</em> (needs present perfect, not present continuous)</span>
+        <span class="gn-pill">Past simple with <em>yet</em> (needs present perfect)</span>
+      </div>
+    </div>
+    <p class="gn-footer">💡 Key rule: <strong>Present perfect</strong> (have/has + past participle) is never used with finished time words like <em>yesterday</em> or <em>last week</em>. Use <strong>past simple</strong> instead. But with <em>since</em> and <em>yet</em>, you need present perfect.</p>
+  </div>
+  <p class="card-instruction">Each sentence has one grammar mistake. Write the corrected sentence on the line below.</p>
+  <p class="card-note">Identify the error type first, then rewrite the full sentence correctly.</p>
+  <div class="error-list">
+    <div class="error-item">
+      <p class="error-sentence">1. "We are working here since 2018."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec1">
+    </div>
+    <div class="error-item">
+      <p class="error-sentence">2. "Yesterday the manager has sent a report to all departments."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec2">
+    </div>
+    <div class="error-item">
+      <p class="error-sentence">3. "The machine checked every morning by the technician."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec3">
+    </div>
+    <div class="error-item">
+      <p class="error-sentence">4. "If we will have a problem, we call the supplier immediately."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec4">
+    </div>
+    <div class="error-item">
+      <p class="error-sentence">5. "I didn't finish the report yet — I need more data."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec5">
+    </div>
+    <div class="error-item">
+      <p class="error-sentence">6. "She don't have to attend the meeting — it's optional for her department."</p>
+      <p class="error-label">✏ Corrected sentence:</p>
+      <input class="error-input" data-key="ec6">
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section-label">
+  <div class="section-num">4</div>
+  <div><div class="section-title">Modal Verbs — Word Bank</div><div class="section-subtitle">Use the correct modal in each gap</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~5 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-gold">Word Bank</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Modal Verbs</p>
+    <div class="grammar-note-grid">
+      <div class="gn-rule">
+        <p class="gn-rule-name">must / have to</p>
+        <span class="gn-rule-form">Strong obligation</span>
+        <p class="gn-rule-ex"><em>must</em> = rule, law, or strong personal obligation.<br><em>have to</em> = external requirement (often a rule from outside).<br>→ <em>All staff must wear PPE.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">should</p>
+        <span class="gn-rule-form">Advice / recommendation</span>
+        <p class="gn-rule-ex">It is a good idea, but not compulsory.<br>→ <em>You should ask IT for help.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">could</p>
+        <span class="gn-rule-form">Ability or gentle suggestion</span>
+        <p class="gn-rule-ex">A possibility or option — softer than <em>should</em>.<br>→ <em>You could try a different approach.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">might</p>
+        <span class="gn-rule-form">Possibility (not certain)</span>
+        <p class="gn-rule-ex">Something is possible but you are not sure.<br>→ <em>The delivery might be late.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">can</p>
+        <span class="gn-rule-form">Ability / general possibility</span>
+        <p class="gn-rule-ex">You have the skill or it is physically possible.<br>→ <em>I can speak English in meetings.</em></p>
+      </div>
+    </div>
+    <p class="gn-footer">⚠ All modals are followed by the base form of the verb (no <em>to</em>): must <strong>wear</strong>, should <strong>send</strong>, might <strong>arrive</strong>.</p>
+  </div>
+  <p class="card-instruction">Use the modal verbs in the word bank to complete the sentences. Use each word <strong>once</strong>.</p>
+  <p class="card-note">Think about the meaning: ability · advice · obligation · probability?</p>
+  <div class="word-bank">
+    <p class="wb-label">Word Bank</p>
+    <div class="wb-words">
+      <span class="wb-word">must</span>
+      <span class="wb-word">should</span>
+      <span class="wb-word">could</span>
+      <span class="wb-word">might</span>
+      <span class="wb-word">can</span>
+      <span class="wb-word">have to</span>
+    </div>
+  </div>
+  <ul class="fill-list">
+    <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">All staff <input class="fill-input" data-key="wb1" style="width:110px"> wear safety equipment in the production area. It is required by law.</span></li>
+    <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">I <input class="fill-input" data-key="wb2" style="width:100px"> speak to the client in English, but my colleague is better — I'll ask her instead.</span></li>
+    <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text">You <input class="fill-input" data-key="wb3" style="width:110px"> send the report before Friday — it's the deadline and the manager is waiting.</span></li>
+    <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">There's a lot of traffic today. The delivery <input class="fill-input" data-key="wb4" style="width:110px"> be late. Let's call the driver.</span></li>
+    <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">If you're unsure about the new software, you <input class="fill-input" data-key="wb5" style="width:110px"> ask IT for a training session. It would really help.</span></li>
+    <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">We don't <input class="fill-input" data-key="wb6" style="width:110px"> attend the 9 a.m. meeting — it's only for department heads today.</span></li>
+  </ul>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section-label">
+  <div class="section-num">5</div>
+  <div><div class="section-title">Match the Function</div><div class="section-subtitle">Phrases → communicative purpose</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~4 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-sage">Matching</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Functional Language in the Workplace</p>
+    <div class="gn-single">
+      In professional English, we use <strong>fixed phrases</strong> to communicate specific functions. The grammar inside the phrase gives you a clue about its purpose:
+      <div class="gn-pill-row">
+        <span class="gn-pill">"I see your point, but…" → acknowledge + disagree politely</span>
+        <span class="gn-pill">"Could you repeat…?" → modal question = polite request</span>
+        <span class="gn-pill">"…happened because…" → cause and explanation</span>
+        <span class="gn-pill">"We have already…" → present perfect = recent completed result</span>
+        <span class="gn-pill">"I suggest that we…" → suggestion (verb + that + clause)</span>
+        <span class="gn-pill">"In my opinion…" → personal view / opinion</span>
+        <span class="gn-pill">"First… then… finally…" → sequencing steps in a process</span>
+      </div>
+    </div>
+  </div>
+  <p class="card-instruction">Match each workplace phrase (1–7) to its communicative function (A–G). Write the correct letter in the box.</p>
+  <div class="match-wrap">
+    <div>
+      <p class="match-col-label">Phrases</p>
+      <div class="match-item"><div class="match-key">1</div><span class="match-text">"I see your point, but…"</span><input class="match-input" data-key="mt1" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">2</div><span class="match-text">"Could you repeat that, please?"</span><input class="match-input" data-key="mt2" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">3</div><span class="match-text">"The issue happened because…"</span><input class="match-input" data-key="mt3" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">4</div><span class="match-text">"We have already addressed that."</span><input class="match-input" data-key="mt4" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">5</div><span class="match-text">"I suggest that we try a different approach."</span><input class="match-input" data-key="mt5" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">6</div><span class="match-text">"In my opinion, this is the best solution."</span><input class="match-input" data-key="mt6" maxlength="1"></div>
+      <div class="match-item"><div class="match-key">7</div><span class="match-text">"First we… then we… finally we…"</span><input class="match-input" data-key="mt7" maxlength="1"></div>
+    </div>
+    <div>
+      <p class="match-col-label">Functions</p>
+      <div class="match-item"><div class="match-letter">A</div><span class="match-text">Asking for clarification</span></div>
+      <div class="match-item"><div class="match-letter">B</div><span class="match-text">Disagreeing politely</span></div>
+      <div class="match-item"><div class="match-letter">C</div><span class="match-text">Explaining a process</span></div>
+      <div class="match-item"><div class="match-letter">D</div><span class="match-text">Reporting a problem / cause</span></div>
+      <div class="match-item"><div class="match-letter">E</div><span class="match-text">Giving an opinion</span></div>
+      <div class="match-item"><div class="match-letter">F</div><span class="match-text">Reporting a recent result (present perfect)</span></div>
+      <div class="match-item"><div class="match-letter">G</div><span class="match-text">Making a suggestion</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section-label">
+  <div class="section-num">6</div>
+  <div><div class="section-title">Build the Sentence</div><div class="section-subtitle">Put the words in the correct order</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~5 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-gold">Sentence Building</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — English Word Order</p>
+    <div class="grammar-note-grid">
+      <div class="gn-rule">
+        <p class="gn-rule-name">Standard Order</p>
+        <span class="gn-rule-form">Subject + Verb + Object</span>
+        <p class="gn-rule-ex">→ <em>The team is testing the new software.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Passive Order</p>
+        <span class="gn-rule-form">Subject + is/are + past participle + by + agent</span>
+        <p class="gn-rule-ex">→ <em>All parts are inspected by the quality team.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Negative Perfect</p>
+        <span class="gn-rule-form">Subject + have/has + not + past participle + (yet)</span>
+        <p class="gn-rule-ex">→ <em>We have not finished the installation yet.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Conditional</p>
+        <span class="gn-rule-form">If + [condition], + [result]</span>
+        <p class="gn-rule-ex">→ <em>If we miss the deadline, the order closes today.</em></p>
+      </div>
+    </div>
+    <p class="gn-footer">💡 Strategy: find the main verb first, then place the subject before it. Adverbs like <em>currently</em>, <em>not</em>, and <em>yet</em> go between the auxiliary and the main verb.</p>
+  </div>
+  <p class="card-instruction">Rearrange the words to make a correct, natural workplace sentence. Use all the words.</p>
+  <p class="card-note">Find the verb first, then the subject. Think about auxiliary verbs and word order.</p>
+  <div class="scramble-list">
+    <div class="scramble-item">
+      <div class="scramble-words"><span class="sw">inspected</span><span class="sw">are</span><span class="sw">parts</span><span class="sw">all</span><span class="sw">quality</span><span class="sw">the</span><span class="sw">team</span><span class="sw">by</span><span class="sw">the</span></div>
+      <p class="scramble-label">✏ Your sentence:</p>
+      <input class="scramble-input" data-key="sb1">
+    </div>
+    <div class="scramble-item">
+      <div class="scramble-words"><span class="sw">finished</span><span class="sw">we</span><span class="sw">the</span><span class="sw">have</span><span class="sw">installation</span><span class="sw">not</span><span class="sw">yet</span></div>
+      <p class="scramble-label">✏ Your sentence:</p>
+      <input class="scramble-input" data-key="sb2">
+    </div>
+    <div class="scramble-item">
+      <div class="scramble-words"><span class="sw">should</span><span class="sw">we</span><span class="sw">the</span><span class="sw">report</span><span class="sw">before</span><span class="sw">send</span><span class="sw">Friday</span></div>
+      <p class="scramble-label">✏ Your sentence:</p>
+      <input class="scramble-input" data-key="sb3">
+    </div>
+    <div class="scramble-item">
+      <div class="scramble-words"><span class="sw">the</span><span class="sw">is</span><span class="sw">team</span><span class="sw">currently</span><span class="sw">testing</span><span class="sw">new</span><span class="sw">the</span><span class="sw">software</span></div>
+      <p class="scramble-label">✏ Your sentence:</p>
+      <input class="scramble-input" data-key="sb4">
+    </div>
+    <div class="scramble-item">
+      <div class="scramble-words"><span class="sw">closes</span><span class="sw">if</span><span class="sw">the</span><span class="sw">order</span><span class="sw">today</span><span class="sw">we</span><span class="sw">miss</span><span class="sw">the</span><span class="sw">deadline</span></div>
+      <p class="scramble-label">✏ Your sentence:</p>
+      <input class="scramble-input" data-key="sb5">
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="section-label">
+  <div class="section-num">7</div>
+  <div><div class="section-title">Transform the Sentence</div><div class="section-subtitle">Active → Passive · Tense changes · Modals</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~6 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-terra">Transformation</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — How to Transform Sentences</p>
+    <div class="grammar-note-grid">
+      <div class="gn-rule">
+        <p class="gn-rule-name">Active → Passive (Present)</p>
+        <span class="gn-rule-form">Object + is/are + past participle + (by + agent)</span>
+        <p class="gn-rule-ex">Active: <em>The engineer checks the equipment.</em><br>Passive: <em>The equipment is checked (by the engineer).</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Active → Passive (Past)</p>
+        <span class="gn-rule-form">Object + was/were + past participle</span>
+        <p class="gn-rule-ex">Active: <em>We delivered the order.</em><br>Passive: <em>The order was delivered.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Past Simple → Present Perfect</p>
+        <span class="gn-rule-form">Subject + have/has + past participle</span>
+        <p class="gn-rule-ex">Past: <em>The team finished the report.</em><br>Perfect: <em>The team has finished the report.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Possibility → Modal <em>might</em></p>
+        <span class="gn-rule-form">Subject + might + base verb</span>
+        <p class="gn-rule-ex"><em>It is possible that they will be late.</em><br>→ <em>They might be late.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">Present Simple → Present Continuous</p>
+        <span class="gn-rule-form">Subject + am/is/are + V-ing</span>
+        <p class="gn-rule-ex">Routine: <em>We check the data every morning.</em><br>Right now: <em>We are checking the data.</em></p>
+      </div>
+      <div class="gn-rule">
+        <p class="gn-rule-name">must → have to</p>
+        <span class="gn-rule-form">Subject + have/has to + base verb</span>
+        <p class="gn-rule-ex"><em>All visitors must sign in.</em><br>→ <em>All visitors have to sign in.</em></p>
+      </div>
+    </div>
+  </div>
+  <p class="card-instruction">Rewrite the sentence as instructed. Keep the same meaning.</p>
+  <div class="transform-list">
+    <div class="transform-item">
+      <p class="tr-given">1. "The engineer checks the equipment every day."</p>
+      <p class="tr-prompt">→ Make it passive (present simple)</p>
+      <input class="transform-input" data-key="tr1">
+    </div>
+    <div class="transform-item">
+      <p class="tr-given">2. "The team finished the report."</p>
+      <p class="tr-prompt">→ Change to present perfect</p>
+      <input class="transform-input" data-key="tr2">
+    </div>
+    <div class="transform-item">
+      <p class="tr-given">3. "We delivered the order yesterday."</p>
+      <p class="tr-prompt">→ Make it passive (past simple)</p>
+      <input class="transform-input" data-key="tr3">
+    </div>
+    <div class="transform-item">
+      <p class="tr-given">4. "It is possible that the supplier will send the parts late."</p>
+      <p class="tr-prompt">→ Rewrite using <em>might</em></p>
+      <input class="transform-input" data-key="tr4">
+    </div>
+    <div class="transform-item">
+      <p class="tr-given">5. "We check the data every morning." (routine)</p>
+      <p class="tr-prompt">→ Change to present continuous (happening right now)</p>
+      <input class="transform-input" data-key="tr5">
+    </div>
+    <div class="transform-item">
+      <p class="tr-given">6. "This is a company rule: all visitors must sign in."</p>
+      <p class="tr-prompt">→ Rewrite using <em>have to</em></p>
+      <input class="transform-input" data-key="tr6">
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div class="section-label">
+  <div class="section-num">8</div>
+  <div><div class="section-title">Free Writing</div><div class="section-subtitle">Your grammar · Your workplace · Your words</div></div>
+  <div class="section-divider"></div>
+  <div class="time-badge">⏱ ~6 min</div>
+</div>
+<div class="card">
+  <span class="card-tag tag-sage">Free Writing</span>
+  <div class="grammar-note">
+    <p class="grammar-note-title">📘 Grammar Focus — Combining Structures</p>
+    <div class="gn-single">
+      Good workplace writing uses <strong>different tenses together</strong> to tell a complete story. Try to include at least three of these:
+      <div class="gn-pill-row">
+        <span class="gn-pill">Past simple → what happened</span>
+        <span class="gn-pill">Present perfect → what has been done</span>
+        <span class="gn-pill">Present continuous → what is happening now</span>
+        <span class="gn-pill">Modal verb → what should / must happen next</span>
+        <span class="gn-pill">Passive voice → describing a process formally</span>
+        <span class="gn-pill">Conditional → if… then…</span>
+      </div>
+    </div>
+    <p class="gn-footer">💡 Example: <em>"The machine <strong>stopped</strong> because a part <strong>was damaged</strong>. We <strong>have contacted</strong> the supplier and the parts <strong>might arrive</strong> tomorrow. If they <strong>don't arrive</strong>, we <strong>will need</strong> to stop production."</em></p>
+  </div>
+  <p class="card-instruction">Choose <strong>one</strong> prompt and write 5–8 sentences. Use at least <strong>three different grammar structures</strong> from today's lesson.</p>
+  <p class="card-note">You don't need to write about a real event — imagine a workplace situation if you prefer.</p>
+  <div class="free-prompts">
+    <div class="free-prompt"><strong>Option A — The Problem Report:</strong> Something went wrong at work last week. Describe what happened, why it happened, what has been done so far, and what should happen next.</div>
+    <div class="free-prompt"><strong>Option B — The Update Email:</strong> Write a short internal message to your manager. Tell them what your team is working on right now, what you have completed this week, and what you need to do before Friday.</div>
+    <div class="free-prompt"><strong>Option C — The Process:</strong> Describe a process in your workplace — how something is made, checked, delivered, or approved. Use passive voice where appropriate and sequence language (first… then… finally…).</div>
+  </div>
+  <textarea class="free-textarea" data-key="fw1"></textarea>
+  <p class="free-hint">💡 Write your option at the top (e.g. Option A). Aim for 5–8 sentences.</p>
+</div>
+
+</div><!-- /main -->
+
+<div class="save-bar">
+  <span class="save-status" id="save-status">No saved progress yet</span>
+  <div class="save-actions">
+    <button class="btn-reset" onclick="resetAll()">Reset all</button>
+    <button class="btn-save" onclick="saveAll()">Save progress</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'alp_grammar_hw';
+
+function selectMC(el) {
+  el.parentElement.querySelectorAll('.mc-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  saveAll(true);
+  updateProgress();
+}
+
+function toggleRef() {
+  const body = document.getElementById('ref-body');
+  const btn  = document.getElementById('ref-btn');
+  body.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function getAllData() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      data[el.dataset.key] = el.value;
+    }
+  });
+  document.querySelectorAll('.mc-options').forEach(g => {
+    const sel = g.querySelector('.selected');
+    data['mc_' + g.dataset.q] = sel ? sel.textContent.trim() : '';
+  });
+  return data;
+}
+
+function saveAll(silent) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(getAllData()));
+  if (!silent) {
+    const n = new Date();
+    document.getElementById('save-status').textContent =
+      'Saved at ' + n.getHours().toString().padStart(2,'0') + ':' + n.getMinutes().toString().padStart(2,'0');
+  }
+  updateProgress();
+}
+
+function loadAll() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if ((el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') && data[el.dataset.key] !== undefined) {
+      el.value = data[el.dataset.key];
+    }
+  });
+  document.querySelectorAll('.mc-options').forEach(g => {
+    const saved = data['mc_' + g.dataset.q];
+    if (saved) {
+      g.querySelectorAll('.mc-opt').forEach(o => {
+        if (o.textContent.trim() === saved) o.classList.add('selected');
+      });
+    }
+  });
+  const hasAny = Object.values(data).some(v => v && v.trim());
+  if (hasAny) document.getElementById('save-status').textContent = 'Progress loaded ✓';
+  updateProgress();
+}
+
+function resetAll() {
+  if (!confirm('Reset all your answers? This cannot be undone.')) return;
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = '';
+  });
+  document.querySelectorAll('.mc-opt').forEach(o => o.classList.remove('selected'));
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('save-status').textContent = 'Reset — all answers cleared';
+  updateProgress();
+}
+
+function updateProgress() {
+  const sections = [
+    () => document.querySelectorAll('.mc-opt.selected').length >= 1,
+    () => [...document.querySelectorAll('[data-key^="fi"]')].some(i => i.value.trim()),
+    () => [...document.querySelectorAll('[data-key^="ec"]')].some(i => i.value.trim()),
+    () => [...document.querySelectorAll('[data-key^="wb"]')].some(i => i.value.trim()),
+    () => [...document.querySelectorAll('[data-key^="mt"]')].some(i => i.value.trim()),
+    () => [...document.querySelectorAll('[data-key^="sb"]')].some(i => i.value.trim()),
+    () => [...document.querySelectorAll('[data-key^="tr"]')].some(i => i.value.trim()),
+    () => (document.querySelector('[data-key="fw1"]').value || '').trim().length > 0,
+  ];
+  const done = sections.filter(fn => fn()).length;
+  const pct = Math.round((done / sections.length) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-text').textContent = 'Progress — ' + done + ' of ' + sections.length + ' sections started';
+}
+
+document.addEventListener('input', () => saveAll(true));
+window.addEventListener('load', () => { loadAll(); updateProgress(); });
+</script>
+</body>
+</html>

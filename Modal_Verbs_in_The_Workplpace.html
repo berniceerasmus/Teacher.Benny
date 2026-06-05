@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workplace English — Lesson Reference Card</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; padding: 2rem 1rem; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #888780; margin-bottom: 1.5rem; }
+
+  .section { margin-bottom: 1.25rem; background: #fff; border: 0.5px solid #d3d1c7; border-radius: 12px; overflow: hidden; }
+  .section-header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .section-header:hover { background: #f5f4f0; }
+  .section-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
+  .section-title { font-size: 15px; font-weight: 600; flex: 1; }
+  .section-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+  .chevron { font-size: 18px; color: #888; transition: transform 0.2s; display: inline-block; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .section-body { padding: 0 18px 18px; display: none; }
+  .section-body.open { display: block; }
+
+  .gram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .gram-card { background: #f5f4f0; border-radius: 8px; padding: 10px 13px; }
+  .gram-name { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+  .gram-use { font-size: 11px; color: #888780; margin-bottom: 6px; }
+  .gram-examples { list-style: none; }
+  .gram-examples li { font-size: 12px; color: #2c2c2a; font-style: italic; padding: 1px 0; }
+  .gram-examples li::before { content: "→ "; color: #b4b2a9; font-style: normal; }
+
+  .modals-box { background: #eeedfe; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; }
+  .modals-box .box-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #534ab7; margin-bottom: 10px; }
+  .modal-groups { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+  .modal-group p.mg-title { font-size: 11px; color: #534ab7; font-weight: 600; margin-bottom: 4px; }
+  .pill { display: inline-block; font-size: 12px; background: #fff; color: #3c3489; padding: 2px 9px; border-radius: 20px; margin: 2px 2px 0 0; border: 0.5px solid #afa9ec; }
+  .modal-examples { font-size: 12px; font-style: italic; color: #3c3489; }
+
+  .func-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .func-cat { background: #f5f4f0; border-radius: 8px; padding: 10px 13px; }
+  .func-cat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
+  .func-cat ul { list-style: none; }
+  .func-cat ul li { font-size: 12px; color: #2c2c2a; padding: 2px 0; }
+  .func-cat ul li::before { content: "– "; color: #b4b2a9; }
+
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .vocab-cat { background: #f5f4f0; border-radius: 8px; padding: 10px 13px; }
+  .vocab-cat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .vocab-words { display: flex; flex-wrap: wrap; gap: 4px; }
+  .word { font-size: 12px; padding: 2px 9px; border-radius: 20px; }
+
+  .patterns-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .pattern { display: flex; gap: 12px; align-items: flex-start; background: #f5f4f0; border-radius: 8px; padding: 9px 13px; }
+  .pat-use { font-size: 12px; font-weight: 600; color: #888780; min-width: 130px; flex-shrink: 0; padding-top: 1px; }
+  .pat-ex { font-size: 13px; font-style: italic; color: #2c2c2a; }
+
+  .questions-block { border-top: 0.5px solid #d3d1c7; padding-top: 13px; margin-top: 4px; }
+  .q-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #888780; margin-bottom: 9px; }
+  .questions { display: flex; flex-direction: column; gap: 6px; }
+  .q { font-size: 13px; color: #1a1a18; background: #f5f4f0; border: 0.5px solid #d3d1c7; border-radius: 8px; padding: 8px 12px; line-height: 1.5; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .section { break-inside: avoid; border: 1px solid #ddd; }
+    .section-header { cursor: default; }
+    .chevron { display: none; }
+    .section-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Workplace English — Lesson Reference Card</h1>
+
+  <!-- SECTION 1: CORE GRAMMAR -->
+  <div class="section" id="s1">
+    <div class="section-header" onclick="toggle('s1')">
+      <div class="section-icon" style="background:#e6f1fb;">📘</div>
+      <span class="section-title" style="color:#185fa5;">Core Grammar Structures</span>
+      <span class="section-tag" style="background:#e6f1fb;color:#185fa5;">6 tenses + modals</span>
+      <span class="chevron open" id="s1-chev">▾</span>
+    </div>
+    <div class="section-body open" id="s1-body">
+      <div class="gram-grid">
+        <div class="gram-card">
+          <p class="gram-name" style="color:#185fa5;">Present simple</p>
+          <p class="gram-use">Daily routines, job descriptions</p>
+          <ul class="gram-examples">
+            <li>I check / I prepare / I install</li>
+            <li>We work with…</li>
+            <li>The system runs…</li>
+            <li>The team handles…</li>
+          </ul>
+        </div>
+        <div class="gram-card">
+          <p class="gram-name" style="color:#185fa5;">Present continuous</p>
+          <p class="gram-use">Current work, live updates, meetings</p>
+          <ul class="gram-examples">
+            <li>We are fixing the issue</li>
+            <li>I am working on…</li>
+            <li>They are testing the system</li>
+          </ul>
+        </div>
+        <div class="gram-card">
+          <p class="gram-name" style="color:#185fa5;">Past simple</p>
+          <p class="gram-use">Incidents, reports, audits</p>
+          <ul class="gram-examples">
+            <li>The machine stopped</li>
+            <li>We checked the system</li>
+            <li>We solved the problem</li>
+          </ul>
+        </div>
+        <div class="gram-card">
+          <p class="gram-name" style="color:#185fa5;">Present perfect</p>
+          <p class="gram-use">Progress updates in meetings</p>
+          <ul class="gram-examples">
+            <li>We have finished the report</li>
+            <li>We have identified the problem</li>
+            <li>We have not received the parts yet</li>
+          </ul>
+        </div>
+        <div class="gram-card">
+          <p class="gram-name" style="color:#185fa5;">Conditionals</p>
+          <p class="gram-use">Problem-solving language</p>
+          <ul class="gram-examples">
+            <li>If the machine breaks, we stop production</li>
+            <li>If we had more staff, we would finish faster</li>
+          </ul>
+        </div>
+        <div class="gram-card" style="border: 1px solid #b5d4f4;">
+          <p class="gram-name" style="color:#185fa5;">★ Passive voice</p>
+          <p class="gram-use">Process language — engineering &amp; QC</p>
+          <ul class="gram-examples">
+            <li>The part is inspected</li>
+            <li>The report was completed</li>
+            <li>The system is updated</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modals-box">
+        <p class="box-label">★ Modals — highest priority</p>
+        <div class="modal-groups">
+          <div class="modal-group">
+            <p class="mg-title">Ability</p>
+            <span class="pill">can</span><span class="pill">cannot</span>
+          </div>
+          <div class="modal-group">
+            <p class="mg-title">Advice</p>
+            <span class="pill">should</span><span class="pill">shouldn't</span><span class="pill">could</span>
+          </div>
+          <div class="modal-group">
+            <p class="mg-title">Obligation</p>
+            <span class="pill">must</span><span class="pill">must not</span><span class="pill">have to</span>
+          </div>
+          <div class="modal-group">
+            <p class="mg-title">Probability</p>
+            <span class="pill">might</span><span class="pill">may</span><span class="pill">could</span>
+          </div>
+        </div>
+        <p class="modal-examples">We should contact the supplier &nbsp;·&nbsp; We must check the system again &nbsp;·&nbsp; This might cause a delay</p>
+      </div>
+
+      <div class="questions-block">
+        <p class="q-label">💬 Student questions</p>
+        <div class="questions">
+          <div class="q">What do you do every day at work? Describe your routine using three present simple sentences.</div>
+          <div class="q">Something went wrong at work last week. Can you tell me what happened? Use past simple.</div>
+          <div class="q">You notice a machine is making a strange noise right now. What do you say to your manager?</div>
+          <div class="q">You need your colleague to do something urgently. Which modal would you use — <em>must</em>, <em>should</em>, or <em>could</em>? Why?</div>
+          <div class="q">The new system was installed yesterday. How do you describe this using passive voice?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: FUNCTIONAL PHRASES -->
+  <div class="section" id="s2">
+    <div class="section-header" onclick="toggle('s2')">
+      <div class="section-icon" style="background:#e1f5ee;">💬</div>
+      <span class="section-title" style="color:#0f6e56;">Functional Workplace Phrases</span>
+      <span class="section-tag" style="background:#e1f5ee;color:#0f6e56;">meetings · problems · solutions</span>
+      <span class="chevron" id="s2-chev">▾</span>
+    </div>
+    <div class="section-body" id="s2-body">
+      <div class="func-grid">
+        <div class="func-cat">
+          <p class="func-cat-label" style="color:#0f6e56;">Meetings</p>
+          <ul>
+            <li>Let's start</li>
+            <li>I agree / I disagree</li>
+            <li>In my opinion…</li>
+            <li>The main issue is…</li>
+            <li>We need to focus on…</li>
+          </ul>
+        </div>
+        <div class="func-cat">
+          <p class="func-cat-label" style="color:#993c1d;">Problems</p>
+          <ul>
+            <li>There is an issue with…</li>
+            <li>Something is wrong with…</li>
+            <li>The system is not working</li>
+            <li>We need to fix this quickly</li>
+          </ul>
+        </div>
+        <div class="func-cat">
+          <p class="func-cat-label" style="color:#185fa5;">Solutions</p>
+          <ul>
+            <li>We should try…</li>
+            <li>A possible solution is…</li>
+            <li>We could also…</li>
+            <li>Let's check…</li>
+          </ul>
+        </div>
+        <div class="func-cat">
+          <p class="func-cat-label" style="color:#534ab7;">Clarifying</p>
+          <ul>
+            <li>What do you mean?</li>
+            <li>Can you explain that again?</li>
+            <li>Could you repeat that?</li>
+            <li>Do you mean…?</li>
+          </ul>
+        </div>
+        <div class="func-cat">
+          <p class="func-cat-label" style="color:#3b6d11;">Reporting</p>
+          <ul>
+            <li>The problem started when…</li>
+            <li>First we noticed…</li>
+            <li>After that…</li>
+            <li>Finally…</li>
+          </ul>
+        </div>
+      </div>
+      <div class="questions-block">
+        <p class="q-label">💬 Student questions</p>
+        <div class="questions">
+          <div class="q">Your colleague explained a process but you didn't understand. What do you say?</div>
+          <div class="q">There is a problem with the printer in your department. How do you report it to your manager?</div>
+          <div class="q">In a meeting, someone suggests an idea you disagree with. How do you respond professionally?</div>
+          <div class="q">Walk me through a problem you solved at work. Use the reporting sequence: <em>first… after that… finally…</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: VOCABULARY -->
+  <div class="section" id="s3">
+    <div class="section-header" onclick="toggle('s3')">
+      <div class="section-icon" style="background:#faeeda;">📋</div>
+      <span class="section-title" style="color:#854f0b;">Vocabulary by Department</span>
+      <span class="section-tag" style="background:#faeeda;color:#854f0b;">engineering · IT · kitchen · cross-dept</span>
+      <span class="chevron" id="s3-chev">▾</span>
+    </div>
+    <div class="section-body" id="s3-body">
+      <div class="vocab-grid">
+        <div class="vocab-cat">
+          <p class="vocab-cat-label" style="color:#185fa5;">Engineering</p>
+          <div class="vocab-words">
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">component</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">assembly</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">inspection</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">defect</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">tolerance</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">calibration</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">maintenance</span>
+            <span class="word" style="background:#e6f1fb;color:#0c447c;">measurement</span>
+          </div>
+        </div>
+        <div class="vocab-cat">
+          <p class="vocab-cat-label" style="color:#534ab7;">IT</p>
+          <div class="vocab-words">
+            <span class="word" style="background:#eeedfe;color:#3c3489;">system</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">network</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">software</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">update</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">login</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">error</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">server</span>
+            <span class="word" style="background:#eeedfe;color:#3c3489;">data</span>
+          </div>
+        </div>
+        <div class="vocab-cat">
+          <p class="vocab-cat-label" style="color:#0f6e56;">Kitchen / Catering</p>
+          <div class="vocab-words">
+            <span class="word" style="background:#e1f5ee;color:#085041;">preparation</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">ingredients</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">hygiene</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">storage</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">delivery</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">menu</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">waste</span>
+            <span class="word" style="background:#e1f5ee;color:#085041;">temperature</span>
+          </div>
+        </div>
+        <div class="vocab-cat">
+          <p class="vocab-cat-label" style="color:#854f0b;">Cross-department</p>
+          <div class="vocab-words">
+            <span class="word" style="background:#faeeda;color:#633806;">delay</span>
+            <span class="word" style="background:#faeeda;color:#633806;">deadline</span>
+            <span class="word" style="background:#faeeda;color:#633806;">schedule</span>
+            <span class="word" style="background:#faeeda;color:#633806;">report</span>
+            <span class="word" style="background:#faeeda;color:#633806;">issue</span>
+            <span class="word" style="background:#faeeda;color:#633806;">approval</span>
+            <span class="word" style="background:#faeeda;color:#633806;">request</span>
+            <span class="word" style="background:#faeeda;color:#633806;">supplier</span>
+            <span class="word" style="background:#faeeda;color:#633806;">client</span>
+          </div>
+        </div>
+      </div>
+      <div class="questions-block">
+        <p class="q-label">💬 Student questions</p>
+        <div class="questions">
+          <div class="q">Choose five words from your department's list. Use each one in a sentence about your job.</div>
+          <div class="q">What is the difference between a <em>defect</em> and an <em>error</em> in your workplace context?</div>
+          <div class="q">You need to request approval for a new supplier. Which cross-department words would you need? Write a short message.</div>
+          <div class="q">What words do all departments share? Why are they important for cross-team communication?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: HIGH-VALUE PATTERNS -->
+  <div class="section" id="s4">
+    <div class="section-header" onclick="toggle('s4')">
+      <div class="section-icon" style="background:#faece7;">✦</div>
+      <span class="section-title" style="color:#993c1d;">High-Value Real English Patterns</span>
+      <span class="section-tag" style="background:#faece7;color:#993c1d;">use every lesson</span>
+      <span class="chevron" id="s4-chev">▾</span>
+    </div>
+    <div class="section-body" id="s4-body">
+      <div class="patterns-list">
+        <div class="pattern"><span class="pat-use">Explain a process</span><span class="pat-ex">First we…, then we…, after that…, finally…</span></div>
+        <div class="pattern"><span class="pat-use">Report a problem</span><span class="pat-ex">The issue happened because…</span></div>
+        <div class="pattern"><span class="pat-use">Suggest a solution</span><span class="pat-ex">I suggest that we…</span></div>
+        <div class="pattern"><span class="pat-use">Give an opinion</span><span class="pat-ex">I think this is important because…</span></div>
+        <div class="pattern"><span class="pat-use">Agree professionally</span><span class="pat-ex">That makes sense.</span></div>
+        <div class="pattern"><span class="pat-use">Disagree softly</span><span class="pat-ex">I see your point, but…</span></div>
+      </div>
+      <div class="questions-block">
+        <p class="q-label">💬 Student questions</p>
+        <div class="questions">
+          <div class="q">Explain how you make coffee, prepare a network update, or clean a workstation — using <em>first… then… after that… finally…</em></div>
+          <div class="q">There was a delay in your department last week. Use "The issue happened because…" to report it.</div>
+          <div class="q">Your manager suggests working overtime to fix a problem. You disagree. How do you respond professionally?</div>
+          <div class="q">Practice: your partner suggests a solution. Respond using either "That makes sense" or "I see your point, but…"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+function toggle(id) {
+  const body = document.getElementById(id + '-body');
+  const chev = document.getElementById(id + '-chev');
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  chev.classList.toggle('open', !open);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal Verbs — Workplace English A2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terra:       #c0603a;
+  --terra-d:     #8f3f20;
+  --terra-light: #fdf0ea;
+  --terra-mid:   #e8c4b4;
+  --sage:        #5e7a52;
+  --sage-d:      #3d5433;
+  --sage-light:  #eaf2e4;
+  --sage-mid:    #b8cead;
+  --gold:        #c49a3c;
+  --gold-d:      #8a6518;
+  --gold-light:  #faf5e4;
+  --gold-mid:    #e8d49a;
+  --ink:         #25201a;
+  --ink-mid:     #5a4f40;
+  --ink-light:   #9c8e7e;
+  --paper:       #faf8f4;
+  --paper-mid:   #f0ede5;
+  --white:       #ffffff;
+  --border:      #e0dbd0;
+  --blue:        #3a6fa8;
+  --blue-light:  #e8f0fb;
+  --plum:        #7a4a8a;
+  --plum-light:  #f3edf7;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem 2rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(196,154,60,0.12) 0%, transparent 70%),
+    repeating-linear-gradient(-55deg, transparent, transparent 22px, rgba(192,96,58,0.04) 22px, rgba(192,96,58,0.04) 23px);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+.brand { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 14.5px; color: rgba(250,248,244,0.7); max-width: 520px; line-height: 1.7; margin-bottom: 1.4rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-pill {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  padding: 4px 14px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(250,248,244,0.8);
+}
+
+/* ── DECISION TREE BANNER ── */
+.tree-banner {
+  background: var(--gold-light);
+  border-bottom: 2px solid var(--gold-mid);
+  padding: 1.6rem 2rem;
+}
+.tree-inner { max-width: 860px; margin: 0 auto; }
+.tree-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold-d); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.tree-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 8px;
+}
+.tree-card {
+  background: var(--white);
+  border: 1px solid var(--gold-mid);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.tree-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(196,154,60,0.15); }
+.tree-q { font-size: 12px; color: var(--ink-light); font-style: italic; line-height: 1.4; }
+.tree-arrow { font-size: 11px; color: var(--gold); }
+.tree-ans { font-size: 14px; font-weight: 700; color: var(--gold-d); }
+
+/* ── MAIN ── */
+.main { max-width: 860px; margin: 0 auto; padding: 0 1.4rem 3rem; }
+
+/* ── SECTION HEADING ── */
+.sec-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 2.4rem 0 1.1rem;
+}
+.sec-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.sec-title-wrap {}
+.sec-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1.2; }
+.sec-divider { flex: 1; height: 1px; background: var(--border); margin-left: 6px; }
+
+/* ── MODAL CARD ── */
+.modal-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(37,32,26,0.06);
+}
+.modal-card-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px 14px;
+  cursor: pointer; user-select: none;
+}
+.modal-card-header:hover { filter: brightness(0.97); }
+.mc-badge {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700;
+  padding: 6px 14px; border-radius: 8px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.mc-meaning { flex: 1; }
+.mc-meaning-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.65; margin-bottom: 1px; }
+.mc-meaning-text { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.mc-emoji { font-size: 22px; }
+.mc-chevron { font-size: 16px; color: var(--ink-light); transition: transform 0.2s; flex-shrink: 0; }
+.modal-card-header.open .mc-chevron { transform: rotate(180deg); }
+
+.modal-body { display: none; border-top: 1px solid var(--border); }
+.modal-body.open { display: block; }
+
+.modal-body-inner { padding: 18px 20px 20px; }
+
+/* Structure box */
+.structure-box {
+  border-radius: 9px; padding: 12px 16px; margin-bottom: 14px;
+  font-size: 13.5px; line-height: 1.8;
+}
+.structure-box .sb-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; opacity: 0.7; }
+.structure-formula { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+
+/* Example columns */
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.ex-col { background: var(--paper-mid); border-radius: 8px; padding: 10px 13px; }
+.ex-col-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.ex-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.ex-list li { font-size: 13px; font-style: italic; color: var(--ink-mid); display: flex; align-items: baseline; gap: 6px; }
+.ex-list li::before { content: '→'; font-style: normal; font-size: 11px; color: var(--ink-light); flex-shrink: 0; }
+
+/* Comparison strip */
+.compare-strip {
+  display: flex; gap: 0; border-radius: 9px; overflow: hidden;
+  border: 1px solid var(--border); margin-bottom: 14px;
+}
+.cs-cell { flex: 1; padding: 11px 14px; }
+.cs-cell + .cs-cell { border-left: 1px solid var(--border); }
+.cs-modal { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.cs-ex { font-size: 13px; font-style: italic; color: var(--ink-mid); margin-bottom: 3px; }
+.cs-meaning { font-size: 12px; color: var(--ink-light); }
+
+/* Negative box */
+.neg-box { border-radius: 9px; padding: 12px 16px; margin-bottom: 14px; }
+.neg-box .nb-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.neg-box ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.neg-box ul li { font-size: 13px; font-style: italic; display: flex; align-items: baseline; gap: 6px; }
+.neg-box ul li::before { content: '✕'; font-style: normal; font-size: 10px; flex-shrink: 0; }
+
+/* Industry examples */
+.industry-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.industry-tag {
+  display: flex; align-items: baseline; gap: 6px;
+  background: var(--paper-mid); border-radius: 8px;
+  padding: 8px 13px; font-size: 13px;
+}
+.ind-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); margin-right: 2px; }
+.ind-ex { font-style: italic; color: var(--ink-mid); }
+
+/* Tip strip */
+.tip-strip {
+  font-size: 13px; border-radius: 8px;
+  padding: 10px 14px;
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
+}
+.tip-strip strong { font-weight: 700; }
+
+/* ── MASTER TABLE ── */
+.master-table-wrap { overflow-x: auto; margin-bottom: 2rem; }
+table.master {
+  width: 100%; border-collapse: collapse; font-size: 13.5px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+}
+table.master thead tr { background: var(--ink); color: var(--paper); }
+table.master thead th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+table.master tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+table.master tbody tr:hover { background: var(--paper-mid); }
+table.master tbody tr:last-child { border-bottom: none; }
+table.master td { padding: 11px 16px; vertical-align: middle; }
+.t-modal { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; }
+.t-pill { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 2px 10px; border-radius: 20px; }
+.t-ex { font-style: italic; color: var(--ink-mid); font-size: 13px; }
+
+/* ── DRILL SECTION ── */
+.drill-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 14px;
+  padding: 24px 22px;
+  margin-bottom: 16px;
+}
+.drill-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+.drill-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+.drill-situations { display: flex; flex-direction: column; gap: 12px; }
+.drill-sit { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 16px; }
+.sit-scenario { font-size: 13px; font-weight: 600; color: var(--gold-mid); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.sit-answers { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.sit-answers li { font-size: 13px; font-style: italic; color: rgba(250,248,244,0.8); display: flex; gap: 8px; align-items: baseline; }
+.sit-answers li::before { content: '✓'; font-style: normal; color: var(--sage-mid); font-size: 12px; flex-shrink: 0; }
+.sit-modal-tag { font-size: 10.5px; font-weight: 700; text-transform: uppercase; background: rgba(255,255,255,0.1); border-radius: 4px; padding: 1px 6px; font-style: normal; color: rgba(250,248,244,0.5); margin-left: 4px; }
+
+/* ── MEMORY TRICK ── */
+.memory-box {
+  background: linear-gradient(135deg, var(--terra-light) 0%, var(--gold-light) 100%);
+  border: 1.5px solid var(--terra-mid);
+  border-radius: 14px; padding: 22px 22px;
+  margin-bottom: 2rem;
+}
+.memory-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra); margin-bottom: 0.7rem; }
+.memory-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--ink); margin-bottom: 1rem; }
+.memory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.memory-item { background: var(--white); border-radius: 9px; padding: 10px 13px; }
+.mem-q { font-size: 12px; color: var(--ink-light); font-style: italic; margin-bottom: 3px; line-height: 1.4; }
+.mem-arrow { font-size: 11px; color: var(--terra); margin-bottom: 1px; }
+.mem-ans { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 560px) {
+  .tree-grid { grid-template-columns: repeat(2, 1fr); }
+  .compare-strip { flex-direction: column; }
+  .cs-cell + .cs-cell { border-left: none; border-top: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="brand">Teacher Benny · Workplace English A2</p>
+    <h1>Modal Verbs —<br><em>Know When to Use Them</em></h1>
+    <p class="hero-sub">One of the biggest challenges at A2 level is that <strong>could, should, must, may</strong> and <strong>might</strong> all look similar. The key is simple: learn them by <em>purpose</em>, not by grammar rules.</p>
+
+  </div>
+</div>
+
+<!-- DECISION TREE -->
+<div class="tree-banner">
+  <div class="tree-inner">
+    <p class="tree-label">⚡ Quick Decision Guide — Ask yourself this question:</p>
+    <div class="tree-grid">
+      <div class="tree-card">
+        <p class="tree-q">Is it a skill or ability?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--blue);">CAN / CAN'T</p>
+      </div>
+      <div class="tree-card">
+        <p class="tree-q">Is it advice or a recommendation?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--sage);">SHOULD / SHOULDN'T</p>
+      </div>
+      <div class="tree-card">
+        <p class="tree-q">Is it a very strong rule or obligation?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--terra);">MUST / MUSTN'T</p>
+      </div>
+      <div class="tree-card">
+        <p class="tree-q">Is it a company rule (not my opinion)?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--terra);">HAVE TO</p>
+      </div>
+      <div class="tree-card">
+        <p class="tree-q">Is it one possible idea or option?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--plum);">COULD</p>
+      </div>
+      <div class="tree-card">
+        <p class="tree-q">Is it something that is possible / maybe true?</p>
+        <p class="tree-arrow">↓</p>
+        <p class="tree-ans" style="color:var(--gold-d);">MAY / MIGHT</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════════════════
+     1. CAN / CAN'T
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--blue-light);">💪</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--blue);">Modal 1</p>
+    <p class="sec-title">CAN &amp; CAN'T — Ability</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header open" onclick="toggleCard(this)" style="background:var(--blue-light);">
+    <div class="mc-badge" style="background:var(--blue);color:#fff;">CAN</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:var(--blue);">Use for</p>
+      <p class="mc-meaning-text">Ability — something you know how to do</p>
+    </div>
+    <span class="mc-emoji">💪</span>
+    <span class="mc-chevron open">▾</span>
+  </div>
+  <div class="modal-body open">
+    <div class="modal-body-inner">
+      <div class="structure-box" style="background:var(--blue-light);border:1px solid #c5d9f0;">
+        <p class="sb-label" style="color:var(--blue);">Structure</p>
+        <p class="structure-formula" style="color:var(--blue);">Subject + CAN + verb (base form)</p>
+        <div style="font-size:13px;color:var(--ink-mid);">Positive: <em>I can install the software.</em><br>Negative: <em>I can't access the server.</em><br>Question: <em>Can you use this machine?</em></div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--blue);">✈️ Aviation / Engineering</p>
+          <ul class="ex-list">
+            <li>I can read technical drawings.</li>
+            <li>I can operate the forklift.</li>
+            <li>She can use CAD software.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--blue);">💻 IT / Office</p>
+          <ul class="ex-list">
+            <li>I can install the software.</li>
+            <li>He can configure the network.</li>
+            <li>We can solve this remotely.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--blue);">🍽 Kitchen / Sales</p>
+          <ul class="ex-list">
+            <li>I can prepare meals for 200 people.</li>
+            <li>She can speak to the client in English.</li>
+            <li>We can't ship before Friday.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-strip" style="background:var(--blue-light);border:1px solid #c5d9f0;">
+        <span>💡</span>
+        <span><strong>Remember:</strong> CAN talks about <em>what you are able to do</em>. If you don't have the skill or it's not possible, use <strong>CAN'T</strong>.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     2. COULD
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--plum-light);">💡</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--plum);">Modal 2</p>
+    <p class="sec-title">COULD — Suggestion &amp; Possibility</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header" onclick="toggleCard(this)" style="background:var(--plum-light);">
+    <div class="mc-badge" style="background:var(--plum);color:#fff;">COULD</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:var(--plum);">Use for</p>
+      <p class="mc-meaning-text">Suggestions · Possibilities · Polite ideas</p>
+    </div>
+    <span class="mc-emoji">💡</span>
+    <span class="mc-chevron">▾</span>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-inner">
+      <div class="structure-box" style="background:var(--plum-light);border:1px solid #d8c5e5;">
+        <p class="sb-label" style="color:var(--plum);">Two uses of COULD</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;color:var(--ink-mid);">
+          <div><strong style="color:var(--plum);">Use 1 — Suggestion</strong><br><em>We could call the supplier.</em><br><span style="font-size:11.5px;color:var(--ink-light);">👉 "One possible idea."</span></div>
+          <div><strong style="color:var(--plum);">Use 2 — Possibility</strong><br><em>The problem could be the network.</em><br><span style="font-size:11.5px;color:var(--ink-light);">👉 "Maybe. Not certain."</span></div>
+        </div>
+      </div>
+      <div class="compare-strip" style="margin-bottom:14px;">
+        <div class="cs-cell" style="background:var(--sage-light);">
+          <p class="cs-modal" style="color:var(--sage);">SHOULD</p>
+          <p class="cs-ex">"We should call the supplier."</p>
+          <p class="cs-meaning">👉 Good idea. Recommended.</p>
+        </div>
+        <div class="cs-cell" style="background:var(--plum-light);">
+          <p class="cs-modal" style="color:var(--plum);">COULD</p>
+          <p class="cs-ex">"We could call the supplier."</p>
+          <p class="cs-meaning">👉 One possible option. Softer.</p>
+        </div>
+      </div>
+      <div class="industry-row">
+        <div class="industry-tag"><span class="ind-label">✈️</span><span class="ind-ex">We could delay the maintenance check until Tuesday.</span></div>
+        <div class="industry-tag"><span class="ind-label">🏭</span><span class="ind-ex">The defect could be in the assembly process.</span></div>
+        <div class="industry-tag"><span class="ind-label">🚬</span><span class="ind-ex">We could offer the client a discount.</span></div>
+      </div>
+      <div class="tip-strip" style="background:var(--plum-light);border:1px solid #d8c5e5;">
+        <span>💡</span>
+        <span><strong>Student tip:</strong> COULD is softer and more polite than SHOULD. Use COULD in meetings when you want to suggest an idea without being too direct.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     3. SHOULD / SHOULDN'T
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--sage-light);">👍</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--sage);">Modal 3</p>
+    <p class="sec-title">SHOULD &amp; SHOULDN'T — Advice</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header" onclick="toggleCard(this)" style="background:var(--sage-light);">
+    <div class="mc-badge" style="background:var(--sage);color:#fff;">SHOULD</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:var(--sage);">Use for</p>
+      <p class="mc-meaning-text">Giving advice or a recommendation</p>
+    </div>
+    <span class="mc-emoji">👍</span>
+    <span class="mc-chevron">▾</span>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-inner">
+      <div class="structure-box" style="background:var(--sage-light);border:1px solid var(--sage-mid);">
+        <p class="sb-label" style="color:var(--sage);">Structure</p>
+        <p class="structure-formula" style="color:var(--sage);">Subject + SHOULD / SHOULDN'T + verb (base form)</p>
+        <div style="font-size:13px;color:var(--ink-mid);">Positive: <em>We should test the component.</em> → Good idea.<br>Negative: <em>We shouldn't ignore this problem.</em> → Bad idea.</div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--sage);">Positive (Good idea)</p>
+          <ul class="ex-list">
+            <li>We should check the machine now.</li>
+            <li>You should update the software.</li>
+            <li>The team should communicate more.</li>
+            <li>We should contact the customer.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--terra);">Negative (Bad idea)</p>
+          <ul class="ex-list">
+            <li>We shouldn't ignore the issue.</li>
+            <li>You shouldn't skip the inspection.</li>
+            <li>We shouldn't delay the report.</li>
+            <li>They shouldn't miss the deadline.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-strip" style="background:var(--sage-light);border:1px solid var(--sage-mid);">
+        <span>🧪</span>
+        <span><strong>Quick test:</strong> Before you speak, ask yourself — <em>"Is this advice?"</em> If yes → use <strong>SHOULD</strong>. If it's not just advice but a real rule, use <strong>MUST</strong> or <strong>HAVE TO</strong>.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     4. MUST / MUSTN'T
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--terra-light);">🚨</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--terra);">Modal 4</p>
+    <p class="sec-title">MUST &amp; MUSTN'T — Strong Obligation</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header" onclick="toggleCard(this)" style="background:var(--terra-light);">
+    <div class="mc-badge" style="background:var(--terra);color:#fff;">MUST</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:var(--terra);">Use for</p>
+      <p class="mc-meaning-text">Strong obligation — very important, no choice</p>
+    </div>
+    <span class="mc-emoji">🚨</span>
+    <span class="mc-chevron">▾</span>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-inner">
+      <div class="structure-box" style="background:var(--terra-light);border:1px solid var(--terra-mid);">
+        <p class="sb-label" style="color:var(--terra);">Structure</p>
+        <p class="structure-formula" style="color:var(--terra);">Subject + MUST / MUSTN'T + verb (base form)</p>
+        <div style="font-size:13px;color:var(--ink-mid);">Positive: <em>We must finish the report today.</em> → Very important!<br>Negative: <em>You mustn't touch this equipment.</em> → PROHIBITED. Not allowed.</div>
+      </div>
+      <div class="compare-strip" style="margin-bottom:14px;">
+        <div class="cs-cell" style="background:var(--sage-light);">
+          <p class="cs-modal" style="color:var(--sage);">SHOULD</p>
+          <p class="cs-ex">"You should wear safety glasses."</p>
+          <p class="cs-meaning">Good idea. Advice.</p>
+        </div>
+        <div class="cs-cell" style="background:var(--terra-light);">
+          <p class="cs-modal" style="color:var(--terra);">MUST</p>
+          <p class="cs-ex">"You must wear safety glasses."</p>
+          <p class="cs-meaning">Required. No choice.</p>
+        </div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--terra);">MUST (obligation)</p>
+          <ul class="ex-list">
+            <li>You must wear safety equipment.</li>
+            <li>We must finish the audit today.</li>
+            <li>All staff must sign in.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--terra-d);">MUSTN'T (prohibited)</p>
+          <ul class="ex-list">
+            <li>You mustn't smoke in this area.</li>
+            <li>Employees mustn't share passwords.</li>
+            <li>You mustn't enter without a badge.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-strip" style="background:var(--terra-light);border:1px solid var(--terra-mid);">
+        <span>⚠️</span>
+        <span><strong>Important:</strong> MUSTN'T = NOT ALLOWED. It is much stronger than SHOULDN'T. Use MUSTN'T for safety rules and strict prohibitions.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     5. HAVE TO
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--gold-light);">📋</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--gold-d);">Modal 5</p>
+    <p class="sec-title">HAVE TO — External Rules &amp; Requirements</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header" onclick="toggleCard(this)" style="background:var(--gold-light);">
+    <div class="mc-badge" style="background:var(--gold);color:#fff;">HAVE TO</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:var(--gold-d);">Use for</p>
+      <p class="mc-meaning-text">Company rules, policies, external requirements</p>
+    </div>
+    <span class="mc-emoji">📋</span>
+    <span class="mc-chevron">▾</span>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-inner">
+      <div class="structure-box" style="background:var(--gold-light);border:1px solid var(--gold-mid);">
+        <p class="sb-label" style="color:var(--gold-d);">MUST vs HAVE TO — the most common student question</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:13px;color:var(--ink-mid);">
+          <div><strong style="color:var(--terra);">MUST</strong><br>The <em>speaker</em> thinks it is important.<br><br><em>"We must improve quality."</em><br><span style="font-size:11.5px;color:var(--ink-light);">→ My opinion. My decision.</span></div>
+          <div><strong style="color:var(--gold-d);">HAVE TO</strong><br>A <em>rule, law, or policy</em> says so.<br><br><em>"We have to wear ID badges."</em><br><span style="font-size:11.5px;color:var(--ink-light);">→ The company says so.</span></div>
+        </div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--gold-d);">✈️ Aviation</p>
+          <ul class="ex-list">
+            <li>We have to complete the pre-flight checklist.</li>
+            <li>Pilots have to report any technical issue.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--gold-d);">🏭 Engineering</p>
+          <ul class="ex-list">
+            <li>We have to follow the safety protocol.</li>
+            <li>All parts have to be inspected.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:var(--gold-d);">🚬 Sales / JTI</p>
+          <ul class="ex-list">
+            <li>We have to submit reports monthly.</li>
+            <li>Sales staff have to follow company policy.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-strip" style="background:var(--gold-light);border:1px solid var(--gold-mid);">
+        <span>💡</span>
+        <span><strong>Simple rule:</strong> MUST = I think it is necessary. &nbsp;|&nbsp; HAVE TO = The company / rules say it is necessary.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     6. MAY / MIGHT
+══════════════════════════ -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:#f0f4e0;">🎲</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:#5a7020;">Modal 6</p>
+    <p class="sec-title">MAY &amp; MIGHT — Probability</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="modal-card">
+  <div class="modal-card-header" onclick="toggleCard(this)" style="background:#f0f4e0;">
+    <div class="mc-badge" style="background:#6a8a28;color:#fff;">MAY / MIGHT</div>
+    <div class="mc-meaning">
+      <p class="mc-meaning-label" style="color:#5a7020;">Use for</p>
+      <p class="mc-meaning-text">Something is possible but not certain</p>
+    </div>
+    <span class="mc-emoji">🎲</span>
+    <span class="mc-chevron">▾</span>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-inner">
+      <div class="compare-strip" style="margin-bottom:14px;">
+        <div class="cs-cell" style="background:#eef5d8;">
+          <p class="cs-modal" style="color:#5a7020;">MAY</p>
+          <p class="cs-ex">"The supplier may arrive today."</p>
+          <p class="cs-meaning">~50–70% possible. More likely.</p>
+        </div>
+        <div class="cs-cell" style="background:#f0f4e0;">
+          <p class="cs-modal" style="color:#5a7020;">MIGHT</p>
+          <p class="cs-ex">"The supplier might be late."</p>
+          <p class="cs-meaning">Less certain. Maybe 30–50%.</p>
+        </div>
+      </div>
+      <div class="ex-grid">
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:#5a7020;">MAY examples</p>
+          <ul class="ex-list">
+            <li>The customer may approve the design.</li>
+            <li>The system may need an update.</li>
+            <li>The delivery may arrive this afternoon.</li>
+          </ul>
+        </div>
+        <div class="ex-col">
+          <p class="ex-col-label" style="color:#5a7020;">MIGHT examples</p>
+          <ul class="ex-list">
+            <li>The issue might be the software.</li>
+            <li>We might need more time.</li>
+            <li>The flight might be delayed.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tip-strip" style="background:#f0f4e0;border:1px solid #c8dca0;">
+        <span>💡</span>
+        <span><strong>For A2 level:</strong> MAY and MIGHT mean almost the same thing. Both = "maybe / possible". Don't worry too much about the difference — use either one!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MASTER TABLE -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--paper-mid);">📊</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--ink-light);">Summary</p>
+    <p class="sec-title">Master Table — All Modals at a Glance</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="master-table-wrap">
+<table class="master">
+  <thead>
+    <tr>
+      <th>Modal</th>
+      <th>Meaning</th>
+      <th>Workplace Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="t-modal" style="color:var(--blue);">can</span></td>
+      <td><span class="t-pill" style="background:var(--blue-light);color:var(--blue);">Ability</span></td>
+      <td class="t-ex">I can read technical drawings.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--blue);">can't</span></td>
+      <td><span class="t-pill" style="background:var(--blue-light);color:var(--blue);">No ability</span></td>
+      <td class="t-ex">I can't access the server.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--plum);">could</span></td>
+      <td><span class="t-pill" style="background:var(--plum-light);color:var(--plum);">Suggestion / Possibility</span></td>
+      <td class="t-ex">We could contact the supplier. The problem could be the network.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--sage);">should</span></td>
+      <td><span class="t-pill" style="background:var(--sage-light);color:var(--sage);">Advice — good idea</span></td>
+      <td class="t-ex">We should check the system.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--sage);">shouldn't</span></td>
+      <td><span class="t-pill" style="background:var(--sage-light);color:var(--sage);">Advice — bad idea</span></td>
+      <td class="t-ex">We shouldn't ignore the issue.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--terra);">must</span></td>
+      <td><span class="t-pill" style="background:var(--terra-light);color:var(--terra);">Strong obligation</span></td>
+      <td class="t-ex">You must wear safety equipment.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--terra-d);">mustn't</span></td>
+      <td><span class="t-pill" style="background:var(--terra-light);color:var(--terra-d);">Prohibited</span></td>
+      <td class="t-ex">You mustn't enter this area.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:var(--gold-d);">have to</span></td>
+      <td><span class="t-pill" style="background:var(--gold-light);color:var(--gold-d);">External rule / requirement</span></td>
+      <td class="t-ex">We have to wear PPE. (Company rule)</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:#5a7020;">may</span></td>
+      <td><span class="t-pill" style="background:#f0f4e0;color:#5a7020;">Possible (~50–70%)</span></td>
+      <td class="t-ex">The delivery may arrive today.</td>
+    </tr>
+    <tr>
+      <td><span class="t-modal" style="color:#5a7020;">might</span></td>
+      <td><span class="t-pill" style="background:#f0f4e0;color:#5a7020;">Maybe (less certain)</span></td>
+      <td class="t-ex">The delivery might be late.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- MEMORY TRICK -->
+<div class="memory-box">
+  <p class="memory-label">🧠 A2 Memory Trick</p>
+  <p class="memory-title">Ask yourself ONE question before you speak:</p>
+  <div class="memory-grid">
+    <div class="memory-item">
+      <p class="mem-q">Is it a skill?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--blue);">CAN</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">Is it advice?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--sage);">SHOULD</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">Is it a company rule?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--gold-d);">HAVE TO</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">Very important? No choice?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--terra);">MUST</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">Prohibited?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--terra-d);">MUSTN'T</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">One possible idea?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:var(--plum);">COULD</p>
+    </div>
+    <div class="memory-item">
+      <p class="mem-q">Maybe true?</p>
+      <p class="mem-arrow">↓</p>
+      <p class="mem-ans" style="color:#5a7020;">MAY / MIGHT</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE DRILL -->
+<div class="sec-head">
+  <div class="sec-icon" style="background:var(--paper-mid);">🎯</div>
+  <div class="sec-title-wrap">
+    <p class="sec-num" style="color:var(--ink-light);">Practice</p>
+    <p class="sec-title">Situation Drills — What would you say?</p>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="drill-card">
+  <p class="drill-label">Practice Drill</p>
+  <p class="drill-title">Read the situation. Study the example answers. Notice which modal is used and why.</p>
+  <div class="drill-situations">
+
+    <div class="drill-sit">
+      <p class="sit-scenario">📦 Situation 1: The supplier is late.</p>
+      <ul class="sit-answers">
+        <li>We should call them. <span class="sit-modal-tag">SHOULD — advice</span></li>
+        <li>We could send an email instead. <span class="sit-modal-tag">COULD — suggestion</span></li>
+        <li>They might arrive tomorrow. <span class="sit-modal-tag">MIGHT — possibility</span></li>
+        <li>The delay may affect production. <span class="sit-modal-tag">MAY — possibility</span></li>
+      </ul>
+    </div>
+
+    <div class="drill-sit">
+      <p class="sit-scenario">⚠️ Situation 2: The machine is dangerous.</p>
+      <ul class="sit-answers">
+        <li>Employees must wear safety equipment. <span class="sit-modal-tag">MUST — strong obligation</span></li>
+        <li>Workers mustn't touch the machine without training. <span class="sit-modal-tag">MUSTN'T — prohibited</span></li>
+        <li>We have to follow the safety protocol. <span class="sit-modal-tag">HAVE TO — company rule</span></li>
+      </ul>
+    </div>
+
+    <div class="drill-sit">
+      <p class="sit-scenario">💻 Situation 3: The network is down.</p>
+      <ul class="sit-answers">
+        <li>We should restart the system. <span class="sit-modal-tag">SHOULD — advice</span></li>
+        <li>We could contact IT support. <span class="sit-modal-tag">COULD — suggestion</span></li>
+        <li>The problem might be the server. <span class="sit-modal-tag">MIGHT — possibility</span></li>
+        <li>I can check the router. <span class="sit-modal-tag">CAN — ability</span></li>
+      </ul>
+    </div>
+
+    <div class="drill-sit">
+      <p class="sit-scenario">✈️ Situation 4: New safety regulation at the airport.</p>
+      <ul class="sit-answers">
+        <li>All staff have to complete the training. <span class="sit-modal-tag">HAVE TO — regulation</span></li>
+        <li>You mustn't enter the restricted area without clearance. <span class="sit-modal-tag">MUSTN'T — prohibited</span></li>
+        <li>The flight might be delayed due to weather. <span class="sit-modal-tag">MIGHT — uncertainty</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.mc-chevron');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
