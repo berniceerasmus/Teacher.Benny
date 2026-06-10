@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 / A2 English Question Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:     #1a2e4a;
+    --blue:     #2563a8;
+    --light-blue: #dbeafe;
+    --teal:     #0d7377;
+    --light-teal: #ccf2f0;
+    --gold:     #c8862a;
+    --light-gold: #fef3cd;
+    --red:      #b91c1c;
+    --light-red:#fee2e2;
+    --green:    #166534;
+    --light-green:#dcfce7;
+    --bg:       #f0f4f9;
+    --card:     #ffffff;
+    --text:     #1e293b;
+    --subtle:   #64748b;
+    --border:   #cbd5e1;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "?";
+    font-size: 20rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    top: -4rem;
+    right: -3rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  header .level-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  header p.subtitle {
+    font-size: 1rem;
+    opacity: 0.75;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  header p.subtitle .tr {
+    font-style: italic;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* ── SECTION CARD ── */
+  .section-card {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    overflow: hidden;
+  }
+
+  /* ── RULE BANNER ── */
+  .rule-banner {
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .rule-banner.blue  { background: var(--light-blue); border-left: 5px solid var(--blue); }
+  .rule-banner.teal  { background: var(--light-teal); border-left: 5px solid var(--teal); }
+  .rule-banner.gold  { background: var(--light-gold); border-left: 5px solid var(--gold); }
+
+  .rule-banner .section-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 0.1rem;
+  }
+  .rule-banner h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  .rule-banner .rule-en {
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: var(--blue);
+  }
+  .rule-banner.teal .rule-en { color: var(--teal); }
+  .rule-banner.gold .rule-en { color: var(--gold); }
+
+  .rule-banner .rule-tr {
+    font-size: 0.92rem;
+    color: var(--subtle);
+    font-style: italic;
+  }
+  .rule-banner .rule-tr::before {
+    content: "🇹🇷 ";
+  }
+
+  /* ── BODY ── */
+  .section-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+  }
+
+  /* ── USE-WHEN TABLE ── */
+  .use-when {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .use-when-item {
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .use-when-item.yes { background: var(--light-green); }
+  .use-when-item.no  { background: var(--light-red); }
+  .use-when-item .uw-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+  .use-when-item.yes .uw-label { color: var(--green); }
+  .use-when-item.no  .uw-label { color: var(--red); }
+  .use-when-item p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .use-when-item .tr-note {
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--subtle);
+    margin-top: 0.25rem;
+  }
+
+  /* ── SUBSECTION LABEL ── */
+  .sub-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+    margin-bottom: 0.7rem;
+    margin-top: 1.4rem;
+  }
+  .sub-label:first-child { margin-top: 0; }
+
+  /* ── EXAMPLE TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 0.55rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child  { border-radius: 0 8px 0 0; }
+  tbody tr:nth-child(even) { background: #f8fafc; }
+  tbody td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  .meaning-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--light-blue);
+    color: var(--blue);
+  }
+  .tr-translation {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* ── CORRECT / WRONG BOX ── */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  .cmp-box {
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+  }
+  .cmp-box.correct { background: var(--light-green); border: 1px solid #86efac; }
+  .cmp-box.wrong   { background: var(--light-red);   border: 1px solid #fca5a5; }
+  .cmp-box .cmp-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+  .cmp-box.correct .cmp-label { color: var(--green); }
+  .cmp-box.wrong   .cmp-label { color: var(--red); }
+  .cmp-box code {
+    font-family: 'Inter', monospace;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+  .cmp-box .why {
+    font-size: 0.78rem;
+    color: var(--subtle);
+    margin-top: 0.35rem;
+    font-style: italic;
+  }
+
+  /* ── WH GRID ── */
+  .wh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+  }
+  .wh-card {
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    background: var(--light-blue);
+    border-left: 4px solid var(--blue);
+  }
+  .wh-word {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .wh-meaning-en {
+    font-size: 0.82rem;
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .wh-meaning-tr {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  /* ── TIP BOX ── */
+  .tip-box {
+    background: var(--light-gold);
+    border: 1px solid #fbbf24;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-top: 1.2rem;
+    font-size: 0.88rem;
+  }
+  .tip-box strong {
+    color: var(--gold);
+  }
+  .tip-box .tr-note {
+    font-style: italic;
+    color: var(--subtle);
+    margin-top: 0.3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.4rem 0;
+  }
+
+  /* ── QUICK REFERENCE ── */
+  .quick-ref {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 1.75rem;
+    color: #fff;
+  }
+  .quick-ref h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+    color: #93c5fd;
+  }
+  .quick-ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem;
+  }
+  .qr-card {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .qr-card .qr-verb {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #93c5fd;
+    margin-bottom: 0.25rem;
+  }
+  .qr-card p { font-size: 0.82rem; opacity: 0.85; line-height: 1.5; }
+  .qr-card .tr { font-style: italic; opacity: 0.65; }
+
+  /* ── FORMULA PILL ── */
+  .formula {
+    display: inline-flex;
+    gap: 0.3rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0.5rem 0;
+  }
+  .f-part {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .f-part.verb    { background: #dbeafe; color: #1d4ed8; }
+  .f-part.subject { background: #dcfce7; color: #166534; }
+  .f-part.wh      { background: #fef3cd; color: #92400e; }
+  .f-part.plus    { background: transparent; color: var(--subtle); font-weight: 400; }
+  .f-part.rest    { background: #f1f5f9; color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--subtle);
+  }
+
+  @media (max-width: 560px) {
+    .use-when, .comparison, .wh-grid { grid-template-columns: 1fr; }
+    .rule-banner { padding: 1rem 1.2rem; }
+    .section-body { padding: 1.1rem 1.2rem 1.4rem; }
+    header { padding: 2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="level-badge">A1 &nbsp;/&nbsp; A2 &nbsp;·&nbsp; English Grammar</div>
+  <h1>English Question Guide</h1>
+  <p class="subtitle">
+    Am / Is / Are &nbsp;·&nbsp; Do / Does &nbsp;·&nbsp; WH- Questions<br>
+    <span class="tr">Türk öğrenciler için açıklamalı soru rehberi</span>
+  </p>
+</header>
+
+<main>
+
+  <!-- ════════════════ SECTION 1 ════════════════ -->
+  <div class="section-card">
+    <div class="rule-banner blue">
+      <span class="section-num">Section 1</span>
+      <h2>AM / IS / ARE Questions</h2>
+      <p class="rule-en">Use AM / IS / ARE when there is <em>no</em> main action verb in the sentence.</p>
+      <p class="rule-tr">Cümlede eylem fiili (action verb) YOK ise AM / IS / ARE kullan.</p>
+    </div>
+
+    <div class="section-body">
+
+      <p class="sub-label">When do we use them? / Ne zaman kullanılır?</p>
+
+      <div class="use-when">
+        <div class="use-when-item yes">
+          <div class="uw-label">✔ Use AM / IS / ARE for</div>
+          <p>Age, feelings, jobs, nationality, location, and describing things with adjectives.</p>
+          <p class="tr-note">Yaş, duygular, meslekler, milliyet, konum ve sıfatlarla tanımlama.</p>
+        </div>
+        <div class="use-when-item no">
+          <div class="uw-label">✘ Do NOT use for actions</div>
+          <p>If someone is doing something (eating, working, playing…), use DO / DOES instead.</p>
+          <p class="tr-note">Birisi bir şey yapıyorsa (yemek yiyor, çalışıyor…) DO / DOES kullan.</p>
+        </div>
+      </div>
+
+      <p class="sub-label">Structure / Yapı</p>
+      <div class="formula">
+        <span class="f-part verb">AM / IS / ARE</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part subject">Subject</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part rest">rest of sentence?</span>
+      </div>
+
+      <p class="sub-label">Examples / Örnekler</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Topic / Konu</th>
+            <th>Turkish Translation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Are you tired?</strong></td>
+            <td><span class="meaning-tag">Feeling / Duygu</span></td>
+            <td class="tr-translation">Yorgun musun?</td>
+          </tr>
+          <tr>
+            <td><strong>Is she Turkish?</strong></td>
+            <td><span class="meaning-tag">Nationality / Milliyet</span></td>
+            <td class="tr-translation">O Türk mü?</td>
+          </tr>
+          <tr>
+            <td><strong>Are they at school?</strong></td>
+            <td><span class="meaning-tag">Location / Konum</span></td>
+            <td class="tr-translation">Onlar okulda mı?</td>
+          </tr>
+          <tr>
+            <td><strong>Am I late?</strong></td>
+            <td><span class="meaning-tag">Condition / Durum</span></td>
+            <td class="tr-translation">Geç mi kaldım?</td>
+          </tr>
+          <tr>
+            <td><strong>Is he a doctor?</strong></td>
+            <td><span class="meaning-tag">Job / Meslek</span></td>
+            <td class="tr-translation">O doktor mu?</td>
+          </tr>
+          <tr>
+            <td><strong>Is the coffee hot?</strong></td>
+            <td><span class="meaning-tag">Adjective / Sıfat</span></td>
+            <td class="tr-translation">Kahve sıcak mı?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <strong>💡 Quick tip:</strong> If you can replace the verb with <em>is / are</em> and the sentence still makes sense — use AM / IS / ARE for your question.<br>
+        <span class="tr-note">Kural: Fiil yerine <em>is / are</em> koyduğunda cümle anlam ifade ediyorsa AM / IS / ARE kullan.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════ SECTION 2 ════════════════ -->
+  <div class="section-card">
+    <div class="rule-banner teal">
+      <span class="section-num">Section 2</span>
+      <h2>DO / DOES Questions</h2>
+      <p class="rule-en">Use DO / DOES when the sentence has a main action verb (play, eat, like, work…).</p>
+      <p class="rule-tr">Cümlede eylem fiili (play, eat, like, work…) VARSA DO / DOES kullan.</p>
+    </div>
+
+    <div class="section-body">
+
+      <p class="sub-label">Choosing DO vs DOES / DO mu DOES mu?</p>
+
+      <div class="use-when">
+        <div class="use-when-item yes">
+          <div class="uw-label">DO → I, You, We, They</div>
+          <p><em>Do</em> you like pizza?<br><em>Do</em> they study English?<br><em>Do</em> we start at 9?</p>
+          <p class="tr-note">I, You, We, They ile DO kullan.</p>
+        </div>
+        <div class="use-when-item no">
+          <div class="uw-label">DOES → He, She, It</div>
+          <p><em>Does</em> she work here?<br><em>Does</em> he play football?<br><em>Does</em> it hurt?</p>
+          <p class="tr-note">He, She, It ile DOES kullan.</p>
+        </div>
+      </div>
+
+      <p class="sub-label">Structure / Yapı</p>
+      <div class="formula">
+        <span class="f-part verb">DO / DOES</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part subject">Subject</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part rest">verb (base form)?</span>
+      </div>
+
+      <div class="tip-box" style="margin-top:0; margin-bottom:1.2rem;">
+        <strong>⚠️ Important:</strong> After <em>DOES</em>, the action verb goes back to its base form — no <strong>-s</strong> or <strong>-es</strong>.<br>
+        <span class="tr-note">DOES kullandıktan sonra fiil eski haline döner — <strong>-s / -es</strong> eklenmez.</span>
+      </div>
+
+      <p class="sub-label">Correct vs Wrong / Doğru ve Yanlış</p>
+
+      <div class="comparison">
+        <div class="cmp-box correct">
+          <div class="cmp-label">✔ Correct</div>
+          <code>Does he play football?</code>
+          <p class="why">play = base form ✓</p>
+        </div>
+        <div class="cmp-box wrong">
+          <div class="cmp-label">✘ Wrong</div>
+          <code>Does he plays football?</code>
+          <p class="why">DOES already carries the -s, don't add it again!</p>
+        </div>
+      </div>
+      <div class="comparison" style="margin-top:0.75rem;">
+        <div class="cmp-box correct">
+          <div class="cmp-label">✔ Correct</div>
+          <code>Does she work here?</code>
+        </div>
+        <div class="cmp-box wrong">
+          <div class="cmp-label">✘ Wrong</div>
+          <code>Does she works here?</code>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="sub-label">More examples / Daha fazla örnek</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Turkish Translation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Do you like coffee?</strong></td>
+            <td class="tr-translation">Kahveyi sever misin?</td>
+          </tr>
+          <tr>
+            <td><strong>Does he eat meat?</strong></td>
+            <td class="tr-translation">O et yer mi?</td>
+          </tr>
+          <tr>
+            <td><strong>Do they live near here?</strong></td>
+            <td class="tr-translation">Onlar yakında mı oturuyor?</td>
+          </tr>
+          <tr>
+            <td><strong>Does your sister speak English?</strong></td>
+            <td class="tr-translation">Kız kardeşin İngilizce konuşur mu?</td>
+          </tr>
+          <tr>
+            <td><strong>Do you work on weekends?</strong></td>
+            <td class="tr-translation">Hafta sonları çalışır mısın?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- ════════════════ SECTION 3 ════════════════ -->
+  <div class="section-card">
+    <div class="rule-banner gold">
+      <span class="section-num">Section 3</span>
+      <h2>WH- Questions</h2>
+      <p class="rule-en">WH- words come first. They ask for specific information, not just Yes or No.</p>
+      <p class="rule-tr">WH- kelimeleri cümlenin başına gelir. Evet/Hayır yerine bilgi sorar.</p>
+    </div>
+
+    <div class="section-body">
+
+      <p class="sub-label">WH- Words / Soru Kelimeleri</p>
+
+      <div class="wh-grid">
+        <div class="wh-card">
+          <div class="wh-word">What</div>
+          <div class="wh-meaning-en">thing / şey</div>
+          <div class="wh-meaning-tr">Ne?</div>
+        </div>
+        <div class="wh-card">
+          <div class="wh-word">Where</div>
+          <div class="wh-meaning-en">place / yer</div>
+          <div class="wh-meaning-tr">Nerede? / Nereye?</div>
+        </div>
+        <div class="wh-card">
+          <div class="wh-word">When</div>
+          <div class="wh-meaning-en">time / zaman</div>
+          <div class="wh-meaning-tr">Ne zaman?</div>
+        </div>
+        <div class="wh-card">
+          <div class="wh-word">Who</div>
+          <div class="wh-meaning-en">person / kişi</div>
+          <div class="wh-meaning-tr">Kim?</div>
+        </div>
+        <div class="wh-card">
+          <div class="wh-word">Why</div>
+          <div class="wh-meaning-en">reason / neden</div>
+          <div class="wh-meaning-tr">Neden? / Niçin?</div>
+        </div>
+        <div class="wh-card">
+          <div class="wh-word">How</div>
+          <div class="wh-meaning-en">method / feeling</div>
+          <div class="wh-meaning-tr">Nasıl?</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="sub-label">Structure: WH- + BE / WH- + DO/DOES</p>
+
+      <div class="formula">
+        <span class="f-part wh">WH-</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part verb">AM / IS / ARE</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part subject">Subject</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part rest">...?</span>
+      </div>
+      <div style="margin-bottom:0.8rem;"></div>
+      <div class="formula">
+        <span class="f-part wh">WH-</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part verb">DO / DOES</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part subject">Subject</span>
+        <span class="f-part plus">+</span>
+        <span class="f-part rest">verb (base)?</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="sub-label">WH- + AM / IS / ARE (no action verb) / Eylem fiili olmadan</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Turkish Translation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Where are you?</strong></td>
+            <td class="tr-translation">Neredesin?</td>
+          </tr>
+          <tr>
+            <td><strong>Why is she sad?</strong></td>
+            <td class="tr-translation">Neden üzgün?</td>
+          </tr>
+          <tr>
+            <td><strong>What is your name?</strong></td>
+            <td class="tr-translation">Adın ne?</td>
+          </tr>
+          <tr>
+            <td><strong>Who is your teacher?</strong></td>
+            <td class="tr-translation">Öğretmenin kim?</td>
+          </tr>
+          <tr>
+            <td><strong>When is the meeting?</strong></td>
+            <td class="tr-translation">Toplantı ne zaman?</td>
+          </tr>
+          <tr>
+            <td><strong>How are you?</strong></td>
+            <td class="tr-translation">Nasılsın?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="divider"></div>
+
+      <p class="sub-label">WH- + DO / DOES (with action verb) / Eylem fiili ile</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Turkish Translation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Where do you live?</strong></td>
+            <td class="tr-translation">Nerede yaşıyorsun?</td>
+          </tr>
+          <tr>
+            <td><strong>Why do they study English?</strong></td>
+            <td class="tr-translation">Neden İngilizce çalışıyorlar?</td>
+          </tr>
+          <tr>
+            <td><strong>What does he eat?</strong></td>
+            <td class="tr-translation">O ne yiyor?</td>
+          </tr>
+          <tr>
+            <td><strong>Who does she work with?</strong></td>
+            <td class="tr-translation">Kiminle çalışıyor?</td>
+          </tr>
+          <tr>
+            <td><strong>How do you go to work?</strong></td>
+            <td class="tr-translation">İşe nasıl gidiyorsun?</td>
+          </tr>
+          <tr>
+            <td><strong>When does the class start?</strong></td>
+            <td class="tr-translation">Ders ne zaman başlıyor?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <strong>💡 Remember:</strong> The WH- word asks <em>what type</em> of information you want. Then the rule for the rest of the question is the same as before — AM/IS/ARE for no action verb, DO/DOES for action verbs.<br>
+        <span class="tr-note">WH- kelimesi ne tür bilgi istediğini söyler. Gerisinde aynı kural geçerli: eylem fiili yoksa AM/IS/ARE, varsa DO/DOES.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════ QUICK REFERENCE ════════════════ -->
+  <div class="quick-ref">
+    <h2>📋 Quick Reference / Hızlı Özet</h2>
+    <div class="quick-ref-grid">
+      <div class="qr-card">
+        <div class="qr-verb">AM / IS / ARE</div>
+        <p>No action verb. Age, feelings, jobs, places, adjectives.</p>
+        <p class="tr">Eylem fiili yok. Yaş, duygu, meslek, yer, sıfat.</p>
+      </div>
+      <div class="qr-card">
+        <div class="qr-verb">DO</div>
+        <p>Action verb + I / You / We / They.</p>
+        <p class="tr">I / You / We / They ile eylem fiili.</p>
+      </div>
+      <div class="qr-card">
+        <div class="qr-verb">DOES</div>
+        <p>Action verb + He / She / It. Verb stays base form!</p>
+        <p class="tr">He / She / It ile eylem fiili. Fiil -s almaz!</p>
+      </div>
+      <div class="qr-card">
+        <div class="qr-verb">WH- First</div>
+        <p>What, Where, When, Who, Why, How → then normal question order.</p>
+        <p class="tr">WH- kelimesi başa gelir, kalan düzen aynı.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>A1 / A2 English Question Guide &nbsp;·&nbsp; For classroom and personal use</footer>
+
+</body>
+</html>
