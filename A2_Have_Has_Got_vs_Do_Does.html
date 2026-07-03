@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teacher Benny — Have/Has Got vs Do/Does (A2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2f4b;
+    --navy-dark:#0f1f35;
+    --gold:#c9a227;
+    --gold-light:#e8d18a;
+    --cream:#faf7f0;
+    --cream-dark:#f0ead9;
+    --ink:#2a2a2a;
+    --muted:#6b7280;
+    --border:#dcd3bd;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Source Sans 3',Arial,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    max-width:920px;
+    margin:0 auto;
+    padding:0 20px 60px;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--navy);margin-top:0}
+  h1{font-size:1.9rem}
+  h2{font-size:1.3rem}
+  h3{font-size:1.05rem;color:var(--navy-dark)}
+
+  /* Header */
+  .lesson-header{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:var(--cream);
+    padding:28px 26px;
+    border-radius:0 0 14px 14px;
+    margin:0 -20px 20px;
+  }
+  .lesson-header h1{color:var(--cream);margin-bottom:4px}
+  .lesson-header .subtitle{color:var(--gold-light);font-weight:600;font-size:1rem}
+  .meta-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:.85rem;color:#d9dce6}
+  .meta-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:4px 12px;border-radius:20px}
+
+  /* Sticky toolbar */
+  .toolbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:2px solid var(--gold);
+    padding:10px 4px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;
+  }
+  .progress-wrap{flex:1;min-width:180px}
+  .progress-bar-bg{background:var(--cream-dark);border-radius:8px;height:10px;overflow:hidden;border:1px solid var(--border)}
+  .progress-bar-fill{background:linear-gradient(90deg,var(--gold),var(--navy));height:100%;width:0%;transition:width .4s ease}
+  .progress-label{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .save-status{font-size:.8rem;color:var(--muted);min-width:110px;text-align:right}
+  .save-status.saved{color:#3a7a4e}
+  .reset-btn{
+    background:none;border:1px solid var(--navy);color:var(--navy);
+    padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600;
+  }
+  .reset-btn:hover{background:var(--navy);color:#fff}
+
+  /* Accordion */
+  .accordion-section{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin:16px 0;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(26,47,75,.06);
+  }
+  .accordion-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;cursor:pointer;background:var(--cream-dark);
+    user-select:none;
+  }
+  .accordion-header h2{margin:0;font-size:1.15rem}
+  .accordion-header .tag{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.03em}
+  .chevron{transition:transform .3s ease;color:var(--gold);font-size:1.2rem}
+  .accordion-section.open .chevron{transform:rotate(180deg)}
+  .accordion-body{
+    max-height:0;overflow:hidden;transition:max-height .4s ease;
+  }
+  .accordion-section.open .accordion-body{max-height:4000px}
+  .accordion-body-inner{padding:20px}
+
+  /* Grammar boxes */
+  .rule-box{
+    background:var(--cream);
+    border-left:4px solid var(--gold);
+    padding:14px 18px;
+    border-radius:0 8px 8px 0;
+    margin:14px 0;
+  }
+  .tr{
+    color:#7a5c00;
+    background:#fbf3d9;
+    border:1px dashed var(--gold);
+    padding:8px 12px;
+    border-radius:6px;
+    font-size:.92rem;
+    margin-top:8px;
+    display:block;
+  }
+  .tr b{color:#5c4400}
+  .ex-good{color:#3a7a4e;font-weight:600}
+  .ex-bad{color:#b03a3a;font-weight:600}
+  table.grammar-table{border-collapse:collapse;width:100%;margin:14px 0}
+  table.grammar-table th{background:var(--navy);color:#fff;padding:10px;text-align:left;font-size:.9rem}
+  table.grammar-table td{border:1px solid var(--border);padding:10px;font-size:.92rem}
+  table.grammar-table tr:nth-child(even) td{background:var(--cream)}
+
+  .subsection{margin-bottom:22px}
+  .subsection:last-child{margin-bottom:0}
+
+  /* Exercises */
+  .ex-block{margin:18px 0;padding:16px;background:var(--cream);border-radius:10px;border:1px solid var(--border)}
+  .ex-block h3{margin-bottom:10px}
+  .ex-instructions{font-size:.88rem;color:var(--muted);margin-bottom:12px;font-style:italic}
+  .q-item{margin:10px 0;padding:10px 12px;background:#fff;border-radius:8px;border:1px solid var(--border)}
+  .q-item p{margin:0 0 8px}
+  input[type=text].blank{
+    border:none;border-bottom:2px solid var(--gold);
+    background:transparent;padding:4px 6px;font-size:1rem;
+    width:150px;font-family:inherit;
+  }
+  input[type=text].blank:focus{outline:none;border-bottom-color:var(--navy)}
+  label.opt{
+    display:inline-flex;align-items:center;gap:6px;
+    margin:4px 14px 4px 0;padding:6px 12px;background:#fff;border:1px solid var(--border);
+    border-radius:20px;cursor:pointer;font-size:.92rem;
+  }
+  label.opt:hover{border-color:var(--gold)}
+  select.match-select{
+    padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:.92rem;
+    background:#fff;
+  }
+  .match-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0;padding:8px 10px;background:#fff;border-radius:8px;border:1px solid var(--border)}
+  .match-row .left{font-weight:600;color:var(--navy-dark)}
+
+  textarea.answer-box{
+    width:100%;min-height:70px;padding:10px;border:1px solid var(--border);border-radius:8px;
+    font-family:inherit;font-size:.95rem;resize:vertical;
+  }
+  .word-count{font-size:.78rem;color:var(--muted);text-align:right;margin-top:4px}
+
+  .reading-passage{
+    background:var(--cream);border:1px solid var(--border);border-radius:10px;
+    padding:16px 18px;font-size:1rem;margin-bottom:16px;
+  }
+  .reading-passage p{margin:0 0 10px}
+
+  ul.clean li{margin:6px 0}
+
+  .footer-note{
+    text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px;padding-top:16px;border-top:1px solid var(--border);
+  }
+
+  @media(max-width:600px){
+    .lesson-header{padding:20px 16px}
+    .meta-row{gap:8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <h1>🛒 Have/Has Got vs Do/Does</h1>
+  <div class="subtitle">Teacher Benny — Your English Journey Starts Here</div>
+  <div class="meta-row">
+    <span class="meta-pill">Level: A2</span>
+    <span class="meta-pill">Duration: 45 minutes</span>
+    <span class="meta-pill">Topic: Shopping &amp; Food</span>
+    <span class="meta-pill">Bilingual: EN / TR</span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0% complete</div>
+  </div>
+  <div class="save-status" id="saveStatus">Not started</div>
+  <button class="reset-btn" onclick="resetLesson()">Reset progress</button>
+</div>
+
+<!-- 1. WARM-UP -->
+<div class="accordion-section open" data-section="warmup">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>🔥 Warm-Up <span class="tag">5 minutes</span></h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p>Talk to your teacher before we start. Answer out loud — no writing needed yet.</p>
+    <ul class="clean">
+      <li>Have you got milk at home today?</li>
+      <li>Do you like bananas?</li>
+      <li>Have you got eggs in your fridge?</li>
+      <li>Do you help with the shopping in your family?</li>
+      <li>Where do you usually buy your food?</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- 2. LEARNING OBJECTIVES -->
+<div class="accordion-section" data-section="objectives">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>🎯 Learning Objectives</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p>By the end of this lesson, you will be able to:</p>
+    <ul class="clean">
+      <li>Explain the difference between <b>have/has got</b> and <b>do/does</b>.</li>
+      <li>Use <b>have/has got</b> correctly to talk about possession (what you own or what is available).</li>
+      <li>Use <b>do/does</b> correctly to talk about habits, actions, and likes/dislikes.</li>
+      <li>Use new shopping and food vocabulary in full sentences.</li>
+      <li>Read and understand a short text about shopping habits.</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- 3. GRAMMAR REVIEW -->
+<div class="accordion-section" data-section="grammar">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>📘 Grammar Review <span class="tag">10 minutes</span></h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+
+    <div class="subsection">
+      <h3>1. Have/Has Got — Possession</h3>
+      <p>We use <b>have got</b> and <b>has got</b> to talk about <b>possession</b> — things we own, have, or things that exist for us right now.</p>
+      <span class="tr"><b>Türkçe:</b> "Have/has got" sahiplik bildirmek için kullanılır — bir şeye sahip olduğumuzu söylemek için. "Var / yok" anlamına gelir.</span>
+
+      <div class="rule-box">
+        <p><b>Form:</b></p>
+        <p>I / You / We / They → <b>have got</b></p>
+        <p>He / She / It → <b>has got</b></p>
+      </div>
+
+      <table class="grammar-table">
+        <tr><th>Sentence type</th><th>Example</th></tr>
+        <tr><td>Positive</td><td>I <b>have got</b> bread. / She <b>has got</b> milk.</td></tr>
+        <tr><td>Negative</td><td>I <b>haven't got</b> cheese. / He <b>hasn't got</b> eggs.</td></tr>
+        <tr><td>Question</td><td><b>Have</b> you <b>got</b> apples? / <b>Has</b> she <b>got</b> milk?</td></tr>
+        <tr><td>Short answer</td><td>Yes, I have. / No, she hasn't.</td></tr>
+      </table>
+
+      <span class="tr"><b>Örnek çeviri:</b> "Ekmeğim var." = <i>I have got bread.</i> &nbsp;|&nbsp; "Peynirim yok." = <i>I haven't got cheese.</i> &nbsp;|&nbsp; "Yumurtan var mı?" = <i>Have you got eggs?</i></span>
+
+      <p style="margin-top:12px"><b>Contractions:</b> In spoken and written English, "have got" is almost always contracted. Learn to recognise both the full and short forms:</p>
+      <table class="grammar-table">
+        <tr><th>Full form</th><th>Contraction</th></tr>
+        <tr><td>I have got</td><td>I've got</td></tr>
+        <tr><td>You/We/They have got</td><td>You've/We've/They've got</td></tr>
+        <tr><td>He/She/It has got</td><td>He's/She's/It's got</td></tr>
+        <tr><td>I have not got</td><td>I haven't got</td></tr>
+        <tr><td>He has not got</td><td>He hasn't got</td></tr>
+      </table>
+      <span class="tr"><b>Dikkat:</b> "He's got milk" cümlesindeki "'s" bazen "is" bazen "has" anlamına gelebilir. Burada "has got" anlamındadır (sahiplik), "is" değil.</span>
+
+      <p style="margin-top:12px"><b>What "have got" is used for:</b> possessions (I've got a car), relationships and people (She's got two brothers), illness or physical feelings (I've got a headache), and features/characteristics (This flat has got a big kitchen).</p>
+
+      <p style="margin-top:10px"><b>Important limit:</b> "have got" is <u>only</u> for possession-type meanings above. It is <u>never</u> used for actions or routines. We cannot say <span class="ex-bad">"I've got breakfast every day"</span> — this must be <span class="ex-good">"I have breakfast every day"</span> (an action, so it needs do/does — see below).</p>
+    </div>
+
+    <div class="subsection">
+      <h3>2. Have vs Have Got — What's the Difference?</h3>
+      <p>This is where many A2 students get confused, so let's slow down. <b>"Have"</b> and <b>"have got"</b> can both express the <u>same meaning</u> of possession — but they behave <u>grammatically differently</u>.</p>
+      <span class="tr"><b>Türkçe:</b> "Have" ve "have got" genellikle aynı anlama gelir (sahiplik bildirir), ama farklı şekilde davranırlar. Bu bölümde ikisi arasındaki farkı öğreneceğiz.</span>
+
+      <div class="rule-box">
+        <p><b>"Have" acts like a normal, ordinary verb</b> (like "like", "want", "buy"). Because it's an ordinary verb, questions and negatives need the helper verb <b>do/does</b>.</p>
+        <p><b>"Have got" is a fixed, two-word structure.</b> Here, "have/has" already acts like a helper verb by itself, so <b>do/does is never added</b>.</p>
+      </div>
+
+      <table class="grammar-table">
+        <tr><th>Meaning</th><th>"Have" (ordinary verb)</th><th>"Have got" (fixed structure)</th></tr>
+        <tr><td>Positive</td><td>I <b>have</b> a car.</td><td>I<b>'ve got</b> a car.</td></tr>
+        <tr><td>Negative</td><td>I <b>don't have</b> a car.</td><td>I <b>haven't got</b> a car.</td></tr>
+        <tr><td>Question</td><td><b>Do</b> you <b>have</b> a car?</td><td><b>Have</b> you <b>got</b> a car?</td></tr>
+        <tr><td>He/She/It negative</td><td>She <b>doesn't have</b> a car.</td><td>She <b>hasn't got</b> a car.</td></tr>
+        <tr><td>He/She/It question</td><td><b>Does</b> she <b>have</b> a car?</td><td><b>Has</b> she <b>got</b> a car?</td></tr>
+      </table>
+
+      <span class="tr"><b>Türkçe özet:</b> "Have" sıradan bir fiildir; soru ve olumsuz cümlede "do/does" ister. "Have got" ise kendi içinde yardımcı fiil görevi görür, ayrıca "do/does" eklenmez. İkisi de "sahip olmak" anlamına gelir, ama cümle yapıları farklıdır.</span>
+
+      <p style="margin-top:12px"><b>Never mix the two patterns together.</b> This is the single biggest mistake at this level:</p>
+      <p><span class="ex-bad">✗ Does she have got a car?</span> <i>(mixes both patterns — incorrect)</i></p>
+      <p><span class="ex-good">✓ Does she have a car?</span> &nbsp;&nbsp; <b>OR</b> &nbsp;&nbsp; <span class="ex-good">✓ Has she got a car?</span> <i>(choose ONE pattern, not both)</i></p>
+
+      <p style="margin-top:12px"><b>Which one should you use?</b> Both are correct and both are used every day. "Have got" is extremely common in British spoken English and sounds natural in conversation. "Have" (without "got") is used more in American English, in formal writing, and when the sentence is already using do/does for another reason. As a learner, it's enough to recognise both and be able to use either one consistently — just don't mix them in the same sentence.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>3. Do/Does — Actions, Habits &amp; Likes</h3>
+      <p>We use <b>do</b> and <b>does</b> as helper (auxiliary) verbs to talk about <b>actions</b>, <b>habits</b>, and <b>likes/dislikes</b> — things we do regularly, or how we feel about something.</p>
+      <span class="tr"><b>Türkçe:</b> "Do/does" alışkanlıkları, günlük eylemleri ve sevdiğimiz/sevmediğimiz şeyleri anlatmak için kullanılan yardımcı fiildir. Kendi başına "yapmak" anlamına gelir, ama burada soru ve olumsuz cümle kurmaya yardım eder.</span>
+
+      <div class="rule-box">
+        <p><b>Form:</b></p>
+        <p>I / You / We / They → <b>do</b></p>
+        <p>He / She / It → <b>does</b></p>
+      </div>
+
+      <table class="grammar-table">
+        <tr><th>Sentence type</th><th>Example</th></tr>
+        <tr><td>Positive</td><td>I <b>like</b> apples. / He <b>buys</b> bread. <i>(no "do" in positive statements)</i></td></tr>
+        <tr><td>Negative</td><td>I <b>don't like</b> cheese. / She <b>doesn't buy</b> meat.</td></tr>
+        <tr><td>Question</td><td><b>Do</b> you <b>like</b> apples? / <b>Does</b> he <b>buy</b> bread?</td></tr>
+        <tr><td>Short answer</td><td>Yes, I do. / No, he doesn't.</td></tr>
+      </table>
+
+      <span class="tr"><b>Örnek çeviri:</b> "Elmaları severim." = <i>I like apples.</i> &nbsp;|&nbsp; "Peyniri sevmem." = <i>I don't like cheese.</i> &nbsp;|&nbsp; "Elmaları sever misin?" = <i>Do you like apples?</i></span>
+
+      <p style="margin-top:12px"><b>Important:</b> We do <u>not</u> say "Do you got...?" — this mixes the two structures. "Got" always goes with "have/has", never with "do/does".</p>
+      <p><span class="ex-bad">✗ Do you got apples?</span> &nbsp;&nbsp; <span class="ex-good">✓ Have you got apples?</span></p>
+    </div>
+
+    <div class="subsection">
+      <h3>3. Side-by-Side Comparison</h3>
+      <table class="grammar-table">
+        <tr><th>Have/Has Got — sahiplik (possession)</th><th>Do/Does — eylem/alışkanlık (action/habit)</th></tr>
+        <tr><td>Have you got cheese?</td><td>Do you like cheese?</td></tr>
+        <tr><td>Has he got eggs?</td><td>Does he eat eggs?</td></tr>
+        <tr><td>I haven't got bananas.</td><td>I don't buy bananas.</td></tr>
+        <tr><td>She's got a shopping list.</td><td>She makes a shopping list every week.</td></tr>
+      </table>
+      <p><b>Ask yourself:</b> Am I talking about <i>owning/having something right now</i> (have/has got) or about <i>an action, habit, or opinion</i> (do/does)?</p>
+      <span class="tr"><b>Türkçe ipucu:</b> Eğer cümlede "sahip olmak / var / yok" anlamı varsa → <b>have/has got</b>. Eğer bir alışkanlık, eylem ya da tercih anlatıyorsan → <b>do/does</b>.</span>
+    </div>
+
+    <div class="subsection">
+      <h3>4. Common Mistakes</h3>
+      <table class="grammar-table">
+        <tr><th>✗ Incorrect</th><th>✓ Correct</th><th>Why</th></tr>
+        <tr><td>She have got a car.</td><td>She <b>has</b> got a car.</td><td>He/She/It needs "has", not "have".</td></tr>
+        <tr><td>Do she like tea?</td><td><b>Does</b> she like tea?</td><td>He/She/It needs "does", not "do".</td></tr>
+        <tr><td>I don't have got money.</td><td>I <b>haven't got</b> money.</td><td>Never mix "don't" with "got".</td></tr>
+        <tr><td>Has you got a pen?</td><td><b>Have</b> you got a pen?</td><td>"You" always takes "have", not "has".</td></tr>
+      </table>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- 4. PRACTICE -->
+<div class="accordion-section" data-section="practice">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>✍️ Practice Exercises <span class="tag">15 minutes</span></h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+
+    <!-- Exercise 1: Fill in the gap -->
+    <div class="ex-block">
+      <h3>Exercise 1 — Fill in the Gap</h3>
+      <p class="ex-instructions">Write "have", "has", "do", or "does" in each blank.</p>
+
+      <div class="q-item"><p>1. ____ you got any apples?</p>
+        <input type="text" class="blank" data-key="fg1" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>2. ____ you like apples?</p>
+        <input type="text" class="blank" data-key="fg2" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>3. My brother ____ got a big shopping list.</p>
+        <input type="text" class="blank" data-key="fg3" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>4. ____ your mum buy bread every day?</p>
+        <input type="text" class="blank" data-key="fg4" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>5. We ____n't got any milk today.</p>
+        <input type="text" class="blank" data-key="fg5" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>6. He ____n't like cheese.</p>
+        <input type="text" class="blank" data-key="fg6" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>7. ____ she got eggs in the fridge?</p>
+        <input type="text" class="blank" data-key="fg7" placeholder="your answer">
+      </div>
+      <div class="q-item"><p>8. What ____ you usually buy at the supermarket?</p>
+        <input type="text" class="blank" data-key="fg8" placeholder="your answer">
+      </div>
+    </div>
+
+    <!-- Exercise 2: Matching -->
+    <div class="ex-block">
+      <h3>Exercise 2 — Matching: Shopping Vocabulary</h3>
+      <p class="ex-instructions">Match each word with its correct Turkish meaning using the dropdown.</p>
+
+      <div class="match-row"><span class="left">1. receipt</span>
+        <select class="match-select" data-key="m1">
+          <option value="">-- choose --</option>
+          <option>fiş</option><option>sepet</option><option>indirim</option><option>kasa</option><option>market arabası</option>
+        </select>
+      </div>
+      <div class="match-row"><span class="left">2. basket</span>
+        <select class="match-select" data-key="m2">
+          <option value="">-- choose --</option>
+          <option>fiş</option><option>sepet</option><option>indirim</option><option>kasa</option><option>market arabası</option>
+        </select>
+      </div>
+      <div class="match-row"><span class="left">3. discount</span>
+        <select class="match-select" data-key="m3">
+          <option value="">-- choose --</option>
+          <option>fiş</option><option>sepet</option><option>indirim</option><option>kasa</option><option>market arabası</option>
+        </select>
+      </div>
+      <div class="match-row"><span class="left">4. checkout / till</span>
+        <select class="match-select" data-key="m4">
+          <option value="">-- choose --</option>
+          <option>fiş</option><option>sepet</option><option>indirim</option><option>kasa</option><option>market arabası</option>
+        </select>
+      </div>
+      <div class="match-row"><span class="left">5. trolley / cart</span>
+        <select class="match-select" data-key="m5">
+          <option value="">-- choose --</option>
+          <option>fiş</option><option>sepet</option><option>indirim</option><option>kasa</option><option>market arabası</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Exercise 3: Multiple choice -->
+    <div class="ex-block">
+      <h3>Exercise 3 — Multiple Choice</h3>
+      <p class="ex-instructions">Choose the correct option.</p>
+
+      <div class="q-item"><p>1. ____ your dad got a shopping bag?</p>
+        <label class="opt"><input type="radio" name="mc1" value="Have" data-key="mc1"> Have</label>
+        <label class="opt"><input type="radio" name="mc1" value="Has" data-key="mc1"> Has</label>
+        <label class="opt"><input type="radio" name="mc1" value="Does" data-key="mc1"> Does</label>
+      </div>
+      <div class="q-item"><p>2. ____ they buy vegetables every week?</p>
+        <label class="opt"><input type="radio" name="mc2" value="Do" data-key="mc2"> Do</label>
+        <label class="opt"><input type="radio" name="mc2" value="Have" data-key="mc2"> Have</label>
+        <label class="opt"><input type="radio" name="mc2" value="Does" data-key="mc2"> Does</label>
+      </div>
+      <div class="q-item"><p>3. I ____ got any sugar at home.</p>
+        <label class="opt"><input type="radio" name="mc3" value="don't" data-key="mc3"> don't</label>
+        <label class="opt"><input type="radio" name="mc3" value="haven't" data-key="mc3"> haven't</label>
+        <label class="opt"><input type="radio" name="mc3" value="doesn't" data-key="mc3"> doesn't</label>
+      </div>
+      <div class="q-item"><p>4. She ____ like spicy food.</p>
+        <label class="opt"><input type="radio" name="mc4" value="doesn't" data-key="mc4"> doesn't</label>
+        <label class="opt"><input type="radio" name="mc4" value="hasn't" data-key="mc4"> hasn't</label>
+        <label class="opt"><input type="radio" name="mc4" value="don't" data-key="mc4"> don't</label>
+      </div>
+    </div>
+
+    <!-- Exercise 4: Sentence building -->
+    <div class="ex-block">
+      <h3>Exercise 4 — Sentence Building</h3>
+      <p class="ex-instructions">Put the words in the correct order and write the full sentence.</p>
+
+      <div class="q-item"><p>1. got / she / a / has / list / shopping</p>
+        <input type="text" class="blank" style="width:100%" data-key="sb1" placeholder="Write the full sentence">
+      </div>
+      <div class="q-item"><p>2. like / bananas / does / he</p>
+        <input type="text" class="blank" style="width:100%" data-key="sb2" placeholder="Write the full sentence">
+      </div>
+      <div class="q-item"><p>3. any / haven't / we / eggs / got</p>
+        <input type="text" class="blank" style="width:100%" data-key="sb3" placeholder="Write the full sentence">
+      </div>
+      <div class="q-item"><p>4. cheese / buy / usually / you / do</p>
+        <input type="text" class="blank" style="width:100%" data-key="sb4" placeholder="Write the full sentence">
+      </div>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- 5. READING -->
+<div class="accordion-section" data-section="reading">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>📖 Reading <span class="tag">10 minutes</span></h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+
+    <div class="reading-passage">
+      <p>Mehmet goes shopping every Saturday morning. He has got a shopping list on his phone, so he never forgets anything. This week, he has got milk, bread, eggs, and apples on his list. He doesn't buy cheese because he doesn't like the taste. His mum loves bananas, so he always buys six bananas for her.</p>
+      <p>At the supermarket, Mehmet puts everything in a trolley. He doesn't like long queues, so he usually goes early, before the shop gets busy. Today, there is a discount on orange juice, so he buys two bottles. At the checkout, the cashier gives him a receipt. Mehmet checks it carefully because he wants to make sure the prices are correct.</p>
+      <p>After shopping, Mehmet's mum asks him, "Have you got everything on the list?" Mehmet says, "Yes, I have — and I've also got a surprise for you!" He shows her the bananas, and she smiles.</p>
+    </div>
+
+    <h3>Comprehension Questions</h3>
+    <p class="ex-instructions">Answer in full sentences.</p>
+
+    <div class="q-item"><p>1. Has Mehmet got a shopping list? Where is it?</p>
+      <textarea class="answer-box" data-key="rq1"></textarea>
+      <div class="word-count" data-count-for="rq1">0 words</div>
+    </div>
+    <div class="q-item"><p>2. Does he like cheese? Why / why not?</p>
+      <textarea class="answer-box" data-key="rq2"></textarea>
+      <div class="word-count" data-count-for="rq2">0 words</div>
+    </div>
+    <div class="q-item"><p>3. What does his mum like?</p>
+      <textarea class="answer-box" data-key="rq3"></textarea>
+      <div class="word-count" data-count-for="rq3">0 words</div>
+    </div>
+    <div class="q-item"><p>4. Why does Mehmet usually go shopping early?</p>
+      <textarea class="answer-box" data-key="rq4"></textarea>
+      <div class="word-count" data-count-for="rq4">0 words</div>
+    </div>
+    <div class="q-item"><p>5. What is the surprise for his mum?</p>
+      <textarea class="answer-box" data-key="rq5"></textarea>
+      <div class="word-count" data-count-for="rq5">0 words</div>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- 6. SPEAKING -->
+<div class="accordion-section" data-section="speaking">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>🗣️ Speaking Practice <span class="tag">5 minutes</span></h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p>Discuss these questions with your teacher. Try to use both "have/has got" and "do/does" in your answers.</p>
+    <ul class="clean">
+      <li>Have you got milk at home right now?</li>
+      <li>Do you like going to supermarkets, or do you prefer small shops?</li>
+      <li>What have you got in your kitchen at the moment?</li>
+      <li>Who does the shopping in your family?</li>
+      <li>Does your family have a shopping list, or do you just remember what to buy?</li>
+      <li>Have you ever forgotten something important at the supermarket?</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- 7. WRAP-UP -->
+<div class="accordion-section" data-section="wrapup">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>✅ Wrap-Up &amp; Self-Reflection</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p>Think about today's lesson and answer honestly:</p>
+    <div class="q-item"><p>One thing I understand well:</p>
+      <input type="text" class="blank" style="width:100%" data-key="ref1">
+    </div>
+    <div class="q-item"><p>One thing I still find difficult:</p>
+      <input type="text" class="blank" style="width:100%" data-key="ref2">
+    </div>
+    <p style="margin-top:10px">Great work today! 🎉 Your answers are saved automatically so your teacher can review your progress next lesson.</p>
+  </div></div>
+</div>
+
+<div class="footer-note">Teacher Benny — Your English Journey Starts Here | A2 Shopping: Have/Has Got vs Do/Does</div>
+
+<script>
+const STORAGE_KEY = "tb_a2_shopping_havehasgot_dodoes";
+
+function loadData(){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  }catch(e){ return {}; }
+}
+function saveData(data){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  flashSaved();
+}
+function flashSaved(){
+  const el = document.getElementById('saveStatus');
+  el.textContent = "Saved ✓";
+  el.classList.add('saved');
+  clearTimeout(window._saveTimeout);
+  window._saveTimeout = setTimeout(()=>{ el.textContent = "Auto-saving..."; el.classList.remove('saved'); }, 1500);
+}
+
+function toggleSection(headerEl){
+  headerEl.parentElement.classList.toggle('open');
+}
+
+function countWords(str){
+  str = str.trim();
+  if(!str) return 0;
+  return str.split(/\s+/).length;
+}
+
+function updateProgress(){
+  const data = loadData();
+  const allInputs = document.querySelectorAll('[data-key]');
+  let filled = 0;
+  allInputs.forEach(el=>{
+    const key = el.getAttribute('data-key');
+    if(el.type === 'radio'){
+      if(el.checked) filled++;
+    } else {
+      if(data[key] && data[key].trim()) filled++;
+    }
+  });
+  // radios: count unique groups filled instead of every input
+  const radioGroups = {};
+  document.querySelectorAll('input[type=radio][data-key]').forEach(el=>{
+    if(!radioGroups[el.name]) radioGroups[el.name] = false;
+    if(el.checked) radioGroups[el.name] = true;
+  });
+  const nonRadioTotal = document.querySelectorAll('[data-key]:not([type=radio])').length;
+  const nonRadioFilled = Array.from(document.querySelectorAll('[data-key]:not([type=radio])'))
+    .filter(el=>{
+      const key = el.getAttribute('data-key');
+      return data[key] && data[key].trim();
+    }).length;
+  const radioTotal = Object.keys(radioGroups).length;
+  const radioFilled = Object.values(radioGroups).filter(Boolean).length;
+
+  const total = nonRadioTotal + radioTotal;
+  const done = nonRadioFilled + radioFilled;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('progressFill').style.width = pct + "%";
+  document.getElementById('progressLabel').textContent = pct + "% complete";
+}
+
+function initFromStorage(){
+  const data = loadData();
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const key = el.getAttribute('data-key');
+    if(el.type === 'radio'){
+      if(data[key] === el.value) el.checked = true;
+    } else if(data[key] !== undefined){
+      el.value = data[key];
+    }
+  });
+  document.querySelectorAll('textarea[data-key]').forEach(el=>{
+    const key = el.getAttribute('data-key');
+    const counter = document.querySelector('[data-count-for="'+key+'"]');
+    if(counter) counter.textContent = countWords(el.value || "") + " words";
+  });
+  updateProgress();
+  if(Object.keys(data).length){
+    document.getElementById('saveStatus').textContent = "Progress loaded";
+  } else {
+    document.getElementById('saveStatus').textContent = "Not started";
+  }
+}
+
+function attachListeners(){
+  document.querySelectorAll('input[type=text][data-key], select[data-key]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const data = loadData();
+      data[el.getAttribute('data-key')] = el.value;
+      saveData(data);
+      updateProgress();
+    });
+    el.addEventListener('change', ()=>{
+      const data = loadData();
+      data[el.getAttribute('data-key')] = el.value;
+      saveData(data);
+      updateProgress();
+    });
+  });
+
+  document.querySelectorAll('input[type=radio][data-key]').forEach(el=>{
+    el.addEventListener('change', ()=>{
+      const data = loadData();
+      data[el.getAttribute('data-key')] = el.value;
+      saveData(data);
+      updateProgress();
+    });
+  });
+
+  document.querySelectorAll('textarea[data-key]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const data = loadData();
+      const key = el.getAttribute('data-key');
+      data[key] = el.value;
+      saveData(data);
+      const counter = document.querySelector('[data-count-for="'+key+'"]');
+      if(counter) counter.textContent = countWords(el.value) + " words";
+      updateProgress();
+    });
+  });
+}
+
+function resetLesson(){
+  if(confirm("Reset all your answers for this lesson? This cannot be undone.")){
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('input[type=text][data-key], textarea[data-key]').forEach(el=>el.value="");
+    document.querySelectorAll('input[type=radio][data-key]').forEach(el=>el.checked=false);
+    document.querySelectorAll('select[data-key]').forEach(el=>el.value="");
+    document.querySelectorAll('.word-count').forEach(el=>el.textContent="0 words");
+    updateProgress();
+    document.getElementById('saveStatus').textContent = "Not started";
+  }
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  initFromStorage();
+  attachListeners();
+});
+</script>
+</body>
+</html>

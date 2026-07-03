@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teacher Benny — Homework: Have/Has Got vs Do/Does (A2) — TEACHER EDITION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2f4b; --navy-dark:#0f1f35; --gold:#c9a227; --gold-light:#e8d18a;
+    --cream:#faf7f0; --cream-dark:#f0ead9; --ink:#2a2a2a; --muted:#6b7280; --border:#dcd3bd;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Source Sans 3',Arial,sans-serif;background:var(--cream);color:var(--ink);max-width:920px;margin:0 auto;padding:0 20px 60px;line-height:1.6}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--navy);margin-top:0}
+  h1{font-size:1.9rem} h2{font-size:1.3rem} h3{font-size:1.05rem;color:var(--navy-dark)}
+  .lesson-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);padding:28px 26px;border-radius:0 0 14px 14px;margin:0 -20px 20px}
+  .lesson-header h1{color:var(--cream);margin-bottom:4px}
+  .lesson-header .subtitle{color:var(--gold-light);font-weight:600;font-size:1rem}
+  .teacher-badge{display:inline-block;background:var(--gold);color:var(--navy-dark);font-weight:700;font-size:.72rem;letter-spacing:.05em;padding:4px 12px;border-radius:20px;margin-top:10px}
+  .answer-key-section{border:2px solid var(--gold)}
+  .answer-key-section .accordion-header{background:#fbf3d9}
+  .ak-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0}
+  .ak-item .q{font-weight:600;color:var(--navy-dark)}
+  .ak-item .a{color:#3a7a4e;font-weight:700}
+  .meta-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:.85rem;color:#d9dce6}
+  .meta-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:4px 12px;border-radius:20px}
+  .toolbar{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:2px solid var(--gold);padding:10px 4px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .progress-wrap{flex:1;min-width:180px}
+  .progress-bar-bg{background:var(--cream-dark);border-radius:8px;height:10px;overflow:hidden;border:1px solid var(--border)}
+  .progress-bar-fill{background:linear-gradient(90deg,var(--gold),var(--navy));height:100%;width:0%;transition:width .4s ease}
+  .progress-label{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .save-status{font-size:.8rem;color:var(--muted);min-width:110px;text-align:right}
+  .save-status.saved{color:#3a7a4e}
+  .reset-btn{background:none;border:1px solid var(--navy);color:var(--navy);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:600}
+  .reset-btn:hover{background:var(--navy);color:#fff}
+  .accordion-section{background:#fff;border:1px solid var(--border);border-radius:12px;margin:16px 0;overflow:hidden;box-shadow:0 2px 8px rgba(26,47,75,.06)}
+  .accordion-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:var(--cream-dark);user-select:none}
+  .accordion-header h2{margin:0;font-size:1.15rem}
+  .accordion-header .tag{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.03em}
+  .chevron{transition:transform .3s ease;color:var(--gold);font-size:1.2rem}
+  .accordion-section.open .chevron{transform:rotate(180deg)}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .accordion-section.open .accordion-body{max-height:5000px}
+  .accordion-body-inner{padding:20px}
+  .rule-box{background:var(--cream);border-left:4px solid var(--gold);padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+  .tr{color:#7a5c00;background:#fbf3d9;border:1px dashed var(--gold);padding:8px 12px;border-radius:6px;font-size:.92rem;margin-top:8px;display:block}
+  .tr b{color:#5c4400}
+  .ex-good{color:#3a7a4e;font-weight:600} .ex-bad{color:#b03a3a;font-weight:600}
+  table.grammar-table{border-collapse:collapse;width:100%;margin:14px 0}
+  table.grammar-table th{background:var(--navy);color:#fff;padding:10px;text-align:left;font-size:.9rem}
+  table.grammar-table td{border:1px solid var(--border);padding:10px;font-size:.92rem}
+  table.grammar-table tr:nth-child(even) td{background:var(--cream)}
+  .ex-block{margin:18px 0;padding:16px;background:var(--cream);border-radius:10px;border:1px solid var(--border)}
+  .ex-block h3{margin-bottom:10px}
+  .ex-instructions{font-size:.88rem;color:var(--muted);margin-bottom:12px;font-style:italic}
+  .q-item{margin:10px 0;padding:10px 12px;background:#fff;border-radius:8px;border:1px solid var(--border)}
+  .q-item p{margin:0 0 8px}
+  input[type=text].blank{border:none;border-bottom:2px solid var(--gold);background:transparent;padding:4px 6px;font-size:1rem;width:150px;font-family:inherit}
+  input[type=text].blank:focus{outline:none;border-bottom-color:var(--navy)}
+  label.opt{display:inline-flex;align-items:center;gap:6px;margin:4px 14px 4px 0;padding:6px 12px;background:#fff;border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:.92rem}
+  label.opt:hover{border-color:var(--gold)}
+  select.match-select{padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:.92rem;background:#fff}
+  .match-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0;padding:8px 10px;background:#fff;border-radius:8px;border:1px solid var(--border)}
+  .match-row .left{font-weight:600;color:var(--navy-dark)}
+  textarea.answer-box{width:100%;min-height:70px;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem;resize:vertical}
+  .word-count{font-size:.78rem;color:var(--muted);text-align:right;margin-top:4px}
+  .word-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;padding:12px;background:#fff;border:1px dashed var(--gold);border-radius:8px}
+  .word-bank span{background:var(--cream-dark);padding:5px 12px;border-radius:16px;font-weight:600;font-size:.88rem;color:var(--navy-dark)}
+  .wb-passage{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;font-size:1rem}
+  .wb-passage p{margin:0 0 10px}
+  ul.clean li{margin:6px 0}
+  .footer-note{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px;padding-top:16px;border-top:1px solid var(--border)}
+  @media(max-width:600px){.lesson-header{padding:20px 16px}.meta-row{gap:8px}}
+</style>
+</head>
+<body>
+
+<div class="lesson-header">
+  <h1>📝 Homework — Have/Has Got vs Do/Does</h1>
+  <div class="subtitle">Teacher Benny — Your English Journey Starts Here</div>
+  <div class="meta-row">
+    <span class="meta-pill">Level: A2</span>
+    <span class="meta-pill">Duration: 45–60 minutes</span>
+    <span class="meta-pill">Topic: Shopping &amp; Food</span>
+    <span class="meta-pill">Bilingual: EN / TR</span>
+  </div>
+  <div class="teacher-badge">TEACHER EDITION — Answer Key Included</div>
+</div>
+
+<div class="toolbar">
+  <div class="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0% complete</div>
+  </div>
+  <div class="save-status" id="saveStatus">Not started</div>
+  <button class="reset-btn" onclick="resetLesson()">Reset progress</button>
+</div>
+
+<!-- QUICK RECAP -->
+<div class="accordion-section open" data-section="recap">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>📌 Quick Grammar Recap</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <div class="rule-box">
+      <p><b>Have/Has got</b> = possession → <i>I've got bread. / Has she got milk?</i></p>
+      <p><b>Have</b> (ordinary verb) = possession, but needs do/does → <i>Do you have bread? / She doesn't have milk.</i></p>
+      <p><b>Do/Does</b> = actions, habits, likes → <i>Do you like apples? / He doesn't buy cheese.</i></p>
+      <p><b>Never mix:</b> <span class="ex-bad">Does she have got...?</span> is always wrong.</p>
+    </div>
+    <span class="tr"><b>Türkçe:</b> "Have got" sahiplik için kısa yoldur (do/does gerekmez). "Have" tek başına kullanıldığında do/does ister. "Do/does" ise alışkanlık ve eylemler içindir.</span>
+  </div></div>
+</div>
+
+<!-- EX 1: FILL IN THE GAP -->
+<div class="accordion-section" data-section="ex1">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>1️⃣ Fill in the Gap</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Write "have", "has", "do", "does", or "got" in each blank.</p>
+    <div class="q-item"><p>1. ____ you got a shopping bag?</p><input type="text" class="blank" data-key="hw_fg1"></div>
+    <div class="q-item"><p>2. My sister ____n't like fish.</p><input type="text" class="blank" data-key="hw_fg2"></div>
+    <div class="q-item"><p>3. ____ you have any brothers or sisters?</p><input type="text" class="blank" data-key="hw_fg3"></div>
+    <div class="q-item"><p>4. We haven't ____ any coffee at home.</p><input type="text" class="blank" data-key="hw_fg4"></div>
+    <div class="q-item"><p>5. ____ your parents go shopping together?</p><input type="text" class="blank" data-key="hw_fg5"></div>
+    <div class="q-item"><p>6. He ____ got a headache today.</p><input type="text" class="blank" data-key="hw_fg6"></div>
+    <div class="q-item"><p>7. I don't ____ a car, but my brother does.</p><input type="text" class="blank" data-key="hw_fg7"></div>
+    <div class="q-item"><p>8. What ____ she usually buy at the market?</p><input type="text" class="blank" data-key="hw_fg8"></div>
+  </div></div>
+</div>
+
+<!-- EX 2: ERROR CORRECTION -->
+<div class="accordion-section" data-section="ex2">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>2️⃣ Error Correction</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Each sentence has one mistake. Write the correct sentence.</p>
+    <div class="q-item"><p>1. Does she have got a dog?</p><input type="text" class="blank" style="width:100%" data-key="hw_ec1"></div>
+    <div class="q-item"><p>2. She have got three cats.</p><input type="text" class="blank" style="width:100%" data-key="hw_ec2"></div>
+    <div class="q-item"><p>3. Do he like spicy food?</p><input type="text" class="blank" style="width:100%" data-key="hw_ec3"></div>
+    <div class="q-item"><p>4. I don't have got any milk.</p><input type="text" class="blank" style="width:100%" data-key="hw_ec4"></div>
+    <div class="q-item"><p>5. Has you got a pen I can borrow?</p><input type="text" class="blank" style="width:100%" data-key="hw_ec5"></div>
+    <div class="q-item"><p>6. My dad don't like shopping.</p><input type="text" class="blank" style="width:100%" data-key="hw_ec6"></div>
+  </div></div>
+</div>
+
+<!-- EX 3: MATCHING -->
+<div class="accordion-section" data-section="ex3">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>3️⃣ Matching: Question &amp; Correct Short Answer</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Match each question with the grammatically correct short answer.</p>
+
+    <div class="match-row"><span class="left">1. Have you got a pet?</span>
+      <select class="match-select" data-key="hw_m1">
+        <option value="">-- choose --</option>
+        <option>Yes, I have.</option><option>Yes, I do.</option><option>Yes, I am.</option>
+      </select>
+    </div>
+    <div class="match-row"><span class="left">2. Do you like coffee?</span>
+      <select class="match-select" data-key="hw_m2">
+        <option value="">-- choose --</option>
+        <option>Yes, I have.</option><option>Yes, I do.</option><option>Yes, I am.</option>
+      </select>
+    </div>
+    <div class="match-row"><span class="left">3. Does she have a car?</span>
+      <select class="match-select" data-key="hw_m3">
+        <option value="">-- choose --</option>
+        <option>Yes, she does.</option><option>Yes, she has.</option><option>Yes, she got.</option>
+      </select>
+    </div>
+    <div class="match-row"><span class="left">4. Has your brother got a bike?</span>
+      <select class="match-select" data-key="hw_m4">
+        <option value="">-- choose --</option>
+        <option>Yes, he has.</option><option>Yes, he does.</option><option>Yes, he got.</option>
+      </select>
+    </div>
+    <div class="match-row"><span class="left">5. Do your parents cook at home?</span>
+      <select class="match-select" data-key="hw_m5">
+        <option value="">-- choose --</option>
+        <option>Yes, they do.</option><option>Yes, they have.</option><option>Yes, they got.</option>
+      </select>
+    </div>
+  </div></div>
+</div>
+
+<!-- EX 4: WORD BANK GAP-FILL -->
+<div class="accordion-section" data-section="ex4">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>4️⃣ Word Bank Gap-Fill</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Complete the paragraph using words from the box. Use each word once.</p>
+    <div class="word-bank">
+      <span>has got</span><span>doesn't</span><span>Do</span><span>have</span><span>haven't got</span><span>Does</span>
+    </div>
+    <div class="wb-passage">
+      <p>Elif is my neighbour. She (1) <input type="text" class="blank" style="width:130px" data-key="hw_wb1"> a small shop near my house. She sells fruit and vegetables, but she (2) <input type="text" class="blank" style="width:130px" data-key="hw_wb2"> sell meat. (3) <input type="text" class="blank" style="width:130px" data-key="hw_wb3"> you know her shop? It's very popular. I (4) <input type="text" class="blank" style="width:130px" data-key="hw_wb4"> any fresh bread at home today, so I'm going to buy some there. (5) <input type="text" class="blank" style="width:130px" data-key="hw_wb5"> Elif open her shop every day? I think she rests on Sundays.</p>
+    </div>
+  </div></div>
+</div>
+
+<!-- EX 5: MULTIPLE CHOICE -->
+<div class="accordion-section" data-section="ex5">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>5️⃣ Multiple Choice</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Choose the correct option.</p>
+
+    <div class="q-item"><p>1. ____ they got a big kitchen?</p>
+      <label class="opt"><input type="radio" name="hw_mc1" value="Have" data-key="hw_mc1"> Have</label>
+      <label class="opt"><input type="radio" name="hw_mc1" value="Do" data-key="hw_mc1"> Do</label>
+      <label class="opt"><input type="radio" name="hw_mc1" value="Has" data-key="hw_mc1"> Has</label>
+    </div>
+    <div class="q-item"><p>2. My uncle ____ a headache, so he's staying home.</p>
+      <label class="opt"><input type="radio" name="hw_mc2" value="has got" data-key="hw_mc2"> has got</label>
+      <label class="opt"><input type="radio" name="hw_mc2" value="does" data-key="hw_mc2"> does</label>
+      <label class="opt"><input type="radio" name="hw_mc2" value="do" data-key="hw_mc2"> do</label>
+    </div>
+    <div class="q-item"><p>3. ____ your friends live near the supermarket?</p>
+      <label class="opt"><input type="radio" name="hw_mc3" value="Do" data-key="hw_mc3"> Do</label>
+      <label class="opt"><input type="radio" name="hw_mc3" value="Have" data-key="hw_mc3"> Have</label>
+      <label class="opt"><input type="radio" name="hw_mc3" value="Does" data-key="hw_mc3"> Does</label>
+    </div>
+    <div class="q-item"><p>4. I ____ have any brothers, only one sister.</p>
+      <label class="opt"><input type="radio" name="hw_mc4" value="don't" data-key="hw_mc4"> don't</label>
+      <label class="opt"><input type="radio" name="hw_mc4" value="haven't" data-key="hw_mc4"> haven't</label>
+      <label class="opt"><input type="radio" name="hw_mc4" value="doesn't" data-key="hw_mc4"> doesn't</label>
+    </div>
+    <div class="q-item"><p>5. This flat ____ got two bathrooms.</p>
+      <label class="opt"><input type="radio" name="hw_mc5" value="has" data-key="hw_mc5"> has</label>
+      <label class="opt"><input type="radio" name="hw_mc5" value="does" data-key="hw_mc5"> does</label>
+      <label class="opt"><input type="radio" name="hw_mc5" value="do" data-key="hw_mc5"> do</label>
+    </div>
+    <div class="q-item"><p>6. ____ we have breakfast before or after shopping?</p>
+      <label class="opt"><input type="radio" name="hw_mc6" value="Do" data-key="hw_mc6"> Do</label>
+      <label class="opt"><input type="radio" name="hw_mc6" value="Have" data-key="hw_mc6"> Have</label>
+      <label class="opt"><input type="radio" name="hw_mc6" value="Has" data-key="hw_mc6"> Has</label>
+    </div>
+  </div></div>
+</div>
+
+<!-- EX 6: SENTENCE BUILDING -->
+<div class="accordion-section" data-section="ex6">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>6️⃣ Sentence Building</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Put the words in the correct order and write the full sentence.</p>
+    <div class="q-item"><p>1. a / does / have / car / she</p><input type="text" class="blank" style="width:100%" data-key="hw_sb1"></div>
+    <div class="q-item"><p>2. got / haven't / any / we / sugar</p><input type="text" class="blank" style="width:100%" data-key="hw_sb2"></div>
+    <div class="q-item"><p>3. brothers / any / you / do / have</p><input type="text" class="blank" style="width:100%" data-key="hw_sb3"></div>
+    <div class="q-item"><p>4. headache / a / got / has / he</p><input type="text" class="blank" style="width:100%" data-key="hw_sb4"></div>
+  </div></div>
+</div>
+
+<!-- EX 7: FREE WRITING -->
+<div class="accordion-section" data-section="ex7">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>7️⃣ Free Writing</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+    <p class="ex-instructions">Write 5–8 sentences about your family's shopping habits. Use at least 2 examples of "have got", 2 examples of "have", and 2 examples of "do/does".</p>
+    <div class="q-item">
+      <textarea class="answer-box" style="min-height:140px" data-key="hw_fw1"></textarea>
+      <div class="word-count" data-count-for="hw_fw1">0 words</div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ANSWER KEY (TEACHER ONLY) -->
+<div class="accordion-section answer-key-section" data-section="answerkey">
+  <div class="accordion-header" onclick="toggleSection(this)">
+    <h2>🔑 Answer Key — Teacher Only</h2>
+    <span class="chevron">▾</span>
+  </div>
+  <div class="accordion-body"><div class="accordion-body-inner">
+
+    <h3>Exercise 1 — Fill in the Gap</h3>
+    <div class="ak-item">1. <span class="a">Have</span> you got a shopping bag?</div>
+    <div class="ak-item">2. My sister <span class="a">does</span>n't like fish.</div>
+    <div class="ak-item">3. <span class="a">Do</span> you have any brothers or sisters?</div>
+    <div class="ak-item">4. We haven't <span class="a">got</span> any coffee at home.</div>
+    <div class="ak-item">5. <span class="a">Do</span> your parents go shopping together?</div>
+    <div class="ak-item">6. He <span class="a">has</span> got a headache today.</div>
+    <div class="ak-item">7. I don't <span class="a">have</span> a car, but my brother does.</div>
+    <div class="ak-item">8. What <span class="a">does</span> she usually buy at the market?</div>
+
+    <h3 style="margin-top:20px">Exercise 2 — Error Correction</h3>
+    <div class="ak-item">1. <span class="a">Does she have a dog? / Has she got a dog?</span></div>
+    <div class="ak-item">2. <span class="a">She has got three cats.</span></div>
+    <div class="ak-item">3. <span class="a">Does he like spicy food?</span></div>
+    <div class="ak-item">4. <span class="a">I haven't got any milk. / I don't have any milk.</span></div>
+    <div class="ak-item">5. <span class="a">Have you got a pen I can borrow?</span></div>
+    <div class="ak-item">6. <span class="a">My dad doesn't like shopping.</span></div>
+
+    <h3 style="margin-top:20px">Exercise 3 — Matching</h3>
+    <div class="ak-item">1. Have you got a pet? → <span class="a">Yes, I have.</span></div>
+    <div class="ak-item">2. Do you like coffee? → <span class="a">Yes, I do.</span></div>
+    <div class="ak-item">3. Does she have a car? → <span class="a">Yes, she does.</span></div>
+    <div class="ak-item">4. Has your brother got a bike? → <span class="a">Yes, he has.</span></div>
+    <div class="ak-item">5. Do your parents cook at home? → <span class="a">Yes, they do.</span></div>
+
+    <h3 style="margin-top:20px">Exercise 4 — Word Bank Gap-Fill</h3>
+    <div class="ak-item">1. <span class="a">has got</span> &nbsp; 2. <span class="a">doesn't</span> &nbsp; 3. <span class="a">Do</span> &nbsp; 4. <span class="a">haven't got</span> &nbsp; 5. <span class="a">Does</span></div>
+
+    <h3 style="margin-top:20px">Exercise 5 — Multiple Choice</h3>
+    <div class="ak-item">1. <span class="a">Have</span> they got a big kitchen?</div>
+    <div class="ak-item">2. My uncle <span class="a">has got</span> a headache, so he's staying home.</div>
+    <div class="ak-item">3. <span class="a">Do</span> your friends live near the supermarket?</div>
+    <div class="ak-item">4. I <span class="a">don't</span> have any brothers, only one sister.</div>
+    <div class="ak-item">5. This flat <span class="a">has</span> got two bathrooms.</div>
+    <div class="ak-item">6. <span class="a">Do</span> we have breakfast before or after shopping?</div>
+
+    <h3 style="margin-top:20px">Exercise 6 — Sentence Building</h3>
+    <div class="ak-item">1. <span class="a">Does she have a car?</span></div>
+    <div class="ak-item">2. <span class="a">We haven't got any sugar.</span></div>
+    <div class="ak-item">3. <span class="a">Do you have any brothers?</span></div>
+    <div class="ak-item">4. <span class="a">He has got a headache.</span></div>
+
+    <h3 style="margin-top:20px">Exercise 7 — Free Writing</h3>
+    <p style="font-size:.9rem;color:var(--muted)"><i>Open-ended. Check for: correct use of "have got" (2+), "have" with do/does support (2+), and "do/does" for habits/actions (2+). Look out for the classic mixing error ("Does she have got...") and correct gently.</i></p>
+
+  </div></div>
+</div>
+
+<div class="footer-note">Teacher Benny — Your English Journey Starts Here | Homework: Have/Has Got vs Do/Does (A2)</div>
+
+<script>
+const STORAGE_KEY = "tb_a2_shopping_havehasgot_dodoes_HOMEWORK";
+
+function loadData(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
+function saveData(data){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); flashSaved(); }
+function flashSaved(){
+  const el = document.getElementById('saveStatus');
+  el.textContent = "Saved ✓"; el.classList.add('saved');
+  clearTimeout(window._saveTimeout);
+  window._saveTimeout = setTimeout(()=>{ el.textContent = "Auto-saving..."; el.classList.remove('saved'); }, 1500);
+}
+function toggleSection(headerEl){ headerEl.parentElement.classList.toggle('open'); }
+function countWords(str){ str = str.trim(); if(!str) return 0; return str.split(/\s+/).length; }
+
+function updateProgress(){
+  const data = loadData();
+  const nonRadioTotal = document.querySelectorAll('[data-key]:not([type=radio])').length;
+  const nonRadioFilled = Array.from(document.querySelectorAll('[data-key]:not([type=radio])'))
+    .filter(el=>{ const key = el.getAttribute('data-key'); return data[key] && data[key].trim(); }).length;
+  const radioGroups = {};
+  document.querySelectorAll('input[type=radio][data-key]').forEach(el=>{
+    if(!radioGroups[el.name]) radioGroups[el.name] = false;
+    if(el.checked) radioGroups[el.name] = true;
+  });
+  const radioTotal = Object.keys(radioGroups).length;
+  const radioFilled = Object.values(radioGroups).filter(Boolean).length;
+  const total = nonRadioTotal + radioTotal;
+  const done = nonRadioFilled + radioFilled;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('progressFill').style.width = pct + "%";
+  document.getElementById('progressLabel').textContent = pct + "% complete";
+}
+
+function initFromStorage(){
+  const data = loadData();
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const key = el.getAttribute('data-key');
+    if(el.type === 'radio'){ if(data[key] === el.value) el.checked = true; }
+    else if(data[key] !== undefined){ el.value = data[key]; }
+  });
+  document.querySelectorAll('textarea[data-key]').forEach(el=>{
+    const key = el.getAttribute('data-key');
+    const counter = document.querySelector('[data-count-for="'+key+'"]');
+    if(counter) counter.textContent = countWords(el.value || "") + " words";
+  });
+  updateProgress();
+  document.getElementById('saveStatus').textContent = Object.keys(data).length ? "Progress loaded" : "Not started";
+}
+
+function attachListeners(){
+  document.querySelectorAll('input[type=text][data-key], select[data-key]').forEach(el=>{
+    el.addEventListener('input', ()=>{ const data = loadData(); data[el.getAttribute('data-key')] = el.value; saveData(data); updateProgress(); });
+    el.addEventListener('change', ()=>{ const data = loadData(); data[el.getAttribute('data-key')] = el.value; saveData(data); updateProgress(); });
+  });
+  document.querySelectorAll('input[type=radio][data-key]').forEach(el=>{
+    el.addEventListener('change', ()=>{ const data = loadData(); data[el.getAttribute('data-key')] = el.value; saveData(data); updateProgress(); });
+  });
+  document.querySelectorAll('textarea[data-key]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const data = loadData(); const key = el.getAttribute('data-key');
+      data[key] = el.value; saveData(data);
+      const counter = document.querySelector('[data-count-for="'+key+'"]');
+      if(counter) counter.textContent = countWords(el.value) + " words";
+      updateProgress();
+    });
+  });
+}
+
+function resetLesson(){
+  if(confirm("Reset all your answers for this homework? This cannot be undone.")){
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('input[type=text][data-key], textarea[data-key]').forEach(el=>el.value="");
+    document.querySelectorAll('input[type=radio][data-key]').forEach(el=>el.checked=false);
+    document.querySelectorAll('select[data-key]').forEach(el=>el.value="");
+    document.querySelectorAll('.word-count').forEach(el=>el.textContent="0 words");
+    updateProgress();
+    document.getElementById('saveStatus').textContent = "Not started";
+  }
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{ initFromStorage(); attachListeners(); });
+</script>
+</body>
+</html>
