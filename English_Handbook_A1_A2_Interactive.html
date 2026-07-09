@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete English A1–A2 Handbook</title>
+<style>
+:root {
+  --navy:#1a3a5c; --gold:#c9a84c; --teal:#2a7f7f; --amber:#d4822a;
+  --purple:#7b5ea7; --green:#3a8a5a; --bluegrey:#5a6e8a;
+  --light-blue:#e8f4f8; --light-gold:#fdf6e3; --light-green:#e8f5ee;
+  --light-purple:#f0ebf5; --white:#ffffff; --grey:#f4f6f8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#222;line-height:1.6;}
+
+/* FRONT PAGE */
+.front-page{background:linear-gradient(160deg,var(--navy) 60%,#2a5a8c);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
+.front-title-small{color:var(--gold);font-size:1.1rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.front-title-big{color:#fff;font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1;margin-bottom:0;}
+.front-band{background:var(--gold);color:var(--navy);font-weight:800;font-size:clamp(0.85rem,2vw,1.1rem);padding:10px 40px;border-radius:4px;margin:18px 0;letter-spacing:1px;text-transform:uppercase;}
+.front-flags{display:flex;gap:20px;justify-content:center;margin:18px 0;font-size:2.5rem;}
+.front-features{list-style:none;margin:18px auto;max-width:480px;text-align:left;}
+.front-features li{color:#fff;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;gap:12px;font-size:1rem;}
+.front-features li::before{content:'✓';color:var(--gold);font-weight:900;font-size:1.1rem;flex-shrink:0;}
+.front-author{color:rgba(255,255,255,0.75);font-style:italic;font-size:1rem;margin-top:18px;}
+.front-enter-btn{background:var(--gold);color:var(--navy);border:none;padding:14px 40px;font-size:1.1rem;font-weight:800;border-radius:30px;cursor:pointer;margin-top:28px;letter-spacing:1px;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+.front-enter-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.4);}
+.level-badge{display:inline-block;background:rgba(255,255,255,0.15);color:#fff;border:2px solid var(--gold);border-radius:8px;padding:4px 14px;font-weight:800;font-size:1rem;margin:0 5px;}
+
+/* MAIN APP */
+.app{display:none;min-height:100vh;}
+.top-nav{background:var(--navy);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+.nav-title{color:#fff;font-size:1.1rem;font-weight:700;}
+.nav-title span{color:var(--gold);}
+.nav-right{display:flex;gap:12px;align-items:center;}
+.btn-home{background:none;border:1px solid rgba(255,255,255,0.4);color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;}
+.btn-home:hover{background:rgba(255,255,255,0.1);}
+.progress-pill{background:var(--gold);color:var(--navy);padding:5px 14px;border-radius:20px;font-size:0.85rem;font-weight:700;}
+
+.main-content{max-width:900px;margin:0 auto;padding:28px 20px;}
+
+/* SECTION TABS */
+.section-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.tab-btn{padding:10px 22px;border:none;border-radius:24px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.tab-btn.active{background:var(--navy);color:#fff;box-shadow:0 2px 10px rgba(26,58,92,0.35);}
+.tab-btn:not(.active){background:#fff;color:var(--navy);border:2px solid var(--navy);}
+.tab-btn:hover:not(.active){background:var(--light-blue);}
+
+.section-content{display:none;}
+.section-content.active{display:block;}
+
+/* ACCORDION */
+.accordion{margin-bottom:14px;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+.acc-header{padding:16px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:1rem;transition:all 0.2s;user-select:none;}
+.acc-header:hover{filter:brightness(0.95);}
+.acc-badge{font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,0.25);}
+.acc-arrow{font-size:1rem;transition:transform 0.3s;flex-shrink:0;}
+.acc-header.open .acc-arrow{transform:rotate(180deg);}
+.acc-body{display:none;background:#fff;padding:24px;}
+.acc-body.open{display:block;}
+
+/* A1 units - teal headers; A2 units - navy */
+.unit-a1 .acc-header{background:var(--teal);color:#fff;}
+.unit-a2 .acc-header{background:var(--navy);color:#fff;}
+.unit-vocab .acc-header{background:var(--bluegrey);color:#fff;}
+
+/* VOCAB TABLE */
+.vocab-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin:10px 0;}
+.vocab-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;}
+.vocab-table tr:nth-child(even){background:var(--light-blue);}
+.vocab-table td{padding:7px 10px;border-bottom:1px solid #dde6ee;vertical-align:top;}
+.type-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:700;color:#fff;}
+.t-verb{background:var(--teal);}
+.t-noun{background:var(--amber);}
+.t-adj{background:var(--purple);}
+.t-phrase{background:var(--green);}
+.t-adv{background:var(--bluegrey);}
+
+/* GRAMMAR BOX */
+.grammar-box{background:var(--light-blue);border-left:4px solid var(--navy);border-radius:8px;padding:16px 18px;margin:14px 0;}
+.grammar-box h4{color:var(--navy);margin-bottom:10px;font-size:1rem;}
+.grammar-box ul{padding-left:18px;color:#333;}
+.grammar-box li{margin-bottom:5px;font-size:0.9rem;}
+
+/* TIP BOX */
+.tip-box{background:var(--light-gold);border:1px solid var(--gold);border-radius:8px;padding:12px 16px;margin:12px 0;font-size:0.9rem;color:var(--navy);}
+.tip-box::before{content:'★ TIP: ';font-weight:700;color:var(--gold);}
+
+/* KEY PHRASES */
+.key-phrases{background:var(--light-green);border-left:4px solid var(--green);border-radius:8px;padding:14px 18px;margin:14px 0;}
+.key-phrases h4{color:var(--green);margin-bottom:8px;}
+.key-phrases li{font-size:0.9rem;margin-bottom:4px;color:#333;}
+
+/* DIALOGUE */
+.dialogue-box{background:#fff;border:1px solid var(--teal);border-radius:10px;overflow:hidden;margin:14px 0;}
+.dialogue-header{background:var(--teal);color:#fff;padding:10px 16px;font-weight:700;}
+.dialogue-row{display:grid;grid-template-columns:100px 1fr 1fr;gap:8px;padding:8px 14px;border-bottom:1px solid #dde;align-items:start;}
+.dialogue-row:last-child{border-bottom:none;}
+.dialogue-row:nth-child(even){background:var(--light-blue);}
+.dialogue-speaker{font-weight:700;color:var(--navy);font-size:0.88rem;}
+.dialogue-en{font-size:0.88rem;}
+.dialogue-tr{font-size:0.85rem;color:var(--bluegrey);font-style:italic;}
+
+/* EXERCISES */
+.exercise-section{background:var(--light-purple);border:1px solid var(--purple);border-radius:10px;padding:18px;margin:14px 0;}
+.exercise-section h4{color:var(--purple);margin-bottom:12px;font-size:1rem;}
+.fill-blank{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.fill-item{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.fill-item label{font-size:0.9rem;min-width:20px;font-weight:700;color:var(--navy);}
+.fill-item span{font-size:0.9rem;}
+.fill-input{border:2px solid #c0aee8;border-radius:6px;padding:6px 12px;font-size:0.9rem;min-width:140px;outline:none;transition:border-color 0.2s;}
+.fill-input:focus{border-color:var(--purple);}
+.fill-input.correct{border-color:var(--green);background:#e8f5ee;}
+.fill-input.wrong{border-color:#e74c3c;background:#fde8e8;}
+
+.mcq-list{display:flex;flex-direction:column;gap:12px;margin-bottom:10px;}
+.mcq-item{background:#fff;border-radius:8px;padding:12px 14px;border:1px solid #ddd;}
+.mcq-q{font-size:0.9rem;font-weight:600;margin-bottom:8px;color:var(--navy);}
+.mcq-options{display:flex;flex-wrap:wrap;gap:8px;}
+.mcq-opt{padding:6px 14px;border:2px solid #c0aee8;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;background:#fff;}
+.mcq-opt:hover{background:var(--light-purple);}
+.mcq-opt.selected{background:var(--purple);color:#fff;border-color:var(--purple);}
+.mcq-opt.correct{background:var(--green);color:#fff;border-color:var(--green);}
+.mcq-opt.wrong{background:#e74c3c;color:#fff;border-color:#e74c3c;}
+.mcq-opt.show-correct{background:var(--green);color:#fff;border-color:var(--green);}
+
+.exercise-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+.btn-check{background:var(--purple);color:#fff;border:none;padding:9px 20px;border-radius:20px;cursor:pointer;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+.btn-check:hover{background:#5e4a8a;}
+.btn-reset{background:#fff;color:var(--purple);border:2px solid var(--purple);padding:9px 20px;border-radius:20px;cursor:pointer;font-weight:700;font-size:0.9rem;transition:all 0.2s;}
+.btn-reset:hover{background:var(--light-purple);}
+.score-display{background:var(--navy);color:#fff;padding:8px 18px;border-radius:20px;font-weight:700;font-size:0.9rem;}
+
+/* WRITING TASK */
+.writing-task{background:var(--light-green);border:1px solid var(--green);border-radius:10px;padding:18px;margin:14px 0;}
+.writing-task h4{color:var(--green);margin-bottom:10px;font-size:1rem;}
+.writing-task p{font-size:0.9rem;color:#333;margin-bottom:12px;}
+.writing-area{width:100%;min-height:130px;border:2px solid #a8d5b5;border-radius:8px;padding:12px;font-size:0.9rem;font-family:inherit;resize:vertical;outline:none;background:#fff;transition:border-color 0.2s;}
+.writing-area:focus{border-color:var(--green);}
+.writing-btns{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.btn-save-writing{background:var(--green);color:#fff;border:none;padding:8px 18px;border-radius:20px;cursor:pointer;font-weight:700;font-size:0.85rem;}
+.btn-clear-writing{background:#fff;color:var(--green);border:2px solid var(--green);padding:8px 18px;border-radius:20px;cursor:pointer;font-weight:700;font-size:0.85rem;}
+.saved-badge{color:var(--green);font-size:0.85rem;font-weight:700;display:none;}
+
+/* ANSWER KEY TABLE */
+.answer-table{width:100%;border-collapse:collapse;font-size:0.88rem;}
+.answer-table th{background:var(--navy);color:#fff;padding:10px 12px;text-align:left;}
+.answer-table tr:nth-child(even){background:var(--light-blue);}
+.answer-table td{padding:8px 12px;border-bottom:1px solid #dde;}
+.answer-table td:first-child{font-weight:700;color:var(--navy);}
+
+/* PROGRESS OVERVIEW */
+.progress-overview{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,0.07);}
+.progress-overview h3{color:var(--navy);margin-bottom:16px;}
+.progress-bars{display:grid;gap:10px;}
+.prog-row{display:flex;align-items:center;gap:12px;}
+.prog-label{font-size:0.85rem;font-weight:700;color:var(--navy);width:80px;flex-shrink:0;}
+.prog-bar-bg{flex:1;height:12px;background:#e0e8f0;border-radius:6px;overflow:hidden;}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:6px;transition:width 0.5s;}
+.prog-pct{font-size:0.8rem;color:var(--bluegrey);width:35px;text-align:right;flex-shrink:0;}
+.btn-reset-all{background:#e74c3c;color:#fff;border:none;padding:9px 20px;border-radius:20px;cursor:pointer;font-weight:700;font-size:0.9rem;margin-top:14px;}
+.btn-reset-all:hover{background:#c0392b;}
+
+/* HOW TO USE */
+.how-to-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0;}
+.how-to-card{background:#fff;border-radius:10px;padding:16px;border-top:4px solid var(--teal);box-shadow:0 2px 8px rgba(0,0,0,0.07);}
+.how-to-card h4{color:var(--navy);margin-bottom:6px;font-size:0.95rem;}
+.how-to-card p{font-size:0.85rem;color:#555;}
+.colour-key{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.ck-item{display:flex;align-items:center;gap:7px;background:#fff;padding:6px 12px;border-radius:20px;font-size:0.82rem;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.ck-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .dialogue-row{grid-template-columns:80px 1fr;}.dialogue-tr{display:none;}
+  .vocab-table th:last-child,.vocab-table td:last-child{display:none;}
+  .section-tabs{gap:5px;}.tab-btn{padding:8px 14px;font-size:0.82rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- FRONT PAGE -->
+<div class="front-page" id="frontPage">
+  <div class="front-title-small">Complete</div>
+  <div class="front-title-big">ENGLISH</div>
+  <div class="front-band">
+    <span class="level-badge">A1</span> – <span class="level-badge">A2</span>
+    &nbsp; Level Handbook &amp; Vocabulary Reference
+  </div>
+  <div class="front-flags">🇬🇧 🇺🇸 🇹🇷</div>
+  <ul class="front-features">
+    <li>Learning Units &amp; Practice Exercises</li>
+    <li>Real-Life Dialogues &amp; Grammar Tips</li>
+    <li>16 Vocabulary Categories | 400+ Words</li>
+    <li>Interactive Exercises with Instant Feedback</li>
+    <li>Save Your Progress &amp; Writing Tasks</li>
+  </ul>
+  <div class="front-author">Created by Teacher Benny</div>
+  <button class="front-enter-btn" onclick="enterApp()">Start Learning →</button>
+</div>
+
+<!-- MAIN APP -->
+<div class="app" id="mainApp">
+  <nav class="top-nav">
+    <div class="nav-title">🇬🇧 <span>Complete English</span> A1–A2</div>
+    <div class="nav-right">
+      <button class="btn-home" onclick="goHome()">⌂ Cover</button>
+      <div class="progress-pill" id="globalProgress">0% Complete</div>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <!-- SECTION TABS -->
+    <div class="section-tabs">
+      <button class="tab-btn active" onclick="showSection('howto',this)">📖 How to Use</button>
+      <button class="tab-btn" onclick="showSection('part1',this)">📚 Part 1: Units</button>
+      <button class="tab-btn" onclick="showSection('vocab',this)">📖 Part 2: Vocabulary</button>
+      <button class="tab-btn" onclick="showSection('answers',this)">✅ Answer Key</button>
+      <button class="tab-btn" onclick="showSection('myprogress',this)">📊 My Progress</button>
+    </div>
+
+    <!-- HOW TO USE -->
+    <div class="section-content active" id="sec-howto">
+      <div style="background:var(--navy);color:#fff;padding:20px 24px;border-radius:12px;margin-bottom:20px;">
+        <h2 style="color:var(--gold);margin-bottom:6px;">How to Use This Book</h2>
+        <p style="opacity:0.85;font-size:0.95rem;">Welcome to the Complete English A1–A2 Handbook. Follow the guide below to get the most from your studies.</p>
+      </div>
+      <div class="how-to-grid">
+        <div class="how-to-card"><h4>Part 1 – Learning Units</h4><p>Work through A1 units (1–5) first, then A2 units (6–8). Each unit includes vocabulary, grammar, exercises, a real-life dialogue, and a writing task.</p></div>
+        <div class="how-to-card"><h4>Part 2 – Vocabulary Reference</h4><p>16 thematic categories with 400+ words. Each entry shows the English word, Turkish translation, synonyms, and an example sentence.</p></div>
+        <div class="how-to-card"><h4>Interactive Exercises</h4><p>Type your answers in fill-in-the-blank exercises and tap options for multiple choice. Press Check to see your score instantly.</p></div>
+        <div class="how-to-card"><h4>Writing Tasks</h4><p>Type your answers in the writing boxes. Press Save to store your work – it will still be here next time you open the book.</p></div>
+        <div class="how-to-card"><h4>Answer Key</h4><p>All exercise answers are in the Answer Key tab. Only check after you have tried the exercises yourself!</p></div>
+        <div class="how-to-card"><h4>My Progress</h4><p>Track which exercises you have completed. Reset individual units or clear everything to start fresh.</p></div>
+      </div>
+      <div style="margin-top:16px;"><h3 style="color:var(--navy);margin-bottom:10px;">Colour Key</h3>
+        <div class="colour-key">
+          <div class="ck-item"><div class="ck-dot" style="background:var(--teal)"></div>VERB – action/state words</div>
+          <div class="ck-item"><div class="ck-dot" style="background:var(--amber)"></div>NOUN – people, places, things</div>
+          <div class="ck-item"><div class="ck-dot" style="background:var(--purple)"></div>ADJ – adjectives &amp; grammar</div>
+          <div class="ck-item"><div class="ck-dot" style="background:var(--green)"></div>PHRASE – fixed expressions</div>
+          <div class="ck-item"><div class="ck-dot" style="background:var(--bluegrey)"></div>ADV – adverbs &amp; linking words</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 1: UNITS -->
+    <div class="section-content" id="sec-part1">
+      <div style="background:linear-gradient(90deg,var(--navy),var(--teal));color:#fff;padding:18px 22px;border-radius:12px;margin-bottom:20px;">
+        <h2>Part 1 – Learning Units</h2>
+        <p style="opacity:0.85;font-size:0.9rem;margin-top:4px;">8 progressive units · A1 Level (Units 1–5) · A2 Level (Units 6–8)</p>
+      </div>
+      <p class="tip-box" style="margin-bottom:18px;">Read the grammar explanation carefully BEFORE doing the exercises. Practise the dialogue aloud with a partner or in front of a mirror.</p>
+
+      <!-- UNIT 1 -->
+      <div class="accordion unit-a1" id="unit1">
+        <div class="acc-header" onclick="toggleAcc('unit1')">
+          <span>A1 · Unit 1 – Hello, Nice to Meet You! <span style="font-weight:400;opacity:0.85;">| Greetings &amp; Introductions</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--teal);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-phrase">PHRASE</span></td><td><b>hello / hi</b></td><td>merhaba</td><td>Hello! My name is ...</td><td>Merhaba!</td></tr>
+            <tr><td><span class="type-badge t-phrase">PHRASE</span></td><td><b>goodbye</b></td><td>hosca kal</td><td>Goodbye! See you tomorrow.</td><td>Hosca kal! Yarin gorusuruz.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>name</b></td><td>isim / ad</td><td>What is your name?</td><td>Senin adin ne?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>be (am/is/are)</b></td><td>olmak</td><td>I am happy today.</td><td>Bugun mutluyum.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>student</b></td><td>ogrenci</td><td>She is a good student.</td><td>O iyi bir ogrencidir.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>teacher</b></td><td>ogretmen</td><td>He is my teacher.</td><td>O benim ogretmenim.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>friend</b></td><td>arkadas</td><td>This is my friend.</td><td>Bu benim arkadasim.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>happy</b></td><td>mutlu</td><td>I am very happy today.</td><td>Bugun cok mutluyum.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>fine</b></td><td>iyi</td><td>I am fine, thank you.</td><td>Iyiyim, tesekkur ederim.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>nice</b></td><td>guzel / hos</td><td>Nice to meet you!</td><td>Tanistigima memnun oldum!</td></tr>
+          </table>
+
+          <div class="grammar-box">
+            <h4>Grammar: The Verb TO BE (am / is / are)</h4>
+            <ul>
+              <li>Three forms: <b>I AM</b> | <b>you / we / they ARE</b> | <b>he / she / it IS</b></li>
+              <li>I am here. / You are a student. / He or she is a teacher.</li>
+              <li>Negative: I am not tired. / She is not here. (Short: isn't / aren't)</li>
+              <li>Questions: Are you a student? / Is he your friend?</li>
+              <li>Short answers: Yes, I am. / No, she isn't. / Yes, they are.</li>
+            </ul>
+          </div>
+          <div class="tip-box">Use AM only with I. Use IS with he, she, or it. Use ARE with you, we, or they. Never say 'I is' or 'she are'.</div>
+
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks – use: am / is / are</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>I</span><input class="fill-input" data-answer="am" placeholder="___"><span>a student.</span></div>
+              <div class="fill-item"><label>2.</label><span>She</span><input class="fill-input" data-answer="is" placeholder="___"><span>my teacher.</span></div>
+              <div class="fill-item"><label>3.</label><span>They</span><input class="fill-input" data-answer="are" placeholder="___"><span>from Turkey.</span></div>
+              <div class="fill-item"><label>4.</label><span>We</span><input class="fill-input" data-answer="are" placeholder="___"><span>not tired.</span></div>
+              <div class="fill-item"><label>5.</label><span>He</span><input class="fill-input" data-answer="is" placeholder="___"><span>happy today.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. I ___ here.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">am</span><span class="mcq-opt">is</span><span class="mcq-opt">are</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. She ___ a teacher.</div><div class="mcq-options"><span class="mcq-opt">am</span><span class="mcq-opt" data-correct="true">is</span><span class="mcq-opt">are</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. We ___ students.</div><div class="mcq-options"><span class="mcq-opt">am</span><span class="mcq-opt">is</span><span class="mcq-opt" data-correct="true">are</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. It ___ a good book.</div><div class="mcq-options"><span class="mcq-opt">am</span><span class="mcq-opt" data-correct="true">is</span><span class="mcq-opt">are</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit1')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit1')">↺ Reset</button>
+              <span class="score-display" id="score-unit1" style="display:none"></span>
+            </div>
+          </div>
+
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: At School – First Day</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Hello! My name is ... What is your name?</div><div class="dialogue-tr">Merhaba! Benim adim ... Senin adin ne?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Hi! Nice to meet you!</div><div class="dialogue-tr">Merhaba! Tanistigima memnun oldum!</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Nice to meet you too! Are you a new student?</div><div class="dialogue-tr">Ben de! Yeni ogrenci misin?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Yes, I am. Is this our classroom?</div><div class="dialogue-tr">Evet, oyleyim. Burasi sinifimiz mi?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Yes, it is. Come in!</div><div class="dialogue-tr">Evet. Buyur, gir!</div></div>
+          </div>
+          <div class="tip-box">Read the English side aloud. Then cover it and try to say the lines from memory. Repeat until it feels natural.</div>
+
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write 3 sentences about yourself. Use: <b>My name is ...</b> / <b>I am ...</b> / <b>I am not ...</b></p>
+            <textarea class="writing-area" id="writing-unit1" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit1')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit1')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit1">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 2 -->
+      <div class="accordion unit-a1" id="unit2">
+        <div class="acc-header" onclick="toggleAcc('unit2')">
+          <span>A1 · Unit 2 – My Daily Routine <span style="font-weight:400;opacity:0.85;">| Habits &amp; Everyday Actions</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--teal);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>wake up</b></td><td>uyanmak</td><td>I wake up at 7 every morning.</td><td>Her sabah 7'de uyaniyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>eat</b></td><td>yemek yemek</td><td>I eat breakfast at 8.</td><td>Kahvaltimi 8'de yerim.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>drink</b></td><td>icmek</td><td>She drinks coffee every morning.</td><td>O her sabah kahve icer.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>go</b></td><td>gitmek</td><td>He goes to school by bus.</td><td>O okula otobusle gider.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>work</b></td><td>calismak</td><td>They work from 9 to 5.</td><td>Dokuza bese kadar calisirlar.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>study</b></td><td>ders calismak</td><td>I study English every evening.</td><td>Her aksam Ingilizce calisiyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>sleep</b></td><td>uyumak</td><td>She sleeps 8 hours a night.</td><td>O geceleri 8 saat uyur.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>watch</b></td><td>izlemek</td><td>We watch TV in the evening.</td><td>Aksamlari televizyon izleriz.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>read</b></td><td>okumak</td><td>I read a book before bed.</td><td>Yatmadan once kitap okurum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>cook</b></td><td>pisirmek</td><td>My mother cooks dinner every day.</td><td>Annem her gun aksam yemegi pisirir.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Present Simple Tense</h4>
+            <ul>
+              <li>We use the Present Simple to talk about habits, routines, and facts.</li>
+              <li>I / You / We / They: use the base verb → I go, they eat.</li>
+              <li>He / She / It: add -s or -es → she goes, he watches, it works.</li>
+              <li>Negative: I don't like coffee. / She doesn't work here.</li>
+              <li>Questions: Do you eat breakfast? / Does she wake up early?</li>
+              <li>Frequency adverbs: always / usually / often / sometimes / rarely / never.</li>
+            </ul>
+          </div>
+          <div class="tip-box">He / She / It ALWAYS gets -s! Don't forget: he drinks, she eats, it works. Also: Do / Does in questions.</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks – use the correct form</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>She</span><input class="fill-input" data-answer="drinks" placeholder="drink/drinks"><span>coffee every morning.</span></div>
+              <div class="fill-item"><label>2.</label><span>I</span><input class="fill-input" data-answer="study" placeholder="study/studies"><span>English every day.</span></div>
+              <div class="fill-item"><label>3.</label><span>He</span><input class="fill-input" data-answer="goes" placeholder="go/goes"><span>to work by car.</span></div>
+              <div class="fill-item"><label>4.</label><span>They</span><input class="fill-input" data-answer="don't eat" placeholder="___"><span>meat.</span></div>
+              <div class="fill-item"><label>5.</label><span>She</span><input class="fill-input" data-answer="doesn't like" placeholder="___"><span>loud music.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. She ___ coffee every morning.</div><div class="mcq-options"><span class="mcq-opt">drink</span><span class="mcq-opt" data-correct="true">drinks</span><span class="mcq-opt">drinking</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. I ___ to school by bus.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">go</span><span class="mcq-opt">goes</span><span class="mcq-opt">going</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. He ___ TV in the evening.</div><div class="mcq-options"><span class="mcq-opt">watch</span><span class="mcq-opt" data-correct="true">watches</span><span class="mcq-opt">watching</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. They ___ meat.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">don't eat</span><span class="mcq-opt">doesn't eat</span><span class="mcq-opt">not eat</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit2')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit2')">↺ Reset</button>
+              <span class="score-display" id="score-unit2" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: Morning at Home</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Wake up! It is 7 o'clock.</div><div class="dialogue-tr">Kalk! Saat 7.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">I always wake up at 7.</div><div class="dialogue-tr">Her zaman 7'de kalkarim.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Do you eat breakfast before school?</div><div class="dialogue-tr">Okul oncesi kahvalti ediyor musun?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Yes, I usually eat bread and cheese.</div><div class="dialogue-tr">Evet, genellikle ekmek ve peynir yerim.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Good. What time does school start?</div><div class="dialogue-tr">Iyi. Okul kacta basliyor?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">It starts at 8:30. I go by bus.</div><div class="dialogue-tr">8:30'da basliyor. Otobusle gidiyorum.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Describe YOUR daily routine. Write 5 sentences. (<b>I wake up at ...</b> / <b>I usually ...</b> / <b>I never ...</b>)</p>
+            <textarea class="writing-area" id="writing-unit2" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit2')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit2')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit2">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 3 -->
+      <div class="accordion unit-a1" id="unit3">
+        <div class="acc-header" onclick="toggleAcc('unit3')">
+          <span>A1 · Unit 3 – At the Market <span style="font-weight:400;opacity:0.85;">| Shopping, Prices &amp; Quantities</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--teal);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>buy</b></td><td>satin almak</td><td>I want to buy some apples.</td><td>Biraz elma satin almak istiyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>sell</b></td><td>satmak</td><td>They sell fresh bread here.</td><td>Burada taze ekmek satiyorlar.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>price</b></td><td>fiyat</td><td>What is the price of this?</td><td>Bunun fiyati ne kadar?</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>cheap</b></td><td>ucuz</td><td>This coat is very cheap.</td><td>Bu ceket cok ucuz.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>expensive</b></td><td>pahali</td><td>The phone is too expensive.</td><td>Telefon cok pahali.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>money</b></td><td>para</td><td>I don't have enough money.</td><td>Yeterince param yok.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>change</b></td><td>para ustu</td><td>Here is your change.</td><td>Iste paranizin ustu.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>receipt</b></td><td>fis / makbuz</td><td>Can I have a receipt, please?</td><td>Bir fis alabilir miyim?</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>discount</b></td><td>indirim</td><td>Is there a discount today?</td><td>Bugun indirim var mi?</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>kilogram</b></td><td>kilogram</td><td>Two kilograms, please.</td><td>Iki kilogram, lutfen.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: How much / How many + There is / There are</h4>
+            <ul>
+              <li><b>How much</b> = uncountable nouns or asking about prices.</li>
+              <li><b>How many</b> = countable nouns (plural).</li>
+              <li><b>There is</b> = one thing. <b>There are</b> = more than one thing.</li>
+              <li>Negative: There isn't any milk. / There aren't any bananas.</li>
+            </ul>
+          </div>
+          <div class="tip-box">'How much' = fiyat / miktar. 'How many' = sayilabilen seyler. Milk = uncountable (How MUCH milk). Apples = countable (How MANY apples).</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><input class="fill-input" data-answer="how much" placeholder="___"><span>does this cost?</span></div>
+              <div class="fill-item"><label>2.</label><input class="fill-input" data-answer="how many" placeholder="___"><span>apples are in this bag?</span></div>
+              <div class="fill-item"><label>3.</label><span>There</span><input class="fill-input" data-answer="is" placeholder="___"><span>a market near the station.</span></div>
+              <div class="fill-item"><label>4.</label><span>There</span><input class="fill-input" data-answer="are" placeholder="___"><span>many good shops here.</span></div>
+              <div class="fill-item"><label>5.</label><input class="fill-input" data-answer="how much" placeholder="___"><span>is this jacket, please?</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. ___ is this shirt?</div><div class="mcq-options"><span class="mcq-opt">How many</span><span class="mcq-opt" data-correct="true">How much</span><span class="mcq-opt">What much</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. There ___ two apples on the table.</div><div class="mcq-options"><span class="mcq-opt">is</span><span class="mcq-opt" data-correct="true">are</span><span class="mcq-opt">am</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. This bag is very ___.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">expensive</span><span class="mcq-opt">expense</span><span class="mcq-opt">expenseful</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. Can I have a ___, please?</div><div class="mcq-options"><span class="mcq-opt">receit</span><span class="mcq-opt" data-correct="true">receipt</span><span class="mcq-opt">reseit</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit3')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit3')">↺ Reset</button>
+              <span class="score-display" id="score-unit3" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: At the Market</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Good morning! How much are these tomatoes?</div><div class="dialogue-tr">Gunaydin! Bu domatesler kac para?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">They are 10 lira per kilogram.</div><div class="dialogue-tr">Kilogrami 10 lira.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">I'd like two kilograms, please.</div><div class="dialogue-tr">Iki kilo almak istiyorum, lutfen.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Anything else?</div><div class="dialogue-tr">Baska bir sey?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Yes, how many apples are in this bag?</div><div class="dialogue-tr">Evet, bu torbada kac elma var?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">About ten. It is 15 lira.</div><div class="dialogue-tr">Yaklasik on tane. 15 lira.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Here you are. Keep the change.</div><div class="dialogue-tr">Buyurun. Ustu kalsin.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write a shopping dialogue (6 lines). Use: <b>How much</b> / <b>How many</b> / <b>There is</b> / <b>There are</b>.</p>
+            <textarea class="writing-area" id="writing-unit3" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit3')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit3')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit3">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 4 -->
+      <div class="accordion unit-a1" id="unit4">
+        <div class="acc-header" onclick="toggleAcc('unit4')">
+          <span>A1 · Unit 4 – Where Is It? <span style="font-weight:400;opacity:0.85;">| Places, Directions &amp; Prepositions</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--teal);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>turn</b></td><td>donmek</td><td>Turn left at the traffic lights.</td><td>Trafik isiklarinda sola don.</td></tr>
+            <tr><td><span class="type-badge t-phrase">PHRASE</span></td><td><b>go straight</b></td><td>duz gitmek</td><td>Go straight for 200 metres.</td><td>200 metre duz git.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>left / right</b></td><td>sol / sag</td><td>The bank is on the left.</td><td>Banka solda.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>next to</b></td><td>yaninda</td><td>The pharmacy is next to the cafe.</td><td>Eczane kafeye bitisik.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>opposite</b></td><td>karsisinda</td><td>The school is opposite the park.</td><td>Okul parkin karsisinda.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>between</b></td><td>arasinda</td><td>It is between the bank and the shop.</td><td>Banka ile dukkan arasinda.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>behind</b></td><td>arkasinda</td><td>The car park is behind the hotel.</td><td>Otopark otelin arkasinda.</td></tr>
+            <tr><td><span class="type-badge t-phrase">PHRASE</span></td><td><b>in front of</b></td><td>onunde</td><td>Wait in front of the door.</td><td>Kapinin onunde bekle.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>far</b></td><td>uzak</td><td>Is it far from here?</td><td>Buraya uzak mi?</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Prepositions of Place + Imperative (Commands)</h4>
+            <ul>
+              <li>Prepositions of place tell us WHERE something is.</li>
+              <li>The Imperative gives directions – use the base verb: <b>Turn left. / Go straight.</b></li>
+              <li>next to (yaninda) · opposite (karsisinda) · between (arasinda) · behind (arkasinda)</li>
+              <li>Polite form: Could you tell me where the station is, please?</li>
+            </ul>
+          </div>
+          <div class="tip-box">'On the left / right' = a location. 'Turn left / right' = an action. Don't mix them up!</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>The bank is</span><input class="fill-input" data-answer="on" placeholder="___"><span>the left.</span></div>
+              <div class="fill-item"><label>2.</label><span>Is the hospital</span><input class="fill-input" data-answer="far" placeholder="___"><span>from here?</span></div>
+              <div class="fill-item"><label>3.</label><span>It is</span><input class="fill-input" data-answer="between" placeholder="___"><span>the bank and the cafe.</span></div>
+              <div class="fill-item"><label>4.</label><input class="fill-input" data-answer="turn" placeholder="___"><span>left at the traffic lights.</span></div>
+              <div class="fill-item"><label>5.</label><span>The supermarket is</span><input class="fill-input" data-answer="opposite" placeholder="___"><span>the park.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. The school is ___ the park.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">opposite</span><span class="mcq-opt">opposites</span><span class="mcq-opt">on opposite</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. Turn ___ at the corner.</div><div class="mcq-options"><span class="mcq-opt">lefts</span><span class="mcq-opt" data-correct="true">left</span><span class="mcq-opt">on left</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. The shop is ___ the bank and cafe.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">between</span><span class="mcq-opt">among</span><span class="mcq-opt">inside</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. Go ___ for 100 metres.</div><div class="mcq-options"><span class="mcq-opt">straightly</span><span class="mcq-opt" data-correct="true">straight</span><span class="mcq-opt">straights</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit4')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit4')">↺ Reset</button>
+              <span class="score-display" id="score-unit4" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: Asking for Directions</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Excuse me, could you help me?</div><div class="dialogue-tr">Affedersiniz, yardim eder misiniz?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Of course! What do you need?</div><div class="dialogue-tr">Tabii! Ne lazim?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Where is the nearest bank, please?</div><div class="dialogue-tr">En yakin banka nerede, lutfen?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Go straight along this road. Turn left at the lights.</div><div class="dialogue-tr">Bu yolda duz gidin. Trafik isiklarinda sola donun.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">The bank is on the right, next to the pharmacy.</div><div class="dialogue-tr">Banka sagda, eczanenin yaninda.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Is it far from here?</div><div class="dialogue-tr">Buraya uzak mi?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">No, about five minutes on foot.</div><div class="dialogue-tr">Hayir, yuruyerek yaklasik bes dakika.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Draw a simple map in your notebook and write 4 directions from your home to your school or workplace.</p>
+            <textarea class="writing-area" id="writing-unit4" placeholder="Write your directions here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit4')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit4')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit4">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 5 -->
+      <div class="accordion unit-a1" id="unit5">
+        <div class="acc-header" onclick="toggleAcc('unit5')">
+          <span>A1 · Unit 5 – Past Times <span style="font-weight:400;opacity:0.85;">| Talking About Past Events</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--teal);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>visit</b></td><td>ziyaret etmek</td><td>We visited Istanbul last summer.</td><td>Gecen yaz Istanbul'u ziyaret ettik.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>travel</b></td><td>seyahat etmek</td><td>She travelled to Ankara by train.</td><td>Trenle Ankara'ya seyahat etti.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>stay</b></td><td>kalmak</td><td>We stayed in a nice hotel.</td><td>Guzel bir otelde kaldik.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>enjoy</b></td><td>zevk almak</td><td>I enjoyed the concert very much.</td><td>Konseri cok begendim.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>see</b></td><td>gormek</td><td>We saw a beautiful sunset.</td><td>Guzel bir gun batimi gorduk.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>buy → bought</b></td><td>satin almak</td><td>She bought a souvenir.</td><td>Bir hediyelik esya aldi.</td></tr>
+            <tr><td><span class="type-badge t-adv">ADV</span></td><td><b>yesterday</b></td><td>dun</td><td>I called you yesterday.</td><td>Seni dun aradim.</td></tr>
+            <tr><td><span class="type-badge t-adv">ADV</span></td><td><b>ago</b></td><td>once</td><td>We met two years ago.</td><td>Iki yil once tanistik.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>take → took</b></td><td>cekmek</td><td>She took many photos.</td><td>Bircok fotograf cekti.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Past Simple Tense</h4>
+            <ul>
+              <li>Used for completed actions in the past.</li>
+              <li>Regular verbs: add <b>-ed</b>: visit → visited / stay → stayed.</li>
+              <li>Irregular verbs: must be memorised: go → went / see → saw / buy → bought.</li>
+              <li>Negative: I didn't go. / She didn't see him.</li>
+              <li>Questions: Did you enjoy it? / Where did you go?</li>
+              <li>Time words: yesterday / last week / last year / two days ago.</li>
+            </ul>
+          </div>
+          <div class="tip-box">In Past Simple questions and negatives, the main verb returns to its base form: Did you GO? / I didn't GO. NOT: Did you went?</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>She</span><input class="fill-input" data-answer="visited" placeholder="visit →"><span>Paris last summer.</span></div>
+              <div class="fill-item"><label>2.</label><span>We</span><input class="fill-input" data-answer="went" placeholder="go →"><span>to the beach yesterday.</span></div>
+              <div class="fill-item"><label>3.</label><span>I</span><input class="fill-input" data-answer="didn't see" placeholder="___"><span>that film.</span></div>
+              <div class="fill-item"><label>4.</label><input class="fill-input" data-answer="did" placeholder="___"><span>you enjoy the food?</span></div>
+              <div class="fill-item"><label>5.</label><span>He</span><input class="fill-input" data-answer="bought" placeholder="buy →"><span>a new phone last week.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. We ___ to Ankara last year.</div><div class="mcq-options"><span class="mcq-opt">go</span><span class="mcq-opt">gone</span><span class="mcq-opt" data-correct="true">went</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. Did she ___ the concert?</div><div class="mcq-options"><span class="mcq-opt">enjoyed</span><span class="mcq-opt">enjoying</span><span class="mcq-opt" data-correct="true">enjoy</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. They ___ in a hotel last night.</div><div class="mcq-options"><span class="mcq-opt">stay</span><span class="mcq-opt" data-correct="true">stayed</span><span class="mcq-opt">staying</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. I ___ see him yesterday.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">didn't</span><span class="mcq-opt">don't</span><span class="mcq-opt">not</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit5')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit5')">↺ Reset</button>
+              <span class="score-display" id="score-unit5" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: Talking About a Holiday</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">How was your holiday?</div><div class="dialogue-tr">Tatil nasil gecti?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">It was fantastic! We went to Antalya.</div><div class="dialogue-tr">Muhtesemdi! Antalya'ya gittik.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">What did you do there?</div><div class="dialogue-tr">Orada ne yaptiniz?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">We stayed at a beach hotel. I swam every day.</div><div class="dialogue-tr">Plaj otelinde kaldik. Her gun yuzdum.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Did you visit any historical places?</div><div class="dialogue-tr">Tarihi yer gezdiniz mi?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Yes! We saw the ancient ruins. Amazing!</div><div class="dialogue-tr">Evet! Harabeleri gorduk. Inanilmazdi!</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write a paragraph about a place you visited. Use Past Simple. (<b>I went ...</b> / <b>I saw ...</b> / <b>It was ...</b>)</p>
+            <textarea class="writing-area" id="writing-unit5" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit5')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit5')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit5">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 6 -->
+      <div class="accordion unit-a2" id="unit6">
+        <div class="acc-header" onclick="toggleAcc('unit6')">
+          <span>A2 · Unit 6 – Future Plans <span style="font-weight:400;opacity:0.85;">| Talking About the Future</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--navy);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>plan</b></td><td>planlamak</td><td>I am planning a trip next month.</td><td>Gelecek ay bir gezi planliyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>hope</b></td><td>ummak</td><td>I hope to visit Japan one day.</td><td>Bir gun Japonya'yi ziyaret etmeyi umuyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>intend</b></td><td>niyet etmek</td><td>She intends to study medicine.</td><td>Tip okumaya niyetleniyor.</td></tr>
+            <tr><td><span class="type-badge t-adv">ADV</span></td><td><b>probably</b></td><td>muhtemelen</td><td>I will probably stay at home.</td><td>Muhtemelen evde kalacagim.</td></tr>
+            <tr><td><span class="type-badge t-adv">ADV</span></td><td><b>definitely</b></td><td>kesinlikle</td><td>We will definitely go to the concert.</td><td>Kesinlikle konsere gidecegiz.</td></tr>
+            <tr><td><span class="type-badge t-adv">ADV</span></td><td><b>maybe</b></td><td>belki</td><td>Maybe I'll call you later.</td><td>Belki seni daha sonra arayacagim.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>promise</b></td><td>soz vermek</td><td>I promise I will be on time.</td><td>Zamaninda gelecegime soz veriyorum.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>decide</b></td><td>karar vermek</td><td>Have you decided yet?</td><td>Henuz karar verdin mi?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>book</b></td><td>rezervasyon yapmak</td><td>I have already booked the hotel.</td><td>Oteli coktan rezervasyon yaptim.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Going To vs Will (Future Tense)</h4>
+            <ul>
+              <li><b>"Going to"</b> = plans already decided before speaking: I am going to study medicine.</li>
+              <li><b>"Will"</b> = a decision made at the moment of speaking, or a prediction: I think it will rain.</li>
+              <li>Negative: She won't come. / He isn't going to buy a car.</li>
+              <li>Questions: Will you help me? / What are you going to do?</li>
+            </ul>
+          </div>
+          <div class="tip-box">'Going to' = already decided. 'Will' = decided right now, or a prediction.</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>I</span><input class="fill-input" data-answer="am going" placeholder="___"><span>to study in London next year.</span></div>
+              <div class="fill-item"><label>2.</label><span>She will probably</span><input class="fill-input" data-answer="call" placeholder="___"><span>you tomorrow.</span></div>
+              <div class="fill-item"><label>3.</label><span>They</span><input class="fill-input" data-answer="aren't going" placeholder="___"><span>to the concert.</span></div>
+              <div class="fill-item"><label>4.</label><input class="fill-input" data-answer="will" placeholder="___"><span>you help me with this?</span></div>
+              <div class="fill-item"><label>5.</label><span>He</span><input class="fill-input" data-answer="is going to buy" placeholder="___"><span>a new laptop next month.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. I think it ___ rain tomorrow.</div><div class="mcq-options"><span class="mcq-opt">going to</span><span class="mcq-opt" data-correct="true">will</span><span class="mcq-opt">is going</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. She ___ to be a doctor.</div><div class="mcq-options"><span class="mcq-opt">will going</span><span class="mcq-opt" data-correct="true">is going</span><span class="mcq-opt">going to</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. ___ you come to the party?</div><div class="mcq-options"><span class="mcq-opt">Are</span><span class="mcq-opt" data-correct="true">Will</span><span class="mcq-opt">Do</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. We ___ go there. It is too expensive.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">won't</span><span class="mcq-opt">aren't</span><span class="mcq-opt">don't</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit6')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit6')">↺ Reset</button>
+              <span class="score-display" id="score-unit6" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: Planning a Trip</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">I am going to Cappadocia next weekend!</div><div class="dialogue-tr">Gelecek hafta sonu Kapadokya'ya gidiyorum!</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Wow! What are you going to do there?</div><div class="dialogue-tr">Vay! Orada ne yapacaksin?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">I will take a hot-air balloon ride and visit the valleys.</div><div class="dialogue-tr">Sicak hava balonu binisi yapacagim ve vadileri gezecegim.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Are you going to stay overnight?</div><div class="dialogue-tr">Geceleme yapacak misin?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person A:</div><div class="dialogue-en">Yes, I have already booked a cave hotel!</div><div class="dialogue-tr">Evet, zaten bir magara oteli rezervasyonu yaptim!</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Person B:</div><div class="dialogue-en">Maybe I will come with you.</div><div class="dialogue-tr">Belki seninle gelirim.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write about YOUR plans for next year. Use: <b>I am going to ...</b> / <b>I will ...</b> / <b>I hope to ...</b></p>
+            <textarea class="writing-area" id="writing-unit6" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit6')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit6')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit6">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 7 -->
+      <div class="accordion unit-a2" id="unit7">
+        <div class="acc-header" onclick="toggleAcc('unit7')">
+          <span>A2 · Unit 7 – Health and Body <span style="font-weight:400;opacity:0.85;">| At the Doctor's Surgery</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--navy);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>hurt</b></td><td>acimak</td><td>My back hurts a lot.</td><td>Sirtim cok aciyor.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>pain</b></td><td>agri</td><td>I have a pain in my chest.</td><td>Gogsumde bir agri var.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>headache</b></td><td>bas agrisi</td><td>I've had this headache since morning.</td><td>Bu sabahtan beri bas agrim var.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>fever</b></td><td>ates</td><td>The child has a high fever.</td><td>Cocugun yuksek atesi var.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>cough</b></td><td>oksuruk</td><td>He has been coughing all night.</td><td>Butun gece oksurdu.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>medicine</b></td><td>ilac</td><td>Take this medicine three times a day.</td><td>Bu ilaci gunde uc kez alin.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>appointment</b></td><td>randevu</td><td>I have a doctor's appointment at 10.</td><td>Saat 10'da doktor randevum var.</td></tr>
+            <tr><td><span class="type-badge t-adj">ADJ</span></td><td><b>allergic</b></td><td>alerjik</td><td>I am allergic to penicillin.</td><td>Penisiline alerjim var.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>prescription</b></td><td>recete</td><td>Here is your prescription.</td><td>Iste receteniz.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>recover</b></td><td>iyilesmek</td><td>She is slowly recovering.</td><td>Yavas yavas iyilesiyor.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Present Perfect (have / has + past participle)</h4>
+            <ul>
+              <li>Connects a past event to the present moment.</li>
+              <li>Form: <b>have / has + past participle</b> (been, done, seen, taken...)</li>
+              <li><b>Since</b> = a specific starting point: since Monday / since last year.</li>
+              <li><b>For</b> = a length of time: for three days / for two hours.</li>
+              <li>Ever / Never: Have you ever had surgery? / I have never broken a bone.</li>
+              <li>Just / Already / Yet: I have just taken my medicine. / Has she arrived yet?</li>
+            </ul>
+          </div>
+          <div class="tip-box">Since = a specific point in time (since Monday). For = a duration (for three days).</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>I</span><input class="fill-input" data-answer="have had" placeholder="have/has + ___"><span>this headache since this morning.</span></div>
+              <div class="fill-item"><label>2.</label><span>She</span><input class="fill-input" data-answer="has seen" placeholder="have/has + ___"><span>the doctor twice this week.</span></div>
+              <div class="fill-item"><label>3.</label><span>Have you</span><input class="fill-input" data-answer="already" placeholder="___"><span>taken your medicine?</span></div>
+              <div class="fill-item"><label>4.</label><span>He</span><input class="fill-input" data-answer="has not eaten" placeholder="___"><span>anything for two days.</span></div>
+              <div class="fill-item"><label>5.</label><span>I have had this cough</span><input class="fill-input" data-answer="for" placeholder="for/since"><span>five days.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. I have had a fever ___ Monday.</div><div class="mcq-options"><span class="mcq-opt">for</span><span class="mcq-opt" data-correct="true">since</span><span class="mcq-opt">from</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. Has she ___ taken the medicine?</div><div class="mcq-options"><span class="mcq-opt">yet</span><span class="mcq-opt" data-correct="true">already</span><span class="mcq-opt">just</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. He has ___ broken his leg.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">never</span><span class="mcq-opt">ever</span><span class="mcq-opt">for</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. ___ you ever been to hospital?</div><div class="mcq-options"><span class="mcq-opt">Did</span><span class="mcq-opt" data-correct="true">Have</span><span class="mcq-opt">Do</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit7')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit7')">↺ Reset</button>
+              <span class="score-display" id="score-unit7" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: At the Doctor's Surgery</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Doctor:</div><div class="dialogue-en">Good morning. What seems to be the problem?</div><div class="dialogue-tr">Gunaydin. Sorununuz ne?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Patient:</div><div class="dialogue-en">I have had a terrible headache and a fever since yesterday.</div><div class="dialogue-tr">Dunden beri korkunc bir bas agrim ve atesim var.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Doctor:</div><div class="dialogue-en">Have you taken any medicine?</div><div class="dialogue-tr">Herhangi bir ilac aldiniz mi?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Patient:</div><div class="dialogue-en">I took paracetamol this morning, but it hasn't helped.</div><div class="dialogue-tr">Bu sabah parasetamol aldim ama ise yaramadi.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Doctor:</div><div class="dialogue-en">Have you ever had this kind of headache before?</div><div class="dialogue-tr">Daha once bu tur bir bas agrisi yasadiniz mi?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Patient:</div><div class="dialogue-en">No, never. It is the first time.</div><div class="dialogue-tr">Hayir, hic. Bu ilk defa.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Doctor:</div><div class="dialogue-en">I will write you a prescription. Rest and drink plenty of water.</div><div class="dialogue-tr">Size bir recete yazacagim. Dinlenin ve bol su icin.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write about a time you were unwell. Use: <b>I had ...</b> / <b>I went ...</b> / <b>The doctor said ...</b> / <b>I have never ...</b></p>
+            <textarea class="writing-area" id="writing-unit7" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit7')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit7')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit7">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT 8 -->
+      <div class="accordion unit-a2" id="unit8">
+        <div class="acc-header" onclick="toggleAcc('unit8')">
+          <span>A2 · Unit 8 – Work and Career <span style="font-weight:400;opacity:0.85;">| Jobs, Workplace &amp; Modal Verbs</span></span>
+          <span class="acc-arrow">▼</span>
+        </div>
+        <div class="acc-body">
+          <h4 style="color:var(--navy);margin-bottom:10px;">VOCABULARY</h4>
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Example</th><th>Turkish</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>apply</b></td><td>basvurmak</td><td>I want to apply for this job.</td><td>Bu is icin basvurmak istiyorum.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>interview</b></td><td>mulakat</td><td>My interview is on Friday.</td><td>Mulakatim Cuma gunu.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>salary</b></td><td>maas</td><td>The salary is very competitive.</td><td>Maas oldukca rekabetci.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>experience</b></td><td>deneyim</td><td>I have three years of experience.</td><td>Uc yil deneyimim var.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>skill</b></td><td>beceri</td><td>Communication skills are vital.</td><td>Iletisim becerileri hayati onem tasiyor.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>colleague</b></td><td>is arkadasi</td><td>My colleagues are very helpful.</td><td>Is arkadaslarim cok yardimsever.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>deadline</b></td><td>son teslim tarihi</td><td>The deadline is Friday at 5 pm.</td><td>Son teslim tarihi Cuma saat 17:00.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>promote</b></td><td>terfi ettirmek</td><td>She was promoted last month.</td><td>Gecen ay terfi etti.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>resign</b></td><td>istifa etmek</td><td>He resigned from his position.</td><td>Gorevinden istifa etti.</td></tr>
+            <tr><td><span class="type-badge t-noun">NOUN</span></td><td><b>meeting</b></td><td>toplanti</td><td>We have a team meeting at 9.</td><td>Saat 9'da takim toplantimiz var.</td></tr>
+          </table>
+          <div class="grammar-box">
+            <h4>Grammar: Modal Verbs (can / could / should / must / have to)</h4>
+            <ul>
+              <li><b>Can</b> = ability: I can speak English and Turkish.</li>
+              <li><b>Could</b> = polite request: Could you send me the file, please?</li>
+              <li><b>Should</b> = advice: You should arrive early for your interview.</li>
+              <li><b>Must</b> = strong obligation: You must bring your CV.</li>
+              <li><b>Have to</b> = external obligation: I have to work overtime.</li>
+              <li><b>Must not</b> = prohibition: You must not smoke in the building.</li>
+              <li><b>Don't have to</b> = no obligation: You don't have to wear a suit here.</li>
+            </ul>
+          </div>
+          <div class="tip-box">Must NOT = it is forbidden (prohibition). Don't HAVE TO = it is not necessary. These are very different meanings!</div>
+          <div class="exercise-section">
+            <h4>EXERCISES</h4>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">A) Fill in the Blanks</p>
+            <div class="fill-blank">
+              <div class="fill-item"><label>1.</label><span>You</span><input class="fill-input" data-answer="should" placeholder="___"><span>arrive on time for your interview.</span></div>
+              <div class="fill-item"><label>2.</label><span>I</span><input class="fill-input" data-answer="can't" placeholder="___"><span>speak French, but I can speak English.</span></div>
+              <div class="fill-item"><label>3.</label><input class="fill-input" data-answer="could" placeholder="___"><span>you send me your CV by Friday?</span></div>
+              <div class="fill-item"><label>4.</label><span>Employees</span><input class="fill-input" data-answer="must not" placeholder="___"><span>smoke in the building.</span></div>
+              <div class="fill-item"><label>5.</label><span>You</span><input class="fill-input" data-answer="don't have to" placeholder="___"><span>wear a tie – it is a casual office.</span></div>
+            </div>
+            <p style="font-weight:700;color:var(--purple);margin-bottom:8px;">B) Multiple Choice</p>
+            <div class="mcq-list">
+              <div class="mcq-item"><div class="mcq-q">1. You ___ be late for the interview.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">must not</span><span class="mcq-opt">don't have to</span><span class="mcq-opt">could</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">2. ___ you speak any other languages?</div><div class="mcq-options"><span class="mcq-opt">Should</span><span class="mcq-opt" data-correct="true">Can</span><span class="mcq-opt">Must</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">3. She ___ wear a uniform – it is compulsory.</div><div class="mcq-options"><span class="mcq-opt">should</span><span class="mcq-opt" data-correct="true">has to</span><span class="mcq-opt">could</span></div></div>
+              <div class="mcq-item"><div class="mcq-q">4. You ___ hurry – there is plenty of time.</div><div class="mcq-options"><span class="mcq-opt" data-correct="true">don't have to</span><span class="mcq-opt">must not</span><span class="mcq-opt">can't</span></div></div>
+            </div>
+            <div class="exercise-btns">
+              <button class="btn-check" onclick="checkUnit('unit8')">✓ Check Answers</button>
+              <button class="btn-reset" onclick="resetUnit('unit8')">↺ Reset</button>
+              <span class="score-display" id="score-unit8" style="display:none"></span>
+            </div>
+          </div>
+          <div class="dialogue-box">
+            <div class="dialogue-header">REAL-LIFE DIALOGUE: A Job Interview</div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Interviewer:</div><div class="dialogue-en">Good morning. Can you tell me about yourself?</div><div class="dialogue-tr">Gunaydin. Kendinizi anlatir misiniz?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Candidate:</div><div class="dialogue-en">I have a degree in Business and three years of experience in sales.</div><div class="dialogue-tr">Isletme lisansim ve satista uc yil deneyimim var.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Interviewer:</div><div class="dialogue-en">Could you give me an example of a challenge you have overcome?</div><div class="dialogue-tr">Ustesinden geldiginiz zorlu bir duruma ornek verebilir misiniz?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Candidate:</div><div class="dialogue-en">I once had to meet a very tight deadline, and I managed the team well.</div><div class="dialogue-tr">Bir keresinde cok siki bir son teslim tarihiyle karsilastim.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Interviewer:</div><div class="dialogue-en">What are your strongest skills?</div><div class="dialogue-tr">En guclu becerileriniz neler?</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Candidate:</div><div class="dialogue-en">I am good at communication, and I can speak Turkish and English fluently.</div><div class="dialogue-tr">Iletisimde iyiyim ve Turkce ile Ingilizce akici konusabiliyorum.</div></div>
+            <div class="dialogue-row"><div class="dialogue-speaker">Interviewer:</div><div class="dialogue-en">Great. You should receive our decision within the week.</div><div class="dialogue-tr">Kararimizi bu hafta icerisinde ogreneceksiniz.</div></div>
+          </div>
+          <div class="writing-task">
+            <h4>✏ WRITING TASK</h4>
+            <p>Write a short paragraph about a job you would like. Use: <b>I can ...</b> / <b>I have ...</b> / <b>I would like to ...</b></p>
+            <textarea class="writing-area" id="writing-unit8" placeholder="Write your answer here..."></textarea>
+            <div class="writing-btns">
+              <button class="btn-save-writing" onclick="saveWriting('unit8')">💾 Save</button>
+              <button class="btn-clear-writing" onclick="clearWriting('unit8')">✕ Clear</button>
+              <span class="saved-badge" id="saved-unit8">✓ Saved!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end part1 -->
+
+    <!-- VOCAB REFERENCE -->
+    <div class="section-content" id="sec-vocab">
+      <div style="background:linear-gradient(90deg,var(--amber),var(--gold));color:#fff;padding:18px 22px;border-radius:12px;margin-bottom:20px;">
+        <h2>Part 2 – Master Vocabulary Reference</h2>
+        <p style="opacity:0.9;font-size:0.9rem;margin-top:4px;">400+ words · 16 thematic categories · English · Turkish · Synonyms · Examples</p>
+      </div>
+      <div class="tip-box">Review one category per day. Cover the Turkish column and test yourself!</div>
+
+      <!-- Category 1 -->
+      <div class="accordion unit-vocab" id="vocab1">
+        <div class="acc-header" onclick="toggleAcc('vocab1')"><span>1. Essential Action Verbs</span><span class="acc-arrow">▼</span></div>
+        <div class="acc-body">
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Synonyms</th><th>Example</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>go</b></td><td>gitmek</td><td>travel, head</td><td>I go to work every day.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>come</b></td><td>gelmek</td><td>arrive, approach</td><td>Please come here now.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>walk</b></td><td>yurumek</td><td>stroll, stride</td><td>I walk to school every morning.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>run</b></td><td>kosmak</td><td>sprint, dash, jog</td><td>She runs 5 km every evening.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>eat</b></td><td>yemek yemek</td><td>consume, have, dine</td><td>We eat dinner at 7 o'clock.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>drink</b></td><td>icmek</td><td>sip, have, consume</td><td>He drinks coffee without sugar.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>sleep</b></td><td>uyumak</td><td>rest, slumber, doze</td><td>I sleep 8 hours every night.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>wake up</b></td><td>uyanmak</td><td>get up, rise</td><td>I wake up at 6 every morning.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>work</b></td><td>calismak</td><td>labour, operate</td><td>She works in a hospital.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>study</b></td><td>ders calismak</td><td>learn, revise, practise</td><td>I study English for 2 hours daily.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>read</b></td><td>okumak</td><td>browse, skim</td><td>He reads the newspaper every day.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>write</b></td><td>yazmak</td><td>note down, compose</td><td>Please write your name here.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>speak</b></td><td>konusmak</td><td>talk, communicate</td><td>Can you speak more slowly?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>listen</b></td><td>dinlemek</td><td>hear, pay attention</td><td>She listens to music while cooking.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>watch</b></td><td>izlemek</td><td>observe, view</td><td>We watch films at weekends.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>find</b></td><td>bulmak</td><td>locate, discover</td><td>I can't find my keys.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>give</b></td><td>vermek</td><td>hand over, provide</td><td>Give me that book, please.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>take</b></td><td>almak</td><td>grab, get, pick up</td><td>Take your umbrella – it may rain.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>make</b></td><td>yapmak</td><td>create, produce</td><td>She makes her own bread.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>buy</b></td><td>satin almak</td><td>purchase, get</td><td>I need to buy some milk.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>sell</b></td><td>satmak</td><td>offer for sale, trade</td><td>They sell fresh vegetables here.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>pay</b></td><td>odemek</td><td>settle, foot the bill</td><td>Can I pay by card?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>send</b></td><td>gondermek</td><td>transmit, post</td><td>I will send you the document.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>start</b></td><td>baslamak</td><td>begin, commence</td><td>The lesson starts at 9.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>finish</b></td><td>bitirmek</td><td>end, complete</td><td>I finished my homework.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>help</b></td><td>yardim etmek</td><td>assist, support, aid</td><td>Can you help me with this?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>live</b></td><td>yasamak / oturmak</td><td>reside, stay</td><td>I live in Eskisehir.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>travel</b></td><td>seyahat etmek</td><td>journey, tour</td><td>She travels for work every month.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>call</b></td><td>telefon etmek</td><td>phone, ring, contact</td><td>I will call you this evening.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>visit</b></td><td>ziyaret etmek</td><td>call on, drop by</td><td>We visited my grandparents.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>wait</b></td><td>beklemek</td><td>stay, hold on</td><td>Please wait here for a moment.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>try</b></td><td>denemek</td><td>attempt, have a go</td><td>Try this dessert – it is delicious.</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion unit-vocab" id="vocab2">
+        <div class="acc-header" onclick="toggleAcc('vocab2')"><span>2. Mental &amp; Communication Verbs</span><span class="acc-arrow">▼</span></div>
+        <div class="acc-body">
+          <table class="vocab-table">
+            <tr><th>Type</th><th>English</th><th>Turkish</th><th>Synonyms</th><th>Example</th></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>understand</b></td><td>anlamak</td><td>comprehend, grasp</td><td>Do you understand the question?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>remember</b></td><td>hatirlamak</td><td>recall, recollect</td><td>I can't remember his name.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>forget</b></td><td>unutmak</td><td>fail to remember</td><td>I always forget my password.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>learn</b></td><td>ogrenmek</td><td>acquire, pick up, master</td><td>She is learning to drive.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>teach</b></td><td>ogretmek</td><td>instruct, train, coach</td><td>He teaches English at university.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>explain</b></td><td>aciklamak</td><td>describe, clarify</td><td>Could you explain that again?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>decide</b></td><td>karar vermek</td><td>choose, resolve</td><td>I have decided to study abroad.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>agree</b></td><td>kabul etmek</td><td>accept, say yes</td><td>I agree with your opinion.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>disagree</b></td><td>katilmamak</td><td>oppose, differ</td><td>I disagree – I think it is wrong.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>believe</b></td><td>inanmak</td><td>think, consider, trust</td><td>I believe you can do it.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>hope</b></td><td>ummak</td><td>wish, expect</td><td>I hope to see you soon.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>promise</b></td><td>soz vermek</td><td>give your word, pledge</td><td>I promise I will be on time.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>refuse</b></td><td>reddetmek</td><td>decline, turn down</td><td>She refused to sign the contract.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>accept</b></td><td>kabul etmek</td><td>agree to, say yes</td><td>He accepted the job offer.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>apologise</b></td><td>ozur dilemek</td><td>say sorry, express regret</td><td>I apologise for being late.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>suggest</b></td><td>onermek</td><td>recommend, advise</td><td>I suggest taking the metro.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>recommend</b></td><td>tavsiye etmek</td><td>suggest, advise</td><td>Can you recommend a good restaurant?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>warn</b></td><td>uyarmak</td><td>caution, alert, notify</td><td>I warned him about the danger.</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>describe</b></td><td>tanimlamak</td><td>depict, explain</td><td>Can you describe the person?</td></tr>
+            <tr><td><span class="type-badge t-verb">VERB</span></td><td><b>compare</b></td><td>karsilastirmak</td><td>contrast, measure against</td><td>Let's compare these two options.</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="text-align:center;padding:20px;color:var(--bluegrey);font-style:italic;">
+        Categories 3–16 (People & Family · Home & Daily Life · Food & Drink · Travel · Shopping · Health · Work · Technology · Adjectives · Adverbs · Numbers & Time · Feelings · Phrases · Weather) are included in the full PDF version.
+      </div>
+    </div>
+
+    <!-- ANSWERS -->
+    <div class="section-content" id="sec-answers">
+      <div style="background:linear-gradient(90deg,var(--green),var(--teal));color:#fff;padding:18px 22px;border-radius:12px;margin-bottom:20px;">
+        <h2>✅ Answer Key</h2>
+        <p style="opacity:0.9;font-size:0.9rem;margin-top:4px;">Check your answers only after completing the exercises yourself!</p>
+      </div>
+      <div class="tip-box">Making mistakes is part of learning! Every mistake shows you what to study next. Review the grammar box for any unit where you made errors.</div>
+      <table class="answer-table" style="margin-top:16px;">
+        <tr><th>Unit</th><th>Fill in the Blanks</th><th>Multiple Choice</th></tr>
+        <tr><td>Unit 1</td><td>am, is, are, are, is</td><td>a, b, c, b</td></tr>
+        <tr><td>Unit 2</td><td>drinks, study, goes, don't eat, doesn't like</td><td>b, a, b, a</td></tr>
+        <tr><td>Unit 3</td><td>How much, How many, is, are, How much</td><td>b, b, a, b</td></tr>
+        <tr><td>Unit 4</td><td>on, far, between, Turn, opposite</td><td>a, b, a, b</td></tr>
+        <tr><td>Unit 5</td><td>visited, went, didn't see, Did, bought</td><td>c, c, b, a</td></tr>
+        <tr><td>Unit 6</td><td>am going, call, aren't going, Will, is going to buy</td><td>b, b, b, a</td></tr>
+        <tr><td>Unit 7</td><td>have had, has seen, already, has not eaten, for</td><td>b, b, a, b</td></tr>
+        <tr><td>Unit 8</td><td>should, can't, Could, must not, don't have to</td><td>a, b, b, a</td></tr>
+      </table>
+    </div>
+
+    <!-- MY PROGRESS -->
+    <div class="section-content" id="sec-myprogress">
+      <div style="background:linear-gradient(90deg,var(--navy),var(--purple));color:#fff;padding:18px 22px;border-radius:12px;margin-bottom:20px;">
+        <h2>📊 My Progress</h2>
+        <p style="opacity:0.9;font-size:0.9rem;margin-top:4px;">Track your exercise scores and writing tasks across all units.</p>
+      </div>
+      <div class="progress-overview">
+        <h3>Exercise Progress</h3>
+        <div class="progress-bars" id="progressBars"></div>
+        <button class="btn-reset-all" onclick="resetAllProgress()">↺ Reset All Progress</button>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,0.07);">
+        <h3 style="color:var(--navy);margin-bottom:14px;">Writing Tasks</h3>
+        <div id="writingSummary"></div>
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+</div><!-- end app -->
+
+<script>
+// STATE
+const UNITS = ['unit1','unit2','unit3','unit4','unit5','unit6','unit7','unit8'];
+const UNIT_LABELS = {
+  unit1:'Unit 1 – To Be',unit2:'Unit 2 – Present Simple',unit3:'Unit 3 – How Much/Many',
+  unit4:'Unit 4 – Directions',unit5:'Unit 5 – Past Simple',unit6:'Unit 6 – Future',
+  unit7:'Unit 7 – Present Perfect',unit8:'Unit 8 – Modals'
+};
+
+function getState(){try{return JSON.parse(localStorage.getItem('a1a2_state')||'{}')}catch{return{}}}
+function setState(s){try{localStorage.setItem('a1a2_state',JSON.stringify(s))}catch{}}
+
+// FRONT PAGE
+function enterApp(){
+  document.getElementById('frontPage').style.display='none';
+  document.getElementById('mainApp').style.display='block';
+  loadSavedData(); updateGlobalProgress();
+}
+function goHome(){
+  document.getElementById('frontPage').style.display='flex';
+  document.getElementById('mainApp').style.display='none';
+}
+
+// TABS
+function showSection(id,btn){
+  document.querySelectorAll('.section-content').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id==='myprogress') renderProgress();
+}
+
+// ACCORDION
+function toggleAcc(id){
+  const el=document.getElementById(id);
+  const body=el.querySelector('.acc-body');
+  const header=el.querySelector('.acc-header');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  header.classList.toggle('open',!isOpen);
+}
+
+// MCQ CLICK
+document.addEventListener('click',function(e){
+  if(!e.target.classList.contains('mcq-opt')) return;
+  const item=e.target.closest('.mcq-item');
+  if(item.dataset.answered) return;
+  item.querySelectorAll('.mcq-opt').forEach(o=>o.classList.remove('selected'));
+  e.target.classList.add('selected');
+});
+
+// CHECK UNIT
+function checkUnit(uid){
+  const el=document.getElementById(uid);
+  const fills=el.querySelectorAll('.fill-input');
+  const mcqs=el.querySelectorAll('.mcq-item');
+  let correct=0, total=0;
+
+  fills.forEach(inp=>{
+    const ans=inp.dataset.answer.toLowerCase().trim();
+    const val=inp.value.toLowerCase().trim();
+    inp.classList.remove('correct','wrong');
+    if(val===ans){inp.classList.add('correct');correct++;}
+    else{inp.classList.add('wrong');}
+    total++;
+  });
+
+  mcqs.forEach(item=>{
+    const selected=item.querySelector('.mcq-opt.selected');
+    item.dataset.answered='1';
+    item.querySelectorAll('.mcq-opt').forEach(o=>{
+      if(o.dataset.correct==='true') o.classList.add('show-correct');
+    });
+    if(selected){
+      if(selected.dataset.correct==='true'){selected.classList.add('correct');correct++;}
+      else{selected.classList.add('wrong');}
+    }
+    total++;
+  });
+
+  const sc=document.getElementById('score-'+uid);
+  sc.style.display='inline-block';
+  sc.textContent=`${correct}/${total} correct`;
+
+  const state=getState();
+  state[uid]={score:correct,total,done:true};
+  setState(state);
+  updateGlobalProgress();
+}
+
+// RESET UNIT
+function resetUnit(uid){
+  const el=document.getElementById(uid);
+  el.querySelectorAll('.fill-input').forEach(inp=>{inp.value='';inp.classList.remove('correct','wrong');});
+  el.querySelectorAll('.mcq-item').forEach(item=>{
+    delete item.dataset.answered;
+    item.querySelectorAll('.mcq-opt').forEach(o=>{o.classList.remove('selected','correct','wrong','show-correct');});
+  });
+  document.getElementById('score-'+uid).style.display='none';
+  const state=getState();
+  delete state[uid];
+  setState(state);
+  updateGlobalProgress();
+}
+
+// WRITING
+function saveWriting(uid){
+  const val=document.getElementById('writing-'+uid).value;
+  const state=getState();
+  if(!state.writing) state.writing={};
+  state.writing[uid]=val;
+  setState(state);
+  const badge=document.getElementById('saved-'+uid);
+  badge.style.display='inline';
+  setTimeout(()=>badge.style.display='none',2000);
+}
+function clearWriting(uid){
+  if(confirm('Clear your saved writing for this unit?')){
+    document.getElementById('writing-'+uid).value='';
+    const state=getState();
+    if(state.writing) delete state.writing[uid];
+    setState(state);
+  }
+}
+
+// LOAD SAVED DATA
+function loadSavedData(){
+  const state=getState();
+  UNITS.forEach(uid=>{
+    if(state[uid]&&state[uid].done){
+      const sc=document.getElementById('score-'+uid);
+      if(sc){sc.style.display='inline-block';sc.textContent=`${state[uid].score}/${state[uid].total} correct`;}
+    }
+    if(state.writing&&state.writing[uid]){
+      const ta=document.getElementById('writing-'+uid);
+      if(ta) ta.value=state.writing[uid];
+    }
+  });
+}
+
+// GLOBAL PROGRESS
+function updateGlobalProgress(){
+  const state=getState();
+  const done=UNITS.filter(u=>state[u]&&state[u].done).length;
+  const pct=Math.round((done/UNITS.length)*100);
+  document.getElementById('globalProgress').textContent=`${pct}% Complete`;
+}
+
+// RENDER PROGRESS PAGE
+function renderProgress(){
+  const state=getState();
+  const bars=document.getElementById('progressBars');
+  bars.innerHTML='';
+  UNITS.forEach(uid=>{
+    const d=state[uid];
+    const pct=d&&d.total?Math.round((d.score/d.total)*100):0;
+    const done=d&&d.done;
+    bars.innerHTML+=`<div class="prog-row">
+      <div class="prog-label">${uid.replace('unit','Unit ')}</div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:${done?pct:0}%"></div></div>
+      <div class="prog-pct">${done?pct+'%':'–'}</div>
+    </div>`;
+  });
+
+  const ws=document.getElementById('writingSummary');
+  ws.innerHTML='';
+  UNITS.forEach(uid=>{
+    const saved=state.writing&&state.writing[uid];
+    ws.innerHTML+=`<div style="padding:10px 0;border-bottom:1px solid #eee;">
+      <b style="color:var(--navy)">${UNIT_LABELS[uid]}</b>
+      <span style="margin-left:12px;font-size:0.82rem;color:${saved?'var(--green)':'var(--bluegrey)'}">
+        ${saved?'✓ Writing saved ('+saved.length+' characters)':'No writing saved yet'}
+      </span>
+    </div>`;
+  });
+}
+
+// RESET ALL
+function resetAllProgress(){
+  if(confirm('Reset all exercise scores and writing? This cannot be undone.')){
+    try{localStorage.removeItem('a1a2_state');}catch{}
+    UNITS.forEach(uid=>{resetUnit(uid);});
+    updateGlobalProgress();
+    renderProgress();
+  }
+}
+
+// INIT
+loadSavedData();
+updateGlobalProgress();
+</script>
+</body>
+</html>
