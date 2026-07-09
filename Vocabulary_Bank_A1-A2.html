@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vocabulary Bank — Beginner (A1–A2) — Teacher Benny</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #1A2E4A;
+    --navy-deep:  #0F1E30;
+    --navy-soft:  #2A4060;
+    --gold:       #C9960C;
+    --gold-light: #F9F0D0;
+    --gold-mid:   #E8C040;
+    --cream:      #FAF7F0;
+    --cream-dark: #F0EBE0;
+    --cream-border: #E2D9C8;
+    --white:      #FFFFFF;
+    --ink:        #1A2E4A;
+    --ink-soft:   #2A4060;
+    --muted:      #6A7E94;
+    --radius:     14px;
+
+    /* topic colours — all blue-gold family */
+    --c-work:     #1A6B8A;
+    --c-feelings: #C9960C;
+    --c-opinion:  #2A5A8A;
+    --c-change:   #1E7A5A;
+    --c-problems: #8A3A1A;
+    --c-time:     #5A4A8A;
+    --c-people:   #1A7A6A;
+    --c-society:  #8A6A1A;
+  }
+
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--cream); font-family:'Inter',sans-serif; color:var(--ink); min-height:100vh; }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+    padding: 16px 28px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 200;
+    box-shadow: 0 2px 16px rgba(15,30,48,0.35);
+    border-bottom: 3px solid var(--gold);
+  }
+  .logo { font-family:'Fraunces',serif; font-size:22px; font-weight:700; color:var(--cream); flex-shrink:0; }
+  .logo span { color:var(--gold-mid); }
+
+  .search-wrap { flex:1; min-width:180px; max-width:420px; position:relative; }
+  .search-wrap svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+  #searchInput {
+    width:100%; background:rgba(250,247,240,0.1); border:1px solid rgba(250,247,240,0.2);
+    border-radius:8px; color:var(--cream); font-family:'Inter',sans-serif; font-size:14px;
+    padding:9px 12px 9px 34px; outline:none; transition:border-color .2s;
+  }
+  #searchInput::placeholder { color:rgba(250,247,240,0.35); }
+  #searchInput:focus { border-color:var(--gold-mid); }
+
+  .header-right { margin-left:auto; display:flex; align-items:center; gap:10px; }
+  .word-badge { font-size:12px; color:rgba(250,247,240,0.5); white-space:nowrap; }
+  .btn-quiz {
+    background:var(--gold); color:var(--navy-deep); border:none; border-radius:8px;
+    padding:9px 18px; font-family:'Inter',sans-serif; font-size:13px; font-weight:700;
+    cursor:pointer; white-space:nowrap; transition:opacity .2s; letter-spacing:.02em;
+  }
+  .btn-quiz:hover { opacity:.85; }
+
+  /* ── TOPIC TAB BAR ── */
+  .topic-bar-wrap {
+    background: var(--navy-deep);
+    position: sticky; top: 57px; z-index: 100;
+    overflow-x: auto; scrollbar-width: none;
+    padding: 16px 20px;
+    box-shadow: 0 4px 16px rgba(15,30,48,0.3);
+  }
+  .topic-bar-wrap::-webkit-scrollbar { display: none; }
+  .topic-tab-row {
+    display: flex;
+    gap: 10px;
+    min-width: max-content;
+    align-items: stretch;
+  }
+
+  /* ALL TOPICS pill */
+  .tab-all {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    border: 2px solid rgba(255,255,255,0.18);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.07);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    color: rgba(250,247,240,0.65);
+    white-space: nowrap; transition: all .2s;
+    flex-shrink: 0;
+  }
+  .tab-all:hover {
+    background: rgba(255,255,255,0.14);
+    color: var(--cream);
+    border-color: rgba(255,255,255,0.35);
+  }
+  .tab-all.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy-deep);
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(201,150,12,0.45);
+  }
+
+  /* TOPIC BUBBLE */
+  .topic-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 14px 20px 12px;
+    border: 2px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    transition: all .2s;
+    flex-shrink: 0;
+    min-width: 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .topic-tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--tab-color, #fff);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .topic-tab:hover::before { opacity: 0.12; }
+  .topic-tab.active::before { opacity: 1; }
+  .topic-tab.active {
+    border-color: var(--tab-color);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+  }
+  .tab-icon {
+    font-size: 26px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  }
+  .tab-label {
+    font-size: 11px; font-weight: 600;
+    color: rgba(250,247,240,0.65);
+    letter-spacing: .03em;
+    position: relative; z-index: 1;
+    transition: color .2s;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .topic-tab.active .tab-label { color: #fff; font-weight: 700; }
+  .topic-tab:hover .tab-label   { color: var(--cream); }
+  .tab-count {
+    font-size: 11px; font-weight: 600;
+    color: rgba(250,247,240,0.45);
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px; padding: 2px 8px;
+    position: relative; z-index: 1;
+    transition: all .2s;
+  }
+  .topic-tab.active .tab-count {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+
+  /* ── MAIN ── */
+  .main-content { max-width:1300px; margin:0 auto; padding:28px 28px 80px; }
+
+  .results-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; flex-wrap:wrap; gap:8px; }
+  .results-info { font-size:13px; color:var(--muted); }
+  .results-info strong { color:var(--ink); }
+  .type-filters { display:flex; gap:6px; flex-wrap:wrap; }
+  .type-chip {
+    font-size:12px; padding:4px 12px; border-radius:20px;
+    border:1.5px solid var(--cream-border); background:none; color:var(--muted);
+    cursor:pointer; font-family:'Inter',sans-serif; transition:all .15s;
+  }
+  .type-chip.on { border-color:var(--gold); color:var(--gold); background:var(--gold-light); font-weight:600; }
+
+  /* ── TOPIC SECTION ── */
+  .topic-section { margin-bottom:44px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:18px; padding-bottom:12px; border-bottom:2px solid var(--cream-border); }
+  .section-icon { width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .section-title { font-family:'Fraunces',serif; font-size:24px; font-weight:700; color:var(--ink); }
+  .section-count { font-size:13px; color:var(--muted); margin-left:auto; }
+
+  /* ── CARDS ── */
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(288px,1fr)); gap:13px; }
+  .vocab-card {
+    background:var(--white); border-radius:var(--radius);
+    border-top:4px solid var(--card-accent,#ccc);
+    padding:15px 17px; box-shadow:0 1px 4px rgba(26,46,74,0.07);
+    transition:box-shadow .2s, transform .15s;
+  }
+  .vocab-card:hover { box-shadow:0 5px 18px rgba(26,46,74,0.13); transform:translateY(-2px); }
+
+  .card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:5px; gap:8px; }
+  .headword { font-family:'Fraunces',serif; font-size:21px; font-weight:700; color:var(--ink); line-height:1.15; }
+  .headword em { font-style:italic; font-weight:300; font-size:13px; color:var(--muted); margin-left:5px; font-family:'Fraunces',serif; }
+
+  .register-tag { font-size:10px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; padding:3px 8px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+  .reg-formal   { background:#EEF3FA; color:#1A4A8A; }
+  .reg-informal { background:#FDF5E0; color:#8A6A00; }
+  .reg-neutral  { background:#F0F5FA; color:#2A5A8A; }
+  .reg-negative { background:#FDF5E0; color:#8A3A00; }
+
+  .word-family { font-size:11px; color:var(--muted); margin-bottom:9px; line-height:1.6; }
+  .word-family span { background:var(--cream); padding:1px 6px; border-radius:4px; margin-right:3px; display:inline-block; margin-bottom:2px; border:1px solid var(--cream-border); }
+
+  .mini-label { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:4px; }
+  .syn-list { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:9px; }
+  .syn-chip { font-size:12px; background:var(--cream); border:1px solid var(--cream-border); border-radius:20px; padding:2px 9px; color:var(--ink-soft); }
+
+  .colloc-text { font-size:12px; color:var(--ink-soft); font-style:italic; line-height:1.5; margin-bottom:8px; }
+  .colloc-text strong { font-style:normal; font-weight:600; color:var(--ink); }
+
+  .example { font-size:12.5px; color:var(--muted); line-height:1.55; border-top:1px solid var(--cream-border); padding-top:8px; margin-top:4px; }
+  .example::before { content:'"'; font-family:'Fraunces',serif; font-size:18px; color:var(--gold); line-height:0; vertical-align:-4px; margin-right:2px; }
+  .example::after  { content:'"'; font-family:'Fraunces',serif; font-size:18px; color:var(--gold); line-height:0; vertical-align:-4px; margin-left:2px; }
+
+  .no-results { text-align:center; padding:60px 20px; color:var(--muted); font-size:15px; }
+  .no-results strong { display:block; font-family:'Fraunces',serif; font-size:28px; color:var(--ink); margin-bottom:8px; }
+
+  /* ── QUIZ ── */
+  .quiz-overlay { display:none; position:fixed; inset:0; background:rgba(15,30,48,0.7); z-index:300; align-items:center; justify-content:center; padding:20px; }
+  .quiz-overlay.open { display:flex; }
+  .quiz-panel { background:var(--white); border-radius:18px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; padding:32px; position:relative; box-shadow:0 20px 60px rgba(15,30,48,0.3); }
+  .quiz-close { position:absolute; top:14px; right:14px; background:var(--cream); border:none; border-radius:50%; width:32px; height:32px; cursor:pointer; font-size:17px; color:var(--muted); display:flex; align-items:center; justify-content:center; }
+  .quiz-close:hover { background:var(--cream-dark); }
+  .quiz-title { font-family:'Fraunces',serif; font-size:26px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .quiz-subtitle { font-size:13px; color:var(--muted); margin-bottom:22px; }
+
+  .quiz-mode-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:22px; }
+  .quiz-mode-card { border:2px solid var(--cream-border); border-radius:10px; padding:14px; cursor:pointer; text-align:center; transition:all .15s; background:var(--white); }
+  .quiz-mode-card:hover, .quiz-mode-card.selected { border-color:var(--gold); background:var(--gold-light); }
+  .quiz-mode-icon { font-size:24px; margin-bottom:5px; }
+  .quiz-mode-name { font-size:13px; font-weight:600; color:var(--ink); }
+  .quiz-mode-desc { font-size:11px; color:var(--muted); margin-top:2px; }
+
+  .qf-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:8px; }
+  .quiz-filter-row { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:20px; }
+  .quiz-filter-chip { font-size:12px; padding:5px 12px; border-radius:20px; border:1.5px solid var(--cream-border); background:none; cursor:pointer; color:var(--muted); font-family:'Inter',sans-serif; transition:all .15s; }
+  .quiz-filter-chip.on { border-color:var(--navy); color:var(--navy); background:#EEF3FA; font-weight:500; }
+
+  .btn-start-quiz { width:100%; background:var(--navy); color:var(--cream); border:none; border-radius:10px; padding:14px; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; cursor:pointer; transition:opacity .2s; }
+  .btn-start-quiz:hover { opacity:.85; }
+
+  .quiz-q-screen { display:none; }
+  .quiz-q-screen.active { display:block; }
+  .quiz-progress-bar { height:4px; background:var(--cream-dark); border-radius:2px; margin-bottom:20px; overflow:hidden; }
+  .quiz-progress-fill { height:100%; background:var(--gold); border-radius:2px; transition:width .4s; }
+  .quiz-q-label { font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .quiz-q-word { font-family:'Fraunces',serif; font-size:32px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .quiz-q-hint { font-size:13px; color:var(--muted); margin-bottom:20px; }
+
+  .quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:16px; }
+  .quiz-opt { border:2px solid var(--cream-border); border-radius:10px; padding:12px 13px; background:var(--white); cursor:pointer; font-size:14px; color:var(--ink); font-family:'Inter',sans-serif; transition:all .15s; text-align:left; line-height:1.4; }
+  .quiz-opt:hover:not(:disabled) { border-color:var(--navy); background:var(--cream); }
+  .quiz-opt.correct { border-color:#1E7A5A; background:#EAF7F0; color:#0F4A30; font-weight:600; }
+  .quiz-opt.wrong   { border-color:#8A3A1A; background:#FDF3EE; color:#8A3A1A; }
+  .quiz-opt:disabled { cursor:default; }
+
+  .quiz-nav { display:flex; gap:8px; margin-top:8px; }
+  .btn-next { flex:1; background:var(--navy); color:var(--cream); border:none; border-radius:8px; padding:11px; font-family:'Inter',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:opacity .2s; }
+  .btn-next:hover { opacity:.8; }
+  .btn-skip { background:var(--cream); color:var(--muted); border:1px solid var(--cream-border); border-radius:8px; padding:11px 16px; font-family:'Inter',sans-serif; font-size:14px; cursor:pointer; }
+
+  .flashcard-wrap { perspective:1000px; margin-bottom:18px; }
+  .flashcard { width:100%; height:165px; position:relative; transform-style:preserve-3d; transition:transform .5s; cursor:pointer; border-radius:14px; }
+  .flashcard.flipped { transform:rotateY(180deg); }
+  .fc-face { position:absolute; inset:0; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; backface-visibility:hidden; padding:20px; text-align:center; }
+  .fc-front { background:linear-gradient(135deg,var(--navy-deep),var(--navy)); }
+  .fc-back  { background:var(--gold-light); border:2px solid var(--gold); transform:rotateY(180deg); }
+  .fc-word { font-family:'Fraunces',serif; font-size:34px; font-weight:700; color:var(--cream); margin-bottom:5px; }
+  .fc-pos  { font-size:13px; color:rgba(250,247,240,.45); }
+  .fc-hint { font-size:11px; color:rgba(250,247,240,.3); margin-top:8px; }
+  .fc-back-word { font-family:'Fraunces',serif; font-size:17px; font-weight:700; color:var(--ink); margin-bottom:7px; }
+  .fc-back-syns { font-size:13px; color:var(--muted); margin-bottom:5px; }
+  .fc-back-ex   { font-size:12px; color:var(--ink); font-style:italic; line-height:1.5; }
+
+  .blank-sentence { font-size:18px; line-height:1.7; color:var(--ink); font-family:'Fraunces',serif; margin-bottom:10px; }
+  #blankInput { border:2px solid var(--cream-border); border-radius:8px; padding:10px 14px; font-family:'Inter',sans-serif; font-size:15px; width:100%; outline:none; margin-bottom:8px; transition:border-color .2s; }
+  #blankInput:focus { border-color:var(--gold); }
+  #blankInput.correct-input { border-color:#1E7A5A; background:#EAF7F0; }
+  #blankInput.wrong-input   { border-color:#8A3A1A; background:#FDF3EE; }
+  .blank-check { background:var(--navy); color:var(--cream); border:none; border-radius:8px; padding:10px 20px; font-family:'Inter',sans-serif; font-size:14px; font-weight:600; cursor:pointer; }
+  .blank-feedback { font-size:13px; margin-top:8px; min-height:18px; font-weight:500; }
+  .blank-feedback.good { color:#0F4A30; }
+  .blank-feedback.bad  { color:#8A3A1A; }
+
+  .wf-target { font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--ink); margin-bottom:3px; }
+  .wf-clue   { font-size:13px; color:var(--muted); margin-bottom:16px; }
+  .wf-slots  { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+  .wf-slot   { display:flex; align-items:center; gap:10px; }
+  .wf-slot-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); width:68px; flex-shrink:0; }
+  .wf-slot input { flex:1; border:2px solid var(--cream-border); border-radius:8px; padding:8px 12px; font-family:'Inter',sans-serif; font-size:14px; outline:none; transition:border-color .2s; }
+  .wf-slot input:focus { border-color:var(--gold); }
+  .wf-slot input.correct-input { border-color:#1E7A5A; background:#EAF7F0; }
+  .wf-slot input.wrong-input   { border-color:#8A3A1A; background:#FDF3EE; }
+  .wf-check { background:var(--navy); color:var(--cream); border:none; border-radius:8px; padding:10px 20px; font-family:'Inter',sans-serif; font-size:14px; font-weight:600; cursor:pointer; }
+
+  .quiz-score-screen { display:none; text-align:center; }
+  .quiz-score-screen.active { display:block; }
+  .score-emoji  { font-size:56px; margin-bottom:12px; }
+  .score-number { font-family:'Fraunces',serif; font-size:48px; font-weight:700; color:var(--ink); margin-bottom:5px; }
+  .score-label  { font-size:15px; color:var(--muted); margin-bottom:26px; }
+  .btn-retry    { background:var(--gold); color:var(--navy-deep); border:none; border-radius:10px; padding:12px 26px; font-family:'Inter',sans-serif; font-size:15px; font-weight:700; cursor:pointer; margin-right:8px; }
+  .btn-back-menu { background:var(--cream); color:var(--ink); border:1px solid var(--cream-border); border-radius:10px; padding:12px 22px; font-family:'Inter',sans-serif; font-size:15px; cursor:pointer; }
+
+  @media (max-width:768px) {
+    .main-content { padding:18px 14px 60px; }
+    .card-grid { grid-template-columns:1fr; }
+    .quiz-options { grid-template-columns:1fr; }
+    .quiz-mode-grid { grid-template-columns:1fr 1fr; }
+    .site-header { padding:12px 14px; }
+    .word-badge { display:none; }
+    .topic-bar-wrap { padding:12px 14px; }
+    .topic-tab { min-width:70px; padding:10px 12px 9px; }
+    .tab-icon  { font-size:20px; }
+    .tab-label { font-size:10px; }
+    .tab-count { font-size:10px; padding:1px 6px; }
+    .tab-all   { padding:10px 14px; font-size:12px; }
+  }
+  @media (max-width:480px) {
+    .quiz-panel { padding:22px 16px; }
+    .quiz-mode-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">The Vocabulary <span>Bank</span> <span style="font-size:12px; color:rgba(250,247,240,0.55); font-family:'Inter',sans-serif; font-weight:600; vertical-align:middle;">A1–A2</span></div>
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Search any word…" oninput="renderAll()">
+  </div>
+  <div class="header-right">
+    <span class="word-badge" id="wordBadge"></span>
+    <button class="btn-quiz" onclick="openQuizMenu()">✦ Quiz me</button>
+  </div>
+</header>
+
+<div class="topic-bar-wrap">
+  <div class="topic-tab-row" id="topicTabRow"></div>
+</div>
+
+<div class="main-content">
+  <div class="results-bar">
+    <div class="results-info" id="resultsInfo"></div>
+    <div class="type-filters" id="typeFilters"></div>
+  </div>
+  <div id="vocabContent"></div>
+</div>
+
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-panel">
+    <button class="quiz-close" onclick="closeQuiz()">✕</button>
+    <div id="quizMenuScreen">
+      <div class="quiz-title">Quiz me</div>
+      <div class="quiz-subtitle">Pick a mode, choose topics, then go.</div>
+      <div class="quiz-mode-grid">
+        <div class="quiz-mode-card selected" data-mode="synonym" onclick="selectMode(this)"><div class="quiz-mode-icon">🔀</div><div class="quiz-mode-name">Synonym Match</div><div class="quiz-mode-desc">Pick the right synonym</div></div>
+        <div class="quiz-mode-card" data-mode="blank" onclick="selectMode(this)"><div class="quiz-mode-icon">✏️</div><div class="quiz-mode-name">Fill the Blank</div><div class="quiz-mode-desc">Type the word in context</div></div>
+        <div class="quiz-mode-card" data-mode="flashcard" onclick="selectMode(this)"><div class="quiz-mode-icon">🃏</div><div class="quiz-mode-name">Flashcard Flip</div><div class="quiz-mode-desc">Reveal word & synonyms</div></div>
+        <div class="quiz-mode-card" data-mode="wordfamily" onclick="selectMode(this)"><div class="quiz-mode-icon">🌿</div><div class="quiz-mode-name">Word Family</div><div class="quiz-mode-desc">Build noun / verb / adjective</div></div>
+      </div>
+      <div class="qf-label">Topics to include</div>
+      <div class="quiz-filter-row" id="quizTopicFilter"></div>
+      <button class="btn-start-quiz" onclick="startQuiz()">Start Quiz →</button>
+    </div>
+    <div class="quiz-q-screen" id="quizQScreen">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+      <div class="quiz-q-label" id="quizQLabel"></div>
+      <div id="quizQBody"></div>
+      <div class="quiz-nav">
+        <button class="btn-skip" onclick="skipQuestion()">Skip</button>
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div class="quiz-score-screen" id="quizScoreScreen">
+      <div class="score-emoji" id="scoreEmoji"></div>
+      <div class="score-number" id="scoreNumber"></div>
+      <div class="score-label" id="scoreLabel"></div>
+      <button class="btn-retry" onclick="startQuiz()">Try again</button>
+      <button class="btn-back-menu" onclick="showQuizMenu()">Change mode</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOPICS = {
+  all:      { label:"All Topics",              emoji:"📚", color:"#1A2E4A" },
+  work:     { label:"Work & Business",         emoji:"💼", color:"#1A6B8A" },
+  feelings: { label:"Feelings & Emotions",     emoji:"💬", color:"#C9960C" },
+  opinion:  { label:"Opinion & Argument",      emoji:"🗣",  color:"#2A5A8A" },
+  change:   { label:"Change & Progress",       emoji:"🔄", color:"#1E7A5A" },
+  problems: { label:"Problems & Solutions",    emoji:"🔧", color:"#8A3A1A" },
+  time:     { label:"Time & Sequence",         emoji:"⏱",  color:"#5A4A8A" },
+  people:   { label:"People & Relationships",  emoji:"🤝", color:"#1A7A6A" },
+  society:  { label:"Society & Culture",       emoji:"🌍", color:"#8A6A1A" },
+};
+
+const VOCAB = [
+  // ── WORK & BUSINESS ──
+  {topic:"work",word:"job",pos:"noun",register:"neutral",family:["jobs (n pl)"],synonyms:["work","occupation","position"],collocations:["find a job","good job","new job"],example:"She found a new job at the supermarket last month."},
+  {topic:"work",word:"work",pos:"verb/noun",register:"neutral",family:["worker (n)","working (adj)"],synonyms:["job","labour"],collocations:["work hard","go to work","work every day"],example:"He works in a small office in the city centre."},
+  {topic:"work",word:"boss",pos:"noun",register:"neutral",family:["bossy (adj)"],synonyms:["manager","employer"],collocations:["my boss","talk to the boss","the boss is kind"],example:"My boss is very friendly and always helps the new staff."},
+  {topic:"work",word:"meeting",pos:"noun",register:"neutral",family:["meet (v)"],synonyms:["discussion"],collocations:["have a meeting","team meeting","attend a meeting"],example:"We have a team meeting every Monday morning at nine."},
+  {topic:"work",word:"office",pos:"noun",register:"neutral",family:[],synonyms:["workplace"],collocations:["go to the office","work in an office","office hours"],example:"The office is on the third floor of the building."},
+  {topic:"work",word:"colleague",pos:"noun",register:"neutral",family:[],synonyms:["co-worker"],collocations:["a helpful colleague","talk to a colleague"],example:"My colleague helped me finish the report before lunch."},
+  {topic:"work",word:"salary",pos:"noun",register:"neutral",family:[],synonyms:["pay","wages"],collocations:["monthly salary","a good salary"],example:"She gets her salary at the end of every month."},
+  {topic:"work",word:"busy",pos:"adjective",register:"neutral",family:[],synonyms:["full of work"],collocations:["very busy","a busy day"],example:"I am very busy today because I have three meetings."},
+  {topic:"work",word:"break",pos:"noun",register:"neutral",family:["break (v)"],synonyms:["rest","pause"],collocations:["take a break","lunch break","short break"],example:"We usually take a short break at eleven o'clock."},
+  {topic:"work",word:"task",pos:"noun",register:"neutral",family:[],synonyms:["job","duty"],collocations:["finish a task","easy task","daily tasks"],example:"My first task today is to answer all my emails."},
+  {topic:"work",word:"team",pos:"noun",register:"neutral",family:["teamwork (n)"],synonyms:["group"],collocations:["work in a team","join a team"],example:"Our team works together very well on big projects."},
+  {topic:"work",word:"customer",pos:"noun",register:"neutral",family:[],synonyms:["client"],collocations:["a happy customer","help a customer"],example:"The shop assistant was polite to every customer."},
+  {topic:"work",word:"shop",pos:"noun/verb",register:"neutral",family:["shopping (n)","shopper (n)"],synonyms:["store"],collocations:["open a shop","go shopping"],example:"There is a small shop next to my house."},
+  {topic:"work",word:"sell",pos:"verb",register:"neutral",family:["seller (n)","sale (n)"],synonyms:["trade"],collocations:["sell a product","sell online"],example:"They sell fresh fruit and vegetables at the market."},
+  {topic:"work",word:"buy",pos:"verb",register:"neutral",family:["buyer (n)"],synonyms:["purchase"],collocations:["buy a gift","buy online"],example:"I need to buy some new shoes this weekend."},
+  {topic:"work",word:"money",pos:"noun",register:"neutral",family:[],synonyms:["cash"],collocations:["earn money","save money","spend money"],example:"He saves some money every month for his holiday."},
+  {topic:"work",word:"plan",pos:"noun/verb",register:"neutral",family:["planning (n)"],synonyms:["idea","schedule"],collocations:["make a plan","business plan"],example:"We made a plan for the new project last week."},
+  {topic:"work",word:"start",pos:"verb",register:"neutral",family:["start (n)"],synonyms:["begin"],collocations:["start work","start a business"],example:"She wants to start her own business next year."},
+  {topic:"work",word:"finish",pos:"verb",register:"neutral",family:["finished (adj)"],synonyms:["complete","end"],collocations:["finish work","finish a task"],example:"We usually finish work at five in the evening."},
+  {topic:"work",word:"company",pos:"noun",register:"neutral",family:[],synonyms:["business","firm"],collocations:["work for a company","a big company"],example:"He works for a big company in the city."},
+  {topic:"work",word:"earn",pos:"verb",register:"neutral",family:["earnings (n)"],synonyms:["get paid"],collocations:["earn money","earn a living"],example:"She earns good money working as a nurse."},
+  {topic:"work",word:"interview",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["job interview","have an interview"],example:"He was nervous before his job interview yesterday."},
+  // ── FEELINGS & EMOTIONS ──
+  {topic:"feelings",word:"happy",pos:"adjective",register:"neutral",family:["happiness (n)","unhappy (adj)"],synonyms:["glad","pleased"],collocations:["very happy","happy about something"],example:"She was happy when she passed her English exam."},
+  {topic:"feelings",word:"sad",pos:"adjective",register:"neutral",family:["sadness (n)"],synonyms:["unhappy"],collocations:["feel sad","a sad story"],example:"He felt sad when his best friend moved away."},
+  {topic:"feelings",word:"angry",pos:"adjective",register:"neutral",family:["anger (n)"],synonyms:["mad","annoyed"],collocations:["get angry","angry about"],example:"My sister was angry when I broke her phone."},
+  {topic:"feelings",word:"tired",pos:"adjective",register:"neutral",family:["tiredness (n)"],synonyms:["sleepy","exhausted"],collocations:["feel tired","very tired"],example:"I feel very tired after a long day at school."},
+  {topic:"feelings",word:"excited",pos:"adjective",register:"neutral",family:["excitement (n)"],synonyms:["thrilled"],collocations:["excited about","really excited"],example:"The children were excited about their trip to the zoo."},
+  {topic:"feelings",word:"scared",pos:"adjective",register:"neutral",family:["scare (v)","scary (adj)"],synonyms:["afraid","frightened"],collocations:["scared of","a bit scared"],example:"My little brother is scared of loud noises."},
+  {topic:"feelings",word:"worried",pos:"adjective",register:"neutral",family:["worry (v/n)"],synonyms:["anxious"],collocations:["worried about","don't worry"],example:"She was worried about her English test tomorrow."},
+  {topic:"feelings",word:"surprised",pos:"adjective",register:"neutral",family:["surprise (n)"],synonyms:["amazed"],collocations:["surprised by","a big surprise"],example:"I was surprised when I saw my old friend at the shop."},
+  {topic:"feelings",word:"bored",pos:"adjective",register:"neutral",family:["boring (adj)","boredom (n)"],synonyms:["not interested"],collocations:["feel bored","bored of something"],example:"He was bored during the long train journey home."},
+  {topic:"feelings",word:"proud",pos:"adjective",register:"neutral",family:["pride (n)"],synonyms:["pleased"],collocations:["proud of","really proud"],example:"My parents were proud of me when I finished the race."},
+  {topic:"feelings",word:"nervous",pos:"adjective",register:"neutral",family:["nervousness (n)"],synonyms:["worried"],collocations:["nervous about","feel nervous"],example:"I always feel nervous before speaking in public."},
+  {topic:"feelings",word:"calm",pos:"adjective",register:"neutral",family:["calmness (n)"],synonyms:["relaxed","peaceful"],collocations:["stay calm","a calm voice"],example:"The teacher stayed calm even when the class was noisy."},
+  {topic:"feelings",word:"upset",pos:"adjective",register:"neutral",family:[],synonyms:["sad","unhappy"],collocations:["upset about","really upset"],example:"She was upset because she lost her favourite pen."},
+  {topic:"feelings",word:"lonely",pos:"adjective",register:"neutral",family:["alone (adj)"],synonyms:["by yourself"],collocations:["feel lonely","a lonely place"],example:"He felt lonely in the new city at first."},
+  {topic:"feelings",word:"confused",pos:"adjective",register:"neutral",family:["confusion (n)"],synonyms:["not sure"],collocations:["confused about","a bit confused"],example:"I was confused about the homework instructions."},
+  {topic:"feelings",word:"glad",pos:"adjective",register:"neutral",family:[],synonyms:["happy","pleased"],collocations:["glad to hear","so glad"],example:"I'm glad you enjoyed the party last night."},
+  {topic:"feelings",word:"relaxed",pos:"adjective",register:"neutral",family:["relax (v)"],synonyms:["calm"],collocations:["feel relaxed","look relaxed"],example:"On Sundays, I feel relaxed and stay at home."},
+  {topic:"feelings",word:"embarrassed",pos:"adjective",register:"neutral",family:["embarrassment (n)"],synonyms:["ashamed"],collocations:["embarrassed about","really embarrassed"],example:"He was embarrassed when he forgot her name."},
+  {topic:"feelings",word:"hopeful",pos:"adjective",register:"neutral",family:["hope (v/n)"],synonyms:["positive"],collocations:["hopeful about","stay hopeful"],example:"She is hopeful about getting a good grade this year."},
+  {topic:"feelings",word:"disappointed",pos:"adjective",register:"neutral",family:["disappoint (v)","disappointment (n)"],synonyms:["let down"],collocations:["disappointed with","really disappointed"],example:"He was disappointed when the football match was cancelled."},
+  {topic:"feelings",word:"jealous",pos:"adjective",register:"neutral",family:["jealousy (n)"],synonyms:["envious"],collocations:["jealous of"],example:"She felt a little jealous of her friend's new bike."},
+  {topic:"feelings",word:"grateful",pos:"adjective",register:"neutral",family:["gratitude (n)"],synonyms:["thankful"],collocations:["grateful for","very grateful"],example:"I am grateful for all the help my teacher gave me."},
+  // ── OPINION & ARGUMENT ──
+  {topic:"opinion",word:"think",pos:"verb",register:"neutral",family:["thought (n)"],synonyms:["believe"],collocations:["I think that","think about"],example:"I think this book is very interesting."},
+  {topic:"opinion",word:"believe",pos:"verb",register:"neutral",family:["belief (n)"],synonyms:["think"],collocations:["believe that","hard to believe"],example:"I believe she will pass the exam easily."},
+  {topic:"opinion",word:"agree",pos:"verb",register:"neutral",family:["agreement (n)","disagree (v)"],synonyms:["think the same"],collocations:["agree with","totally agree"],example:"I agree with you — that film was great."},
+  {topic:"opinion",word:"disagree",pos:"verb",register:"neutral",family:["disagreement (n)"],synonyms:["not agree"],collocations:["disagree with","politely disagree"],example:"I disagree with him about the best restaurant in town."},
+  {topic:"opinion",word:"like",pos:"verb",register:"neutral",family:["liking (n)"],synonyms:["enjoy"],collocations:["like something","really like"],example:"I like reading books in the evening."},
+  {topic:"opinion",word:"love",pos:"verb",register:"neutral",family:["lovely (adj)"],synonyms:["adore"],collocations:["love something","love doing"],example:"She loves cooking food from different countries."},
+  {topic:"opinion",word:"hate",pos:"verb",register:"neutral",family:[],synonyms:["dislike"],collocations:["hate something","really hate"],example:"He hates waiting in long queues."},
+  {topic:"opinion",word:"opinion",pos:"noun",register:"neutral",family:[],synonyms:["view","idea"],collocations:["in my opinion","give an opinion"],example:"In my opinion, the new café is the best in town."},
+  {topic:"opinion",word:"idea",pos:"noun",register:"neutral",family:[],synonyms:["thought","plan"],collocations:["a good idea","have an idea"],example:"That's a great idea for the weekend."},
+  {topic:"opinion",word:"sure",pos:"adjective",register:"neutral",family:["surely (adv)"],synonyms:["certain"],collocations:["not sure","sure about"],example:"I'm not sure about the time of the meeting."},
+  {topic:"opinion",word:"right",pos:"adjective",register:"neutral",family:[],synonyms:["correct"],collocations:["you're right","the right answer"],example:"You're right, the shop closes at six today."},
+  {topic:"opinion",word:"wrong",pos:"adjective",register:"neutral",family:[],synonyms:["incorrect"],collocations:["get it wrong","the wrong way"],example:"I think we took the wrong bus by mistake."},
+  {topic:"opinion",word:"favourite",pos:"adjective",register:"neutral",family:[],synonyms:["best-liked"],collocations:["favourite colour","favourite food"],example:"Pizza is my favourite food."},
+  {topic:"opinion",word:"prefer",pos:"verb",register:"neutral",family:["preference (n)"],synonyms:["like better"],collocations:["prefer tea to coffee"],example:"I prefer tea to coffee in the morning."},
+  {topic:"opinion",word:"important",pos:"adjective",register:"neutral",family:["importance (n)"],synonyms:["significant"],collocations:["very important","important for"],example:"Learning English is important for my job."},
+  {topic:"opinion",word:"true",pos:"adjective",register:"neutral",family:["truth (n)"],synonyms:["correct"],collocations:["it's true","true story"],example:"It's true that she moved to Spain last year."},
+  {topic:"opinion",word:"false",pos:"adjective",register:"neutral",family:[],synonyms:["not true"],collocations:["a false idea"],example:"That information about the film is false."},
+  {topic:"opinion",word:"maybe",pos:"adverb",register:"neutral",family:[],synonyms:["perhaps"],collocations:["maybe later","maybe not"],example:"Maybe we can go to the park this afternoon."},
+  {topic:"opinion",word:"suggest",pos:"verb",register:"neutral",family:["suggestion (n)"],synonyms:["propose"],collocations:["suggest an idea"],example:"I suggest we meet at the café near the station."},
+  {topic:"opinion",word:"decide",pos:"verb",register:"neutral",family:["decision (n)"],synonyms:["choose"],collocations:["decide to","decide on"],example:"We decided to stay home because of the rain."},
+  {topic:"opinion",word:"reason",pos:"noun",register:"neutral",family:[],synonyms:["cause"],collocations:["the reason for","a good reason"],example:"The reason I was late is the bus was full."},
+  {topic:"opinion",word:"explain",pos:"verb",register:"neutral",family:["explanation (n)"],synonyms:["describe"],collocations:["explain something","explain clearly"],example:"Can you explain the homework again, please?"},
+  // ── CHANGE & PROGRESS ──
+  {topic:"change",word:"change",pos:"verb/noun",register:"neutral",family:["changeable (adj)"],synonyms:["alter"],collocations:["change your mind","big change"],example:"She decided to change her job last summer."},
+  {topic:"change",word:"start",pos:"verb",register:"neutral",family:["start (n)"],synonyms:["begin"],collocations:["start school","start again"],example:"The children start school in September."},
+  {topic:"change",word:"stop",pos:"verb",register:"neutral",family:[],synonyms:["finish"],collocations:["stop doing","stop the car"],example:"He stopped eating sweets to be healthier."},
+  {topic:"change",word:"new",pos:"adjective",register:"neutral",family:["newly (adv)"],synonyms:["fresh"],collocations:["a new job","a new house"],example:"They moved into a new house last month."},
+  {topic:"change",word:"old",pos:"adjective",register:"neutral",family:[],synonyms:["not new"],collocations:["get old","old friend"],example:"My grandmother lives in a very old house."},
+  {topic:"change",word:"grow",pos:"verb",register:"neutral",family:["growth (n)"],synonyms:["get bigger"],collocations:["grow up","grow fast"],example:"Children grow very fast in their first year."},
+  {topic:"change",word:"improve",pos:"verb",register:"neutral",family:["improvement (n)"],synonyms:["get better"],collocations:["improve your English","improve a lot"],example:"Her English has improved a lot this year."},
+  {topic:"change",word:"different",pos:"adjective",register:"neutral",family:["difference (n)"],synonyms:["not the same"],collocations:["different from","completely different"],example:"My new school is very different from my old one."},
+  {topic:"change",word:"same",pos:"adjective",register:"neutral",family:[],synonyms:["identical"],collocations:["the same as","same time"],example:"We arrived at the same time this morning."},
+  {topic:"change",word:"move",pos:"verb",register:"neutral",family:["movement (n)"],synonyms:["relocate"],collocations:["move house","move to a city"],example:"They moved to a bigger city for work."},
+  {topic:"change",word:"try",pos:"verb",register:"neutral",family:[],synonyms:["attempt"],collocations:["try again","try hard"],example:"He tried again and finally passed the driving test."},
+  {topic:"change",word:"learn",pos:"verb",register:"neutral",family:["learner (n)"],synonyms:["study"],collocations:["learn a language","learn quickly"],example:"She is learning to play the guitar."},
+  {topic:"change",word:"practise",pos:"verb",register:"neutral",family:["practice (n)"],synonyms:["train"],collocations:["practise every day"],example:"I practise my English every day after work."},
+  {topic:"change",word:"progress",pos:"noun",register:"neutral",family:[],synonyms:["improvement"],collocations:["make progress","good progress"],example:"You are making good progress with your grammar."},
+  {topic:"change",word:"develop",pos:"verb",register:"neutral",family:["development (n)"],synonyms:["grow","improve"],collocations:["develop a skill"],example:"He developed his speaking skills at the language school."},
+  {topic:"change",word:"build",pos:"verb",register:"neutral",family:["building (n)"],synonyms:["construct"],collocations:["build a house","build a habit"],example:"They are building a new school near my house."},
+  {topic:"change",word:"quick",pos:"adjective",register:"neutral",family:["quickly (adv)"],synonyms:["fast"],collocations:["a quick change","quick learner"],example:"She's a quick learner and picks up new words fast."},
+  {topic:"change",word:"slow",pos:"adjective",register:"neutral",family:["slowly (adv)"],synonyms:["not fast"],collocations:["slow change","go slowly"],example:"The traffic was moving very slowly this morning."},
+  {topic:"change",word:"begin",pos:"verb",register:"neutral",family:["beginning (n)","beginner (n)"],synonyms:["start"],collocations:["begin a course"],example:"The English course begins next Monday."},
+  {topic:"change",word:"continue",pos:"verb",register:"neutral",family:[],synonyms:["carry on"],collocations:["continue studying"],example:"She wants to continue studying after this course."},
+  {topic:"change",word:"better",pos:"adjective",register:"neutral",family:[],synonyms:["improved"],collocations:["get better","much better"],example:"My pronunciation is much better than last year."},
+  {topic:"change",word:"worse",pos:"adjective",register:"neutral",family:[],synonyms:["not as good"],collocations:["get worse"],example:"The weather got worse in the afternoon."},
+  // ── PROBLEMS & SOLUTIONS ──
+  {topic:"problems",word:"problem",pos:"noun",register:"neutral",family:[],synonyms:["issue"],collocations:["have a problem","solve a problem"],example:"We had a small problem with the printer today."},
+  {topic:"problems",word:"help",pos:"verb/noun",register:"neutral",family:["helpful (adj)"],synonyms:["assist"],collocations:["help someone","ask for help"],example:"Can you help me carry these bags, please?"},
+  {topic:"problems",word:"fix",pos:"verb",register:"neutral",family:[],synonyms:["repair"],collocations:["fix a problem","fix the car"],example:"My father fixed the broken window yesterday."},
+  {topic:"problems",word:"mistake",pos:"noun",register:"neutral",family:[],synonyms:["error"],collocations:["make a mistake","a small mistake"],example:"Everyone makes mistakes when they learn a new language."},
+  {topic:"problems",word:"difficult",pos:"adjective",register:"neutral",family:["difficulty (n)"],synonyms:["hard"],collocations:["difficult question","find it difficult"],example:"I found the exam quite difficult this time."},
+  {topic:"problems",word:"easy",pos:"adjective",register:"neutral",family:["easily (adv)"],synonyms:["simple"],collocations:["an easy question"],example:"The first exercise was easy, but the second was hard."},
+  {topic:"problems",word:"solve",pos:"verb",register:"neutral",family:["solution (n)"],synonyms:["work out"],collocations:["solve a problem"],example:"She solved the maths problem in two minutes."},
+  {topic:"problems",word:"question",pos:"noun",register:"neutral",family:[],synonyms:["query"],collocations:["ask a question","answer a question"],example:"Can I ask you a question about the homework?"},
+  {topic:"problems",word:"answer",pos:"noun/verb",register:"neutral",family:[],synonyms:["reply"],collocations:["the right answer"],example:"I don't know the answer to this question."},
+  {topic:"problems",word:"lose",pos:"verb",register:"neutral",family:["loss (n)","lost (adj)"],synonyms:["misplace"],collocations:["lose something","lose a game"],example:"I lost my keys somewhere in the park."},
+  {topic:"problems",word:"find",pos:"verb",register:"neutral",family:[],synonyms:["discover"],collocations:["find a solution"],example:"We finally found a solution to the problem."},
+  {topic:"problems",word:"broken",pos:"adjective",register:"neutral",family:["break (v)"],synonyms:["damaged"],collocations:["a broken phone"],example:"My phone screen is broken after I dropped it."},
+  {topic:"problems",word:"worry",pos:"verb/noun",register:"neutral",family:["worried (adj)"],synonyms:["be anxious"],collocations:["don't worry","worry about"],example:"Don't worry, the bus will arrive in a few minutes."},
+  {topic:"problems",word:"trouble",pos:"noun",register:"neutral",family:[],synonyms:["problem"],collocations:["have trouble with"],example:"I have trouble remembering new vocabulary sometimes."},
+  {topic:"problems",word:"forget",pos:"verb",register:"neutral",family:["forgetful (adj)"],synonyms:["not remember"],collocations:["forget something"],example:"I always forget my umbrella when it's sunny."},
+  {topic:"problems",word:"remember",pos:"verb",register:"neutral",family:["reminder (n)"],synonyms:["recall"],collocations:["remember to","remember something"],example:"Please remember to bring your homework tomorrow."},
+  {topic:"problems",word:"late",pos:"adjective",register:"neutral",family:["lateness (n)"],synonyms:["not on time"],collocations:["be late","arrive late"],example:"I was late for school this morning because of the traffic."},
+  {topic:"problems",word:"careful",pos:"adjective",register:"neutral",family:["care (v/n)","carefully (adv)"],synonyms:["cautious"],collocations:["be careful"],example:"Please be careful when you cross the busy road."},
+  {topic:"problems",word:"dangerous",pos:"adjective",register:"neutral",family:["danger (n)"],synonyms:["risky"],collocations:["a dangerous road"],example:"Swimming in the sea today is dangerous because of the wind."},
+  {topic:"problems",word:"accident",pos:"noun",register:"neutral",family:["accidentally (adv)"],synonyms:["crash"],collocations:["a car accident","have an accident"],example:"There was a small accident on the main road this morning."},
+  {topic:"problems",word:"complain",pos:"verb",register:"neutral",family:["complaint (n)"],synonyms:["object"],collocations:["complain about"],example:"He complained about the noise from the street."},
+  {topic:"problems",word:"correct",pos:"verb/adjective",register:"neutral",family:["correction (n)","correctly (adv)"],synonyms:["right","fix"],collocations:["correct a mistake"],example:"The teacher corrected my spelling mistakes kindly."},
+  // ── TIME & SEQUENCE ──
+  {topic:"time",word:"first",pos:"adjective/adverb",register:"neutral",family:["firstly (adv)"],synonyms:[],collocations:["at first","first time"],example:"This is the first time I have visited London."},
+  {topic:"time",word:"next",pos:"adjective",register:"neutral",family:[],synonyms:["following"],collocations:["next week","next time"],example:"We are going on holiday next week."},
+  {topic:"time",word:"then",pos:"adverb",register:"neutral",family:[],synonyms:["after that"],collocations:["and then"],example:"First we had lunch, and then we went shopping."},
+  {topic:"time",word:"after",pos:"preposition",register:"neutral",family:["afterwards (adv)"],synonyms:["later than"],collocations:["after school","after work"],example:"I usually go for a run after work."},
+  {topic:"time",word:"before",pos:"preposition",register:"neutral",family:[],synonyms:["earlier than"],collocations:["before dinner"],example:"Please wash your hands before dinner."},
+  {topic:"time",word:"always",pos:"adverb",register:"neutral",family:[],synonyms:["every time"],collocations:["always late","always happy"],example:"She always arrives at work early."},
+  {topic:"time",word:"sometimes",pos:"adverb",register:"neutral",family:[],synonyms:["occasionally"],collocations:[],example:"Sometimes I walk to work instead of driving."},
+  {topic:"time",word:"never",pos:"adverb",register:"neutral",family:[],synonyms:["not ever"],collocations:["never late"],example:"He never eats breakfast before school."},
+  {topic:"time",word:"often",pos:"adverb",register:"neutral",family:[],synonyms:["frequently"],collocations:["quite often"],example:"We often visit our grandparents at the weekend."},
+  {topic:"time",word:"usually",pos:"adverb",register:"neutral",family:["usual (adj)"],synonyms:["normally"],collocations:[],example:"I usually wake up at seven o'clock."},
+  {topic:"time",word:"morning",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["this morning","early morning"],example:"I go for a walk every morning before breakfast."},
+  {topic:"time",word:"evening",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["this evening"],example:"We are having a party this evening."},
+  {topic:"time",word:"tomorrow",pos:"adverb/noun",register:"neutral",family:[],synonyms:[],collocations:["see you tomorrow"],example:"See you tomorrow at the meeting."},
+  {topic:"time",word:"yesterday",pos:"adverb/noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"I went to the cinema yesterday with my friends."},
+  {topic:"time",word:"soon",pos:"adverb",register:"neutral",family:[],synonyms:["shortly"],collocations:["see you soon"],example:"I hope to see you again soon."},
+  {topic:"time",word:"early",pos:"adjective/adverb",register:"neutral",family:[],synonyms:["not late"],collocations:["arrive early"],example:"We arrived early and got good seats."},
+  {topic:"time",word:"immediately",pos:"adverb",register:"neutral",family:[],synonyms:["right away"],collocations:[],example:"Please call me immediately if there is a problem."},
+  {topic:"time",word:"during",pos:"preposition",register:"neutral",family:[],synonyms:["throughout"],collocations:["during the day"],example:"It rained a lot during the summer this year."},
+  {topic:"time",word:"while",pos:"conjunction",register:"neutral",family:[],synonyms:["as"],collocations:[],example:"I listen to music while I cook dinner."},
+  {topic:"time",word:"finally",pos:"adverb",register:"neutral",family:["final (adj)"],synonyms:["at last"],collocations:[],example:"The bus finally arrived after a long wait."},
+  {topic:"time",word:"still",pos:"adverb",register:"neutral",family:[],synonyms:["yet"],collocations:["still here"],example:"She is still learning to drive."},
+  {topic:"time",word:"already",pos:"adverb",register:"neutral",family:[],synonyms:[],collocations:[],example:"I have already finished my homework."},
+  // ── PEOPLE & RELATIONSHIPS ──
+  {topic:"people",word:"friend",pos:"noun",register:"neutral",family:["friendly (adj)","friendship (n)"],synonyms:["mate"],collocations:["best friend","make friends"],example:"She met her best friend at school."},
+  {topic:"people",word:"family",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["big family"],example:"My family lives in a small town near the coast."},
+  {topic:"people",word:"mother",pos:"noun",register:"neutral",family:[],synonyms:["mum"],collocations:[],example:"My mother works as a nurse at the hospital."},
+  {topic:"people",word:"father",pos:"noun",register:"neutral",family:[],synonyms:["dad"],collocations:[],example:"My father drives a taxi in the city."},
+  {topic:"people",word:"brother",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My younger brother is studying at university."},
+  {topic:"people",word:"sister",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My sister and I share a bedroom."},
+  {topic:"people",word:"neighbour",pos:"noun",register:"neutral",family:["neighbourhood (n)"],synonyms:[],collocations:["a kind neighbour"],example:"Our neighbour helped us move the sofa."},
+  {topic:"people",word:"meet",pos:"verb",register:"neutral",family:["meeting (n)"],synonyms:[],collocations:["meet a friend"],example:"I'm going to meet a friend for coffee later."},
+  {topic:"people",word:"talk",pos:"verb",register:"neutral",family:["talkative (adj)"],synonyms:["speak"],collocations:["talk to someone"],example:"We talked about our holiday plans last night."},
+  {topic:"people",word:"share",pos:"verb",register:"neutral",family:[],synonyms:[],collocations:["share food","share a room"],example:"My sister and I share a room at home."},
+  {topic:"people",word:"kind",pos:"adjective",register:"neutral",family:["kindness (n)"],synonyms:["nice"],collocations:["very kind"],example:"The teacher was very kind to the new student."},
+  {topic:"people",word:"nice",pos:"adjective",register:"neutral",family:[],synonyms:["kind","pleasant"],collocations:["a nice person"],example:"Everyone at my new job is really nice."},
+  {topic:"people",word:"together",pos:"adverb",register:"neutral",family:[],synonyms:[],collocations:["work together"],example:"We cook dinner together every Friday evening."},
+  {topic:"people",word:"visit",pos:"verb",register:"neutral",family:["visitor (n)"],synonyms:[],collocations:["visit a friend"],example:"We visited our grandparents last weekend."},
+  {topic:"people",word:"marry",pos:"verb",register:"neutral",family:["marriage (n)","married (adj)"],synonyms:[],collocations:["get married"],example:"They got married last summer in a small church."},
+  {topic:"people",word:"trust",pos:"verb/noun",register:"neutral",family:[],synonyms:["believe in"],collocations:["trust someone"],example:"I trust my best friend with my secrets."},
+  {topic:"people",word:"relationship",pos:"noun",register:"neutral",family:["relate (v)"],synonyms:[],collocations:["a good relationship"],example:"She has a good relationship with her colleagues."},
+  {topic:"people",word:"classmate",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My classmate helped me understand the homework."},
+  {topic:"people",word:"stranger",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"Don't talk to strangers when you are alone."},
+  {topic:"people",word:"couple",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a young couple"],example:"A young couple moved into the house next door."},
+  {topic:"people",word:"respect",pos:"verb/noun",register:"neutral",family:["respectful (adj)"],synonyms:[],collocations:["respect someone"],example:"We should always respect our teachers and parents."},
+  {topic:"people",word:"argue",pos:"verb",register:"neutral",family:["argument (n)"],synonyms:["disagree"],collocations:["argue with"],example:"My brother and I sometimes argue about small things."},
+  // ── SOCIETY & CULTURE ──
+  {topic:"society",word:"country",pos:"noun",register:"neutral",family:[],synonyms:["nation"],collocations:["a beautiful country"],example:"Japan is a beautiful country with many old temples."},
+  {topic:"society",word:"city",pos:"noun",register:"neutral",family:[],synonyms:["town"],collocations:["a big city"],example:"London is a very big and busy city."},
+  {topic:"society",word:"village",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a small village"],example:"My grandparents live in a small village in the mountains."},
+  {topic:"society",word:"school",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["go to school"],example:"Children in this country start school at the age of six."},
+  {topic:"society",word:"holiday",pos:"noun",register:"neutral",family:[],synonyms:["vacation"],collocations:["summer holiday"],example:"We are going on holiday to the seaside next month."},
+  {topic:"society",word:"festival",pos:"noun",register:"neutral",family:[],synonyms:["celebration"],collocations:["a music festival"],example:"Every year the town has a big food festival."},
+  {topic:"society",word:"language",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["learn a language"],example:"She can speak three different languages."},
+  {topic:"society",word:"custom",pos:"noun",register:"neutral",family:[],synonyms:["tradition"],collocations:["a local custom"],example:"It is a local custom to remove your shoes indoors."},
+  {topic:"society",word:"tradition",pos:"noun",register:"neutral",family:["traditional (adj)"],synonyms:[],collocations:["an old tradition"],example:"This is an old tradition in many families."},
+  {topic:"society",word:"community",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a local community"],example:"Everyone in our community helped clean the park."},
+  {topic:"society",word:"world",pos:"noun",register:"neutral",family:["worldwide (adj)"],synonyms:[],collocations:["around the world"],example:"People travel from all around the world to see this beach."},
+  {topic:"society",word:"famous",pos:"adjective",register:"neutral",family:["fame (n)"],synonyms:["well-known"],collocations:["a famous singer"],example:"He is a famous singer in his home country."},
+  {topic:"society",word:"popular",pos:"adjective",register:"neutral",family:["popularity (n)"],synonyms:["well-liked"],collocations:["very popular"],example:"Football is a very popular sport in Brazil."},
+  {topic:"society",word:"law",pos:"noun",register:"neutral",family:[],synonyms:["rule"],collocations:["follow the law"],example:"You must follow the law and wear a seatbelt."},
+  {topic:"society",word:"rule",pos:"noun",register:"neutral",family:[],synonyms:["law"],collocations:["follow the rules"],example:"Every game has its own rules."},
+  {topic:"society",word:"flag",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["national flag"],example:"The blue and white flag flew above the old building."},
+  {topic:"society",word:"market",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a busy market"],example:"We bought fresh fish at the market this morning."},
+  {topic:"society",word:"celebrate",pos:"verb",register:"neutral",family:["celebration (n)"],synonyms:["mark an occasion"],collocations:["celebrate a birthday"],example:"We celebrated my mother's birthday with a big cake."},
+  {topic:"society",word:"citizen",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"Every citizen has the right to vote in the election."},
+  {topic:"society",word:"capital",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["the capital city"],example:"Paris is the capital city of France."},
+  {topic:"society",word:"crowded",pos:"adjective",register:"neutral",family:["crowd (n)"],synonyms:["full of people"],collocations:["a crowded street"],example:"The market was very crowded on Saturday morning."},
+  {topic:"society",word:"peaceful",pos:"adjective",register:"neutral",family:["peace (n)"],synonyms:["calm"],collocations:["a peaceful village"],example:"They live in a peaceful village near the mountains."},
+  // ── WORK & BUSINESS (MORE) ──
+  {topic:"work",word:"manager",pos:"noun",register:"neutral",family:[],synonyms:["boss"],collocations:["a good manager"],example:"The manager checked all the reports before the meeting."},
+  {topic:"work",word:"employee",pos:"noun",register:"neutral",family:["employ (v)","employer (n)"],synonyms:["worker"],collocations:["a new employee"],example:"Every employee gets a break at lunchtime."},
+  {topic:"work",word:"apply",pos:"verb",register:"neutral",family:["application (n)","applicant (n)"],synonyms:["ask for"],collocations:["apply for a job"],example:"She applied for a job at the new hotel."},
+  {topic:"work",word:"hire",pos:"verb",register:"neutral",family:[],synonyms:["employ"],collocations:["hire staff"],example:"The restaurant is going to hire more staff this summer."},
+  {topic:"work",word:"deadline",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["meet a deadline"],example:"We have to finish the report before the deadline."},
+  {topic:"work",word:"report",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["write a report"],example:"He wrote a short report about the sales meeting."},
+  {topic:"work",word:"email",pos:"noun/verb",register:"neutral",family:[],synonyms:["message"],collocations:["send an email"],example:"I sent an email to my boss this morning."},
+  {topic:"work",word:"appointment",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["make an appointment"],example:"I have an appointment with the dentist at three."},
+  {topic:"work",word:"factory",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["work in a factory"],example:"My uncle works in a car factory near the city."},
+  {topic:"work",word:"promotion",pos:"noun",register:"neutral",family:["promote (v)"],synonyms:[],collocations:["get a promotion"],example:"She got a promotion after two years at the company."},
+  {topic:"work",word:"overtime",pos:"noun",register:"neutral",family:[],synonyms:["extra hours"],collocations:["work overtime"],example:"He works overtime on Saturdays to earn extra money."},
+  {topic:"work",word:"schedule",pos:"noun/verb",register:"neutral",family:[],synonyms:["timetable"],collocations:["a busy schedule"],example:"My schedule is very busy this week."},
+  {topic:"work",word:"warehouse",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["work in a warehouse"],example:"The boxes are stored in a big warehouse."},
+  // ── FEELINGS & EMOTIONS (MORE) ──
+  {topic:"feelings",word:"shy",pos:"adjective",register:"neutral",family:["shyness (n)"],synonyms:["quiet"],collocations:["a bit shy"],example:"He is very shy when he meets new people."},
+  {topic:"feelings",word:"brave",pos:"adjective",register:"neutral",family:["bravery (n)"],synonyms:["courageous"],collocations:["very brave"],example:"It was brave of her to speak in front of the class."},
+  {topic:"feelings",word:"curious",pos:"adjective",register:"neutral",family:["curiosity (n)"],synonyms:["interested"],collocations:["curious about"],example:"My son is curious about how animals live."},
+  {topic:"feelings",word:"shocked",pos:"adjective",register:"neutral",family:["shock (n/v)"],synonyms:["stunned"],collocations:["shocked by"],example:"We were shocked by the news about the accident."},
+  {topic:"feelings",word:"annoyed",pos:"adjective",register:"neutral",family:["annoy (v)","annoying (adj)"],synonyms:["irritated"],collocations:["annoyed about"],example:"She was annoyed when the train was late again."},
+  {topic:"feelings",word:"relieved",pos:"adjective",register:"neutral",family:["relief (n)"],synonyms:["glad"],collocations:["relieved that"],example:"I felt relieved when I found my passport."},
+  {topic:"feelings",word:"anxious",pos:"adjective",register:"neutral",family:["anxiety (n)"],synonyms:["worried"],collocations:["anxious about"],example:"He felt anxious about his first day at work."},
+  {topic:"feelings",word:"cheerful",pos:"adjective",register:"neutral",family:["cheer (n/v)"],synonyms:["happy"],collocations:["a cheerful mood"],example:"She is always cheerful in the morning."},
+  {topic:"feelings",word:"miserable",pos:"adjective",register:"neutral",family:["misery (n)"],synonyms:["very unhappy"],collocations:["feel miserable"],example:"He felt miserable when his team lost the match."},
+  {topic:"feelings",word:"terrified",pos:"adjective",register:"neutral",family:["terrify (v)","terror (n)"],synonyms:["very scared"],collocations:["terrified of"],example:"She is terrified of spiders."},
+  {topic:"feelings",word:"delighted",pos:"adjective",register:"neutral",family:["delight (n)"],synonyms:["very pleased"],collocations:["delighted with"],example:"We were delighted with the results of the test."},
+  {topic:"feelings",word:"frustrated",pos:"adjective",register:"neutral",family:["frustration (n)"],synonyms:["annoyed"],collocations:["frustrated with"],example:"I get frustrated when the internet is slow."},
+  {topic:"feelings",word:"homesick",pos:"adjective",register:"neutral",family:[],synonyms:[],collocations:["feel homesick"],example:"She felt homesick during her first week abroad."},
+  // ── OPINION & ARGUMENT (MORE) ──
+  {topic:"opinion",word:"guess",pos:"verb",register:"neutral",family:[],synonyms:["think"],collocations:["guess correctly"],example:"Can you guess how old I am?"},
+  {topic:"opinion",word:"doubt",pos:"verb/noun",register:"neutral",family:["doubtful (adj)"],synonyms:["not believe"],collocations:["have doubts"],example:"I doubt he will arrive on time."},
+  {topic:"opinion",word:"certain",pos:"adjective",register:"neutral",family:["certainty (n)"],synonyms:["sure"],collocations:["certain about"],example:"She is certain that she locked the door."},
+  {topic:"opinion",word:"obvious",pos:"adjective",register:"neutral",family:["obviously (adv)"],synonyms:["clear"],collocations:["it's obvious"],example:"It's obvious that he didn't do his homework."},
+  {topic:"opinion",word:"probably",pos:"adverb",register:"neutral",family:["probable (adj)"],synonyms:["likely"],collocations:[],example:"It will probably rain later today."},
+  {topic:"opinion",word:"definitely",pos:"adverb",register:"neutral",family:["definite (adj)"],synonyms:["certainly"],collocations:[],example:"I will definitely come to your party."},
+  {topic:"opinion",word:"convince",pos:"verb",register:"neutral",family:["convincing (adj)"],synonyms:["persuade"],collocations:["convince someone"],example:"She convinced her parents to let her travel alone."},
+  {topic:"opinion",word:"admit",pos:"verb",register:"neutral",family:["admission (n)"],synonyms:["confess"],collocations:["admit a mistake"],example:"He admitted that he forgot to send the email."},
+  {topic:"opinion",word:"deny",pos:"verb",register:"neutral",family:["denial (n)"],synonyms:["refuse to accept"],collocations:["deny something"],example:"She denied breaking the window."},
+  {topic:"opinion",word:"assume",pos:"verb",register:"neutral",family:["assumption (n)"],synonyms:["suppose"],collocations:["assume that"],example:"I assumed you already knew about the change."},
+  {topic:"opinion",word:"consider",pos:"verb",register:"neutral",family:["consideration (n)"],synonyms:["think about"],collocations:["consider an idea"],example:"We should consider all the options before deciding."},
+  {topic:"opinion",word:"judge",pos:"verb",register:"neutral",family:["judgement (n)"],synonyms:["evaluate"],collocations:["don't judge"],example:"Please don't judge him before you know the whole story."},
+  {topic:"opinion",word:"compare",pos:"verb",register:"neutral",family:["comparison (n)"],synonyms:["contrast"],collocations:["compare prices"],example:"We compared prices before buying the new phone."},
+  // ── CHANGE & PROGRESS (MORE) ──
+  {topic:"change",word:"increase",pos:"verb/noun",register:"neutral",family:["increasing (adj)"],synonyms:["go up"],collocations:["increase in price"],example:"The price of petrol increased last month."},
+  {topic:"change",word:"decrease",pos:"verb/noun",register:"neutral",family:["decreasing (adj)"],synonyms:["go down"],collocations:["decrease slowly"],example:"Sales decreased during the winter months."},
+  {topic:"change",word:"replace",pos:"verb",register:"neutral",family:["replacement (n)"],synonyms:["change for a new one"],collocations:["replace a part"],example:"We need to replace the broken chair in the kitchen."},
+  {topic:"change",word:"adapt",pos:"verb",register:"neutral",family:["adaptation (n)"],synonyms:["adjust"],collocations:["adapt to"],example:"It took her a while to adapt to the new school."},
+  {topic:"change",word:"adjust",pos:"verb",register:"neutral",family:["adjustment (n)"],synonyms:["change slightly"],collocations:["adjust the volume"],example:"Please adjust the volume; it's too loud."},
+  {topic:"change",word:"transform",pos:"verb",register:"neutral",family:["transformation (n)"],synonyms:["change completely"],collocations:["transform a room"],example:"They transformed the old garage into a bedroom."},
+  {topic:"change",word:"upgrade",pos:"verb/noun",register:"neutral",family:[],synonyms:["improve"],collocations:["upgrade a phone"],example:"He upgraded his old computer last year."},
+  {topic:"change",word:"reduce",pos:"verb",register:"neutral",family:["reduction (n)"],synonyms:["decrease"],collocations:["reduce the price"],example:"The shop reduced the price of winter coats."},
+  {topic:"change",word:"expand",pos:"verb",register:"neutral",family:["expansion (n)"],synonyms:["grow bigger"],collocations:["expand a business"],example:"The company plans to expand into new markets."},
+  {topic:"change",word:"shrink",pos:"verb",register:"neutral",family:[],synonyms:["get smaller"],collocations:["shrink in the wash"],example:"My jumper shrank after I washed it."},
+  {topic:"change",word:"evolve",pos:"verb",register:"neutral",family:["evolution (n)"],synonyms:["develop slowly"],collocations:["evolve over time"],example:"The city has evolved a lot over the last ten years."},
+  {topic:"change",word:"switch",pos:"verb/noun",register:"neutral",family:[],synonyms:["change to"],collocations:["switch jobs"],example:"She switched to a healthier diet last month."},
+  {topic:"change",word:"renew",pos:"verb",register:"neutral",family:["renewal (n)"],synonyms:["make new again"],collocations:["renew a passport"],example:"I need to renew my passport before the trip."},
+  // ── PROBLEMS & SOLUTIONS (MORE) ──
+  {topic:"problems",word:"confusing",pos:"adjective",register:"neutral",family:["confuse (v)","confusion (n)"],synonyms:["not clear"],collocations:["a confusing map"],example:"The instructions were quite confusing at first."},
+  {topic:"problems",word:"warning",pos:"noun",register:"neutral",family:["warn (v)"],synonyms:[],collocations:["give a warning"],example:"There was a warning about strong wind today."},
+  {topic:"problems",word:"emergency",pos:"noun",register:"neutral",family:[],synonyms:["crisis"],collocations:["in an emergency"],example:"In an emergency, call this number immediately."},
+  {topic:"problems",word:"damage",pos:"noun/verb",register:"neutral",family:["damaged (adj)"],synonyms:["harm"],collocations:["cause damage"],example:"The storm caused a lot of damage to the roof."},
+  {topic:"problems",word:"repair",pos:"verb/noun",register:"neutral",family:[],synonyms:["fix"],collocations:["repair a car"],example:"He took his bike to be repaired."},
+  {topic:"problems",word:"blame",pos:"verb/noun",register:"neutral",family:[],synonyms:["accuse"],collocations:["blame someone"],example:"Don't blame me for the mistake, it wasn't my fault."},
+  {topic:"problems",word:"apologise",pos:"verb",register:"neutral",family:["apology (n)"],synonyms:["say sorry"],collocations:["apologise for"],example:"He apologised for being late to the meeting."},
+  {topic:"problems",word:"sorry",pos:"adjective",register:"neutral",family:[],synonyms:["apologetic"],collocations:["feel sorry"],example:"I'm sorry I forgot to call you back."},
+  {topic:"problems",word:"error",pos:"noun",register:"neutral",family:[],synonyms:["mistake"],collocations:["a small error"],example:"There was an error in the email address."},
+  {topic:"problems",word:"challenge",pos:"noun/verb",register:"neutral",family:["challenging (adj)"],synonyms:["difficulty"],collocations:["a big challenge"],example:"Learning a new language can be a big challenge."},
+  {topic:"problems",word:"struggle",pos:"verb/noun",register:"neutral",family:[],synonyms:["find it hard"],collocations:["struggle with"],example:"She struggled with the heavy bags."},
+  {topic:"problems",word:"overcome",pos:"verb",register:"neutral",family:[],synonyms:["deal with successfully"],collocations:["overcome a problem"],example:"He overcame his fear of speaking in public."},
+  {topic:"problems",word:"solution",pos:"noun",register:"neutral",family:["solve (v)"],synonyms:["answer"],collocations:["find a solution"],example:"We finally found a solution to the parking problem."},
+  // ── TIME & SEQUENCE (MORE) ──
+  {topic:"time",word:"afternoon",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["this afternoon"],example:"I have a meeting this afternoon at two o'clock."},
+  {topic:"time",word:"night",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["last night"],example:"I couldn't sleep well last night."},
+  {topic:"time",word:"week",pos:"noun",register:"neutral",family:["weekly (adj)"],synonyms:[],collocations:["next week"],example:"We are going on a trip next week."},
+  {topic:"time",word:"month",pos:"noun",register:"neutral",family:["monthly (adj)"],synonyms:[],collocations:["last month"],example:"She started her new job last month."},
+  {topic:"time",word:"year",pos:"noun",register:"neutral",family:["yearly (adj)"],synonyms:[],collocations:["every year"],example:"We visit my grandparents every year in July."},
+  {topic:"time",word:"date",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["set a date"],example:"What's the date of your English exam?"},
+  {topic:"time",word:"calendar",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["mark a calendar"],example:"I wrote the meeting on my calendar."},
+  {topic:"time",word:"clock",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["the clock says"],example:"The clock on the wall says it's five o'clock."},
+  {topic:"time",word:"hour",pos:"noun",register:"neutral",family:["hourly (adj)"],synonyms:[],collocations:["an hour ago"],example:"The film starts in an hour."},
+  {topic:"time",word:"minute",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a few minutes"],example:"Wait a minute, I'm almost ready."},
+  {topic:"time",word:"second",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["in a second"],example:"I'll be there in a second."},
+  {topic:"time",word:"recently",pos:"adverb",register:"neutral",family:["recent (adj)"],synonyms:["lately"],collocations:[],example:"I have been busy with work recently."},
+  {topic:"time",word:"nowadays",pos:"adverb",register:"neutral",family:[],synonyms:["these days"],collocations:[],example:"Nowadays, most people use smartphones every day."},
+  // ── PEOPLE & RELATIONSHIPS (MORE) ──
+  {topic:"people",word:"grandmother",pos:"noun",register:"neutral",family:[],synonyms:["grandma"],collocations:[],example:"My grandmother bakes bread every weekend."},
+  {topic:"people",word:"grandfather",pos:"noun",register:"neutral",family:[],synonyms:["grandpa"],collocations:[],example:"My grandfather tells wonderful stories about his youth."},
+  {topic:"people",word:"cousin",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My cousin is coming to stay with us this summer."},
+  {topic:"people",word:"aunt",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My aunt lives in a small town by the sea."},
+  {topic:"people",word:"uncle",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My uncle taught me how to ride a bike."},
+  {topic:"people",word:"baby",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a new baby"],example:"My sister just had a baby girl."},
+  {topic:"people",word:"child",pos:"noun",register:"neutral",family:["childhood (n)"],synonyms:["kid"],collocations:["a young child"],example:"Every child in the class got a small gift."},
+  {topic:"people",word:"teenager",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My teenager son spends a lot of time on his phone."},
+  {topic:"people",word:"adult",pos:"noun",register:"neutral",family:[],synonyms:["grown-up"],collocations:[],example:"This film is only for adults."},
+  {topic:"people",word:"elderly",pos:"adjective",register:"neutral",family:[],synonyms:["old"],collocations:["elderly people"],example:"We help elderly people in our neighbourhood."},
+  {topic:"people",word:"partner",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a business partner"],example:"She and her partner moved into a new flat."},
+  {topic:"people",word:"roommate",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"My roommate always cleans the kitchen after dinner."},
+  {topic:"people",word:"introduce",pos:"verb",register:"neutral",family:["introduction (n)"],synonyms:["present"],collocations:["introduce someone"],example:"Let me introduce you to my colleague, Sarah."},
+  // ── SOCIETY & CULTURE (MORE) ──
+  {topic:"society",word:"culture",pos:"noun",register:"neutral",family:["cultural (adj)"],synonyms:[],collocations:["a rich culture"],example:"Every country has its own culture and traditions."},
+  {topic:"society",word:"religion",pos:"noun",register:"neutral",family:["religious (adj)"],synonyms:[],collocations:[],example:"People in this town follow different religions."},
+  {topic:"society",word:"government",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["the government decided"],example:"The government announced a new law last week."},
+  {topic:"society",word:"election",pos:"noun",register:"neutral",family:["elect (v)"],synonyms:[],collocations:["win an election"],example:"The next election will take place in May."},
+  {topic:"society",word:"vote",pos:"verb/noun",register:"neutral",family:[],synonyms:[],collocations:["vote for"],example:"Everyone over eighteen can vote in the election."},
+  {topic:"society",word:"tax",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["pay tax"],example:"We pay tax on the money we earn."},
+  {topic:"society",word:"hospital",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["go to hospital"],example:"She works as a nurse at the local hospital."},
+  {topic:"society",word:"museum",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["visit a museum"],example:"We visited an art museum during our trip."},
+  {topic:"society",word:"library",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["borrow a book from the library"],example:"I borrowed three books from the library."},
+  {topic:"society",word:"park",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["walk in the park"],example:"We had a picnic in the park on Sunday."},
+  {topic:"society",word:"church",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["go to church"],example:"They go to church every Sunday morning."},
+  {topic:"society",word:"temple",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["an old temple"],example:"There is a beautiful old temple near our hotel."},
+  {topic:"society",word:"neighbourhood",pos:"noun",register:"neutral",family:["neighbour (n)"],synonyms:["area"],collocations:["a quiet neighbourhood"],example:"We live in a quiet neighbourhood near the park."},
+  // ── WORK & BUSINESS (EXTRA) ──
+  {topic:"work",word:"staff",pos:"noun",register:"neutral",family:[],synonyms:["employees"],collocations:["hire staff","staff meeting"],example:"All staff must arrive before nine o'clock."},
+  {topic:"work",word:"workplace",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a safe workplace"],example:"Our workplace has a small kitchen for lunch."},
+  {topic:"work",word:"retire",pos:"verb",register:"neutral",family:["retirement (n)"],synonyms:["stop working"],collocations:["retire early"],example:"My father retired last year after thirty years of work."},
+  {topic:"work",word:"resign",pos:"verb",register:"neutral",family:["resignation (n)"],synonyms:["quit"],collocations:["resign from a job"],example:"She resigned from her job to start her own business."},
+  {topic:"work",word:"training",pos:"noun",register:"neutral",family:["train (v)","trainer (n)"],synonyms:[],collocations:["staff training"],example:"New employees get two weeks of training."},
+  {topic:"work",word:"skill",pos:"noun",register:"neutral",family:["skilled (adj)"],synonyms:["ability"],collocations:["a useful skill"],example:"Good communication skills are important at work."},
+  {topic:"work",word:"experience",pos:"noun",register:"neutral",family:["experienced (adj)"],synonyms:[],collocations:["work experience"],example:"He has five years of experience in sales."},
+  {topic:"work",word:"career",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a career in teaching"],example:"She started her career as a shop assistant."},
+  {topic:"work",word:"shift",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["night shift","work a shift"],example:"He works the night shift at the hospital."},
+  {topic:"work",word:"uniform",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["wear a uniform"],example:"All the waiters wear a blue uniform."},
+  {topic:"work",word:"machine",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["use a machine"],example:"The factory uses machines to pack the boxes."},
+  {topic:"work",word:"invoice",pos:"noun",register:"neutral",family:[],synonyms:["bill"],collocations:["send an invoice"],example:"The company sent an invoice for the new chairs."},
+  {topic:"work",word:"budget",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a small budget"],example:"We have a small budget for new equipment this year."},
+  {topic:"work",word:"profit",pos:"noun",register:"neutral",family:["profitable (adj)"],synonyms:[],collocations:["make a profit"],example:"The shop made a good profit last summer."},
+  {topic:"work",word:"loss",pos:"noun",register:"neutral",family:["lose (v)"],synonyms:[],collocations:["a big loss"],example:"The company had a loss in its first year."},
+  {topic:"work",word:"contract",pos:"noun",register:"neutral",family:[],synonyms:["agreement"],collocations:["sign a contract"],example:"She signed a contract for the new job."},
+  {topic:"work",word:"receptionist",pos:"noun",register:"neutral",family:["reception (n)"],synonyms:[],collocations:[],example:"The receptionist answered the phone politely."},
+  {topic:"work",word:"cashier",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"The cashier gave me my change and receipt."},
+  {topic:"work",word:"engineer",pos:"noun",register:"neutral",family:["engineering (n)"],synonyms:[],collocations:[],example:"My brother is an engineer at a car factory."},
+  {topic:"work",word:"waiter",pos:"noun",register:"neutral",family:["waitress (n)"],synonyms:[],collocations:[],example:"The waiter brought us the menu and some water."},
+  {topic:"work",word:"delivery",pos:"noun",register:"neutral",family:["deliver (v)"],synonyms:[],collocations:["a fast delivery"],example:"The delivery arrived earlier than we expected."},
+  {topic:"work",word:"order",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["place an order"],example:"I placed an order for new office chairs."},
+  {topic:"work",word:"document",pos:"noun",register:"neutral",family:[],synonyms:["file"],collocations:["sign a document"],example:"Please sign this document before you leave."},
+  {topic:"work",word:"laptop",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a new laptop"],example:"She uses her laptop to write reports."},
+  {topic:"work",word:"presentation",pos:"noun",register:"neutral",family:["present (v)"],synonyms:[],collocations:["give a presentation"],example:"He gave a presentation about the new product."},
+  // ── FEELINGS & EMOTIONS (EXTRA) ──
+  {topic:"feelings",word:"content",pos:"adjective",register:"neutral",family:["contentment (n)"],synonyms:["satisfied"],collocations:["feel content"],example:"She felt content after finishing all her homework."},
+  {topic:"feelings",word:"satisfied",pos:"adjective",register:"neutral",family:["satisfaction (n)"],synonyms:["pleased"],collocations:["satisfied with"],example:"I am satisfied with my exam results."},
+  {topic:"feelings",word:"thrilled",pos:"adjective",register:"neutral",family:["thrill (n)"],synonyms:["very excited"],collocations:["thrilled about"],example:"She was thrilled about her trip to Japan."},
+  {topic:"feelings",word:"amazed",pos:"adjective",register:"neutral",family:["amazement (n)"],synonyms:["astonished"],collocations:["amazed by"],example:"We were amazed by the size of the mountain."},
+  {topic:"feelings",word:"amused",pos:"adjective",register:"neutral",family:["amusement (n)"],synonyms:["entertained"],collocations:["amused by"],example:"The children were amused by the funny clown."},
+  {topic:"feelings",word:"puzzled",pos:"adjective",register:"neutral",family:["puzzle (n)"],synonyms:["confused"],collocations:["puzzled by"],example:"He looked puzzled by the difficult question."},
+  {topic:"feelings",word:"irritated",pos:"adjective",register:"neutral",family:["irritate (v)","irritating (adj)"],synonyms:["annoyed"],collocations:["irritated by"],example:"She was irritated by the loud music next door."},
+  {topic:"feelings",word:"heartbroken",pos:"adjective",register:"neutral",family:["heartbreak (n)"],synonyms:["very sad"],collocations:[],example:"He was heartbroken when his dog passed away."},
+  {topic:"feelings",word:"overwhelmed",pos:"adjective",register:"neutral",family:["overwhelm (v)"],synonyms:["stressed"],collocations:["overwhelmed by"],example:"She felt overwhelmed by all the homework this week."},
+  {topic:"feelings",word:"stressed",pos:"adjective",register:"neutral",family:["stress (n)"],synonyms:["under pressure"],collocations:["stressed about"],example:"He felt stressed about the upcoming exams."},
+  {topic:"feelings",word:"comfortable",pos:"adjective",register:"neutral",family:["comfort (n)"],synonyms:["relaxed"],collocations:["feel comfortable"],example:"I feel comfortable in this new classroom."},
+  {topic:"feelings",word:"uncomfortable",pos:"adjective",register:"neutral",family:[],synonyms:["not relaxed"],collocations:["feel uncomfortable"],example:"He felt uncomfortable speaking in front of everyone."},
+  {topic:"feelings",word:"confident",pos:"adjective",register:"neutral",family:["confidence (n)"],synonyms:["sure of yourself"],collocations:["feel confident"],example:"She feels confident about her English speaking now."},
+  {topic:"feelings",word:"hurt",pos:"adjective/verb",register:"neutral",family:[],synonyms:["upset"],collocations:["hurt someone's feelings"],example:"His comment hurt her feelings a little."},
+  {topic:"feelings",word:"guilty",pos:"adjective",register:"neutral",family:["guilt (n)"],synonyms:[],collocations:["feel guilty"],example:"I felt guilty for forgetting her birthday."},
+  {topic:"feelings",word:"ashamed",pos:"adjective",register:"neutral",family:["shame (n)"],synonyms:[],collocations:["ashamed of"],example:"He was ashamed of losing his temper."},
+  {topic:"feelings",word:"hopeless",pos:"adjective",register:"neutral",family:["hope (n)"],synonyms:["without hope"],collocations:["feel hopeless"],example:"She felt hopeless about finding a new job."},
+  {topic:"feelings",word:"optimistic",pos:"adjective",register:"neutral",family:["optimism (n)"],synonyms:["positive"],collocations:["optimistic about"],example:"He is optimistic about passing his driving test."},
+  {topic:"feelings",word:"enthusiastic",pos:"adjective",register:"neutral",family:["enthusiasm (n)"],synonyms:["keen"],collocations:["enthusiastic about"],example:"She is enthusiastic about learning new languages."},
+  {topic:"feelings",word:"sympathetic",pos:"adjective",register:"neutral",family:["sympathy (n)"],synonyms:["understanding"],collocations:["sympathetic to"],example:"The teacher was sympathetic when I explained my problem."},
+  {topic:"feelings",word:"touched",pos:"adjective",register:"neutral",family:["touch (v)"],synonyms:["moved"],collocations:["touched by"],example:"I was touched by their kind message."},
+  {topic:"feelings",word:"inspired",pos:"adjective",register:"neutral",family:["inspire (v)","inspiration (n)"],synonyms:["motivated"],collocations:["inspired by"],example:"She felt inspired by her teacher's story."},
+  {topic:"feelings",word:"motivated",pos:"adjective",register:"neutral",family:["motivate (v)","motivation (n)"],synonyms:["driven"],collocations:["motivated to"],example:"He felt motivated to study harder this term."},
+  {topic:"feelings",word:"exhausted",pos:"adjective",register:"neutral",family:["exhaustion (n)"],synonyms:["very tired"],collocations:["completely exhausted"],example:"I was exhausted after the long journey home."},
+  {topic:"feelings",word:"energetic",pos:"adjective",register:"neutral",family:["energy (n)"],synonyms:["lively"],collocations:["feel energetic"],example:"The children were very energetic at the party."},
+  // ── OPINION & ARGUMENT (EXTRA) ──
+  {topic:"opinion",word:"recommend",pos:"verb",register:"neutral",family:["recommendation (n)"],synonyms:["suggest"],collocations:["recommend a book"],example:"Can you recommend a good restaurant near here?"},
+  {topic:"opinion",word:"advise",pos:"verb",register:"neutral",family:["advice (n)"],synonyms:["suggest"],collocations:["advise someone"],example:"The doctor advised him to rest for a week."},
+  {topic:"opinion",word:"perspective",pos:"noun",register:"neutral",family:[],synonyms:["point of view"],collocations:["from my perspective"],example:"From my perspective, the plan needs more time."},
+  {topic:"opinion",word:"argument",pos:"noun",register:"neutral",family:["argue (v)"],synonyms:[],collocations:["a strong argument"],example:"She made a strong argument for a longer break."},
+  {topic:"opinion",word:"debate",pos:"noun/verb",register:"neutral",family:[],synonyms:["discussion"],collocations:["have a debate"],example:"We had a friendly debate about the best film."},
+  {topic:"opinion",word:"discuss",pos:"verb",register:"neutral",family:["discussion (n)"],synonyms:["talk about"],collocations:["discuss a plan"],example:"Let's discuss the schedule for next week."},
+  {topic:"opinion",word:"conclude",pos:"verb",register:"neutral",family:["conclusion (n)"],synonyms:["decide finally"],collocations:["conclude that"],example:"We concluded that the trip should be shorter."},
+  {topic:"opinion",word:"evidence",pos:"noun",register:"neutral",family:[],synonyms:["proof"],collocations:["clear evidence"],example:"There is clear evidence that the plan works well."},
+  {topic:"opinion",word:"prove",pos:"verb",register:"neutral",family:["proof (n)"],synonyms:["show to be true"],collocations:["prove a point"],example:"He proved that his idea was correct."},
+  {topic:"opinion",word:"support",pos:"verb/noun",register:"neutral",family:["supportive (adj)"],synonyms:["agree with"],collocations:["support an idea"],example:"Most of the class supported the new timetable."},
+  {topic:"opinion",word:"oppose",pos:"verb",register:"neutral",family:["opposition (n)"],synonyms:["disagree with"],collocations:["oppose a plan"],example:"Some parents opposed the change to the school day."},
+  {topic:"opinion",word:"view",pos:"noun",register:"neutral",family:[],synonyms:["opinion"],collocations:["in my view"],example:"In my view, the film was too long."},
+  {topic:"opinion",word:"attitude",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a positive attitude"],example:"She always has a positive attitude at work."},
+  {topic:"opinion",word:"criticize",pos:"verb",register:"neutral",family:["criticism (n)","critical (adj)"],synonyms:["find fault with"],collocations:["criticize someone"],example:"He criticized the plan for being too slow."},
+  {topic:"opinion",word:"praise",pos:"verb/noun",register:"neutral",family:[],synonyms:["compliment"],collocations:["praise someone"],example:"The teacher praised her for her hard work."},
+  {topic:"opinion",word:"approve",pos:"verb",register:"neutral",family:["approval (n)"],synonyms:["agree with"],collocations:["approve of"],example:"My parents approve of my new job."},
+  {topic:"opinion",word:"disapprove",pos:"verb",register:"neutral",family:["disapproval (n)"],synonyms:["not agree with"],collocations:["disapprove of"],example:"She disapproves of eating in the classroom."},
+  {topic:"opinion",word:"insist",pos:"verb",register:"neutral",family:[],synonyms:["demand"],collocations:["insist on"],example:"He insisted on paying for the meal."},
+  {topic:"opinion",word:"claim",pos:"verb/noun",register:"neutral",family:[],synonyms:["state"],collocations:["claim that"],example:"She claims that the shop is the cheapest in town."},
+  {topic:"opinion",word:"state",pos:"verb",register:"neutral",family:["statement (n)"],synonyms:["say clearly"],collocations:["state an opinion"],example:"He stated his opinion clearly during the meeting."},
+  {topic:"opinion",word:"mention",pos:"verb",register:"neutral",family:[],synonyms:["say briefly"],collocations:["mention something"],example:"She mentioned the party during our chat."},
+  {topic:"opinion",word:"comment",pos:"verb/noun",register:"neutral",family:[],synonyms:["remark"],collocations:["make a comment"],example:"He made a positive comment about my work."},
+  {topic:"opinion",word:"fair",pos:"adjective",register:"neutral",family:["fairness (n)"],synonyms:["just"],collocations:["a fair decision"],example:"The teacher made a fair decision about the grades."},
+  {topic:"opinion",word:"unfair",pos:"adjective",register:"neutral",family:[],synonyms:["not just"],collocations:["an unfair rule"],example:"Some students think the new rule is unfair."},
+  {topic:"opinion",word:"biased",pos:"adjective",register:"neutral",family:["bias (n)"],synonyms:["one-sided"],collocations:["a biased opinion"],example:"His opinion seemed a little biased to me."},
+  // ── CHANGE & PROGRESS (EXTRA) ──
+  {topic:"change",word:"convert",pos:"verb",register:"neutral",family:["conversion (n)"],synonyms:["change into"],collocations:["convert into"],example:"They converted the old shop into a café."},
+  {topic:"change",word:"alter",pos:"verb",register:"neutral",family:["alteration (n)"],synonyms:["change slightly"],collocations:["alter a plan"],example:"We altered our plans because of the rain."},
+  {topic:"change",word:"modify",pos:"verb",register:"neutral",family:["modification (n)"],synonyms:["change slightly"],collocations:["modify a design"],example:"The company modified the app after user feedback."},
+  {topic:"change",word:"update",pos:"verb/noun",register:"neutral",family:[],synonyms:["refresh"],collocations:["update information"],example:"Please update your address on the form."},
+  {topic:"change",word:"revise",pos:"verb",register:"neutral",family:["revision (n)"],synonyms:["change and improve"],collocations:["revise a plan"],example:"She revised her essay before handing it in."},
+  {topic:"change",word:"reform",pos:"verb/noun",register:"neutral",family:[],synonyms:["improve a system"],collocations:["reform the system"],example:"The government wants to reform the school system."},
+  {topic:"change",word:"reverse",pos:"verb",register:"neutral",family:[],synonyms:["turn back"],collocations:["reverse a decision"],example:"They reversed the decision after many complaints."},
+  {topic:"change",word:"exchange",pos:"verb/noun",register:"neutral",family:[],synonyms:["swap"],collocations:["exchange gifts"],example:"We exchanged phone numbers at the party."},
+  {topic:"change",word:"transition",pos:"noun",register:"neutral",family:[],synonyms:["change from one thing to another"],collocations:["a smooth transition"],example:"The transition to the new system went smoothly."},
+  {topic:"change",word:"innovate",pos:"verb",register:"neutral",family:["innovation (n)","innovative (adj)"],synonyms:["create something new"],collocations:[],example:"The company always tries to innovate with new products."},
+  {topic:"change",word:"invent",pos:"verb",register:"neutral",family:["invention (n)","inventor (n)"],synonyms:["create"],collocations:["invent something new"],example:"He invented a new tool to save time."},
+  {topic:"change",word:"discover",pos:"verb",register:"neutral",family:["discovery (n)"],synonyms:["find"],collocations:["discover something new"],example:"Scientists discovered a new type of plant."},
+  {topic:"change",word:"create",pos:"verb",register:"neutral",family:["creation (n)","creative (adj)"],synonyms:["make"],collocations:["create something new"],example:"She created a new recipe for dinner."},
+  {topic:"change",word:"rebuild",pos:"verb",register:"neutral",family:[],synonyms:["build again"],collocations:["rebuild a house"],example:"They rebuilt the old bridge after the storm."},
+  {topic:"change",word:"restore",pos:"verb",register:"neutral",family:["restoration (n)"],synonyms:["repair to original state"],collocations:["restore an old building"],example:"The team restored the old castle beautifully."},
+  {topic:"change",word:"redesign",pos:"verb",register:"neutral",family:[],synonyms:["design again"],collocations:["redesign a website"],example:"They redesigned the website to make it easier to use."},
+  {topic:"change",word:"restart",pos:"verb",register:"neutral",family:[],synonyms:["start again"],collocations:["restart a computer"],example:"Please restart your computer to fix the problem."},
+  {topic:"change",word:"resume",pos:"verb",register:"neutral",family:[],synonyms:["continue"],collocations:["resume work"],example:"We will resume the lesson after the break."},
+  {topic:"change",word:"pause",pos:"verb/noun",register:"neutral",family:[],synonyms:["stop for a while"],collocations:["pause a video"],example:"She paused the video to answer the phone."},
+  {topic:"change",word:"cancel",pos:"verb",register:"neutral",family:["cancellation (n)"],synonyms:[],collocations:["cancel a meeting"],example:"They cancelled the meeting because of the storm."},
+  {topic:"change",word:"postpone",pos:"verb",register:"neutral",family:[],synonyms:["delay"],collocations:["postpone an event"],example:"We postponed the trip until next month."},
+  {topic:"change",word:"delay",pos:"verb/noun",register:"neutral",family:[],synonyms:["make late"],collocations:["cause a delay"],example:"Bad weather delayed our flight by two hours."},
+  {topic:"change",word:"suddenly",pos:"adverb",register:"neutral",family:["sudden (adj)"],synonyms:["without warning"],collocations:[],example:"Suddenly, the lights went out in the room."},
+  {topic:"change",word:"permanently",pos:"adverb",register:"neutral",family:["permanent (adj)"],synonyms:["forever"],collocations:[],example:"The shop closed permanently last year."},
+  {topic:"change",word:"temporarily",pos:"adverb",register:"neutral",family:["temporary (adj)"],synonyms:["for a short time"],collocations:[],example:"The road is temporarily closed for repairs."},
+  // ── PROBLEMS & SOLUTIONS (EXTRA) ──
+  {topic:"problems",word:"risk",pos:"noun/verb",register:"neutral",family:["risky (adj)"],synonyms:["danger"],collocations:["take a risk"],example:"It's too risky to cross the road here."},
+  {topic:"problems",word:"safe",pos:"adjective",register:"neutral",family:["safety (n)"],synonyms:["not dangerous"],collocations:["a safe place"],example:"This part of the city is very safe at night."},
+  {topic:"problems",word:"safety",pos:"noun",register:"neutral",family:["safe (adj)"],synonyms:[],collocations:["road safety"],example:"The school teaches children about road safety."},
+  {topic:"problems",word:"injury",pos:"noun",register:"neutral",family:["injure (v)","injured (adj)"],synonyms:["wound"],collocations:["a serious injury"],example:"He had a small injury after falling off his bike."},
+  {topic:"problems",word:"injured",pos:"adjective",register:"neutral",family:["injury (n)"],synonyms:["hurt"],collocations:["badly injured"],example:"Two people were injured in the car accident."},
+  {topic:"problems",word:"rescue",pos:"verb/noun",register:"neutral",family:[],synonyms:["save"],collocations:["rescue someone"],example:"The firefighters rescued the cat from the tree."},
+  {topic:"problems",word:"disaster",pos:"noun",register:"neutral",family:["disastrous (adj)"],synonyms:["catastrophe"],collocations:["a natural disaster"],example:"The flood was a terrible natural disaster."},
+  {topic:"problems",word:"flood",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["a bad flood"],example:"Heavy rain caused a flood in the town centre."},
+  {topic:"problems",word:"fire",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["put out a fire"],example:"The firefighters put out the fire quickly."},
+  {topic:"problems",word:"breakdown",pos:"noun",register:"neutral",family:["break down (v)"],synonyms:[],collocations:["a car breakdown"],example:"We had a car breakdown on the motorway."},
+  {topic:"problems",word:"fault",pos:"noun",register:"neutral",family:[],synonyms:["mistake"],collocations:["your fault"],example:"It wasn't my fault that the meeting was late."},
+  {topic:"problems",word:"urgent",pos:"adjective",register:"neutral",family:["urgently (adv)"],synonyms:["needing action now"],collocations:["an urgent message"],example:"I received an urgent message from my manager."},
+  {topic:"problems",word:"serious",pos:"adjective",register:"neutral",family:["seriously (adv)"],synonyms:["important"],collocations:["a serious problem"],example:"This is a serious problem that needs a quick answer."},
+  {topic:"problems",word:"critical",pos:"adjective",register:"neutral",family:[],synonyms:["very serious"],collocations:["a critical situation"],example:"The patient was in a critical condition."},
+  {topic:"problems",word:"obstacle",pos:"noun",register:"neutral",family:[],synonyms:["barrier"],collocations:["overcome an obstacle"],example:"Lack of time was the biggest obstacle for us."},
+  {topic:"problems",word:"barrier",pos:"noun",register:"neutral",family:[],synonyms:["obstacle"],collocations:["a language barrier"],example:"The language barrier made it hard to communicate at first."},
+  {topic:"problems",word:"inconvenient",pos:"adjective",register:"neutral",family:["inconvenience (n)"],synonyms:["not convenient"],collocations:["an inconvenient time"],example:"The meeting was at an inconvenient time for me."},
+  {topic:"problems",word:"complicated",pos:"adjective",register:"neutral",family:["complicate (v)"],synonyms:["complex"],collocations:["a complicated process"],example:"The application form was quite complicated."},
+  {topic:"problems",word:"prevent",pos:"verb",register:"neutral",family:["prevention (n)"],synonyms:["stop from happening"],collocations:["prevent a problem"],example:"We locked the door to prevent any problems."},
+  {topic:"problems",word:"avoid",pos:"verb",register:"neutral",family:[],synonyms:["stay away from"],collocations:["avoid a mistake"],example:"Try to avoid busy roads during rush hour."},
+  {topic:"problems",word:"protect",pos:"verb",register:"neutral",family:["protection (n)"],synonyms:["keep safe"],collocations:["protect yourself"],example:"Wear a hat to protect yourself from the sun."},
+  {topic:"problems",word:"alert",pos:"noun/verb",register:"neutral",family:[],synonyms:["warning"],collocations:["a weather alert"],example:"We received a weather alert about the storm."},
+  {topic:"problems",word:"ignore",pos:"verb",register:"neutral",family:[],synonyms:["not pay attention to"],collocations:["ignore a warning"],example:"Please don't ignore the safety instructions."},
+  {topic:"problems",word:"misunderstanding",pos:"noun",register:"neutral",family:["misunderstand (v)"],synonyms:["confusion"],collocations:["a small misunderstanding"],example:"There was a small misunderstanding about the meeting time."},
+  {topic:"problems",word:"conflict",pos:"noun",register:"neutral",family:[],synonyms:["disagreement"],collocations:["avoid conflict"],example:"They tried to avoid conflict during the discussion."},
+  // ── TIME & SEQUENCE (EXTRA) ──
+  {topic:"time",word:"season",pos:"noun",register:"neutral",family:["seasonal (adj)"],synonyms:[],collocations:["favourite season"],example:"Autumn is my favourite season of the year."},
+  {topic:"time",word:"spring",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["in spring"],example:"Flowers start to grow in spring."},
+  {topic:"time",word:"summer",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["in summer"],example:"We go to the beach every summer."},
+  {topic:"time",word:"autumn",pos:"noun",register:"neutral",family:[],synonyms:["fall"],collocations:[],example:"The leaves turn orange in autumn."},
+  {topic:"time",word:"winter",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["cold winter"],example:"It snows a lot in winter here."},
+  {topic:"time",word:"century",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["last century"],example:"This castle was built in the twelfth century."},
+  {topic:"time",word:"decade",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["over the past decade"],example:"The city has changed a lot in the last decade."},
+  {topic:"time",word:"moment",pos:"noun",register:"neutral",family:[],synonyms:["instant"],collocations:["wait a moment"],example:"Wait a moment, I'll be right there."},
+  {topic:"time",word:"instant",pos:"noun/adjective",register:"neutral",family:["instantly (adv)"],synonyms:["moment"],collocations:["in an instant"],example:"The train arrived in an instant."},
+  {topic:"time",word:"meanwhile",pos:"adverb",register:"neutral",family:[],synonyms:["at the same time"],collocations:[],example:"Meanwhile, the children played in the garden."},
+  {topic:"time",word:"previously",pos:"adverb",register:"neutral",family:["previous (adj)"],synonyms:["before"],collocations:[],example:"She previously worked at a different school."},
+  {topic:"time",word:"currently",pos:"adverb",register:"neutral",family:["current (adj)"],synonyms:["at the moment"],collocations:[],example:"He is currently studying for his exams."},
+  {topic:"time",word:"briefly",pos:"adverb",register:"neutral",family:["brief (adj)"],synonyms:["for a short time"],collocations:[],example:"She briefly explained the new rules."},
+  {topic:"time",word:"occasionally",pos:"adverb",register:"neutral",family:["occasional (adj)"],synonyms:["sometimes"],collocations:[],example:"We occasionally eat out on Fridays."},
+  {topic:"time",word:"regularly",pos:"adverb",register:"neutral",family:["regular (adj)"],synonyms:["often"],collocations:[],example:"He exercises regularly every morning."},
+  {topic:"time",word:"frequently",pos:"adverb",register:"neutral",family:["frequent (adj)"],synonyms:["often"],collocations:[],example:"She frequently visits her parents at the weekend."},
+  {topic:"time",word:"rarely",pos:"adverb",register:"neutral",family:["rare (adj)"],synonyms:["not often"],collocations:[],example:"He rarely arrives late for work."},
+  {topic:"time",word:"upcoming",pos:"adjective",register:"neutral",family:[],synonyms:["coming soon"],collocations:["upcoming event"],example:"We are excited about the upcoming festival."},
+  {topic:"time",word:"routine",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a daily routine"],example:"I have a simple morning routine before work."},
+  {topic:"time",word:"daily",pos:"adjective/adverb",register:"neutral",family:[],synonyms:["every day"],collocations:["daily habit"],example:"Reading is part of my daily habit."},
+  {topic:"time",word:"annual",pos:"adjective",register:"neutral",family:["annually (adv)"],synonyms:["yearly"],collocations:["an annual event"],example:"The school has an annual sports day."},
+  {topic:"time",word:"punctual",pos:"adjective",register:"neutral",family:["punctuality (n)"],synonyms:["on time"],collocations:["always punctual"],example:"She is always punctual for meetings."},
+  {topic:"time",word:"overdue",pos:"adjective",register:"neutral",family:[],synonyms:["late"],collocations:["an overdue book"],example:"My library book is two days overdue."},
+  {topic:"time",word:"forever",pos:"adverb",register:"neutral",family:[],synonyms:["always"],collocations:[],example:"I will remember this holiday forever."},
+  {topic:"time",word:"era",pos:"noun",register:"neutral",family:[],synonyms:["age","period"],collocations:["a new era"],example:"The internet started a new era of communication."},
+  // ── PEOPLE & RELATIONSHIPS (EXTRA) ──
+  {topic:"people",word:"acquaintance",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"He is just an acquaintance, not a close friend."},
+  {topic:"people",word:"companion",pos:"noun",register:"neutral",family:[],synonyms:["friend"],collocations:["a travel companion"],example:"She was a great travel companion on our trip."},
+  {topic:"people",word:"guest",pos:"noun",register:"neutral",family:[],synonyms:["visitor"],collocations:["a special guest"],example:"We had a special guest at the wedding."},
+  {topic:"people",word:"host",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["host a party"],example:"My aunt is hosting the family dinner this year."},
+  {topic:"people",word:"landlord",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"Our landlord fixed the broken heater quickly."},
+  {topic:"people",word:"tenant",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"The tenant pays rent at the start of every month."},
+  {topic:"people",word:"boyfriend",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"She introduced her boyfriend to her parents."},
+  {topic:"people",word:"girlfriend",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"His girlfriend works as a teacher."},
+  {topic:"people",word:"widow",pos:"noun",register:"neutral",family:["widower (n)"],synonyms:[],collocations:[],example:"The widow lives alone in the old house."},
+  {topic:"people",word:"sibling",pos:"noun",register:"neutral",family:[],synonyms:["brother or sister"],collocations:[],example:"Do you have any siblings?"},
+  {topic:"people",word:"twin",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["identical twins"],example:"My cousins are identical twins."},
+  {topic:"people",word:"generation",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["the younger generation"],example:"The younger generation uses technology every day."},
+  {topic:"people",word:"relative",pos:"noun",register:"neutral",family:[],synonyms:["family member"],collocations:[],example:"We invited all our relatives to the party."},
+  {topic:"people",word:"stepmother",pos:"noun",register:"neutral",family:["stepfather (n)"],synonyms:[],collocations:[],example:"His stepmother is very kind to him."},
+  {topic:"people",word:"adopt",pos:"verb",register:"neutral",family:["adoption (n)"],synonyms:[],collocations:["adopt a child"],example:"They decided to adopt a child last year."},
+  {topic:"people",word:"upbringing",pos:"noun",register:"neutral",family:["bring up (v)"],synonyms:[],collocations:["a happy upbringing"],example:"She had a happy upbringing in a small village."},
+  {topic:"people",word:"comfort",pos:"verb/noun",register:"neutral",family:["comfortable (adj)"],synonyms:["console"],collocations:["comfort a friend"],example:"She comforted her friend after the bad news."},
+  {topic:"people",word:"forgive",pos:"verb",register:"neutral",family:["forgiveness (n)"],synonyms:["pardon"],collocations:["forgive someone"],example:"He forgave his brother for the mistake."},
+  {topic:"people",word:"reunion",pos:"noun",register:"neutral",family:["reunite (v)"],synonyms:[],collocations:["a family reunion"],example:"We had a big family reunion last Christmas."},
+  {topic:"people",word:"gossip",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["spread gossip"],example:"She doesn't like to gossip about other people."},
+  {topic:"people",word:"chat",pos:"verb/noun",register:"neutral",family:[],synonyms:["talk"],collocations:["have a chat"],example:"We had a nice chat over coffee."},
+  {topic:"people",word:"gathering",pos:"noun",register:"neutral",family:["gather (v)"],synonyms:["get-together"],collocations:["a family gathering"],example:"There is a small family gathering this weekend."},
+  {topic:"people",word:"invite",pos:"verb",register:"neutral",family:["invitation (n)"],synonyms:["ask to come"],collocations:["invite someone"],example:"She invited all her friends to the party."},
+  {topic:"people",word:"volunteer",pos:"noun/verb",register:"neutral",family:["voluntary (adj)"],synonyms:[],collocations:["volunteer at a shelter"],example:"He volunteers at the animal shelter every weekend."},
+  {topic:"people",word:"communicate",pos:"verb",register:"neutral",family:["communication (n)"],synonyms:["talk","share information"],collocations:["communicate clearly"],example:"It's important to communicate clearly with your team."},
+  // ── SOCIETY & CULTURE (EXTRA) ──
+  {topic:"society",word:"nation",pos:"noun",register:"neutral",family:["national (adj)"],synonyms:["country"],collocations:[],example:"The nation celebrated the holiday together."},
+  {topic:"society",word:"population",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["a large population"],example:"The city has a population of two million people."},
+  {topic:"society",word:"society",pos:"noun",register:"neutral",family:["social (adj)"],synonyms:[],collocations:["modern society"],example:"Technology has changed modern society a lot."},
+  {topic:"society",word:"public",pos:"adjective/noun",register:"neutral",family:[],synonyms:[],collocations:["public transport"],example:"I usually take public transport to work."},
+  {topic:"society",word:"private",pos:"adjective",register:"neutral",family:["privacy (n)"],synonyms:[],collocations:["a private school"],example:"She studies at a private school in the city."},
+  {topic:"society",word:"urban",pos:"adjective",register:"neutral",family:[],synonyms:[],collocations:["urban area"],example:"Urban areas usually have more traffic than villages."},
+  {topic:"society",word:"rural",pos:"adjective",register:"neutral",family:[],synonyms:[],collocations:["rural life"],example:"Rural life is quieter than life in the city."},
+  {topic:"society",word:"area",pos:"noun",register:"neutral",family:[],synonyms:["region"],collocations:["a quiet area"],example:"We live in a quiet area near the river."},
+  {topic:"society",word:"environment",pos:"noun",register:"neutral",family:["environmental (adj)"],synonyms:[],collocations:["protect the environment"],example:"We should all try to protect the environment."},
+  {topic:"society",word:"pollution",pos:"noun",register:"neutral",family:["pollute (v)"],synonyms:[],collocations:["air pollution"],example:"Air pollution is a big problem in large cities."},
+  {topic:"society",word:"recycle",pos:"verb",register:"neutral",family:["recycling (n)"],synonyms:[],collocations:["recycle bottles"],example:"We recycle paper and plastic at home."},
+  {topic:"society",word:"charity",pos:"noun",register:"neutral",family:["charitable (adj)"],synonyms:[],collocations:["give to charity"],example:"She gives money to charity every month."},
+  {topic:"society",word:"donate",pos:"verb",register:"neutral",family:["donation (n)"],synonyms:["give"],collocations:["donate clothes"],example:"We donated old clothes to the local charity shop."},
+  {topic:"society",word:"poverty",pos:"noun",register:"neutral",family:["poor (adj)"],synonyms:[],collocations:["live in poverty"],example:"Many families in the area live in poverty."},
+  {topic:"society",word:"wealthy",pos:"adjective",register:"neutral",family:["wealth (n)"],synonyms:["rich"],collocations:["a wealthy family"],example:"He comes from a wealthy family."},
+  {topic:"society",word:"poor",pos:"adjective",register:"neutral",family:["poverty (n)"],synonyms:["not rich"],collocations:["a poor family"],example:"The charity helps poor families in the city."},
+  {topic:"society",word:"freedom",pos:"noun",register:"neutral",family:["free (adj)"],synonyms:[],collocations:["freedom of speech"],example:"Freedom of speech is important in a democracy."},
+  {topic:"society",word:"rights",pos:"noun",register:"neutral",family:["right (adj)"],synonyms:[],collocations:["human rights"],example:"Everyone should have equal human rights."},
+  {topic:"society",word:"crime",pos:"noun",register:"neutral",family:["criminal (n/adj)"],synonyms:[],collocations:["a serious crime"],example:"Crime has gone down in our town this year."},
+  {topic:"society",word:"police",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:["call the police"],example:"We called the police after the accident."},
+  {topic:"society",word:"protest",pos:"noun/verb",register:"neutral",family:[],synonyms:[],collocations:["a peaceful protest"],example:"Hundreds of people joined the peaceful protest."},
+  {topic:"society",word:"immigrant",pos:"noun",register:"neutral",family:["immigrate (v)","immigration (n)"],synonyms:[],collocations:[],example:"Many immigrants have made this city their home."},
+  {topic:"society",word:"refugee",pos:"noun",register:"neutral",family:[],synonyms:[],collocations:[],example:"The charity helps refugees find housing and work."},
+  {topic:"society",word:"economy",pos:"noun",register:"neutral",family:["economic (adj)"],synonyms:[],collocations:["a strong economy"],example:"The country has a strong economy this year."},
+  {topic:"society",word:"technology",pos:"noun",register:"neutral",family:["technological (adj)"],synonyms:[],collocations:["new technology"],example:"New technology has changed the way we shop."},
+];
+
+// ═══════════════════════════════════
+// STATE
+// ═══════════════════════════════════
+let activeTopic = 'all';
+let activeTypes = new Set();
+let quizMode = 'synonym';
+let quizTopics = new Set(Object.keys(TOPICS).filter(k=>k!=='all'));
+let quizQ=[], quizIdx=0, quizScore=0;
+
+function getFiltered() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  return VOCAB.filter(v => {
+    if (activeTopic !== 'all' && v.topic !== activeTopic) return false;
+    if (activeTypes.size && !activeTypes.has(v.pos.split('/')[0])) return false;
+    if (!q) return true;
+    return v.word.includes(q)||v.synonyms.some(s=>s.includes(q))||v.collocations.some(c=>c.toLowerCase().includes(q));
+  });
+}
+
+function renderTabs() {
+  const row = document.getElementById('topicTabRow');
+  let html = '';
+  Object.entries(TOPICS).forEach(([k,t]) => {
+    const count = k==='all' ? VOCAB.length : VOCAB.filter(v=>v.topic===k).length;
+    const on = activeTopic===k;
+    if (k==='all') {
+      html += `<button class="tab-all ${on?'active':''}" onclick="setTopic('all')">📚 All Topics <span style="font-size:11px;opacity:.5;margin-left:3px;">${count}</span></button>`;
+    } else {
+      html += `<button class="topic-tab ${on?'active':''}" style="--tab-color:${t.color}" onclick="setTopic('${k}')">
+        <span class="tab-icon">${t.emoji}</span>
+        <span class="tab-label">${t.label}</span>
+        <span class="tab-count">${count}</span>
+      </button>`;
+    }
+  });
+  row.innerHTML = html;
+}
+
+function setTopic(k) { activeTopic=k; renderTabs(); renderAll(); }
+
+function renderTypeFilters() {
+  const wrap = document.getElementById('typeFilters');
+  wrap.innerHTML = ['verb','noun','adjective','adverb'].map(t =>
+    `<button class="type-chip ${activeTypes.has(t)?'on':''}" onclick="toggleType('${t}')">${t.charAt(0).toUpperCase()+t.slice(1)}</button>`
+  ).join('');
+}
+function toggleType(t) { activeTypes.has(t)?activeTypes.delete(t):activeTypes.add(t); renderTypeFilters(); renderAll(); }
+
+function renderAll() {
+  const filtered = getFiltered();
+  document.getElementById('wordBadge').textContent = filtered.length+' words';
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  document.getElementById('resultsInfo').innerHTML = `Showing <strong>${filtered.length}</strong> words${q?` matching "<strong>${q}</strong>"`:``}`;
+  const content = document.getElementById('vocabContent');
+  if (!filtered.length) { content.innerHTML=`<div class="no-results"><strong>Nothing found</strong>Try a different word or clear your filters.</div>`; return; }
+  const grouped={};
+  filtered.forEach(v=>{ if(!grouped[v.topic]) grouped[v.topic]=[]; grouped[v.topic].push(v); });
+  const order = Object.keys(TOPICS).filter(k=>k!=='all');
+  let html='';
+  order.forEach(topicKey=>{
+    if (!grouped[topicKey]) return;
+    const t=TOPICS[topicKey]; const words=grouped[topicKey];
+    html+=`<div class="topic-section">
+      <div class="section-header">
+        <div class="section-icon" style="background:${t.color}18;color:${t.color}">${t.emoji}</div>
+        <div class="section-title">${t.label}</div>
+        <div class="section-count">${words.length} words</div>
+      </div>
+      <div class="card-grid">`;
+    words.forEach(v=>{
+      const rc = v.register==='formal'?'reg-formal':v.register==='informal'?'reg-informal':v.register==='negative'?'reg-negative':'reg-neutral';
+      html+=`<div class="vocab-card" style="--card-accent:${TOPICS[v.topic].color}">
+        <div class="card-top">
+          <div class="headword">${v.word}<em>${v.pos}</em></div>
+          <span class="register-tag ${rc}">${v.register}</span>
+        </div>
+        <div class="word-family">${v.family.map(f=>`<span>${f}</span>`).join('')}</div>
+        <div class="mini-label">Synonyms</div>
+        <div class="syn-list">${v.synonyms.map(s=>`<span class="syn-chip">${s}</span>`).join('')}</div>
+        <div class="mini-label">Collocations</div>
+        <div class="colloc-text">${v.collocations.map(c=>`<strong>${c.split(' ')[0]}</strong> ${c.split(' ').slice(1).join(' ')}`).join(' &nbsp;·&nbsp; ')}</div>
+        <div class="example">${v.example}</div>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  });
+  content.innerHTML=html;
+}
+
+// ── QUIZ ──
+function openQuizMenu(){document.getElementById('quizOverlay').classList.add('open');showQuizMenu();renderQuizTopicFilter();}
+function closeQuiz(){document.getElementById('quizOverlay').classList.remove('open');}
+function showQuizMenu(){
+  document.getElementById('quizMenuScreen').style.display='block';
+  document.getElementById('quizQScreen').classList.remove('active');
+  document.getElementById('quizScoreScreen').classList.remove('active');
+}
+function selectMode(el){document.querySelectorAll('.quiz-mode-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');quizMode=el.dataset.mode;}
+function renderQuizTopicFilter(){
+  document.getElementById('quizTopicFilter').innerHTML=Object.entries(TOPICS).filter(([k])=>k!=='all').map(([k,t])=>
+    `<button class="quiz-filter-chip ${quizTopics.has(k)?'on':''}" onclick="toggleQT('${k}',this)">${t.emoji} ${t.label.split(/[& ]/)[0]}</button>`).join('');
+}
+function toggleQT(k,btn){quizTopics.has(k)?quizTopics.delete(k):quizTopics.add(k);if(!quizTopics.size)quizTopics.add(k);btn.classList.toggle('on',quizTopics.has(k));}
+function shuffle(a){return a.sort(()=>Math.random()-.5);}
+
+function startQuiz(){
+  const pool=VOCAB.filter(v=>quizTopics.has(v.topic));
+  quizQ=shuffle([...pool]).slice(0,Math.min(15,pool.length));
+  quizIdx=0;quizScore=0;
+  document.getElementById('quizMenuScreen').style.display='none';
+  document.getElementById('quizQScreen').classList.add('active');
+  document.getElementById('quizScoreScreen').classList.remove('active');
+  renderQ();
+}
+function renderQ(){
+  if(quizIdx>=quizQ.length){showScore();return;}
+  const v=quizQ[quizIdx];
+  document.getElementById('quizProgressFill').style.width=(quizIdx/quizQ.length*100)+'%';
+  document.getElementById('quizQLabel').textContent=`Question ${quizIdx+1} of ${quizQ.length}`;
+  document.getElementById('btnNext').style.display='none';
+  const body=document.getElementById('quizQBody');
+  if(quizMode==='synonym')renderSynQ(v,body);
+  else if(quizMode==='blank')renderBlankQ(v,body);
+  else if(quizMode==='flashcard')renderFlashQ(v,body);
+  else renderWFQ(v,body);
+}
+function renderSynQ(v,body){
+  const correct=v.synonyms[0];
+  const opts=shuffle([correct,...shuffle(VOCAB.filter(w=>w.word!==v.word).map(w=>w.synonyms[0])).slice(0,3)]);
+  body.innerHTML=`<div class="quiz-q-word">${v.word}</div><div class="quiz-q-hint">Choose the best synonym.</div>
+    <div class="quiz-options">${opts.map(o=>`<button class="quiz-opt" onclick="checkSyn(this,'${o.replace(/'/g,"\\'")}','${correct.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div>`;
+}
+function checkSyn(btn,chosen,correct){
+  document.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
+  if(chosen===correct){btn.classList.add('correct');quizScore++;}
+  else{btn.classList.add('wrong');document.querySelectorAll('.quiz-opt').forEach(b=>{if(b.textContent===correct)b.classList.add('correct');});}
+  document.getElementById('btnNext').style.display='block';
+}
+function renderBlankQ(v,body){
+  const sentence=v.example.replace(new RegExp('\\b'+v.word+'s?\\b','i'),'________');
+  body.innerHTML=`<div style="font-size:13px;color:var(--muted);margin-bottom:6px;">Complete the sentence:</div>
+    <div class="blank-sentence">${sentence}</div>
+    <input id="blankInput" placeholder="Type the missing word…" onkeydown="if(event.key==='Enter')checkBlank()">
+    <div><button class="blank-check" onclick="checkBlank()">Check</button></div>
+    <div class="blank-feedback" id="blankFeedback"></div>`;
+}
+function checkBlank(){
+  const v=quizQ[quizIdx],inp=document.getElementById('blankInput'),fb=document.getElementById('blankFeedback');
+  if(!inp.value.trim())return;
+  if(inp.value.trim().toLowerCase()===v.word.toLowerCase()){inp.classList.add('correct-input');fb.textContent='✓ Correct!';fb.className='blank-feedback good';quizScore++;}
+  else{inp.classList.add('wrong-input');fb.textContent=`✗ The answer is: ${v.word}`;fb.className='blank-feedback bad';}
+  inp.disabled=true;document.querySelector('.blank-check').disabled=true;document.getElementById('btnNext').style.display='block';
+}
+function renderFlashQ(v,body){
+  body.innerHTML=`<div class="flashcard-wrap"><div class="flashcard" id="flashcard" onclick="flipCard()">
+    <div class="fc-face fc-front"><div class="fc-word">${v.word}</div><div class="fc-pos">${v.pos}</div><div class="fc-hint">Tap to reveal →</div></div>
+    <div class="fc-face fc-back"><div class="fc-back-word">= ${v.synonyms.slice(0,3).join(', ')}</div><div class="fc-back-syns">📌 ${v.collocations[0]}</div><div class="fc-back-ex">${v.example}</div></div>
+  </div></div>`;
+  document.getElementById('btnNext').style.display='block';
+}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function renderWFQ(v,body){
+  const slots=v.family.slice(0,3);
+  if(!slots.length){nextQuestion();return;}
+  body.innerHTML=`<div class="wf-target">${v.word}</div><div class="wf-clue">Build the word family from: <strong>${v.family[0]}</strong></div>
+    <div class="wf-slots" id="wfSlots">${slots.map((s,i)=>{
+      const label=s.includes('(n)')?'Noun':s.includes('(v)')?'Verb':s.includes('(adj)')?'Adjective':s.includes('(adv)')?'Adverb':'Form';
+      return `<div class="wf-slot"><span class="wf-slot-label">${label}</span><input data-answer="${s.replace(/\s*\([^)]*\)/g,'').trim()}" id="wfi${i}" placeholder="Type…"></div>`;
+    }).join('')}</div><button class="wf-check" onclick="checkWF()">Check</button>`;
+}
+function checkWF(){
+  let all=true;
+  document.querySelectorAll('#wfSlots input').forEach(inp=>{
+    if(inp.value.toLowerCase().trim()===inp.dataset.answer.toLowerCase().trim()){inp.classList.add('correct-input');}
+    else{inp.classList.add('wrong-input');inp.value=inp.dataset.answer;all=false;}
+    inp.disabled=true;
+  });
+  if(all)quizScore++;document.querySelector('.wf-check').disabled=true;document.getElementById('btnNext').style.display='block';
+}
+function skipQuestion(){quizIdx++;renderQ();}
+function nextQuestion(){quizIdx++;renderQ();}
+function showScore(){
+  document.getElementById('quizQScreen').classList.remove('active');
+  document.getElementById('quizScoreScreen').classList.add('active');
+  const pct=Math.round(quizScore/quizQ.length*100);
+  document.getElementById('scoreEmoji').textContent=pct>=80?'🏆':pct>=60?'👍':pct>=40?'💪':'📚';
+  document.getElementById('scoreNumber').textContent=`${quizScore} / ${quizQ.length}`;
+  document.getElementById('scoreLabel').textContent=pct>=80?'Excellent work!':pct>=60?'Good — keep practising!':'Keep going — you will get there!';
+}
+
+renderTabs();
+renderTypeFilters();
+renderAll();
+</script>
+</body>
+</html>
