@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singular &amp; Plural Nouns | Homework | Teacher Benny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF7F1;
+    --ivory-2:#F1ECE1;
+    --navy:#1B2A4A;
+    --navy-2:#233762;
+    --charcoal:#2B2B28;
+    --teal:#2F6F6B;
+    --teal-2:#E4EFEE;
+    --gold:#B8912E;
+    --gold-2:#F3E9CE;
+    --line:#DDD5C4;
+    --white:#FFFFFF;
+    --danger:#A6402F;
+    --ok:#2F6F4E;
+    --radius:10px;
+    --shadow: 0 6px 18px rgba(27,42,74,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:"Source Serif 4", Georgia, serif;
+    line-height:1.65;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+  header.top{
+    background:var(--navy);
+    color:var(--ivory);
+    padding:36px 20px 28px;
+    position:relative;
+  }
+  header.top::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--gold) 0%, var(--teal) 55%, var(--gold) 100%);
+  }
+  .top-inner{max-width:920px;margin:0 auto;}
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-2);
+    opacity:.85;
+  }
+  h1.title{
+    font-family:"Playfair Display", serif;
+    font-weight:700;
+    font-size:clamp(28px,4.5vw,42px);
+    margin:8px 0 4px;
+  }
+  .subtitle-tr{
+    font-family:"Playfair Display", serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(17px,2.6vw,22px);
+    color:var(--teal-2);
+    opacity:.92;
+    margin:0 0 14px;
+  }
+  .level-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .tag{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    border:1px solid rgba(250,247,241,0.35);
+    color:var(--ivory);
+    padding:4px 10px;
+    border-radius:999px;
+  }
+
+  h2.section-h{
+    font-family:"Playfair Display", serif;
+    font-weight:600;
+    font-size:22px;
+    color:var(--navy);
+    margin:38px 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2.section-h .num{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    color:var(--gold);
+    font-weight:600;
+  }
+  .wrap > h2.section-h:first-of-type{margin-top:10px;}
+  .tr-line{
+    font-style:italic;
+    color:var(--teal);
+    font-size:15px;
+    margin:0 0 14px;
+  }
+
+  .callout{
+    background:var(--teal-2);
+    border:1px solid #CFE3E1;
+    border-radius:var(--radius);
+    padding:14px 16px;
+    margin:18px 0;
+    font-size:14.5px;
+  }
+  .callout b{color:var(--navy);}
+  .reminder-list{margin:8px 0 0; padding-left:18px; font-size:14px;}
+  .reminder-list li{margin-bottom:4px;}
+  .reminder-list .tr{color:var(--teal); font-style:italic; font-size:13px;}
+
+  .exercise{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+  }
+  .exercise h3{
+    font-family:"Playfair Display", serif;
+    font-size:18px;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .exercise .instr{
+    font-size:14px;
+    color:#5A554A;
+    margin:0 0 14px;
+  }
+  .item{margin-bottom:12px;}
+  .item label{display:block; font-size:14.5px; margin-bottom:5px;}
+  .item input[type=text]{
+    width:220px;
+    max-width:100%;
+    padding:7px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-family:"Source Serif 4", serif;
+    font-size:14.5px;
+    background:var(--ivory-2);
+  }
+  .item input[type=text]:focus{outline:2px solid var(--teal); outline-offset:1px;}
+  .btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    letter-spacing:.03em;
+    background:var(--navy);
+    color:var(--ivory);
+    border:none;
+    padding:9px 16px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .btn:hover{background:var(--navy-2);}
+  .feedback{
+    margin-top:10px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    padding:8px 10px;
+    border-radius:6px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.good{background:#E3F1E8; color:var(--ok);}
+  .feedback.bad{background:#F6E4E0; color:var(--danger);}
+  .item.correct input{border-color:var(--ok); background:#EEF7F1;}
+  .item.incorrect input{border-color:var(--danger); background:#FBEEEC;}
+
+  .word-bank{
+    display:flex; flex-wrap:wrap; gap:8px;
+    background:var(--gold-2);
+    border:1px solid #E4D19C;
+    border-radius:8px;
+    padding:12px 14px;
+    margin-bottom:16px;
+  }
+  .word-bank .wb-word{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    background:var(--white);
+    border:1px solid #E4D19C;
+    border-radius:6px;
+    padding:5px 10px;
+    color:#6B5416;
+  }
+  .word-bank .wb-label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#6B5416;
+    width:100%;
+    margin-bottom:4px;
+    opacity:.8;
+  }
+
+  .passage{
+    background:var(--ivory-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    font-size:15.5px;
+    margin-bottom:18px;
+  }
+  .passage h4{
+    font-family:"Playfair Display", serif;
+    font-size:17px;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+  .passage p{margin:0 0 10px;}
+  .passage .plural-hint{color:var(--teal); font-weight:600;}
+
+  .qa{margin-bottom:14px;}
+  .qa p.q{font-size:14.5px; margin:0 0 6px; font-weight:600; color:var(--navy);}
+  .qa .opts{display:flex; flex-direction:column; gap:6px;}
+  .qa label{font-size:14px; display:flex; align-items:center; gap:8px; cursor:pointer;}
+
+  .pron-table{width:100%; border-collapse:collapse; margin-bottom:8px;}
+  .pron-table td{padding:10px 8px; border-top:1px solid var(--line); font-size:14.5px; vertical-align:middle;}
+  .pron-table tr:first-child td{border-top:none;}
+  .pron-pair{font-family:"IBM Plex Mono", monospace; font-size:14px;}
+  .pron-tr{color:var(--teal); font-style:italic; font-size:13px;}
+  .listen-btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    background:var(--navy);
+    color:var(--ivory);
+    border:none;
+    padding:5px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .listen-btn:hover{background:var(--navy-2);}
+  .pron-item{margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .pron-item:last-child{border-bottom:none; margin-bottom:0; padding-bottom:0;}
+  .pron-item .row1{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+
+  footer.note{
+    margin-top:50px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:#8A8474;
+    font-family:"IBM Plex Mono", monospace;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="eyebrow">Teacher Benny &middot; Homework</div>
+    <h1 class="title">Singular &amp; Plural Nouns</h1>
+    <div class="subtitle-tr">Tekil ve Çoğul İsimler &mdash; Ev Ödevi</div>
+    <div class="level-tags">
+      <span class="tag">A1&ndash;A2</span>
+      <span class="tag">60 MIN HOMEWORK</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="callout" style="margin-top:26px">
+    <b>Quick reminder / Kısa hatırlatma:</b>
+    <ul class="reminder-list">
+      <li>Most words: add <b>&minus;s</b> (book &rarr; books) <span class="tr">&mdash; çoğu kelimeye -s eklenir</span></li>
+      <li>Words ending &minus;s/&minus;sh/&minus;ch/&minus;x/&minus;o: add <b>&minus;es</b> (box &rarr; boxes) <span class="tr">&mdash; bu harflerle bitenlere -es</span></li>
+      <li>Consonant + y: change to <b>&minus;ies</b> (city &rarr; cities) <span class="tr">&mdash; ünsüz+y &rarr; ies</span></li>
+      <li>Some &minus;f/&minus;fe words: change to <b>&minus;ves</b> (leaf &rarr; leaves) <span class="tr">&mdash; f/fe &rarr; ves</span></li>
+      <li>Irregular words don't follow a rule (man &rarr; men, child &rarr; children) <span class="tr">&mdash; düzensizler ezberlenir</span></li>
+    </ul>
+  </div>
+  <div class="callout">Check your answers as you go &mdash; the button under each exercise tells you right away if you're correct. / Cevaplarınızı ilerledikçe kontrol edin.</div>
+
+  <!-- H1: Fill in the gaps -->
+  <h2 class="section-h"><span class="num">H1</span> Fill in the gaps</h2>
+  <p class="tr-line">Boşlukları doldurun</p>
+  <div class="exercise" id="ex1">
+    <p class="instr">Write the correct plural form of the word in brackets.</p>
+    <div id="ex1-items"></div>
+    <button class="btn" onclick="checkEx1()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex1-fb"></div>
+  </div>
+
+  <!-- H2: Find the missing word (word bank) -->
+  <h2 class="section-h"><span class="num">H2</span> Find the missing word</h2>
+  <p class="tr-line">Eksik kelimeyi bulun</p>
+  <div class="exercise" id="ex2">
+    <p class="instr">Choose the correct word from the word bank for each sentence. Some words are not used.</p>
+    <div class="word-bank">
+      <span class="wb-label">Word bank</span>
+      <span class="wb-word">people</span><span class="wb-word">mice</span><span class="wb-word">wives</span>
+      <span class="wb-word">babies</span><span class="wb-word">countries</span><span class="wb-word">watches</span>
+      <span class="wb-word">deer</span><span class="wb-word">feet</span><span class="wb-word">classes</span>
+      <span class="wb-word">potatoes</span><span class="wb-word">men</span>
+    </div>
+    <div id="ex2-items"></div>
+    <button class="btn" onclick="checkEx2()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex2-fb"></div>
+  </div>
+
+  <!-- H3: Reading passage -->
+  <h2 class="section-h"><span class="num">H3</span> Reading passage</h2>
+  <p class="tr-line">Okuma parçası</p>
+  <div class="passage">
+    <h4>A Saturday at the Market</h4>
+    <p>Every Saturday, my grandmother goes to the market with her two <span class="plural-hint">daughters</span>. The market is busy and full of <span class="plural-hint">people</span>. There are stalls with fresh <span class="plural-hint">potatoes</span>, <span class="plural-hint">tomatoes</span>, and bread. Near the entrance, two old <span class="plural-hint">men</span> sell cheese and olives from small wooden boxes.</p>
+    <p>My grandmother always buys presents for her three <span class="plural-hint">grandchildren</span>. Last week, she bought us new <span class="plural-hint">shoes</span> and a bag of sweet <span class="plural-hint">oranges</span>. My little cousins are still <span class="plural-hint">babies</span>, so she also buys them soft toys.</p>
+    <p>After the market, we walk home together. On the way, we always stop to look at the <span class="plural-hint">fish</span> in the small pond near the park, and count how many <span class="plural-hint">birds</span> are sitting on the fence. It is my favourite part of the week.</p>
+  </div>
+  <div class="exercise" id="ex3">
+    <p class="instr">Answer the questions about the passage.</p>
+    <div id="ex3-items"></div>
+    <button class="btn" onclick="checkEx3()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex3-fb"></div>
+  </div>
+
+  <!-- H4: Fix the mistake -->
+  <h2 class="section-h"><span class="num">H4</span> Fix the mistake</h2>
+  <p class="tr-line">Hatayı bulun ve düzeltin</p>
+  <div class="exercise" id="ex4">
+    <p class="instr">Each sentence has one wrong plural. Rewrite the whole sentence correctly.</p>
+    <div id="ex4-items"></div>
+    <button class="btn" onclick="checkEx4()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex4-fb"></div>
+  </div>
+
+  <!-- H5: Pronunciation -->
+  <h2 class="section-h"><span class="num">H5</span> Pronunciation practice</h2>
+  <p class="tr-line">Telaffuz alıştırması</p>
+  <div class="exercise">
+    <p class="instr">Look at the singular word. Write the plural yourself, then press "Check" and listen to hear if you were right. Say both words out loud three times.</p>
+    <div id="pron-items"></div>
+  </div>
+
+</div>
+
+<footer class="note">
+  <div class="wrap" style="padding:0">Teacher Benny &middot; English Grammar Series &middot; Singular &amp; Plural Nouns &middot; Homework &middot; A1&ndash;A2</div>
+</footer>
+
+<script>
+/* ---------- Text-to-speech ---------- */
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+/* ---------- Answer keys (never rendered as answers in the HTML) ---------- */
+const KEYS = {
+  ex1: [
+    {word:"cat", ans:"cats"},
+    {word:"brush", ans:"brushes"},
+    {word:"country", ans:"countries"},
+    {word:"wife", ans:"wives"},
+    {word:"watch", ans:"watches"},
+    {word:"foot", ans:"feet"},
+    {word:"family", ans:"families"},
+    {word:"mouse", ans:"mice"},
+    {word:"tomato", ans:"tomatoes"},
+    {word:"person", ans:"people"}
+  ],
+  ex2: [
+    {sentence:"There were many ____ shopping at the market this morning.", ans:"people"},
+    {sentence:"The cat saw two ____ run under the table.", ans:"mice"},
+    {sentence:"My uncle has three ____ in his shop &mdash; a big one and two small ones.", ans:"watches"},
+    {sentence:"We visited five ____ during our summer trip.", ans:"countries"},
+    {sentence:"Both of my ____ came to the wedding.", ans:"men"},
+    {sentence:"The nurse checked the ____ before they went home.", ans:"babies"},
+    {sentence:"My grandmother bought fresh ____ for dinner.", ans:"potatoes"},
+    {sentence:"After the long walk, my ____ were very tired.", ans:"feet"}
+  ],
+  ex3: [
+    {q:"Who does the grandmother go to the market with?", options:["Her two daughters","Her three grandchildren","Her husband"], ans:"Her two daughters"},
+    {q:"Who sells cheese and olives?", options:["Two old men","Two young women","The grandmother"], ans:"Two old men"},
+    {q:"What does the grandmother buy for the babies?", options:["Shoes","Soft toys","Oranges"], ans:"Soft toys"},
+    {q:"What do they do on the way home?", options:["Buy more food","Visit a friend","Look at the fish"], ans:"Look at the fish"}
+  ],
+  ex4: [
+    {wrong:"There are three womans in the shop.", ans:"There are three women in the shop."},
+    {wrong:"He has two knife in his bag.", ans:"He has two knives in his bag."},
+    {wrong:"I saw six deers near the forest.", ans:"I saw six deer near the forest."},
+    {wrong:"She washed all of the dishs.", ans:"She washed all of the dishes."},
+    {wrong:"My father gave me some advices.", ans:"My father gave me some advice."}
+  ]
+};
+
+const PRON = [
+  {s:"man", ans:"men", tr:"adam / adamlar"},
+  {s:"woman", ans:"women", tr:"kadın / kadınlar"},
+  {s:"child", ans:"children", tr:"çocuk / çocuklar"},
+  {s:"foot", ans:"feet", tr:"ayak / ayaklar"},
+  {s:"tooth", ans:"teeth", tr:"diş / dişler"},
+  {s:"mouse", ans:"mice", tr:"fare / fareler"},
+  {s:"person", ans:"people", tr:"kişi / insanlar"}
+];
+
+/* ---------- Build H1 ---------- */
+const ex1c = document.getElementById('ex1-items');
+KEYS.ex1.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex1-item-'+i;
+  div.innerHTML = `<label>${i+1}. ${it.word} &rarr; <input type="text" id="ex1-in-${i}" autocomplete="off"></label>`;
+  ex1c.appendChild(div);
+});
+function checkEx1(){
+  let correct = 0;
+  KEYS.ex1.forEach((it,i)=>{
+    const inp = document.getElementById('ex1-in-'+i);
+    const val = inp.value.trim().toLowerCase();
+    const item = document.getElementById('ex1-item-'+i);
+    if(val === it.ans){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex1-fb');
+  fb.textContent = `${correct} / ${KEYS.ex1.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex1.length ? 'good':'bad');
+}
+
+/* ---------- Build H2 (word bank cloze) ---------- */
+const ex2c = document.getElementById('ex2-items');
+KEYS.ex2.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex2-item-'+i;
+  const sentenceHtml = it.sentence.replace('____', `<input type="text" id="ex2-in-${i}" autocomplete="off">`);
+  div.innerHTML = `<label>${i+1}. ${sentenceHtml}</label>`;
+  ex2c.appendChild(div);
+});
+function checkEx2(){
+  let correct = 0;
+  KEYS.ex2.forEach((it,i)=>{
+    const inp = document.getElementById('ex2-in-'+i);
+    const val = inp.value.trim().toLowerCase();
+    const item = document.getElementById('ex2-item-'+i);
+    if(val === it.ans){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex2-fb');
+  fb.textContent = `${correct} / ${KEYS.ex2.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex2.length ? 'good':'bad');
+}
+
+/* ---------- Build H3 (reading comprehension) ---------- */
+const ex3c = document.getElementById('ex3-items');
+KEYS.ex3.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'qa';
+  div.id = 'ex3-item-'+i;
+  const opts = it.options.map((o)=>`<label><input type="radio" name="ex3-q${i}" value="${o}"> ${o}</label>`).join('');
+  div.innerHTML = `<p class="q">${i+1}. ${it.q}</p><div class="opts">${opts}</div>`;
+  ex3c.appendChild(div);
+});
+function checkEx3(){
+  let correct = 0;
+  KEYS.ex3.forEach((it,i)=>{
+    const radios = document.getElementsByName('ex3-q'+i);
+    let chosen = null;
+    radios.forEach(r=>{ if(r.checked) chosen = r.value; });
+    const item = document.getElementById('ex3-item-'+i);
+    if(chosen === it.ans){ correct++; item.style.color = 'var(--ok)'; }
+    else { item.style.color = 'var(--danger)'; }
+  });
+  const fb = document.getElementById('ex3-fb');
+  fb.textContent = `${correct} / ${KEYS.ex3.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex3.length ? 'good':'bad');
+}
+
+/* ---------- Build H4 (error correction) ---------- */
+const ex4c = document.getElementById('ex4-items');
+KEYS.ex4.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex4-item-'+i;
+  div.innerHTML = `<label>${i+1}. <em>${it.wrong}</em></label><input type="text" style="width:100%" id="ex4-in-${i}" placeholder="Rewrite the sentence..." autocomplete="off">`;
+  ex4c.appendChild(div);
+});
+function normalize(s){
+  return s.trim().toLowerCase().replace(/[.\s]+$/,'').replace(/\s+/g,' ');
+}
+function checkEx4(){
+  let correct = 0;
+  KEYS.ex4.forEach((it,i)=>{
+    const inp = document.getElementById('ex4-in-'+i);
+    const item = document.getElementById('ex4-item-'+i);
+    if(normalize(inp.value) === normalize(it.ans)){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex4-fb');
+  fb.textContent = `${correct} / ${KEYS.ex4.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex4.length ? 'good':'bad');
+}
+
+/* ---------- Build H5 (pronunciation self-test) ---------- */
+const pronC = document.getElementById('pron-items');
+PRON.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'pron-item';
+  div.id = 'pron-item-'+i;
+  div.innerHTML = `
+    <div class="row1">
+      <span class="pron-pair"><b>${it.s}</b> &rarr; <input type="text" id="pron-in-${i}" style="width:120px" autocomplete="off"></span>
+      <span class="pron-tr">${it.tr}</span>
+    </div>
+    <div class="row1">
+      <button class="btn" style="margin-top:0" onclick="checkPron(${i})">Check</button>
+      <button class="listen-btn" onclick="speak('${it.s}')">🔊 ${it.s}</button>
+      <button class="listen-btn" onclick="speak('${it.ans}')">🔊 ${it.ans}</button>
+      <span class="feedback" id="pron-fb-${i}" style="margin-top:0"></span>
+    </div>
+  `;
+  pronC.appendChild(div);
+});
+function checkPron(i){
+  const it = PRON[i];
+  const inp = document.getElementById('pron-in-'+i);
+  const fb = document.getElementById('pron-fb-'+i);
+  const val = inp.value.trim().toLowerCase();
+  fb.classList.add('show');
+  if(val === it.ans){
+    fb.textContent = 'Correct!';
+    fb.className = 'feedback show good';
+    inp.style.borderColor = 'var(--ok)';
+  } else {
+    fb.textContent = 'Not quite — listen again and try once more.';
+    fb.className = 'feedback show bad';
+    inp.style.borderColor = 'var(--danger)';
+  }
+}
+</script>
+
+</body>
+</html>

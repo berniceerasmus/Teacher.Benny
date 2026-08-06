@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singular &amp; Plural Nouns | Lesson | Teacher Benny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF7F1;
+    --ivory-2:#F1ECE1;
+    --navy:#1B2A4A;
+    --navy-2:#233762;
+    --charcoal:#2B2B28;
+    --teal:#2F6F6B;
+    --teal-2:#E4EFEE;
+    --gold:#B8912E;
+    --gold-2:#F3E9CE;
+    --line:#DDD5C4;
+    --white:#FFFFFF;
+    --danger:#A6402F;
+    --ok:#2F6F4E;
+    --radius:10px;
+    --shadow: 0 6px 18px rgba(27,42,74,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:"Source Serif 4", Georgia, serif;
+    line-height:1.65;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 80px;}
+  header.top{
+    background:var(--navy);
+    color:var(--ivory);
+    padding:36px 20px 28px;
+    position:relative;
+  }
+  header.top::after{
+    content:"";
+    position:absolute;left:0;right:0;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--gold) 0%, var(--teal) 55%, var(--gold) 100%);
+  }
+  .top-inner{max-width:920px;margin:0 auto;}
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-2);
+    opacity:.85;
+  }
+  h1.title{
+    font-family:"Playfair Display", serif;
+    font-weight:700;
+    font-size:clamp(28px,4.5vw,42px);
+    margin:8px 0 4px;
+  }
+  .subtitle-tr{
+    font-family:"Playfair Display", serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(17px,2.6vw,22px);
+    color:var(--teal-2);
+    opacity:.92;
+    margin:0 0 14px;
+  }
+  .level-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .tag{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    border:1px solid rgba(250,247,241,0.35);
+    color:var(--ivory);
+    padding:4px 10px;
+    border-radius:999px;
+  }
+
+  .part-divider{
+    max-width:920px;margin:44px auto 0;padding:0 20px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .part-divider .line{flex:1; height:1px; background:var(--line);}
+  .part-divider span.label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    white-space:nowrap;
+  }
+
+  h2.section-h{
+    font-family:"Playfair Display", serif;
+    font-weight:600;
+    font-size:22px;
+    color:var(--navy);
+    margin:38px 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2.section-h .num{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    color:var(--gold);
+    font-weight:600;
+  }
+  .wrap > h2.section-h:first-of-type{margin-top:28px;}
+  .tr-line{
+    font-style:italic;
+    color:var(--teal);
+    font-size:15px;
+    margin:0 0 14px;
+  }
+  .lead{font-size:15px; margin:0 0 16px; color:#4A473F;}
+
+  .rule-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:4px solid var(--teal);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:16px;
+    box-shadow:var(--shadow);
+  }
+  .rule-en{font-size:15.5px;margin:0 0 4px;}
+  .rule-tr{
+    font-style:italic;
+    color:var(--teal);
+    font-size:14px;
+    margin:0 0 12px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--line);
+  }
+  .rule-note{font-size:14px; color:#4A473F; margin:0 0 10px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13.5px;
+    background:var(--teal-2);
+    border:1px solid #CFE3E1;
+    border-radius:8px;
+    padding:6px 10px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  .chip .arrow{color:var(--gold);font-weight:600;}
+  .chip .tr{color:#6B6459;font-style:italic;font-size:12px;}
+
+  .use-example{
+    font-family:"Source Serif 4", serif;
+    font-style:italic;
+    font-size:14px;
+    background:var(--ivory-2);
+    border-radius:8px;
+    padding:8px 12px;
+    margin-top:10px;
+    color:#4A473F;
+  }
+  .use-example b{font-style:normal; color:var(--navy);}
+
+  .exception-note{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12.5px;
+    background:var(--gold-2);
+    border:1px solid #E4D19C;
+    border-radius:8px;
+    padding:8px 10px;
+    margin-top:10px;
+    color:#6B5416;
+  }
+
+  table.quickref{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin:14px 0 10px;
+  }
+  table.quickref th{
+    background:var(--navy);
+    color:var(--ivory);
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    text-align:left;
+    padding:10px 12px;
+  }
+  table.quickref td{
+    padding:9px 12px;
+    border-top:1px solid var(--line);
+    font-size:14.5px;
+    vertical-align:top;
+  }
+  table.quickref tr:nth-child(even) td{background:var(--ivory-2);}
+  .tr-cell{color:var(--teal);font-style:italic;font-size:13.5px;}
+
+  .callout{
+    background:var(--teal-2);
+    border:1px solid #CFE3E1;
+    border-radius:var(--radius);
+    padding:14px 16px;
+    margin:18px 0;
+    font-size:14.5px;
+  }
+  .callout b{color:var(--navy);}
+
+  .exercise{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+  }
+  .exercise h3{
+    font-family:"Playfair Display", serif;
+    font-size:18px;
+    color:var(--navy);
+    margin:0 0 4px;
+  }
+  .exercise .instr{
+    font-size:14px;
+    color:#5A554A;
+    margin:0 0 14px;
+  }
+  .item{margin-bottom:12px;}
+  .item label{display:block; font-size:14.5px; margin-bottom:5px;}
+  .item input[type=text]{
+    width:220px;
+    max-width:100%;
+    padding:7px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-family:"Source Serif 4", serif;
+    font-size:14.5px;
+    background:var(--ivory-2);
+  }
+  .item input[type=text]:focus{outline:2px solid var(--teal); outline-offset:1px;}
+  .btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    letter-spacing:.03em;
+    background:var(--navy);
+    color:var(--ivory);
+    border:none;
+    padding:9px 16px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top:6px;
+  }
+  .btn:hover{background:var(--navy-2);}
+  .btn.small{padding:5px 10px; font-size:12px; background:var(--teal);}
+  .btn.small:hover{background:#255856;}
+  .feedback{
+    margin-top:10px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    padding:8px 10px;
+    border-radius:6px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.good{background:#E3F1E8; color:var(--ok);}
+  .feedback.bad{background:#F6E4E0; color:var(--danger);}
+  .item.correct input{border-color:var(--ok); background:#EEF7F1;}
+  .item.incorrect input{border-color:var(--danger); background:#FBEEEC;}
+
+  .word-bank{
+    display:flex; flex-wrap:wrap; gap:8px;
+    background:var(--gold-2);
+    border:1px solid #E4D19C;
+    border-radius:8px;
+    padding:12px 14px;
+    margin-bottom:16px;
+  }
+  .word-bank .wb-word{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:13px;
+    background:var(--white);
+    border:1px solid #E4D19C;
+    border-radius:6px;
+    padding:5px 10px;
+    color:#6B5416;
+  }
+  .word-bank .wb-label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#6B5416;
+    width:100%;
+    margin-bottom:4px;
+    opacity:.8;
+  }
+
+  .passage{
+    background:var(--ivory-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    font-size:15.5px;
+    margin-bottom:18px;
+  }
+  .passage h4{
+    font-family:"Playfair Display", serif;
+    font-size:17px;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+  .passage p{margin:0 0 10px;}
+  .passage .plural-hint{color:var(--teal); font-weight:600;}
+
+  .qa{margin-bottom:14px;}
+  .qa p.q{font-size:14.5px; margin:0 0 6px; font-weight:600; color:var(--navy);}
+  .qa .opts{display:flex; flex-direction:column; gap:6px;}
+  .qa label{font-size:14px; display:flex; align-items:center; gap:8px; cursor:pointer;}
+
+  .pron-table{width:100%; border-collapse:collapse; margin-bottom:8px;}
+  .pron-table td{padding:10px 8px; border-top:1px solid var(--line); font-size:14.5px; vertical-align:middle;}
+  .pron-table tr:first-child td{border-top:none;}
+  .pron-pair{font-family:"IBM Plex Mono", monospace; font-size:14px;}
+  .pron-tr{color:var(--teal); font-style:italic; font-size:13px;}
+  .pron-note{color:#6B6459; font-size:12.5px;}
+  .listen-btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    background:var(--navy);
+    color:var(--ivory);
+    border:none;
+    padding:5px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .listen-btn:hover{background:var(--navy-2);}
+  .listen-btn:disabled{opacity:.5; cursor:default;}
+
+  footer.note{
+    margin-top:50px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:#8A8474;
+    font-family:"IBM Plex Mono", monospace;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="eyebrow">Teacher Benny &middot; Lesson</div>
+    <h1 class="title">Singular &amp; Plural Nouns</h1>
+    <div class="subtitle-tr">Tekil ve Çoğul İsimler &mdash; Ders</div>
+    <div class="level-tags">
+      <span class="tag">A1&ndash;A2</span>
+      <span class="tag">45 MIN LESSON</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="callout" style="margin-top:26px">
+    <b>Sound on / Sesi açın:</b> This lesson has "Listen" buttons that read words aloud using your browser's voice. Click 🔊 at any time to hear a word. &mdash; Bu derste kelimeleri sesli okuyan "Listen" butonları vardır. Herhangi bir zamanda 🔊 tuşuna basarak kelimeyi dinleyebilirsiniz.
+  </div>
+
+  <!-- ============ GRAMMAR EXPLANATION ============ -->
+  <div class="part-divider"><span class="label">Part 1 &middot; Grammar</span><div class="line"></div></div>
+
+  <h2 class="section-h"><span class="num">01</span> What is singular / plural?</h2>
+  <p class="tr-line">Tekil ve çoğul nedir?</p>
+  <p class="lead">In English, every noun (a word for a person, animal, place or thing) has two forms: <b>singular</b>, for one, and <b>plural</b>, for more than one. Getting this right matters because it changes the verb you use ("There is a book" vs "There are two books") and it's one of the very first things a listener notices about your English.</p>
+  <div class="rule-card">
+    <p class="rule-en"><b>Singular</b> = ONE person, animal, place or thing. <b>Plural</b> = MORE THAN ONE.</p>
+    <p class="rule-tr"><b>Tekil</b> = BİR kişi, hayvan, yer veya şey. <b>Çoğul</b> = BİRDEN FAZLA.</p>
+    <div class="chip-row">
+      <span class="chip">a book <span class="tr">(bir kitap)</span> <span class="arrow">&rarr;</span> two books <span class="tr">(iki kitap)</span></span>
+      <span class="chip">a student <span class="tr">(bir öğrenci)</span> <span class="arrow">&rarr;</span> five students <span class="tr">(beş öğrenci)</span></span>
+    </div>
+    <div class="use-example"><b>In use:</b> "I have <u>a</u> book." (singular, use "a") &rarr; "I have three <u>books</u>." (plural, no "a", add &minus;s)</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">02</span> Regular plurals &mdash; just add &minus;s</h2>
+  <p class="tr-line">Düzenli çoğullar &mdash; sona &minus;s eklenir</p>
+  <p class="lead">Most English nouns are "regular" &mdash; they follow one simple pattern. This is the rule you will use most often, so it's worth making automatic.</p>
+  <div class="rule-card">
+    <p class="rule-en">Most nouns simply take <b>&minus;s</b> at the end. The &minus;s is usually pronounced like a soft /s/ or /z/ sound, not a new syllable.</p>
+    <p class="rule-tr">Çoğu kelimenin sonuna sadece <b>&minus;s</b> eklenir. Bu &minus;s genellikle yumuşak bir /s/ veya /z/ sesi gibi okunur, yeni bir hece oluşturmaz.</p>
+    <div class="chip-row">
+      <span class="chip">book <span class="tr">kitap</span><span class="arrow">&rarr;</span>books</span>
+      <span class="chip">car <span class="tr">araba</span><span class="arrow">&rarr;</span>cars</span>
+      <span class="chip">table <span class="tr">masa</span><span class="arrow">&rarr;</span>tables</span>
+      <span class="chip">pen <span class="tr">kalem</span><span class="arrow">&rarr;</span>pens</span>
+    </div>
+    <div class="use-example"><b>In use:</b> "My sister has two <u>cars</u> and four <u>pens</u> in her bag."</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">03</span> Add &minus;es</h2>
+  <p class="tr-line">Sonu &minus;s, &minus;ss, &minus;sh, &minus;ch, &minus;x, &minus;o ile bitenler &mdash; &minus;es eklenir</p>
+  <p class="lead">Some word endings make a plain &minus;s hard to pronounce, so English adds an extra vowel sound: &minus;es. This adds a new syllable you can hear.</p>
+  <div class="rule-card">
+    <p class="rule-en">Words ending in <b>&minus;s, &minus;ss, &minus;sh, &minus;ch, &minus;x, &minus;o</b> add <b>&minus;es</b>.</p>
+    <p class="rule-tr">Bu harflerle biten kelimelere, telaffuzu kolaylaştırmak için &minus;es eklenir.</p>
+    <div class="chip-row">
+      <span class="chip">bus <span class="tr">otobüs</span><span class="arrow">&rarr;</span>buses</span>
+      <span class="chip">class <span class="tr">sınıf</span><span class="arrow">&rarr;</span>classes</span>
+      <span class="chip">brush <span class="tr">fırça</span><span class="arrow">&rarr;</span>brushes</span>
+      <span class="chip">watch <span class="tr">saat</span><span class="arrow">&rarr;</span>watches</span>
+      <span class="chip">box <span class="tr">kutu</span><span class="arrow">&rarr;</span>boxes</span>
+      <span class="chip">potato <span class="tr">patates</span><span class="arrow">&rarr;</span>potatoes</span>
+    </div>
+    <div class="exception-note">Note: piano &rarr; pianos, photo &rarr; photos (some &minus;o words just add &minus;s). / Bazı &minus;o ile biten kelimeler sadece &minus;s alır.</div>
+    <div class="use-example"><b>In use:</b> "There are five <u>buses</u> and two <u>boxes</u> outside the school."</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">04</span> Consonant + Y &rarr; &minus;ies</h2>
+  <p class="tr-line">Ünsüz + y &rarr; y, i olur ve &minus;es eklenir</p>
+  <p class="lead">Words ending in "y" split into two groups, depending on the letter right before the y.</p>
+  <div class="rule-card">
+    <p class="rule-en">If the word ends in a <b>consonant + y</b>, change y &rarr; i and add <b>&minus;es</b>. If it ends in a <b>vowel + y</b>, just add <b>&minus;s</b> &mdash; the y stays the same.</p>
+    <p class="rule-tr">Ünsüz harften sonra y varsa, y harfi i olur ve &minus;es eklenir. Ünlü harften sonra y varsa, sadece &minus;s eklenir, y değişmez.</p>
+    <div class="chip-row">
+      <span class="chip">baby <span class="tr">bebek</span><span class="arrow">&rarr;</span>babies</span>
+      <span class="chip">city <span class="tr">şehir</span><span class="arrow">&rarr;</span>cities</span>
+      <span class="chip">country <span class="tr">ülke</span><span class="arrow">&rarr;</span>countries</span>
+      <span class="chip">boy <span class="tr">erkek çocuk</span><span class="arrow">&rarr;</span>boys</span>
+      <span class="chip">day <span class="tr">gün</span><span class="arrow">&rarr;</span>days</span>
+    </div>
+    <div class="use-example"><b>In use:</b> "We visited three <u>cities</u> in two <u>days</u>."</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">05</span> &minus;f / &minus;fe &rarr; &minus;ves</h2>
+  <p class="tr-line">Sonu &minus;f / &minus;fe ile bitenler &mdash; f, v olur</p>
+  <p class="lead">A small group of &minus;f and &minus;fe words soften the f sound to v in the plural. This group is small enough to memorise.</p>
+  <div class="rule-card">
+    <p class="rule-en">Some words ending in <b>&minus;f</b> or <b>&minus;fe</b> change to <b>&minus;ves</b>.</p>
+    <p class="rule-tr">Bazı &minus;f veya &minus;fe ile biten kelimelerde f harfi v olur ve &minus;ves eklenir.</p>
+    <div class="chip-row">
+      <span class="chip">leaf <span class="tr">yaprak</span><span class="arrow">&rarr;</span>leaves</span>
+      <span class="chip">knife <span class="tr">bıçak</span><span class="arrow">&rarr;</span>knives</span>
+      <span class="chip">wife <span class="tr">eş</span><span class="arrow">&rarr;</span>wives</span>
+      <span class="chip">life <span class="tr">hayat</span><span class="arrow">&rarr;</span>lives</span>
+    </div>
+    <div class="exception-note">Exceptions / İstisnalar: roof &rarr; roofs, chef &rarr; chefs, belief &rarr; beliefs.</div>
+    <div class="use-example"><b>In use:</b> "She put the <u>knives</u> next to the <u>leaves</u> on the table." (an unusual sentence, but easy to remember!)</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">06</span> Irregular plurals &mdash; learn by heart</h2>
+  <p class="tr-line">Düzensiz çoğullar &mdash; ezberlenmeli</p>
+  <p class="lead">These words are some of the most common nouns in English, and none of them follow a spelling rule. Because you will hear and use them constantly, it's worth memorising this short list first, before the rarer regular words.</p>
+  <div class="rule-card">
+    <p class="rule-en">These common words don't follow any rule. They must be memorised.</p>
+    <p class="rule-tr">Bu sık kullanılan kelimeler hiçbir kurala uymaz. Ezbere öğrenilmelidir.</p>
+    <table class="quickref">
+      <tr><th>Singular</th><th>Plural</th><th>Türkçe</th></tr>
+      <tr><td>man</td><td>men</td><td class="tr-cell">adam / adamlar</td></tr>
+      <tr><td>woman</td><td>women</td><td class="tr-cell">kadın / kadınlar</td></tr>
+      <tr><td>child</td><td>children</td><td class="tr-cell">çocuk / çocuklar</td></tr>
+      <tr><td>person</td><td>people</td><td class="tr-cell">kişi / insanlar</td></tr>
+      <tr><td>foot</td><td>feet</td><td class="tr-cell">ayak / ayaklar</td></tr>
+      <tr><td>tooth</td><td>teeth</td><td class="tr-cell">diş / dişler</td></tr>
+      <tr><td>mouse</td><td>mice</td><td class="tr-cell">fare / fareler</td></tr>
+    </table>
+    <div class="use-example"><b>In use:</b> "The <u>children</u> brushed their <u>teeth</u> before bed."</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">07</span> Same singular &amp; plural</h2>
+  <p class="tr-line">Tekil ve çoğulu aynı olan kelimeler</p>
+  <div class="rule-card">
+    <p class="rule-en">A few words never change &mdash; the sentence (a number, or "many"/"some") tells you if it's one or many.</p>
+    <p class="rule-tr">Bazı kelimeler hiç değişmez &mdash; tekil mi çoğul mu olduğunu cümledeki sayı veya "many/some" gibi kelimeler gösterir.</p>
+    <div class="chip-row">
+      <span class="chip">one sheep <span class="tr">bir koyun</span><span class="arrow">&rarr;</span>ten sheep</span>
+      <span class="chip">one fish <span class="tr">bir balık</span><span class="arrow">&rarr;</span>three fish</span>
+      <span class="chip">one deer <span class="tr">bir geyik</span><span class="arrow">&rarr;</span>many deer</span>
+    </div>
+    <div class="use-example"><b>In use:</b> "I saw one <u>fish</u>." vs "I saw ten <u>fish</u>." (same word!)</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">08</span> Uncountable nouns &mdash; no plural</h2>
+  <p class="tr-line">Sayılamayan isimler &mdash; çoğulu yoktur</p>
+  <p class="lead">Some nouns describe things we don't count one-by-one in English (even if we can in Turkish), like liquids, ideas, or general categories. These never take &minus;s.</p>
+  <div class="rule-card">
+    <p class="rule-en">These nouns have no plural form. Use <b>some / any</b> instead of a number, or count them with a "piece/glass/cup of..." phrase.</p>
+    <p class="rule-tr">Bu isimlerin çoğul hali yoktur. Sayı yerine <b>some / any</b> kullanılır; ya da "a piece of / a glass of" gibi ifadelerle sayılır.</p>
+    <div class="chip-row">
+      <span class="chip">water <span class="tr">su</span></span>
+      <span class="chip">money <span class="tr">para</span></span>
+      <span class="chip">information <span class="tr">bilgi</span></span>
+      <span class="chip">advice <span class="tr">tavsiye</span></span>
+      <span class="chip">furniture <span class="tr">mobilya</span></span>
+      <span class="chip">rice <span class="tr">pirinç</span></span>
+    </div>
+    <div class="exception-note">I need <b>some</b> information. (NOT "an information" / "informations") &mdash; Biraz bilgiye ihtiyacım var.</div>
+    <div class="use-example"><b>In use:</b> "Can you give me <u>some advice</u>?" / "I bought <u>some furniture</u> for my new flat."</div>
+  </div>
+
+  <h2 class="section-h"><span class="num">09</span> Quick reference table</h2>
+  <p class="tr-line">Hızlı bakış tablosu</p>
+  <table class="quickref">
+    <tr><th>Rule</th><th>Example</th><th>Türkçe</th></tr>
+    <tr><td>+ s</td><td>book &rarr; books</td><td class="tr-cell">kural: sona -s eklenir</td></tr>
+    <tr><td>+ es (s/ss/sh/ch/x/o)</td><td>box &rarr; boxes</td><td class="tr-cell">bu harflerle bitenlere -es</td></tr>
+    <tr><td>consonant + y &rarr; ies</td><td>baby &rarr; babies</td><td class="tr-cell">ünsüz+y &rarr; ies</td></tr>
+    <tr><td>f / fe &rarr; ves</td><td>leaf &rarr; leaves</td><td class="tr-cell">f/fe &rarr; ves</td></tr>
+    <tr><td>irregular</td><td>child &rarr; children</td><td class="tr-cell">ezbere öğren</td></tr>
+    <tr><td>no change</td><td>sheep &rarr; sheep</td><td class="tr-cell">değişmez</td></tr>
+    <tr><td>uncountable</td><td>water (no plural)</td><td class="tr-cell">çoğulu yok</td></tr>
+  </table>
+
+  <!-- ============ PRACTICE ============ -->
+  <div class="part-divider"><span class="label">Part 2 &middot; Practice</span><div class="line"></div></div>
+
+  <!-- P1: Fill in the gaps -->
+  <h2 class="section-h"><span class="num">P1</span> Fill in the gaps</h2>
+  <p class="tr-line">Boşlukları doldurun</p>
+  <div class="exercise" id="ex1">
+    <p class="instr">Write the correct plural form of the word in brackets.</p>
+    <div id="ex1-items"></div>
+    <button class="btn" onclick="checkEx1()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex1-fb"></div>
+  </div>
+
+  <!-- P2: Find the missing word (word bank) -->
+  <h2 class="section-h"><span class="num">P2</span> Find the missing word</h2>
+  <p class="tr-line">Eksik kelimeyi bulun</p>
+  <div class="exercise" id="ex2">
+    <p class="instr">Choose the correct word from the word bank for each sentence. Some words are not used.</p>
+    <div class="word-bank">
+      <span class="wb-label">Word bank</span>
+      <span class="wb-word">children</span><span class="wb-word">feet</span><span class="wb-word">women</span>
+      <span class="wb-word">boxes</span><span class="wb-word">cities</span><span class="wb-word">sheep</span>
+      <span class="wb-word">knives</span><span class="wb-word">mice</span><span class="wb-word">teeth</span>
+      <span class="wb-word">buses</span><span class="wb-word">babies</span>
+    </div>
+    <div id="ex2-items"></div>
+    <button class="btn" onclick="checkEx2()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex2-fb"></div>
+  </div>
+
+  <!-- P3: Reading passage -->
+  <h2 class="section-h"><span class="num">P3</span> Reading passage</h2>
+  <p class="tr-line">Okuma parçası</p>
+  <div class="passage">
+    <h4>My Street</h4>
+    <p>I live on a quiet street with my family. There are ten <span class="plural-hint">houses</span> on our street, and each house has a small garden. In the mornings, I see two <span class="plural-hint">men</span> walking their dogs and three <span class="plural-hint">women</span> going to work. A yellow bus stops here every day &mdash; the <span class="plural-hint">children</span> from our street get on the bus and go to school together.</p>
+    <p>Next to my house, there is a small shop. The shop sells fruit, vegetables, and fresh bread. My mother always buys some <span class="plural-hint">potatoes</span> and two loaves of bread there. Behind the shop, there are three old trees with big green <span class="plural-hint">leaves</span>. In autumn, the leaves fall onto the street.</p>
+    <p>On Saturday mornings, I clean my <span class="plural-hint">shoes</span> and walk to the park with my two <span class="plural-hint">brothers</span>. We watch the <span class="plural-hint">fish</span> in the small lake and count the <span class="plural-hint">birds</span> in the trees. It is a simple street, but I love it very much.</p>
+  </div>
+  <div class="exercise" id="ex3">
+    <p class="instr">Answer the questions about the passage.</p>
+    <div id="ex3-items"></div>
+    <button class="btn" onclick="checkEx3()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex3-fb"></div>
+  </div>
+
+  <!-- P4: Fix the mistake -->
+  <h2 class="section-h"><span class="num">P4</span> Fix the mistake</h2>
+  <p class="tr-line">Hatayı bulun ve düzeltin</p>
+  <div class="exercise" id="ex4">
+    <p class="instr">Each sentence has one wrong plural. Rewrite the whole sentence correctly.</p>
+    <div id="ex4-items"></div>
+    <button class="btn" onclick="checkEx4()">Check answers / Kontrol et</button>
+    <div class="feedback" id="ex4-fb"></div>
+  </div>
+
+  <!-- P5: Pronunciation -->
+  <h2 class="section-h"><span class="num">P5</span> Pronunciation practice</h2>
+  <p class="tr-line">Telaffuz alıştırması</p>
+  <p class="lead">Irregular plurals often change their vowel sound completely, not just their spelling. Click 🔊 to hear each word, then say the pair out loud yourself three times.</p>
+  <div class="exercise">
+    <table class="pron-table" id="pron-table"></table>
+  </div>
+
+</div>
+
+<footer class="note">
+  <div class="wrap" style="padding:0">Teacher Benny &middot; English Grammar Series &middot; Singular &amp; Plural Nouns &middot; Lesson &middot; A1&ndash;A2</div>
+</footer>
+
+<script>
+/* ---------- Text-to-speech ---------- */
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+/* ---------- Answer keys (never rendered as answers in the HTML) ---------- */
+const KEYS = {
+  ex1: [
+    {word:"dog", ans:"dogs"},
+    {word:"class", ans:"classes"},
+    {word:"city", ans:"cities"},
+    {word:"knife", ans:"knives"},
+    {word:"box", ans:"boxes"},
+    {word:"child", ans:"children"},
+    {word:"country", ans:"countries"},
+    {word:"tooth", ans:"teeth"},
+    {word:"potato", ans:"potatoes"},
+    {word:"woman", ans:"women"}
+  ],
+  ex2: [
+    {sentence:"The ____ walked into the classroom and sat down.", ans:"children"},
+    {sentence:"After the long hike, my ____ hurt a lot.", ans:"feet"},
+    {sentence:"Two ____ were waiting at the bus stop with their bags.", ans:"women"},
+    {sentence:"We packed the books into five big ____.", ans:"boxes"},
+    {sentence:"They have visited many ____ in Europe.", ans:"cities"},
+    {sentence:"There were twenty ____ in the field near the farm.", ans:"sheep"},
+    {sentence:"Please put the ____ back in the kitchen drawer.", ans:"knives"},
+    {sentence:"The dentist checked all of her ____.", ans:"teeth"}
+  ],
+  ex3: [
+    {q:"How many houses are on the street?", options:["Five","Ten","Twenty"], ans:"Ten"},
+    {q:"Who walks the dogs in the morning?", options:["Two men","Two women","Two children"], ans:"Two men"},
+    {q:"What does the shop sell?", options:["Books and pens","Fruit, vegetables, and bread","Shoes and clothes"], ans:"Fruit, vegetables, and bread"},
+    {q:"What do the writer and their brothers do on Saturday?", options:["Clean the house","Go to school","Walk to the park"], ans:"Walk to the park"}
+  ],
+  ex4: [
+    {wrong:"I have two child.", ans:"I have two children."},
+    {wrong:"There are five mans in the room.", ans:"There are five men in the room."},
+    {wrong:"She has three knifes in the kitchen.", ans:"She has three knives in the kitchen."},
+    {wrong:"We saw many sheeps in the field.", ans:"We saw many sheep in the field."},
+    {wrong:"I need some informations.", ans:"I need some information."}
+  ]
+};
+
+const PRON = [
+  {s:"man", p:"men", tr:"adam / adamlar", note:"vowel changes a &rarr; e"},
+  {s:"woman", p:"women", tr:"kadın / kadınlar", note:"first syllable changes wuh &rarr; wih"},
+  {s:"child", p:"children", tr:"çocuk / çocuklar", note:"a new syllable is added"},
+  {s:"foot", p:"feet", tr:"ayak / ayaklar", note:"vowel changes short oo &rarr; long ee"},
+  {s:"tooth", p:"teeth", tr:"diş / dişler", note:"vowel changes short oo &rarr; long ee"},
+  {s:"mouse", p:"mice", tr:"fare / fareler", note:"vowel changes ow &rarr; eye sound"},
+  {s:"person", p:"people", tr:"kişi / insanlar", note:"a completely different word"}
+];
+
+/* ---------- Build P1 ---------- */
+const ex1c = document.getElementById('ex1-items');
+KEYS.ex1.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex1-item-'+i;
+  div.innerHTML = `<label>${i+1}. ${it.word} &rarr; <input type="text" id="ex1-in-${i}" autocomplete="off"></label>`;
+  ex1c.appendChild(div);
+});
+function checkEx1(){
+  let correct = 0;
+  KEYS.ex1.forEach((it,i)=>{
+    const inp = document.getElementById('ex1-in-'+i);
+    const val = inp.value.trim().toLowerCase();
+    const item = document.getElementById('ex1-item-'+i);
+    if(val === it.ans){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex1-fb');
+  fb.textContent = `${correct} / ${KEYS.ex1.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex1.length ? 'good':'bad');
+}
+
+/* ---------- Build P2 (word bank cloze) ---------- */
+const ex2c = document.getElementById('ex2-items');
+KEYS.ex2.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex2-item-'+i;
+  const sentenceHtml = it.sentence.replace('____', `<input type="text" id="ex2-in-${i}" autocomplete="off">`);
+  div.innerHTML = `<label>${i+1}. ${sentenceHtml}</label>`;
+  ex2c.appendChild(div);
+});
+function checkEx2(){
+  let correct = 0;
+  KEYS.ex2.forEach((it,i)=>{
+    const inp = document.getElementById('ex2-in-'+i);
+    const val = inp.value.trim().toLowerCase();
+    const item = document.getElementById('ex2-item-'+i);
+    if(val === it.ans){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex2-fb');
+  fb.textContent = `${correct} / ${KEYS.ex2.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex2.length ? 'good':'bad');
+}
+
+/* ---------- Build P3 (reading comprehension) ---------- */
+const ex3c = document.getElementById('ex3-items');
+KEYS.ex3.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'qa';
+  div.id = 'ex3-item-'+i;
+  const opts = it.options.map((o,j)=>`<label><input type="radio" name="ex3-q${i}" value="${o}"> ${o}</label>`).join('');
+  div.innerHTML = `<p class="q">${i+1}. ${it.q}</p><div class="opts">${opts}</div>`;
+  ex3c.appendChild(div);
+});
+function checkEx3(){
+  let correct = 0;
+  KEYS.ex3.forEach((it,i)=>{
+    const radios = document.getElementsByName('ex3-q'+i);
+    let chosen = null;
+    radios.forEach(r=>{ if(r.checked) chosen = r.value; });
+    const item = document.getElementById('ex3-item-'+i);
+    if(chosen === it.ans){ correct++; item.style.color = 'var(--ok)'; }
+    else { item.style.color = 'var(--danger)'; }
+  });
+  const fb = document.getElementById('ex3-fb');
+  fb.textContent = `${correct} / ${KEYS.ex3.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex3.length ? 'good':'bad');
+}
+
+/* ---------- Build P4 (error correction) ---------- */
+const ex4c = document.getElementById('ex4-items');
+KEYS.ex4.forEach((it,i)=>{
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.id = 'ex4-item-'+i;
+  div.innerHTML = `<label>${i+1}. <em>${it.wrong}</em></label><input type="text" style="width:100%" id="ex4-in-${i}" placeholder="Rewrite the sentence..." autocomplete="off">`;
+  ex4c.appendChild(div);
+});
+function normalize(s){
+  return s.trim().toLowerCase().replace(/[.\s]+$/,'').replace(/\s+/g,' ');
+}
+function checkEx4(){
+  let correct = 0;
+  KEYS.ex4.forEach((it,i)=>{
+    const inp = document.getElementById('ex4-in-'+i);
+    const item = document.getElementById('ex4-item-'+i);
+    if(normalize(inp.value) === normalize(it.ans)){ correct++; item.classList.add('correct'); item.classList.remove('incorrect'); }
+    else { item.classList.add('incorrect'); item.classList.remove('correct'); }
+  });
+  const fb = document.getElementById('ex4-fb');
+  fb.textContent = `${correct} / ${KEYS.ex4.length} correct.`;
+  fb.className = 'feedback show ' + (correct===KEYS.ex4.length ? 'good':'bad');
+}
+
+/* ---------- Build P5 (pronunciation table) ---------- */
+const pronTable = document.getElementById('pron-table');
+PRON.forEach((it,i)=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="pron-pair">${it.s} <span style="color:var(--gold)">&rarr;</span> ${it.p}</td>
+    <td class="pron-tr">${it.tr}</td>
+    <td class="pron-note">${it.note}</td>
+    <td><button class="listen-btn" onclick="speak('${it.s}')">🔊 ${it.s}</button></td>
+    <td><button class="listen-btn" onclick="speak('${it.p}')">🔊 ${it.p}</button></td>
+  `;
+  pronTable.appendChild(tr);
+});
+</script>
+
+</body>
+</html>
