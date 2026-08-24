@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homework 1 — Present Perfect vs Past Simple | Business English B1–B2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:         #1a2230;
+  --ink-mid:     #455066;
+  --ink-light:   #8b96aa;
+  --paper:       #f7f8fa;
+  --paper-mid:   #edeff3;
+  --white:       #ffffff;
+  --border:      #dde1e8;
+  --gold:        #c49a3c;
+  --gold-d:      #8a6518;
+  --gold-light:  #faf5e4;
+  --gold-mid:    #e8d49a;
+  --terra:       #c0603a;
+  --terra-d:     #8f3f20;
+  --terra-light: #fdf0ea;
+  --terra-mid:   #e8c4b4;
+  --sage:        #5e7a52;
+  --sage-d:      #3d5433;
+  --sage-light:  #eaf2e4;
+  --sage-mid:    #b8cead;
+  --blue:        #3a6fa8;
+  --blue-d:      #1e4a7a;
+  --blue-light:  #e8f0fb;
+  --blue-mid:    #b8cef0;
+  --plum:        #7a4a8a;
+  --plum-light:  #f3edf7;
+  --plum-mid:    #d4b8e0;
+  --b1-accent:   #2e6fa8;
+  --b1-light:    #e8f0fb;
+  --b1-mid:      #b8cef0;
+  --b2-accent:   #1a8a78;
+  --b2-light:    #e3f4f1;
+  --b2-mid:      #a9dcd2;
+  --radius:      10px;
+  --shadow:      0 2px 14px rgba(26,34,48,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Serif 4', Georgia, serif; background: var(--paper); color: var(--ink); min-height: 100vh; padding-bottom: 6rem; }
+
+/* ── HERO ── */
+.hero { background: var(--ink); color: var(--paper); padding: 3rem 2rem 2.4rem; position: relative; overflow: hidden; }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 90% at 90% 40%, rgba(196,154,60,0.13) 0%, transparent 65%),
+    repeating-linear-gradient(-55deg, transparent, transparent 20px, rgba(46,111,168,0.05) 20px, rgba(46,111,168,0.05) 21px);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+.series-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.5rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 14px; color: rgba(247,248,250,0.65); max-width: 520px; line-height: 1.7; margin-bottom: 1.4rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-pill { font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 13px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.15); color: rgba(247,248,250,0.75); }
+
+/* ── INFO BANNER ── */
+.info-banner { background: var(--gold-light); border-bottom: 2px solid var(--gold-mid); padding: 1.1rem 2rem; }
+.ib-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ib-item { font-size: 12.5px; color: var(--gold-d); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.ib-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-d); opacity: 0.5; }
+
+/* ── LEVEL TOGGLE ── */
+.level-toggle-wrap { max-width: 860px; margin: 1.8rem auto 0; padding: 0 1.4rem; }
+.level-toggle { display: flex; background: var(--paper-mid); border: 1px solid var(--border); border-radius: 99px; padding: 4px; gap: 4px; width: fit-content; }
+.level-btn { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; padding: 7px 26px; border-radius: 99px; border: none; background: transparent; color: var(--ink-light); cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
+.level-btn.active-b1 { background: var(--b1-accent); color: var(--white); }
+.level-btn.active-b2 { background: var(--b2-accent); color: var(--white); }
+.level-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+.badge-b1 { background: var(--b1-light); color: var(--b1-accent); }
+.badge-b2 { background: var(--b2-light); color: var(--b2-accent); }
+
+/* ── PROGRESS ── */
+.progress-wrap { max-width: 860px; margin: 1rem auto 0; padding: 0 1.4rem; }
+.progress-label { font-size: 11.5px; color: var(--ink-light); display: flex; justify-content: space-between; margin-bottom: 5px; }
+.progress-bar-outer { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.progress-bar-inner { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+.bar-b1 { background: var(--b1-accent); }
+.bar-b2 { background: var(--b2-accent); }
+
+/* ── MAIN ── */
+.main { max-width: 860px; margin: 0 auto; padding: 0 1.4rem; }
+
+/* ── SECTION HEADING ── */
+.sec-head { display: flex; align-items: center; gap: 13px; margin: 2.4rem 0 1.1rem; }
+.sec-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--white); flex-shrink: 0; }
+.num-b1 { background: var(--b1-accent); }
+.num-b2 { background: var(--b2-accent); }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+.sec-sub { font-size: 12px; color: var(--ink-light); margin-top: 2px; }
+.sec-divider { flex: 1; height: 1px; background: var(--border); margin-left: 6px; }
+
+/* ── CARD ── */
+.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.card-tag { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+.tag-b1 { background: var(--b1-light); color: var(--b1-accent); }
+.tag-b2 { background: var(--b2-light); color: var(--b2-accent); }
+.card-instruction { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.5; }
+.card-note { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-bottom: 14px; line-height: 1.5; }
+
+/* ── WORD BANK ── */
+.word-bank { background: var(--gold-light); border: 1px solid var(--gold-mid); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; }
+.wb-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-d); margin-bottom: 8px; }
+.wb-words { display: flex; flex-wrap: wrap; gap: 7px; }
+.wb-word { font-size: 13px; background: var(--white); border: 1px solid var(--gold-mid); color: #6b4c0a; padding: 3px 12px; border-radius: 20px; font-style: italic; }
+
+/* ── FILL IN THE GAPS ── */
+.fill-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.fill-item { display: flex; align-items: baseline; gap: 9px; }
+.fill-num { font-size: 12px; font-weight: 700; color: var(--ink-light); min-width: 22px; flex-shrink: 0; }
+.fill-text { font-size: 14px; line-height: 1.9; color: var(--ink); flex: 1; }
+.fill-input { display: inline-block; border: none; border-bottom: 1.5px solid var(--terra-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); min-width: 130px; padding: 0 4px; outline: none; transition: border-color 0.15s; }
+.fill-input:focus { border-color: var(--terra); }
+
+/* ── MATCH ── */
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.match-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); margin-bottom: 10px; }
+.match-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.match-key { font-size: 12px; font-weight: 700; color: var(--white); background: var(--sage); border-radius: 50%; width: 23px; height: 23px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.match-letter { font-size: 12px; font-weight: 700; color: var(--white); background: var(--terra); border-radius: 50%; width: 23px; height: 23px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.match-text { font-size: 13.5px; color: var(--ink); line-height: 1.45; }
+.match-select { font-family: 'Source Serif 4', serif; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; background: var(--paper-mid); color: var(--ink); outline: none; cursor: pointer; }
+.match-select:focus { border-color: var(--b1-accent); }
+
+/* ── ERROR CORRECTION ── */
+.error-list { display: flex; flex-direction: column; gap: 13px; }
+.error-item { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; border-left: 3px solid var(--terra-mid); }
+.error-sentence { font-size: 14px; font-style: italic; color: var(--ink-mid); margin-bottom: 8px; line-height: 1.6; }
+.error-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-light); margin-bottom: 5px; }
+.error-input { width: 100%; border: none; border-bottom: 1.5px solid var(--terra-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.error-input:focus { border-color: var(--terra); }
+
+/* ── WORD ORDER ── */
+.wo-list { display: flex; flex-direction: column; gap: 13px; }
+.wo-item { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; }
+.wo-jumbled { font-size: 13px; font-style: italic; color: var(--ink-light); margin-bottom: 8px; line-height: 1.6; }
+.wo-jumbled span { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; margin-right: 4px; display: inline-block; color: var(--ink-mid); }
+.wo-input { width: 100%; border: none; border-bottom: 1.5px solid var(--blue-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.wo-input:focus { border-color: var(--blue); }
+
+/* ── SENTENCE ORDER ── */
+.dialogue-box { background: var(--paper-mid); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+.dialogue-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); margin-bottom: 10px; }
+.so-list { display: flex; flex-direction: column; gap: 8px; }
+.so-sentence { background: var(--white); border: 1px solid var(--border); border-radius: 7px; padding: 10px 14px; font-size: 13.5px; font-style: italic; color: var(--ink-mid); display: flex; align-items: center; gap: 10px; }
+.so-sentence .so-letter { font-size: 12px; font-weight: 700; color: var(--white); background: var(--plum); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-style: normal; }
+.so-select { font-family: 'Source Serif 4', serif; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; background: var(--paper-mid); color: var(--ink); outline: none; cursor: pointer; }
+.so-select:focus { border-color: var(--plum); }
+
+/* ── READING ── */
+.reading-passage { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 16px; line-height: 1.85; font-size: 14px; color: var(--ink); }
+.reading-passage p + p { margin-top: 0.9em; }
+.reading-q-list { display: flex; flex-direction: column; gap: 12px; }
+.reading-q { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; }
+.reading-q-text { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.reading-q-input { width: 100%; border: none; border-bottom: 1.5px solid var(--gold-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.reading-q-input:focus { border-color: var(--gold-d); }
+.reading-mc { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+.reading-mc label { font-size: 13px; color: var(--ink-mid); display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+/* ── DISCUSSION ── */
+.disc-list { display: flex; flex-direction: column; gap: 9px; }
+.disc-q { background: var(--paper-mid); border: 0.5px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+.disc-q::before { content: '💬 '; }
+.disc-textarea { width: 100%; min-height: 70px; border: 1px solid var(--border); border-radius: 7px; background: var(--white); font-family: 'Source Serif 4', serif; font-size: 13.5px; color: var(--ink); padding: 9px 11px; resize: vertical; outline: none; margin-top: 8px; transition: border-color 0.15s; }
+.disc-textarea:focus { border-color: var(--sage); }
+
+/* ── WRITING ── */
+.writing-prompts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.writing-prompt { background: var(--paper-mid); border-left: 3px solid var(--sage-mid); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 13.5px; line-height: 1.55; }
+.writing-prompt strong { color: var(--sage-d); }
+.writing-textarea { width: 100%; min-height: 150px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--white); font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 12px 14px; resize: vertical; outline: none; line-height: 1.7; transition: border-color 0.15s; }
+.writing-textarea:focus { border-color: var(--sage); }
+
+/* ── SAVE BAR ── */
+.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 12px 1.4rem; display: flex; align-items: center; justify-content: space-between; z-index: 100; box-shadow: 0 -4px 20px rgba(26,34,48,0.07); }
+.save-status { font-size: 12px; color: var(--ink-light); }
+.save-actions { display: flex; gap: 8px; }
+.btn-save { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; padding: 7px 20px; border-radius: 99px; border: none; background: var(--ink); color: var(--white); cursor: pointer; transition: background 0.18s; }
+.btn-save:hover { background: var(--terra); }
+.btn-reset { font-family: 'Source Serif 4', serif; font-size: 13px; padding: 7px 16px; border-radius: 99px; border: 1.5px solid var(--border); background: transparent; color: var(--ink-light); cursor: pointer; transition: all 0.18s; }
+.btn-reset:hover { border-color: var(--terra); color: var(--terra); }
+
+/* ── LEVEL PANELS ── */
+.level-panel { display: none; }
+.level-panel.active { display: block; }
+
+@media (max-width: 600px) {
+  .match-grid { grid-template-columns: 1fr; }
+  .hero { padding: 2rem 1.2rem 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="series-label">Business English Series · Homework 1 of 4</p>
+    <h1>Present Perfect<br><em>vs</em> Past Simple</h1>
+    <p class="hero-sub">Independent practice to consolidate what you covered in Lesson 1. Complete every section — there is no answer key, so take your time and think carefully about each choice.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">B1 · B2</span>
+      <span class="hero-pill">50–60 minutes</span>
+      <span class="hero-pill">Homework</span>
+      <span class="hero-pill">8 sections</span>
+    </div>
+  </div>
+</div>
+
+<!-- INFO BANNER -->
+<div class="info-banner">
+  <div class="ib-inner">
+    <span class="ib-item">📝 No answer key — your teacher will review this with you</span>
+    <span class="ib-dot"></span>
+    <span class="ib-item">⏱ Allow 50–60 minutes</span>
+    <span class="ib-dot"></span>
+    <span class="ib-item">💾 Your answers save automatically</span>
+  </div>
+</div>
+
+<!-- LEVEL TOGGLE -->
+<div class="level-toggle-wrap">
+  <div class="level-toggle">
+    <button class="level-btn active-b1" id="btn-b1" onclick="setLevel('b1')">B1 <span class="level-badge badge-b1">Intermediate</span></button>
+    <button class="level-btn" id="btn-b2" onclick="setLevel('b2')">B2 <span class="level-badge badge-b2">Upper-Int</span></button>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="prog-text">Progress — 0 of 8 sections started</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner bar-b1" id="prog-bar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════ B1 PANEL ══════════════ -->
+<div class="level-panel active" id="panel-b1">
+
+  <!-- S1: FILL IN THE GAPS -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">1</div>
+    <div><p class="sec-title">Fill in the Gaps</p><p class="sec-sub">Present perfect or past simple — choose the correct form</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Complete each sentence with the correct form of the verb in brackets.</p>
+    <p class="card-note">Use the time expressions to help you decide which tense fits.</p>
+    <div class="word-bank">
+      <p class="wb-label">⏱ Time signals to watch</p>
+      <div class="wb-words">
+        <span class="wb-word">already</span><span class="wb-word">yet</span><span class="wb-word">just</span>
+        <span class="wb-word">last year</span><span class="wb-word">in 2020</span><span class="wb-word">recently</span>
+        <span class="wb-word">ago</span><span class="wb-word">since</span>
+      </div>
+    </div>
+    <ul class="fill-list">
+      <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">The accounts team <input class="fill-input" data-key="b1_f1" placeholder=""> the figures yesterday afternoon. <em>(check)</em></span></li>
+      <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">I <input class="fill-input" data-key="b1_f2" placeholder=""> never <input class="fill-input" data-key="b1_f2b" placeholder="" style="min-width:90px;"> a presentation to senior management before. <em>(give)</em></span></li>
+      <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text"><input class="fill-input" data-key="b1_f3" placeholder=""> the new printer arrive yet? <em>(arrive)</em></span></li>
+      <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">Our department <input class="fill-input" data-key="b1_f4" placeholder=""> a new filing system in 2019. <em>(introduce)</em></span></li>
+      <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">She <input class="fill-input" data-key="b1_f5" placeholder=""> just <input class="fill-input" data-key="b1_f5b" placeholder="" style="min-width:90px;"> the meeting room. <em>(book)</em></span></li>
+      <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">We <input class="fill-input" data-key="b1_f6" placeholder=""> the contract three weeks ago. <em>(sign)</em></span></li>
+      <li class="fill-item"><span class="fill-num">7.</span><span class="fill-text">The technician <input class="fill-input" data-key="b1_f7" placeholder=""> the equipment recently, so it should work fine now. <em>(repair)</em></span></li>
+    </ul>
+  </div>
+
+  <!-- S2: MATCH -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">2</div>
+    <div><p class="sec-title">Match</p><p class="sec-sub">Connect the sentence beginnings to the correct endings</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Match each sentence beginning (1–5) with its correct ending (A–E).</p>
+    <div class="match-grid">
+      <div>
+        <p class="match-col-label">Sentence beginnings</p>
+        <div class="match-item"><span class="match-key">1</span><span class="match-text">The supplier has already delivered</span></div>
+        <div class="match-item"><span class="match-key">2</span><span class="match-text">She joined the marketing team</span></div>
+        <div class="match-item"><span class="match-key">3</span><span class="match-text">Have you finished</span></div>
+        <div class="match-item"><span class="match-key">4</span><span class="match-text">The factory opened</span></div>
+        <div class="match-item"><span class="match-key">5</span><span class="match-text">We haven't updated the website</span></div>
+      </div>
+      <div>
+        <p class="match-col-label">Endings — select the letter</p>
+        <div class="match-item"><span class="match-letter">A</span><span class="match-text">in 2015 and now employs 300 people.</span></div>
+        <div class="match-item"><span class="match-letter">B</span><span class="match-text">the materials we ordered.</span></div>
+        <div class="match-item"><span class="match-letter">C</span><span class="match-text">since the last redesign.</span></div>
+        <div class="match-item"><span class="match-letter">D</span><span class="match-text">the quarterly report yet?</span></div>
+        <div class="match-item"><span class="match-letter">E</span><span class="match-text">two months ago and already loves it.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">1→</span><select class="match-select" data-key="b1_m1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">2→</span><select class="match-select" data-key="b1_m2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">3→</span><select class="match-select" data-key="b1_m3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">4→</span><select class="match-select" data-key="b1_m4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">5→</span><select class="match-select" data-key="b1_m5"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+    </div>
+  </div>
+
+  <!-- S3: ERROR CORRECTION -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">3</div>
+    <div><p class="sec-title">Error Correction</p><p class="sec-sub">Find and correct the tense mistake in each sentence</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Each sentence contains one tense error. Write the corrected sentence below.</p>
+    <div class="error-list">
+      <div class="error-item">
+        <p class="error-sentence">"We have finished the project last month."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e1">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"Did you ever work abroad?"</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e2">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The manager has called the client this morning at 9am."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e3">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"I didn't receive your email yet — could you resend it?"</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e4">
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: WORD ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">4</div>
+    <div><p class="sec-title">Word Order</p><p class="sec-sub">Rearrange the words to make correct sentences</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Put the words in the correct order. Write the complete sentence.</p>
+    <div class="wo-list">
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>has</span><span>company</span><span>The</span><span>three</span><span>opened</span><span>offices</span><span>new</span></p>
+        <input class="wo-input" data-key="b1_w1">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>last</span><span>year</span><span>moved</span><span>She</span><span>department</span><span>to</span><span>this</span></p>
+        <input class="wo-input" data-key="b1_w2">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>finished</span><span>haven't</span><span>We</span><span>training</span><span>yet</span><span>the</span></p>
+        <input class="wo-input" data-key="b1_w3">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>February</span><span>started</span><span>job</span><span>this</span><span>I</span><span>in</span></p>
+        <input class="wo-input" data-key="b1_w4">
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: SENTENCE ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">5</div>
+    <div><p class="sec-title">Build the Dialogue</p><p class="sec-sub">Put the sentences in order to complete a workplace conversation</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Number the sentences 1–5 to create a logical dialogue between two colleagues.</p>
+    <div class="dialogue-box">
+      <p class="dialogue-label">Context: Two colleagues discussing the status of a client order</p>
+    </div>
+    <div class="so-list">
+      <div class="so-sentence"><span class="so-letter">A</span><span style="flex:1">It arrived this morning, actually. I checked the warehouse an hour ago.</span><select class="so-select" data-key="b1_s1"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">B</span><span style="flex:1">Hi, has the shipment from the client arrived yet?</span><select class="so-select" data-key="b1_s2"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">C</span><span style="flex:1">Perfect, thanks. I'll inform the client right away.</span><select class="so-select" data-key="b1_s3"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">D</span><span style="flex:1">Oh, that's great news! Did you already check the quantity?</span><select class="so-select" data-key="b1_s4"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">E</span><span style="flex:1">Yes, I counted everything. It all matches the order.</span><select class="so-select" data-key="b1_s5"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+  </div>
+
+  <!-- S6: READING -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">6</div>
+    <div><p class="sec-title">Reading</p><p class="sec-sub">Read the passage and answer the comprehension questions</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <div class="reading-passage">
+      <p>A small consulting firm has grown quickly over the past few years. The owner started the business alone in 2017, working from a small office above a coffee shop. Since then, the company has hired twelve new employees and moved twice to bigger spaces.</p>
+      <p>Last year, the firm won its biggest contract so far with a manufacturing client. The team worked on the project for six months and delivered it two weeks early. The client was extremely happy with the results and has already recommended the firm to two other businesses.</p>
+      <p>This year, the company has opened a second office in another city. The owner has also started looking for new investors to help the business grow even further. So far, two investors have shown serious interest, but no final agreement has been signed yet.</p>
+    </div>
+    <div class="reading-q-list">
+      <div class="reading-q">
+        <p class="reading-q-text">1. When did the owner start the business, and where did she work at first?</p>
+        <input class="reading-q-input" data-key="b1_r1">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">2. What has happened to the company since it started? Mention two things.</p>
+        <input class="reading-q-input" data-key="b1_r2">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">3. What happened with the manufacturing contract last year?</p>
+        <input class="reading-q-input" data-key="b1_r3">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">4. Has the investment agreement been signed yet? How do you know?</p>
+        <input class="reading-q-input" data-key="b1_r4">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">5. Find one example each of present perfect and past simple in the text and write them here.</p>
+        <input class="reading-q-input" data-key="b1_r5">
+      </div>
+    </div>
+  </div>
+
+  <!-- S7: DISCUSSION -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">7</div>
+    <div><p class="sec-title">Discussion</p><p class="sec-sub">Prepare written notes — you'll discuss these with your teacher</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Prepare short notes for each question. Try to use both tenses naturally.</p>
+    <div class="disc-list">
+      <div class="disc-q">What have you achieved at work so far this month?
+        <textarea class="disc-textarea" data-key="b1_d1" placeholder="Write your notes here..."></textarea>
+      </div>
+      <div class="disc-q">Describe a task you completed last week. What did you do?
+        <textarea class="disc-textarea" data-key="b1_d2" placeholder="Write your notes here..."></textarea>
+      </div>
+      <div class="disc-q">Have you ever worked with a difficult client or colleague? What happened?
+        <textarea class="disc-textarea" data-key="b1_d3" placeholder="Write your notes here..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8: WRITING -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">8</div>
+    <div><p class="sec-title">Writing</p><p class="sec-sub">Produce a short professional text using both tenses</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Choose one option and write 6–8 sentences.</p>
+    <p class="card-note">Use at least two present perfect and two past simple sentences.</p>
+    <div class="writing-prompts">
+      <div class="writing-prompt"><strong>Option A — Weekly Update:</strong> Write a short email update for your manager. Mention what you have completed this week and what you did yesterday.</div>
+      <div class="writing-prompt"><strong>Option B — Company History:</strong> Write a short paragraph describing the history of a company (real or imagined). Mention when it started, what it has achieved, and a key event from its past.</div>
+    </div>
+    <textarea class="writing-textarea" data-key="b1_write1" placeholder="Write your answer here..."></textarea>
+  </div>
+
+</div><!-- /panel-b1 -->
+
+
+<!-- ══════════════ B2 PANEL ══════════════ -->
+<div class="level-panel" id="panel-b2">
+
+  <!-- S1: FILL IN THE GAPS -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">1</div>
+    <div><p class="sec-title">Fill in the Gaps</p><p class="sec-sub">Perfect forms, including perfect continuous and past perfect</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Complete each sentence with the most natural and accurate form.</p>
+    <p class="card-note">Consider whether the action is completed, ongoing, or happened before another past event.</p>
+    <ul class="fill-list">
+      <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">By the time the new policy was announced, employees <input class="fill-input" data-key="b2_f1" placeholder=""> for clarification for weeks. <em>(ask — past perfect continuous)</em></span></li>
+      <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">The legal team <input class="fill-input" data-key="b2_f2" placeholder=""> on this case since the dispute first arose. <em>(work)</em></span></li>
+      <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text">She <input class="fill-input" data-key="b2_f3" placeholder=""> never <input class="fill-input" data-key="b2_f3b" placeholder="" style="min-width:90px;"> such a complex negotiation before she took on this role. <em>(handle)</em></span></li>
+      <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">The results <input class="fill-input" data-key="b2_f4" placeholder=""> exactly what the analysts had predicted. <em>(confirm)</em></span></li>
+      <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">By next month, the firm <input class="fill-input" data-key="b2_f5" placeholder=""> in business for a decade. <em>(be — future perfect)</em></span></li>
+      <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">We <input class="fill-input" data-key="b2_f6" placeholder=""> the data for hours before we finally spotted the error. <em>(review — past perfect continuous)</em></span></li>
+    </ul>
+  </div>
+
+  <!-- S2: MATCH -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">2</div>
+    <div><p class="sec-title">Match</p><p class="sec-sub">Match each context to the sentence that fits it best</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Match each professional situation (1–5) with the sentence that best fits it (A–E).</p>
+    <div class="match-grid">
+      <div>
+        <p class="match-col-label">Situations</p>
+        <div class="match-item"><span class="match-key">1</span><span class="match-text">Explaining a delay that occurred before a deadline</span></div>
+        <div class="match-item"><span class="match-key">2</span><span class="match-text">Describing an unresolved, ongoing complaint</span></div>
+        <div class="match-item"><span class="match-key">3</span><span class="match-text">Reporting a finished achievement with present relevance</span></div>
+        <div class="match-item"><span class="match-key">4</span><span class="match-text">Giving historical background in a formal report</span></div>
+        <div class="match-item"><span class="match-key">5</span><span class="match-text">Describing an action in progress up to now</span></div>
+      </div>
+      <div>
+        <p class="match-col-label">Sentences</p>
+        <div class="match-item"><span class="match-letter">A</span><span class="match-text">The firm has been expanding its client base since the merger.</span></div>
+        <div class="match-item"><span class="match-letter">B</span><span class="match-text">The complaint still hasn't been addressed.</span></div>
+        <div class="match-item"><span class="match-letter">C</span><span class="match-text">We have successfully closed the deal.</span></div>
+        <div class="match-item"><span class="match-letter">D</span><span class="match-text">The original supplier had already withdrawn before negotiations began.</span></div>
+        <div class="match-item"><span class="match-letter">E</span><span class="match-text">The organisation underwent significant restructuring in 2016.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">1→</span><select class="match-select" data-key="b2_m1"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">2→</span><select class="match-select" data-key="b2_m2"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">3→</span><select class="match-select" data-key="b2_m3"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">4→</span><select class="match-select" data-key="b2_m4"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">5→</span><select class="match-select" data-key="b2_m5"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+    </div>
+  </div>
+
+  <!-- S3: ERROR CORRECTION -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">3</div>
+    <div><p class="sec-title">Error Correction</p><p class="sec-sub">Some sentences are correct, some have an error — identify and fix</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Each sentence is either correct or contains one tense/aspect error. Write "Correct" or rewrite the sentence with the fix.</p>
+    <div class="error-list">
+      <div class="error-item">
+        <p class="error-sentence">"The CFO has presented the figures at last week's meeting."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e1">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The team has been struggling with staff shortages since the restructure."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e2">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"By the time the inspectors came, the staff already left for the day."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e3">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The merger has been finalised in 2021."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e4">
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: WORD ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">4</div>
+    <div><p class="sec-title">Word Order</p><p class="sec-sub">More complex structures with adverbials and perfect aspects</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Rearrange the words to build correct, natural-sounding sentences.</p>
+    <div class="wo-list">
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>weeks</span><span>for</span><span>been</span><span>has</span><span>declining</span><span>revenue</span><span>several</span></p>
+        <input class="wo-input" data-key="b2_w1">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>presentation</span><span>started</span><span>had</span><span>the</span><span>when</span><span>I</span><span>logged</span><span>already</span><span>on</span></p>
+        <input class="wo-input" data-key="b2_w2">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>quarter</span><span>profits</span><span>third</span><span>have</span><span>increased</span><span>the</span><span>in</span></p>
+        <input class="wo-input" data-key="b2_w3">
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: SENTENCE ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">5</div>
+    <div><p class="sec-title">Build the Dialogue</p><p class="sec-sub">A more complex professional exchange with mixed tenses</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Number the lines 1–5 to create a coherent professional conversation.</p>
+    <div class="dialogue-box">
+      <p class="dialogue-label">Context: A consultant briefing a client on project progress</p>
+    </div>
+    <div class="so-list">
+      <div class="so-sentence"><span class="so-letter">A</span><span style="flex:1">By the time we identified the bottleneck, the team had already lost two weeks of progress.</span><select class="so-select" data-key="b2_s1"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">B</span><span style="flex:1">That's reassuring. What's the revised completion estimate?</span><select class="so-select" data-key="b2_s2"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">C</span><span style="flex:1">Thanks for joining. I wanted to update you on where the project currently stands.</span><select class="so-select" data-key="b2_s3"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">D</span><span style="flex:1">We've been monitoring the workflow closely since then and have implemented new checkpoints.</span><select class="so-select" data-key="b2_s4"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">E</span><span style="flex:1">We've prepared an updated timeline — I'll send it over by end of day.</span><select class="so-select" data-key="b2_s5"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+  </div>
+
+  <!-- S6: READING -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">6</div>
+    <div><p class="sec-title">Reading</p><p class="sec-sub">A more complex professional text with analytical questions</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <div class="reading-passage">
+      <p>Before the current finance director joined the organisation, the company had been relying on outdated forecasting methods for several years. The previous team had attempted to modernise the process twice, but both initiatives had stalled due to insufficient budget and a lack of senior buy-in.</p>
+      <p>Since taking on the role eighteen months ago, the director has overhauled the entire forecasting framework. She has introduced automated reporting tools, trained the finance team on new software, and established a quarterly review process that did not exist before. As a result, forecast accuracy has improved by nearly 30%, and the finance team has been able to identify cash flow risks much earlier than in the past.</p>
+      <p>The director presented these results to the board last month. While the board responded positively, some members have raised questions about long-term sustainability, particularly given that two key team members have already left the company since the changes began, citing workload concerns.</p>
+      <p>The director is currently developing a retention strategy, though no formal plan has been approved yet.</p>
+    </div>
+    <div class="reading-q-list">
+      <div class="reading-q">
+        <p class="reading-q-text">1. What had the company been doing before the new director arrived, and why had earlier attempts to change this failed?</p>
+        <input class="reading-q-input" data-key="b2_r1">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">2. List three specific actions the director has taken since joining.</p>
+        <input class="reading-q-input" data-key="b2_r2">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">3. What concern have some board members raised, and what evidence supports it?</p>
+        <input class="reading-q-input" data-key="b2_r3">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">4. Identify two uses of the past perfect in the first paragraph. Why does the writer choose this tense rather than past simple?</p>
+        <input class="reading-q-input" data-key="b2_r4">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">5. What is still unresolved at the time of writing? How does the tense used make this clear?</p>
+        <input class="reading-q-input" data-key="b2_r5">
+      </div>
+    </div>
+  </div>
+
+  <!-- S7: DISCUSSION -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">7</div>
+    <div><p class="sec-title">Discussion</p><p class="sec-sub">Prepare written notes for an in-depth discussion</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Prepare detailed notes. Aim to justify your tense choices when you discuss these in class.</p>
+    <div class="disc-list">
+      <div class="disc-q">Describe a major change your organisation has undergone in the past two years. What had been the situation before, and what has changed since?
+        <textarea class="disc-textarea" data-key="b2_d1" placeholder="Write your notes here..."></textarea>
+      </div>
+      <div class="disc-q">Think of a time when a project failed or underperformed. What had gone wrong before the problem became visible?
+        <textarea class="disc-textarea" data-key="b2_d2" placeholder="Write your notes here..."></textarea>
+      </div>
+      <div class="disc-q">How has your role evolved since you started your current position? What skills have you developed, and what challenges are you still working through?
+        <textarea class="disc-textarea" data-key="b2_d3" placeholder="Write your notes here..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8: WRITING -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">8</div>
+    <div><p class="sec-title">Writing</p><p class="sec-sub">Extended writing with tense accuracy and professional register</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Choose one option. Write 10–12 sentences. Focus on tense precision and professional tone.</p>
+    <p class="card-note">Use a clear distinction between past simple, present perfect, and past perfect where appropriate.</p>
+    <div class="writing-prompts">
+      <div class="writing-prompt"><strong>Option A — Status Report:</strong> Write a status report on a project, department, or initiative. Describe the situation before recent changes, what has been achieved so far, and what remains unresolved.</div>
+      <div class="writing-prompt"><strong>Option B — Reflective Account:</strong> Write a reflective account of a professional challenge you have faced. Explain what had happened before you became aware of the problem, what you have done since, and what the current situation is.</div>
+    </div>
+    <textarea class="writing-textarea" data-key="b2_write1" placeholder="Write your answer here..."></textarea>
+  </div>
+
+</div><!-- /panel-b2 -->
+
+</div><!-- /main -->
+
+<!-- SAVE BAR -->
+<div class="save-bar">
+  <span class="save-status" id="save-status">No saved progress yet</span>
+  <div class="save-actions">
+    <button class="btn-reset" onclick="resetAll()">Reset all</button>
+    <button class="btn-save" onclick="saveAll()">Save progress</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'biz_hw1_pp_ps';
+let currentLevel = 'b1';
+
+function setLevel(lvl) {
+  currentLevel = lvl;
+  document.getElementById('panel-b1').classList.toggle('active', lvl === 'b1');
+  document.getElementById('panel-b2').classList.toggle('active', lvl === 'b2');
+  document.getElementById('btn-b1').className = 'level-btn' + (lvl === 'b1' ? ' active-b1' : '');
+  document.getElementById('btn-b2').className = 'level-btn' + (lvl === 'b2' ? ' active-b2' : '');
+  const bar = document.getElementById('prog-bar');
+  bar.className = 'progress-bar-inner ' + (lvl === 'b1' ? 'bar-b1' : 'bar-b2');
+  updateProgress();
+}
+
+function updateProgress() {
+  const lvl = currentLevel;
+  const checks = [
+    () => [...document.querySelectorAll(`#panel-${lvl} .fill-input`)].some(i => i.value.trim()),
+    () => [...document.querySelectorAll(`#panel-${lvl} .match-select`)].some(s => s.value),
+    () => [...document.querySelectorAll(`#panel-${lvl} .error-input`)].some(i => i.value.trim()),
+    () => [...document.querySelectorAll(`#panel-${lvl} .wo-input`)].some(i => i.value.trim()),
+    () => [...document.querySelectorAll(`#panel-${lvl} .so-select`)].some(s => s.value),
+    () => [...document.querySelectorAll(`#panel-${lvl} .reading-q-input`)].some(i => i.value.trim()),
+    () => [...document.querySelectorAll(`#panel-${lvl} .disc-textarea`)].some(i => i.value.trim()),
+    () => (document.querySelector(`[data-key="${lvl}_write1"]`)?.value || '').trim().length > 30,
+  ];
+  const done = checks.filter(fn => fn()).length;
+  const pct = Math.round((done / 8) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-text').textContent = 'Progress — ' + done + ' of 8 sections started';
+}
+
+function getAllData() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') data[el.dataset.key] = el.value;
+    else if (el.tagName === 'SELECT') data[el.dataset.key] = el.value;
+  });
+  return data;
+}
+
+function saveAll(silent) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(getAllData()));
+  if (!silent) {
+    const n = new Date();
+    document.getElementById('save-status').textContent =
+      'Saved at ' + n.getHours().toString().padStart(2,'0') + ':' + n.getMinutes().toString().padStart(2,'0');
+  }
+  updateProgress();
+}
+
+function loadAll() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if ((el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') && data[el.dataset.key] !== undefined) {
+      el.value = data[el.dataset.key];
+    }
+  });
+  const hasAny = Object.values(data).some(v => v && String(v).trim());
+  if (hasAny) document.getElementById('save-status').textContent = 'Progress loaded ✓';
+  updateProgress();
+}
+
+function resetAll() {
+  if (!confirm('Reset all answers? This cannot be undone.')) return;
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = '';
+    else if (el.tagName === 'SELECT') el.value = '';
+  });
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('save-status').textContent = 'Reset — all answers cleared';
+  updateProgress();
+}
+
+document.addEventListener('input', () => saveAll(true));
+document.addEventListener('change', () => saveAll(true));
+window.addEventListener('load', () => { loadAll(); updateProgress(); });
+</script>
+</body>
+</html>
