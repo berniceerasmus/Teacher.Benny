@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2 — The Passive Voice | Business English B1–B2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:         #1a2230;
+  --ink-mid:     #455066;
+  --ink-light:   #8b96aa;
+  --paper:       #f7f8fa;
+  --paper-mid:   #edeff3;
+  --white:       #ffffff;
+  --border:      #dde1e8;
+  --gold:        #c49a3c;
+  --gold-d:      #8a6518;
+  --gold-light:  #faf5e4;
+  --gold-mid:    #e8d49a;
+  --terra:       #c0603a;
+  --terra-d:     #8f3f20;
+  --terra-light: #fdf0ea;
+  --terra-mid:   #e8c4b4;
+  --sage:        #5e7a52;
+  --sage-d:      #3d5433;
+  --sage-light:  #eaf2e4;
+  --sage-mid:    #b8cead;
+  --blue:        #3a6fa8;
+  --blue-d:      #1e4a7a;
+  --blue-light:  #e8f0fb;
+  --blue-mid:    #b8cef0;
+  --plum:        #7a4a8a;
+  --plum-light:  #f3edf7;
+  --plum-mid:    #d4b8e0;
+  --b1-accent:   #2e6fa8;
+  --b1-light:    #e8f0fb;
+  --b1-mid:      #b8cef0;
+  --b2-accent:   #1a8a78;
+  --b2-light:    #e3f4f1;
+  --b2-mid:      #a9dcd2;
+  --radius:      10px;
+  --shadow:      0 2px 14px rgba(26,34,48,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Serif 4', Georgia, serif; background: var(--paper); color: var(--ink); min-height: 100vh; padding-bottom: 6rem; }
+
+.hero { background: var(--ink); color: var(--paper); padding: 3rem 2rem 2.4rem; position: relative; overflow: hidden; }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 90% at 90% 40%, rgba(196,154,60,0.13) 0%, transparent 65%),
+    repeating-linear-gradient(-55deg, transparent, transparent 20px, rgba(46,111,168,0.05) 20px, rgba(46,111,168,0.05) 21px);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+.series-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.5rem; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 14px; color: rgba(247,248,250,0.65); max-width: 520px; line-height: 1.7; margin-bottom: 1.4rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-pill { font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 13px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.15); color: rgba(247,248,250,0.75); }
+
+.grammar-banner { background: var(--gold-light); border-bottom: 2px solid var(--gold-mid); padding: 1.5rem 2rem; }
+.gb-inner { max-width: 860px; margin: 0 auto; }
+.gb-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-d); margin-bottom: 1rem; display: flex; align-items: center; gap: 7px; }
+.gb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.gb-card { background: var(--white); border: 1px solid var(--gold-mid); border-radius: 10px; padding: 13px 15px; }
+.gb-card-title { font-size: 13px; font-weight: 700; color: var(--gold-d); margin-bottom: 4px; }
+.gb-card-form { font-size: 11.5px; font-family: monospace; background: var(--gold-light); color: var(--gold-d); border-radius: 4px; padding: 2px 8px; display: inline-block; margin-bottom: 6px; }
+.gb-card-use { font-size: 12px; color: var(--ink-mid); margin-bottom: 5px; line-height: 1.5; }
+.gb-card-ex { font-size: 12px; font-style: italic; color: var(--ink-light); line-height: 1.6; }
+.gb-card-ex::before { content: '→ '; font-style: normal; }
+
+.level-toggle-wrap { max-width: 860px; margin: 1.8rem auto 0; padding: 0 1.4rem; }
+.level-toggle { display: flex; background: var(--paper-mid); border: 1px solid var(--border); border-radius: 99px; padding: 4px; gap: 4px; width: fit-content; }
+.level-btn { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; padding: 7px 26px; border-radius: 99px; border: none; background: transparent; color: var(--ink-light); cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
+.level-btn.active-b1 { background: var(--b1-accent); color: var(--white); }
+.level-btn.active-b2 { background: var(--b2-accent); color: var(--white); }
+.level-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+.badge-b1 { background: var(--b1-light); color: var(--b1-accent); }
+.badge-b2 { background: var(--b2-light); color: var(--b2-accent); }
+
+.progress-wrap { max-width: 860px; margin: 1rem auto 0; padding: 0 1.4rem; }
+.progress-label { font-size: 11.5px; color: var(--ink-light); display: flex; justify-content: space-between; margin-bottom: 5px; }
+.progress-bar-outer { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.progress-bar-inner { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+.bar-b1 { background: var(--b1-accent); }
+.bar-b2 { background: var(--b2-accent); }
+
+.main { max-width: 860px; margin: 0 auto; padding: 0 1.4rem; }
+
+.sec-head { display: flex; align-items: center; gap: 13px; margin: 2.4rem 0 1.1rem; }
+.sec-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--white); flex-shrink: 0; }
+.num-b1 { background: var(--b1-accent); }
+.num-b2 { background: var(--b2-accent); }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+.sec-sub { font-size: 12px; color: var(--ink-light); margin-top: 2px; }
+.sec-divider { flex: 1; height: 1px; background: var(--border); margin-left: 6px; }
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.card-tag { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+.tag-b1 { background: var(--b1-light); color: var(--b1-accent); }
+.tag-b2 { background: var(--b2-light); color: var(--b2-accent); }
+.card-instruction { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.5; }
+.card-note { font-size: 12.5px; color: var(--ink-light); font-style: italic; margin-bottom: 14px; line-height: 1.5; }
+
+.word-bank { background: var(--gold-light); border: 1px solid var(--gold-mid); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; }
+.wb-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-d); margin-bottom: 8px; }
+.wb-words { display: flex; flex-wrap: wrap; gap: 7px; }
+.wb-word { font-size: 13px; background: var(--white); border: 1px solid var(--gold-mid); color: #6b4c0a; padding: 3px 12px; border-radius: 20px; font-style: italic; }
+
+.fill-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.fill-item { display: flex; align-items: baseline; gap: 9px; }
+.fill-num { font-size: 12px; font-weight: 700; color: var(--ink-light); min-width: 22px; flex-shrink: 0; }
+.fill-text { font-size: 14px; line-height: 1.9; color: var(--ink); flex: 1; }
+.fill-input { display: inline-block; border: none; border-bottom: 1.5px solid var(--terra-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); min-width: 130px; padding: 0 4px; outline: none; transition: border-color 0.15s; }
+.fill-input:focus { border-color: var(--terra); }
+.fill-input.correct { border-color: var(--sage); background: var(--sage-light); border-radius: 4px 4px 0 0; }
+.fill-input.wrong { border-color: var(--terra); background: var(--terra-light); border-radius: 4px 4px 0 0; }
+
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.match-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); margin-bottom: 10px; }
+.match-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.match-key { font-size: 12px; font-weight: 700; color: var(--white); background: var(--sage); border-radius: 50%; width: 23px; height: 23px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.match-letter { font-size: 12px; font-weight: 700; color: var(--white); background: var(--terra); border-radius: 50%; width: 23px; height: 23px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.match-text { font-size: 13.5px; color: var(--ink); line-height: 1.45; }
+.match-select { font-family: 'Source Serif 4', serif; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; background: var(--paper-mid); color: var(--ink); outline: none; cursor: pointer; transition: border 0.15s; }
+.match-select:focus { border-color: var(--b1-accent); }
+.match-select.correct { border-color: var(--sage); background: var(--sage-light); }
+.match-select.wrong { border-color: var(--terra); background: var(--terra-light); }
+
+.error-list { display: flex; flex-direction: column; gap: 13px; }
+.error-item { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; border-left: 3px solid var(--terra-mid); }
+.error-sentence { font-size: 14px; font-style: italic; color: var(--ink-mid); margin-bottom: 8px; line-height: 1.6; }
+.error-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-light); margin-bottom: 5px; }
+.error-input { width: 100%; border: none; border-bottom: 1.5px solid var(--terra-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.error-input:focus { border-color: var(--terra); }
+.error-input.correct { border-color: var(--sage); background: var(--sage-light); }
+.error-input.wrong { border-color: var(--terra); background: var(--terra-light); }
+
+.wo-list { display: flex; flex-direction: column; gap: 13px; }
+.wo-item { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; }
+.wo-jumbled { font-size: 13px; font-style: italic; color: var(--ink-light); margin-bottom: 8px; line-height: 1.6; }
+.wo-jumbled span { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; margin-right: 4px; display: inline-block; color: var(--ink-mid); }
+.wo-input { width: 100%; border: none; border-bottom: 1.5px solid var(--blue-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.wo-input:focus { border-color: var(--blue); }
+.wo-input.correct { border-color: var(--sage); background: var(--sage-light); }
+.wo-input.wrong { border-color: var(--terra); background: var(--terra-light); }
+
+.dialogue-box { background: var(--paper-mid); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+.dialogue-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-light); margin-bottom: 10px; }
+.so-list { display: flex; flex-direction: column; gap: 8px; }
+.so-sentence { background: var(--white); border: 1px solid var(--border); border-radius: 7px; padding: 10px 14px; font-size: 13.5px; font-style: italic; color: var(--ink-mid); display: flex; align-items: center; gap: 10px; }
+.so-sentence .so-letter { font-size: 12px; font-weight: 700; color: var(--white); background: var(--plum); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-style: normal; }
+.so-select { font-family: 'Source Serif 4', serif; font-size: 13px; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; background: var(--paper-mid); color: var(--ink); outline: none; cursor: pointer; }
+.so-select:focus { border-color: var(--plum); }
+.so-select.correct { border-color: var(--sage); background: var(--sage-light); }
+.so-select.wrong { border-color: var(--terra); background: var(--terra-light); }
+
+.reading-passage { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 16px; line-height: 1.85; font-size: 14px; color: var(--ink); }
+.reading-passage p + p { margin-top: 0.9em; }
+.reading-q-list { display: flex; flex-direction: column; gap: 12px; }
+.reading-q { background: var(--paper-mid); border-radius: 8px; padding: 13px 15px; }
+.reading-q-text { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.reading-q-input { width: 100%; border: none; border-bottom: 1.5px solid var(--gold-mid); background: transparent; font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 3px 4px; outline: none; transition: border-color 0.15s; }
+.reading-q-input:focus { border-color: var(--gold-d); }
+
+.disc-list { display: flex; flex-direction: column; gap: 9px; }
+.disc-q { background: var(--paper-mid); border: 0.5px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+.disc-q::before { content: '💬 '; }
+
+.writing-prompts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.writing-prompt { background: var(--paper-mid); border-left: 3px solid var(--sage-mid); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 13.5px; line-height: 1.55; }
+.writing-prompt strong { color: var(--sage-d); }
+.writing-textarea { width: 100%; min-height: 130px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--white); font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); padding: 12px 14px; resize: vertical; outline: none; line-height: 1.7; transition: border-color 0.15s; }
+.writing-textarea:focus { border-color: var(--sage); }
+
+.check-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.btn-check { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; padding: 8px 22px; border-radius: 99px; border: none; cursor: pointer; transition: all 0.18s; }
+.btn-check-b1 { background: var(--b1-accent); color: var(--white); }
+.btn-check-b1:hover { background: var(--blue-d); }
+.btn-check-b2 { background: var(--b2-accent); color: var(--white); }
+.btn-check-b2:hover { background: #0f6357; }
+.btn-reveal { font-family: 'Source Serif 4', serif; font-size: 12.5px; padding: 7px 16px; border-radius: 99px; border: 1.5px solid var(--border); background: transparent; color: var(--ink-light); cursor: pointer; transition: all 0.18s; }
+.btn-reveal:hover { border-color: var(--gold); color: var(--gold-d); }
+.score-badge { font-size: 12px; font-weight: 700; padding: 5px 13px; border-radius: 20px; background: var(--paper-mid); color: var(--ink-mid); }
+.score-badge.good { background: var(--sage-light); color: var(--sage-d); }
+.score-badge.ok { background: var(--gold-light); color: var(--gold-d); }
+.score-badge.low { background: var(--terra-light); color: var(--terra-d); }
+.answer-key { background: var(--sage-light); border: 1px solid var(--sage-mid); border-radius: 8px; padding: 13px 15px; margin-top: 12px; display: none; }
+.answer-key.open { display: block; }
+.answer-key-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage-d); margin-bottom: 8px; }
+.answer-key ol { padding-left: 18px; }
+.answer-key ol li { font-size: 13px; color: var(--ink-mid); padding: 2px 0; }
+
+.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 12px 1.4rem; display: flex; align-items: center; justify-content: space-between; z-index: 100; box-shadow: 0 -4px 20px rgba(26,34,48,0.07); }
+.save-status { font-size: 12px; color: var(--ink-light); }
+.save-actions { display: flex; gap: 8px; }
+.btn-save { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; padding: 7px 20px; border-radius: 99px; border: none; background: var(--ink); color: var(--white); cursor: pointer; transition: background 0.18s; }
+.btn-save:hover { background: var(--terra); }
+.btn-reset { font-family: 'Source Serif 4', serif; font-size: 13px; padding: 7px 16px; border-radius: 99px; border: 1.5px solid var(--border); background: transparent; color: var(--ink-light); cursor: pointer; transition: all 0.18s; }
+.btn-reset:hover { border-color: var(--terra); color: var(--terra); }
+
+.level-panel { display: none; }
+.level-panel.active { display: block; }
+
+@media (max-width: 600px) {
+  .match-grid { grid-template-columns: 1fr; }
+  .hero { padding: 2rem 1.2rem 1.8rem; }
+  .grammar-banner { padding: 1.2rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="series-label">Business English Series · Lesson 2 of 4</p>
+    <h1>The <em>Passive</em> Voice</h1>
+    <p class="hero-sub">Learn how to shift focus away from "who did it" to "what happened" — essential for reports, processes, and formal professional communication.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">B1 · B2</span>
+      <span class="hero-pill">~45 minutes</span>
+      <span class="hero-pill">Business English</span>
+      <span class="hero-pill">8 sections</span>
+    </div>
+  </div>
+</div>
+
+<div class="grammar-banner">
+  <div class="gb-inner">
+    <p class="gb-label">📐 Grammar at a glance</p>
+    <div class="gb-grid">
+      <div class="gb-card">
+        <p class="gb-card-title">Active Voice</p>
+        <p class="gb-card-form">subject + verb + object</p>
+        <p class="gb-card-use">Focus is on who performs the action.</p>
+        <p class="gb-card-ex">The IT team installed the new system.</p>
+      </div>
+      <div class="gb-card">
+        <p class="gb-card-title">Passive Voice</p>
+        <p class="gb-card-form">be + past participle (+ by + agent)</p>
+        <p class="gb-card-use">Focus shifts to the action or result; the doer becomes less important or unknown.</p>
+        <p class="gb-card-ex">The new system was installed (by the IT team).</p>
+      </div>
+      <div class="gb-card">
+        <p class="gb-card-title">When to use it</p>
+        <p class="gb-card-form">processes · reports · formal tone</p>
+        <p class="gb-card-use">Common in business writing: procedures, policies, announcements, and when the agent is obvious, unknown, or unimportant.</p>
+        <p class="gb-card-ex">The budget has been approved. Orders are processed within 48 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="level-toggle-wrap">
+  <div class="level-toggle">
+    <button class="level-btn active-b1" id="btn-b1" onclick="setLevel('b1')">B1 <span class="level-badge badge-b1">Intermediate</span></button>
+    <button class="level-btn" id="btn-b2" onclick="setLevel('b2')">B2 <span class="level-badge badge-b2">Upper-Int</span></button>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="prog-text">Progress — 0 of 8 sections started</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner bar-b1" id="prog-bar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════ B1 PANEL ══════════════ -->
+<div class="level-panel active" id="panel-b1">
+
+  <!-- S1: FILL IN THE GAPS -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">1</div>
+    <div><p class="sec-title">Fill in the Gaps</p><p class="sec-sub">Complete sentences using the correct passive form</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Complete each sentence with the passive form of the verb in brackets.</p>
+    <p class="card-note">Use the correct tense shown by the time clue in each sentence.</p>
+    <div class="word-bank">
+      <p class="wb-label">⏱ Passive building blocks</p>
+      <div class="wb-words">
+        <span class="wb-word">is / are</span><span class="wb-word">was / were</span>
+        <span class="wb-word">has been / have been</span><span class="wb-word">will be</span>
+      </div>
+    </div>
+    <ul class="fill-list">
+      <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">All invoices <input class="fill-input" data-key="b1_f1" data-answer="are checked" placeholder=""> by the finance team every Friday. <em>(check — present simple)</em></span></li>
+      <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">The new office <input class="fill-input" data-key="b1_f2" data-answer="was opened" placeholder=""> last September. <em>(open — past simple)</em></span></li>
+      <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text">The order <input class="fill-input" data-key="b1_f3" data-answer="has been sent" placeholder=""> already. <em>(send — present perfect)</em></span></li>
+      <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">The results <input class="fill-input" data-key="b1_f4" data-answer="will be announced" placeholder=""> next week. <em>(announce — future)</em></span></li>
+      <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">Visitors <input class="fill-input" data-key="b1_f5" data-answer="are asked" placeholder=""> to sign in at reception. <em>(ask — present simple)</em></span></li>
+      <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">The contract <input class="fill-input" data-key="b1_f6" data-answer="was signed" placeholder=""> by both parties yesterday. <em>(sign — past simple)</em></span></li>
+    </ul>
+    <div class="check-row">
+      <button class="btn-check btn-check-b1" onclick="checkFill('b1_fill','b1')">Check answers</button>
+      <button class="btn-reveal" onclick="toggleKey('b1_fill_key')">Show answers</button>
+      <span class="score-badge" id="b1_fill_score"></span>
+    </div>
+    <div class="answer-key" id="b1_fill_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>are checked</li><li>was opened</li><li>has been sent</li>
+        <li>will be announced</li><li>are asked</li><li>was signed</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S2: MATCH -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">2</div>
+    <div><p class="sec-title">Match</p><p class="sec-sub">Match the active sentence with its passive equivalent</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Match each active sentence (1–5) with its correct passive version (A–E).</p>
+    <div class="match-grid">
+      <div>
+        <p class="match-col-label">Active sentences</p>
+        <div class="match-item"><span class="match-key">1</span><span class="match-text">The company produces 500 units a day.</span></div>
+        <div class="match-item"><span class="match-key">2</span><span class="match-text">Someone delivered the package this morning.</span></div>
+        <div class="match-item"><span class="match-key">3</span><span class="match-text">The manager will review the applications.</span></div>
+        <div class="match-item"><span class="match-key">4</span><span class="match-text">The team has completed the audit.</span></div>
+        <div class="match-item"><span class="match-key">5</span><span class="match-text">They clean the office every evening.</span></div>
+      </div>
+      <div>
+        <p class="match-col-label">Passive versions — select the letter</p>
+        <div class="match-item"><span class="match-letter">A</span><span class="match-text">The audit has been completed.</span></div>
+        <div class="match-item"><span class="match-letter">B</span><span class="match-text">500 units are produced a day.</span></div>
+        <div class="match-item"><span class="match-letter">C</span><span class="match-text">The office is cleaned every evening.</span></div>
+        <div class="match-item"><span class="match-letter">D</span><span class="match-text">The package was delivered this morning.</span></div>
+        <div class="match-item"><span class="match-letter">E</span><span class="match-text">The applications will be reviewed.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">1→</span><select class="match-select" data-key="b1_m1" data-answer="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">2→</span><select class="match-select" data-key="b1_m2" data-answer="D"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">3→</span><select class="match-select" data-key="b1_m3" data-answer="E"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">4→</span><select class="match-select" data-key="b1_m4" data-answer="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">5→</span><select class="match-select" data-key="b1_m5" data-answer="C"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+    </div>
+    <div class="check-row">
+      <button class="btn-check btn-check-b1" onclick="checkMatch('b1_match','b1')">Check answers</button>
+      <button class="btn-reveal" onclick="toggleKey('b1_match_key')">Show answers</button>
+      <span class="score-badge" id="b1_match_score"></span>
+    </div>
+    <div class="answer-key" id="b1_match_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol><li>B</li><li>D</li><li>E</li><li>A</li><li>C</li></ol>
+    </div>
+  </div>
+
+  <!-- S3: ERROR CORRECTION -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">3</div>
+    <div><p class="sec-title">Error Correction</p><p class="sec-sub">Find and correct the passive voice mistake</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Each sentence contains one passive voice error. Write the corrected sentence below.</p>
+    <div class="error-list">
+      <div class="error-item">
+        <p class="error-sentence">"The report is wrote by the analyst every month."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e1" data-answer="The report is written by the analyst every month.">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The meeting were cancelled yesterday."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e2" data-answer="The meeting was cancelled yesterday.">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"New staff are train during their first week."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e3" data-answer="New staff are trained during their first week.">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The proposal has being approved by the board."</p>
+        <p class="error-label">Corrected sentence:</p>
+        <input class="error-input" data-key="b1_e4" data-answer="The proposal has been approved by the board.">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b1_error_key')">Show answers</button>
+    </div>
+    <div class="answer-key" id="b1_error_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>The report is written by the analyst every month.</li>
+        <li>The meeting was cancelled yesterday.</li>
+        <li>New staff are trained during their first week.</li>
+        <li>The proposal has been approved by the board.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S4: WORD ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">4</div>
+    <div><p class="sec-title">Word Order</p><p class="sec-sub">Rearrange the words to make correct passive sentences</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Put the words in the correct order. Write the complete sentence.</p>
+    <div class="wo-list">
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>the</span><span>checked</span><span>are</span><span>every</span><span>day</span><span>machines</span><span>The</span></p>
+        <input class="wo-input" data-key="b1_w1" data-answer="The machines are checked every day.">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>was</span><span>last</span><span>built</span><span>warehouse</span><span>The</span><span>year</span><span>new</span></p>
+        <input class="wo-input" data-key="b1_w2" data-answer="The new warehouse was built last year.">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>has</span><span>email</span><span>The</span><span>been</span><span>sent</span><span>already</span></p>
+        <input class="wo-input" data-key="b1_w3" data-answer="The email has already been sent.">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>will</span><span>delivered</span><span>be</span><span>tomorrow</span><span>order</span><span>The</span></p>
+        <input class="wo-input" data-key="b1_w4" data-answer="The order will be delivered tomorrow.">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b1_word_key')">Show answers</button>
+    </div>
+    <div class="answer-key" id="b1_word_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>The machines are checked every day.</li>
+        <li>The new warehouse was built last year.</li>
+        <li>The email has already been sent.</li>
+        <li>The order will be delivered tomorrow.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S5: SENTENCE ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">5</div>
+    <div><p class="sec-title">Build the Dialogue</p><p class="sec-sub">Put the sentences in order to complete a workplace conversation</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Number the sentences 1–5 to create a logical dialogue between two colleagues.</p>
+    <div class="dialogue-box">
+      <p class="dialogue-label">Context: Two colleagues discussing how an office process works</p>
+    </div>
+    <div class="so-list">
+      <div class="so-sentence"><span class="so-letter">A</span><span style="flex:1">They're processed within 48 hours, usually by the accounts team.</span><select class="so-select" data-key="b1_s1" data-answer="3"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">B</span><span style="flex:1">How are expense claims handled in this department?</span><select class="so-select" data-key="b1_s2" data-answer="1"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">C</span><span style="flex:1">Great, that's helpful to know. Thanks for explaining.</span><select class="so-select" data-key="b1_s3" data-answer="5"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">D</span><span style="flex:1">That's fast! Are receipts required for every claim?</span><select class="so-select" data-key="b1_s4" data-answer="2"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">E</span><span style="flex:1">Yes, all claims over twenty euros must be supported by a receipt.</span><select class="so-select" data-key="b1_s5" data-answer="4"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+    <div class="check-row">
+      <button class="btn-check btn-check-b1" onclick="checkSentOrder('b1_sorder','b1')">Check order</button>
+      <button class="btn-reveal" onclick="toggleKey('b1_sorder_key')">Show answers</button>
+      <span class="score-badge" id="b1_sorder_score"></span>
+    </div>
+    <div class="answer-key" id="b1_sorder_key">
+      <p class="answer-key-title">✓ Correct order</p>
+      <p style="font-size:13px;color:var(--ink-mid);">B (1) → D (2) → A (3) → E (4) → C (5)</p>
+    </div>
+  </div>
+
+  <!-- S6: READING -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">6</div>
+    <div><p class="sec-title">Reading</p><p class="sec-sub">Read the passage and answer the comprehension questions</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <div class="reading-passage">
+      <p>At most manufacturing companies, products are checked carefully before they leave the factory. Every item is inspected by a quality control officer, and any faults are recorded in a daily report.</p>
+      <p>Last month, a new inspection system was introduced at a regional factory. Under the new system, items are scanned automatically, and the results are stored in a central database. Before the system was introduced, faults were often missed because inspections were done manually.</p>
+      <p>Since the system was installed, fewer faulty products have been sent to customers. The new process is now being used in two other factories, and it will be rolled out company-wide by the end of the year.</p>
+    </div>
+    <div class="reading-q-list">
+      <div class="reading-q">
+        <p class="reading-q-text">1. How are products checked at most manufacturing companies?</p>
+        <input class="reading-q-input" data-key="b1_r1">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">2. What happened last month at the regional factory?</p>
+        <input class="reading-q-input" data-key="b1_r2">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">3. Why were faults often missed before the new system?</p>
+        <input class="reading-q-input" data-key="b1_r3">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">4. Find two passive sentences in the text and write them here.</p>
+        <input class="reading-q-input" data-key="b1_r4">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b1_read_key')">Show suggested answers</button>
+    </div>
+    <div class="answer-key" id="b1_read_key">
+      <p class="answer-key-title">✓ Suggested answers</p>
+      <ol>
+        <li>Every item is inspected by a quality control officer and faults are recorded in a daily report.</li>
+        <li>A new inspection system was introduced.</li>
+        <li>Because inspections were done manually.</li>
+        <li>Any two examples, e.g. "products are checked carefully" / "a new inspection system was introduced."</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S7: DISCUSSION -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">7</div>
+    <div><p class="sec-title">Discussion</p><p class="sec-sub">Speak for 1–2 minutes on each topic</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Discuss these questions with your teacher or a partner. Try to use the passive voice naturally.</p>
+    <div class="disc-list">
+      <div class="disc-q">How are decisions made in your company — by one person or by a team?</div>
+      <div class="disc-q">Describe a process at your workplace (e.g. how orders are handled, how new staff are trained).</div>
+      <div class="disc-q">What rules or policies are followed in your office? Who decided them?</div>
+      <div class="disc-q">Has anything in your workplace recently been changed or upgraded? What was done?</div>
+    </div>
+  </div>
+
+  <!-- S8: WRITING -->
+  <div class="sec-head">
+    <div class="sec-num num-b1">8</div>
+    <div><p class="sec-title">Writing</p><p class="sec-sub">Produce a short professional text using the passive voice</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b1">B1</span>
+    <p class="card-instruction">Choose one option and write 5–8 sentences.</p>
+    <p class="card-note">Use at least four passive sentences.</p>
+    <div class="writing-prompts">
+      <div class="writing-prompt"><strong>Option A — Office Procedure:</strong> Describe a simple process at your workplace, such as how visitors are welcomed or how deliveries are received.</div>
+      <div class="writing-prompt"><strong>Option B — Company Announcement:</strong> Write a short internal announcement about a recent change (e.g. new software was installed, a new policy was introduced).</div>
+    </div>
+    <textarea class="writing-textarea" data-key="b1_write1" placeholder="Write your answer here..."></textarea>
+  </div>
+
+</div><!-- /panel-b1 -->
+
+
+<!-- ══════════════ B2 PANEL ══════════════ -->
+<div class="level-panel" id="panel-b2">
+
+  <!-- S1: FILL IN THE GAPS -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">1</div>
+    <div><p class="sec-title">Fill in the Gaps</p><p class="sec-sub">Passive forms including modal passives and causative structures</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Complete each sentence using the most natural passive form.</p>
+    <p class="card-note">Some sentences require modal passives (must be done) or passive of reporting verbs.</p>
+    <ul class="fill-list">
+      <li class="fill-item"><span class="fill-num">1.</span><span class="fill-text">All expense claims <input class="fill-input" data-key="b2_f1" data-answer="must be submitted" placeholder=""> by the end of the month. <em>(must / submit)</em></span></li>
+      <li class="fill-item"><span class="fill-num">2.</span><span class="fill-text">It <input class="fill-input" data-key="b2_f2" data-answer="is believed" placeholder=""> that the merger will be finalised by Q3. <em>(believe — passive reporting structure)</em></span></li>
+      <li class="fill-item"><span class="fill-num">3.</span><span class="fill-text">The damaged equipment <input class="fill-input" data-key="b2_f3" data-answer="should have been reported" placeholder=""> immediately. <em>(should / report — modal perfect passive)</em></span></li>
+      <li class="fill-item"><span class="fill-num">4.</span><span class="fill-text">We <input class="fill-input" data-key="b2_f4" data-answer="had our offices renovated" placeholder=""> last spring. <em>(have — causative passive)</em></span></li>
+      <li class="fill-item"><span class="fill-num">5.</span><span class="fill-text">The new regulations <input class="fill-input" data-key="b2_f5" data-answer="are expected" placeholder=""> to come into effect next year. <em>(expect — passive reporting structure)</em></span></li>
+      <li class="fill-item"><span class="fill-num">6.</span><span class="fill-text">By the time the audit began, all the records <input class="fill-input" data-key="b2_f6" data-answer="had already been organised" placeholder=""> . <em>(already / organise — past perfect passive)</em></span></li>
+    </ul>
+    <div class="check-row">
+      <button class="btn-check btn-check-b2" onclick="checkFill('b2_fill','b2')">Check answers</button>
+      <button class="btn-reveal" onclick="toggleKey('b2_fill_key')">Show answers</button>
+      <span class="score-badge" id="b2_fill_score"></span>
+    </div>
+    <div class="answer-key" id="b2_fill_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>must be submitted</li><li>is believed</li><li>should have been reported</li>
+        <li>had our offices renovated</li><li>are expected</li><li>had already been organised</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S2: MATCH -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">2</div>
+    <div><p class="sec-title">Match</p><p class="sec-sub">Match the context to the passive structure that fits it best</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Match each professional context (1–5) with the sentence that best fits it (A–E).</p>
+    <div class="match-grid">
+      <div>
+        <p class="match-col-label">Contexts</p>
+        <div class="match-item"><span class="match-key">1</span><span class="match-text">Reporting a general belief without naming a source</span></div>
+        <div class="match-item"><span class="match-key">2</span><span class="match-text">Describing an obligation that wasn't fulfilled</span></div>
+        <div class="match-item"><span class="match-key">3</span><span class="match-text">Describing a service arranged by paying someone else</span></div>
+        <div class="match-item"><span class="match-key">4</span><span class="match-text">Stating a rule or requirement</span></div>
+        <div class="match-item"><span class="match-key">5</span><span class="match-text">An action completed before another past event</span></div>
+      </div>
+      <div>
+        <p class="match-col-label">Sentences</p>
+        <div class="match-item"><span class="match-letter">A</span><span class="match-text">All visitors must be signed in at reception.</span></div>
+        <div class="match-item"><span class="match-letter">B</span><span class="match-text">It is thought that costs will rise next quarter.</span></div>
+        <div class="match-item"><span class="match-letter">C</span><span class="match-text">The contract should have been reviewed before signing.</span></div>
+        <div class="match-item"><span class="match-letter">D</span><span class="match-text">The reports had already been filed before the inspection.</span></div>
+        <div class="match-item"><span class="match-letter">E</span><span class="match-text">We had the server upgraded by an external contractor.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">1→</span><select class="match-select" data-key="b2_m1" data-answer="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">2→</span><select class="match-select" data-key="b2_m2" data-answer="C"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">3→</span><select class="match-select" data-key="b2_m3" data-answer="E"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">4→</span><select class="match-select" data-key="b2_m4" data-answer="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+      <div style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;min-width:20px;font-weight:700;color:var(--ink-light);">5→</span><select class="match-select" data-key="b2_m5" data-answer="D"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+    </div>
+    <div class="check-row">
+      <button class="btn-check btn-check-b2" onclick="checkMatch('b2_match','b2')">Check answers</button>
+      <button class="btn-reveal" onclick="toggleKey('b2_match_key')">Show answers</button>
+      <span class="score-badge" id="b2_match_score"></span>
+    </div>
+    <div class="answer-key" id="b2_match_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol><li>B</li><li>C</li><li>E</li><li>A</li><li>D</li></ol>
+    </div>
+  </div>
+
+  <!-- S3: ERROR CORRECTION -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">3</div>
+    <div><p class="sec-title">Error Correction</p><p class="sec-sub">Some sentences are correct, some have an error — identify and fix</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Each sentence is either correct or contains one passive voice error. Write "Correct" or rewrite the sentence with the fix.</p>
+    <div class="error-list">
+      <div class="error-item">
+        <p class="error-sentence">"The project must finished by Friday."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e1" data-answer="The project must be finished by Friday.">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"It is widely believed that the policy will be reversed."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e2" data-answer="Correct">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"The building should be inspected before the lease was signed."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e3" data-answer="The building should have been inspected before the lease was signed.">
+      </div>
+      <div class="error-item">
+        <p class="error-sentence">"We are having the office redecorate next month."</p>
+        <p class="error-label">Correct / Corrected version:</p>
+        <input class="error-input" data-key="b2_e4" data-answer="We are having the office redecorated next month.">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b2_error_key')">Show answers</button>
+    </div>
+    <div class="answer-key" id="b2_error_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>The project must be finished by Friday.</li>
+        <li>Correct</li>
+        <li>The building should have been inspected before the lease was signed.</li>
+        <li>We are having the office redecorated next month.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S4: WORD ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">4</div>
+    <div><p class="sec-title">Word Order</p><p class="sec-sub">More complex passive structures with modals and causatives</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Rearrange the words to build correct, natural-sounding sentences.</p>
+    <div class="wo-list">
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>reviewed</span><span>contract</span><span>be</span><span>The</span><span>signing</span><span>before</span><span>must</span></p>
+        <input class="wo-input" data-key="b2_w1" data-answer="The contract must be reviewed before signing.">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>rise</span><span>thought</span><span>is</span><span>prices</span><span>It</span><span>will</span><span>that</span></p>
+        <input class="wo-input" data-key="b2_w2" data-answer="It is thought that prices will rise.">
+      </div>
+      <div class="wo-item">
+        <p class="wo-jumbled"><span>had</span><span>system</span><span>We</span><span>installed</span><span>the</span><span>security</span></p>
+        <input class="wo-input" data-key="b2_w3" data-answer="We had the security system installed.">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b2_word_key')">Show answers</button>
+    </div>
+    <div class="answer-key" id="b2_word_key">
+      <p class="answer-key-title">✓ Answer key</p>
+      <ol>
+        <li>The contract must be reviewed before signing.</li>
+        <li>It is thought that prices will rise.</li>
+        <li>We had the security system installed.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S5: SENTENCE ORDER -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">5</div>
+    <div><p class="sec-title">Build the Dialogue</p><p class="sec-sub">A more complex professional exchange using passive structures</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Number the lines 1–5 to create a coherent professional conversation.</p>
+    <div class="dialogue-box">
+      <p class="dialogue-label">Context: A compliance officer briefing a colleague on new procedures</p>
+    </div>
+    <div class="so-list">
+      <div class="so-sentence"><span class="so-letter">A</span><span style="flex:1">It's believed that stricter checks will be introduced industry-wide next year.</span><select class="so-select" data-key="b2_s1" data-answer="4"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">B</span><span style="flex:1">All transactions over a certain threshold must now be flagged for review.</span><select class="so-select" data-key="b2_s2" data-answer="2"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">C</span><span style="flex:1">That makes sense — should the team have been trained on this already?</span><select class="so-select" data-key="b2_s3" data-answer="5"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">D</span><span style="flex:1">I wanted to update you on the new compliance procedures.</span><select class="so-select" data-key="b2_s4" data-answer="1"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="so-sentence"><span class="so-letter">E</span><span style="flex:1">Understood. Is this related to the recent regulatory changes?</span><select class="so-select" data-key="b2_s5" data-answer="3"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+    <div class="check-row">
+      <button class="btn-check btn-check-b2" onclick="checkSentOrder('b2_sorder','b2')">Check order</button>
+      <button class="btn-reveal" onclick="toggleKey('b2_sorder_key')">Show answers</button>
+      <span class="score-badge" id="b2_sorder_score"></span>
+    </div>
+    <div class="answer-key" id="b2_sorder_key">
+      <p class="answer-key-title">✓ Correct order</p>
+      <p style="font-size:13px;color:var(--ink-mid);">D (1) → B (2) → E (3) → A (4) → C (5)</p>
+    </div>
+  </div>
+
+  <!-- S6: READING -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">6</div>
+    <div><p class="sec-title">Reading</p><p class="sec-sub">A more complex professional text with analytical questions</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <div class="reading-passage">
+      <p>It is widely acknowledged that data protection has become a critical concern for organisations of all sizes. In recent years, stricter regulations have been introduced across many industries, and companies are now required to demonstrate that customer data is being handled responsibly.</p>
+      <p>At one mid-sized retail company, a full data audit was carried out last year after a minor security incident. It was discovered that several outdated systems had not been updated for over two years, and as a result, sensitive information had been left vulnerable.</p>
+      <p>Since then, a new data protection framework has been implemented. All staff are now required to complete annual training, and any data breach must be reported within 24 hours. External audits are also conducted twice a year to ensure standards are being maintained.</p>
+      <p>It is expected that similar frameworks will soon be adopted by smaller companies, although some have argued that the cost of compliance could be prohibitive for businesses with limited resources.</p>
+    </div>
+    <div class="reading-q-list">
+      <div class="reading-q">
+        <p class="reading-q-text">1. What is widely acknowledged about data protection, according to the text?</p>
+        <input class="reading-q-input" data-key="b2_r1">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">2. What was discovered during the data audit, and why had it happened?</p>
+        <input class="reading-q-input" data-key="b2_r2">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">3. Name three requirements of the new data protection framework.</p>
+        <input class="reading-q-input" data-key="b2_r3">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">4. Why does the writer use passive structures like "it is widely acknowledged" and "it is expected" rather than naming who believes these things?</p>
+        <input class="reading-q-input" data-key="b2_r4">
+      </div>
+      <div class="reading-q">
+        <p class="reading-q-text">5. What concern have some people raised about smaller companies adopting these frameworks?</p>
+        <input class="reading-q-input" data-key="b2_r5">
+      </div>
+    </div>
+    <div class="check-row">
+      <button class="btn-reveal" onclick="toggleKey('b2_read_key')">Show suggested answers</button>
+    </div>
+    <div class="answer-key" id="b2_read_key">
+      <p class="answer-key-title">✓ Suggested answers</p>
+      <ol>
+        <li>That it has become a critical concern for organisations of all sizes.</li>
+        <li>That several outdated systems had not been updated for over two years, leaving sensitive information vulnerable; it happened after a minor security incident.</li>
+        <li>Annual staff training; reporting breaches within 24 hours; external audits twice a year.</li>
+        <li>These structures present the belief or expectation as general or widely held, without attributing it to a specific person or source — common in formal/academic-style business writing.</li>
+        <li>That the cost of compliance could be prohibitive for businesses with limited resources.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- S7: DISCUSSION -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">7</div>
+    <div><p class="sec-title">Discussion</p><p class="sec-sub">Analytical and reflective professional discussion topics</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Discuss these questions in depth, using passive structures where natural.</p>
+    <div class="disc-list">
+      <div class="disc-q">What procedures or policies in your organisation must be followed strictly? Why do you think they were introduced?</div>
+      <div class="disc-q">Describe a service your company has outsourced or arranged through a third party (a causative passive situation). What was the reasoning?</div>
+      <div class="disc-q">Is there anything in your workplace that you think should have been done differently? Explain using passive structures.</div>
+      <div class="disc-q">What is generally believed or expected about the future of your industry? Use phrases like "it is expected that..." or "it is thought that..."</div>
+    </div>
+  </div>
+
+  <!-- S8: WRITING -->
+  <div class="sec-head">
+    <div class="sec-num num-b2">8</div>
+    <div><p class="sec-title">Writing</p><p class="sec-sub">Extended writing with a formal, report-style register</p></div>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="card">
+    <span class="card-tag tag-b2">B2</span>
+    <p class="card-instruction">Choose one option. Write 8–12 sentences. Use a formal, report-style tone with a range of passive structures.</p>
+    <p class="card-note">Include at least one modal passive, one causative passive, and one passive reporting structure (it is believed/expected that...).</p>
+    <div class="writing-prompts">
+      <div class="writing-prompt"><strong>Option A — Process Report:</strong> Describe a process or policy at your workplace in a formal, report-style tone. Explain what must be done, what has been arranged through external providers, and what is expected to change in future.</div>
+      <div class="writing-prompt"><strong>Option B — Compliance Update:</strong> Write a short formal update about a new rule, regulation, or requirement introduced at your organisation (real or imagined). Explain what is required, what should have been done earlier, and what is believed about its future impact.</div>
+    </div>
+    <textarea class="writing-textarea" data-key="b2_write1" placeholder="Write your answer here..."></textarea>
+  </div>
+
+</div><!-- /panel-b2 -->
+
+</div><!-- /main -->
+
+<div class="save-bar">
+  <span class="save-status" id="save-status">No saved progress yet</span>
+  <div class="save-actions">
+    <button class="btn-reset" onclick="resetAll()">Reset all</button>
+    <button class="btn-save" onclick="saveAll()">Save progress</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'biz_l2_passive';
+let currentLevel = 'b1';
+
+function setLevel(lvl) {
+  currentLevel = lvl;
+  document.getElementById('panel-b1').classList.toggle('active', lvl === 'b1');
+  document.getElementById('panel-b2').classList.toggle('active', lvl === 'b2');
+  document.getElementById('btn-b1').className = 'level-btn' + (lvl === 'b1' ? ' active-b1' : '');
+  document.getElementById('btn-b2').className = 'level-btn' + (lvl === 'b2' ? ' active-b2' : '');
+  const bar = document.getElementById('prog-bar');
+  bar.className = 'progress-bar-inner ' + (lvl === 'b1' ? 'bar-b1' : 'bar-b2');
+  updateProgress();
+}
+
+function toggleKey(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+function checkFill(group, lvl) {
+  const inputs = document.querySelectorAll(`#panel-${lvl} .fill-input`);
+  let correct = 0;
+  inputs.forEach(inp => {
+    const ans = (inp.dataset.answer || '').trim().toLowerCase();
+    const val = (inp.value || '').trim().toLowerCase();
+    inp.classList.remove('correct','wrong');
+    if (val && val === ans) { inp.classList.add('correct'); correct++; }
+    else if (val) inp.classList.add('wrong');
+  });
+  showScore(lvl + '_fill_score', correct, inputs.length, lvl);
+  updateProgress();
+}
+
+function checkMatch(group, lvl) {
+  const selects = document.querySelectorAll(`#panel-${lvl} .match-select`);
+  let correct = 0;
+  selects.forEach(sel => {
+    const ans = sel.dataset.answer;
+    sel.classList.remove('correct','wrong');
+    if (sel.value && sel.value === ans) { sel.classList.add('correct'); correct++; }
+    else if (sel.value) sel.classList.add('wrong');
+  });
+  showScore(lvl + '_match_score', correct, selects.length, lvl);
+  updateProgress();
+}
+
+function checkSentOrder(group, lvl) {
+  const selects = document.querySelectorAll(`#panel-${lvl} .so-select`);
+  let correct = 0;
+  selects.forEach(sel => {
+    const ans = sel.dataset.answer;
+    sel.classList.remove('correct','wrong');
+    if (sel.value && sel.value === ans) { sel.classList.add('correct'); correct++; }
+    else if (sel.value) sel.classList.add('wrong');
+  });
+  showScore(lvl + '_sorder_score', correct, selects.length, lvl);
+  updateProgress();
+}
+
+function showScore(id, correct, total, lvl) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const pct = Math.round((correct / total) * 100);
+  el.textContent = correct + '/' + total + ' correct (' + pct + '%)';
+  el.className = 'score-badge ' + (pct >= 80 ? 'good' : pct >= 50 ? 'ok' : 'low');
+}
+
+function updateProgress() {
+  const lvl = currentLevel;
+  const checks = [
+    () => document.querySelector(`#panel-${lvl} .fill-input.correct`) !== null,
+    () => document.querySelector(`#panel-${lvl} .match-select.correct`) !== null,
+    () => [...document.querySelectorAll(`#panel-${lvl} .error-input`)].some(i => i.value.trim()),
+    () => [...document.querySelectorAll(`#panel-${lvl} .wo-input`)].some(i => i.value.trim()),
+    () => document.querySelector(`#panel-${lvl} .so-select.correct`) !== null,
+    () => [...document.querySelectorAll(`#panel-${lvl} .reading-q-input`)].some(i => i.value.trim()),
+    () => true,
+    () => (document.querySelector(`[data-key="${lvl}_write1"]`)?.value || '').trim().length > 30,
+  ];
+  const done = checks.filter(fn => fn()).length;
+  const pct = Math.round((done / 8) * 100);
+  document.getElementById('prog-bar').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-text').textContent = 'Progress — ' + done + ' of 8 sections started';
+}
+
+function getAllData() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') data[el.dataset.key] = el.value;
+    else if (el.tagName === 'SELECT') data[el.dataset.key] = el.value;
+  });
+  return data;
+}
+
+function saveAll(silent) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(getAllData()));
+  if (!silent) {
+    const n = new Date();
+    document.getElementById('save-status').textContent =
+      'Saved at ' + n.getHours().toString().padStart(2,'0') + ':' + n.getMinutes().toString().padStart(2,'0');
+  }
+  updateProgress();
+}
+
+function loadAll() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if ((el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') && data[el.dataset.key] !== undefined) {
+      el.value = data[el.dataset.key];
+    }
+  });
+  const hasAny = Object.values(data).some(v => v && String(v).trim());
+  if (hasAny) document.getElementById('save-status').textContent = 'Progress loaded ✓';
+  updateProgress();
+}
+
+function resetAll() {
+  if (!confirm('Reset all answers? This cannot be undone.')) return;
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = '';
+    else if (el.tagName === 'SELECT') el.value = '';
+  });
+  document.querySelectorAll('.fill-input,.match-select,.so-select,.wo-input,.error-input').forEach(el => {
+    el.classList.remove('correct','wrong');
+  });
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('save-status').textContent = 'Reset — all answers cleared';
+  updateProgress();
+}
+
+document.addEventListener('input', () => saveAll(true));
+document.addEventListener('change', () => saveAll(true));
+window.addEventListener('load', () => { loadAll(); updateProgress(); });
+</script>
+</body>
+</html>
